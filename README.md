@@ -8,7 +8,7 @@ Instructors
 -----------
 
 1. Jay Hesselberth
-2. Brent Pedersen
+2. Brent S. Pedersen
 
 Resources
 ---------
