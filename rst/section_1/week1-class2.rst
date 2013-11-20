@@ -138,4 +138,43 @@ This is useful when running similar commands or when remembering what you have
 done previously.
 
 
+Tab-Completion
+==============
+
+The shell (bash) when set up properly can give you a lot of help
+Type the following where [TAB] means the Tab key on the keyboard:
+
+    $ cd ~/bio-w[TAB]
+
+Then hit tab. And:
+
+    $ ls ~/bio-w[TAB]
+
+This will work for any file path.
+
+
+Directory Shortcuts
+===================
+
+We have already used the `cd` command to change directories. And we have
+used the "~" shortcut for home.
+
+    $ cd ~ 
+    $ ls ~
+
+We can also move to or see what's in the parent directory with:
+    
+    $ ls ..
+    $ cd ..
+
+We can go 2 directories up with:
+
+    $ cd ../../
+
+Here, we can remember that "." is the current directory and .. is one directory up.
+What does this do:
+
+    $ ls ./*
+
+    
 
