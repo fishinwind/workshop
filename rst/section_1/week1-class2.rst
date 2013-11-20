@@ -112,6 +112,7 @@ By default, head and tail show 10 lines. How can you see 13 lines?
 
 How many lines are in the file. Use *wc*
 
+
 Other Commands In The Terminal (Answers)
 ========================================
 
@@ -124,6 +125,17 @@ Other Commands In The Terminal (Answers)
     $ head -n 13 ~/bio-workshop/data/some.fastq
         
     $ wc -l ~/bio-workshop/data/some.fastq
+
+
+Terminal History
+================
+
+Press the up arrow in the terminal.
+
+Up and down arrows will allow you to scroll through your previous commands.
+
+This is useful when running similar commands or when remembering what you have
+done previously.
 
 
 
