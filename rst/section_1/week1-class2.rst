@@ -36,6 +36,8 @@ We will show commands preceded with a '$' as you see in your terminal
 
 Try this in the terminal:
 
+.. code-block:: bash
+
     $ pwd
 
 pwd is "print working directory"
@@ -46,23 +48,33 @@ Navigating In the Terminal (2)
 
 Change to another directory:
 
+.. code-block:: bash
+
     $ cd /tmp/
 
 See what's in that directory:
 
+.. code-block:: bash
+
     $ ls
 
 Show more information:
+
+.. code-block:: bash
 
     $ ls -lh
 
 The "-lh" letters are flags, or modifier arguments to the *ls* command.
 These can be separated as:
 
+.. code-block:: bash
+
     $ ls -l -h
 
 As you start working with a lot of files, you will want list them sorted
 in order of modification so that the most recently modified appears last:
+
+.. code-block:: bash
 
     $ ls -lhtr
 
@@ -72,6 +84,8 @@ Getting Help In The Terminal
 
 How can you find out the arguments that *ls* accepts (or expects)
 
+.. code-block:: bash
+
     $ man ls
 
 and use spacebar to go through the pages. *man* is short for manual
@@ -79,9 +93,13 @@ and can be used on all commands that we will learn.
 
 In other linux software, it is common to get help by using:
 
+.. code-block:: bash
+
     $ program -h
 
 or
+
+.. code-block:: bash
 
     $ program --help
 
@@ -116,6 +134,8 @@ How many lines are in the file. Use *wc*
 Other Commands In The Terminal (Answers)
 ========================================
 
+.. code-block:: bash
+
     $ man head
 
     $ head ~/bio-workshop/data/some.fastq
@@ -144,9 +164,13 @@ Tab-Completion
 The shell (bash) when set up properly can give you a lot of help
 Type the following where [TAB] means the Tab key on the keyboard:
 
+.. code-block:: bash
+
     $ cd ~/bio-w[TAB]
 
 Then hit tab. And:
+
+.. code-block:: bash
 
     $ ls ~/bio-w[TAB]
 
@@ -159,22 +183,29 @@ Directory Shortcuts
 We have already used the `cd` command to change directories. And we have
 used the "~" shortcut for home.
 
+.. code-block:: bash
+
     $ cd ~ 
     $ ls ~
 
 We can also move to or see what's in the parent directory with:
     
+.. code-block:: bash
+
     $ ls ..
     $ cd ..
 
 We can go 2 directories up with:
+
+.. code-block:: bash
 
     $ cd ../../
 
 Here, we can remember that "." is the current directory and .. is one directory up.
 What does this do:
 
+.. code-block:: bash
+
     $ ls ./*
 
-    
 
