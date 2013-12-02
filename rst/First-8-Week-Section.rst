@@ -5,7 +5,7 @@ In this section, we will introduce linux and general tools that will
 help you do data-analysis.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 0
    :glob: 
 
    section_1/*

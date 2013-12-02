@@ -2,7 +2,7 @@ Class 2: The command-line
 =========================
 
 Goals
-=====
+-----
 
 1. Introduce IPython notebook
 2. continue learning to navigate within the terminal
@@ -12,7 +12,7 @@ Goals
 
 
 Unix Philosophy
-===============
+---------------
 
 + Small is beautiful.
 + Make each program do one thing well.
@@ -26,7 +26,7 @@ Unix Philosophy
 
 
 Navigating In the Terminal
-==========================
+--------------------------
 
 When you start the terminal, you will be in your home directory.
 
@@ -44,7 +44,7 @@ pwd is "print working directory"
 
 
 Navigating In the Terminal (2)
-==============================
+------------------------------
 
 Change to another directory:
 
@@ -80,7 +80,7 @@ in order of modification so that the most recently modified appears last:
 
 
 Getting Help In The Terminal
-============================
+----------------------------
 
 How can you find out the arguments that *ls* accepts (or expects)
 
@@ -106,7 +106,7 @@ or
 
 
 Getting Help Outside The Terminal
-=================================
+---------------------------------
 
 Use google. Favor results on:
 
@@ -118,7 +118,7 @@ In many cases, if you receive and error, you can copy-paste it into google and f
 
 
 Other Commands In The Terminal
-==============================
+------------------------------
 
 Use the *man* command to determine what *head* does.
 
@@ -132,7 +132,7 @@ How many lines are in the file. Use *wc*
 
 
 Other Commands In The Terminal (Answers)
-========================================
+----------------------------------------
 
 .. code-block:: bash
 
@@ -148,7 +148,7 @@ Other Commands In The Terminal (Answers)
 
 
 Terminal History
-================
+----------------
 
 Press the up arrow in the terminal.
 
@@ -159,7 +159,7 @@ done previously.
 
 
 Tab-Completion
-==============
+--------------
 
 The shell (bash) when set up properly can give you a lot of help
 Type the following where [TAB] means the Tab key on the keyboard:
@@ -178,7 +178,7 @@ This will work for any file path.
 
 
 Directory Shortcuts
-===================
+-------------------
 
 We have already used the `cd` command to change directories. And we have
 used the "~" shortcut for home.
@@ -209,7 +209,7 @@ What does this do:
     $ ls ./*
 
 Scripts
-=======
+-------
 
 A script is simply a series of commands that you save in a file. You will need to write
 scripts to complete the homework.
@@ -229,7 +229,7 @@ You can then run it as:
 And you should see the same output as if you ran `ls ~/bio-workshop` directly.
 
 Scripts
-=======
+-------
 
 Scripts will be more useful when you have a series of commands you want to run in series.
 
