@@ -208,4 +208,37 @@ What does this do:
 
     $ ls ./*
 
+Scripts
+=======
+
+A script is simply a series of commands that you save in a file. You will need to write
+scripts to complete the homework.
+
+Put this text:
+
+    ls ~/bio-workshop/
+
+Into the file `my-ls.sh`.
+
+You can then run it as:
+
+.. code-block:: bash
+
+    bash my-ls.sh
+
+And you should see the same output as if you ran `ls ~/bio-workshop` directly.
+
+Scripts
+=======
+
+Scripts will be more useful when you have a series of commands you want to run in series.
+
+For example a pipeline where you:
+
+ 1. run quality control on some ChIP-seq reads 
+ 2. align reads to a reference genome
+ 3. find peaks (binding sites)
+ 4. annotate the binding sites.
+
+In cases like that, a script will provide a record of what you have done.
 
