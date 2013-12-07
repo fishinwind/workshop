@@ -242,3 +242,13 @@ For example a pipeline where you:
 
 In cases like that, a script will provide a record of what you have done.
 
+Resources
+---------
+
+There is a nice summary of bash features here: http://digital-era.net/wp-content/uploads/2013/12/BASH-as-a-Modern-Programming-Language-Presentation-1.pdf
+
+Exercises
+---------
+
+
+
