@@ -4,23 +4,24 @@ Class 2: The command-line
 Goals
 -----
 
-1. Introduce IPython notebook
+1. Introduce The **Shell**
 2. continue learning to navigate within the terminal
 3. understand the linux philosophy (small tools that do one thing well)
 4. understand how to apply some common linux utilities to files
-5. understand how to chain/stream/pipe linux operations
 
 
 Unix Philosophy
 ---------------
 
-+ Small is beautiful.
+Works well for bioinformatics:
+
 + Make each program do one thing well.
++ Make every program a filter.
 + Choose portability over efficiency.
 + Store data in flat text files.
++ Small is beautiful.
 + Use software leverage to your advantage.
 + Use shell scripts to increase leverage and portability.
-+ Make every program a filter.
 
 (From Mike Gancarz http://en.wikipedia.org/wiki/Unix_philosophy)
 
@@ -78,6 +79,18 @@ in order of modification so that the most recently modified appears last:
 
     $ ls -lhtr
 
+Navigating In the Terminal (3)
+------------------------------
+
+The content for the class, including the source for generating this document,
+are in:
+
+    /opt/bio-workshop/
+
+on your virtual machine.
+
+Navigate to that directory and look around.
+
 
 Getting Help In The Terminal
 ----------------------------
@@ -103,6 +116,12 @@ or
 
     $ program --help
 
+
+Getting Help In The Terminal(2)
+-------------------------------
+
+ + If you see an error message, read it carefully. 
+ + It may seem cryptic, but it is built to inform you what went wrong.
 
 
 Getting Help Outside The Terminal
@@ -242,6 +261,20 @@ For example a pipeline where you:
 
 In cases like that, a script will provide a record of what you have done.
 
+Comments
+--------
+
+For the homework you will comment your scripts. 
+
+Comments are not read by the shell, but they tell us (and you) what
+you were trying to do. You can comment your code using the "#" symbol.
+
+.. code-block:: bash
+    
+    # list all files in the /tmp/ directory ordered so that most recently
+    # changed appear last
+    $ ls -lhtr /tmp/
+
 Resources
 ---------
 
@@ -250,5 +283,10 @@ There is a nice summary of bash features here: http://digital-era.net/wp-content
 Exercises
 ---------
 
+Place the answers to these in the bash script:
 
+    /opt/bio-workshop/homework/section1/week1/class1.sh
+
+
+    1. 
 
