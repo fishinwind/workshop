@@ -1,0 +1,20 @@
+bwa: https://github.com/lh3/bwa
+samtools: https://github.com/lh3/samtools
+bioawk: https://github.com/lh3/bioawk
+tophat2:  http://tophat.cbcb.umd.edu/downloads/tophat-2.0.10.tar.gz
+
+
+fastqc: (zip and .jar) http://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc
+
+python2.7+ (via apt/pip):
+ - numpy (apt)
+ - scipy (apt)
+ - matplotlib (apt)
+ - pandas (pip)
+ - toolshed (pip)
+
+other apt:
+ - build-essential
+ - zlib1g-dev
+ - r-base-core, r-base
+
