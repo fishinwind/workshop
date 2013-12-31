@@ -18,4 +18,5 @@ other apt:
  - build-essential
  - zlib1g-dev
  - r-base-core, r-base
+ - bash-completion
 
