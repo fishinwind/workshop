@@ -36,8 +36,7 @@ extract out p-values (in 4th column from BED file) that are < 0.04
 
 limit to chr12 (&& is and):
 
-    $ awk '$4 < 0.04 && $1 == 'chr12'' all.pvalues.bed > chr12.pvalues.bed
-
+    $ awk '$4 < 0.04 && $1 == "chr12"' all.pvalues.bed > chr12.pvalues.bed
 
 awk continued
 -------------
@@ -48,3 +47,22 @@ multiple patterns:
 
     $ awk '($4 < 0.05) { print $0"\tsignificant"}($4 >= 0.05) { print $0"\tlame" }' input.bed > output.classified.bed
    
+
+bioawk
+------
+
+Bioawk is a variant of awk that knows about common sequence formats. To count
+the number of records in a fastq file:
+
+    $ bioawk -c fastx 'END { print $NR }'
+
+biowak (names)
+--------------
+
+You can access `name`, `seq`, `qual`, `comment`:
+
+   $ biowak -c fastx '{ print $name, $seq, $qual}'
+
+
+See the README at: https://github.com/lh3/bioawk
+for more info
