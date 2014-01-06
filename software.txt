@@ -3,6 +3,7 @@ samtools: https://github.com/lh3/samtools
 bioawk: https://github.com/lh3/bioawk
 tophat2:  http://tophat.cbcb.umd.edu/downloads/tophat-2.0.10.tar.gz
 bedtools: https://github.com/arq5x/bedtools
+rstudio:
 
 
 fastqc: (zip and .jar) http://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc
@@ -19,4 +20,5 @@ other apt:
  - zlib1g-dev
  - r-base-core, r-base
  - bash-completion
+ - git, svn, mercurial (or mercurial via pip)
 
