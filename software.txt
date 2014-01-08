@@ -5,6 +5,11 @@ tophat2:  http://tophat.cbcb.umd.edu/downloads/tophat-2.0.10.tar.gz
 bedtools: https://github.com/arq5x/bedtools
 rstudio:
 
+R packages:
+ - ggplot2
+ - limma
+ - biocondcutor
+
 
 fastqc: (zip and .jar) http://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc
 
