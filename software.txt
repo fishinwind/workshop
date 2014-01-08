@@ -3,7 +3,9 @@ samtools: https://github.com/lh3/samtools
 bioawk: https://github.com/lh3/bioawk
 tophat2:  http://tophat.cbcb.umd.edu/downloads/tophat-2.0.10.tar.gz
 bedtools: https://github.com/arq5x/bedtools
-rstudio:
+gedit (editor)
+
+rstudio
 
 R packages:
  - ggplot2
