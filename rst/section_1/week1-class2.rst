@@ -8,6 +8,7 @@ Goals
 2. continue learning to navigate within the terminal
 3. understand the linux philosophy (small tools that do one thing well)
 4. understand how to apply some common linux utilities to files
+5. gedit to edit files
 
 
 Unix Philosophy
@@ -227,6 +228,22 @@ What does this do:
 
     $ ls ./*
 
+
+gedit
+-----
+
+In order to edit files as you would using `notepad` or `word` in windows,
+we will use the simple editor "gedit".
+
+You can open gedit from the terminal using:
+
+.. code-block:: bash
+
+    $ gedit
+
+This will open a new window with GUI controls. Use gedit to write/edit scripts for this class
+
+
 Scripts
 -------
 
@@ -237,7 +254,7 @@ Put this text:
 
     ls ~/bio-workshop/
 
-Into the file `my-ls.sh`.
+Into the file `my-ls.sh` by opening `gedit` pasting that text then `save as..` using the GUI controls
 
 You can then run it as:
 
