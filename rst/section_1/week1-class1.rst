@@ -11,8 +11,9 @@ Goals
 Class Overview
 --------------
 Each class is 1.5 hours. We intend to spend the first 30 min going
-through the exercises. During the remaining hour, we expect you to work
-through the exercises, asking for help when you get stuck. 
+through exercises that demonstrate how specific tools are useful 
+in bioinformatics. During the remaining hour, we expect you to work
+through exercises, asking for help when you get stuck. 
 
 We will record the first 30 minutes using Panopto Screen Capture, and
 these recordings will be available in Canvas. We have found that simply
