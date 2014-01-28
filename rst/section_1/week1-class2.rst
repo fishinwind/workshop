@@ -73,18 +73,13 @@ These can be separated as:
 
     $ ls -l -h
 
-As you start working with a lot of files, you will want list them sorted
-in order of modification so that the most recently modified appears last:
-
-.. code-block:: bash
-
-    $ ls -lhtr
-
 Navigating In the Terminal (3)
 ------------------------------
 
 The content for the class, including the source for generating this document,
 are in:
+
+.. code-block:: bash
 
     /opt/bio-workshop/
 
@@ -117,6 +112,21 @@ or
 
     $ program --help
 
+Which of those works for `ls`?
+
+Getting Help: Exercises
+-----------------------
+
+
+ + use `man` to find out how to list files so that the most
+   recently modified files are listed last.
+
+(This is common when you're working on something and only
+care about the most recently modified files)
+
+ + use google to find the same thing. how else can you
+   sort the output of `ls`?
+
 
 Getting Help In The Terminal(2)
 -------------------------------
@@ -142,13 +152,16 @@ Other Commands In The Terminal
 
 Use the *man* command to determine what *head* does.
 
-Use *head* on the file ~/bio-workshop/data/some.fastq
+Use *head* on the file /opt/bio-workshop/data/lamina.bed
 
 Use *tail* to see the end of the file.
 
+Questions
++++++++++
+
 By default, head and tail show 10 lines. How can you see 13 lines?
 
-How many lines are in the file. Use *wc*
+How many lines are in the file. (Use *wc*)
 
 
 Other Commands In The Terminal (Answers)
@@ -158,14 +171,35 @@ Other Commands In The Terminal (Answers)
 
     $ man head
 
-    $ head ~/bio-workshop/data/some.fastq
+    $ head /opt/bio-workshop/data/lamina.bed
 
-    $ tail ~/bio-workshop/data/some.fastq
+    $ tail /opt/bio-workshop/data/lamina.bed
 
-    $ head -n 13 ~/bio-workshop/data/some.fastq
+    $ head -n 13 /opt/bio-workshop/data/lamina.bed
         
-    $ wc -l ~/bio-workshop/data/some.fastq
+    $ wc -l /opt/bio-workshop/data/lamina.bed
 
+Word Counts
+-----------
+
+Exercise:
+
+    + use **wc** to determine how many **lines** are in /opt/bio-workshop/data/lamina.bed
+    + use **wc** to determine how many **words** are in /opt/bio-workshop/data/lamina.bed
+  
+
+Less (is More)
+--------------
+
+To view a large file, use less:
+
+.. code-block:: bash
+
+    less /opt/bio-workshop/data/lamina.bed
+
+You can forward-search in the file using "/"
+
+You can backward-search in the file using "?"
 
 Terminal History
 ----------------
@@ -177,6 +211,9 @@ Up and down arrows will allow you to scroll through your previous commands.
 This is useful when running similar commands or when remembering what you have
 done previously.
 
+You can type the start of a command and then up-arrow and it will cycle
+through commands that start with that prefix.
+
 
 Tab-Completion
 --------------
@@ -186,15 +223,27 @@ Type the following where [TAB] means the Tab key on the keyboard:
 
 .. code-block:: bash
 
-    $ cd ~/bio-w[TAB]
+    $ cd /opt/bio-w[TAB]
 
 Then hit tab. And:
 
 .. code-block:: bash
 
-    $ ls ~/bio-w[TAB]
+    $ ls /opt/bio-w[TAB]
 
-This will work for any file path.
+This will work for any file path and for any programs.
+
+.. code-block:: bash
+
+    $ hea[TAB]
+
+What happens if you do:
+
+.. code-block:: bash
+
+    $ he[TAB][TAB] 
+
+?
 
 
 Directory Shortcuts
@@ -214,6 +263,19 @@ We can also move to or see what's in the parent directory with:
 
     $ ls ..
     $ cd ..
+
+Or 3 directories up with:
+    
+.. code-block:: bash
+
+    $ ls ../../..
+    $ cd ../../..
+
+To explicitly see the current directory:
+
+.. code-block:: bash
+
+    $ ls ./
 
 Directory Shortcuts(2)
 ----------------------
@@ -246,10 +308,15 @@ and switch back and forth by using that repeatedly.
 other commands
 --------------
 
+excercise:
+
 use `man` to determine the function of:
 
     + wget
     + uniq
+
+How many records are present for each chromosome in
+/opt/bio-workshop/data/lamina.bed (assume it is sorted by chromosome)?
 
 gedit
 -----
@@ -274,9 +341,11 @@ scripts to complete the homework.
 
 Put this text:
 
-    ls ~/bio-workshop/
+.. code-block:: bash
 
-Into the file `my-ls.sh` by opening `gedit` pasting that text then `save as..` using the GUI controls
+    ls /opt/bio-workshop/
+
+Into the file *`my-ls.sh`* by opening `gedit` pasting that text then `save as..` using the GUI controls
 
 You can then run it as:
 
@@ -284,7 +353,7 @@ You can then run it as:
 
     bash my-ls.sh
 
-And you should see the same output as if you ran `ls ~/bio-workshop` directly.
+And you should see the same output as if you ran `ls /opt/bio-workshop` directly.
 
 Scripts
 -------
@@ -314,18 +383,40 @@ you were trying to do. You can comment your code using the "#" symbol.
     # changed appear last
     $ ls -lhtr /tmp/
 
+Pipes
+-----
+
+Since linux is made of small utilities, we often want to chain them
+together. We will cover this in detail next class, but the idea
+is that each program takes data, modifies it, and sends it to the next.
+
+We can see lines 5-10 of a file with:
+
+.. code-block:: bash
+
+    head /opt/bio-workshop/data/lamina.bed | tail -n 5
+
 Resources
 ---------
 
 There is a nice summary of bash features here: http://digital-era.net/wp-content/uploads/2013/12/BASH-as-a-Modern-Programming-Language-Presentation-1.pdf
 
-Exercises
----------
+In Class Exercises
+------------------
+
 
 Place the answers to these in the bash script:
 
-    /opt/bio-workshop/homework/section1/week1/class1.sh
 
+    1. write a bash script that you can run to list only the 2 most recently
+       modified files in a given directory (using what you've learned in this class)
+    2. make that script executable (use google to learn how to do this).
 
-    1. 
+    3. With `head`, you can see the first line of a file with head -n1.
+       How can you see all of a file *except* the first line.
+
+    4. Without using your history, how few keystrokes can you use to run the following command (must work from any directory)?
+
+        ls /opt/bio-workshop/data/lamina.bed
+
 
