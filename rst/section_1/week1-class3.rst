@@ -90,6 +90,3 @@ Sort Question
 Compress `some.pvals.txt` with gzip. Then zless that and
 pipe the result to sort by p-value and show only the rows
 with the 10 lowest p-values.
-
-
-

@@ -4,7 +4,7 @@ Class 2: The command-line
 Goals
 -----
 
-1. Introduce The **Shell**
+1. The **Shell**
 2. continue learning to navigate within the terminal
 3. understand the linux philosophy (small tools that do one thing well)
 4. understand how to apply some common linux utilities to files
@@ -215,6 +215,9 @@ We can also move to or see what's in the parent directory with:
     $ ls ..
     $ cd ..
 
+Directory Shortcuts(2)
+----------------------
+
 We can go 2 directories up with:
 
 .. code-block:: bash
@@ -228,6 +231,25 @@ What does this do:
 
     $ ls ./*
 
+Directory Shortcuts(3)
+----------------------
+
+you can go to the last directory with:
+
+.. code-block:: bash
+
+    $ cd -
+
+and switch back and forth by using that repeatedly.
+
+
+other commands
+--------------
+
+use `man` to determine the function of:
+
+    + wget
+    + uniq
 
 gedit
 -----
