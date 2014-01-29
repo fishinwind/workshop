@@ -243,7 +243,11 @@ What happens if you do:
 
     $ he[TAB][TAB] 
 
-?
+or:
+.. code-block:: bash
+
+
+    $ heaaa[TAB][TAB] 
 
 
 Directory Shortcuts
@@ -304,6 +308,32 @@ you can go to the last directory with:
 
 and switch back and forth by using that repeatedly.
 
+
+make and remove directories
+---------------------------
+
+.. code-block:: bash
+
+    mkdir ~/tmp # OK
+
+    mkdir ~/tmp/asdf/asdf # ERROR
+
+    mkdir -p ~/tmp/asdf/asdf # OK
+
+
+What does -p do?
+
+Remove directories:
+
+   rm ~/tmp/asdf # ERROR
+
+   rm -r ~/tmp/asdf/asdf # OK
+
+What is -r ?
+
+.. note ::
+
+    be careful with `rm -r` and `rm -rf`
 
 other commands
 --------------
