@@ -32,9 +32,9 @@ Navigating In the Terminal
 
 When you start the terminal, you will be in your home directory.
 
-In Linux home is represented as ~
+In Linux home is represented as `~` and also as `$HOME`
 
-We will show commands preceded with a '$' as you see in your terminal
+We will often show commands preceded with a '$' as you see in your terminal
 
 Try this in the terminal:
 
@@ -85,7 +85,7 @@ are in:
 
 on your virtual machine.
 
-Navigate to that directory and look around.
+Navigate to that directory and look around with `ls`
 
 
 Getting Help In The Terminal
@@ -219,6 +219,7 @@ Tab-Completion
 --------------
 
 The shell (bash) when set up properly can give you a lot of help
+
 Type the following where [TAB] means the Tab key on the keyboard:
 
 .. code-block:: bash
@@ -244,6 +245,7 @@ What happens if you do:
     $ he[TAB][TAB] 
 
 or:
+
 .. code-block:: bash
 
 
@@ -325,6 +327,8 @@ What does -p do?
 
 Remove directories:
 
+.. code-block:: bash
+
    rm ~/tmp/asdf # ERROR
 
    rm -r ~/tmp/asdf/asdf # OK
@@ -334,6 +338,77 @@ What is -r ?
 .. note ::
 
     be careful with `rm -r` and `rm -rf`
+
+What does this do?
+
+.. code-block:: bash
+
+    rm -r /
+
+
+moving/copying files
+--------------------
+
+mv [source] [dest]
+
+.. code-block:: bash
+
+    touch /tmp/asdf
+    mv /tmp/asdf ~
+    ls -lhtr ~/
+
+moving/copying files(2)
+-----------------------
+
+in class excercise:
+
+
+ 1. make a directory `/tmp/moveable`
+ 2. move that directory to ~
+ 3. copy that directory to `/tmp/subdir/`
+
+
+echo
+----
+
+echo is print:
+
+.. code-block:: bash
+
+    echo "hello world"
+
+and you can use it to see **bash** variables:
+
+.. code-block:: bash
+
+    echo $HOME
+
+    echo $HISTFILE
+
+variables
+---------
+
+We will start covering programming in the next classes, but variables are a
+key component of programming.
+
+You can do:
+
+.. code-block:: bash
+
+    $important=/opt/bio-workshop/data/lamina.bed
+    ls -lh $important
+
+
+sudo
+----
+
+.. image:: http://imgs.xkcd.com/comics/sandwich.png
+
+.. code-block:: bash
+
+    apt-get install cowsay
+    sudo apt-get install cowsay
+
 
 other commands
 --------------
@@ -449,4 +524,10 @@ Place the answers to these in the bash script:
 
         ls /opt/bio-workshop/data/lamina.bed
 
+    5. How few keystrokes can you do #4 using your history?
 
+    6. To learn about piping (|), use cowsay to:
+
+       a. show your current working directory
+       b. tell  you the number of lines in /opt/bio-workshop/data/lamina.bed
+       c. tell you the most recently modified file (or directory) in $HOME
