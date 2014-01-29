@@ -4,8 +4,43 @@ Class 3: The command-line++
 Goals
 -----
 
-1. understand how to apply some common linux utilities to files
+1. understand how to apply some common linux utilities to files (cut, sort, zless, uniq)
 2. understand pipes (|)
+
+cut
+---
+
+cut allows you to extract certain columns of a file.
+
+
+.. code-block:: bash
+
+    # cut columns 1-4 and 7-10
+    cut -f 1-4,7-10 some.file.txt
+    
+    # cut columns 1-4
+    cut -f 1,2,3,4
+
+    # cut first column 1
+    cut -f 1 /opt/bio-workshop/data/lamina.bed
+
+uniq
+----
+
+uniq allows you to get and count unique entries.
+
+ + remove duplicate lines
+ + show duplicate lines
+ + count unique entries:
+
+
+.. code-block:: bash
+
+    cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c
+
+.. note::
+
+    Assumes that file is sorted by the column of interest.
 
 
 Compressed Files
