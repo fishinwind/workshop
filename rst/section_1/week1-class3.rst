@@ -42,6 +42,23 @@ uniq allows you to get and count unique entries.
 
     Assumes that file is sorted by the column of interest.
 
+(re)direction
+-------------
+
+to send the output of a command (or a file) to another file, use ">"
+
+.. code-block:: bash
+
+    cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c > output.txt
+    head output.txt
+
+to **append** the output of a command (or a file) to another file, use ">>"
+
+.. code-block:: bash
+
+    echo "last line" >> output.txt
+    tail output.txt
+
 
 Compressed Files
 ----------------
