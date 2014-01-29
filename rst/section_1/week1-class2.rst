@@ -201,6 +201,11 @@ You can forward-search in the file using "/"
 
 You can backward-search in the file using "?"
 
+You can see info about the file (including number of lines) using "ctrl+g"
+
+You can exit **less** using "q"
+
+
 Terminal History
 ----------------
 
