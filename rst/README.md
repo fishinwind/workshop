@@ -5,7 +5,7 @@ makeslides with::
 to get new html to bioworkshop.io:
 
     make html
-    cp -r _build/html/  ../../bio-workshop-io/
+    cp -r _build/html/*  ../../bio-workshop-io/
     cd ../../bio-workshop-io/
     git pull origin master
     git add . # add all new html
