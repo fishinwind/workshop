@@ -90,7 +90,7 @@ you want to write the results in (hint: it should include today's date).
     echo
 
     echo "here are the states with the highest number of murders ..."
-    sort -k6n < $datefile | head -n 10 >> $resultsfile
+    sort -k6n < $datafile | head -n 10 >> $resultsfile
 
 Then, save the above text in a run.sh script in your results directory. To run the file,
 use:
