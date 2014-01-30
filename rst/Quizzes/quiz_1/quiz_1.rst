@@ -3,23 +3,18 @@ Week 1 - Quiz 1
 
 Reading
 -------
-This quiz will test your ability to do simple tasks on the command line.
-For reference, the tutorial is at: http://cli.learncodethehardway.org/book/
-
-For the first quiz, you'll need to read this paper and be able to put
-a set of files in the correct places. We highly recommend adopting this
-scheme for all of your projects in and out of the class.
+For the first quiz, you'll need to read Bill Nobel's paper on organizing
+computational biology projects (http://dx.plos.org/10.1371/journal.pcbi.1000424)
+and be able to put a set of files in the correct places. We highly recommend
+adopting this scheme for all of your projects in and out of the class.
 
 Computational biology projects inevitably accrue a lot of files, and 
-This paper is a great way to get started on organizing all of this
-information:
+this paper is a great way to get started on organizing all of this
+information. As you read in the paper, organization of projects is important
+for remembering what you did, and reanalyzing data when changes are made.
 
-Organization for computational biology projects
-
-.. url:: http://dx.plos.org/10.1371/journal.pcbi.1000424
-
-As you read in the paper, organization of projects is important for
-remembering what you did, and reanalyzing data when changes are made.
+This quiz will also test your ability to do simple tasks on the command line.
+For reference, the tutorial is at: http://cli.learncodethehardway.org/book/
 
 You will use the command line tools discussed in the tutorial (e.g. mkdir,
 cd, ls, mv) to create the directory structure, move files into place and
