@@ -47,6 +47,8 @@ extract columns from a file::
     # use comma as delimiter instead of default tab
     cut -f 1-3 -d, /path/to/some.csv
 
+    # keep all columns after the 1st:
+    cut -f 2- /opt/bio-workshop/data/lamina.bed
 
 echo
 ++++

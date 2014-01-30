@@ -24,6 +24,9 @@ cut allows you to extract certain columns of a file.
     # cut first column 1
     cut -f 1 /opt/bio-workshop/data/lamina.bed
 
+    # output all columns after the 1st
+    cut -f 2- /opt/bio-workshop/data/lamina.bed
+
 uniq
 ----
 
