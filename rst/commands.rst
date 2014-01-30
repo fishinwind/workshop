@@ -11,6 +11,20 @@ change directories::
     cd /opt/bio-workshop/
     cd - # change to previous directory
 
+cp
+++
+
+copy files and directories::
+
+   touch /tmp/asdf
+   cp /tmp/asdf ~ # copy to home
+
+
+must use -r for directories::
+
+   mkdir /tmp/adir
+   cp -r /tmp/adir ~/
+
 
 ctrl+c
 ++++++
@@ -145,7 +159,7 @@ show the end of a file::
 tar
 +++
 
-create or untar a .tar.gz file:
+create or untar a .tar.gz file::
 
     # -c create -z compress (.gz) -v verbose -f the name 
     tar -czvf some.tar.gz /tmp/*
