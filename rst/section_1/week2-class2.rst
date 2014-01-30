@@ -1,5 +1,5 @@
-Class 5: Python Files
-=====================
+Week 2 / Class 2: Python Files
+==============================
 
 Goals
 -----
