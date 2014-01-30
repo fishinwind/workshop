@@ -8,4 +8,6 @@ help you do data-analysis.
    :maxdepth: 0
    :glob: 
 
+   commands
+
    section_1/*

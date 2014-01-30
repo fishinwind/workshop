@@ -161,7 +161,6 @@ Questions
 
 By default, head and tail show 10 lines. How can you see 13 lines?
 
-How many lines are in the file. (Use *wc*)
 
 
 Other Commands In The Terminal (Answers)
@@ -177,10 +176,10 @@ Other Commands In The Terminal (Answers)
 
     $ head -n 13 /opt/bio-workshop/data/lamina.bed
         
-    $ wc -l /opt/bio-workshop/data/lamina.bed
 
-Word Counts
------------
+Word Counts(wc)
+---------------
+
 
 Exercise:
 
