@@ -1,5 +1,5 @@
-Week1 / Class 2: The command-line
-=================================
+Week1 / Class 2 : The command-line
+==================================
 
 Goals
 -----

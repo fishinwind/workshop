@@ -1,5 +1,5 @@
-Week 1 / Class 3: The command-line++
-====================================
+Week 1 / Class 3 : The command-line++
+=====================================
 
 Goals
 -----
@@ -17,7 +17,7 @@ cut allows you to extract certain columns of a file.
 
     # cut columns 1-4 and 7-10
     cut -f 1-4,7-10 some.file.txt
-    
+
     # cut columns 1-4
     cut -f 1,2,3,4
 
