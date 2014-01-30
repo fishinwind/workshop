@@ -4,7 +4,7 @@ Quizzes
 These are the quizzes for the class.
 
 .. toctree::
-   :maxdepth: 0
+   :maxdepth: 1
    :glob: 
 
-   quiz/*
+   Quizzes/*/*
