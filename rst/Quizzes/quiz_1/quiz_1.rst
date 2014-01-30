@@ -31,7 +31,7 @@ make a directory structure as outlined in the paper.
 The directories should be nested under a common project directory, with
 directories for data, results and documentation (doc). You should also
 create dated folders with today's date so you know where to put the dated
-data and reuslts (10 points).
+data and reuslts (**10 points**).
 
 Problem 2
 ---------
@@ -39,7 +39,8 @@ Download the the following data table: :download:`states.tab`.
 Then move the data file to the appropriate *dated* directory.
 
 You need to create a run.sh shell script that runs the following code, and
-writes the output into a results directory with the current date (10 points).
+writes the output into a results directory with the current date (**10
+points**).
 
 You should copy the following code block into a file using gedit. You will
 need to change the '???' characters in the file to correspond to the path
@@ -111,5 +112,6 @@ wrote, update the program and run it again.
 Problem 3
 ---------
 Finally you need to create a log of what you did in the root of the
-results directory to summarize the key points of your analysis (5 points).
+results directory to summarize the key points of your analysis (**5
+points**).
 
