@@ -27,11 +27,12 @@ check whether everything looks ok.
 
 Problem 1
 ---------
-make a directory structure as outlined in the paper.
+Make a directory structure as outlined in the paper.
 The directories should be nested under a common project directory, with
 directories for data, results and documentation (doc). You should also
 create dated folders with today's date so you know where to put the dated
-data and reuslts (**10 points**).
+data and reuslts. Finally, keep a list of the commands that you used to
+create the directory (**10 points**).
 
 Problem 2
 ---------
@@ -114,4 +115,17 @@ Problem 3
 Finally you need to create a log of what you did in the root of the
 results directory to summarize the key points of your analysis (**5
 points**).
+
+Quiz Submission
+---------------
+Go to the root of your project file and create a tar file of the whole
+directory like this; you can change LASTNAME to your last name.
+
+.. code-block:: bash
+   
+    $ projectdir=/opt/bio-workshop/project
+    $ tar -cvf LASTNAME-quiz.tar $projectdir
+
+Upload the directory to the Quiz at the Canvas site to complete the
+submission.
 
