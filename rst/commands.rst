@@ -142,6 +142,17 @@ show the end of a file::
     # show the last 4 lines
     tail -n 4 /opt/bio-workshop/data/lamina.bed
 
+tar
++++
+
+create or untar a .tar.gz file:
+
+    # -c create -z compress (.gz) -v verbose -f the name 
+    tar -czvf some.tar.gz /tmp/*
+
+    # -x untar 
+    tar -xvf some.tar.gz
+
 
 uniq
 ++++
