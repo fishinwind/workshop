@@ -70,7 +70,7 @@ you want to write the results in (hint: it should include today's date).
 Then, save that file as run.sh in your results directory. To run the file,
 use:
 
-.. code-block::
+.. code-block:: bash
 
     $ bash run.sh
 
