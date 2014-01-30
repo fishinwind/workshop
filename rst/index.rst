@@ -14,6 +14,7 @@ Contents:
 
    First-8-Week-Section
    Second-8-Week-Section
+   Quizzes
 
 
 Indices and tables

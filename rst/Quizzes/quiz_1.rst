@@ -43,12 +43,15 @@ you want to write the results in (hint: it should include today's date).
 .. code-block:: bash
 
     #! /usr/bin/env bash
+    #
     # run script for quiz 1
     # you will need to change the '???' positions in the following:
-     
+    # 
     # define the project variable here. this should be the full path to
     # your project directory.
     project=???
+
+    # fill in the date here
     date=???
 
     results=$project/$date/results
@@ -64,7 +67,6 @@ you want to write the results in (hint: it should include today's date).
     # echo "car type counts"
     cut -f 1 | cut -f1 -d' ' | sort | uniq -c >> results.tab
 
-
 Then, save that file as run.sh in your results directory. To run the file,
 use:
 
@@ -73,7 +75,7 @@ use:
     $ bash run.sh
 
 If this ran correctly, you should see a new results.tab file in the
-results directory you specified. If you don't see the file, double check
+results directory you specified in the run.sh script. If you don't see the file, double check
 the path you specified, and make sure you're looking in the right spot. If
 it's in a different spot than you intended. remove the results file you
 wrote, update the program and run it again.
