@@ -66,3 +66,4 @@ You can access `name`, `seq`, `qual`, `comment`:
 
 See the README at: https://github.com/lh3/bioawk
 for more info
+
