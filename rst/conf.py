@@ -45,6 +45,8 @@ try:
     html_theme = "sphinx_rtd_theme"
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 except ImportError:
+    import sys
+    sys.stderr.write("please install (pip) sphinx_rtd_theme\n")
     html_theme = 'default'
 
 # The encoding of source files.
@@ -55,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'bio-workshop'
-copyright = u'2013, Brent Pedersen, Jay Hesselberth'
+copyright = u'2014, Brent Pedersen, Jay Hesselberth'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
