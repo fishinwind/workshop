@@ -186,7 +186,13 @@ use literal tab ('\\t') as the delimiter (default is whitespace)
 
     sort -t$'\t' -k4,4rg /opt/bio-workshop/data/lamina.bed | head
 
+Sometimes we want to get uniq entries with sort -u:
 
+.. code-block:: bash
+
+    cut -f 1 /opt/bio-workshop/data/lamina.bed | sort -u
+
+will print out the uniq chromsomes represent in the BED file.
 tail
 ++++
 
@@ -225,6 +231,14 @@ show or count unique or non-unique entries in a file (assumes sorted)
     # get non unique entries
     cut -f 2 /opt/bio-workshop/data/lamina.bed | uniq -d
 
+wget
+++++
+
+get a file from the web:
+
+.. code-block:: bash
+
+    wget http://ucd-bioworkshop.github.io/_downloads/states.tab
 
 zless
 +++++
