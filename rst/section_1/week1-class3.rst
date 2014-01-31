@@ -1,6 +1,8 @@
 Week 1 / Class 3 : The command-line++
 =====================================
 
+Friday: 31 January 2014
+
 Goals
 -----
 
@@ -202,6 +204,7 @@ Note that we are using the variable FILE for the long file name.
 .. code-block:: bash
 
     FILE=http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV2.bed.gz
+    FILE=http://bit.ly/tfbs-x
 
     wget --quiet -O - $FILE \
         | zless \
