@@ -113,7 +113,7 @@ points**).
 
 Quiz Submission
 ---------------
-Go to the root of your project file and create a tar file of the whole
+Specify the root of your project directory and create a tar file of the whole
 directory like this; you can change LASTNAME to your last name.
 
 .. code-block:: bash
@@ -121,6 +121,6 @@ directory like this; you can change LASTNAME to your last name.
     $ projectdir=/opt/bio-workshop/project
     $ tar -cvf LASTNAME-quiz.tar $projectdir
 
-Upload the directory to the Quiz at the Canvas site to complete the
+Upload the tar file to the Quiz at the Canvas site to complete the
 submission.
 
