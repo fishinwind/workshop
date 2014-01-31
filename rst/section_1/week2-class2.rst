@@ -3,48 +3,46 @@ Week 2 / Class 2 : Python Files
 
 Goals
 -----
-
 1. start with python
 2. ipython
 3. python programming
 
-python
-------
-
+Python overview
+---------------
 Python is a popular programming language that is commonly used for bioinformatics.
 
 We will use it to process and filter files. When you can't write a simple script
 in `awk` it is better to use python.
 
+The Python documentation is very helpful, with lots of examples. You should
+read it to become familiar with the language: http://docs.python.org/2/
 
-Note
-----
+.. note::
+    We will cover all of the Python programming in Python 2.x. We will *not* be using Python 3.
 
-.. note:
-    
-    Python depends on the alignment of your code to understand.  
+Python depends on the alignment of your code to understand. This does not
+work:
 
 .. code-block:: python
 
     for i in (1, 2, 3):
     print i
 
-will not work. While:
-
+Instead you have to indent the "print" statement to nest it in the for
+loop. 
 
 .. code-block:: python
 
     for i in (1, 2, 3):
         print i
 
-Will work. 
-
-Please always use spaces (not tabs) to indent your code.
+**Always** use spaces (not tab characters) to indent your code. We will
+set up your gedit preferences so that when you press the tab key, four
+spaces are inserted.
 
 Ipython
 -------
-
-Ipython is an (I)nteractive python terminal that let's one 
+Ipython is an (I)nteractive python terminal that lets you
 type in python expressions and see the results immediately.
 
 Start it by typing `ipython` in your terminal.
@@ -53,29 +51,27 @@ Once you do so, you are in shell that accepts python commands
 much like the normal terminal accepts `bash` commands.
 
 
-
 For Loops (range)
 -----------------
+We have seen an example of a `for` loop in the previous
+example. A `for` loop is how you can automaite repetitive
+tasks.
 
-    We have seen an example of a `for` loop in the previous
-    example. A `for` loop is how you can automaite repetitive
-    tasks.
-
-    For example. Print "hello" 5 times:
+For example. Print "hello" 5 times:
 
 .. code-block:: python
 
     for i in range(5):
         print "hello"
 
-where `range` is a python construct that generates the numbers
-`0, 1, 2, 3, 4`.
+where `range` is a python function that generates the numbers
+`0, 1, 2, 3, 4`. Try executing the `range` function alone at the ipython
+prompt.
 
 
 For Loops (characters)
 ----------------------
-
-Lots of things in python are `iterable` meaning we can write loops
+Lots of things in python are `iterable`, meaning we can write loops
 over them. For instance, a string is iterable:
 
 .. code-block:: python
@@ -85,33 +81,12 @@ over them. For instance, a string is iterable:
 
 Try this in `ipython` to see what happens.
 
-
-
-awk continued
--------------
-
-$0 contains the entire line.
-
-multiple patterns:
-
-    $ awk '($4 < 0.05) { print $0"\tsignificant"}($4 >= 0.05) { print $0"\tlame" }' input.bed > output.classified.bed
-   
-
-bioawk
-------
-
-Bioawk is a variant of awk that knows about common sequence formats. To count
-the number of records in a fastq file:
-
-    $ bioawk -c fastx 'END { print $NR }'
-
-biowak (names)
+Cluster access
 --------------
+We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords.
 
-You can access `name`, `seq`, `qual`, `comment`:
+.. code-block:: bash
+    
+    $ ssh -X username@amc-tesla.ucdenver.pvt
 
-   $ biowak -c fastx '{ print $name, $seq, $qual}'
-
-
-See the README at: https://github.com/lh3/bioawk
-for more info
