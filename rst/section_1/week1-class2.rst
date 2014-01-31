@@ -504,34 +504,3 @@ We can see lines 5-10 of a file with:
 .. code-block:: bash
 
     head /opt/bio-workshop/data/lamina.bed | tail -n 5
-
-Resources
----------
-
-There is a nice summary of bash features here: http://digital-era.net/wp-content/uploads/2013/12/BASH-as-a-Modern-Programming-Language-Presentation-1.pdf
-
-In Class Exercises
-------------------
-
-
-Place the answers to these in the bash script:
-
-
-    1. write a bash script that you can run to list only the 2 most recently
-       modified files in a given directory (using what you've learned in this class)
-    2. make that script executable (use google to learn how to do this).
-
-    3. With `head`, you can see the first line of a file with head -n1.
-       How can you see all of a file *except* the first line.
-
-    4. Without using your history, how few keystrokes can you use to run the following command (must work from any directory)?
-
-        ls /opt/bio-workshop/data/lamina.bed
-
-    5. How few keystrokes can you do #4 using your history?
-
-    6. To learn about piping (|), use cowsay to:
-
-       a. show your current working directory
-       b. tell  you the number of lines in /opt/bio-workshop/data/lamina.bed
-       c. tell you the most recently modified file (or directory) in $HOME

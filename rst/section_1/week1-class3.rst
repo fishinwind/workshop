@@ -4,7 +4,7 @@ Week 1 / Class 3 : The command-line++
 Goals
 -----
 
-1. understand how to apply some common linux utilities to files (cut, sort, zless, uniq)
+1. learn some additional linux utilities (cut, sort, zless, uniq)
 2. understand pipes (|)
 
 cut
@@ -43,7 +43,7 @@ uniq allows you to get and count unique entries.
 
 .. note::
 
-    Assumes that file is sorted by the column of interest.
+    **cut** Assumes that file is sorted by the column of interest.
 
 (re)direction
 -------------
@@ -72,15 +72,15 @@ Most common way to compress single files is `gzip`
 
 We can (g)unzip that file as:
 
-    $ gunzip /opt/bio-workshop/data/some.gz
+    $ gunzip /opt/bio-workshop/data/t_R1.fastq.gz
 
 And re-zip is as:
 
-    $ gzip /opt/bio-workshop/data/some
+    $ gzip /opt/bio-workshop/data/t_R1.fastq
 
 But if we just want to stream the uncompressed data without changing the file:
 
-    $ zless /opt/bio-workshop/data/some.gz
+    $ zless /opt/bio-workshop/data/t_R1.fastq.gz
 
 Pipes
 -----
@@ -103,17 +103,18 @@ Have a look at
 
     $ man sort
 
+The main flag is `-k` to indicate which column to sort on.
 
 Sort Questions
 --------------
 
 How do you:
-   1) sort by a particular column?
-   2) sort as a number
-   3) sort as a general number (1e-3 < 0.05)
-   4) change the default delimiter
-   5) sort by 2 columns
-   6) sort in reverse
+   1) sort by a particular column? (-k 4)
+   2) sort as a number (-k4n)
+   3) sort as a general number (1e-3 < 0.05) (-k4g)
+   4) change the default delimiter (-t,
+   5) sort by 2 columns (-k1,1 -k2,2n)
+   6) sort in reverse (-k1r)
 
 If you know all these, you'll know 99% of what you'll use sort for.
 
@@ -129,7 +130,10 @@ Sort by chrom, then by start (a lot of tools will require this):
 This tells it to sort the chromosome [1] as a character and the
 start as a number.
 
-What happens if you omit the `n` ?
+Question:
++++++++++
+
+    What happens if you omit the `n` ?
 
 Sort Example (2)
 ----------------
@@ -146,8 +150,66 @@ Compress `some.pvals.txt` with gzip. Then zless that and
 pipe the result to sort by p-value and show only the rows
 with the 10 lowest p-values.
 
+Application (1)
+===============
+
+Let's use pipes (|) chained together to look see which
+transcription factor binding sites are the most common
+in a set of putative sites from ENCODE.
+
+  + data file available from http (wget)
+  + compressed BED format (zless)
+  + TF name in 4th column (cut)
+  + count frequency (uniq -c) after sorting (sort)
+  + sort resulting frequencies so most common are first (sort -rn)
+  + show top 10 (head)
+
+Application (2)
+===============
+
+.. code-block:: bash
+
+    FILE=http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV2.bed.gz
+
+    wget --quiet -O - $FILE \
+        | zless \
+        | head -n 7000 \
+        | cut -f 4 \
+        | sort \
+        | uniq -c \
+        | sort -k1,1rn \
+        | head -n 10
+
+Let's go through this line by line...
+
+
 grep
 ----
 
 We use **grep** to find stuff.
 
+
+In Class Exercises
+------------------
+
+Place the answers to these in the bash script:
+
+
+    1. write a bash script that you can run to list only the 2 most recently
+       modified files in a given directory (using what you've learned in this class)
+    2. make that script executable (use google to learn how to do this).
+
+    3. With `head`, you can see the first line of a file with head -n1.
+       How can you see all of a file *except* the first line.
+
+    4. Without using your history, how few keystrokes can you use to run the following command (must work from any directory)?
+
+        ls /opt/bio-workshop/data/lamina.bed
+
+    5. How few keystrokes can you do #4 using your history?
+
+    6. To learn about piping (|), use cowsay to:
+
+       a. show your current working directory
+       b. tell  you the number of lines in /opt/bio-workshop/data/lamina.bed
+       c. tell you the most recently modified file (or directory) in $HOME
