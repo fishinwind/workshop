@@ -6,8 +6,6 @@
 UC Denver Bio-Workshop (MOLB 7620)
 ==================================
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
    :glob:
@@ -15,11 +13,4 @@ Contents:
    First-8-Week-Section
    Second-8-Week-Section
    Quizzes
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
 
