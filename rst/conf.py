@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.pngmath',
     'sphinx.ext.mathjax',
+    'hieroglyph',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -48,6 +49,11 @@ except ImportError:
     import sys
     sys.stderr.write("please install (pip) sphinx_rtd_theme\n")
     html_theme = 'default'
+try:
+    import hieroglyph
+except ImportError:
+    sys.stderr.write("please install (pip) hieroglyph\n")
+    sys.exit(1)
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -268,3 +274,6 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+slide_levels = 2
+slide_theme = 'single-level'

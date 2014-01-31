@@ -181,7 +181,7 @@ using **sort** and piping to **cut**
 Or, use **cut** and pipe to **sort** to do the same.
 
 Application (1)
-===============
+---------------
 
 Let's use pipes (|) chained together to look see which
 transcription factor binding sites are the most common
@@ -195,7 +195,7 @@ in a set of putative sites from ENCODE.
   + show top 10 (head)
 
 Application (2)
-===============
+---------------
 
 Note that we are using the variable FILE for the long file name.
 
@@ -223,25 +223,25 @@ We use **grep** to find stuff.
 
 In Class Exercises
 ------------------
+::
 
-Place the answers to these in the bash script:
+  1. To learn about piping (|), use cowsay to:
 
-    1. To learn about piping (|), use cowsay to:
+     a. show your current working directory
+     b. show the number of lines in /opt/bio-workshop/data/lamina.bed
+     c. show the most recently modified file/dir in $HOME
 
-       a. show your current working directory
-       b. tell  you the number of lines in /opt/bio-workshop/data/lamina.bed
-       c. tell you the most recently modified file (or directory) in $HOME
+  2. write a bash script that you can run to list only the 2
+     most recently modified files in a given directory (using
+     what you've learned in this class)
+  3. make that script executable (use google to learn how to do this).
 
-    2. write a bash script that you can run to list only the 2 most recently
-       modified files in a given directory (using what you've learned in this class)
-    3. make that script executable (use google to learn how to do this).
+  4. With `head`, you can see the first line of a file with head -n1.
+     How can you see all of a file *except* the first line. (use google)
 
-    4. With `head`, you can see the first line of a file with head -n1.
-       How can you see all of a file *except* the first line. (use google)
-
-    5. Without using your history, how few keystrokes can you use to run the following command (must work from any directory)?
-
+  5. Without using your history, how few keystrokes can you use to run
+     the following command (must work from any directory)?
         ls /opt/bio-workshop/data/lamina.bed
 
-    6. How few keystrokes can you do #4 using your history?
+  6. How few keystrokes can you do 5. using your history?
 
