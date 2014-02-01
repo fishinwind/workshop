@@ -1,5 +1,5 @@
-Second 8 Week Section
-=====================
+Block 2
+=======
 
 In this section we will go into more detail on bioinformatics methods
 
@@ -7,4 +7,4 @@ In this section we will go into more detail on bioinformatics methods
    :maxdepth: 0
    :glob: 
 
-   section_2/*
+   Block_2/*

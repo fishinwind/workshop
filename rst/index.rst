@@ -3,14 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-UC Denver Bio-Workshop (MOLB 7620)
-==================================
+Genome Informatics Workshop (MOLB 7620)
+=======================================
 
 .. toctree::
    :maxdepth: 2
    :glob:
 
-   First-8-Week-Section
-   Second-8-Week-Section
+   Syllabus
+   Block_1
+   Block_2
    Quizzes
 

@@ -1,5 +1,5 @@
-First 8 Week Section
-====================
+Block 1
+=======
 
 In this section, we will introduce linux and general tools that will
 help you do data-analysis.
@@ -10,4 +10,4 @@ help you do data-analysis.
 
    commands
 
-   section_1/*
+   Block_1/*

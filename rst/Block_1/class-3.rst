@@ -1,4 +1,4 @@
-Week 1 / Class 3 : The command-line++
+Class 3 : The command-line++
 =====================================
 
 Friday: 31 January 2014

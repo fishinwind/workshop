@@ -1,5 +1,5 @@
-Week 1 - Quiz 1
-===============
+Quiz 1
+======
 
 Reading
 -------
@@ -93,9 +93,7 @@ you want to write the results in (hint: it should include today's date).
     sort -k6n $datafile | head -n 10 >> $resultsfile
 
 Then, save the above text in a run.sh script in your results directory. To run the file,
-use:
-
-.. code-block:: bash
+use::
 
     $ bash run.sh
 
@@ -114,10 +112,8 @@ points**).
 Quiz Submission
 ---------------
 Specify the root of your project directory and create a tar file of the whole
-directory like this; you can change LASTNAME to your last name.
+directory like this; you can change LASTNAME to your last name::
 
-.. code-block:: bash
-   
     $ projectdir=/opt/bio-workshop/project
     $ tar -cvf LASTNAME-quiz.tar $projectdir
 

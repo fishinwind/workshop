@@ -1,13 +1,11 @@
-Week 3 / Class 1 : Working in a cluster environment
+Class 7 : Working in a cluster environment
 ===================================================
 
 Cluster access
 --------------
 We have set up accounts for the class on our departmental cluster. We will
-set up your accounts at the end of class and reset your passwords.
+set up your accounts at the end of class and reset your passwords::
 
-.. code-block:: bash
-    
     $ ssh -X username@amc-tesla.ucdenver.pvt
 
 Cluster etiquette
@@ -17,16 +15,43 @@ cluster environment.
 
 - The cluster is run by a central computer called the *head node*. This is
   the computer that you log into (amc-tesla). **DO NOT** run jobs on the
-  head node. The head node is essentially the brains of the cluster, and
+  head node. The head node is the brains of the cluster and
   it can easily be overextended.
+
+Example commands on the cluster
+-------------------------------
+Find the size of the file system::
+
+    $ df -h
+
+Find how much space you have allocated::
+
+    $ quota -h
 
 The queueing system
 -------------------
+First you will grab a single  CPU from the queueing system so that you can play
+around without affecting the head node. We use `qlogin` for this::
+
+    jhessel@amc-tesla ~
+    $ qlogin 
+
+    Job <492536> is submitted to queue <interactive>.
+    <<ssh X11 forwarding job>>
+    <<Waiting for dispatch ...>>
+    <<Starting on compute00>>
+
+    jhessel@compute00 ~
+    $ 
+
+Note that the host in the prompt changed from amc-tesla to compute00. You
+can now execute long-running processes without worry of affecting the
+cluster. Type `exit` to exit this process and return back to your head
+node login.
+
 The cluster uses a queueing system that will run jobs that you submit to
 it. You can write a small test script to see how the system works. First,
-write this into a run.sh file:
-
-.. code-block:: bash
+write this into a run.sh file::
 
     # /usr/bin/env bash
 
@@ -42,9 +67,7 @@ name. The `-e` and `-o` options set the filenames for the output from the
 job printed to stdout and stderr
 
 Now you can submit the script to the queuing system. As soon as you submit
-it, you can check on its progress.
-
-.. code-block:: bash
+it, you can check on its progress::
 
     $ bsub < run.sh
     $ bjobs
@@ -52,18 +75,22 @@ it, you can check on its progress.
 Killing jobs
 ------------
 Sometimes you need to kill your jobs. You can kill specific jobs using
-their job ID numbers, obtained from checking `bjobs`:
+their job ID numbers, obtained from checking `bjobs`::
 
-.. code-block:: bash
-
-    $ bkill <jobid>
+    $ bkill <jobid> # DANGER Will Robinson!
 
 You can also kill **all** of your jobs at once. **Use this sparingly**.
 If you have long running jobs in addition to jobs you just submitted,
-you'll wipe out everything:
-
-.. code-block:: bash
+you'll wipe out everything::
 
     $ bkill 0
 
+Other cluster-specific commands
+-------------------------------
+
+.. code-block:: bash
+
+    $ bhosts  # hosts in the cluster
+    $ bqueues # queues available 
+    $ lsload  # check load values for all hosts
 

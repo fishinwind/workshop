@@ -1,4 +1,4 @@
-Week 1 / Class 1 : VM and Linux Intro
+Class 1 : VM and Linux Intro
 =====================================
 
 Goals
