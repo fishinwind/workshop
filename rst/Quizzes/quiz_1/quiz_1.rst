@@ -1,20 +1,25 @@
-Quiz 1
-======
+Problem Set 1
+=============
+
+:Due date: 2014 Feb 11 at 5 PM MST
 
 Reading
 -------
-For the first quiz, you'll need to read Bill Noble's paper on organizing
-computational biology projects (http://dx.plos.org/10.1371/journal.pcbi.1000424)
-and be able to put a set of files in the correct places. We highly recommend
-adopting this scheme for all of your projects in and out of the class.
+For this problem set, you'll need to read Bill Noble's paper on organizing
+computational biology projects
+(http://dx.plos.org/10.1371/journal.pcbi.1000424) and be able to put a set
+of files in the correct places. You should adopt this scheme
+for all of your projects in and out of class.
 
-Computational biology projects inevitably accrue a lot of files, and 
-this paper is a great way to get started on organizing all of this
-information. As you read in the paper, organization of projects is important
-for remembering what you did, and reanalyzing data when changes are made.
+Computational biology projects inevitably accrue a lot of files, and this
+paper is a great way to organize all of this information.  As you read in
+the paper, organization of projects is important for remembering what you
+did, and reanalyzing data when changes are made.
 
-This quiz will also test your ability to do simple tasks on the command line.
-For reference, the tutorial is at: http://cli.learncodethehardway.org/book/
+This quiz will also test your ability to do simple tasks on the command
+line.  For reference, the tutorial is at::
+
+    http://cli.learncodethehardway.org/book/
 
 You will use the command line tools discussed in the tutorial (e.g. mkdir,
 cd, ls, mv) to create the directory structure, move files into place and
@@ -22,17 +27,17 @@ check whether everything looks ok.
 
 Problem 1
 ---------
-Make a directory structure as outlined in the paper.
-The directories should be nested under a common project directory, with
-directories for data, results and documentation (doc). You should also
-create dated folders with today's date so you know where to put the dated
-data and reuslts. Finally, keep a list of the commands that you used to
-create the directory (**10 points**).
+Make a directory structure as outlined in the paper.  The directories
+should be nested under a common project directory, with directories for
+data, results and documentation (doc). You should also create dated
+folders with today's date so you know where to put the dated data and
+reuslts. Finally, keep a list of the commands that you used to create the
+directory (**10 points**).
 
 Problem 2
 ---------
-Download the the following data table: :download:`states.tab`.
-Then move the data file to the appropriate *dated* directory.
+Download the the following data table: :download:`states.tab`.  Then move
+the data file to the appropriate *dated* directory.
 
 You need to create a run.sh shell script that runs the following code, and
 writes the output into a results directory with the current date (**10
@@ -109,14 +114,14 @@ Finally you need to create a log of what you did in the root of the
 results directory to summarize the key points of your analysis (**5
 points**).
 
-Quiz Submission
----------------
+Problem Set Submission
+----------------------
 Specify the root of your project directory and create a tar file of the whole
 directory like this; you can change LASTNAME to your last name::
 
     $ projectdir=/opt/bio-workshop/project
-    $ tar -cvf LASTNAME-quiz.tar $projectdir
+    $ tar -cvf LASTNAME-problem-set.tar $projectdir
 
-Upload the tar file to the Quiz at the Canvas site to complete the
+Upload the tar file to the Problem Set at the Canvas site to complete the
 submission.
 

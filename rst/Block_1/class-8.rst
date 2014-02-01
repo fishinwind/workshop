@@ -1,4 +1,4 @@
-Class 8 : Working in a cluster environment
+Class 8 : Working in a cluster environment (part 2)
 ===================================================
 
 We will go over a common scenario in bioinformatics in which you can

@@ -1,23 +1,34 @@
-README for Genome Informatics Workshop Sphinx docs
-==================================================
+Sphinx docs for for Genome Informatics Workshop
+===============================================
 
-Making HTML and slides
-----------------------
+Making slides
+-------------
 
 Make slides with::
 
     make slides
 
+Slides will be in::
+    
+    $ _build/slides
+
+Making webiste
+--------------
+
 Make HTML with::
 
     make html
 
+.. todo::
+
+   - fix the git add -f hack for posting new content
+    
 Move HTML to bioworkshop.github.io with::
 
-    websitedir=$HOME/devel/bio-workshop-io # change if necessary
-    make html
+    websitedir=$HOME/devel/UCD-BioWorkshop.github.io
     cp -r _build/html/* $websitedir
     cd $websitedir
+
     git pull origin master
     git add . # add all new html
 
@@ -27,6 +38,7 @@ Move HTML to bioworkshop.github.io with::
     git commit -m "update html"
     git push origin master
 
-Navigate to http://ucd-bioworkshop.github.io/ Pages are cached at this
-site, so it will take a few minutes to update
+Check the new website http://ucd-bioworkshop.github.io/
+
+Pages are cached at this site, so it will take a few minutes to update.
 

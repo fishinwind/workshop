@@ -1,5 +1,5 @@
 Class 7 : Working in a cluster environment
-===================================================
+==========================================
 
 Cluster access
 --------------
@@ -72,18 +72,27 @@ it, you can check on its progress::
     $ bsub < run.sh
     $ bjobs
 
+Look in your current directory, you should see two new files that end
+`.out` and `.err`. These are the output of stdout and stderr from the
+running job. Look at the contents of those files so you know what is in
+each one.
+
 Killing jobs
 ------------
 Sometimes you need to kill your jobs. You can kill specific jobs using
 their job ID numbers, obtained from checking `bjobs`::
 
-    $ bkill <jobid> # DANGER Will Robinson!
+    $ bkill <jobid> 
 
-You can also kill **all** of your jobs at once. **Use this sparingly**.
-If you have long running jobs in addition to jobs you just submitted,
-you'll wipe out everything::
+You can also kill **all** of your jobs at once::
 
-    $ bkill 0
+    $ bkill 0 
+
+.. warning::
+
+    `bkill 0` is dangerous, as it will wipe out all of your jobs. If you
+    have long-running jobs that you forgot about, you will wipe them out
+    if you are not careful
 
 Other cluster-specific commands
 -------------------------------

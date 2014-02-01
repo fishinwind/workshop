@@ -1,5 +1,5 @@
-Class 5 : Python Files
-===============================
+Class 5 : Python : Basics
+=========================
 
 Python overview
 ---------------
@@ -7,7 +7,7 @@ Python is a popular programming language that is commonly used for
 bioinformatics. 
 
 We will use it to process and filter files. When you can't write a simple script
-in `awk` it is better to use python.
+in `awk`, it is better to use python.
 
 The Python documentation is very helpful, with lots of examples. You should
 read it to become familiar with the language: http://docs.python.org/2/
@@ -15,9 +15,21 @@ read it to become familiar with the language: http://docs.python.org/2/
 .. note::
 
     You should be going through the Python tutorial at this point. We will
-    cover some language specifics, but mostly centered on uses of Python
-    in bioinformatics.
+    cover some language specifics in context Python usage in
+    bioinformatics.
 
+Ipython
+-------
+Ipython is an (I)nteractive python terminal that lets you
+type in python expressions and see the results immediately::
+
+    $ ipython
+
+This command puts you in a shell that accepts python commands, much like
+the login terminal accepts `bash` commands.
+
+Formatting
+----------
 Python depends on the alignment of your code to understand. This does not
 work:
 
@@ -37,16 +49,6 @@ loop.
 **Always** use spaces (not tab characters) to indent your code. We will
 set up your gedit preferences so that when you press the tab key, four
 spaces are inserted.
-
-Ipython
--------
-Ipython is an (I)nteractive python terminal that lets you
-type in python expressions and see the results immediately.
-
-Start it by typing `ipython` in your terminal.
-
-Once you do so, you are in shell that accepts python commands
-much like the normal terminal accepts `bash` commands.
 
 For Loops (range)
 -----------------
@@ -77,16 +79,25 @@ over them. For instance, a string is iterable:
 
 Try this in `ipython` to see what happens.
 
-Types
------
+Python Types
+------------
 There are several core types in Python that you will use a lot.
 
-*Strings* are collections of characters (words and sentences).
-*Ints* and *Floats* are numbers.
-*Lists* are groups of other objects.
-*Dictionaries* contain key:value mappings.
+`Strings` are collections of characters (words and sentences).
+`Ints` and `Floats` are numbers.
+`Lists` are groups of other objects.
+`Dictionaries` contain key:value mappings.
 
-In Class Exercises
+Everything is an object
+-----------------------
+Everything in Python is an object. In practice this means that there is an
+expected presentation of everything, but everything has additional methods
+that can be called.
+
+.. code-block:: python
+
+    
+In Class Exercise
 ------------------
 ::
 
