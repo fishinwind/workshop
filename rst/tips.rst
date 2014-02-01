@@ -70,7 +70,7 @@ the mouse.
 Learn to use a terminal text editor
 -----------------------------------
 `gedit` is great for newbies. But if you want to bring your script-fu to
-the next level, you **need** to learn to use a text editor.
+the next level, you need to learn to use a text editor.
 
 There are two types of nerds in this world: those that use `vim`, and
 those that use `emacs`. I'm a `vim`-user. I can't even log out of `emacs`.
@@ -78,7 +78,26 @@ those that use `emacs`. I'm a `vim`-user. I can't even log out of `emacs`.
 Learning an editor like `vim` increases productivity substantially,
 because it allows you to:
 
-    - run it from a terminal, without opening a new window
+    - run the editor within an existing terminal, without opening a new
+      window
     - work on multiple documents simultaneously
     - syntax highlight your code
+    - lots of other things
 
+You can run `vim` from the terminal prompt::
+
+    $ vim filename.txt
+
+To quit a vim instance, you need to:
+
+    1. enter `command mode` with the colon key
+    2. write the file
+    3. quit the program
+
+This can be accomplished in one go by typing::
+
+    :wq
+
+In your copious spare time, and after you have mastered the basics of
+shell, Python and R programming, you should take a tutorial on using a
+text editor. Check out the Tutorial at http://www.openvim.com/ first.
