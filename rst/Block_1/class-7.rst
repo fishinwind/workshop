@@ -62,9 +62,10 @@ write this into a run.sh file::
     sleep(20)
 
 The `#BSUB` lines are comments, but are read by the submission program to
-identify features associdated with your jab. The `-J` flag sets the jobs
+identify features associdated with your job. The `-J` flag sets the job's
 name. The `-e` and `-o` options set the filenames for the output from the
-job printed to stdout and stderr
+job printed to stdout and stderr; `%J` is filled in with a unique job ID
+that is set when you run the job.
 
 Now you can submit the script to the queuing system. As soon as you submit
 it, you can check on its progress::
@@ -92,7 +93,7 @@ You can also kill **all** of your jobs at once::
 
     `bkill 0` is dangerous, as it will wipe out all of your jobs. If you
     have long-running jobs that you forgot about, you will wipe them out
-    if you are not careful
+    if you are not careful!
 
 Other cluster-specific commands
 -------------------------------

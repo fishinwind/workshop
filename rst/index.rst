@@ -13,5 +13,5 @@ Genome Informatics Workshop (MOLB 7620)
    Syllabus
    Block_1
    Block_2
-   Quizzes
+   Problem_Sets
 
