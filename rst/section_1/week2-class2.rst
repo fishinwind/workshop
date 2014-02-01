@@ -1,12 +1,6 @@
 Week 2 / Class 2 : Python Files
 ===============================
 
-Goals
------
-1. start with python
-2. ipython
-3. python programming
-
 Python overview
 ---------------
 Python is a popular programming language that is commonly used for bioinformatics.
@@ -81,12 +75,4 @@ over them. For instance, a string is iterable:
 
 Try this in `ipython` to see what happens.
 
-Cluster access
---------------
-We have set up accounts for the class on our departmental cluster. We will
-set up your accounts at the end of class and reset your passwords.
-
-.. code-block:: bash
-    
-    $ ssh -X username@amc-tesla.ucdenver.pvt
 
