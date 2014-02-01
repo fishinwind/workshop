@@ -9,5 +9,6 @@ help you do data-analysis.
    :glob: 
 
    commands
+   tips
 
    Block_1/*

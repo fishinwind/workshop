@@ -9,10 +9,10 @@ with your efficiency in actaully *using* a computer, and not programming
 *per se*.
 
 For example, the longer you spend searching for a particular key to type,
-or surfing around with your mouse, the less time you spend typing, running
-and debugging programs. Here are several pointers to help you become more
-efficient at using computers, independent of actually learning programming
-languages.
+or surfing around with your mouse, the less time you spend writing,
+running and debugging programs. Here are several pointers to help you
+become more efficient at using computers, independent of actually learning
+programming languages.
 
 Learn to type
 -------------
@@ -20,7 +20,7 @@ Once you have typing basics down, you should be typing 40-50 words per
 minute without any problem. I learned to type on a typewriter (seriously).
 Hunting and pecking is inefficient, and prevents you from spending your
 valuable time efficiently. Moreover, if you're looking at your keyboard,
-you're *not* looking at the screen, reading and debuggin code.
+you're *not* looking at the screen, reading and debugging code.
 
 There are several good, modern tools to help you type faster.
 
@@ -70,9 +70,10 @@ the mouse.
 Learn to use a terminal text editor
 -----------------------------------
 `gedit` is great for newbies. But if you want to bring your script-fu to
-the next level, you **need** to learn to use a text editor. There are two
-types of nerds in this world: those that use `vim`, and those that use
-`emacs`. I'm a `vim`-user. I can't even log out of `emacs`.
+the next level, you **need** to learn to use a text editor.
+
+There are two types of nerds in this world: those that use `vim`, and
+those that use `emacs`. I'm a `vim`-user. I can't even log out of `emacs`.
 
 Learning an editor like `vim` increases productivity substantially,
 because it allows you to:

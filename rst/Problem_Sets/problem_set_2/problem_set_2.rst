@@ -29,7 +29,7 @@ Problem Set Submission
 Specify the root of your project directory and create a tar file of the whole
 directory like this; you can change LASTNAME to your last name::
 
-    $ projectdir=/opt/bio-workshop/project
+    $ projectdir=$HOME/bio-workshop/project
     $ tar -cvf LASTNAME-problem-set-2.tar $projectdir
 
 Upload the tar file to the Problem Set at the Canvas site to complete the
