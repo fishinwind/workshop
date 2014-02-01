@@ -1,110 +1,93 @@
-Class 3 : The command-line++
+Class 3 : The command-line (part 2)
 =====================================
 
 Friday: 31 January 2014
 
 Goals
 -----
-
 1. learn some additional linux utilities (cut, sort, zless, uniq, wget)
 2. understand pipes (|)
 
 wget
 ----
+fetch a a file from the web with `wget`::
 
-get a file from the web:
-
-.. code-block:: bash
-
-    cd /opt/bio-workshop/data/
-    wget http://ucd-bioworkshop.github.io/_downloads/states.tab
+    $ cd /opt/bio-workshop/data/
+    $ wget http://ucd-bioworkshop.github.io/_downloads/states.tab
     
 
 cut
 ---
-
-cut allows you to extract certain columns of a file.
-
-
-.. code-block:: bash
+`cut` allows you to extract certain columns of a file::
 
     # cut columns 1-4 and 7-10
-    cut -f 1-4,7-10 /opt/bio-workshop/data/states.tab
+    $ cut -f 1-4,7-10 /opt/bio-workshop/data/states.tab
 
     # cut columns 1-4
-    cut -f 1,2,3,4
+    $ cut -f 1,2,3,4
 
     # cut first column 1
-    cut -f 1 /opt/bio-workshop/data/lamina.bed
+    $ cut -f 1 /opt/bio-workshop/data/lamina.bed
 
     # output all columns after the 1st
-    cut -f 2- /opt/bio-workshop/data/lamina.bed
+    $ cut -f 2- /opt/bio-workshop/data/lamina.bed
 
 uniq
 ----
 
-uniq allows you to get and count unique entries.
+uniq allows you to get and count unique entries::
 
- + remove duplicate lines
- + show duplicate lines
- + count unique entries:
+    # remove duplicate lines
+    $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq
 
+    # show duplicate lines
+    $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -d
 
-.. code-block:: bash
+    # count unique entries:
+    $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c
 
-    cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c
+.. important::
 
-.. note::
+   `uniq` assumes that file is sorted by the column of interest.
 
-    **cut** Assumes that file is sorted by the column of interest.
+   Use `sort` to sort the data before `uniq`-ing it.
 
-(re)direction
--------------
+Redirection of output
+---------------------
 
-to send the output of a command (or a file) to another file, use ">"
+To send the output of a command (or a file) to another file, use ">"::
 
-.. code-block:: bash
+    $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c > output.txt
+    $ head output.txt
 
-    cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c > output.txt
-    head output.txt
+To **append** the output of a command (or a file) to another file, use
+">>"::
 
-to **append** the output of a command (or a file) to another file, use ">>"
-
-.. code-block:: bash
-
-    echo "last line" >> output.txt
-    tail output.txt
-
+    $ echo "last line" >> output.txt
+    $ tail output.txt
 
 Compressed Files
 ----------------
 
-Most common way to compress single files is `gzip`
+The most common way to uncompress single files is `gunzip`::
 
-.. code-block:: bash 
+    $ gunzip /opt/bio-workshop/data/t_R1.fastq.gz
 
-    gunzip /opt/bio-workshop/data/t_R1.fastq.gz
+And re-zip the file with `gzip`:: 
 
-And re-zip is as:
+    $ gzip /opt/bio-workshop/data/t_R1.fastq
 
-.. code-block:: bash 
+But if we just want to stream the uncompressed data without changing the
+file::
 
-    gzip /opt/bio-workshop/data/t_R1.fastq
-
-But if we just want to stream the uncompressed data without changing the file:
-
-.. code-block:: bash 
-
-    zless /opt/bio-workshop/data/t_R1.fastq.gz
+    $ zless /opt/bio-workshop/data/t_R1.fastq.gz
 
 Pipes
 -----
 
-We probably want to do something with the file as we uncompress it:
+We probably want to do something with the file as we uncompress it::
 
-.. code-block:: bash 
-
-    zless /opt/bio-workshop/data/t_R1.fastq.gz | head
+    $ zless /opt/bio-workshop/data/t_R1.fastq.gz | head
 
 We already know the head command prints the first -n lines.
 
@@ -116,9 +99,7 @@ Sort
 
 You will often want to `sort` your data.
 
-Have a look at
-
-.. code-block:: bash
+Have a look at::
 
     $ man sort
 
@@ -145,9 +126,7 @@ Sort Example
 
 BED files have columns `chrom` [tab] `start` [tab] `end` [tab] ...
 
-Sort by chrom, then by start (a lot of tools will require this)
-
-.. code-block:: bash
+Sort by chrom, then by start (a lot of tools will require this)::
 
     $ sort -k1,1 -k2,2n /opt/bio-workshop/data/lamina.bed > /tmp/sorted.bed
 
@@ -162,12 +141,10 @@ Question:
 Sort Example (2)
 ----------------
 
-What if we want to sort by Income **descending** in the 3rd column?
+What if we want to sort by Income **descending** in the 3rd column?::
 
-.. code-block:: bash
-
-    sort -t$'\t' -k3,3rg /opt/bio-workshop/data/states.tab > /tmp/sorted.out
-    head /tmp/sorted.out 
+    $ sort -t$'\t' -k3,3rg /opt/bio-workshop/data/states.tab > /tmp/sorted.out
+    $ head /tmp/sorted.out 
 
 .. note::
 
@@ -177,17 +154,16 @@ What if we want to sort by Income **descending** in the 3rd column?
 Sort Exercise
 -------------
 
-Print out the 10 states (1st column, contains spaces) with the highest income (3rd column) from states.tab
-using **sort** and piping to **cut**
+Print out the 10 states (1st column, contains spaces) with the highest
+income (3rd column) from states.tab using **sort** and piping to **cut**.
 
 Or, use **cut** and pipe to **sort** to do the same.
 
 Application (1)
 ---------------
 
-Let's use pipes (|) chained together to look see which
-transcription factor binding sites are the most common
-in a set of putative sites from ENCODE.
+Use pipes (|) chained together to look see which transcription factor
+binding sites are the most common in a set of putative sites from ENCODE.
 
   + data file available from http (wget)
   + compressed BED format (zless)
@@ -198,12 +174,9 @@ in a set of putative sites from ENCODE.
 
 Application (2)
 ---------------
+Note that we are using the variable FILE for the long file name::
 
-Note that we are using the variable FILE for the long file name.
-
-.. code-block:: bash
-
-    FILE=http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV2.bed.gz
+    # BED format file of transcription factor binding sites
     FILE=http://bit.ly/tfbs-x
 
     wget --quiet -O - $FILE \
@@ -215,14 +188,14 @@ Note that we are using the variable FILE for the long file name.
         | sort -k1,1rn \
         | head -n 10
 
-Let's go through this line by line...
+.. comments::
+    FILE=http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV2.bed.gz
 
+Let's go through this line by line...
 
 grep
 ----
-
 We use **grep** to find stuff.
-
 
 In Class Exercises
 ------------------

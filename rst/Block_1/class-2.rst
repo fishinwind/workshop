@@ -149,7 +149,7 @@ Other Commands In The Terminal (Answers)
         
 
 Word Counts (wc)
----------------
+----------------
 Exercise:
 
     + use **wc** to determine how many **lines** are in /opt/bio-workshop/data/lamina.bed
@@ -169,7 +169,6 @@ You can backward-search in the file using "?"
 You can see info about the file (including number of lines) using "ctrl+g"
 
 You can exit **less** using "q"
-
 
 Terminal History
 ----------------
@@ -236,7 +235,7 @@ To explicitly see the current directory::
     $ ls ./
 
 Directory Shortcuts (part 2)
-----------------------
+----------------------------
 
 We can go 2 directories up with::
 
@@ -248,7 +247,7 @@ What does this do::
     $ ls ./*
 
 Directory Shortcuts (part 3)
-----------------------
+----------------------------
 
 you can go to the last directory with::
 
@@ -292,7 +291,7 @@ mv [source] [dest]
     $ ls -lhtr ~/
 
 Moving and copying files (part 2)
------------------------
+---------------------------------
 
 In-class excercise:
 
@@ -409,7 +408,6 @@ you were trying to do. You can comment your code using the "#" symbol.
 
 Pipes
 -----
-
 Since linux is made of small utilities, we often want to chain them
 together. We will cover this in detail next class, but the idea
 is that each program takes data, modifies it, and sends it to the next.
