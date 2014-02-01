@@ -1,12 +1,11 @@
-Class 1 : VM and Linux Intro
-=====================================
+Class 1 : Virtual Machine (VM) and Linux Introduction
+=====================================================
 
 Goals
 -----
 1. Class overview
-2. get VM running
-3. Overview of Shell and Python programming
-
+2. Get the VM running
+3. Overall goals for the Blocks and Class
 
 Class Overview
 --------------
@@ -25,9 +24,9 @@ purpose.
 Each week, we will have 1 take home quiz, due the following Tuesday at 5
 PM. 
 
-VM
---
-The VM will let you run linux on your laptop, or the laptops available at
+The Virtual Machine (VM)
+------------------------
+The VM will let you run Linux on your laptop, or the laptops available at
 the Teaching Lab. The VM has many of the tools you will need for analysis
 pre-installed. Feel free to install other tools that you think will be
 useful.
@@ -35,33 +34,30 @@ useful.
 Important Directories
 ---------------------
 You will learn about directories in the next class, but note that the
-content for this class is available in:
+content for this class is available in::
 
     /opt/bio-workshop/
 
 When you write answers to your homeworks, they should be runnable from
-a directory like:
+a directory like::
 
    /opt/bio-workshop/homeworks/section_1/week1/
 
 Terminal and Gedit
 ------------------
-When you open a Terminal, you also launch a shell process, typically
-a bash process. At the prompt, you can type things that bash understands,
+When you open a Terminal, you also launch a shell process, typically a
+bash process. At the prompt, you can type things that bash understands,
 and it will do them. The shell has its own language, which you will learn
 over the course of the class. It also runs executable files that it can
 find on the PATH (i.e. the set of directories that contain exectuables).
-You can find what is on your PATH by typing:
 
-.. code-block:: bash
-   
+You can find what is on your PATH by typing::
+
    $ echo $PATH
 
 The PATH is one of several environment variables that are created when you
-login. You can see all of these with: 
+login. You can see all of these with::
 
-.. code-block:: bash
-   
    $ env
 
 One important program in the PATH is gedit. You will use this program to
@@ -69,10 +65,8 @@ keep notes and write small programs. There are other editors (e.g. vim and
 emacs) that have additional features; it's up to you whether you would
 like to learn those or stick with the graphical gedit.
 
-To run gedit, use:
+To run gedit, use::
 
-.. code-block:: bash
-   
    $ gedit
 
 This will open a window where you can type. You can write a small test
@@ -111,8 +105,11 @@ scheme for all of your projects in and out of the class.
 
 Computational biology projects inevitably accrue a lot of files, and 
 This paper is a great way to get started on organizing all of this
-information:
+information.
 
-1. Organization for computational biology projects
+.. important::
+
+    Organization for computational biology projects. PLoS Comput Biol.
+    William S. Noble
     `Link <http://dx.plos.org/10.1371/journal.pcbi.1000424>`_
 

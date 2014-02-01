@@ -29,57 +29,45 @@ Works well for bioinformatics:
 
 Navigating In the Terminal
 --------------------------
-
 When you start the terminal, you will be in your home directory.
 
 In Linux home is represented as `~` and also as `$HOME`
 
-We will often show commands preceded with a '$' as you see in your terminal
+We will often show commands preceded with a '$' as you see in your
+terminal.
 
-Try this in the terminal:
-
-.. code-block:: bash
+Try this in the terminal::
 
     $ pwd
 
 pwd is "print working directory"
 
 
-Navigating In the Terminal (2)
-------------------------------
+Navigating In the Terminal (part 2)
+-----------------------------------
 
-Change to another directory:
-
-.. code-block:: bash
+Change to another directory::
 
     $ cd /tmp/
 
-See what's in that directory:
-
-.. code-block:: bash
+See what's in that directory::
 
     $ ls
 
-Show more information:
-
-.. code-block:: bash
+Show more information::
 
     $ ls -lh
 
 The "-lh" letters are flags, or modifier arguments to the *ls* command.
-These can be separated as:
-
-.. code-block:: bash
+These can be separated as::
 
     $ ls -l -h
 
-Navigating In the Terminal (3)
-------------------------------
+Navigating In the Terminal (part 3)
+-----------------------------------
 
 The content for the class, including the source for generating this document,
-are in:
-
-.. code-block:: bash
+are in::
 
     /opt/bio-workshop/
 
@@ -91,32 +79,25 @@ Navigate to that directory and look around with `ls`
 Getting Help In The Terminal
 ----------------------------
 
-How can you find out the arguments that *ls* accepts (or expects)
-
-.. code-block:: bash
+How can you find out the arguments that *ls* accepts (or expects)::
 
     $ man ls
 
 and use spacebar to go through the pages. *man* is short for manual
 and can be used on all commands that we will learn. 
 
-In other linux software, it is common to get help by using:
+In other linux software, it is common to get help by using::
 
-.. code-block:: bash
+    $ <program> -h
 
-    $ program -h
+or::
 
-or
-
-.. code-block:: bash
-
-    $ program --help
+    $ <program> --help
 
 Which of those works for `ls`?
 
 Getting Help: Exercises
 -----------------------
-
 
  + use `man` to find out how to list files so that the most
    recently modified files are listed last.
@@ -130,26 +111,22 @@ care about the most recently modified files)
 
 Getting Help In The Terminal(2)
 -------------------------------
-
  + If you see an error message, read it carefully. 
  + It may seem cryptic, but it is built to inform you what went wrong.
 
-
 Getting Help Outside The Terminal
 ---------------------------------
-
-Use google. Favor results on:
+Use google. Useful sites include:
 
  + stackexchange.com
  + biostars.org
  + seqanswers.com
 
-In many cases, if you receive and error, you can copy-paste it into google and find some info.
-
+In many cases, if you receive and error, you can copy-paste it into google
+and find some info.
 
 Other Commands In The Terminal
 ------------------------------
-
 Use the *man* command to determine what *head* does.
 
 Use *head* on the file /opt/bio-workshop/data/lamina.bed
@@ -158,10 +135,7 @@ Use *tail* to see the end of the file.
 
 Questions
 +++++++++
-
 By default, head and tail show 10 lines. How can you see 13 lines?
-
-
 
 Other Commands In The Terminal (Answers)
 ----------------------------------------
@@ -169,30 +143,22 @@ Other Commands In The Terminal (Answers)
 .. code-block:: bash
 
     $ man head
-
     $ head /opt/bio-workshop/data/lamina.bed
-
     $ tail /opt/bio-workshop/data/lamina.bed
-
     $ head -n 13 /opt/bio-workshop/data/lamina.bed
         
 
-Word Counts(wc)
+Word Counts (wc)
 ---------------
-
-
 Exercise:
 
     + use **wc** to determine how many **lines** are in /opt/bio-workshop/data/lamina.bed
     + use **wc** to determine how many **words** are in /opt/bio-workshop/data/lamina.bed
-  
 
 Less (is More)
 --------------
 
-To view a large file, use less:
-
-.. code-block:: bash
+To view a large file, use less::
 
     less /opt/bio-workshop/data/lamina.bed
 
@@ -224,41 +190,29 @@ Tab-Completion
 
 The shell (bash) when set up properly can give you a lot of help
 
-Type the following where [TAB] means the Tab key on the keyboard:
-
-.. code-block:: bash
+Type the following where [TAB] means the Tab key on the keyboard::
 
     $ cd /opt/bio-w[TAB]
 
-Then hit tab. And:
-
-.. code-block:: bash
+Then hit tab. And::
 
     $ ls /opt/bio-w[TAB]
 
-This will work for any file path and for any programs.
-
-.. code-block:: bash
+This will work for any file path and for any programs::
 
     $ hea[TAB]
 
-What happens if you do:
-
-.. code-block:: bash
+What happens if you do::
 
     $ he[TAB][TAB] 
 
-or:
-
-.. code-block:: bash
-
+or::
 
     $ heaaa[TAB][TAB] 
 
 
 Directory Shortcuts
 -------------------
-
 We have already used the `cd` command to change directories. And we have
 used the "~" shortcut for home.
 
@@ -267,59 +221,45 @@ used the "~" shortcut for home.
     $ cd ~ 
     $ ls ~
 
-We can also move to or see what's in the parent directory with:
+We can also move to or see what's in the parent directory with::
     
-.. code-block:: bash
-
     $ ls ..
     $ cd ..
 
-Or 3 directories up with:
+Or 3 directories up with::
     
-.. code-block:: bash
-
     $ ls ../../..
     $ cd ../../..
 
-To explicitly see the current directory:
-
-.. code-block:: bash
+To explicitly see the current directory::
 
     $ ls ./
 
-Directory Shortcuts(2)
+Directory Shortcuts (part 2)
 ----------------------
 
-We can go 2 directories up with:
-
-.. code-block:: bash
+We can go 2 directories up with::
 
     $ cd ../../
 
 Here, we can remember that "." is the current directory and .. is one directory up.
-What does this do:
-
-.. code-block:: bash
+What does this do::
 
     $ ls ./*
 
-Directory Shortcuts(3)
+Directory Shortcuts (part 3)
 ----------------------
 
-you can go to the last directory with:
-
-.. code-block:: bash
+you can go to the last directory with::
 
     $ cd -
 
 and switch back and forth by using that repeatedly.
 
-
-make and remove directories
+Make and remove directories
 ---------------------------
 
-.. code-block:: bash
-
+::
     mkdir ~/tmp # OK
 
     mkdir ~/tmp/asdf/asdf # ERROR
@@ -329,77 +269,58 @@ make and remove directories
 
 What does -p do?
 
-Remove directories:
-
-.. code-block:: bash
+Remove directories::
 
    rm ~/tmp/asdf # ERROR
 
    rm -r ~/tmp/asdf/asdf # OK
 
-What is -r ?
+What does the -r flag do?
 
-.. note ::
+.. warning::
 
-    be careful with `rm -r` and `rm -rf`
-
-What does this do?
-
-.. code-block:: bash
-
-    rm -r /
-
+    Be careful with `rm -r` and `rm -rf`
 
 moving/copying files
 --------------------
 
 mv [source] [dest]
 
-.. code-block:: bash
+::
+    $ touch /tmp/asdf
+    $ mv /tmp/asdf ~
+    $ ls -lhtr ~/
 
-    touch /tmp/asdf
-    mv /tmp/asdf ~
-    ls -lhtr ~/
-
-moving/copying files(2)
+Moving and copying files (part 2)
 -----------------------
 
-in class excercise:
-
+In-class excercise:
 
  1. make a directory `/tmp/moveable`
  2. move that directory to ~
  3. copy that directory to `/tmp/subdir/`
 
-
 echo
 ----
 
-echo is print:
-
-.. code-block:: bash
+`echo` means "print"::
 
     echo "hello world"
 
-and you can use it to see **bash** variables:
-
-.. code-block:: bash
+and you can use it to see **bash** variables::
 
     echo $HOME
 
     echo $HISTFILE
 
-variables
+Variables
 ---------
-
 We will start covering programming in the next classes, but variables are a
 key component of programming.
 
-You can do:
+You can do::
 
-.. code-block:: bash
-
-    $important=/opt/bio-workshop/data/lamina.bed
+    important=/opt/bio-workshop/data/lamina.bed
     ls -lh $important
 
 
@@ -433,40 +354,34 @@ gedit
 In order to edit files as you would using `notepad` or `word` in windows,
 we will use the simple editor "gedit".
 
-You can open gedit from the terminal using:
-
-.. code-block:: bash
+You can open gedit from the terminal using::
 
     $ gedit
 
-This will open a new window with GUI controls. Use gedit to write/edit scripts for this class
+This will open a new window with GUI controls. Use gedit to write/edit
+scripts for this class.
 
 
 Scripts
 -------
+A script is simply a series of commands that you save in a file. You will
+need to write scripts to complete the homework.
 
-A script is simply a series of commands that you save in a file. You will need to write
-scripts to complete the homework.
-
-Put this text:
-
-.. code-block:: bash
+Put this text::
 
     ls /opt/bio-workshop/
 
-Into the file *`my-ls.sh`* by opening `gedit` pasting that text then `save as..` using the GUI controls
+Into the file *`run.sh`* by opening `gedit` pasting that text then `save
+as..` using the GUI controls
 
-You can then run it as:
+You can then run it as::
 
-.. code-block:: bash
-
-    bash my-ls.sh
+    $ bash run.sh
 
 And you should see the same output as if you ran `ls /opt/bio-workshop` directly.
 
-Scripts
--------
-
+Scripts (part 2)
+----------------
 Scripts will be more useful when you have a series of commands you want to run in series.
 
 For example a pipeline where you:
@@ -499,8 +414,6 @@ Since linux is made of small utilities, we often want to chain them
 together. We will cover this in detail next class, but the idea
 is that each program takes data, modifies it, and sends it to the next.
 
-We can see lines 5-10 of a file with:
+We can see lines 5-10 of a file with::
 
-.. code-block:: bash
-
-    head /opt/bio-workshop/data/lamina.bed | tail -n 5
+    $ head /opt/bio-workshop/data/lamina.bed | tail -n 5
