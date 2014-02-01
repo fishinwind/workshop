@@ -102,13 +102,12 @@ Course Objectives
 Assessment
 ----------
 Progress of individual students will be assessed during the daily exercise
-session, problem sets assigned after specific classes as well as a final
-project.
+session, weekly problem sets, as well as a final project.
 
 Grading Criteria
 ----------------
 50% participation
-35% problem sets (7)
+35% problem sets (total of 7)
 15% final project
 
 Specific Dates / Material to be Covered
@@ -118,32 +117,32 @@ Block 1
 -------
 
     - Class 1 (M Jan 27) – Introduction to VM, Linux and the shell
-    - Class 2 (W Jan 29) – Linux / Utilities (ls, cd)
-    - Class 3 (F Jan 31) – Linux / Utilities (head, tail, cut, sort, grep, less)
-    - Class 4 (M Feb 3) – Linux / Utilities (sed, awk)
-    - Class 5 (W Feb 5) – Python / Modules / File I/O
-    - Class 6 (F Feb 7) – Python / Logic control
-    - Class 7 (M Feb 10) – Python / Advanced
-    - Class 8 (W Feb 12) – Python / Reading, Formatting and Writing Data
-    - Class 9 (F Feb 14) – Python / File Formats (includes bash, awk etc)
+    - Class 2 (W Jan 29) – Linux / Utilities
+    - Class 3 (F Jan 31) – Linux / Utilities
+    - Class 4 (M Feb 3) – Linux / Utilities
+    - Class 5 (W Feb 5) – Python 
+    - Class 6 (F Feb 7) – Python 
+    - Class 7 (M Feb 10) – Cluster Usage 
+    - Class 8 (W Feb 12) – Cluster Usage
+    - Class 9 (F Feb 14) – Python – Advanced
 
-    *No Class Feb 17 (President's Day)*
+    **No Class Feb 17 (President's Day)**
 
-    - Class 10 (W Feb 19) – Python / Useful modules
-    - Class 11 (F Feb 21) – R / Data Types: vectors, lists, data.frame
-    - Class 12 (M Feb 24) – R / Reshaping, aggregating and summarizing
-    - Class 13 (W Feb 26) – R / Reshaping, aggregating and summarizing
-    - Class 14 (F Feb 28) – R / Plotting with ggplot2
-    - Class 15 (M Mar 3) – R / Plotting with ggplot2
-    - Class 16 (W Mar 5) – R / Plotting with ggplot2
+    - Class 10 (W Feb 19) – Python – Advanced
+    - Class 11 (F Feb 21) – R – Data
+    - Class 12 (M Feb 24) – R – Data
+    - Class 13 (W Feb 26) – R – Plotting
+    - Class 14 (F Feb 28) – R – Plotting 
+    - Class 15 (M Mar 3) – UCSC Genome Browser
+    - Class 16 (W Mar 5) – UCSC Genome Browser
 
 Block 2
 -------
     - Class 1 (F Mar 7) – ENCODE (Overview)
 
-    *No Class Mar 10-14 (Spring Break)*
+    **No Class Mar 10-14 (Spring Break)**
 
-    - Class 2 (M Mar 17) – ENCODE (Types of experiments)
+    - Class 2 (M Mar 17) – ENCODE – Overview
     - Class 3 (W Mar 19) – ChIP-seq / DNaseI-seq (Read densities)
     - Class 4 (F Mar 21) – ChIP-seq / DNaseI-seq (Peak calling)
     - Class 5 (M Mar 24) – ChIP-seq / DNaseI-seq (Motif finding with MEME)
