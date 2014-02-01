@@ -3,10 +3,19 @@ Programming Tips & Tricks
 
 Overview
 --------
+We will teach you to answer biological questions through programming. We
+are **not** trying to turn you into a computer scientist. For now, you can
+leave fancy algorithm development to professionals.
+
+Once you know a few simple tools and learn the basics of the programming
+languages, you will be on the right path toward developing a
+super-important new skill. But after this class ends, it will be up to you
+to keep developing this skill. It's really use-it-or-lose-it.
+
 Several things influence how effectively you can learn to program, and how
-well you program once you have basic ideas down. Most of these have to do
-with your efficiency in actaully *using* a computer, and not programming
-*per se*.
+well you program once you have mastered the basic ideas. Most of these
+have to do with your efficiency in actaully *using* a computer, and not
+programming *per se*.
 
 For example, the longer you spend searching for a particular key to type,
 or surfing around with your mouse, the less time you spend writing,
@@ -16,11 +25,11 @@ programming languages.
 
 Learn to type
 -------------
-Once you have typing basics down, you should be typing 40-50 words per
-minute without any problem. I learned to type on a typewriter (seriously).
 Hunting and pecking is inefficient, and prevents you from spending your
-valuable time efficiently. Moreover, if you're looking at your keyboard,
-you're *not* looking at the screen, reading and debugging code.
+valuable time efficiently. If you're looking at your keyboard, you're
+*not* looking at the screen, reading and debugging code. Once you have
+typing basics down, you should be typing 40-50 words per minute without
+any problem.
 
 There are several good, modern tools to help you type faster.
 
@@ -45,7 +54,7 @@ Learn the locations of the following by heart:
     - Tilde (i.e. the squiggle; for going $HOME): ~
     - Math symbols ("+", "-", "*", "/", "=")
 
-OK so after I made this list, I realized it's basically everything on the
+OK, so after I made this list, I realized it's basically everything on the
 keyboard isn't a letter or number. But you need to learn them anyway.
 
 Learn hot keys for window management
@@ -72,31 +81,35 @@ Learn to use a terminal text editor
 `gedit` is great for newbies. But if you want to bring your script-fu to
 the next level, you need to learn to use a text editor.
 
-There are two types of nerds in this world: those that use `vim`, and
-those that use `emacs`. I'm a `vim`-user. I can't even log out of `emacs`.
+There are two types of nerds in this world: 
 
-Learning an editor like `vim` increases productivity substantially,
+    1. `vim` users
+    2. `emacs` users
+    
+I'm a `vim`-user. I can't even log out of an `emacs` session.
+
+Learning a text editor like `vim` increases productivity substantially,
 because it allows you to:
 
     - run the editor within an existing terminal, without opening a new
       window
     - work on multiple documents simultaneously
     - syntax highlight your code
-    - lots of other things
+    - manipulate blocks of text quickly and efficiently
 
 You can run `vim` from the terminal prompt::
 
     $ vim filename.txt
 
-To quit a vim instance, you need to:
+To quit a vim session, you need to:
 
     1. enter `command mode` with the colon key
     2. write the file
     3. quit the program
 
-This can be accomplished in one go by typing::
+This can be accomplished by typing::
 
-    :wq
+    :wq <enter>
 
 In your copious spare time, and after you have mastered the basics of
 shell, Python and R programming, you should take a tutorial on using a

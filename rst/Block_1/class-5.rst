@@ -18,6 +18,10 @@ read it to become familiar with the language: http://docs.python.org/2/
     cover some language specifics in context Python usage in
     bioinformatics.
 
+Learning to program is not easy. But stick with it. 90% of programming is
+debugging the stuff you write. You will become an **expert** debugger by
+the end of the this class.
+
 Ipython
 -------
 Ipython is an (I)nteractive python terminal that lets you
