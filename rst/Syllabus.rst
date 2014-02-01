@@ -42,10 +42,6 @@ Location
 --------
 Health Sciences Library, Computer Teaching Lab 2
 
-Canvas URL
-----------
-https://ucdenver.instructure.com/courses/11079/assignments/syllabus
-
 Course Description
 ------------------
 The Genome Informatics Workshop is a hands-on tutorial of skills needed to
@@ -98,6 +94,16 @@ Course Objectives
       footprinting, mRNA-seq, variant detection.
     - Learn to visualize data from the ENCODE project in the UCSC Genome
       Browser
+
+Canvas URL
+----------
+https://ucdenver.instructure.com/courses/11079/assignments/syllabus
+
+.. note::
+
+    Be sure to login to the Canvas site to be able to see Announcements,
+    upload Problem Sets, etc.
+
 
 Assessment
 ----------
