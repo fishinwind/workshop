@@ -62,7 +62,7 @@ except ImportError:
 master_doc = 'index'
 
 # General information about the project.
-project = u'bio-workshop'
+project = u'Genome Informatics Workshop'
 copyright = u'2014, Brent Pedersen, Jay Hesselberth'
 
 # The version info for the project you're documenting, acts as replacement for
