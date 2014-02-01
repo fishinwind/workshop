@@ -83,10 +83,10 @@ Python Types
 ------------
 There are several core types in Python that you will use a lot.
 
-`Strings` are collections of characters (words and sentences).
-`Ints` and `Floats` are numbers.
-`Lists` are groups of other objects.
-`Dictionaries` contain key:value mappings.
+- `Strings` are collections of characters (words and sentences).
+- `Ints` and `Floats` are numbers.
+- `Lists` are groups of other objects.
+- `Dictionaries` contain key:value mappings.
 
 Everything is an object
 -----------------------
@@ -95,7 +95,6 @@ expected presentation of everything, but everything has additional methods
 that can be called.
 
 .. code-block:: python
-
     
 In Class Exercise
 ------------------
