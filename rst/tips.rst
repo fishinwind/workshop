@@ -50,7 +50,7 @@ keyboard isn't a letter or number. But you need to learn them anyway.
 
 Learn hot keys for window management
 ------------------------------------
-The mouse is your enemy. Yes, it revolutionized the computer / human
+**The mouse is your enemy.** Yes, it revolutionized the computer–human
 interaction. But the more time you spend using your mouse, the less time
 you spend with your hands on the keyboard and doing useful things.
 
