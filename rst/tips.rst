@@ -31,7 +31,7 @@ valuable time efficiently. If you're looking at your keyboard, you're
 typing basics down, you should be typing 40-50 words per minute without
 any problem.
 
-There are several good, modern tools to help you type faster.
+There are several good, modern tools to help you master touch-typing.
 
     - http://typing.io/
 
