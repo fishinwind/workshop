@@ -45,9 +45,12 @@ Health Sciences Library, Computer Teaching Lab 2
 Course Description
 ------------------
 The Genome Informatics Workshop is a hands-on tutorial of skills needed to
-process large genomics data sets and visualize their results.
+process large genomics data sets and visualize their results.  The class
+is taught from the standpoint of an experimentalist with practical goals
+(e.g. to interpret the results of a sequencing-based experiment and gain
+biologically meaningful insight).
 
-In the first session (6 weeks), we focus on working in the Linux
+In the first block, we focus on working in the Linux
 environment, with considerable emphasis on Linux command-line tools,
 Python programming and the R statistical computing environment. We use
 publicly available next-generation DNA sequencing data from the ENCODE
@@ -55,12 +58,9 @@ project to illustrate standard approaches for manipulating sequencing
 data, aligning sequences to a reference genome, generating coverage plots
 and displaying them in the UCSC Genome Browser.
 
-In the second session (6 weeks), we focus on specific analyses used in
+In the second block, we focus on specific analyses used in
 ENCODE project, including ChIP-seq, DNase I footprinting, mRNA-seq and
 genome sequencing to identify single nucleotide and structural variants.
-This class is taught from the standpoint of an experimentalist with
-practical goals (e.g. to interpret the results of a sequencing-based
-experiment and gain biologically meaningful insight).
 
 Course Credits
 --------------
@@ -68,27 +68,25 @@ This is a 2 credit course.
 
 Texts and Reading Materials
 ---------------------------
-**Required**: Learn Python the Hard Way,
-http://learnpythonthehardway.org/book/
++ **Required**: Learn Python the Hard Way,
+    http://learnpythonthehardway.org/book/
++ **Required**: Command Line Crash Course
+    http://cli.learncodethehardway.org/book/
++ **Required**: ggplot2: Elegant Graphics for Data Analysis
+    http://ggplot2.org/book/
 
-**Required**: Learn Bash (Shell) the Hard Way
-http://cli.learncodethehardway.org/book/
-
-**Required**: ggplot2: Elegant Graphics for Data Analysis
-http://ggplot2.org/book/
-
-A Quick Guide to Organizing Computational Biology Projects
-http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
++ A Quick Guide to Organizing Computational Biology Projects
+    http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
 
 Course Objectives
 -----------------
-1. First session (6 weeks, 27 Jan - 28 Feb)
+1. First block (6 weeks, 27 Jan - 28 Feb)
     - Learn to manipulate large sequencing data sets with Linux tools
       and Python programming.
     - Learn to manipulate and visualize data in useful ways with the
       R statistical computing environment.
 
-2. Second session (6 weeks, 3 Mar - 14 Apr)
+2. Second block (6 weeks, 3 Mar - 14 Apr)
     - Learn workflows for experiments in ENCODE: ChIP-seq DNase I
       footprinting, mRNA-seq, variant detection.
     - Learn to visualize data from the ENCODE project in the UCSC Genome
