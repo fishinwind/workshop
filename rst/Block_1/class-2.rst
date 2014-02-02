@@ -269,9 +269,8 @@ What does the -r flag do?
 
 moving/copying files
 --------------------
-mv [source] [dest]
+mv [source] [dest]::
 
-::
     $ touch /tmp/asdf
     $ mv /tmp/asdf ~
     $ ls -lhtr ~/

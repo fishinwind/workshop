@@ -207,8 +207,12 @@ Also beware of using ``grep`` to search for numbers::
 
     $ grep 100 /opt/bio-workshop/data/lamina.bed | head -n 20
 
-If you're trying to find numeric values in a file, you should use ``awk``
-instead.
+.. tip::
+
+    If you're trying to find numeric values in a file, use ``awk``
+    instead::
+
+        $ awk '$2 == 500' /opt/bio-workshop/data/lamina.bed
 
 In Class Exercises
 ------------------

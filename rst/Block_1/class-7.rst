@@ -69,9 +69,9 @@ write this into a run.sh file::
 The `#BSUB` lines are comments, but are read by the ``bsub`` program to
 identify features associated with your job. 
 
-    - `-J` sets the job's name
-    - `%J` is a unique job ID that is set when you run the job.
-    - `-e` and `-o` set the filenames for stderr and stdout from the job
+    - ``-J`` sets the job's name
+    - ``%J`` is a unique job ID that is set when you run the job.
+    - ``-e`` and ``-o`` set the filenames for stderr and stdout from the job
 
 The queueing system (3)
 -----------------------
@@ -105,7 +105,8 @@ You can also kill **all** of your jobs at once::
 
 Other cluster-specific commands
 -------------------------------
-::
+.. code-block:: bash
+
     $ bhosts     # hosts in the cluster
     $ man bhosts # bsub man page
     $ bqueues    # available queues

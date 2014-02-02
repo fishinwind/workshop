@@ -1,3 +1,4 @@
+===================================================
 Class 8 : Working in a cluster environment (part 2)
 ===================================================
 
@@ -5,15 +6,28 @@ We will go over a common scenario in bioinformatics in which you can
 leverage cluster resources to process many files simultaneously with
 identical workflows.
 
+Scenario 1
+----------
 Sequencing experiments typically generate raw sequencing data from many
 different experimental conditions (i.e. treatments, cell types, time
 points, controls, etc.) However, the initial steps of processing
 sequencing data rely on common steps to get the data into a manageable
 form. A typical workflow for assessing sequencing data is:
 
-    1. Calculate summary statistics on the raw reads
-    2. Align reads to a reference genome
-    3. Calculate coverage from the alignment
+    #. Calculate summary statistics on the raw reads
+    #. Align reads to a reference genome
+    #. Calculate coverage from the alignment
+
+.. todo::
+
+    figure out how to:
+
+        #. move the following code block to a file
+        #. and have it displayed in the rendered html
+        #. provide a link to the file so that one can download (instead of
+            copying and pasting)
+
+    Maybe use this?: http://sphinx-doc.org/markup/inline.html#ref-role
 
 Now assume we have 4 different FASTQ files from a sequencing experiment.
 
