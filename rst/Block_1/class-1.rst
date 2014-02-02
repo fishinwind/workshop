@@ -1,3 +1,4 @@
+=====================================================
 Class 1 : Virtual Machine (VM) and Linux Introduction
 =====================================================
 
@@ -84,22 +85,22 @@ schedule class time, and outside of class time. Instead of focusing on
 teaching you these languages, we will focus on helping you get through all
 of the frustating problems that come up when you're learning the languages.
 
-We will spend the first ~2 weeks learning shell and all the things you have
+We will spend the first ~2 weeks learning shell [#]_ and all the things you have
 access to within the shell.
 
-The URL for the shell programming course is:
-http://cli.learncodethehardway.org/book/
+.. [#] The Command Line Crash Course
+        http://cli.learncodethehardway.org/book/
 
-After learning shell, we will begin learning Python. The Python language
+After learning shell, we will begin learning Python [#]_. The Python language
 allows you to do more sophisticated things that would be possible in
 shell, but considerably more ugly.
 
-The URL for the Python programming course is:
-http://learnpythonthehardway.org/
+.. [#] Learn Python the Hard Way
+        http://learnpythonthehardway.org/book/
 
 Reading
 -------
-For the first quiz, you'll need to read this paper and be able to put
+For the first quiz, you'll need to read this paper [#]_ and be able to put
 a set of files in the correct places. We highly recommend adopting this
 scheme for all of your projects in and out of the class.
 
@@ -107,7 +108,7 @@ Computational biology projects inevitably accrue a lot of files, and
 This paper is a great way to get started on organizing all of this
 information.
 
-    Organization for computational biology projects. PLoS Comput Biol.
-    William S. Noble
-    `Link <http://dx.plos.org/10.1371/journal.pcbi.1000424>`_
+.. [#] A Quick Guide to Organizing Computational Biology Projects (2009)
+        PLoS Comput. Biol. William S. Noble
+        http://dx.plos.org/10.1371/journal.pcbi.1000424
 
