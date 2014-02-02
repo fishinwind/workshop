@@ -93,7 +93,7 @@ access to within the shell.
 
 After learning shell, we will begin learning Python [#]_. The Python language
 allows you to do more sophisticated things that would be possible in
-shell, but considerably more ugly.
+shell, but would be considerably more clunky.
 
 .. [#] Learn Python the Hard Way
         http://learnpythonthehardway.org/book/
