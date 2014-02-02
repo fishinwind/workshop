@@ -1,23 +1,30 @@
 Sphinx docs for for Genome Informatics Workshop
 ===============================================
 
+Making linked slides and HTML
+-----------------------------
+
+Make linked slides with ::
+    
+    $ make html slides
+
 Making slides
 -------------
 
-Make slides with::
+Make slides with ::
 
-    make slides
+    $ make slides
 
-Slides will be in::
+Slides will be in ::
     
-    $ _build/slides
+    _build/slides
 
 Making webiste
 --------------
 
-Make HTML with::
+Make HTML only with ::
 
-    make html
+    $ make html
 
 .. todo::
 
@@ -27,6 +34,7 @@ Move HTML to bioworkshop.github.io with::
 
     websitedir=$HOME/devel/UCD-BioWorkshop.github.io
     cp -r _build/html/* $websitedir
+    cp -r _build/slides/* $websitedir
     cd $websitedir
 
     git pull origin master

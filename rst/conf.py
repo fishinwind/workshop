@@ -177,13 +177,13 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
+html_show_sourcelink = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-#html_show_copyright = True
+html_show_copyright = True
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
@@ -194,7 +194,7 @@ html_show_sphinx = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'bio-workshopdoc'
+htmlhelp_basename = 'workshop-doc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -277,3 +277,6 @@ texinfo_documents = [
 
 slide_levels = 2
 slide_theme = 'single-level'
+slide_link_html_to_slides = True
+slide_link_html_sections_to_slides = True
+slide_link_to_html = True

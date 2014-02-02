@@ -82,7 +82,6 @@ http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.
 
 Course Objectives
 -----------------
-
 1. First session (6 weeks, 27 Jan - 28 Feb)
     - Learn to manipulate large sequencing data sets with Linux tools
       and Python programming.
@@ -103,7 +102,6 @@ https://ucdenver.instructure.com/courses/11079/assignments/syllabus
 
     Be sure to login to the Canvas site to be able to see Announcements,
     upload Problem Sets, etc.
-
 
 Assessment
 ----------
