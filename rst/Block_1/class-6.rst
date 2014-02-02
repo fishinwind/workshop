@@ -1,10 +1,6 @@
 Class 5 : Python : Basics (2)
 =============================
 
-Lists
------
-Lists aer
-
 For Loops (characters)
 ----------------------
 Lots of things in python are `iterable`, meaning we can write loops
