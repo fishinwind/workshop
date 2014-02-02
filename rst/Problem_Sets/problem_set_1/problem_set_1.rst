@@ -6,10 +6,13 @@ Problem Set 1
 Reading
 -------
 For this problem set, you'll need to read Bill Noble's paper on organizing
-computational biology projects
-(http://dx.plos.org/10.1371/journal.pcbi.1000424) and be able to put a set
-of files in the correct places. You should adopt this scheme
-for all of your projects in and out of class.
+computational biology projects [#]_ and be able to put a set of files in
+the correct places. You should adopt this scheme for all of your projects
+in and out of class.
+
+.. [#] A Quick Guide to Organizing Computational Biology Projects (2009)
+        PLoS Comput. Biol. William S. Noble
+        http://dx.plos.org/10.1371/journal.pcbi.1000424
 
 Computational biology projects inevitably accrue a lot of files, and this
 paper is a great way to organize all of this information.  As you read in
@@ -17,9 +20,11 @@ the paper, organization of projects is important for remembering what you
 did, and reanalyzing data when changes are made.
 
 This quiz will also test your ability to do simple tasks on the command
-line.  For reference, the tutorial is at::
+line. You will need to take the tutorial to learn the necessary tools
+[#]_.
 
-    http://cli.learncodethehardway.org/book/
+.. [#] The Command Line Crash Course
+        http://cli.learncodethehardway.org/book/
 
 You will use the command line tools discussed in the tutorial (e.g. mkdir,
 cd, ls, mv) to create the directory structure, move files into place and
