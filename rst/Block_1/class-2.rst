@@ -13,7 +13,7 @@ Goals
 
 Unix Philosophy
 ---------------
-Works well for bioinformatics:
+The Unix philosophy [#]_ Works well for bioinformatics:
 
 + Make each program do one thing well.
 + Make every program a filter.
@@ -23,7 +23,7 @@ Works well for bioinformatics:
 + Use software leverage to your advantage.
 + Use shell scripts to increase leverage and portability.
 
-(From Mike Gancarz http://en.wikipedia.org/wiki/Unix_philosophy)
+.. [#] http://en.wikipedia.org/wiki/Unix_philosophy
 
 Navigating In the Terminal
 --------------------------

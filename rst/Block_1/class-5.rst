@@ -19,9 +19,10 @@ bioinformatics.
 We will use it to process and filter files. When you can't write a simple
 script in ``awk``, it is better to use python.
 
-The Python documentation is very helpful, with lots of examples. You
-should read it to become familiar with the language:
-http://docs.python.org/2/
+The Python documentation [#]_ is very helpful, with lots of examples. You
+should read it to become familiar with the language.
+
+.. [#] Python 2.x docs http://docs.python.org/2/
 
 .. note::
 

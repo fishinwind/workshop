@@ -55,10 +55,12 @@ multiple patterns::
 bioawk
 ------
 
-Bioawk is a variant of awk that knows about common sequence formats. To
+Bioawk [#]_ is a variant of awk that knows about common sequence formats. To
 count the number of records in a fastq file::
 
     $ bioawk -c fastx 'END { print $NR }'
+
+.. [#] Bioawk README https://github.com/lh3/bioawk
 
 biowak (names)
 --------------
@@ -66,6 +68,4 @@ biowak (names)
 You can access `name`, `seq`, `qual`, `comment`::
 
     $ biowak -c fastx '{ print $name, $seq, $qual}'
-
-See the README at: https://github.com/lh3/bioawk for more info
 
