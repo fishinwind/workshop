@@ -19,12 +19,12 @@ Learn to type
 Hunting and pecking is inefficient, and prevents you from spending your
 valuable time efficiently. If you're looking at your keyboard, you're
 *not* looking at the screen, reading and debugging code. Once you have
-typing basics down, you should be typing 40-50 words per minute without
-any problem.
+typing basics down, you should be typing 40-50 words per minute, without
+ever looking at the keyboard.
 
-There are several good, modern tools to help you master touch-typing.
+There are several good, modern tools [#]_ to help you master touch-typing.
 
-    - http://typing.io/
+.. [#] Typing IO http://typing.io/
 
 .. todo::
 
@@ -55,16 +55,25 @@ interaction. But the more time you spend using your mouse, the less time
 you spend with your hands on the keyboard and doing useful things.
 
 But I *need* my mouse, you say. I say: no, you don't. You can do everything
-with your keyboard. There are several hot keys that you should learn that
+with your keyboard. There are several hot keys [#]_ that you should learn that
 will maximize your productivity on the computer by minimizing your use of
 the mouse.
 
-    - <Alt>-Tab : You can flip through windows quickly and effortlessly
+    - **<Alt>-Tab** : Flip through windows quickly and effortlessly
       without ever touching your mouse.
+
+.. [#] - Arch Linux
+        https://wiki.archlinux.org/index.php/Keyboard_Shortcuts#Terminal
+
+.. tip::
+
+    Make windows launch automatically during login. For example, you could
+    automatically launch four terminal windows and a browser window,
+    without having to click.
 
 .. todo::
 
-    - Hot key for switching Terminals on Linux?
+    - Hot key for switching between Terminal windows on Linux? <Alt>-<~>?
     - Hot key for launching new Terminals on Linux?
 
 Learn to use a terminal text editor
@@ -104,4 +113,7 @@ This can be accomplished by typing::
 
 In your copious spare time, and after you have mastered the basics of
 shell, Python and R programming, you should take a tutorial on using a
-text editor. Check out the Tutorial at http://www.openvim.com/ first.
+text editor. Check out this Tutorial [#]_ first.
+
+.. [#] OpenVim http://www.openvim.com/ 
+
