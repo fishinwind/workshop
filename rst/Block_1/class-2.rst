@@ -1,13 +1,14 @@
+==========================
 Class 2 : The command-line
 ==========================
 
 Goals
 -----
-1. The **Shell**
+1. The ``bash`` shell
 2. continue learning to navigate within the terminal
 3. understand the linux philosophy (small tools that do one thing well)
 4. understand how to apply some common linux utilities to files
-5. gedit to edit files
+5. ``gedit`` to edit files
 
 
 Unix Philosophy
