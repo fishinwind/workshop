@@ -1,3 +1,4 @@
+========
 Syllabus
 ========
 
@@ -9,7 +10,7 @@ Syllabus
 :Author: Brent Pedersen
 :Organization: University of Colorado School of Medicine
 :Address: Department of Biochemistry and Molecular Genetics
-          Department of Medicine
+:Address: Department of Medicine
 :Copyright: 2013-2014 Jay R. Hesselberth, Brent Pedersen
 :Last updated: |today|
 
@@ -50,17 +51,17 @@ is taught from the standpoint of an experimentalist with practical goals
 (e.g. to interpret the results of a sequencing-based experiment and gain
 biologically meaningful insight).
 
-In the first block, we focus on working in the Linux
-environment, with considerable emphasis on Linux command-line tools,
-Python programming and the R statistical computing environment. We use
-publicly available next-generation DNA sequencing data from the ENCODE
-project to illustrate standard approaches for manipulating sequencing
-data, aligning sequences to a reference genome, generating coverage plots
-and displaying them in the UCSC Genome Browser.
+In the first block, we focus on working in the Linux environment, with
+considerable emphasis on Linux command-line tools, Python programming and
+the R statistical computing environment. We use publicly available
+next-generation DNA sequencing data from the ENCODE project to illustrate
+standard approaches for manipulating sequencing data, aligning sequences
+to a reference genome, generating coverage plots and displaying them in
+the UCSC Genome Browser.
 
-In the second block, we focus on specific analyses used in
-ENCODE project, including ChIP-seq, DNase I footprinting, mRNA-seq and
-genome sequencing to identify single nucleotide and structural variants.
+In the second block, we focus on specific analyses used in ENCODE project,
+including ChIP-seq, DNase I footprinting, mRNA-seq and genome sequencing
+to identify single nucleotide and structural variants.
 
 Course Credits
 --------------
@@ -74,8 +75,7 @@ Texts and Reading Materials
     http://cli.learncodethehardway.org/book/
 + **Required**: ggplot2: Elegant Graphics for Data Analysis
     http://ggplot2.org/book/
-
-+ A Quick Guide to Organizing Computational Biology Projects
++ **Required**: A Quick Guide to Organizing Computational Biology Projects
     http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
 
 Course Objectives
