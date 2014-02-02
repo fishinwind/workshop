@@ -1,18 +1,22 @@
-===================================================
+***************************************************
 Class 8 : Working in a cluster environment (part 2)
-===================================================
+***************************************************
 
-We will go over a common scenario in bioinformatics in which you can
+Goals
+=====
+#. Leverage cluster resources to solve bioinformatic problems
+
+We will go over some common scenarios in bioinformatics where you can
 leverage cluster resources to process many files simultaneously with
 identical workflows.
 
 Scenario 1
-----------
+==========
 Sequencing experiments typically generate raw sequencing data from many
-different experimental conditions (i.e. treatments, cell types, time
-points, controls, etc.) However, the initial steps of processing
-sequencing data rely on common steps to get the data into a manageable
-form. A typical workflow for assessing sequencing data is:
+different experimental conditions (i.e. treatments, controls, cell types,
+time points, etc.) However, the initial steps of processing sequencing
+data rely on common steps to get the data into a manageable form. A
+typical workflow for assessing sequencing data is:
 
     #. Calculate summary statistics on the raw reads
     #. Align reads to a reference genome
@@ -23,7 +27,7 @@ form. A typical workflow for assessing sequencing data is:
     figure out how to:
 
         #. move the following code block to a file
-        #. and have it displayed in the rendered html
+        #. have it displayed in the rendered html
         #. provide a link to the file so that one can download (instead of
             copying and pasting)
 
@@ -72,3 +76,9 @@ Run the above script and check its status immediately::
 You should see 4 running jobs, each with its own index i.e. workflow[1],
 workflow[2] etc.    
 
+These will run for a bit. After they are done, you will see several new
+files, corresponding to the output of the same analysis applied to all the
+different samples.
+
+Scenario 2
+==========

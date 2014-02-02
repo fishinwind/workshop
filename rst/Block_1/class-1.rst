@@ -1,19 +1,19 @@
-=====================================================
+*****************************************************
 Class 1 : Virtual Machine (VM) and Linux Introduction
-=====================================================
+*****************************************************
 
 Goals
------
-1. Class overview
-2. Get the VM running
-3. Overall goals for the Blocks and Class
+=====
+#. Class overview
+#. Get the VM running
+#. Overall goals for the Blocks and Class
 
 Class Overview
---------------
-Each class is 1.5 hours. We intend to spend the first 30 min going
-through exercises that demonstrate how specific tools are useful 
-in bioinformatics. During the remaining hour, we expect you to work
-through exercises, asking for help when you get stuck. 
+==============
+Each class is 90 minutes. We intend to spend the first 30 min going
+through exercises that demonstrate how specific tools are useful in
+bioinformatics. During the remaining hour, we expect you to work through
+exercises, asking for help when you get stuck. 
 
 We will record the first 30 minutes using Panopto Screen Capture, and
 these recordings will be available in Canvas. We have found that simply
@@ -26,14 +26,14 @@ Each week, we will have 1 take home quiz, due the following Tuesday at 5
 PM. 
 
 The Virtual Machine (VM)
-------------------------
+========================
 The VM will let you run Linux on your laptop, or the laptops available at
 the Teaching Lab. The VM has many of the tools you will need for analysis
 pre-installed. Feel free to install other tools that you think will be
 useful.
 
 Important Directories
----------------------
+=====================
 You will learn about directories in the next class, but note that the
 content for this class is available in::
 
@@ -45,7 +45,7 @@ a directory like::
    /opt/bio-workshop/homeworks/section_1/week1/
 
 Terminal and Gedit
-------------------
+==================
 When you open a Terminal, you also launch a shell process, typically a
 bash process. At the prompt, you can type things that bash understands,
 and it will do them. The shell has its own language, which you will learn
@@ -74,7 +74,7 @@ This will open a window where you can type. You can write a small test
 document and save it.
 
 Shell and Python Programming
-----------------------------
+============================
 It is important that you learn a few new computer languages. Others have
 developed very good guides to teach you these languages, and we are going
 to use those in the class. We expect you to begin taking these classes
@@ -98,15 +98,12 @@ shell, but would be considerably more clunky.
 .. [#] Learn Python the Hard Way
         http://learnpythonthehardway.org/book/
 
-Reading
--------
-For the first quiz, you'll need to read this paper [#]_ and be able to put
-a set of files in the correct places. We highly recommend adopting this
-scheme for all of your projects in and out of the class.
-
-Computational biology projects inevitably accrue a lot of files, and 
-This paper is a great way to get started on organizing all of this
-information.
+First Quiz : Reading
+====================
+Computational biology projects inevitably accrue a lot of files. For the
+first quiz, you'll need to read a paper [#]_ and be able to put a set of
+files in the correct places. We highly recommend adopting this scheme for
+all of your projects in and out of the class.
 
 .. [#] A Quick Guide to Organizing Computational Biology Projects (2009)
         PLoS Comput. Biol. William S. Noble

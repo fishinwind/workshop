@@ -1,18 +1,17 @@
-==========================
+**************************
 Class 2 : The command-line
-==========================
+**************************
 
 Goals
------
+=====
 1. The ``bash`` shell
 2. continue learning to navigate within the terminal
 3. understand the linux philosophy (small tools that do one thing well)
 4. understand how to apply some common linux utilities to files
 5. ``gedit`` to edit files
 
-
 Unix Philosophy
----------------
+===============
 The Unix philosophy [#]_ Works well for bioinformatics:
 
 + Make each program do one thing well.
@@ -26,7 +25,7 @@ The Unix philosophy [#]_ Works well for bioinformatics:
 .. [#] http://en.wikipedia.org/wiki/Unix_philosophy
 
 Navigating In the Terminal
---------------------------
+==========================
 When you start the terminal, you will be in your home directory.
 
 In Linux home is represented as `~` and also as `$HOME`
@@ -40,9 +39,9 @@ Try this in the terminal::
 
 pwd is "print working directory"
 
-
 Navigating In the Terminal (part 2)
------------------------------------
+===================================
+    
 Change to another directory::
 
     $ cd /tmp/
@@ -61,7 +60,7 @@ These can be separated as::
     $ ls -l -h
 
 Navigating In the Terminal (part 3)
------------------------------------
+===================================
 The content for the class, including the source for generating this document,
 are in::
 
@@ -71,9 +70,8 @@ on your virtual machine.
 
 Navigate to that directory and look around with `ls`
 
-
 Getting Help In The Terminal
-----------------------------
+============================
 How can you find out the arguments that *ls* accepts (or expects)::
 
     $ man ls
@@ -91,8 +89,13 @@ or::
 
 Which of those works for `ls`?
 
-Getting Help: Exercises
------------------------
+Getting Help In The Terminal (2)
+================================
+ + If you see an error message, read it carefully. 
+ + It may seem cryptic, but it is built to inform you what went wrong.
+
+Getting Help : Exercises
+========================
  + use `man` to find out how to list files so that the most
    recently modified files are listed last.
 
@@ -102,14 +105,8 @@ care about the most recently modified files)
  + use google to find the same thing. how else can you
    sort the output of `ls`?
 
-
-Getting Help In The Terminal(2)
--------------------------------
- + If you see an error message, read it carefully. 
- + It may seem cryptic, but it is built to inform you what went wrong.
-
 Getting Help Outside The Terminal
----------------------------------
+=================================
 Use google. Useful sites include:
 
  + stackexchange.com
@@ -120,7 +117,7 @@ In many cases, if you receive and error, you can copy-paste it into google
 and find some info.
 
 Other Commands In The Terminal
-------------------------------
+==============================
 Use the *man* command to determine what *head* does.
 
 Use *head* on the file /opt/bio-workshop/data/lamina.bed
@@ -128,11 +125,11 @@ Use *head* on the file /opt/bio-workshop/data/lamina.bed
 Use *tail* to see the end of the file.
 
 Questions
-+++++++++
+^^^^^^^^^
 By default, head and tail show 10 lines. How can you see 13 lines?
 
 Other Commands In The Terminal (Answers)
-----------------------------------------
+========================================
 
 .. code-block:: bash
 
@@ -142,14 +139,14 @@ Other Commands In The Terminal (Answers)
     $ head -n 13 /opt/bio-workshop/data/lamina.bed
 
 Word Counts (wc)
-----------------
+================
 Exercise:
 
     + use **wc** to determine how many **lines** are in /opt/bio-workshop/data/lamina.bed
     + use **wc** to determine how many **words** are in /opt/bio-workshop/data/lamina.bed
 
 Less (is More)
---------------
+==============
 To view a large file, use less::
 
     less /opt/bio-workshop/data/lamina.bed
@@ -163,7 +160,7 @@ You can see info about the file (including number of lines) using "ctrl+g"
 You can exit **less** using "q"
 
 Terminal History
-----------------
+================
 Press the up arrow in the terminal.
 
 Up and down arrows will allow you to scroll through your previous commands.
@@ -175,7 +172,7 @@ You can type the start of a command and then up-arrow and it will cycle
 through commands that start with that prefix.
 
 Tab-Completion
---------------
+==============
 The shell (bash) when set up properly can give you a lot of help
 
 Type the following where [TAB] means the Tab key on the keyboard::
@@ -198,9 +195,8 @@ or::
 
     $ heaaa[TAB][TAB] 
 
-
 Directory Shortcuts
--------------------
+===================
 We have already used the `cd` command to change directories. And we have
 used the "~" shortcut for home.
 
@@ -224,7 +220,7 @@ To explicitly see the current directory::
     $ ls ./
 
 Directory Shortcuts (part 2)
-----------------------------
+============================
 We can go 2 directories up with::
 
     $ cd ../../
@@ -235,7 +231,7 @@ What does this do::
     $ ls ./*
 
 Directory Shortcuts (part 3)
-----------------------------
+============================
 you can go to the last directory with::
 
     $ cd -
@@ -243,7 +239,7 @@ you can go to the last directory with::
 and switch back and forth by using that repeatedly.
 
 Make and remove directories
----------------------------
+===========================
 ::
     mkdir ~/tmp # OK
 
@@ -267,8 +263,8 @@ What does the -r flag do?
     Be careful with `rm -r` and `rm -rf`. You can accidentially remove
     entire directories that you didn't intent to.
 
-moving/copying files
---------------------
+Mmoving and copying files
+=========================
 mv [source] [dest]::
 
     $ touch /tmp/asdf
@@ -276,7 +272,7 @@ mv [source] [dest]::
     $ ls -lhtr ~/
 
 Moving and copying files (part 2)
----------------------------------
+=================================
 In-class excercise:
 
  1. make a directory `/tmp/moveable`
@@ -284,7 +280,7 @@ In-class excercise:
  3. copy that directory to `/tmp/subdir/`
 
 echo
-----
+====
 `echo` means "print"::
 
     echo "hello world"
@@ -296,7 +292,7 @@ and you can use it to see **bash** variables::
     echo $HISTFILE
 
 Variables
----------
+=========
 We will start covering programming in the next classes, but variables are a
 key component of programming.
 
@@ -307,7 +303,7 @@ You can do::
 
 
 sudo
-----
+====
 .. image:: http://imgs.xkcd.com/comics/sandwich.png
 
 .. code-block:: bash
@@ -316,7 +312,7 @@ sudo
     sudo apt-get install cowsay
 
 other commands
---------------
+==============
 excercise:
 
 use `man` to determine the function of:
@@ -328,7 +324,7 @@ How many records are present for each chromosome in
 /opt/bio-workshop/data/lamina.bed (assume it is sorted by chromosome)?
 
 gedit
------
+=====
 In order to edit files as you would using `notepad` or `word` in windows,
 we will use the simple editor "gedit".
 
@@ -340,7 +336,7 @@ This will open a new window with GUI controls. Use gedit to write/edit
 scripts for this class.
 
 Scripts
--------
+=======
 A script is simply a series of commands that you save in a file. You will
 need to write scripts to complete the homework.
 
@@ -358,20 +354,21 @@ You can then run it as::
 And you should see the same output as if you ran `ls /opt/bio-workshop` directly.
 
 Scripts (part 2)
-----------------
-Scripts will be more useful when you have a series of commands you want to run in series.
+================
+Scripts will be more useful when you have a series of commands you want to
+run in series.
 
 For example a pipeline where you:
 
- 1. run quality control on some ChIP-seq reads 
- 2. align reads to a reference genome
- 3. find peaks (binding sites)
- 4. annotate the binding sites.
+ #. run quality control on some ChIP-seq reads 
+ #. align reads to a reference genome
+ #. find peaks (binding sites)
+ #. annotate the binding sites.
 
 In cases like that, a script will provide a record of what you have done.
 
-Comments
---------
+Scripts : Commenting
+====================
 For the homework you will comment your scripts. 
 
 Comments are not read by the shell, but they tell us (and you) what
@@ -384,7 +381,7 @@ you were trying to do. You can comment your code using the "#" symbol.
     $ ls -lhtr /tmp/
 
 Pipes
------
+=====
 Since linux is made of small utilities, we often want to chain them
 together. We will cover this in detail next class, but the idea
 is that each program takes data, modifies it, and sends it to the next.
@@ -392,3 +389,4 @@ is that each program takes data, modifies it, and sends it to the next.
 We can see lines 5-10 of a file with::
 
     $ head /opt/bio-workshop/data/lamina.bed | tail -n 5
+

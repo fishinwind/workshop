@@ -1,8 +1,15 @@
+******************************************
 Class 7 : Working in a cluster environment
-==========================================
+******************************************
+
+Goals
+=====
+#. Login to cluster
+#. Learn about cluster-specific commands
+#. Queueing system basics
 
 Cluster access
---------------
+==============
 We have set up accounts for the class on our departmental cluster. We will
 set up your accounts at the end of class and reset your passwords::
 
@@ -10,7 +17,7 @@ set up your accounts at the end of class and reset your passwords::
     $ ssh -X username@amc-tesla.ucdenver.pvt
 
 Cluster etiquette
------------------
+=================
 There are some specific rules you need to know when you're operating in a
 cluster environment.
 
@@ -20,7 +27,7 @@ cluster environment.
   it can easily be overextended.
 
 Example commands on the cluster
--------------------------------
+===============================
 Find the size of the file system::
 
     $ df -h
@@ -30,7 +37,7 @@ Find how much space you have allocated::
     $ quota -h
 
 The queueing system
--------------------
+===================
 First you will grab a single CPU from the queueing system so that you can play
 around without affecting the head node. We use ``qlogin`` for this::
 
@@ -87,7 +94,7 @@ Look at the contents of those files so you know what is in
 each one.
 
 Killing jobs
-------------
+============
 Sometimes you need to kill your jobs. You can kill specific jobs using
 their job ID numbers, obtained from checking `bjobs`::
 
@@ -104,7 +111,7 @@ You can also kill **all** of your jobs at once::
     too if you are not careful!
 
 Other cluster-specific commands
--------------------------------
+===============================
 .. code-block:: bash
 
     $ bhosts     # hosts in the cluster
@@ -112,3 +119,8 @@ Other cluster-specific commands
     $ bqueues    # available queues
     $ lsload     # check load values for all hosts
 
+In class exercises
+==================
+::
+ 1. test
+ 2. test 2
