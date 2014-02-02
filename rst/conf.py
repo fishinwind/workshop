@@ -56,6 +56,11 @@ try:
 except ImportError:
     sys.stderr.write("please install (pip) hieroglyph\n")
     sys.exit(1)
+try:
+    import IPython
+except ImportError:
+    sys.stderr.write("please install (pip) ipython\n")
+    sys.exit(1)
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
