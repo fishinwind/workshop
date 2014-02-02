@@ -1,3 +1,4 @@
+=========================
 Programming Tips & Tricks
 =========================
 
@@ -57,7 +58,7 @@ you spend with your hands on the keyboard and doing useful things.
 But I *need* my mouse, you say. I say: no, you don't. You can do everything
 with your keyboard. There are several hot keys [#]_ that you should learn that
 will maximize your productivity on the computer by minimizing your use of
-the mouse.
+the mouse:
 
     - **<Alt>-Tab** : Flip through windows quickly and effortlessly
       without ever touching your mouse.
@@ -67,9 +68,9 @@ the mouse.
 
 .. tip::
 
-    Make windows launch automatically during login. For example, you could
-    automatically launch four terminal windows and a browser window,
-    without having to click.
+    **Laurch your most-used apps automatically during login.**
+    For example, automatically launch four terminal windows and a browser
+    window, without having to click.
 
 .. todo::
 
