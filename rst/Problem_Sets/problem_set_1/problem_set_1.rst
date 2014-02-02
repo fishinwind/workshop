@@ -98,7 +98,7 @@ you want to write the results in (hint: it should include today's date).
     sort -k6n $datafile | head -n 10 >> $resultsfile
 
 Then, save the above text in a run.sh script in your results directory. To run the file,
-use::
+use ::
 
     $ bash run.sh
 
@@ -117,7 +117,7 @@ points**).
 Problem Set Submission
 ----------------------
 Specify the root of your project directory and create a tar file of the whole
-directory like this; you can change LASTNAME to your last name::
+directory like this; you can change LASTNAME to your last name ::
 
     $ projectdir=$HOME/project
     $ tar -cvf LASTNAME-problem-set.tar $projectdir

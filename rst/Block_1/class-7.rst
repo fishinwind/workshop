@@ -30,7 +30,7 @@ Find how much space you have allocated::
 
 The queueing system
 -------------------
-First you will grab a single  CPU from the queueing system so that you can play
+First you will grab a single CPU from the queueing system so that you can play
 around without affecting the head node. We use `qlogin` for this::
 
     jhessel@amc-tesla ~
@@ -44,11 +44,15 @@ around without affecting the head node. We use `qlogin` for this::
     jhessel@compute00 ~
     $ 
 
-Note that the host in the prompt changed from amc-tesla to compute00. You
-can now execute long-running processes without worry of affecting the
-cluster. Type `exit` to exit this process and return back to your head
-node login.
+.. note:: 
 
+    The host in the prompt changed from amc-tesla to compute00.
+    
+You can now execute long-running processes without worry of affecting the
+cluster. Type `exit` to return back to your head node login.
+
+The queueing system (2)
+-----------------------
 The cluster uses a queueing system that will run jobs that you submit to
 it. You can write a small test script to see how the system works. First,
 write this into a run.sh file::
@@ -62,20 +66,23 @@ write this into a run.sh file::
     sleep(20)
 
 The `#BSUB` lines are comments, but are read by the submission program to
-identify features associdated with your job. The `-J` flag sets the job's
-name. The `-e` and `-o` options set the filenames for the output from the
-job printed to stdout and stderr; `%J` is filled in with a unique job ID
-that is set when you run the job.
+identify features associated with your job. 
 
+    - `-J` sets the job's name
+    - `-e` and `-o` set the filenames for stderr and stdout from the job
+    - `%J` is a unique job ID that is set when you run the job.
+
+The queueing system (3)
+-----------------------
 Now you can submit the script to the queuing system. As soon as you submit
 it, you can check on its progress::
 
     $ bsub < run.sh
     $ bjobs
 
-Look in your current directory, you should see two new files that end
-`.out` and `.err`. These are the output of stdout and stderr from the
-running job. Look at the contents of those files so you know what is in
+After the job finishes, you should see two new files that end
+`.out` and `.err`; these stdout and stderr from the running job.
+Look at the contents of those files so you know what is in
 each one.
 
 Killing jobs
@@ -101,6 +108,7 @@ Other cluster-specific commands
 .. code-block:: bash
 
     $ bhosts  # hosts in the cluster
+    # man bhosts # bsub man page
     $ bqueues # queues available 
     $ lsload  # check load values for all hosts
 

@@ -1,5 +1,15 @@
+.. todo::
+    - useful ipython directive page for decorator syntax
+        http://matplotlib.org/sampledoc/ipython_directive.html
+
 Class 5 : Python : Basics
 =========================
+
+Goals
+-----
+1. Learn to start ipython
+2. Learn the basics of python syntax
+3. Learn basic types in python
 
 Python overview
 ---------------
@@ -16,17 +26,13 @@ http://docs.python.org/2/
 .. note::
 
     You should be going through the Python tutorial at this point. We will
-    cover some language specifics of Python in the context of specific
+    cover some language specifics of Python in the context of
     bioinformatic applications.
-
-Learning to program is not easy. But stick with it. 90% of programming is
-debugging the stuff you write. You will become an **expert** debugger by
-the end of the this class.
 
 Ipython
 -------
 Ipython is an (I)nteractive python terminal that lets you
-type in python expressions and see the results immediately ::
+type in python expressions and see the results immediately::
 
     $ ipython
 
@@ -55,6 +61,11 @@ loop.
 set up your gedit preferences so that when you press the tab key, four
 spaces are inserted.
 
+.. note:: 
+
+    IPython will auto-indent code blocks for you. But when you move to
+    writing standalone programs, you will need to indent blocks yourself.
+
 For Loops (range)
 -----------------
 We have seen an example of a ``for`` loop in the previous
@@ -63,26 +74,28 @@ tasks.
 
 For example. Print "hello" 5 times:
 
-.. code-block:: python
+.. ipython::
+    :verbatim:
 
-    for i in range(5):
-        print "hello"
+    In [1]: for i in range(5):
+       ...:     print i
 
 where ``range`` is a python function that generates the numbers
 `0, 1, 2, 3, 4`. Try executing the ``range`` function alone at the ipython
 prompt.
+
+Try this yourself in ``ipython``.
 
 For Loops (characters)
 ----------------------
 Lots of things in python are `iterable`, meaning we can write loops
 over them. For instance, a string is iterable:
 
-.. code-block:: python
+.. ipython::
+    :verbatim:
 
-    for char in "i LOVE programming":
-        print char
-
-Try this in ``ipython`` to see what happens.
+    In [1]: for char in 'i LOVE programming':
+       ...:     print char
 
 Python Types
 ------------
@@ -93,14 +106,32 @@ There are several core types in Python that you will use a lot.
 - ``Lists`` are groups of other objects.
 - ``Dictionaries`` contain key:value mappings.
 
-Everything is an object
------------------------
+Strings
+-------
+Strings are collections of characters.
+
+.. ipython::
+    :verbatim:
+
+    In [2]: words = 'this that other'
+
+    In [3]: words
+
+    In [3]: words.upper()
+
+    # convert to list
+    In [3]: words.split()
+
+    # convert to list
+    In [4]: words.split().capitalize()
+
 Everything in Python is an object. In practice this means that there is an
 expected presentation of everything, but everything has additional methods
 that can be called.
 
 .. code-block:: python
-    
+
+
 In Class Exercise
 ------------------
 ::

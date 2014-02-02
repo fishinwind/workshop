@@ -20,7 +20,7 @@ Named after authors **A** ho, **W** einberger & **K** ernighan
 basic program structure
 -----------------------
 
-actions on each line that match a pattern ::
+actions on each line that match a pattern::
 
     $ awk 'PATTERN { ACTIONS }'
 
@@ -29,12 +29,12 @@ columns available as *variables* $1, $2, ... $n
 program structure example
 -------------------------
 
-extract p-values (in 4th column from BED file) that are < 0.04 ::
+extract p-values (in 4th column from BED file) that are < 0.04::
 
     $ awk '$4 < 0.04' all.pvalues.bed \
         > some.pvalues.bed
 
-limit to chr12 (&& means "and") ::
+limit to chr12 (&& means "and")::
 
     $ awk '$4 < 0.04 && $1 == "chr12"' \
         all.pvalues.bed \
@@ -45,7 +45,7 @@ awk continued
 
 The ``$0`` variable contains the entire line.
 
-multiple patterns ::
+multiple patterns::
 
     $ awk '($4 < 0.05) { print $0"\tsignificant"}($4 >= 0.05) \
         { print $0"\tlame" }' \
@@ -56,14 +56,14 @@ bioawk
 ------
 
 Bioawk is a variant of awk that knows about common sequence formats. To
-count the number of records in a fastq file ::
+count the number of records in a fastq file::
 
     $ bioawk -c fastx 'END { print $NR }'
 
 biowak (names)
 --------------
 
-You can access `name`, `seq`, `qual`, `comment` ::
+You can access `name`, `seq`, `qual`, `comment`::
 
     $ biowak -c fastx '{ print $name, $seq, $qual}'
 

@@ -1,5 +1,5 @@
 Class 3 : The command-line (part 2)
-=====================================
+===================================
 
 Goals
 -----
@@ -8,15 +8,14 @@ Goals
 
 wget
 ----
-fetch a a file from the web with ``wget`` ::
+fetch a a file from the web with ``wget``::
 
     $ cd /opt/bio-workshop/data/
     $ wget http://ucd-bioworkshop.github.io/_downloads/states.tab
 
 cut
 ---
-
-The ``cut`` command allows you to extract certain columns of a file ::
+The ``cut`` command allows you to extract certain columns of a file::
 
     # cut columns 1-4 and 7-10
     $ cut -f 1-4,7-10 /opt/bio-workshop/data/states.tab
@@ -32,8 +31,7 @@ The ``cut`` command allows you to extract certain columns of a file ::
 
 uniq
 ----
-
-The ``uniq`` command  allows you to get and count unique entries ::
+The ``uniq`` command  allows you to get and count unique entries::
 
     # remove duplicate lines
     $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq
@@ -52,35 +50,35 @@ The ``uniq`` command  allows you to get and count unique entries ::
 
 Redirection of output
 ---------------------
-To send the output of a command (or a file) to another file, use ">" ::
+To send the output of a command (or a file) to another file, use ">"::
 
     $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c > output.txt
     $ head output.txt
 
 To **append** the output of a command (or a file) to another file, use
-">>" ::
+">>"::
 
     $ echo "last line" >> output.txt
     $ tail output.txt
 
 Compressed Files
 ----------------
-The most common way to uncompress single files is ``gunzip`` ::
+The most common way to uncompress single files is ``gunzip``::
 
     $ gunzip /opt/bio-workshop/data/t_R1.fastq.gz
 
-And re-zip the file with ``gzip`` :: 
+And re-zip the file with ``gzip``:: 
 
     $ gzip /opt/bio-workshop/data/t_R1.fastq
 
 But if we just want to stream the uncompressed data without changing the
-file ::
+file::
 
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz
 
 Pipes
 -----
-We probably want to do something with the file as we uncompress it ::
+We probably want to do something with the file as we uncompress it::
 
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz | head
 
@@ -93,7 +91,7 @@ Sort
 ----
 You will often want to ``sort`` your data.
 
-Have a look at ::
+Have a look at::
 
     $ man sort
 
@@ -119,7 +117,7 @@ Sort Example
 ------------
 BED files have columns `chrom` [tab] `start` [tab] `end` [tab] ...
 
-Sort by chrom, then by start (a lot of tools will require this) ::
+Sort by chrom, then by start (a lot of tools will require this)::
 
     $ sort -k1,1 -k2,2n /opt/bio-workshop/data/lamina.bed > /tmp/sorted.bed
 
@@ -133,7 +131,7 @@ Question:
 
 Sort Example (part 2)
 ---------------------
-What if we want to sort by Income **descending** in the 3rd column? ::
+What if we want to sort by Income **descending** in the 3rd column?::
 
     $ sort -t$'\t' -k3,3rg /opt/bio-workshop/data/states.tab > /tmp/sorted.out
     $ head /tmp/sorted.out 
@@ -159,7 +157,7 @@ binding sites are the most common in a set of putative sites from ENCODE.
 
 Application 2
 -------------
-Note that we are using the variable FILE for the long file name ::
+Note that we are using the variable FILE for the long file name::
 
     # BED format file of transcription factor binding sites
     FILE=http://bit.ly/tfbs-x
@@ -176,35 +174,36 @@ Note that we are using the variable FILE for the long file name ::
 .. comments::
     FILE=http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV2.bed.gz
 
-Let's go through this line by line...
+Let's go through this line by line ...
 
 grep
 ----
-We use ``grep`` to find stuff in files. You use it to identify
-lines in a file that match a specified pattern.
+Use ``grep`` to identify lines in a file that match a specified pattern.
 
-To find any instance of *chr5* in the lamina.bed file ::
+To find any instance of *chr5* in the lamina.bed file::
    
     # grep [pattern] [filename]
     $ grep chr5 /opt/bio-workshop/data/lamina.bed | head
 
-To find all lines that start with a number sign ::
+To find all lines that start with a number sign::
 
     # The caret (^) matches the beginning of the line
     # FYI dollar sign ($) matches the end
     $ grep '^#' /opt/bio-workshop/data/lamina.bed
 
-To find any line that *does not* start with "chr" ::
+To find any line that *does not* start with "chr"::
 
     # the -v flag inverts the match (grep "not" [pattern])
     $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
 
-Beware of using ``grep`` to find patterns that might be partial matches ::
+grep (2)
+--------
+Beware of using ``grep`` to find patterns that might be partial matches::
 
     # this will match chr1, chr10, chr11 etc.
     $ grep chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
 
-Also beware of using ``grep`` to search for numbers ::
+Also beware of using ``grep`` to search for numbers::
 
     $ grep 100 /opt/bio-workshop/data/lamina.bed | head -n 20
 
