@@ -20,15 +20,19 @@ We will use it to process and filter files. When you can't write a simple
 script in ``awk``, it is better to use python.
 
 The Python documentation [#]_ is very helpful, with lots of examples. You
-should read it to become familiar with the language.
+should read it to become familiar with the language and refer to it when
+you get stuck.
 
 .. [#] Python 2.x docs http://docs.python.org/2/
 
 .. note::
 
-    You should be going through the Python tutorial at this point. We will
-    cover some language specifics of Python in the context of
-    bioinformatic applications.
+    You should start the Python tutorial [#]_. We will cover some language
+    specifics of Python, but will quickly move to using Python  in the
+    context of bioinformatic applications.
+
+.. [#] Learn Python the Hard Way
+        http://learnpythonthehardway.org/book/
 
 Ipython
 -------
@@ -122,9 +126,6 @@ Strings are collections of characters.
 
     # convert to list
     In [3]: words.split()
-
-    # convert to list
-    In [4]: words.split().capitalize()
 
 Everything in Python is an object. In practice this means that there is an
 expected presentation of everything, but everything has additional methods

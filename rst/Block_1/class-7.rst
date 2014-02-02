@@ -6,6 +6,7 @@ Cluster access
 We have set up accounts for the class on our departmental cluster. We will
 set up your accounts at the end of class and reset your passwords::
 
+    # the -X flag starts an X11 connection 
     $ ssh -X username@amc-tesla.ucdenver.pvt
 
 Cluster etiquette
@@ -31,7 +32,7 @@ Find how much space you have allocated::
 The queueing system
 -------------------
 First you will grab a single CPU from the queueing system so that you can play
-around without affecting the head node. We use `qlogin` for this::
+around without affecting the head node. We use ``qlogin`` for this::
 
     jhessel@amc-tesla ~
     $ qlogin 
@@ -46,10 +47,10 @@ around without affecting the head node. We use `qlogin` for this::
 
 .. note:: 
 
-    The host in the prompt changed from amc-tesla to compute00.
+    The host in the prompt changed from ``amc-tesla`` to ``compute00``.
     
 You can now execute long-running processes without worry of affecting the
-cluster. Type `exit` to return back to your head node login.
+cluster. Type ``exit`` to return back to your head node login.
 
 The queueing system (2)
 -----------------------
@@ -65,12 +66,12 @@ write this into a run.sh file::
 
     sleep(20)
 
-The `#BSUB` lines are comments, but are read by the submission program to
+The `#BSUB` lines are comments, but are read by the ``bsub`` program to
 identify features associated with your job. 
 
     - `-J` sets the job's name
-    - `-e` and `-o` set the filenames for stderr and stdout from the job
     - `%J` is a unique job ID that is set when you run the job.
+    - `-e` and `-o` set the filenames for stderr and stdout from the job
 
 The queueing system (3)
 -----------------------
@@ -98,17 +99,15 @@ You can also kill **all** of your jobs at once::
 
 .. warning::
 
-    `bkill 0` is dangerous, as it will wipe out all of your jobs. If you
-    have long-running jobs that you forgot about, you will wipe them out
-    if you are not careful!
+    ``bkill 0`` is dangerous – it will wipe out all of your jobs. If
+    you have long-running jobs that you forgot about, you will kill them
+    too if you are not careful!
 
 Other cluster-specific commands
 -------------------------------
-
-.. code-block:: bash
-
-    $ bhosts  # hosts in the cluster
-    # man bhosts # bsub man page
-    $ bqueues # queues available 
-    $ lsload  # check load values for all hosts
+::
+    $ bhosts     # hosts in the cluster
+    $ man bhosts # bsub man page
+    $ bqueues    # available queues
+    $ lsload     # check load values for all hosts
 
