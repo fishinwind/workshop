@@ -10,15 +10,15 @@ Goals
 
 wget
 ----
-fetch a a file from the web with `wget`::
+fetch a a file from the web with ``wget`` ::
 
     $ cd /opt/bio-workshop/data/
     $ wget http://ucd-bioworkshop.github.io/_downloads/states.tab
-    
 
 cut
 ---
-`cut` allows you to extract certain columns of a file::
+
+The ``cut`` command allows you to extract certain columns of a file ::
 
     # cut columns 1-4 and 7-10
     $ cut -f 1-4,7-10 /opt/bio-workshop/data/states.tab
@@ -35,7 +35,7 @@ cut
 uniq
 ----
 
-uniq allows you to get and count unique entries::
+The ``uniq`` command  allows you to get and count unique entries ::
 
     # remove duplicate lines
     $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq
@@ -48,44 +48,41 @@ uniq allows you to get and count unique entries::
 
 .. important::
 
-   `uniq` assumes that file is sorted by the column of interest.
+   ``uniq`` assumes that file is sorted by the column of interest.
 
-   Use `sort` to sort the data before `uniq`-ing it.
+   Use ``sort`` to sort the data before ``uniq``-ing it.
 
 Redirection of output
 ---------------------
-
-To send the output of a command (or a file) to another file, use ">"::
+To send the output of a command (or a file) to another file, use ">" ::
 
     $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c > output.txt
     $ head output.txt
 
 To **append** the output of a command (or a file) to another file, use
-">>"::
+">>" ::
 
     $ echo "last line" >> output.txt
     $ tail output.txt
 
 Compressed Files
 ----------------
-
-The most common way to uncompress single files is `gunzip`::
+The most common way to uncompress single files is ``gunzip`` ::
 
     $ gunzip /opt/bio-workshop/data/t_R1.fastq.gz
 
-And re-zip the file with `gzip`:: 
+And re-zip the file with ``gzip`` :: 
 
     $ gzip /opt/bio-workshop/data/t_R1.fastq
 
 But if we just want to stream the uncompressed data without changing the
-file::
+file ::
 
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz
 
 Pipes
 -----
-
-We probably want to do something with the file as we uncompress it::
+We probably want to do something with the file as we uncompress it ::
 
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz | head
 
@@ -96,10 +93,9 @@ Try piping the output to some other commands (tail|echo|cowsay)
 
 Sort
 ----
+You will often want to ``sort`` your data.
 
-You will often want to `sort` your data.
-
-Have a look at::
+Have a look at ::
 
     $ man sort
 
@@ -123,10 +119,9 @@ If you know all these, you'll know 99% of what you'll use sort for.
 
 Sort Example
 ------------
-
 BED files have columns `chrom` [tab] `start` [tab] `end` [tab] ...
 
-Sort by chrom, then by start (a lot of tools will require this)::
+Sort by chrom, then by start (a lot of tools will require this) ::
 
     $ sort -k1,1 -k2,2n /opt/bio-workshop/data/lamina.bed > /tmp/sorted.bed
 
@@ -138,30 +133,22 @@ Question:
 
     What happens if you omit the `n` ?
 
-Sort Example (2)
-----------------
-
-What if we want to sort by Income **descending** in the 3rd column?::
+Sort Example (part 2)
+---------------------
+What if we want to sort by Income **descending** in the 3rd column? ::
 
     $ sort -t$'\t' -k3,3rg /opt/bio-workshop/data/states.tab > /tmp/sorted.out
     $ head /tmp/sorted.out 
 
-.. note::
-
-    you'll need to use the -t $'\\t' flag for your homework.
-
-
 Sort Exercise
 -------------
-
 Print out the 10 states (1st column, contains spaces) with the highest
-income (3rd column) from states.tab using **sort** and piping to **cut**.
+income (3rd column) from states.tab using ``sort`` and piping to ``cut``.
 
-Or, use **cut** and pipe to **sort** to do the same.
+Or, use ``cut`` and pipe to ``sort`` to do the same.
 
-Application (1)
----------------
-
+Application 1
+-------------
 Use pipes (|) chained together to look see which transcription factor
 binding sites are the most common in a set of putative sites from ENCODE.
 
@@ -172,9 +159,9 @@ binding sites are the most common in a set of putative sites from ENCODE.
   + sort resulting frequencies so most common are first (sort -rn)
   + show top 10 (head)
 
-Application (2)
----------------
-Note that we are using the variable FILE for the long file name::
+Application 2
+-------------
+Note that we are using the variable FILE for the long file name ::
 
     # BED format file of transcription factor binding sites
     FILE=http://bit.ly/tfbs-x
@@ -195,7 +182,30 @@ Let's go through this line by line...
 
 grep
 ----
-We use **grep** to find stuff.
+We use ``grep`` to find stuff in files. You use it to identify
+lines in a file that match a query string.
+
+To find any instance of *chr5* in the lamina.bed file ::
+    
+    $ grep chr5 /opt/bio-workshop/data/lamina.bed | head
+
+To find all lines that start with a number sign ::
+
+    # The caret (^) matches the begigging of the line
+    # FYI dollar sign ($) matches the end
+    $ grep '^#' /opt/bio-workshop/data/lamina.bed
+
+To find any line that **does not** start with "chr" ::
+
+    # the -v flag inverts the match (equivalent to logical "not")
+    $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
+
+Beware of using ``grep`` to search for numbers ::
+
+    $ grep 100 /opt/bio-workshop/data/lamina.bed | head
+
+if you're trying to find numeric values in a file, you should use ``awk``
+instead.
 
 In Class Exercises
 ------------------

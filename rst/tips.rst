@@ -3,19 +3,10 @@ Programming Tips & Tricks
 
 Overview
 --------
-We will teach you to answer biological questions through programming. We
-are **not** trying to turn you into a computer scientist. For now, you can
-leave fancy algorithm development to professionals.
-
-Once you know a few simple tools and learn the basics of the programming
-languages, you will be on the right path toward developing a
-super-important new skill. But after this class ends, it will be up to you
-to keep developing this skill. It's really use-it-or-lose-it.
-
-Several things influence how effectively you can learn to program, and how
+Several things influence how effectively you learn to program, and how
 well you program once you have mastered the basic ideas. Most of these
-have to do with your efficiency in actaully *using* a computer, and not
-programming *per se*.
+things have to do with your efficiency in actaully *using* a computer, and
+not programming *per se*.
 
 For example, the longer you spend searching for a particular key to type,
 or surfing around with your mouse, the less time you spend writing,

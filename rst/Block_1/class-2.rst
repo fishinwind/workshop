@@ -36,7 +36,7 @@ In Linux home is represented as `~` and also as `$HOME`
 We will often show commands preceded with a '$' as you see in your
 terminal.
 
-Try this in the terminal::
+Try this in the terminal ::
 
     $ pwd
 
@@ -46,20 +46,20 @@ pwd is "print working directory"
 Navigating In the Terminal (part 2)
 -----------------------------------
 
-Change to another directory::
+Change to another directory ::
 
     $ cd /tmp/
 
-See what's in that directory::
+See what's in that directory ::
 
     $ ls
 
-Show more information::
+Show more information ::
 
     $ ls -lh
 
 The "-lh" letters are flags, or modifier arguments to the *ls* command.
-These can be separated as::
+These can be separated as ::
 
     $ ls -l -h
 
@@ -67,7 +67,7 @@ Navigating In the Terminal (part 3)
 -----------------------------------
 
 The content for the class, including the source for generating this document,
-are in::
+are in ::
 
     /opt/bio-workshop/
 
@@ -79,18 +79,18 @@ Navigate to that directory and look around with `ls`
 Getting Help In The Terminal
 ----------------------------
 
-How can you find out the arguments that *ls* accepts (or expects)::
+How can you find out the arguments that *ls* accepts (or expects) ::
 
     $ man ls
 
 and use spacebar to go through the pages. *man* is short for manual
 and can be used on all commands that we will learn. 
 
-In other linux software, it is common to get help by using::
+In other linux software, it is common to get help by using ::
 
     $ <program> -h
 
-or::
+or ::
 
     $ <program> --help
 
@@ -158,7 +158,7 @@ Exercise:
 Less (is More)
 --------------
 
-To view a large file, use less::
+To view a large file, use less ::
 
     less /opt/bio-workshop/data/lamina.bed
 
@@ -189,23 +189,23 @@ Tab-Completion
 
 The shell (bash) when set up properly can give you a lot of help
 
-Type the following where [TAB] means the Tab key on the keyboard::
+Type the following where [TAB] means the Tab key on the keyboard ::
 
     $ cd /opt/bio-w[TAB]
 
-Then hit tab. And::
+Then hit tab. And ::
 
     $ ls /opt/bio-w[TAB]
 
-This will work for any file path and for any programs::
+This will work for any file path and for any programs ::
 
     $ hea[TAB]
 
-What happens if you do::
+What happens if you do ::
 
     $ he[TAB][TAB] 
 
-or::
+or ::
 
     $ heaaa[TAB][TAB] 
 
@@ -220,36 +220,36 @@ used the "~" shortcut for home.
     $ cd ~ 
     $ ls ~
 
-We can also move to or see what's in the parent directory with::
+We can also move to or see what's in the parent directory with ::
     
     $ ls ..
     $ cd ..
 
-Or 3 directories up with::
+Or 3 directories up with ::
     
     $ ls ../../..
     $ cd ../../..
 
-To explicitly see the current directory::
+To explicitly see the current directory ::
 
     $ ls ./
 
 Directory Shortcuts (part 2)
 ----------------------------
 
-We can go 2 directories up with::
+We can go 2 directories up with ::
 
     $ cd ../../
 
 Here, we can remember that "." is the current directory and .. is one directory up.
-What does this do::
+What does this do ::
 
     $ ls ./*
 
 Directory Shortcuts (part 3)
 ----------------------------
 
-you can go to the last directory with::
+you can go to the last directory with ::
 
     $ cd -
 
@@ -268,7 +268,7 @@ Make and remove directories
 
 What does -p do?
 
-Remove directories::
+Remove directories ::
 
    rm ~/tmp/asdf # ERROR
 
@@ -302,11 +302,11 @@ In-class excercise:
 echo
 ----
 
-`echo` means "print"::
+`echo` means "print" ::
 
     echo "hello world"
 
-and you can use it to see **bash** variables::
+and you can use it to see **bash** variables ::
 
     echo $HOME
 
@@ -317,7 +317,7 @@ Variables
 We will start covering programming in the next classes, but variables are a
 key component of programming.
 
-You can do::
+You can do ::
 
     important=/opt/bio-workshop/data/lamina.bed
     ls -lh $important
@@ -353,7 +353,7 @@ gedit
 In order to edit files as you would using `notepad` or `word` in windows,
 we will use the simple editor "gedit".
 
-You can open gedit from the terminal using::
+You can open gedit from the terminal using ::
 
     $ gedit
 
@@ -366,14 +366,14 @@ Scripts
 A script is simply a series of commands that you save in a file. You will
 need to write scripts to complete the homework.
 
-Put this text::
+Put this text ::
 
     ls /opt/bio-workshop/
 
 Into the file *`run.sh`* by opening `gedit` pasting that text then `save
 as..` using the GUI controls
 
-You can then run it as::
+You can then run it as ::
 
     $ bash run.sh
 
@@ -412,6 +412,6 @@ Since linux is made of small utilities, we often want to chain them
 together. We will cover this in detail next class, but the idea
 is that each program takes data, modifies it, and sends it to the next.
 
-We can see lines 5-10 of a file with::
+We can see lines 5-10 of a file with ::
 
     $ head /opt/bio-workshop/data/lamina.bed | tail -n 5
