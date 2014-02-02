@@ -1,12 +1,10 @@
 Class 3 : The command-line (part 2)
 =====================================
 
-Friday: 31 January 2014
-
 Goals
 -----
-1. learn some additional linux utilities (cut, sort, zless, uniq, wget)
-2. understand pipes (|)
+1. learn additional linux utilities (cut, sort, zless, uniq, wget)
+2. understand how to combine tools with pipes (|)
 
 wget
 ----
@@ -183,28 +181,34 @@ Let's go through this line by line...
 grep
 ----
 We use ``grep`` to find stuff in files. You use it to identify
-lines in a file that match a query string.
+lines in a file that match a specified pattern.
 
 To find any instance of *chr5* in the lamina.bed file ::
-    
+   
+    # grep [pattern] [filename]
     $ grep chr5 /opt/bio-workshop/data/lamina.bed | head
 
 To find all lines that start with a number sign ::
 
-    # The caret (^) matches the begigging of the line
+    # The caret (^) matches the beginning of the line
     # FYI dollar sign ($) matches the end
     $ grep '^#' /opt/bio-workshop/data/lamina.bed
 
-To find any line that **does not** start with "chr" ::
+To find any line that *does not* start with "chr" ::
 
-    # the -v flag inverts the match (equivalent to logical "not")
+    # the -v flag inverts the match (grep "not" [pattern])
     $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
 
-Beware of using ``grep`` to search for numbers ::
+Beware of using ``grep`` to find patterns that might be partial matches ::
 
-    $ grep 100 /opt/bio-workshop/data/lamina.bed | head
+    # this will match chr1, chr10, chr11 etc.
+    $ grep chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
 
-if you're trying to find numeric values in a file, you should use ``awk``
+Also beware of using ``grep`` to search for numbers ::
+
+    $ grep 100 /opt/bio-workshop/data/lamina.bed | head -n 20
+
+If you're trying to find numeric values in a file, you should use ``awk``
 instead.
 
 In Class Exercises
