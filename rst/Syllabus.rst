@@ -1,6 +1,6 @@
-========
+********
 Syllabus
-========
+********
 
 :Title: Genome Informatics Workshop
 :Course Number: MOLB 7620
@@ -15,7 +15,7 @@ Syllabus
 :Last updated: |today|
 
 Instructor Information
-----------------------
+======================
 
 +-------------------------------------+
 | **Jay Hesselberth**                 |
@@ -36,15 +36,15 @@ Instructor Information
 +-------------------------------------+
 
 Schedule
---------
+========
 Mon, Wed, Fri, 2:30 - 4:00 PM
 
 Location
---------
+========
 Health Sciences Library, Computer Teaching Lab 2
 
 Course Description
-------------------
+==================
 The Genome Informatics Workshop is a hands-on tutorial of skills needed to
 process large genomics data sets and visualize their results.  The class
 is taught from the standpoint of an experimentalist with practical goals
@@ -92,9 +92,12 @@ Course Objectives
     - Learn to visualize data from the ENCODE project in the UCSC Genome
       Browser
 
-Canvas URL
-----------
-https://ucdenver.instructure.com/courses/11079/assignments/syllabus
+Canvas 
+======
+The course has a Canvas page [#]_ where announcements are made and
+problem sets are uploaded
+
+.. [#] https://ucdenver.instructure.com/courses/11079/assignments/syllabus
 
 .. note::
 
@@ -102,18 +105,18 @@ https://ucdenver.instructure.com/courses/11079/assignments/syllabus
     upload Problem Sets, etc.
 
 Assessment
-----------
+==========
 Progress of individual students will be assessed during the daily exercise
 session, weekly problem sets, as well as a final project.
 
 Grading Criteria
 ----------------
-50% participation
-35% problem sets (total of 7)
-15% final project
+- 50% participation
+- 35% problem sets (total of 7)
+- 15% final project
 
 Specific Dates / Material to be Covered
----------------------------------------
+=======================================
 
 Block 1 
 -------
