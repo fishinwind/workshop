@@ -24,7 +24,7 @@ you get stuck.
 
 .. [#] Python 2.x docs http://docs.python.org/2/
 
-.. note::
+.. important::
 
     **You should begin the Python tutorial** [#]_. We will cover some language
     specifics of Python, but will quickly move to using Python  in the
@@ -152,8 +152,8 @@ Strings are collections of characters.
 
 Numbers (Ints and math)
 =========================
-Python has an integer number representation (:py:class:`int`) and a floating point
-representation (:py:class:`float`). Most math operations work within and across
+Python has an integer number representation (:py:obj:`int`) and a floating point
+representation (:py:obj:`float`). Most math operations work within and across
 both types:
 
 .. ipython::
@@ -204,7 +204,7 @@ Division is a case where you need to pay attention to ``type``:
     
 Lists
 =====
-A :py:class:`list` is a collection of other objects. You can create lists
+A :py:obj:`list` is a collection of other objects. You can create lists
 directly using brackets (``[ ]``), or they can be created from other
 objects.
 
