@@ -243,15 +243,15 @@ In Class Exercises (1)
 ======================
 Here are a few exercises:
 
-    - Use :py:func:`range` to count from 0 to 100 by 10.  How do you get 100 in the
+    #. Use :py:func:`range` to count from 0 to 100 by 10.  How do you get 100 in the
       result?
 
-    - Get every other value of ``words`` (hint: use a slice)
+    #. Get every other value of ``words`` (hint: use a slice)
 
-    - Use :py:func:`enumerate` on a list (hint: convert the
-      result with list(result))
+    #. Use :py:func:`enumerate` on a list (hint: convert the
+       result with list(result))
 
-    - Use :py:func:`sorted` and :py:func:`reversed` on a list.
+    #. Use :py:func:`sorted` and :py:func:`reversed` on a list.
 
 Dictionaries (dicts)
 ====================
@@ -315,14 +315,17 @@ Useful python modules
 There are several modules in the standard library that we use all the time
 for bioinformatics.
 
-    - :py:mod:`collections`: espcially
-      :py:class:`collections.defaultdict` and
-      :py:class:`collections.Counter`
+    - :py:mod:`collections`: espcially :py:class:`collections.defaultdict`
+      and :py:class:`collections.Counter`
     - :py:mod:`itertools`: tools for efficient aggregation and iteration
 
 In Class Exercises (2)
 ======================
-Here are a few exercises::
+Here are a few exercises:
 
-    - stub
+    #. Create a :py:obj:`dict` that contains several key:value pairs. 
+
+    #. Create a :py:obj:`list` that contains multiple redundant entries.
+       Covert the list to a :py:class:`set` with set(list). What happened to
+       the redundant entries?
 
