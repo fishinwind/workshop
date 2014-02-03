@@ -1,43 +1,41 @@
+*************
 Class 4 : awk
-=============
+*************
 
 Monday: 3 February 2014
 
-
 Goals
------
-
- 0. Review
- 1. remember BED format (chr, start, end)
- 2. learn awk basics to filter and manipulate text
+=====
+ #. Review
+ #. remember BED format (chr, start, end)
+ #. learn awk basics to filter and manipulate text
 
 Review
-------
+======
 
  what we've learned
 
 awk
 ---
-
 http://en.wikipedia.org/wiki/AWK
 
-``AWK`` is an interpreted **programming language** designed for text processing
-and typically used as a data extraction and reporting tool. It is a
-standard feature of most Unix-like operating systems.
+``AWK`` is an interpreted **programming language** designed for text
+processing and typically used as a data extraction and reporting tool. It
+is a standard feature of most Unix-like operating systems.
 
 Named after authors **A** ho, **W** einberger & **K** ernighan
 
 **This is programming**
 
 basic principles
-----------------
+================
 
  #. awk operates on each line of a text file
  #. in an awk program, $1 is an alias for the 1st column, $2 for the 2nd, etc. 
  #. awk can filter lines by a pattern
 
 awk program structure
----------------------
+=====================
 
  + **BEGIN** runs before the program starts
  + **END** runs after the program runs through all lines in the file
@@ -48,33 +46,31 @@ awk program structure
     awk 'BEGIN {} (PATTERN) { ACTIONS } END {}' some.file.txt
 
 awk BEGIN
----------
+=========
 
-Using begin, we don't need a file. We just do one thing then exit.
+Using begin, we don't need a file. We just do one thing then exit:
 
 .. code-block:: bash
 
    awk 'BEGIN { print 12 * 12 }'
 
-Same with **END**
+Same with **END**:
 
 .. code-block:: bash
 
    awk 'END { print 12 * 13 }' # then type ctrl+d so it knows it's not getting more input.
-
-
  
 filtering
----------
-
-A simple and powerful use of awk is  lines that match a pattern or meet set of criteria.
-Here, we match (and implicitly print) only lines where the first column is chr12
+=========
+A simple and powerful use of awk is lines that match a pattern or meet set
+of criteria. Here, we match (and implicitly print) only lines where the
+first column is chr12:
 
 .. code-block:: bash
 
     awk '($1 == "chr12")' /opt/bio-workshop/data/lamina.bed
 
-We can also filter on start position using '&&' which means 'and'
+We can also filter on start position using '&&' which means 'and':
 
 .. code-block:: bash
 
@@ -82,11 +78,10 @@ We can also filter on start position using '&&' which means 'and'
 
 .. important::
 
- `==` tests for equality (= assigns). `!=` tests for not equal.
+    `==` tests for equality (= assigns). `!=` tests for not equal.
 
 program structure
------------------
-
+=================
 .. code-block:: bash
 
     awk '($1 == "chr12" && $2 < 9599990)' /opt/bio-workshop/data/lamina.bed
@@ -98,7 +93,7 @@ program structure
     + can't use commas (e.g. 9,599,990) in numbers
 
 in-class exercise
------------------
+=================
 
 we will do the first of these together.
 
@@ -112,9 +107,9 @@ we will do the first of these together.
     the last question is not trivial and understanding it will be useful
 
 awk program structure (actions)
--------------------------------
+===============================
 
-print total bases covered on chromosome 13. 
+print total bases covered on chromosome 13:
 
 .. code-block:: bash
 
@@ -131,7 +126,7 @@ print total bases covered on chromosome 13.
 
 
 in-class exercise
------------------
+=================
 
 below is how we find coverage for chr13. 
 
@@ -143,7 +138,7 @@ below is how we find coverage for chr13.
 how can we find the total coverage for all chromsomes **except** 13?
 
 awk continued
--------------
+=============
 
 The ``$0`` variable contains the entire line.
 
@@ -155,15 +150,14 @@ multiple patterns
            $3  < 5000   { print $0"\tLESS" }' \
             /opt/bio-workshop/data/states.tab
 
-remember we can simply filter to the lines > 5000 with
+remember we can simply filter to the lines > 5000 with:
 
 .. code-block:: bash
 
       awk '$3 >= 5000' /opt/bio-workshop/data/states.tab
 
 awk special variables
----------------------
-
+=====================
  #. we know *$1*, *$2*, ... for the column numbers
  #. NR is a special variable that holds the line number
  #. NF is a special variable that holds the number of fields in the line
@@ -172,8 +166,7 @@ awk special variables
     --meaning the delimiters (default is any space character)
 
 using awk to count lines with NR
---------------------------------
-
+================================
 .. code-block:: bash
 
     wc -l /opt/bio-workshop/data/lamina.bed
@@ -182,22 +175,18 @@ using awk to count lines with NR
 
 
 using FS and OFS
-----------------
-
+================
 Let's convert lamina.bed to comma-delimited but only for chr12
 
 remember FS is the input separator and OFS is the output delimiter
 
 .. code-block:: bash
- 
 
     awk 'BEGIN{FS="\t", OFS=","}
         ($1 == "chr12"){ print $1,$2,$3 }' /opt/bio-workshop/data/lamina.bed
 
-
 regular expressions
--------------------
-
+===================
 we won't cover these in detail, but you can match on *regular expressions*.
 
 The following finds lines containing chr2 (chr2, chr20, chr21) in the first column
@@ -209,10 +198,8 @@ The following finds lines containing chr2 (chr2, chr20, chr21) in the first colu
 Often we can get by without *regular expressions* but they are extremeley powerful
 and available in nearly all programming languages.
 
-
 advanced awk
-------------
-
+============
 You can do a lot more with awk, here are several resources
 
     http://www.hcs.harvard.edu/~dholland/computers/awk.html
@@ -222,8 +209,7 @@ You can do a lot more with awk, here are several resources
     http://www.catonmat.net/download/awk.cheat.sheet.pdf
 
 in-class exercises (1)
-----------------------
-
+======================
 we will do the first 2. of these together
 
 1. use NR to print each line of `lamina.bed` *preceded* by it's line number
@@ -235,8 +221,7 @@ we will do the first 2. of these together
      the same number of columns?
 
 review
-------
-
+======
 + $1, $2, $3 (default sep is space)
 + adjust sep with: OFS="\t"; FS=","
 + $0 # entire line
@@ -251,18 +236,18 @@ review
 + BEGIN {} filter { action } END { }
 
 in-class exercises (2)
-----------------------
+======================
 
- 1. are there any regions in `lamina.bed` with start > end?
+ #. are there any regions in `lamina.bed` with start > end?
 
- 2. what is the total coverage [sum of (end - start)] of regions on chr13 in `lamina.bed`?
+ #. what is the total coverage [sum of (end - start)] of regions on chr13 in `lamina.bed`?
 
- 3. what is the mean value (4th column) on chromome 3 of `lamina.bed`
+ #. what is the mean value (4th column) on chromome 3 of `lamina.bed`
 
- 4. print out only the header and the entry for colorado in `states.tab`
+ #. print out only the header and the entry for colorado in `states.tab`
 
- 5. what is the (single-number) sum of all the incomes for `states.tab` with illiteracy rate:
+ #. what is the (single-number) sum of all the incomes for `states.tab` with illiteracy rate:
     a. less than 0.1?
     b. greater than 2?
 
- 6. use NR to filter out the header from `lamina.bed` (hint: what is NR for the header?)
+ #. use NR to filter out the header from `lamina.bed` (hint: what is NR for the header?)
