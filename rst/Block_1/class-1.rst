@@ -35,12 +35,16 @@ useful.
 Important Directories
 =====================
 You will learn about directories in the next class, but note that the
-content for this class is available in::
+content for this class is available in:
+
+.. code-block:: bash
 
     /opt/bio-workshop/
 
 When you write answers to your homeworks, they should be runnable from
-a directory like::
+a directory like:
+
+.. code-block:: bash
 
    /opt/bio-workshop/homeworks/section_1/week1/
 
@@ -52,12 +56,16 @@ and it will do them. The shell has its own language, which you will learn
 over the course of the class. It also runs executable files that it can
 find on the PATH (i.e. the set of directories that contain exectuables).
 
-You can find what is on your PATH by typing::
+You can find what is on your PATH by typing:
+
+.. code-block:: bash
 
    $ echo $PATH
 
 The PATH is one of several environment variables that are created when you
-login. You can see all of these with::
+login. You can see all of these with:
+
+.. code-block:: bash
 
    $ env
 
@@ -66,7 +74,9 @@ keep notes and write small programs. There are other editors (e.g. vim and
 emacs) that have additional features; it's up to you whether you would
 like to learn those or stick with the graphical gedit.
 
-To run gedit, use::
+To run gedit, use:
+
+.. code-block:: bash
 
    $ gedit
 

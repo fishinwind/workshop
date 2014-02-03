@@ -33,7 +33,9 @@ In Linux home is represented as `~` and also as `$HOME`
 We will often show commands preceded with a '$' as you see in your
 terminal.
 
-Try this in the terminal::
+Try this in the terminal:
+
+.. code-block:: bash
 
     $ pwd
 
@@ -42,27 +44,37 @@ pwd is "print working directory"
 Navigating In the Terminal (part 2)
 ===================================
     
-Change to another directory::
+Change to another directory:
+
+.. code-block:: bash
 
     $ cd /tmp/
 
-See what's in that directory::
+See what's in that directory:
+
+.. code-block:: bash
 
     $ ls
 
-Show more information::
+Show more information:
+
+.. code-block:: bash
 
     $ ls -lh
 
 The "-lh" letters are flags, or modifier arguments to the *ls* command.
-These can be separated as::
+These can be separated as:
+
+.. code-block:: bash
 
     $ ls -l -h
 
 Navigating In the Terminal (part 3)
 ===================================
 The content for the class, including the source for generating this document,
-are in::
+are in:
+
+.. code-block:: bash
 
     /opt/bio-workshop/
 
@@ -72,18 +84,24 @@ Navigate to that directory and look around with `ls`
 
 Getting Help In The Terminal
 ============================
-How can you find out the arguments that *ls* accepts (or expects)::
+How can you find out the arguments that *ls* accepts (or expects):
+
+.. code-block:: bash
 
     $ man ls
 
 and use spacebar to go through the pages. *man* is short for manual
 and can be used on all commands that we will learn. 
 
-In other linux software, it is common to get help by using::
+In other linux software, it is common to get help by using:
+
+.. code-block:: bash
 
     $ <program> -h
 
-or::
+or:
+
+.. code-block:: bash
 
     $ <program> --help
 
@@ -175,23 +193,33 @@ Tab-Completion
 ==============
 The shell (bash) when set up properly can give you a lot of help
 
-Type the following where [TAB] means the Tab key on the keyboard::
+Type the following where [TAB] means the Tab key on the keyboard:
+
+.. code-block:: bash
 
     $ cd /opt/bio-w[TAB]
 
-Then hit tab. And::
+Then hit tab. And:
+
+.. code-block:: bash
 
     $ ls /opt/bio-w[TAB]
 
-This will work for any file path and for any programs::
+This will work for any file path and for any programs:
+
+.. code-block:: bash
 
     $ hea[TAB]
 
-What happens if you do::
+What happens if you do:
+
+.. code-block:: bash
 
     $ he[TAB][TAB] 
 
-or::
+or:
+
+.. code-block:: bash
 
     $ heaaa[TAB][TAB] 
 
@@ -205,34 +233,46 @@ used the "~" shortcut for home.
     $ cd ~ 
     $ ls ~
 
-We can also move to or see what's in the parent directory with::
+We can also move to or see what's in the parent directory with:
+
+.. code-block:: bash
     
     $ ls ..
     $ cd ..
 
-Or 3 directories up with::
+Or 3 directories up with:
     
+.. code-block:: bash
+
     $ ls ../../..
     $ cd ../../..
 
-To explicitly see the current directory::
+To explicitly see the current directory:
+
+.. code-block:: bash
 
     $ ls ./
 
 Directory Shortcuts (part 2)
 ============================
-We can go 2 directories up with::
+We can go 2 directories up with:
+
+.. code-block:: bash
 
     $ cd ../../
 
 Here, we can remember that "." is the current directory and .. is one directory up.
-What does this do::
+What does this do:
+
+.. code-block:: bash
 
     $ ls ./*
 
 Directory Shortcuts (part 3)
 ============================
-you can go to the last directory with::
+you can go to the last directory with:
+
+.. code-block:: bash
 
     $ cd -
 
@@ -240,21 +280,24 @@ and switch back and forth by using that repeatedly.
 
 Make and remove directories
 ===========================
-::
-    mkdir ~/tmp # OK
+.. code-block:: bash
 
-    mkdir ~/tmp/asdf/asdf # ERROR
+    $ mkdir ~/tmp # OK
 
-    mkdir -p ~/tmp/asdf/asdf # OK
+    $ mkdir ~/tmp/asdf/asdf # ERROR
+
+    $ mkdir -p ~/tmp/asdf/asdf # OK
 
 
 What does -p do?
 
-Remove directories::
+Remove directories:
 
-   rm ~/tmp/asdf # ERROR
+.. code-block:: bash
 
-   rm -r ~/tmp/asdf/asdf # OK
+   $ rm ~/tmp/asdf # ERROR
+
+   $ rm -r ~/tmp/asdf/asdf # OK
 
 What does the -r flag do?
 
@@ -265,7 +308,9 @@ What does the -r flag do?
 
 Mmoving and copying files
 =========================
-mv [source] [dest]::
+mv [source] [dest]:
+
+.. code-block:: bash
 
     $ touch /tmp/asdf
     $ mv /tmp/asdf ~
@@ -281,15 +326,19 @@ In-class excercise:
 
 echo
 ====
-`echo` means "print"::
+`echo` means "print":
 
-    echo "hello world"
+.. code-block:: bash
 
-and you can use it to see **bash** variables::
+    $ echo "hello world"
 
-    echo $HOME
+and you can use it to see **bash** variables:
 
-    echo $HISTFILE
+.. code-block:: bash
+
+    $ echo $HOME
+
+    $ echo $HISTFILE
 
 Variables
 =========
@@ -298,8 +347,8 @@ key component of programming.
 
 You can do::
 
-    important=/opt/bio-workshop/data/lamina.bed
-    ls -lh $important
+    $ important=/opt/bio-workshop/data/lamina.bed
+    $ ls -lh $important
 
 
 sudo
@@ -308,8 +357,8 @@ sudo
 
 .. code-block:: bash
 
-    apt-get install cowsay
-    sudo apt-get install cowsay
+    $ apt-get install cowsay
+    $ sudo apt-get install cowsay
 
 other commands
 ==============
@@ -328,7 +377,9 @@ gedit
 In order to edit files as you would using `notepad` or `word` in windows,
 we will use the simple editor "gedit".
 
-You can open gedit from the terminal using::
+You can open gedit from the terminal using:
+
+.. code-block:: bash
 
     $ gedit
 
@@ -340,14 +391,18 @@ Scripts
 A script is simply a series of commands that you save in a file. You will
 need to write scripts to complete the homework.
 
-Put this text::
+Put this text:
 
-    ls /opt/bio-workshop/
+.. code-block:: bash
+
+    $ ls /opt/bio-workshop/
 
 Into the file *`run.sh`* by opening `gedit` pasting that text then `save
 as..` using the GUI controls
 
-You can then run it as::
+You can then run it as:
+
+.. code-block:: bash
 
     $ bash run.sh
 
@@ -386,7 +441,9 @@ Since linux is made of small utilities, we often want to chain them
 together. We will cover this in detail next class, but the idea
 is that each program takes data, modifies it, and sends it to the next.
 
-We can see lines 5-10 of a file with::
+We can see lines 5-10 of a file with:
+
+.. code-block:: bash
 
     $ head /opt/bio-workshop/data/lamina.bed | tail -n 5
 

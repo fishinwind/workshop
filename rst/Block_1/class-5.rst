@@ -26,7 +26,7 @@ you get stuck.
 
 .. note::
 
-    You should start the Python tutorial [#]_. We will cover some language
+    **You should begin the Python tutorial** [#]_. We will cover some language
     specifics of Python, but will quickly move to using Python  in the
     context of bioinformatic applications.
 
@@ -36,7 +36,9 @@ you get stuck.
 Ipython
 =======
 Ipython is an (I)nteractive python terminal that lets you
-type in python expressions and see the results immediately::
+type in python expressions and see the results immediately
+
+.. code-block:: bash
 
     $ ipython
 
@@ -45,9 +47,9 @@ the login terminal accepts ``bash`` commands.
 
 Python indentation
 ==================
-Many older languages (e.g. PERL, C) use curly brackets to delineate blocks of
-code. Python depends on proper indentation of your code. This does not
-work:
+Many older languages (e.g. bash, PERL, C) use curly brackets to delineate
+blocks of code. In contrast, Python depends on proper indentation of your
+code. This does not work:
 
 .. code-block:: python
 
@@ -55,12 +57,15 @@ work:
     print i
 
 Instead you have to indent the "print" statement to nest it in the for
-loop. 
+loop:
 
 .. code-block:: python
 
     for i in (1, 2, 3):
         print i
+
+Python indentation(2)
+=====================
 
 .. important::
 
@@ -116,17 +121,17 @@ You can also automate repetitive tasks with a for loop:
     In [1]: for i in range(5):
        ...:     print i
 
-where ``range`` is a python function that generates the numbers
+where :py:func:`range` is a python function that generates the numbers
 `0, 1, 2, 3, 4`.
 
 Python Types
 ============
 There are several core types in Python that you will use a lot.
 
-    - ``Strings`` are collections of characters (words and sentences).
-    - ``Ints`` and ``Floats`` are numbers.
-    - ``Lists`` are groups of other objects.
-    - ``Dictionaries`` contain key:value mappings.
+    - :py:obj:`str` is a collection of characters (words and sentences).
+    - :py:obj:`int` and :py:obj:`float` are numbers.
+    - :py:obj:`list` is a group of other objects.
+    - :py:class:`dict` contains key:value mappings.
 
 Strings
 =======
@@ -147,8 +152,8 @@ Strings are collections of characters.
 
 Numbers (Ints and math)
 =========================
-Python has an integer number representation (``int``) and a floating point
-representation (``float``). Most math operations work within and across
+Python has an integer number representation (:py:class:`int`) and a floating point
+representation (:py:class:`float`). Most math operations work within and across
 both types:
 
 .. ipython::
@@ -199,9 +204,11 @@ Division is a case where you need to pay attention to ``type``:
     
 Lists
 =====
-Lists are collections of other objects. You can create lists directly
-using brackets (``[ ]``), or they can be created from other objects. Lists
-are *subscriptable*, meaning that you can access items in a list by
+A :py:class:`list` is a collection of other objects. You can create lists
+directly using brackets (``[ ]``), or they can be created from other
+objects.
+
+Lists are *subscriptable*, meaning that you can access items in a list by
 position.
 
 .. ipython::
@@ -214,6 +221,12 @@ position.
 
     # number of items in list
     In [3]: len(words)
+
+Lists (2)
+=========
+
+.. ipython::
+    :verbatim:
 
     # two ways to add new words
     In [3]: words.append('foo')
@@ -228,21 +241,21 @@ position.
 
 In Class Exercises (1)
 ======================
-Here are a few exercises::
+Here are a few exercises:
 
-    - Use range() to count from 0 to 100 by 10.  How do you get 100 in the
+    - Use :py:func:`range` to count from 0 to 100 by 10.  How do you get 100 in the
       result?
 
     - Get every other value of ``words`` (hint: use a slice)
 
-    - Use enumerate() on a list (hint: convert the
+    - Use :py:func:`enumerate` on a list (hint: convert the
       result with list(result))
 
-    - Use sorted() and reversed() on a list.
+    - Use :py:func:`sorted` and :py:func:`reversed` on a list.
 
-Dictionaries
-============
-Dictionaries contain key:value mappings. 
+Dictionaries (dicts)
+====================
+A :py:class:`dict` contains key:value mappings. 
 
 .. ipython::
     :verbatim:
@@ -262,7 +275,7 @@ Dictionaries contain key:value mappings.
 
 Sets
 ====
-Sets are another type in python that let you store a non-redundant
+A :py:class:`set` is another type in python that let you store a non-redundant
 lists of items. They support logical operations:
 
 .. ipython::
@@ -302,9 +315,10 @@ Useful python modules
 There are several modules in the standard library that we use all the time
 for bioinformatics.
 
-    - ``collections``: espcially the ``defaultdict`` and ``Counter``
-      objects
-    - ``itertools``: tools for efficient aggregation and iteration
+    - :py:mod:`collections`: espcially
+      :py:class:`collections.defaultdict` and
+      :py:class:`collections.Counter`
+    - :py:mod:`itertools`: tools for efficient aggregation and iteration
 
 In Class Exercises (2)
 ======================
