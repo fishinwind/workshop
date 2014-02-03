@@ -6,6 +6,8 @@ Goals
 =====
 #. Leverage cluster resources to solve bioinformatic problems
 
+Overview
+========
 We will go over some common scenarios in bioinformatics where you can
 leverage cluster resources to process many files simultaneously with
 identical workflows.
@@ -15,7 +17,7 @@ Scenario 1
 Sequencing experiments typically generate raw sequencing data from many
 different experimental conditions (i.e. treatments, controls, cell types,
 time points, etc.) However, the initial steps of processing sequencing
-data rely on common steps to get the data into a manageable form. A
+data use common steps to processthe data into an interpretable form. A
 typical workflow for assessing sequencing data is:
 
     #. Calculate summary statistics on the raw reads
@@ -37,7 +39,7 @@ Now assume we have 4 different FASTQ files from a sequencing experiment.
 
 .. code-block:: bash
 
-    # /usr/bin/env bash
+    #! /usr/bin/env bash
 
     #BSUB -J workflow[1-4]
     #BSUB -e %J.%I.err
