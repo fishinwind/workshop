@@ -102,14 +102,15 @@ You will also sometimes use `-u` to get unique entries.
 Sort Questions
 --------------
 
-How do you:
-   1) sort by a particular column? (-k 4)
-   2) sort as a number (-k4n)
-   3) sort as a general number (1e-3 < 0.05) (-k4g)
-   4) change the default delimiter (-t,
-   5) sort by 2 columns (-k1,1 -k2,2n)
-   6) sort in reverse as a number (-k1rn)
-   7) get unique entries (-u)
+How do you::
+
+   1. sort by a particular column? (-k 4)
+   2. sort as a number (-k4n)
+   3. sort as a general number (1e-3 < 0.05) (-k4g)
+   4. change the default delimiter (-t,
+   5. sort by 2 columns (-k1,1 -k2,2n)
+   6. sort in reverse as a number (-k1rn)
+   7. get unique entries (-u)
 
 If you know all these, you'll know 99% of what you'll use sort for.
 
@@ -171,8 +172,7 @@ Note that we are using the variable FILE for the long file name::
         | sort -k1,1rn \
         | head -n 10
 
-.. comments::
-    FILE=http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV2.bed.gz
+.. FILE=http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV2.bed.gz
 
 Let's go through this line by line ...
 
@@ -216,25 +216,27 @@ Also beware of using ``grep`` to search for numbers::
 
 In Class Exercises
 ------------------
-::
+Here are a few exercises::
 
-  1. To learn about piping (|), use cowsay to:
+    1. To learn about piping (|), use cowsay to:
 
-     a. show your current working directory
-     b. show the number of lines in /opt/bio-workshop/data/lamina.bed
-     c. show the most recently modified file/dir in $HOME
+         a. show your current working directory
+         b. show the number of lines in /opt/bio-workshop/data/lamina.bed
+         c. show the most recently modified file/dir in $HOME
 
-  2. write a bash script that you can run to list only the 2
-     most recently modified files in a given directory (using
-     what you've learned in this class)
-  3. make that script executable (use google to learn how to do this).
+    2. write a bash script that you can run to list only the 2 most
+    recently modified files in a given directory (using what you've
+    learned in this class)
 
-  4. With `head`, you can see the first line of a file with head -n1.
-     How can you see all of a file *except* the first line. (use google)
+    3. make that script executable (use google to learn how to do this).
 
-  5. Without using your history, how few keystrokes can you use to run
-     the following command (must work from any directory)?
+    4. With `head`, you can see the first line of a file with head -n1.
+    How can you see all of a file *except* the first line. (use google)
+
+    5. Without using your history, how few keystrokes can you use to run
+    the following command (must work from any directory)?::
+
         ls /opt/bio-workshop/data/lamina.bed
 
-  6. How few keystrokes can you do 5. using your history?
+    6. How few keystrokes can you do 5. using your history?
 

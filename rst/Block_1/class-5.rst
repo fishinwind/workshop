@@ -2,17 +2,18 @@
     - useful ipython directive page for decorator syntax
         http://matplotlib.org/sampledoc/ipython_directive.html
 
+*************************
 Class 5 : Python : Basics
-=========================
+*************************
 
 Goals
------
-1. Learn to start ipython
-2. Learn the basics of python syntax
-3. Learn basic types in python
+=====
+#. Learn the basics of python syntax
+#. Learn to start ipython
+#. Learn basic types in python
 
-Python overview
----------------
+Overview
+========
 Python is a popular programming language that is commonly used for
 bioinformatics. We will use it to process and filter files. When you can't
 write a simple script in ``awk``, it is better to use python.
@@ -33,7 +34,7 @@ you get stuck.
         http://learnpythonthehardway.org/book/
 
 Ipython
--------
+=======
 Ipython is an (I)nteractive python terminal that lets you
 type in python expressions and see the results immediately::
 
@@ -43,7 +44,7 @@ This command puts you in a shell that accepts python commands, much like
 the login terminal accepts ``bash`` commands.
 
 Python indentation
-------------------
+==================
 Many older languages (e.g. PERL, C) use curly brackets to delineate blocks of
 code. Python depends on proper indentation of your code. This does not
 work:
@@ -63,58 +64,16 @@ loop.
 
 .. important::
 
-    **Always** use spaces (not tab characters) to indent your code. Change
-    your gedit preferences so that when you press the tab key, four spaces are
-    inserted. Look in `Edit -> Preferences`, check the `Insert spaces instead
-    of tabs` box.
-
-.. note:: 
+    **Always** use spaces – and not *tab* characters – to indent
+    your code. Change your gedit preferences so that when you press the
+    tab key, four spaces are inserted. Look in `Edit -> Preferences`,
+    check the `Insert spaces instead of tabs` box.
 
     IPython will auto-indent code blocks for you. But when you move to
     writing standalone programs, you will need to indent blocks yourself.
 
-For Loops (characters)
-----------------------
-Lots of things in python are `iterable`, meaning we can write loops
-over them. For instance, a string is iterable:
-
-.. ipython::
-    :verbatim:
-
-    In [1]: sentence = 'i LOVE programming'
-
-    In [1]: for char in sentence:
-       ...:     print char
-
-For Loops (range)
------------------
-We saw an example of a ``for`` loop in the previous example. A ``for``
-loop is how you can automaite repetitive tasks.
-
-For example. Print "hello" 5 times:
-
-.. ipython::
-    :verbatim:
-
-    In [1]: for i in range(5):
-       ...:     print i
-
-where ``range`` is a python function that generates the numbers
-`0, 1, 2, 3, 4`.
-
-Try executing the ``range`` function alone at the ``ipython`` prompt.
-
-Python Types
-------------
-There are several core types in Python that you will use a lot.
-
-- ``Strings`` are collections of characters (words and sentences).
-- ``Ints`` and ``Floats`` are numbers.
-- ``Lists`` are groups of other objects.
-- ``Dictionaries`` contain key:value mappings.
-
 Python Help
------------
+===========
 You can find more about any python type or function using ``pydoc``::
 
     # learn about the python `string` type
@@ -127,8 +86,50 @@ At the ``ipython`` prompt, you can also use:
 
     In [1]: str?
 
+Finally, ask Google (e.g. python list slice).
+
+For Loops (characters)
+======================
+Lots of things in python are `iterable`, meaning we can write loops
+over them. For instance, a string is iterable:
+
+.. ipython::
+    :verbatim:
+
+    In [1]: sentence = 'i LOVE programming'
+
+    In [1]: for char in sentence:
+       ...:     print char
+
+For Loops (range)
+=================
+You can also automate repetitive tasks with a for loop:
+
+.. ipython::
+    :verbatim:
+
+    # Print "hello" 5 times:
+    In [1]: for i in range(5):
+       ...:     print "hello"
+
+    # now print the numbers
+    In [1]: for i in range(5):
+       ...:     print i
+
+where ``range`` is a python function that generates the numbers
+`0, 1, 2, 3, 4`.
+
+Python Types
+============
+There are several core types in Python that you will use a lot.
+
+    - ``Strings`` are collections of characters (words and sentences).
+    - ``Ints`` and ``Floats`` are numbers.
+    - ``Lists`` are groups of other objects.
+    - ``Dictionaries`` contain key:value mappings.
+
 Strings
--------
+=======
 Strings are collections of characters.
 
 .. ipython::
@@ -144,21 +145,69 @@ Strings are collections of characters.
     # number of characters (including spaces) in phrase
     In [3]: len(phrase)
 
+Numbers (Ints and math)
+=========================
+Python has an integer number representation (``int``) and a floating point
+representation (``float``). Most math operations work within and across
+both types:
+
+.. ipython::
+    :verbatim:
+
+    # set up some ints
+    In [6]: x = 10
+
+    In [7]: y = 100
+
+    In [8]: type(x)
+
+    # add
+    In [9]: x + y
+
+    # subtract
+    In [10]: x - y
+
+    # x * y
+    In [11]: x * y
+
+Numbers (Float division)
+========================
+Division is a case where you need to pay attention to ``type``:
+
+.. ipython::
+    :verbatim:
+
+    # try to divide the ints ...
+    In [12]: x / y
+
+    # need float conversion!
+    In [14]: float(x) / float(y)
+
+    # make floats directly and divide
+    In [15]: x = 10.0
+
+    In [16]: y = 100.0
+
+    In [16]: type(x)
+
+    In [17]: x / y
+
+.. note:: This changed in Python 3, where 5 / 2 will return 2.5. If you
+    want that behaviour, you need to add this to your code::
+
+        from __future__ import division
+    
 Lists
------
-Lists are collection of other objects. You can create lists directly,
+=====
+Lists are collections of other objects. You can create lists directly
 using brackets (``[ ]``), or they can be created from other objects. Lists
 are *subscriptable*, meaning that you can access items in a list by
 position.
 
-.. note::
-
-    ``Lists are 0-based and half-open``. This means that:
-        - the first item is at index 0
-        - you need to specify 
-
 .. ipython::
     :verbatim:
+
+    In [2]: phrase = 'this that other'
 
     # convert to list
     In [3]: words = phrase.split()
@@ -166,29 +215,57 @@ position.
     # number of items in list
     In [3]: len(words)
 
-    # first item only
-    In [3]: phrase[0]
-
-    # add a new word
+    # two ways to add new words
     In [3]: words.append('foo')
 
-Exercises (1)
--------------
-::
-    - Try using the ``enumerate`` function on a list.
+    In [3]: words.extend(['bar','baz'])
 
-    - Try using the ``sorted`` and ``reversed`` functions on a list.
+    # first item only, zero-based
+    In [3]: words[0]
+
+    # first through third
+    In [3]: words[:3]
+
+In Class Exercises (1)
+======================
+Here are a few exercises::
+
+    - Use range() to count from 0 to 100 by 10.  How do you get 100 in the
+      result?
+
+    - Get every other value of ``words`` (hint: use a slice)
+
+    - Use enumerate() on a list (hint: convert the
+      result with list(result))
+
+    - Use sorted() and reversed() on a list.
 
 Dictionaries
-------------
+============
+Dictionaries contain key:value mappings. 
+
+.. ipython::
+    :verbatim:
+
+    # set up new dicts with {}
+    In [3]: produce  = {'apple':'red', 'banana':'yellow', 'lettuce':'green'}
+
+    In [5]: produce.keys()
+
+    In [7]: produce.values()
+
+    # sorted by keys
+    In [8]: sorted(produce.items())
+
+    # test for membership
+    In [9]: 'apple' in produce
 
 Sets
-----
+====
 Sets are another type in python that let you store a non-redundant
 lists of items. They support logical operations:
 
 .. ipython::
-    :verbatim:
 
     In [11]: skiiers = set(['Tom','Dick','Harry','Gurf'])
 
@@ -204,7 +281,7 @@ lists of items. They support logical operations:
     In [14]: skiiers - snowboarders
 
 Importing modules
------------------
+=================
 There are a number of modules with objects and functions in the standard
 library, and there are a also a huge number of Python modules on the web
 (check github).
@@ -218,15 +295,20 @@ your `namespace`:
 
     In [2]: math.log10(1000)
 
+    In [3]: import sys
 
 Useful python modules
----------------------
+=====================
 There are several modules in the standard library that we use all the time
 for bioinformatics.
 
-    - ``collections``
+    - ``collections``: espcially the ``defaultdict`` and ``Counter``
+      objects
+    - ``itertools``: tools for efficient aggregation and iteration
 
-In Class Exercise
-------------------
-::
+In Class Exercises (2)
+======================
+Here are a few exercises::
+
     - stub
+
