@@ -39,6 +39,14 @@ folders with today's date so you know where to put the dated data and
 reuslts. Finally, keep a list of the commands that you used to create the
 directory (**10 points**).
 
+.. note::
+    
+    Name your directories with YYYY-MM-DD format (year-month-date, e.g.
+    2014-01-10). If you do this, the directories will sort chronologically
+    using the directory name.
+    
+    **Avoid MM-DD-YY, they will not sort chronologically by name.**
+
 Problem 2
 ---------
 Download the the following data table: :download:`states.tab`.  Then move
@@ -103,7 +111,9 @@ you want to write the results in (hint: it should include today's date).
     sort -k6n $datafile | head -n 10 >> $resultsfile
 
 Then, save the above text in a run.sh script in your results directory. To run the file,
-use ::
+use:
+
+.. code-block:: bash
 
     $ bash run.sh
 
@@ -117,15 +127,22 @@ Problem 3
 ---------
 Finally you need to create a log of what you did in the root of the
 results directory to summarize the key points of your analysis (**5
-points**).
+points**). For example::
+
+    Captain's log, star date 2014-07-16
+    -----------------------------------
+    After examining the results.tab file, learned that Alaska has the highest
+    income per person. Wut?
 
 Problem Set Submission
 ----------------------
 Specify the root of your project directory and create a tar file of the whole
-directory like this; you can change LASTNAME to your last name ::
+directory like this; you can change STUDENT to your last name:
+
+.. code-block:: bash
 
     $ projectdir=$HOME/project
-    $ tar -cvf LASTNAME-problem-set.tar $projectdir
+    $ tar -cvf STUDENTID-problem-set.tar $projectdir
 
 Upload the tar file to the Problem Set at the Canvas site to complete the
 submission.

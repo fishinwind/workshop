@@ -1,6 +1,5 @@
-.. todo::
-    - useful ipython directive page for decorator syntax
-        http://matplotlib.org/sampledoc/ipython_directive.html
+.. useful ipython directive page for decorator syntax
+   http://matplotlib.org/sampledoc/ipython_directive.html
 
 *************************
 Class 5 : Python : Basics
@@ -310,14 +309,37 @@ your `namespace`:
 
     In [3]: import sys
 
+Simple Python script
+====================
+IPython is great, but you need to learn small scripts and execute them.
+Save this in file called ``run.py``:
+
+.. code-block:: python
+
+    #! /usr/bin/env python
+
+    import sys
+
+    print "HELLO WORLD!"
+
+    print "my name is %s!" % sys.argv[0]
+
+And run it:
+
+.. code-block:: bash
+
+    $ python run.py
+
 Useful python modules
 =====================
-There are several modules in the standard library that we use all the time
-for bioinformatics.
+There are several modules in the standard library you will use all the
+time:
 
+    - :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command line
     - :py:mod:`collections`: espcially :py:class:`collections.defaultdict`
       and :py:class:`collections.Counter`
     - :py:mod:`itertools`: tools for efficient aggregation and iteration
+    - :py:mod:`argparse`: command line option parsing
 
 In Class Exercises (2)
 ======================
