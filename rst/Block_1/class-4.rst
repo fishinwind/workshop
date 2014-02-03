@@ -169,9 +169,9 @@ using awk to count lines with NR
 ================================
 .. code-block:: bash
 
-    wc -l /opt/bio-workshop/data/lamina.bed
+    $ wc -l /opt/bio-workshop/data/lamina.bed
 
-    awk 'END { print NR }' /opt/bio-workshop/data/lamina.bed
+    $ awk 'END { print NR }' /opt/bio-workshop/data/lamina.bed
 
 
 using FS and OFS
@@ -182,7 +182,7 @@ remember FS is the input separator and OFS is the output delimiter
 
 .. code-block:: bash
 
-    awk 'BEGIN{FS="\t", OFS=","}
+    $ awk 'BEGIN{FS="\t", OFS=","}
         ($1 == "chr12"){ print $1,$2,$3 }' /opt/bio-workshop/data/lamina.bed
 
 regular expressions
@@ -193,7 +193,7 @@ The following finds lines containing chr2 (chr2, chr20, chr21) in the first colu
 
 .. code-block:: bash
 
-   awk '$1 ~ /chr2/' /opt/bio-workshop/data/lamina.bed
+   $ awk '$1 ~ /chr2/' /opt/bio-workshop/data/lamina.bed
 
 Often we can get by without *regular expressions* but they are extremeley powerful
 and available in nearly all programming languages.
