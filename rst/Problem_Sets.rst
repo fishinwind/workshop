@@ -9,6 +9,8 @@ Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
 
    Problem_Sets/*/*
 
+.. _submission:
+
 Problem Set Submission
 ----------------------
 Specify the root of your project directory and create a tar file of the
