@@ -216,7 +216,7 @@ we will do the first 2. of these together
 
   a. do the above, but only for regions on chromosome 12
 
-2. use NF to how many columns are in each row of `states.tab`
+2. use NF to see how many columns are in each row of `states.tab`
 
   a. use sort and uniq -c to see uniq column counts.
   b. why are there 2 numbers?

@@ -243,8 +243,8 @@ In Class Exercises (1)
 ======================
 Here are a few exercises:
 
-    #. Use :py:func:`range` to count from 0 to 100 by 10.  How do you get 100 in the
-      result?
+    #. Use :py:func:`range` to count from 0 to 100 by 10. How do you get
+       100 in the result?
 
     #. Get every other value of ``words`` (hint: use a slice)
 
