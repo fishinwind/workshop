@@ -1,6 +1,8 @@
 Class 3 : The command-line (part 2)
 ===================================
 
+Friday: 31 January 2014
+
 Goals
 -----
 1. learn additional linux utilities (cut, sort, zless, uniq, wget)
@@ -8,14 +10,18 @@ Goals
 
 wget
 ----
-fetch a a file from the web with ``wget``::
+fetch a a file from the web with ``wget``
+
+.. code-block:: bash
 
     $ cd /opt/bio-workshop/data/
     $ wget http://ucd-bioworkshop.github.io/_downloads/states.tab
 
 cut
 ---
-The ``cut`` command allows you to extract certain columns of a file::
+The ``cut`` command allows you to extract certain columns of a file
+
+.. code-block:: bash
 
     # cut columns 1-4 and 7-10
     $ cut -f 1-4,7-10 /opt/bio-workshop/data/states.tab
@@ -31,7 +37,9 @@ The ``cut`` command allows you to extract certain columns of a file::
 
 uniq
 ----
-The ``uniq`` command  allows you to get and count unique entries::
+The ``uniq`` command  allows you to get and count unique entries
+
+.. code-block:: bash
 
     # remove duplicate lines
     $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq
@@ -44,41 +52,54 @@ The ``uniq`` command  allows you to get and count unique entries::
 
 .. important::
 
+
    ``uniq`` assumes that file is sorted by the column of interest.
 
    Use ``sort`` to sort the data before ``uniq``-ing it.
 
 Redirection of output
 ---------------------
-To send the output of a command (or a file) to another file, use ">"::
+To send the output of a command (or a file) to another file, use ">"
+
+.. code-block:: bash
 
     $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c > output.txt
     $ head output.txt
 
 To **append** the output of a command (or a file) to another file, use
-">>"::
+">>"
+
+.. code-block:: bash
 
     $ echo "last line" >> output.txt
     $ tail output.txt
 
 Compressed Files
 ----------------
-The most common way to uncompress single files is ``gunzip``::
+The most common way to uncompress single files is ``gunzip``
+
+.. code-block:: bash
 
     $ gunzip /opt/bio-workshop/data/t_R1.fastq.gz
 
-And re-zip the file with ``gzip``:: 
+And re-zip the file with ``gzip``
+
+.. code-block:: bash 
 
     $ gzip /opt/bio-workshop/data/t_R1.fastq
 
 But if we just want to stream the uncompressed data without changing the
-file::
+file
+
+.. code-block:: bash
 
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz
 
 Pipes
 -----
-We probably want to do something with the file as we uncompress it::
+We probably want to do something with the file as we uncompress it
+
+.. code-block:: bash
 
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz | head
 
@@ -91,7 +112,9 @@ Sort
 ----
 You will often want to ``sort`` your data.
 
-Have a look at::
+Have a look at
+
+.. code-block:: bash
 
     $ man sort
 
@@ -102,7 +125,7 @@ You will also sometimes use `-u` to get unique entries.
 Sort Questions
 --------------
 
-How do you::
+How do you:
 
    1. sort by a particular column? (-k 4)
    2. sort as a number (-k4n)
@@ -118,7 +141,9 @@ Sort Example
 ------------
 BED files have columns `chrom` [tab] `start` [tab] `end` [tab] ...
 
-Sort by chrom, then by start (a lot of tools will require this)::
+Sort by chrom, then by start (a lot of tools will require this)
+
+.. code-block:: bash
 
     $ sort -k1,1 -k2,2n /opt/bio-workshop/data/lamina.bed > /tmp/sorted.bed
 
@@ -132,7 +157,9 @@ Question:
 
 Sort Example (part 2)
 ---------------------
-What if we want to sort by Income **descending** in the 3rd column?::
+What if we want to sort by Income **descending** in the 3rd column?
+
+.. code-block:: bash
 
     $ sort -t$'\t' -k3,3rg /opt/bio-workshop/data/states.tab > /tmp/sorted.out
     $ head /tmp/sorted.out 
@@ -158,7 +185,9 @@ binding sites are the most common in a set of putative sites from ENCODE.
 
 Application 2
 -------------
-Note that we are using the variable FILE for the long file name::
+Note that we are using the variable FILE for the long file name
+
+.. code-block:: bash
 
     # BED format file of transcription factor binding sites
     FILE=http://bit.ly/tfbs-x
@@ -180,43 +209,11 @@ grep
 ----
 Use ``grep`` to identify lines in a file that match a specified pattern.
 
-To find any instance of *chr5* in the lamina.bed file::
-   
-    # grep [pattern] [filename]
-    $ grep chr5 /opt/bio-workshop/data/lamina.bed | head
-
-To find all lines that start with a number sign::
-
-    # The caret (^) matches the beginning of the line
-    # FYI dollar sign ($) matches the end
-    $ grep '^#' /opt/bio-workshop/data/lamina.bed
-
-To find any line that *does not* start with "chr"::
-
-    # the -v flag inverts the match (grep "not" [pattern])
-    $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
-
-grep (2)
---------
-Beware of using ``grep`` to find patterns that might be partial matches::
-
-    # this will match chr1, chr10, chr11 etc.
-    $ grep chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
-
-Also beware of using ``grep`` to search for numbers::
-
-    $ grep 100 /opt/bio-workshop/data/lamina.bed | head -n 20
-
-.. tip::
-
-    If you're trying to find numeric values in a file, use ``awk``
-    instead::
-
-        $ awk '$2 == 500' /opt/bio-workshop/data/lamina.bed
-
 In Class Exercises
 ------------------
-Here are a few exercises::
+Here are a few exercises
+
+.. code-block:: bash
 
     1. To learn about piping (|), use cowsay to:
 
@@ -234,7 +231,9 @@ Here are a few exercises::
     How can you see all of a file *except* the first line. (use google)
 
     5. Without using your history, how few keystrokes can you use to run
-    the following command (must work from any directory)?::
+    the following command (must work from any directory)?
+
+.. code-block:: bash
 
         ls /opt/bio-workshop/data/lamina.bed
 
