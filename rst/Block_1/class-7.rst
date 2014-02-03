@@ -11,7 +11,9 @@ Goals
 Cluster access
 ==============
 We have set up accounts for the class on our departmental cluster. We will
-set up your accounts at the end of class and reset your passwords::
+set up your accounts at the end of class and reset your passwords:
+
+.. code-block:: bash
 
     # the -X flag starts an X11 connection 
     $ ssh -X username@amc-tesla.ucdenver.pvt
@@ -35,18 +37,24 @@ cluster environment.
 
 Example commands on the cluster
 ===============================
-Find the size of the file system::
+Find the size of the file system:
+
+.. code-block:: bash
 
     $ df -h
 
-Find how much space you have allocated::
+Find how much space you have allocated:
+
+.. code-block:: bash
 
     $ quota -h
 
 The queueing system
 ===================
 First you will grab a single CPU from the queueing system so that you can play
-around without affecting the head node. We use ``qlogin`` for this::
+around without affecting the head node. We use ``qlogin`` for this:
+
+.. code-block:: bash
 
     jhessel@amc-tesla ~
     $ qlogin 
@@ -67,10 +75,12 @@ You can now execute long-running processes without worry of affecting the
 cluster. Type ``exit`` to return back to your head node login.
 
 The queueing system (2)
------------------------
+=======================
 The cluster uses a queueing system that will run jobs that you submit to
 it. You can write a small test script to see how the system works. First,
-write this into a run.sh file::
+write this into a run.sh file:
+
+.. code-block:: bash
 
     # /usr/bin/env bash
 
@@ -88,9 +98,11 @@ identify features associated with your job.
     - ``-e`` and ``-o`` set the filenames for stderr and stdout from the job
 
 The queueing system (3)
------------------------
+=======================
 Now you can submit the script to the queuing system. As soon as you submit
-it, you can check on its progress::
+it, you can check on its progress:
+
+.. code-block:: bash
 
     $ bsub < run.sh
     $ bjobs
@@ -103,11 +115,15 @@ each one.
 Killing jobs
 ============
 Sometimes you need to kill your jobs. You can kill specific jobs using
-their job ID numbers, obtained from checking `bjobs`::
+their job ID numbers, obtained from checking `bjobs`:
+
+.. code-block:: bash
 
     $ bkill <jobid> 
 
-You can also kill **all** of your jobs at once::
+You can also kill **all** of your jobs at once:
+
+.. code-block:: bash
 
     $ bkill 0 
 

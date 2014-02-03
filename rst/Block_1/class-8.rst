@@ -70,7 +70,9 @@ Now assume we have 4 different FASTQ files from a sequencing experiment.
         | awk 'BEGIN {OFS="\t"} {print $2,$3,$1}'
         > $summary
 
-Run the above script and check its status immediately::
+Run the above script and check its status immediately:
+
+.. code-block:: bash
 
     $ bsub < run.sh
     $ bjobs
