@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.pngmath',
     'sphinx.ext.mathjax',
+    'sphinx.ext.intersphinx',
     'IPython.sphinxext.ipython_directive',
     'IPython.sphinxext.ipython_console_highlighting',
     'sphinxcontrib.blockdiag',
@@ -60,7 +61,8 @@ except ImportError:
 try:
     import IPython
 except ImportError:
-    sys.stderr.write("please install (pip) ipython\n")
+    sys.stderr.write("please install (pip) ipython \n")
+    sys.stderr.write("please install (easy_install) matplotlib\n")
     sys.exit(1)
 try:
     import sphinxcontrib.blockdiag
@@ -293,8 +295,13 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
 
+# slide config
 slide_levels = 2
 slide_theme = 'single-level'
 slide_link_html_to_slides = True
 slide_link_html_sections_to_slides = True
 slide_link_to_html = True
+
+# for python doc refs
+intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None)}
+
