@@ -200,21 +200,24 @@ and available in nearly all programming languages.
 
 advanced awk
 ============
-You can do a lot more with awk, here are several resources
+You can do a lot more with awk, here are several resources:
 
-    http://www.hcs.harvard.edu/~dholland/computers/awk.html
+    - http://www.hcs.harvard.edu/~dholland/computers/awk.html
 
-    http://doc.infosnel.nl/quickawk.html
+    - http://doc.infosnel.nl/quickawk.html
 
-    http://www.catonmat.net/download/awk.cheat.sheet.pdf
+    - http://www.catonmat.net/download/awk.cheat.sheet.pdf
 
 in-class exercises (1)
 ======================
 we will do the first 2. of these together
 
 1. use NR to print each line of `lamina.bed` *preceded* by it's line number
+
   a. do the above, but only for regions on chromosome 12
+
 2. use NF to how many columns are in each row of `states.tab`
+
   a. use sort and uniq -c to see uniq column counts.
   b. why are there 2 numbers?
   c. can you adjust the file separator so that awk thinks all rows have
@@ -226,7 +229,7 @@ review
 + adjust sep with: OFS="\t"; FS=","
 + $0 # entire line
 
-::
+.. code-block:: awk
 
    BEGIN {} 
    (match) { coverage += $3 - $2 } 
