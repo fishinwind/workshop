@@ -21,10 +21,17 @@ Cluster etiquette
 There are some specific rules you need to know when you're operating in a
 cluster environment.
 
-- The cluster is run by a central computer called the *head node*. This is
-  the computer that you log into (amc-tesla). **DO NOT** run jobs on the
-  head node. The head node is the brains of the cluster and
-  it can easily be overextended.
+.. blockdiag::
+
+    blockdiag {
+        YOU -> amc-tesla -> filesystem, compute_nodes;
+    }
+
+.. important::
+
+  **DO NOT** run jobs on the head node (amc-tesla). The head node is the
+  brains of the cluster and it can easily be overextended. Use ``qlogin``
+  instead.
 
 Example commands on the cluster
 ===============================
@@ -119,8 +126,9 @@ Other cluster-specific commands
     $ bqueues    # available queues
     $ lsload     # check load values for all hosts
 
-In class exercises
+In Class Exercises
 ==================
-::
- 1. test
- 2. test 2
+Here are a few exercises::
+
+    1. test
+    2. test 2

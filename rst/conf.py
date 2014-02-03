@@ -34,6 +34,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'IPython.sphinxext.ipython_directive',
     'IPython.sphinxext.ipython_console_highlighting',
+    'sphinxcontrib.blockdiag',
     'hieroglyph',
 ]
 
@@ -61,6 +62,16 @@ try:
 except ImportError:
     sys.stderr.write("please install (pip) ipython\n")
     sys.exit(1)
+try:
+    import sphinxcontrib.blockdiag
+except ImportError:
+    sys.stderr.write("please install (pip) sphinxcontrib-blockdiag\n")
+    sys.exit(1)
+
+except ImportError:
+    sys.stderr.write("please install (pip) ipython\n")
+    sys.exit(1)
+
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
