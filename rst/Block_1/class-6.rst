@@ -1,19 +1,21 @@
+*****************************
 Class 5 : Python : Basics (2)
-=============================
+*****************************
 
-For Loops (characters)
-----------------------
-Lots of things in python are `iterable`, meaning we can write loops
-over them. For instance, a string is iterable:
+Regular Expressions
+===================
+Python provides a regular expression module for pattern matching. We'll
+cover some basics of writing regular expressions:
 
-.. code-block:: python
+.. ipython::
+    :verbatim:
+    In [1]: phrase = 'how now brown cow'
 
-    for char in "i LOVE programming":
-        print char
+    In [2]: import re
 
-Try this in ``ipython`` to see what happens.
+    In [3]: regex = re.compile('brown')
+
+    In [6]: regex.findall(phrase) 
 
 In Class Exercise
-------------------
-::
-
+=================
