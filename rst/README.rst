@@ -33,8 +33,10 @@ Make HTML only with ::
 Move HTML to bioworkshop.github.io with::
 
     websitedir=$HOME/devel/UCD-BioWorkshop.github.io
-    cp -r _build/html/* $websitedir
-    cp -r _build/slides/* $websitedir
+
+    cp -r _build/html/* ../../bio-workshop-io/ $websitedir
+    cp -r _build/slides/ ../../bio-workshop-io/ $websitedir
+
     cd $websitedir
 
     git pull origin master
@@ -42,7 +44,7 @@ Move HTML to bioworkshop.github.io with::
 
     # use git status to check all is added.
     # you will have to explicity add (and use git add -f) stuff in
-    # section_1, so that we don't post draft classes early.
+    # Block_1, so that we don't post draft classes early.
     git commit -m "update html"
     git push origin master
 
