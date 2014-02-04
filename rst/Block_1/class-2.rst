@@ -304,7 +304,7 @@ What does the -r flag do?
 .. warning::
 
     Be careful with `rm -r` and `rm -rf`. You can accidentially remove
-    entire directories that you didn't intent to.
+    entire directories that you didn't intend to.
 
 Mmoving and copying files
 =========================

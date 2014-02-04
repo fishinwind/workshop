@@ -6,9 +6,9 @@ Monday: 3 February 2014
 
 Goals
 =====
- #. Review
- #. remember BED format (chr, start, end)
- #. learn awk basics to filter and manipulate text
+#. Review
+#. remember BED format (chr, start, end)
+#. learn awk basics to filter and manipulate text
 
 Review
 ======

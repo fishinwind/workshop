@@ -5,6 +5,8 @@
 Class 5 : Python : Basics
 *************************
 
+Wednesday: 5 February 2014
+
 Goals
 =====
 #. Learn the basics of python syntax
@@ -32,7 +34,7 @@ you get stuck.
 .. [#] Learn Python the Hard Way
        http://learnpythonthehardway.org/book/
 
-Ipython
+IPython
 =======
 Ipython is an (I)nteractive python terminal that lets you
 type in python expressions and see the results immediately
@@ -63,8 +65,8 @@ loop:
     for i in (1, 2, 3):
         print i
 
-Python indentation(2)
-=====================
+Python indentation (2)
+======================
 
 .. important::
 
@@ -72,9 +74,6 @@ Python indentation(2)
     your code. Change your gedit preferences so that when you press the
     tab key, four spaces are inserted. Look in `Edit -> Preferences`,
     check the `Insert spaces instead of tabs` box.
-
-    IPython will auto-indent code blocks for you. But when you move to
-    writing standalone programs, you will need to indent blocks yourself.
 
 Python Help
 ===========
@@ -292,6 +291,33 @@ lists of items. They support logical operations:
     # difference 
     In [14]: skiiers - snowboarders
 
+Equality and Logic
+==================
+Use ``if``:``elif``:``else`` statements to test conditions and act on the
+result. The ``==`` and ``!=`` operators test for equality and inequality, and
+work on many object comparisons.
+
+.. ipython::
+    :verbatim:
+
+    In [3]: cat = 'white'
+
+    In [4]: dog = 'black'
+
+    In [5]: if cat == dog: 
+       ...:     print "same color"
+       ...: elif cat != dog:
+       ...:     print "different color"
+       ...: else:
+       ...:     print "wut?"
+       ...:     
+
+Misc Python types
+=================
+- :py:obj:`None`: undefined. note: value of zero is defined
+
+- :py:obj:`bool`: the boolean type, ``True`` and ``False``
+
 Importing modules
 =================
 There are a number of modules with objects and functions in the standard
@@ -320,10 +346,12 @@ Save this in file called ``run.py``:
 
     import sys
 
-    print "HELLO WORLD!"
+    # sys.argv[1] has the filename
+    for line in open(sys.argv[1]):
 
-    print "my name is %s!" % sys.argv[0]
+        fields = line.strip().split()
 
+        
 And run it:
 
 .. code-block:: bash
@@ -335,11 +363,33 @@ Useful python modules
 There are several modules in the standard library you will use all the
 time:
 
-    - :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command line
+    - :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command
+      line
+
     - :py:mod:`collections`: espcially :py:class:`collections.defaultdict`
       and :py:class:`collections.Counter`
+
     - :py:mod:`itertools`: tools for efficient aggregation and iteration
+
     - :py:mod:`argparse`: command line option parsing
+
+Debugging Python code
+=====================
+The :py:mod:`pdb` is the Python Debugger. You can use it to debug programs by
+dropping you into a shell that allows you to step through the program, line by
+line.
+
+.. ipython::
+    :verbatim:
+
+    In [6]: import pdb
+
+    # this will drop you into a shell. find the value of ``i`` at the (Pdb)
+    # prompt
+    In [7]: for i in range(100):
+       ...:     if i == 50:
+       ...:         pdb.set_trace()
+       ...:         
 
 In Class Exercises (2)
 ======================
