@@ -34,6 +34,16 @@ the Teaching Lab. The VM has many of the tools you will need for analysis
 pre-installed. Feel free to install other tools that you think will be
 useful.
 
+To install the VM:
+
+#. Download VirtualBox from virtualbox.org
+#. Open VirtualBox. Click "New" in the upper left corner.
+#. In the "Name" field, type bio-workshop.  For "Type" select Linux.  For "Version"  select Ubuntu.  Click continue.
+#. Allocate an amount of memory that keeps the bar in the green zone. 2048MB is a nice number.  Click continue.
+#. Click the "Use an existing virtual hard drive file" radio button.  Click the folder icon.  Select the .vdi file provided on your USB stick.
+#. Click create.
+#. Bask in glory.
+
 Important Directories
 =====================
 You will learn about directories in the next class, but note that the
