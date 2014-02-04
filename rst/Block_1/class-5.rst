@@ -12,6 +12,7 @@ Goals
 #. Learn the basics of python syntax
 #. Learn to start ipython
 #. Learn basic types in python
+#. Write simple python scripts
 
 Overview
 ========
@@ -48,9 +49,7 @@ the login terminal accepts ``bash`` commands.
 
 Python indentation
 ==================
-Many older languages (e.g. bash, PERL, C) use curly brackets to delineate
-blocks of code. In contrast, Python depends on proper indentation of your
-code. This does not work:
+Python depends on proper indentation of your code. This does not work:
 
 .. code-block:: python
 
@@ -65,19 +64,17 @@ loop:
     for i in (1, 2, 3):
         print i
 
-Python indentation (2)
-======================
+.. note::
 
-.. important::
-
-    **Always** use spaces – and not *tab* characters – to indent
-    your code. Change your gedit preferences so that when you press the
-    tab key, four spaces are inserted. Look in `Edit -> Preferences`,
+    Use spaces instead of *tab* characters for indentation
+    Update your gedit preferences: `Edit -> Preferences`,
     check the `Insert spaces instead of tabs` box.
 
 Python Help
 ===========
-You can find more about any python type or function using ``pydoc``::
+You can find more about any python type or function using ``pydoc``:
+
+.. code-block:: bash
 
     # learn about the python `string` type
     $ pydoc str
@@ -89,12 +86,14 @@ At the ``ipython`` prompt, you can also use:
 
     In [1]: str?
 
-Finally, ask Google (e.g. python list slice).
+In these slides, links take you to the python docs: :py:obj:`str`
 
-For Loops (characters)
+Finally, ask Google (e.g. python string split).
+
+For Loops (iteration)
 ======================
-Lots of things in python are `iterable`, meaning we can write loops
-over them. For instance, a string is iterable:
+Many things in python are **iterable**, meaning we can write loops over
+them. For example, a string is iterable:
 
 .. ipython::
     :verbatim:
@@ -106,7 +105,7 @@ over them. For instance, a string is iterable:
 
 For Loops (range)
 =================
-You can also automate repetitive tasks with a for loop:
+Automate repetitive tasks with a for loop:
 
 .. ipython::
     :verbatim:
@@ -119,8 +118,7 @@ You can also automate repetitive tasks with a for loop:
     In [1]: for i in range(5):
        ...:     print i
 
-where :py:func:`range` is a python function that generates the numbers
-`0, 1, 2, 3, 4`.
+where the :py:func:`range` function generates the numbers `0, 1, 2, 3, 4`.
 
 Python Types
 ============
@@ -133,7 +131,8 @@ There are several core types in Python that you will use a lot.
 
 Strings
 =======
-Strings are collections of characters.
+A :py:obj:`str` is a collection of characters. You can make strings with
+single, double and triple quotes.
 
 .. ipython::
     :verbatim:
@@ -150,9 +149,8 @@ Strings are collections of characters.
 
 Numbers (Ints and math)
 =========================
-Python has an integer number representation (:py:obj:`int`) and a floating point
-representation (:py:obj:`float`). Most math operations work within and across
-both types:
+Python has integer numbers (:py:obj:`int`) and floating point numbers
+(:py:obj:`float`). Math operations work within and across both types:
 
 .. ipython::
     :verbatim:
@@ -175,7 +173,7 @@ both types:
 
 Numbers (Float division)
 ========================
-Division is a case where you need to pay attention to ``type``:
+For division you need to pay attention to ``type``:
 
 .. ipython::
     :verbatim:
@@ -195,14 +193,9 @@ Division is a case where you need to pay attention to ``type``:
 
     In [17]: x / y
 
-.. note:: This changed in Python 3, where 5 / 2 will return 2.5. If you
-    want that behaviour, you need to add this to your code::
-
-        from __future__ import division
-    
 Lists
 =====
-A :py:obj:`list` is a collection of other objects. You can create lists
+A :py:obj:`list` is a collection of other objects. You create lists
 directly using brackets (``[ ]``), or they can be created from other
 objects.
 
@@ -212,13 +205,16 @@ position.
 .. ipython::
     :verbatim:
 
-    In [2]: phrase = 'this that other'
-
-    # convert to list
+    # convert to list, str.split() defaults to space
     In [3]: words = phrase.split()
 
     # number of items in list
     In [3]: len(words)
+
+    # two ways to add new words
+    In [3]: words.append('foo')
+
+    In [3]: words.extend(['bar','baz'])
 
 Lists (2)
 =========
@@ -226,30 +222,78 @@ Lists (2)
 .. ipython::
     :verbatim:
 
-    # two ways to add new words
-    In [3]: words.append('foo')
-
-    In [3]: words.extend(['bar','baz'])
-
     # first item only, zero-based
     In [3]: words[0]
 
-    # first through third
+    # first through third, start is implicit
     In [3]: words[:3]
 
+    # iterate over the list
+    In [7]: for word in words:
+       ...:     print word.capitalize()
+       ...:     
+
+    # mix types in lists
+    In [1]: words.extend([1,2,3])
+
+    # a "list comprehension"
+    In [2]: [type(i) for i in words]
+
+Python Exceptions
+=================
+When you're learning to program in Python, you will see lots of errors.
+Exmaples: :py:class:`exceptions.ValueError`,
+:py:class:`exceptions.IndexError` and :py:class:`exceptions.KeyError`
+
+.. ipython::
+    :verbatim:
+
+    In [6]: int('blah')
+
+    In [8]: words[100]
+
+    In [7]: parts = {'hip':'thigh'}
+
+    In [9]: parts['nose']
+
+    # Catch errors, print useful debugging messages
+    In [12]: try:
+       ....:     nums[100]
+       ....: except IndexError:
+       ....:     print "error: not enough nums"
+       ....:     
+
+Reading data from a file
+========================
+Now we'll read some data from a file and operate on each line:
+
+.. ipython::
+    :verbatim:
+
+    In [3]: filename = '/opt/bio-workshop/data/lamina.bed'
+
+    # What is the BUG in this block?
+    In [4]: for line in open(filename):
+       ...:     fields = line.strip().split('\t')
+       ...:     start = fields[1]
+       ...:     if start > 5000:
+       ...:         print fields 
+    
 In Class Exercises (1)
 ======================
 Here are a few exercises:
 
-    #. Use :py:func:`range` to count from 0 to 100 by 10. How do you get
+    #. Use :py:func:`range` to count from 0 to 100 **by 10**. How do you get
        100 in the result?
 
-    #. Get every other value of ``words`` (hint: use a slice)
+    #. Get **every other** value of ``words`` (hint: use a slice)
 
     #. Use :py:func:`enumerate` on a list (hint: convert the
        result with list(result))
 
     #. Use :py:func:`sorted` and :py:func:`reversed` on a list.
+
+    #. Do type conversion on each of the fields in the lamina.bed file
 
 Dictionaries (dicts)
 ====================
@@ -259,17 +303,22 @@ A :py:class:`dict` contains key:value mappings.
     :verbatim:
 
     # set up new dicts with {}
-    In [3]: produce  = {'apple':'red', 'banana':'yellow', 'lettuce':'green'}
+    In [14]: produce  = {'lettuce':'green', 'apple':'red',
+       ....: 'banana':'yellow'}
 
     In [5]: produce.keys()
 
     In [7]: produce.values()
+
+    In [7]: produce.items()
 
     # sorted by keys
     In [8]: sorted(produce.items())
 
     # test for membership
     In [9]: 'apple' in produce
+
+    In [10]: not 'orange' in produce
 
 Sets
 ====
@@ -350,46 +399,12 @@ Save this in file called ``run.py``:
     for line in open(sys.argv[1]):
 
         fields = line.strip().split()
-
         
 And run it:
 
 .. code-block:: bash
 
     $ python run.py
-
-Useful python modules
-=====================
-There are several modules in the standard library you will use all the
-time:
-
-    - :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command
-      line
-
-    - :py:mod:`collections`: espcially :py:class:`collections.defaultdict`
-      and :py:class:`collections.Counter`
-
-    - :py:mod:`itertools`: tools for efficient aggregation and iteration
-
-    - :py:mod:`argparse`: command line option parsing
-
-Debugging Python code
-=====================
-The :py:mod:`pdb` is the Python Debugger. You can use it to debug programs by
-dropping you into a shell that allows you to step through the program, line by
-line.
-
-.. ipython::
-    :verbatim:
-
-    In [6]: import pdb
-
-    # this will drop you into a shell. find the value of ``i`` at the (Pdb)
-    # prompt
-    In [7]: for i in range(100):
-       ...:     if i == 50:
-       ...:         pdb.set_trace()
-       ...:         
 
 In Class Exercises (2)
 ======================
