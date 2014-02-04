@@ -320,28 +320,8 @@ A :py:class:`dict` contains key:value mappings.
 
     In [10]: not 'orange' in produce
 
-Sets
-====
-A :py:class:`set` is another type in python that let you store a non-redundant
-lists of items. They support logical operations:
-
-.. ipython::
-
-    In [11]: skiiers = set(['Tom','Dick','Harry','Gurf'])
-
-    In [12]: snowboarders = set(['Lucy','Steve','Brian','Gurf'])
-
-    # intersection
-    In [13]: skiiers & snowboarders
-
-    # union
-    In [14]: skiiers | snowboarders
-
-    # difference 
-    In [14]: skiiers - snowboarders
-
-Equality and Logic
-==================
+Equality and Logic in Python
+============================
 Use ``if``:``elif``:``else`` statements to test conditions and act on the
 result. The ``==`` and ``!=`` operators test for equality and inequality, and
 work on many object comparisons.
@@ -349,6 +329,7 @@ work on many object comparisons.
 .. ipython::
     :verbatim:
 
+    # animal colors
     In [3]: cat = 'white'
 
     In [4]: dog = 'black'
@@ -358,14 +339,37 @@ work on many object comparisons.
        ...: elif cat != dog:
        ...:     print "different color"
        ...: else:
-       ...:     print "wut?"
+       ...:     print "not going to happen"
        ...:     
 
-Misc Python types
-=================
+Undefined values in Python 
+==========================
 - :py:obj:`None`: undefined. note: value of zero is defined
 
 - :py:obj:`bool`: the boolean type, ``True`` and ``False``
+
+.. ipython::
+    :verbatim:
+
+    In [1]: this = None
+
+    In [2]: not this
+
+    In [4]: bool(this)
+
+    # the following are equivalent
+    In [6]: if this is None:
+       ...:     print 'foo'
+       ...:     
+
+    In [5]: if not this:
+       ...:     print 'foo'
+       ...:     
+
+    # set the following and test with ``not this``
+    In [7]: this = 0
+
+    In [9]: this = ''
 
 Importing modules
 =================
@@ -399,6 +403,7 @@ Save this in file called ``run.py``:
     for line in open(sys.argv[1]):
 
         fields = line.strip().split()
+        print fields[0]
         
 And run it:
 

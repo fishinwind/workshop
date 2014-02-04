@@ -6,6 +6,26 @@ Goals
 =====
 #. foo
 
+Sets
+====
+A :py:class:`set` is another type in python that let you store a non-redundant
+lists of items. They support logical operations:
+
+.. ipython::
+
+    In [11]: skiiers = set(['Tom','Dick','Harry','Gurf'])
+
+    In [12]: snowboarders = set(['Lucy','Steve','Brian','Gurf'])
+
+    # intersection
+    In [13]: skiiers & snowboarders
+
+    # union
+    In [14]: skiiers | snowboarders
+
+    # difference 
+    In [14]: skiiers - snowboarders
+
 Regular Expressions
 ===================
 Python provides a regular expression module for pattern matching. We'll
