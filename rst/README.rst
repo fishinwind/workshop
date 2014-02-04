@@ -43,8 +43,8 @@ Move HTML to bioworkshop.github.io with:
 .. code-block:: bash
 
     $ websitedir=$HOME/devel/UCD-BioWorkshop.github.io
-    $ cp -r _build/html/* $websitedir
-    $ cp -r _build/slides/* $websitedir
+    $ cp -r _build/html/* ../../bio-workshop-io/ $websitedir
+    $ cp -r _build/slides/ ../../bio-workshop-io/ $websitedir
     $ cd $websitedir
 
     $ git pull origin master
