@@ -1,420 +1,212 @@
-.. useful ipython directive page for decorator syntax
-   http://matplotlib.org/sampledoc/ipython_directive.html
+******************************************
+Class 5 : Working in a cluster environment
+******************************************
 
-*************************
-Class 5 : Python : Basics
-*************************
-
-:Class date: Wednesday 5 February 2014 ++
+:Class date: Wednesday 5 February 2014
 
 Goals
 =====
-#. Learn the basics of python syntax
-#. Learn to start ipython
-#. Learn basic types in python
-#. Write simple python scripts
+#. Grep overview
+#. Login to cluster
+#. Learn about cluster-specific commands
+#. Queueing system basics
 
-Overview
-========
-Python is a popular programming language that is commonly used for
-bioinformatics. We will use it to process and filter files. When you can't
-write a simple script in ``awk``, it is better to use python.
+grep
+====
+Use ``grep`` to identify lines in a file that match a specified pattern.
 
-The Python documentation [#]_ is very helpful, with lots of examples. You
-should read it to become familiar with the language and refer to it when
-you get stuck.
+To find any instance of *chr5* in the lamina.bed file
 
-.. [#] Python 2.x docs http://docs.python.org/2/
+.. code-block:: bash
+
+    # grep [pattern] [filename]
+    $ grep chr5 /opt/bio-workshop/data/lamina.bed | head
+
+To find all lines that start with a number sign:
+
+.. code-block:: bash
+
+    # The caret (^) matches the beginning of the line
+    # FYI dollar sign ($) matches the end
+    $ grep '^#' /opt/bio-workshop/data/lamina.bed
+
+To find any line that *does not* start with "chr":
+
+.. code-block:: bash
+
+    # the -v flag inverts the match (grep "not" [pattern])
+    $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
+
+grep (2)
+--------
+Beware of using ``grep`` to find patterns that might be partial matches:
+
+.. code-block:: bash
+
+    # this will match chr1, chr10, chr11 etc.
+    $ grep chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
+
+Also beware of using ``grep`` to search for numbers:
+
+.. code-block:: bash
+
+    $ grep 100 /opt/bio-workshop/data/lamina.bed | head -n 20
+
+.. tip::
+
+    If you're trying to find numeric values in a file, use ``awk``
+    instead::
+
+        $ awk '$2 == 500' /opt/bio-workshop/data/lamina.bed
+
+Cluster access
+==============
+We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords:
+
+.. code-block:: bash
+
+    # the -X flag starts an X11 connection 
+    $ ssh -X username@amc-tesla.ucdenver.pvt
+
+Cluster etiquette
+=================
+There are some specific rules you need to know when you're operating in a
+cluster environment.
+
+.. graphviz::
+
+    digraph cluster {
+        "YOU" [shape=box];
+        "amc-tesla" [shape=box];
+        "filesystem" [shape=box];
+        "compute nodes" [shape=box];
+        "YOU" -> "amc-tesla";
+        "amc-tesla" -> "filesystem";
+        "amc-tesla" -> "compute nodes";
+    }
 
 .. important::
 
-    **You should begin the Python tutorial** [#]_. We will cover some language
-    specifics of Python, but will quickly move to using Python  in the
-    context of bioinformatic applications.
+  **DO NOT** run jobs on the head node (amc-tesla). The head node is the
+  brains of the cluster and it can easily be overextended. Use ``qlogin``
+  instead.
 
-.. [#] Learn Python the Hard Way
-       http://learnpythonthehardway.org/book/
-
-IPython
-=======
-Ipython is an (I)nteractive python terminal that lets you
-type in python expressions and see the results immediately
+Example commands on the cluster
+===============================
+Find the size of the file system:
 
 .. code-block:: bash
 
-    $ ipython
+    $ df -h
 
-This command puts you in a shell that accepts python commands, much like
-the login terminal accepts ``bash`` commands.
-
-Python indentation
-==================
-Python depends on proper indentation of your code. This does not work:
-
-.. code-block:: python
-
-    for i in (1, 2, 3):
-    print i
-
-Instead you have to indent the ``print`` statement to nest it in the for
-loop:
-
-.. code-block:: python
-
-    for i in (1, 2, 3):
-        print i
-
-.. note::
-
-    Use spaces instead of *tab* characters for indentation.
-
-    Update your gedit preferences: `Edit -> Preferences`,
-    check the `Insert spaces instead of tabs` box.
-
-Python Help
-===========
-You can find more about any python type or function using ``pydoc``:
+Find how much space you have allocated:
 
 .. code-block:: bash
 
-    # learn about the python `string` type
-    $ pydoc str
+    $ quota -h
 
-At the ``ipython`` prompt, you can also use:
+The queueing system
+===================
+First you will grab a single CPU from the queueing system so that you can play
+around without affecting the head node. We use ``qlogin`` for this:
 
-.. ipython::
-    :verbatim:
+.. code-block:: bash
 
-    In [1]: str?
+    jhessel@amc-tesla ~
+    $ qlogin 
 
-In these slides, links take you to the python docs: :py:obj:`str`
+    Job <492536> is submitted to queue <interactive>.
+    <<ssh X11 forwarding job>>
+    <<Waiting for dispatch ...>>
+    <<Starting on compute00>>
 
-Finally, ask Google (e.g. python string split).
+    jhessel@compute00 ~
+    $ 
 
-For Loops (iteration)
-======================
-Many things in python are **iterable**, meaning we can write loops over
-them. For example, a string is iterable:
+.. note:: 
 
-.. ipython::
-    :verbatim:
-
-    In [1]: sentence = 'i LOVE programming'
-
-    In [1]: for char in sentence:
-       ...:     print char
-
-For Loops (range)
-=================
-Automate repetitive tasks with a for loop:
-
-.. ipython::
-    :verbatim:
-
-    # Print "hello" 5 times:
-    In [1]: for i in range(5):
-       ...:     print "hello"
-
-    # now print the numbers
-    In [1]: for i in range(5):
-       ...:     print i
-
-where the :py:func:`range` function generates the numbers `0, 1, 2, 3, 4`.
-
-Python Types
-============
-There are several core types in Python that you will use a lot.
-
-    - :py:obj:`str` is a collection of characters (words and sentences).
-    - :py:obj:`int` and :py:obj:`float` are numbers.
-    - :py:obj:`list` is a group of other objects.
-    - :py:class:`dict` contains key:value mappings.
-
-Strings
-=======
-A :py:obj:`str` is a collection of characters. You can make strings with
-single, double and triple quotes.
-
-.. ipython::
-    :verbatim:
-
-    In [2]: phrase = 'this that other'
-
-    In [3]: phrase 
-
-    # uppercase
-    In [3]: phrase.upper()
-
-    # number of characters (including spaces) in phrase
-    In [3]: len(phrase)
-
-Numbers (Ints and math)
-=========================
-Python has integer numbers (:py:obj:`int`) and floating point numbers
-(:py:obj:`float`). Math operations work within and across both types:
-
-.. ipython::
-    :verbatim:
-
-    # set up some ints
-    In [6]: x = 10
-
-    In [7]: y = 100
-
-    In [8]: type(x)
-
-    # add
-    In [9]: x + y
-
-    # subtract
-    In [10]: x - y
-
-    # x * y
-    In [11]: x * y
-
-Numbers (Float division)
-========================
-For division you need to pay attention to ``type``:
-
-.. ipython::
-    :verbatim:
-
-    # try to divide the ints ...
-    In [12]: x / y
-
-    # need float conversion!
-    In [14]: float(x) / float(y)
-
-    # make floats directly and divide
-    In [15]: x = 10.0
-
-    In [16]: y = 100.0
-
-    In [16]: type(x)
-
-    In [17]: x / y
-
-Lists
-=====
-A :py:obj:`list` is a collection of other objects. You create lists
-directly using brackets (``[ ]``), or they can be created from other
-objects.
-
-Lists are *subscriptable*, meaning that you can access items in a list by
-position.
-
-.. ipython::
-    :verbatim:
-
-    # convert to list, str.split() defaults to space
-    In [3]: words = phrase.split()
-
-    # number of items in list
-    In [3]: len(words)
-
-    # two ways to add new words
-    In [3]: words.append('foo')
-
-    In [3]: words.extend(['bar','baz'])
-
-Lists (2)
-=========
-
-.. ipython::
-    :verbatim:
-
-    # first item only, zero-based
-    In [3]: words[0]
-
-    # first through third, start is implicit
-    In [3]: words[:3]
-
-    # iterate over the list
-    In [7]: for word in words:
-       ...:     print word.capitalize()
-       ...:     
-
-    # mix types in lists
-    In [1]: words.extend([1,2,3])
-
-    # a "list comprehension"
-    In [2]: [type(i) for i in words]
-
-Python Exceptions
-=================
-When you're learning to program in Python, you will see lots of errors.
-Exmaples: :py:class:`exceptions.ValueError`,
-:py:class:`exceptions.IndexError` and :py:class:`exceptions.KeyError`
-
-.. ipython::
-    :verbatim:
-
-    In [6]: int('blah')
-
-    In [8]: words[100]
-
-    In [7]: parts = {'hip':'thigh'}
-
-    In [9]: parts['nose']
-
-    # Catch errors, print useful debugging messages
-    In [12]: try:
-       ....:     nums[100]
-       ....: except IndexError:
-       ....:     print "error: not enough nums"
-       ....:     
-
-Reading data from a file
-========================
-Now we'll read some data from a file and operate on each line:
-
-.. ipython::
-    :verbatim:
-
-    In [3]: filename = '/opt/bio-workshop/data/lamina.bed'
-
-    # What is the BUG in this block?
-    In [4]: for line in open(filename):
-       ...:     fields = line.strip().split('\t')
-       ...:     start = fields[1]
-       ...:     if start > 5000:
-       ...:         print fields 
+    The host in the prompt changed from ``amc-tesla`` to ``compute00``.
     
-In Class Exercises (1)
-======================
-Here are a few exercises:
+You can now execute long-running processes without worry of affecting the
+cluster. Type ``exit`` to return back to your head node login.
 
-    #. Use :py:func:`range` to count from 0 to 100 **by 10**. How do you get
-       100 in the result?
-
-    #. Get **every other** value of ``words`` (hint: use a slice)
-
-    #. Use :py:func:`enumerate` on a list (hint: convert the
-       result with list(result))
-
-    #. Use :py:func:`sorted` and :py:func:`reversed` on a list.
-
-    #. Do type conversion on each of the fields in the lamina.bed file
-
-Dictionaries (dicts)
-====================
-A :py:class:`dict` contains key:value mappings. 
-
-.. ipython::
-    :verbatim:
-
-    # set up new dicts with {}
-    In [14]: produce  = {'lettuce':'green', 'apple':'red',
-       ....: 'banana':'yellow'}
-
-    In [5]: produce.keys()
-
-    In [7]: produce.values()
-
-    In [7]: produce.items()
-
-    # sorted by keys
-    In [8]: sorted(produce.items())
-
-    # test for membership
-    In [9]: 'apple' in produce
-
-    In [10]: not 'orange' in produce
-
-Equality and Logic in Python
-============================
-Use ``if``:``elif``:``else`` statements to test conditions and act on the
-result. The ``==`` and ``!=`` operators test for equality and inequality, and
-work on many object comparisons.
-
-.. ipython::
-    :verbatim:
-
-    # animal colors
-    In [3]: cat = 'white'
-
-    In [4]: dog = 'black'
-
-    In [5]: if cat == dog: 
-       ...:     print "same color"
-       ...: elif cat != dog:
-       ...:     print "different color"
-       ...: else:
-       ...:     print "not going to happen"
-       ...:     
-
-Undefined values in Python 
-==========================
-.. ipython::
-    :verbatim:
-
-    In [1]: this = None
-
-    In [4]: bool(this)
-
-    In [2]: not this
-
-    # the following if statements are equivalent:
-    In [6]: if this is None:
-       ...:     print 'foo'
-       ...:     
-
-    In [5]: if not this:
-       ...:     print 'foo'
-       ...:     
-
-    # set the following and test with ``not this``
-    In [7]: this = 0
-
-    In [9]: this = ''
-
-Importing modules
-=================
-There are a number of modules with objects and functions in the standard
-library, and there are a also a huge number of Python modules on the web
-(check github).
-
-To be able to access the contents of a module, you need to import it into
-your `namespace`:
-
-.. ipython::
-
-    In [1]: import math
-
-    In [2]: math.log10(1000)
-
-    In [3]: import sys
-
-Simple Python script
-====================
-You can also write scripts as files and execute them.
-Save this in file called ``run.py``:
-
-.. code-block:: python
-
-    #! /usr/bin/env python
-
-    import sys
-
-    # sys.argv[1] has the filename
-    for line in open(sys.argv[1]):
-
-        fields = line.strip().split()
-        print fields[0]
-        
-And run it:
+The queueing system (2)
+=======================
+The cluster uses a queueing system that will run jobs that you submit to
+it. You can write a small test script to see how the system works. First,
+write this into a run.sh file:
 
 .. code-block:: bash
 
-    $ python run.py
+    # /usr/bin/env bash
 
-In Class Exercises (2)
-======================
-Here are a few exercises:
+    #BSUB -J sleeper
+    #BSUB -e %J.err
+    #BUSB -o %J.out
 
-    #. Create a :py:obj:`dict` that contains several key:value pairs. 
+    sleep(20)
 
-    #. Create a :py:obj:`list` that contains multiple redundant entries.
-       Covert the list to a :py:class:`set` with set(list). What happened to
-       the redundant entries?
+The queueing system (3)
+=======================
+The ``#BSUB`` lines are comments, but are read by the ``bsub`` program to
+identify features associated with your job. 
+
+    - ``-J`` sets the job's name
+    - ``%J`` is a unique job ID that is set when you run the job.
+    - ``-e`` and ``-o`` set the filenames for stderr and stdout from the job
+
+The queueing system (4)
+=======================
+Now you can submit the script to the queuing system. As soon as you submit
+it, you can check on its progress:
+
+.. code-block:: bash
+
+    $ bsub < run.sh
+    $ bjobs
+
+After the job finishes, you should see two new files that end
+`.out` and `.err`; these stdout and stderr from the running job.
+Look at the contents of those files so you know what is in
+each one.
+
+Killing jobs
+============
+Sometimes you need to kill your jobs. You can kill specific jobs using
+their job ID numbers, obtained from checking ``bjobs``:
+
+.. code-block:: bash
+
+    $ bkill <jobid> 
+
+You can also kill **all** of your jobs at once:
+
+.. code-block:: bash
+
+    $ bkill 0 
+
+.. warning::
+
+    ``bkill 0`` is dangerous – it will wipe out all of your jobs. If
+    you have long-running jobs that you forgot about, you will kill them
+    too if you are not careful!
+
+Other cluster-specific commands
+===============================
+.. code-block:: bash
+
+    $ bhosts     # hosts in the cluster
+    $ man bhosts # bsub man page
+    $ bqueues    # available queues
+    $ lsload     # check load values for all hosts
+
+In Class Exercises
+==================
+We're going to take a break this class so that you can catch up your
+exercises. Please spend some time going back through the exercises from
+classes 1-4.
+
+ - :ref:`label-class-3-exercises`
+ - :ref:`label-class-4-exercises`
 

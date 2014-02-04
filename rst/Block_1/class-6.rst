@@ -1,80 +1,90 @@
-*****************************
-Class 6 : Python : Basics (2)
-*****************************
+***************************************************
+Class 6 : Working in a cluster environment (part 2)
+***************************************************
+
+:Class date: Friday 7 February 2014
 
 Goals
 =====
-#. foo
+#. Leverage cluster resources to solve bioinformatic problems
 
-Sets
-====
-A :py:class:`set` is another type in python that let you store a non-redundant
-lists of items. They support logical operations:
+Overview
+========
+We will go over some common scenarios in bioinformatics where you can
+leverage cluster resources to process many files simultaneously with
+identical workflows.
 
-.. ipython::
+Scenario 1
+==========
+Sequencing experiments typically generate raw sequencing data from many
+different experimental conditions (i.e. treatments, controls, cell types,
+time points, etc.) However, the initial steps of processing sequencing
+data use common steps to processthe data into an interpretable form. A
+typical workflow for assessing sequencing data is:
 
-    In [11]: skiiers = set(['Tom','Dick','Harry','Gurf'])
+    #. Calculate summary statistics on the raw reads
+    #. Align reads to a reference genome
+    #. Calculate coverage from the alignment
 
-    In [12]: snowboarders = set(['Lucy','Steve','Brian','Gurf'])
+.. todo::
 
-    # intersection
-    In [13]: skiiers & snowboarders
+    figure out how to:
 
-    # union
-    In [14]: skiiers | snowboarders
+        #. move the following code block to a file
+        #. have it displayed in the rendered html
+        #. provide a link to the file so that one can download (instead of
+            copying and pasting)
 
-    # difference 
-    In [14]: skiiers - snowboarders
+    Maybe use this?: http://sphinx-doc.org/markup/inline.html#ref-role
 
-Regular Expressions
-===================
-Python provides a regular expression module for pattern matching. We'll
-cover some basics of writing regular expressions:
+Now assume we have 4 different FASTQ files from a sequencing experiment.
 
-.. ipython::
-    :verbatim:
+.. code-block:: bash
 
-    In [1]: phrase = 'how now brown cow'
+    #! /usr/bin/env bash
 
-    In [2]: import re
+    #BSUB -J workflow[1-4]
+    #BSUB -e %J.%I.err
+    #BUSB -o %J.%I.out
 
-    In [3]: regex = re.compile('brown')
+    # this section defines the sample names and grabs the appropriate
+    # sample name for the current process
+    SAMPLENAMES=(SP1 SP2 SP3 SP4)
 
-    In [6]: regex.findall(phrase) 
+    # $LSB_JOBINDEX is set at runtime for the current process; in this
+    # case you asked for 4 jobs, so it be a value between 1 and 4
+    sample=${SAMPLENAMES[$(($LSB_JOBINDEX - 1))]}
 
-Useful python modules
-=====================
-There are several modules in the standard library you will use all the
-time:
+    # set up file names
+    fastq=$sample.fq.gz
+    align=$sample.sam
+    coverage=$sample.coverage
 
-    - :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command
-      line
+    # run the workflow
+    fastqc $fastq
+    bowtie2 -x test -U $fastq > $align
 
-    - :py:mod:`collections`: espcially :py:class:`collections.defaultdict`
-      and :py:class:`collections.Counter`
+    # now generate counts of each position that was aligned to; fields 3
+    # and 4 of the same file are chrom and pos.
+    cut -f3,4 $align \
+        | sort \
+        | uniq -c \
+        | awk 'BEGIN {OFS="\t"} {print $2,$3,$1}'
+        > $summary
 
-    - :py:mod:`itertools`: tools for efficient aggregation and iteration
+Run the above script and check its status immediately:
 
-    - :py:mod:`argparse`: command line option parsing
+.. code-block:: bash
 
-Debugging Python code
-=====================
-The :py:mod:`pdb` is the Python Debugger. You can use it to debug programs by
-dropping you into a shell that allows you to step through the program, line by
-line.
+    $ bsub < run.sh
+    $ bjobs
 
-.. ipython::
-    :verbatim:
+You should see 4 running jobs, each with its own index i.e. workflow[1],
+workflow[2] etc.    
 
-    In [6]: import pdb
+These will run for a bit. After they are done, you will see several new
+files, corresponding to the output of the same analysis applied to all the
+different samples.
 
-    # this will drop you into a shell. find the value of ``i`` at the (Pdb)
-    # prompt
-    In [7]: for i in range(100):
-       ...:     if i == 50:
-       ...:         pdb.set_trace()
-       ...:         
-
-
-In Class Exercise
-=================
+Scenario 2
+==========
