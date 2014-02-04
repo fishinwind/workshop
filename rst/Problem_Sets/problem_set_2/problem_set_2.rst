@@ -52,6 +52,8 @@ Problem 3
     by descending value (4th column) and the columns are separated by commas
     rather than tabs.
 
+    What is the average value (4th column) of those regions from `lamina.bed`
+    that overlap the region: chr12:5,000,000-6,000,000?
     
 
 Problem Set Submission
