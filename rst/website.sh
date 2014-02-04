@@ -5,14 +5,15 @@
 # XXX: confirm this is working
 #
 set -o nounset -o pipefail -o errexit -x
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
 
-WEBSITEDIR=$HOME/devel/UCD-BioWorkshop.github.io
-TARGETIDR=../../bio-workshop-io/
+WEBSITEDIR=../../bio-workshop-io/
 BUILDDIR=_build
 
 echo ">> copying files to $WEBSITEDIR ..."
-cp -r $BUILDDIR/html/* $TARGETDIR $WEBSITEDIR
-cp -r $BUILDDIR/slides/* $TARGETDIR $WEBSITEDIR
+cp -r $BUILDDIR/html/* $WEBSITEDIR
+cp -r $BUILDDIR/slides/ $WEBSITEDIR
 
 echo ">> syncing files with git ..."
 # sync the directory and add new content
@@ -23,6 +24,12 @@ git status
 
 # use git status to check all is added.
 date=$(date "+%Y-%m-%d at %T")
-git commit -m "html and slide update on $date"
+echo "
+
+check and finish with:
+cd $WEBSITEDIR
+git commit -m \"html and slide update on $date\"
 git push origin master
+
+"
 
