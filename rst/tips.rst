@@ -62,9 +62,7 @@ the mouse:
       without ever touching your mouse.
     - **<Ctrl>-<Page Up/Down>** : Switch between Terminal windows on Linux
 
-.. [#] 
-        - Arch Linux
-        https://wiki.archlinux.org/index.php/Keyboard_Shortcuts#Terminal
+.. [#] https://wiki.archlinux.org/index.php/Keyboard_Shortcuts#Terminal
 
 .. tip::
 
