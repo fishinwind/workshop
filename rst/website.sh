@@ -26,7 +26,7 @@ git status
 date=$(date "+%Y-%m-%d at %T")
 echo "
 
-check and finish with:
+Website pushed. check and finish with:
 cd $WEBSITEDIR
 git commit -m \"html and slide update on $date\"
 git push origin master

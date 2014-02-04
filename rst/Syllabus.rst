@@ -81,14 +81,18 @@ Texts and Reading Materials
 Course Objectives
 -----------------
 1. First block (6 weeks, 27 Jan - 28 Feb)
+
     - Learn to manipulate large sequencing data sets with Linux tools
       and Python programming.
+
     - Learn to manipulate and visualize data in useful ways with the
       R statistical computing environment.
 
 2. Second block (6 weeks, 3 Mar - 14 Apr)
+
     - Learn workflows for experiments in ENCODE: ChIP-seq DNase I
       footprinting, mRNA-seq, variant detection.
+
     - Learn to visualize data from the ENCODE project in the UCSC Genome
       Browser
 

@@ -56,7 +56,7 @@ Python depends on proper indentation of your code. This does not work:
     for i in (1, 2, 3):
     print i
 
-Instead you have to indent the "print" statement to nest it in the for
+Instead you have to indent the ``print`` statement to nest it in the for
 loop:
 
 .. code-block:: python
@@ -66,7 +66,8 @@ loop:
 
 .. note::
 
-    Use spaces instead of *tab* characters for indentation
+    Use spaces instead of *tab* characters for indentation.
+
     Update your gedit preferences: `Edit -> Preferences`,
     check the `Insert spaces instead of tabs` box.
 
@@ -344,20 +345,16 @@ work on many object comparisons.
 
 Undefined values in Python 
 ==========================
-- :py:obj:`None`: undefined. note: value of zero is defined
-
-- :py:obj:`bool`: the boolean type, ``True`` and ``False``
-
 .. ipython::
     :verbatim:
 
     In [1]: this = None
 
-    In [2]: not this
-
     In [4]: bool(this)
 
-    # the following are equivalent
+    In [2]: not this
+
+    # the following if statements are equivalent:
     In [6]: if this is None:
        ...:     print 'foo'
        ...:     
