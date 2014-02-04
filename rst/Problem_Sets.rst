@@ -4,7 +4,6 @@ Problem Sets
 Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
 
 .. toctree::
-   :maxdepth: 1
    :glob: 
 
    Problem_Sets/problem_set_1/problem_set_1

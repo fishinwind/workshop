@@ -36,7 +36,7 @@ extensions = [
     'sphinx.ext.graphviz',
     'IPython.sphinxext.ipython_directive',
     'IPython.sphinxext.ipython_console_highlighting',
-    'hieroglyph',
+    'hieroglyph'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
