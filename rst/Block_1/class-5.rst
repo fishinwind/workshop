@@ -1,6 +1,5 @@
-.. todo::
-    - useful ipython directive page for decorator syntax
-        http://matplotlib.org/sampledoc/ipython_directive.html
+..  useful ipython directive page for decorator syntax
+    http://matplotlib.org/sampledoc/ipython_directive.html
 
 *************************
 Class 5 : Python : Basics
@@ -31,7 +30,7 @@ you get stuck.
     context of bioinformatic applications.
 
 .. [#] Learn Python the Hard Way
-        http://learnpythonthehardway.org/book/
+       http://learnpythonthehardway.org/book/
 
 Ipython
 =======
