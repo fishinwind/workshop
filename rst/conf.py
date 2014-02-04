@@ -33,9 +33,9 @@ extensions = [
     'sphinx.ext.pngmath',
     'sphinx.ext.mathjax',
     'sphinx.ext.intersphinx',
+    'sphinx.ext.graphviz',
     'IPython.sphinxext.ipython_directive',
     'IPython.sphinxext.ipython_console_highlighting',
-    'sphinxcontrib.blockdiag',
     'hieroglyph',
 ]
 
@@ -64,16 +64,6 @@ except ImportError:
     sys.stderr.write("please install (pip) ipython \n")
     sys.stderr.write("please install (easy_install) matplotlib\n")
     sys.exit(1)
-try:
-    import sphinxcontrib.blockdiag
-except ImportError:
-    sys.stderr.write("please install (pip) sphinxcontrib-blockdiag\n")
-    sys.exit(1)
-
-except ImportError:
-    sys.stderr.write("please install (pip) ipython\n")
-    sys.exit(1)
-
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -181,8 +171,8 @@ html_last_updated_fmt = '%b %d, %Y'
 # html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-# html_sidebars = {'**':['globaltoc.html', 'sourcelink.html',
-#                       'searchbox.html']}
+html_sidebars = {'**':['globaltoc.html', 'sourcelink.html',
+                       'searchbox.html']}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -199,7 +189,7 @@ html_last_updated_fmt = '%b %d, %Y'
 
 # If true, links to the reST sources are added to the pages.
 # html_show_sourcelink = True
-# html_copy_source = True
+html_copy_source = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 html_show_sphinx = False
