@@ -78,7 +78,11 @@ We can also filter on start position using '&&' which means 'and':
 
 .. important::
 
-    `==` tests for equality (= assigns). `!=` tests for not equal.
+    ``=`` and ``==`` are not the same thing, and are frequently mixed up.
+
+    ``=`` is the assignment operator 
+    ``==`` tests for equality 
+    ``!=`` tests for inequality.
 
 program structure
 =================
