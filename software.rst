@@ -1,6 +1,16 @@
-===============
+***************
 Software for VM
+***************
+
+VM Installation
 ===============
+- The current VM is ~4.5 Gb in size, which means it can not be copied to a
+  FAT-formatted USB stick. Reformat the stick with exFAT and all is well
+- VirtualBox gives funny errors on some personal laptops. Have folks check
+  whether Virtualization is an option in the BIOS, and if so, enable it.
+
+Software for the VM
+===================
 
 General
 -------
