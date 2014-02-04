@@ -386,7 +386,7 @@ your `namespace`:
 
 Simple Python script
 ====================
-IPython is great, but you need to learn small scripts and execute them.
+You can also write scripts as files and execute them.
 Save this in file called ``run.py``:
 
 .. code-block:: python
