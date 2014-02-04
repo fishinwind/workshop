@@ -212,8 +212,10 @@ You can do a lot more with awk, here are several resources:
 
     - http://www.catonmat.net/download/awk.cheat.sheet.pdf
 
-in-class exercises (1)
-======================
+.. _label-class-4-exercises:
+
+In Class Exercises - Class 4
+============================
 we will do the first 2. of these together
 
 1. use NR to print each line of `lamina.bed` *preceded* by it's line number
@@ -242,8 +244,8 @@ review
 + NR is line number; NF is number of fields;
 + BEGIN {} filter { action } END { }
 
-in-class exercises (2)
-======================
+In Class Exercises - Class 4 (2)
+================================
 
  #. are there any regions in `lamina.bed` with start > end?
 
