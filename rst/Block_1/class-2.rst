@@ -2,6 +2,8 @@
 Class 2 : The command-line
 **************************
 
+:Class date: Wednesday 29 January 2014
+
 Goals
 =====
 1. The ``bash`` shell

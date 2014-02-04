@@ -1,7 +1,7 @@
 Class 3 : The command-line (part 2)
 ===================================
 
-Friday: 31 January 2014
+:Class date: Friday 31 January 2014
 
 Goals
 -----
@@ -235,7 +235,7 @@ Here are a few exercises
 
 .. code-block:: bash
 
-        ls /opt/bio-workshop/data/lamina.bed
+        $ ls /opt/bio-workshop/data/lamina.bed
 
     6. How few keystrokes can you do 5. using your history?
 

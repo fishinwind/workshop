@@ -2,7 +2,7 @@
 Class 4 : awk
 *************
 
-Monday: 3 February 2014
+:Class date: Monday 3 February 2014
 
 Goals
 =====

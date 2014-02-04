@@ -2,6 +2,8 @@
 Class 1 : Virtual Machine (VM) and Linux Introduction
 *****************************************************
 
+:Class date: Monday 27 January 2014
+
 Goals
 =====
 #. Class overview

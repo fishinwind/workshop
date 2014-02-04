@@ -5,7 +5,7 @@
 Class 5 : Python : Basics
 *************************
 
-Wednesday: 5 February 2014
+:Class date: Wednesday 5 February 2014
 
 Goals
 =====
