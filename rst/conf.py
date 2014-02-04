@@ -178,10 +178,11 @@ html_last_updated_fmt = '%b %d, %Y'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
-#html_use_smartypants = True
+# html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {}
+# html_sidebars = {'**':['globaltoc.html', 'sourcelink.html',
+#                       'searchbox.html']}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -197,7 +198,8 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-html_show_sourcelink = True
+# html_show_sourcelink = True
+# html_copy_source = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 html_show_sphinx = False
@@ -215,7 +217,6 @@ html_show_copyright = True
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'workshop-doc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -301,6 +302,8 @@ slide_theme = 'single-level'
 slide_link_html_to_slides = True
 slide_link_html_sections_to_slides = True
 slide_link_to_html = True
+slide_relative_path = "../slides/"
+slide_html_relative_path = "../html/"
 
 # for python doc refs
 intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None)}

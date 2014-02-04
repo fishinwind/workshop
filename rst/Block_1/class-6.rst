@@ -9,6 +9,7 @@ cover some basics of writing regular expressions:
 
 .. ipython::
     :verbatim:
+
     In [1]: phrase = 'how now brown cow'
 
     In [2]: import re
