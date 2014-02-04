@@ -15,14 +15,44 @@ command line tools.
     Problem Set 1. Part of our evaluation will include whether you are
     developing good organizational habits.
 
+For all of the problems below. Your solution print out the region(s) as
+they appear in the BED file with additional columns at the end. e.g.::
+
+    chr12   1234    5678    0.93    my-extra-info
+
+These should be separated by tabs (\\t), not spaces, unless otherwise indicated.
+
+Remember you will combine `awk` with the other utilities you have learned.
+
 Problem 1
 ---------
+
+    What is the region with the largest start position (2nd column) on any
+    chromosome in `lamina.bed`?
+
+    What is the region with the largest end position on chrY in
+    lamina.bed? Report this region in the format: "chr12:1234-5678"
+
 
 Problem 2
 ---------
 
+    What is the longest region (end - start) in `lamina.bed`?
+    report as chrom\tstart\tend\tvalue\tregion_length
+
+    What is the longest region (end - start) in `lamina.bed` with a value
+    (4th column) greater than 0.9 on chr13. Report the header (1st line) in
+    lamina.bed as well as the region.
+
 Problem 3
 ---------
+
+    What are the regions that overlap this interval in `lamina.bed`: 
+    chr12:5,000,000-6,000,000? Report these so that they are ordered
+    by descending value (4th column) and the columns are separated by commas
+    rather than tabs.
+
+    
 
 Problem Set Submission
 ----------------------
