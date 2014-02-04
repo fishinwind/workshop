@@ -1,15 +1,16 @@
+***********************************
 Class 3 : The command-line (part 2)
-===================================
+***********************************
 
 :Class date: Friday 31 January 2014
 
 Goals
------
+=====
 1. learn additional linux utilities (cut, sort, zless, uniq, wget)
 2. understand how to combine tools with pipes (|)
 
 wget
-----
+====
 fetch a a file from the web with ``wget``
 
 .. code-block:: bash
@@ -18,7 +19,7 @@ fetch a a file from the web with ``wget``
     $ wget http://ucd-bioworkshop.github.io/_downloads/states.tab
 
 cut
----
+===
 The ``cut`` command allows you to extract certain columns of a file
 
 .. code-block:: bash
@@ -36,7 +37,7 @@ The ``cut`` command allows you to extract certain columns of a file
     $ cut -f 2- /opt/bio-workshop/data/lamina.bed
 
 uniq
-----
+====
 The ``uniq`` command  allows you to get and count unique entries
 
 .. code-block:: bash
@@ -58,7 +59,7 @@ The ``uniq`` command  allows you to get and count unique entries
    Use ``sort`` to sort the data before ``uniq``-ing it.
 
 Redirection of output
----------------------
+=====================
 To send the output of a command (or a file) to another file, use ">"
 
 .. code-block:: bash
@@ -75,7 +76,7 @@ To **append** the output of a command (or a file) to another file, use
     $ tail output.txt
 
 Compressed Files
-----------------
+================
 The most common way to uncompress single files is ``gunzip``
 
 .. code-block:: bash
@@ -96,7 +97,7 @@ file
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz
 
 Pipes
------
+=====
 We probably want to do something with the file as we uncompress it
 
 .. code-block:: bash
@@ -109,7 +110,7 @@ Try piping the output to some other commands (tail|echo|cowsay)
 
 
 Sort
-----
+====
 You will often want to ``sort`` your data.
 
 Have a look at
@@ -123,22 +124,22 @@ The main flag is `-k` to indicate which column to sort on.
 You will also sometimes use `-u` to get unique entries.
 
 Sort Questions
---------------
+==============
 
 How do you:
 
-   1. sort by a particular column? (-k 4)
-   2. sort as a number (-k4n)
-   3. sort as a general number (1e-3 < 0.05) (-k4g)
-   4. change the default delimiter (-t,
-   5. sort by 2 columns (-k1,1 -k2,2n)
-   6. sort in reverse as a number (-k1rn)
-   7. get unique entries (-u)
+   #. sort by a particular column? (-k 4)
+   #. sort as a number (-k4n)
+   #. sort as a general number (1e-3 < 0.05) (-k4g)
+   #. change the default delimiter (-t,
+   #. sort by 2 columns (-k1,1 -k2,2n)
+   #. sort in reverse as a number (-k1rn)
+   #. get unique entries (-u)
 
 If you know all these, you'll know 99% of what you'll use sort for.
 
 Sort Example
-------------
+============
 BED files have columns `chrom` [tab] `start` [tab] `end` [tab] ...
 
 Sort by chrom, then by start (a lot of tools will require this)
@@ -156,7 +157,7 @@ Question:
     What happens if you omit the `n` ?
 
 Sort Example (part 2)
----------------------
+=====================
 What if we want to sort by Income **descending** in the 3rd column?
 
 .. code-block:: bash
@@ -165,14 +166,14 @@ What if we want to sort by Income **descending** in the 3rd column?
     $ head /tmp/sorted.out 
 
 Sort Exercise
--------------
+=============
 Print out the 10 states (1st column, contains spaces) with the highest
 income (3rd column) from states.tab using ``sort`` and piping to ``cut``.
 
 Or, use ``cut`` and pipe to ``sort`` to do the same.
 
 Application 1
--------------
+=============
 Use pipes (|) chained together to look see which transcription factor
 binding sites are the most common in a set of putative sites from ENCODE.
 
@@ -184,7 +185,7 @@ binding sites are the most common in a set of putative sites from ENCODE.
   + show top 10 (head)
 
 Application 2
--------------
+=============
 Note that we are using the variable FILE for the long file name
 
 .. code-block:: bash
@@ -205,14 +206,10 @@ Note that we are using the variable FILE for the long file name
 
 Let's go through this line by line ...
 
-grep
-----
-Use ``grep`` to identify lines in a file that match a specified pattern.
+.. _label-class-3-exercises:
 
-In Class Exercises
-------------------
-Here are a few exercises
-
+In Class Exercises - Class 3
+============================
 .. code-block:: bash
 
     1. To learn about piping (|), use cowsay to:
