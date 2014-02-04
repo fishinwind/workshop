@@ -23,10 +23,16 @@ Cluster etiquette
 There are some specific rules you need to know when you're operating in a
 cluster environment.
 
-.. blockdiag::
+.. graphviz::
 
-    blockdiag {
-        YOU -> amc-tesla -> filesystem, compute_nodes;
+    digraph cluster {
+        "YOU" [shape=box];
+        "amc-tesla" [shape=box];
+        "filesystem" [shape=box];
+        "compute nodes" [shape=box];
+        "YOU" -> "amc-tesla";
+        "amc-tesla" -> "filesystem";
+        "amc-tesla" -> "compute nodes";
     }
 
 .. important::
