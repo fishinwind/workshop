@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-..  useful ipython directive page for decorator syntax
-    http://matplotlib.org/sampledoc/ipython_directive.html
-=======
 .. useful ipython directive page for decorator syntax
    http://matplotlib.org/sampledoc/ipython_directive.html
->>>>>>> 331d90adc6e6e3b094e37f88166ba523b7d6bd78
 
 *************************
 Class 5 : Python : Basics
