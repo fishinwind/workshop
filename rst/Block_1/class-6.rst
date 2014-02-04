@@ -1,5 +1,5 @@
 *****************************
-Class 5 : Python : Basics (2)
+Class 6 : Python : Basics (2)
 *****************************
 
 Goals
