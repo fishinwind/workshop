@@ -7,14 +7,16 @@ Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
    :maxdepth: 1
    :glob: 
 
-   Problem_Sets/*/*
+   Problem_Sets/problem_set_1/problem_set_1
 
 .. _submission:
 
 Problem Set Submission
 ----------------------
 Specify the root of your project directory and create a tar file of the
-whole directory like this; you can change STUDENTID to your student ID::
+whole directory like this; you can change STUDENTID to your student ID:
+
+.. code-block:: bash
 
     $ projectdir=$HOME/project
     $ tar -cvf STUDENTID-problem-set.tar $projectdir
