@@ -77,12 +77,12 @@ the next level, you need to learn to use a text editor.
 
 There are two types of nerds in this world: 
 
-    1. `vim` users
-    2. `emacs` users
+    1. ``vim`` users
+    2. ``emacs`` users
     
-I'm a `vim`-user. I can't even log out of an `emacs` session.
+I'm a ``vim``-user. I can't even log out of an ``emacs`` session.
 
-Learning a text editor like `vim` increases productivity substantially,
+Learning a text editor like ``vim`` increases productivity substantially,
 because it allows you to:
 
     - run the editor within an existing terminal, without opening a new
@@ -91,7 +91,9 @@ because it allows you to:
     - syntax highlight your code
     - manipulate blocks of text quickly and efficiently
 
-You can run `vim` from the terminal prompt::
+You can run ``vim`` from the terminal prompt:
+
+.. code-block:: bash
 
     $ vim filename.txt
 
@@ -106,8 +108,8 @@ This can be accomplished by typing::
     :wq <enter>
 
 In your copious spare time, and after you have mastered the basics of
-shell, Python and R programming, you should take a tutorial on using a
-text editor. Check out this Tutorial [#]_ first.
+shell, Python and R programming, you should take a tutorial [#]_ on using
+a text editor.
 
 .. [#] OpenVim http://www.openvim.com/ 
 
