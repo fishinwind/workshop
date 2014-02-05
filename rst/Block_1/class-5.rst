@@ -141,13 +141,13 @@ write this into a run.sh file:
 
 .. code-block:: bash
 
-    # /usr/bin/env bash
+    #!/usr/bin/env bash
 
     #BSUB -J sleeper
     #BSUB -e %J.err
-    #BUSB -o %J.out
+    #BSUB -o %J.out
 
-    sleep(20)
+    sleep 20
 
 The queueing system (3)
 =======================
