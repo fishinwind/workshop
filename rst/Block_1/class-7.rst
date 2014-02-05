@@ -410,11 +410,43 @@ And run it:
 
 In Class Exercises (2)
 ======================
-Here are a few exercises:
-
-    #. Create a :py:obj:`dict` that contains several key:value pairs. 
+Here are a few exercises::
 
     #. Create a :py:obj:`list` that contains multiple redundant entries.
        Covert the list to a :py:class:`set` with set(list). What happened to
        the redundant entries?
+
+    #. Open lamina.bed and print the start position of each entry
+
+    #. Print the total coverage of entries in lamina.bed
+
+    #. Convert lamina.bed into a :py:obj:`list`. Then, print each entry in the list. 
+
+    #. Find the average value of entries in lamina.bed (watch out for
+       int/float issues).
+
+    #. Find the median value of entries in lamina.bed.
+
+Out of Class Exercises 
+======================
+Here are a few exercises::
+
+    #. Use a python :py:class:`dict` object to count the number of entries
+       on each chromosome in lamina.bed. 
+
+    #. Do the same thing as the previous exercise, but using a
+       :py:class:`collections.Counter` object. Then, use the Counter()
+       methods to find out which chromosomes have the largest and smallest
+       number of entries. 
+
+    #. Create a python script that takes a chromosome number, and finds all entries
+       in lamina.bed that are on that chromosome. 
+
+    #. Modify the previous script to use :py:mod:`argparse`, so that it
+       will find entries on every chromosome by default unless given an
+       argument to look on a particular chromosome. 
+
+    #. Construct regular expressions with :py:mod:`re` to find all states
+       in states.tab hose names include 'c' and 'o' in that order, with or
+       without other letters in between.
 
