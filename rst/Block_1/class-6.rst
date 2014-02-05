@@ -10,7 +10,7 @@ Goals
 
 Overview
 ========
-We will go over some common scenarios in bioinformatics where you can
+We will go over a common scenario in bioinformatics where you can
 leverage cluster resources to process many files simultaneously with
 identical workflows.
 
@@ -86,5 +86,6 @@ These will run for a bit. After they are done, you will see several new
 files, corresponding to the output of the same analysis applied to all the
 different samples.
 
-Scenario 2
-==========
+More exercises
+==============
+

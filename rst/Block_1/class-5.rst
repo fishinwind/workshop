@@ -46,6 +46,12 @@ Beware of using ``grep`` to find patterns that might be partial matches:
     # this will match chr1, chr10, chr11 etc.
     $ grep chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
 
+You can find exact matches that are split on words with the ``-w`` flag:
+
+.. code-block:: bash
+
+    $ grep -w chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
+
 grep (3)
 ========
 Also beware of using ``grep`` to search for numbers:
@@ -70,6 +76,11 @@ set up your accounts at the end of class and reset your passwords:
 
     # the -X flag starts an X11 connection 
     $ ssh -X username@amc-tesla.ucdenver.pvt
+
+    ...
+
+    # once you are logged in, text your X11 connection with
+    $ xeyes
 
 Cluster etiquette
 =================
