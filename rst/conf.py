@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.pngmath',
     'sphinx.ext.mathjax',
+    'sphinxcontrib.manpage',
     'sphinx.ext.intersphinx',
     'sphinx.ext.graphviz',
     'IPython.sphinxext.ipython_directive',
@@ -65,6 +66,11 @@ except ImportError:
     sys.stderr.write("please install (easy_install) matplotlib\n")
     sys.exit(1)
 
+try:
+    import sphinxcontrib.manpage
+except ImportError:
+    sys.stderr.write("please install (pip) sphinxcontrib-manage\n")
+    
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 

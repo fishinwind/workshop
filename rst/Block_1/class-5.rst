@@ -13,7 +13,7 @@ Goals
 
 grep
 ====
-Use ``grep`` to identify lines in a file that match a specified pattern.
+Use :linuxman:`grep(1)` to identify lines in a file that match a specified pattern.
 
 To find any instance of *chr5* in the lamina.bed file
 
