@@ -1,5 +1,9 @@
+
+.. _label-problem-set-1:
+
+*************
 Problem Set 1
-=============
+*************
 
 :Due date: 2014 Feb 11 at 5 PM MST
 
@@ -136,14 +140,6 @@ points**). For example::
 
 Problem Set Submission
 ----------------------
-Specify the root of your project directory and create a tar file of the whole
-directory like this; you can change STUDENT to your last name:
-
-.. code-block:: bash
-
-    $ projectdir=$HOME/project
-    $ tar -cvf STUDENTID-problem-set.tar $projectdir
-
-Upload the tar file to the Problem Set at the Canvas site to complete the
-submission.
+Submit your problem set as a tar file to Canvas
+(:ref:`label-problem-set-submission`).
 
