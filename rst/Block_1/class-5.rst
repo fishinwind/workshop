@@ -30,6 +30,8 @@ To find all lines that start with a number sign:
     # FYI dollar sign ($) matches the end
     $ grep '^#' /opt/bio-workshop/data/lamina.bed
 
+grep (2)
+========
 To find any line that *does not* start with "chr":
 
 .. code-block:: bash
@@ -37,8 +39,6 @@ To find any line that *does not* start with "chr":
     # the -v flag inverts the match (grep "not" [pattern])
     $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
 
-grep (2)
---------
 Beware of using ``grep`` to find patterns that might be partial matches:
 
 .. code-block:: bash
@@ -46,6 +46,8 @@ Beware of using ``grep`` to find patterns that might be partial matches:
     # this will match chr1, chr10, chr11 etc.
     $ grep chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
 
+grep (3)
+========
 Also beware of using ``grep`` to search for numbers:
 
 .. code-block:: bash
@@ -108,8 +110,8 @@ Find how much space you have allocated:
 
 The queueing system
 ===================
-First you will grab a single CPU from the queueing system so that you can play
-around without affecting the head node. We use ``qlogin`` for this:
+First you will grab a single CPU from the queueing system so that you can
+work without affecting the head node. We use ``qlogin`` for this:
 
 .. code-block:: bash
 
@@ -203,7 +205,7 @@ Other cluster-specific commands
 
 In Class Exercises
 ==================
-We're going to take a break this class so that you can catch up your
+We're going to take a break this class so that you can catch up on your
 exercises. Please spend some time going back through the exercises from
 classes 1-4.
 
