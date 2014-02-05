@@ -69,7 +69,7 @@ except ImportError:
 try:
     import sphinxcontrib.manpage
 except ImportError:
-    sys.stderr.write("please install (pip) sphinxcontrib-manage\n")
+    sys.stderr.write("please install (pip) sphinxcontrib-manpage\n")
     
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
