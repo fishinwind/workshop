@@ -8,6 +8,19 @@ Goals
 =====
 #. Leverage cluster resources to solve bioinformatic problems
 
+Note
+====
+We would like to quickly move toward having your homework be executable.
+In other words, we should be able to:
+
+.. code-block:: bash
+
+    $ bash run.homework-1.sh
+
+and have it execute all of the questions, writing results into files into
+the right places as necessary. Getting into this habit lets you save
+everything you did, and also re-run things when you need to make changes.
+
 Overview
 ========
 We will go over a common scenario in bioinformatics where you can
