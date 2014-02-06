@@ -17,3 +17,4 @@ help you do data-analysis.
    Block_1/class-3
    Block_1/class-4
    Block_1/class-5
+   Block_1/class-6
