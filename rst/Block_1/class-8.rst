@@ -50,8 +50,8 @@ time:
     - :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command
       line
 
-    - :py:mod:`collections`: espcially :py:class:`collections.defaultdict`
-      and :py:class:`collections.Counter`
+    - :py:mod:`collections`: espcially :py:class:`~collections.defaultdict`
+      and :py:class:`~collections.Counter`
 
     - :py:mod:`itertools`: tools for efficient aggregation and iteration
 

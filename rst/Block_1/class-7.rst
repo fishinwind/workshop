@@ -435,7 +435,7 @@ Here are a few exercises::
        on each chromosome in lamina.bed. 
 
     #. Do the same thing as the previous exercise, but using a
-       :py:class:`collections.Counter` object. Then, use the Counter()
+       :py:class:`~collections.Counter` object. Then, use the Counter()
        methods to find out which chromosomes have the largest and smallest
        number of entries. 
 
