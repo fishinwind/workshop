@@ -9,7 +9,7 @@ set -o nounset -o pipefail -o errexit -x
 RSTROOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $RSTROOTDIR
 
-WEBSITEDIR=../../bio-workshop-io/
+WEBSITEDIR=$HOME/devel/bio-workshop-io
 BUILDDIR=_build
 
 echo ">> updating content ..."
