@@ -6,16 +6,17 @@
 #
 set -o nounset -o pipefail -o errexit -x
 
-RSTROOTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd $RSTROOTDIR
-
 WEBSITEDIR=$HOME/devel/bio-workshop-io
-BUILDDIR=_build
+SRCDIR=$HOME/devel/bio-workshop
+RSTDIR=$SRCDIR/rst
+BUILDDIR=$RSTDIR/_build
+
+cd $RSTDIR
 
 echo ">> updating content ..."
 cd $WEBSITEDIR
 git pull origin master
-cd $RSTROOTDIR
+cd $RSTDIR
 echo
 
 echo ">> copying files to $WEBSITEDIR ..."
