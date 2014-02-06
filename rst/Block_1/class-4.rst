@@ -186,7 +186,7 @@ remember FS is the input separator and OFS is the output delimiter
 
 .. code-block:: bash
 
-    $ awk 'BEGIN{FS="\t", OFS=","}
+    $ awk 'BEGIN{FS="\t"; OFS=","}
         ($1 == "chr12"){ print $1,$2,$3 }' /opt/bio-workshop/data/lamina.bed
 
 regular expressions
