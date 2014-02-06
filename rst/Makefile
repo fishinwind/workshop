@@ -6,6 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
+SRCDIR        = ../src
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -63,7 +64,7 @@ slides:
 	@echo "Build finished. The HTML slides are in $(BUILDDIR)/slides."
 
 website:
-	. website.sh; 
+	. $(SRCDIR)/website.sh; 
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
