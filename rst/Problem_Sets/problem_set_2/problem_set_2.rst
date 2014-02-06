@@ -5,7 +5,7 @@
 Problem Set 2
 *************
 
-:Due date: 2014 Feb 18 at 5 PM MST
+:Due date: 2014 Feb 11 at 5 PM MST
 
 Overview
 --------
@@ -16,7 +16,7 @@ tools.
 .. note::
 
     Continue to use the organization scheme that we learned about in
-    **Problem Set 1** (:ref:`label-problem-set-1`). Part of our evaluation
+    :ref:`label-problem-set-1`. Part of our evaluation
     will include whether you are developing good organizational habits.
 
 In the solution for all of the problems below, print out the region(s) as
