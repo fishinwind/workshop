@@ -36,13 +36,22 @@ useful.
 
 To install the VM:
 
-#. Download VirtualBox from virtualbox.org
-#. Open VirtualBox. Click "New" in the upper left corner.
-#. In the "Name" field, type bio-workshop.  For "Type" select Linux.  For "Version"  select Ubuntu.  Click continue.
-#. Allocate an amount of memory that keeps the bar in the green zone. 2048MB is a nice number.  Click continue.
-#. Click the "Use an existing virtual hard drive file" radio button.  Click the folder icon.  Select the .vdi file provided on your USB stick.
-#. Click create.
-#. Bask in glory.
+ #. Download VirtualBox from virtualbox.org
+
+ #. Open VirtualBox. Click "New" in the upper left corner.
+
+ #. In the "Name" field, type bio-workshop.  For "Type" select Linux.  For
+    "Version"  select Ubuntu.  Click continue.
+
+ #. Allocate an amount of memory that keeps the bar in the green zone.
+    2048MB is a nice number.  Click continue.
+
+ #. Click the "Use an existing virtual hard drive file" radio button.
+    Click the folder icon.  Select the .vdi file provided on your USB stick.
+
+ #. Click create.
+
+ #. Press the "Start" button.
 
 Important Directories
 =====================
@@ -107,15 +116,15 @@ schedule class time, and outside of class time. Instead of focusing on
 teaching you these languages, we will focus on helping you get through all
 of the frustating problems that come up when you're learning the languages.
 
-We will spend the first ~2 weeks learning shell [#]_ and all the things you have
-access to within the shell.
+We will spend the first ~2 weeks learning shell [#]_ and all the things
+you have access to within the shell.
 
 .. [#] The Command Line Crash Course
         http://cli.learncodethehardway.org/book/
 
-After learning shell, we will begin learning Python [#]_. The Python language
-allows you to do more sophisticated things that would be possible in
-shell, but would be considerably more clunky.
+After learning shell, we will begin learning Python [#]_. The Python
+language allows you to do more sophisticated things that would be possible
+in shell, but would be considerably more clunky.
 
 .. [#] Learn Python the Hard Way
         http://learnpythonthehardway.org/book/
