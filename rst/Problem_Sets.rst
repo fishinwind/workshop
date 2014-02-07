@@ -16,7 +16,7 @@ Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
 Problem Set Submission
 ----------------------
 Specify the root of your project directory and create a tar file of the
-whole directory like this; you can change STUDENTID to your student ID:
+whole directory like this (change STUDENTID to your student ID):
 
 .. code-block:: bash
 
@@ -27,3 +27,4 @@ Upload the tar file to the Problem Set at the Canvas site [#]_ to complete
 the submission.
 
 .. [#] https://ucdenver.instructure.com/courses/11079/assignments/syllabus
+

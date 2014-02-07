@@ -31,9 +31,9 @@ There are several good, modern tools [#]_ to help you master touch-typing.
 
 Learn to type funny characters
 ------------------------------
-This is related to the above problem. But in programming you use a variety
-of characters that you don't always use typing other kinds of documents.
-Learn the locations of the following by heart:
+In programming you use a variety of characters that you don't always use
+typing other kinds of documents. Learn the locations of the following by
+heart:
 
     - Number sign (for commenting): #
     - Dollar sign (for variables): $
@@ -67,12 +67,13 @@ the mouse:
 .. tip::
 
     **Launch your most-used apps automatically during login.**
+
     For example, automatically launch four terminal windows and a browser
     window, without having to click.
 
 Learn to use a terminal text editor
 ===================================
-`gedit` is great for newbies. But if you want to bring your script-fu to
+``gedit`` is great for newbies. But if you want to bring your script-fu to
 the next level, you need to learn to use a text editor.
 
 There are two types of nerds in this world: 
@@ -82,8 +83,8 @@ There are two types of nerds in this world:
     
 I'm a ``vim``-user. I can't even log out of an ``emacs`` session.
 
-Learning a text editor like ``vim`` increases productivity substantially,
-because it allows you to:
+Learning a terminal text editor like ``vim`` increases productivity
+substantially, because it allows you to:
 
     - run the editor within an existing terminal, without opening a new
       window
@@ -109,7 +110,7 @@ This can be accomplished by typing::
 
 In your copious spare time, and after you have mastered the basics of
 shell, Python and R programming, you should take a tutorial [#]_ on using
-a text editor.
+a terminal text editor.
 
 .. [#] OpenVim http://www.openvim.com/ 
 
