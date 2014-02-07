@@ -1,46 +1,11 @@
-*****************************
-Class 8 : Python : Basics (2)
-*****************************
+*********************************
+Class 9 : Python : Useful Modules
+*********************************
 
 Goals
 =====
-#. foo
 
-Sets
-====
-A :py:class:`set` is another type in python that let you store a non-redundant
-lists of items. They support logical operations:
-
-.. ipython::
-
-    In [11]: skiiers = set(['Tom','Dick','Harry','Gurf'])
-
-    In [12]: snowboarders = set(['Lucy','Steve','Brian','Gurf'])
-
-    # intersection
-    In [13]: skiiers & snowboarders
-
-    # union
-    In [14]: skiiers | snowboarders
-
-    # difference 
-    In [14]: skiiers - snowboarders
-
-Regular Expressions
-===================
-Python provides a regular expression module for pattern matching. We'll
-cover some basics of writing regular expressions:
-
-.. ipython::
-    :verbatim:
-
-    In [1]: phrase = 'how now brown cow'
-
-    In [2]: import re
-
-    In [3]: regex = re.compile('brown')
-
-    In [6]: regex.findall(phrase) 
+ #. foo
 
 Useful python modules
 =====================
@@ -78,3 +43,5 @@ line.
 
 In Class Exercise
 =================
+
+ #. foo
