@@ -108,7 +108,7 @@ More exercises
     (start) begins with ``100``.
 
  #. use ``grep`` to identify lines in lamina.bed where the third field
-    (start) ends with 99 .
+    (end) ends with 99 .
 
  #. use ``grep`` with its ``-w`` flag to count the number of 'chr1'
     records in lamina.bed.
