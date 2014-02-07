@@ -24,9 +24,9 @@ coverage=$sample.coverage.gz
 bowtie2 -x $bwtindex -U $fastq > $align
 
 # now generate counts of each position that was aligned to; fields 3                                                                
-# and 4 of the same file are chrom and pos.
+# and 4 of the .sam file are chrom and pos.
 grep -v '^@' $align \
-    cut -f3,4 \
+    | cut -f3,4 \
     | sort \
     | uniq -c \
     | awk 'BEGIN {OFS="\t"} {print $2,$3,$1}' \
