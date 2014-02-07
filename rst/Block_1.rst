@@ -9,9 +9,6 @@ help you do data-analysis.
    :titlesonly:
    :glob: 
 
-   commands
-   tips
-
    Block_1/class-1
    Block_1/class-2
    Block_1/class-3
