@@ -9,11 +9,9 @@ Genome Informatics Workshop (MOLB 7620)
 
 .. toctree::
    :titlesonly:
-   :glob:
 
    Syllabus
    Block_1
    Problem_Sets
    Miscellaneous
-
 
