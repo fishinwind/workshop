@@ -26,10 +26,10 @@ help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo
 	@echo "  all        to create class and post to website"
+	@echo "  pdf        to make standalone PDF"
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
 	@echo "  website    to copy and push website to github"
-	@echo "  pdf        to make standalone PDF"
 
 #@echo "  dirhtml    to make HTML files named index.html in directories"
 #@echo "  singlehtml to make a single large HTML file"
