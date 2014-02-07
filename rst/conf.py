@@ -47,6 +47,8 @@ templates_path = ['_templates']
 # The suffix of source filenames.
 source_suffix = '.rst'
 
+# XXX: shouldn't we automate these installations? 
+
 try:
     import sphinx_rtd_theme
     html_theme = "sphinx_rtd_theme"
@@ -286,8 +288,8 @@ texinfo_documents = [
 ]
 
 pdf_documents = [
-    ('index', u'Genome Informatics Workshop',
-     u'Genome Informatics Workshop',
+    ('index', u'Genome-Informatics-Workshop',
+     u'Genome-Informatics-Workshop',
      u'Brent Pedersen, Jay Hesselberth'),]
 
 # Documents to append as an appendix to all manuals.

@@ -14,6 +14,11 @@ Syllabus
 :Copyright: 2013-2014 Jay R. Hesselberth, Brent Pedersen
 :Last updated: |today|
 
+PDF version of course
+=====================
+The course content can be downloaded in PDF form. See:
+:download:`PDF <_build/pdf/Genome-Informatics-Workshop.pdf>`
+
 Instructor Information
 ======================
 
