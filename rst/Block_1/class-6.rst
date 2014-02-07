@@ -69,6 +69,10 @@ are located in::
 Exercise (3)
 ============
 
+.. note::
+
+    Type this out. Do not copy / paste.
+
 .. literalinclude:: code/class-6-exercise.sh
     :language: bash
 
