@@ -98,12 +98,17 @@ Questions
  #. Check the ``.err`` files from the run. What information do they
     contain? What does this tell you about your starting sequences?
 
- #. Find out how you would modify the bowtie2 command to write out the
+ #. Find out how you would modify the ``bowtie2`` command to write out the
     unaligned reads into a new file. Re-run the analysis to report those
     reads.
 
+ #. Modify the ``awk`` command in the script to print out a valid BED4
+    format::
+    
+    chrom <tab> start <tab> end <tab> count
+    
  #. Find out how many unique UMI sequences are associted with each
-    chromosomal coordinate.
+    chromosomal coordinate (note: not as easy).
 
 More exercises
 ==============

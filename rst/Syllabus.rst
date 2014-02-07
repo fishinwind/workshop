@@ -129,8 +129,8 @@ Block 1
     - Class 2 (W Jan 29) – Linux / Utilities
     - Class 3 (F Jan 31) – Linux / Utilities
     - Class 4 (M Feb 3) – Linux / Utilities
-    - Class 5 (W Feb 5) – Cluster Usage
-    - Class 6 (F Feb 7) – Cluster Usage
+    - Class 5 (W Feb 5) – Cluster Usage / Review
+    - Class 6 (F Feb 7) – Cluster Usage / Review
     - Class 7 (M Feb 10) – Python
     - Class 8 (W Feb 12) – Python
     - Class 9 (F Feb 14) – Python – Advanced
