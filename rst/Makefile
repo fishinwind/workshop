@@ -28,6 +28,7 @@ help:
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
 	@echo "  website    to copy and push website to github"
+	@echo "  pdf        to make standalone PDF"
 
 #@echo "  dirhtml    to make HTML files named index.html in directories"
 #@echo "  singlehtml to make a single large HTML file"
@@ -65,6 +66,10 @@ slides:
 
 website:
 	. $(SRCDIR)/website.sh; 
+
+pdf:
+	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
+	@echo "Build finished. The PDF is in $(BUILDDIR)/pdf."
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml

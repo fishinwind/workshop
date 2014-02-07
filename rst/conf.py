@@ -37,7 +37,8 @@ extensions = [
     'sphinx.ext.graphviz',
     'IPython.sphinxext.ipython_directive',
     'IPython.sphinxext.ipython_console_highlighting',
-    'hieroglyph'
+    'hieroglyph',
+    'rst2pdf.pdfbuilder'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -70,6 +71,10 @@ try:
     import sphinxcontrib.manpage
 except ImportError:
     sys.stderr.write("please install (pip) sphinxcontrib-manpage\n")
+try:
+    import rst2pdf
+except ImportError:
+    sys.stderr.write("please install (easy_install) rst2pdf\n")
     
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -279,6 +284,11 @@ texinfo_documents = [
    u'Brent Pedersen, Jay Hesselberth', 'bio-workshop', 'One line description of project.',
    'Miscellaneous'),
 ]
+
+pdf_documents = [
+    ('index', u'Genome Informatics Workshop',
+     u'Genome Informatics Workshop',
+     u'Brent Pedersen, Jay Hesselberth'),]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
