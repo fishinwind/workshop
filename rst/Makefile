@@ -25,6 +25,7 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo
+	@echo "  all        to create class and post to website"
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
 	@echo "  website    to copy and push website to github"
@@ -54,6 +55,8 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
+
+all: clean pdf html slides website
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
