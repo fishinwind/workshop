@@ -65,6 +65,7 @@ html:
 
 slides:
 	$(SPHINXBUILD) -b slides $(ALLSPHINXOPTS) $(BUILDDIR)/slides
+	@echo
 	@echo "Build finished. The HTML slides are in $(BUILDDIR)/slides."
 
 website:
@@ -72,6 +73,7 @@ website:
 
 pdf:
 	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
+	@echo
 	@echo "Build finished. The PDF is in $(BUILDDIR)/pdf."
 
 dirhtml:
