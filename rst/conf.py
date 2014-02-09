@@ -287,11 +287,6 @@ texinfo_documents = [
    'Miscellaneous'),
 ]
 
-pdf_documents = [
-    ('index', u'Genome-Informatics-Workshop',
-     u'Genome-Informatics-Workshop',
-     u'Brent Pedersen, Jay Hesselberth'),]
-
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
 
@@ -333,11 +328,19 @@ intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None),
 # would mean that specific document would be compressed
 # regardless of the global pdf_compressed setting.
 
+# pdf_documents = [
+#     ('index', u'Genome-Informatics-Workshop',
+#      u'Genome-Informatics-Workshop',
+#      u'Brent Pedersen\\Jay Hesselberth',
+#      dict(pdf_compressed = True))]
+
 pdf_documents = [
     ('index', u'Genome-Informatics-Workshop',
-     u'Genome-Informatics-Workshop',
+     u'Genome Informatics Workshop MOLB 7620',
      u'Brent Pedersen\\Jay Hesselberth',
-     dict(pdf_compressed = True))]
+     u'Bio Workshop', u'Genomics with Linux, Python, R and ENCODE examples',
+     u'Computational Biology',
+     dict(pdf_compressed=True))]
 
 # A comma-separated list of custom stylesheets. Example:
 pdf_stylesheets = ['sphinx','kerning','a4']
