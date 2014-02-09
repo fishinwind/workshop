@@ -12,6 +12,8 @@ Syllabus
 :Address: Department of Biochemistry and Molecular Genetics
 :Address: Department of Medicine
 :Copyright: 2013-2014 Jay R. Hesselberth, Brent Pedersen
+:Copyright: 2013-2014 Regents of the University of Colorado.
+:Copyright: All Rights Reserved.
 :Last updated: |today|
 
 .. important::
