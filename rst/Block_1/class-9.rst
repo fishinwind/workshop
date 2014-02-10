@@ -45,3 +45,7 @@ In Class Exercise
 =================
 
  #. foo
+
+.. raw:: pdf
+
+    PageBreak

@@ -260,3 +260,7 @@ In Class Exercises - Class 4 (2)
     b. greater than 2?
 
  #. use NR to filter out the header from `lamina.bed` (hint: what is NR for the header?)
+
+.. raw:: pdf
+
+    PageBreak
