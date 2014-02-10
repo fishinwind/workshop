@@ -1,11 +1,63 @@
-*********************************
-Class 9 : Python : Useful Modules
-*********************************
+*****************************
+Class 9 : Intermediate Python 
+*****************************
 
 Goals
 =====
 
- #. foo
+ #. review
+ #. intermediate concepts
+ #. start reading useful python programs
+ #. start writing useful python programs 
+ #.
+
+Review
+======
+
+....
+
+Intermediate Concepts: Streaming
+================================
+
+One of the reasons why python is so useful is that is allows one to
+**iterate** over a file or *iterable* without reading the entire 
+dataset into computer memory.
+
+This is similar to streaming data in the Linux tools we've discussed.
+For example
+
+.. code-block:: bash
+
+    zless /opt/bio-workshop/data/t_R1.fastq.gz | wc -l
+
+never holds the file in memory, it just streams the data.
+
+We can do this in python.
+
+Intermediate : Streaming
+========================
+
+.. warning:: 
+
+    DO NOT DO THIS!!
+
+.. code-block:: python
+
+    data = list(gzip.open('/opt/bio-workshop/data/t_R1.fastq.gz'))
+    lines = len(data)
+
+.. warning:: 
+
+    DO THIS
+
+.. code-block:: python
+
+    lines = sum(1 for line in gzip.open('opt/bio-workshop/data/t_R1.fastq.gz'))
+
+
+Intermediate : Streaming with generators
+========================================
+
 
 Useful python modules
 =====================
