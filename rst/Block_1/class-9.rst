@@ -19,8 +19,8 @@ Review
 Intermediate Concepts: Streaming
 ================================
 
-One of the reasons why python is so useful is that is allows one to
-**iterate** over a file or *iterable* without reading the entire 
+One of the reasons why python is so useful is that faciliates
+**iteration** over a file or *iterable* without reading the entire 
 dataset into computer memory.
 
 This is similar to streaming data in the Linux tools we've discussed.
@@ -46,17 +46,36 @@ Intermediate : Streaming
     data = list(gzip.open('/opt/bio-workshop/data/t_R1.fastq.gz'))
     lines = len(data)
 
-.. warning:: 
+.. important:: 
 
     DO THIS
 
 .. code-block:: python
 
     lines = sum(1 for line in gzip.open('opt/bio-workshop/data/t_R1.fastq.gz'))
+    # or:
+    lines = 0
+    for line in gzip.open('/opt/bio-workshop/data/t_R1.fastq.gz'):
+        lines += 1
 
 
 Intermediate : Streaming with generators
 ========================================
+
+.. code-block:: python
+
+    def bed_generator(bed_file):
+        for line in open(bed_file):
+            chrom, start, end, value = line.split("\t")[:4]
+            start, end = int(start), int(end)
+            yield dict(chrom=chrom, start=start, end=end, value=value)
+
+Then use it:
+
+.. code-block:: python
+
+    for bed in bed_generator('/opt/bio-workshop/data/lamina.bed'):
+        print bed
 
 
 Useful python modules
@@ -73,24 +92,6 @@ time:
     - :py:mod:`itertools`: tools for efficient aggregation and iteration
 
     - :py:mod:`argparse`: command line option parsing
-
-Debugging Python code
-=====================
-The :py:mod:`pdb` is the Python Debugger. You can use it to debug programs by
-dropping you into a shell that allows you to step through the program, line by
-line.
-
-.. ipython::
-    :verbatim:
-
-    In [6]: import pdb
-
-    # this will drop you into a shell. find the value of ``i`` at the (Pdb)
-    # prompt
-    In [7]: for i in range(100):
-       ...:     if i == 50:
-       ...:         pdb.set_trace()
-       ...:         
 
 
 In Class Exercise

@@ -5,6 +5,7 @@ Class 8 : Python : Basics (2)
 Goals
 =====
 #. foo
+#. NOTE for Jay to cover: slicing lists [:5], [2:4] (like linux cut, but 0-based)
 
 Sets
 ====
