@@ -24,6 +24,7 @@ import os
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
+# XXX: shouldn't we automate these installations? 
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -40,14 +41,6 @@ extensions = [
     'hieroglyph',
     'rst2pdf.pdfbuilder'
 ]
-
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
-
-# The suffix of source filenames.
-source_suffix = '.rst'
-
-# XXX: shouldn't we automate these installations? 
 
 try:
     import sphinx_rtd_theme
@@ -77,7 +70,14 @@ try:
     import rst2pdf
 except ImportError:
     sys.stderr.write("please install (easy_install) rst2pdf\n")
-    
+ 
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ['_templates']
+
+# The suffix of source filenames.
+source_suffix = '.rst'
+
+   
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
@@ -303,6 +303,7 @@ texinfo_documents = [
 
 slide_levels = 2
 slide_theme = 'single-level'
+slide_numbers = True
 slide_link_html_to_slides = True
 slide_link_html_sections_to_slides = True
 slide_link_to_html = True
@@ -310,7 +311,9 @@ slide_relative_path = "slides/"
 slide_html_relative_path = "../"
 
 # -- Intersphinx --------------------------------------------------
-intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None)}
+# for python doc refs
+intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None),
+                       'bedtools': ('http://bedtools.readthedocs.org/en/latest/', None)}
 
 # -- Options for PDF output --------------------------------------------------
 
@@ -328,10 +331,19 @@ intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None)}
 # would mean that specific document would be compressed
 # regardless of the global pdf_compressed setting.
 
+# pdf_documents = [
+#     ('index', u'Genome-Informatics-Workshop',
+#      u'Genome-Informatics-Workshop',
+#      u'Brent Pedersen\\Jay Hesselberth',
+#      dict(pdf_compressed = True))]
+
 pdf_documents = [
     ('index', u'Genome-Informatics-Workshop',
-     u'Genome-Informatics-Workshop',
-     u'Brent Pedersen, Jay Hesselberth'),]
+     u'Genome Informatics Workshop MOLB 7620',
+     u'Brent Pedersen\\Jay Hesselberth',
+     u'Bio Workshop', u'Genomics with Linux, Python, R and ENCODE examples',
+     u'Computational Biology',
+     dict(pdf_compressed=True))]
 
 # A comma-separated list of custom stylesheets. Example:
 pdf_stylesheets = ['sphinx','kerning','a4']
@@ -357,11 +369,11 @@ pdf_fit_mode = "shrink"
 # Section level that forces a break page.
 # For example: 1 means top-level sections start in a new page
 # 0 means disabled
-#pdf_break_level = 0
+pdf_break_level = 1
 
 # When a section starts in a new page, force it to be 'even', 'odd',
 # or just use 'any'
-#pdf_breakside = 'any'
+pdf_breakside = 'any'
 
 # Insert footnotes where they are defined instead of 
 # at the end.
@@ -377,10 +389,10 @@ pdf_inline_footnotes = True
 #pdf_use_modindex = True
 
 # If false, no coverpage is generated.
-#pdf_use_coverpage = True
+pdf_use_coverpage = True
 
 # Name of the cover page template to use
-#pdf_cover_template = 'sphinxcover.tmpl'
+pdf_cover_template = 'sphinxcover.tmpl'
 
 # Documents to append as an appendix to all manuals.    
 #pdf_appendices = []
@@ -394,7 +406,7 @@ pdf_inline_footnotes = True
 
 # Enable rst2pdf extension modules (default is only vectorpdf)
 # you need vectorpdf if you want to use sphinx's graphviz support
-#pdf_extensions = ['vectorpdf']
+pdf_extensions = ['vectorpdf']
 
 # Page template name for "regular" pages
 #pdf_page_template = 'cutePage'

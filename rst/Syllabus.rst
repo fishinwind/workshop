@@ -12,6 +12,8 @@ Syllabus
 :Address: Department of Biochemistry and Molecular Genetics
 :Address: Department of Medicine
 :Copyright: 2013-2014 Jay R. Hesselberth, Brent Pedersen
+:Copyright: 2013-2014 Regents of the University of Colorado.
+:Copyright: All Rights Reserved.
 :Last updated: |today|
 
 .. important::
@@ -138,21 +140,21 @@ Block 1
     - Class 6 (F Feb 7) – Cluster Usage / Review
     - Class 7 (M Feb 10) – Python
     - Class 8 (W Feb 12) – Python
-    - Class 9 (F Feb 14) – Python – Advanced
+    - Class 9 (F Feb 14) – Python – Advanced / Review
 
     **No Class Feb 17 (President's Day)**
 
     - Class 10 (W Feb 19) – Python – Advanced
-    - Class 11 (F Feb 21) – R – Data
-    - Class 12 (M Feb 24) – R – Data
-    - Class 13 (W Feb 26) – R – Plotting
-    - Class 14 (F Feb 28) – R – Plotting 
-    - Class 15 (M Mar 3) – UCSC Genome Browser
+    - Class 11 (F Feb 21) – Python – Writing Scripts / Review
+    - Class 12 (M Feb 24) – R – Data 
+    - Class 13 (W Feb 26) – R – Data
+    - Class 14 (F Feb 28) – R – Plotting  / Review
+    - Class 15 (M Mar 3) – R – Plotting
     - Class 16 (W Mar 5) – UCSC Genome Browser
 
 Block 2
 -------
-    - Class 1 (F Mar 7) – ENCODE (Overview)
+    - Class 1 (F Mar 7) – UCSC Genome Browser
 
     **No Class Mar 10-14 (Spring Break)**
 
@@ -170,3 +172,6 @@ Block 2
     - Class 13 (F Apr 11) – Variant detection (VCF files and manipulation)
     - Class 14 (M Apr 14) – Integration / Segway (Hoffman)
 
+.. raw:: pdf
+
+    PageBreak

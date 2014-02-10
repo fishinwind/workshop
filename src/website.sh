@@ -4,27 +4,28 @@
 # 
 # XXX: confirm this is working
 #
-set -o nounset -o pipefail -o errexit -x
+set -o nounset
+set -o pipefail
+set -o errexit
+set -x
 
 WEBSITEDIR=$HOME/devel/bio-workshop-io
 SRCDIR=$HOME/devel/bio-workshop
 RSTDIR=$SRCDIR/rst
 BUILDDIR=$RSTDIR/_build
 
-cd $RSTDIR
-
-echo ">> updating content ..."
+echo ">> pulling content ..."
 cd $WEBSITEDIR
 git pull origin master
-cd $RSTDIR
 echo
 
 echo ">> copying files to $WEBSITEDIR ..."
+cd $RSTDIR
 cp -r $BUILDDIR/html/* $WEBSITEDIR
 cp -r $BUILDDIR/slides/ $WEBSITEDIR
 echo
 
-echo ">> syncing files with git ..."
+echo ">> pushing content ..."
 # sync the directory and add new content
 cd $WEBSITEDIR
 git add .

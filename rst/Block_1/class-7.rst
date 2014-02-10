@@ -77,7 +77,7 @@ You can find more about any python type or function using ``pydoc``:
 
 .. code-block:: bash
 
-    # learn about the python `string` type
+    # learn about the python ``string`` type
     $ pydoc str
 
 At the ``ipython`` prompt, you can also use:
@@ -87,7 +87,7 @@ At the ``ipython`` prompt, you can also use:
 
     In [1]: str?
 
-In these slides, links take you to the python docs: :py:obj:`str`
+In these slides, links will take you to the python docs: :py:obj:`str`
 
 Finally, ask Google (e.g. python string split).
 
@@ -243,8 +243,8 @@ Lists (2)
 Python Exceptions
 =================
 When you're learning to program in Python, you will see lots of errors.
-Exmaples: :py:class:`exceptions.ValueError`,
-:py:class:`exceptions.IndexError` and :py:class:`exceptions.KeyError`
+Examples: :py:class:`~exceptions.ValueError`,
+:py:class:`~exceptions.IndexError` and :py:class:`~exceptions.KeyError`
 
 .. ipython::
     :verbatim:
@@ -282,7 +282,6 @@ Now we'll read some data from a file and operate on each line:
     
 In Class Exercises (1)
 ======================
-Here are a few exercises:
 
     #. Use :py:func:`range` to count from 0 to 100 **by 10**. How do you get
        100 in the result?
@@ -321,8 +320,8 @@ A :py:class:`dict` contains key:value mappings.
 
     In [10]: not 'orange' in produce
 
-Equality and Logic in Python
-============================
+Equality and Logic
+==================
 Use ``if``:``elif``:``else`` statements to test conditions and act on the
 result. The ``==`` and ``!=`` operators test for equality and inequality, and
 work on many object comparisons.
@@ -396,21 +395,22 @@ Save this in file called ``run.py``:
 
     import sys
 
-    # sys.argv[1] has the filename
+    # sys.argv[1] has the filename. the will open the file and read line
+    # by line
     for line in open(sys.argv[1]):
-
+        # strip() removes the newline char (\n)
         fields = line.strip().split()
+
         print fields[0]
         
 And run it:
 
 .. code-block:: bash
 
-    $ python run.py
+    $ python run.py /opt/bio-workshop/data/lamina.bed
 
 In Class Exercises (2)
 ======================
-Here are a few exercises::
 
     #. Create a :py:obj:`list` that contains multiple redundant entries.
        Covert the list to a :py:class:`set` with set(list). What happened to
@@ -429,7 +429,6 @@ Here are a few exercises::
 
 Out of Class Exercises 
 ======================
-Here are a few exercises::
 
     #. Use a python :py:class:`dict` object to count the number of entries
        on each chromosome in lamina.bed. 
@@ -450,3 +449,6 @@ Here are a few exercises::
        in states.tab hose names include 'c' and 'o' in that order, with or
        without other letters in between.
 
+.. raw:: pdf
+
+    PageBreak

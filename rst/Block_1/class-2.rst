@@ -449,3 +449,6 @@ We can see lines 5-10 of a file with:
 
     $ head /opt/bio-workshop/data/lamina.bed | tail -n 5
 
+.. raw:: pdf
+
+    PageBreak

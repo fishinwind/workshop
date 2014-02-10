@@ -223,3 +223,6 @@ classes 1-4.
  - :ref:`label-class-3-exercises`
  - :ref:`label-class-4-exercises`
 
+.. raw:: pdf
+
+    PageBreak

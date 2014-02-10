@@ -236,3 +236,6 @@ In Class Exercises - Class 3
 
     6. How few keystrokes can you do 5. using your history?
 
+.. raw:: pdf
+
+    PageBreak
