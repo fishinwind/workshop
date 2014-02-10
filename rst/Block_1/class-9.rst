@@ -5,11 +5,10 @@ Class 9 : Intermediate Python
 Goals
 =====
 
- #. review
+ #. review (dicts [key=>val lookup], lists, iteration)
  #. intermediate concepts
  #. start reading useful python programs
  #. start writing useful python programs 
- #.
 
 Review
 ======
@@ -39,7 +38,7 @@ Intermediate : Streaming
 
 .. warning:: 
 
-    DO NOT DO THIS!!
+    DO NOT DO THIS!! It reads verything into memory.
 
 .. code-block:: python
 
@@ -59,13 +58,16 @@ Intermediate : Streaming
         lines += 1
 
 
-Intermediate : Streaming with generators
-========================================
+Intermediate : Streaming with yield
+===================================
+
+Make a bed reader that returns a useful dict
 
 .. code-block:: python
 
     def bed_generator(bed_file):
         for line in open(bed_file):
+            if line.startswith('#'): continue
             chrom, start, end, value = line.split("\t")[:4]
             start, end = int(start), int(end)
             yield dict(chrom=chrom, start=start, end=end, value=value)
@@ -75,8 +77,38 @@ Then use it:
 .. code-block:: python
 
     for bed in bed_generator('/opt/bio-workshop/data/lamina.bed'):
-        print bed
+        print bed # bed is a useful, usable thing. with numeric start and end.
 
+Note that only ever have 1 (**) line in memory at a time.
+
+In Class Exercise
+=================
+
+#. Modify the `bed_generator` code from the previous slide so that it
+   turns value into a :py:obj:`float` before yielding
+#. In the code that calls bed_generator, print out the value
+#. In the code that calls bed_generator, append value to a list.
+
+In Class Exercise (Answer)
+==========================
+
+.. code-block:: python
+
+    def bed_generator(bed_file):
+        if line.startswith('#'): continue
+        for line in open(bed_file):
+            chrom, start, end, value = line.split("\t")[:4]
+            start, end = int(start), int(end)
+            yield {'chrom': chrom, 'start': start, 'end': end,
+                   'value': float(value))
+
+    vals = []
+    for bed in bed_generator('/opt/bio-workshop/data/lamina.bed'):
+        print bed['value']
+        vals.append(bed['value'])
+
+    print vals[:10]
+    print sum(vals)
 
 Useful python modules
 =====================
