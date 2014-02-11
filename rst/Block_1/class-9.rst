@@ -100,7 +100,7 @@ In Class Exercise (Answer)
             chrom, start, end, value = line.split("\t")[:4]
             start, end = int(start), int(end)
             yield {'chrom': chrom, 'start': start, 'end': end,
-                   'value': float(value))
+                   'value': float(value))}
 
     vals = []
     for bed in bed_generator('/opt/bio-workshop/data/lamina.bed'):
