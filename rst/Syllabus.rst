@@ -52,6 +52,7 @@ Health Sciences Library, Computer Teaching Lab 2
 
 Course Description
 ==================
+
 The Genome Informatics Workshop is a hands-on tutorial of skills needed to
 process large genomics data sets and visualize their results.  The class
 is taught from the standpoint of an experimentalist with practical goals
@@ -76,6 +77,7 @@ This is a 2 credit course.
 
 Texts and Reading Materials
 ---------------------------
+
 #. **Required**: Learn Python the Hard Way,
     http://learnpythonthehardway.org/book/
 #. **Required**: Command Line Crash Course
@@ -87,7 +89,7 @@ Texts and Reading Materials
 
 Course Objectives
 -----------------
-1. First block (6 weeks, 27 Jan - 28 Feb)
+  1. First block (6 weeks, 27 Jan - 28 Feb)
 
     - Learn to manipulate large sequencing data sets with Linux tools
       and Python programming.
@@ -95,7 +97,7 @@ Course Objectives
     - Learn to manipulate and visualize data in useful ways with the
       R statistical computing environment.
 
-2. Second block (6 weeks, 3 Mar - 14 Apr)
+  2. Second block (6 weeks, 3 Mar - 14 Apr)
 
     - Learn workflows for experiments in ENCODE: ChIP-seq DNase I
       footprinting, mRNA-seq, variant detection.
@@ -105,6 +107,7 @@ Course Objectives
 
 Canvas 
 ======
+
 The course has a Canvas page [#]_ where announcements are made and
 problem sets are uploaded
 
@@ -122,9 +125,9 @@ session, weekly problem sets, as well as a final project.
 
 Grading Criteria
 ----------------
-- 50% participation
-- 35% problem sets (7 sets, 5% each)
-- 15% final project
+ - 50% participation
+ - 35% problem sets (7 sets, 5% each)
+ - 15% final project
 
 Specific Dates / Material to be Covered
 =======================================
