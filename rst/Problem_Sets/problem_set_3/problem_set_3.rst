@@ -34,6 +34,9 @@ report the following:
 
         chrom <tab> start <tab> end <tab> value <tab> region_length
 
+.. should probably make sure they understand ``continue`` or ``yield``
+   well before unleashing them on problem 2.
+
 Problem 2
 ---------
 Use Python to read a file in FASTQ format. FASTQ records are comprised of
@@ -54,10 +57,23 @@ following:
    #. Which of the first 10 sequence records has the largest number of 'C'
       residues in the sequence? Report the record name (**5 points**)
     
-   #. XXX (**5 points**)
+   #. For each of the first 10 records, Covert each character in the
+      quality score to a number, and sum the numbers. (**5 points**)
+
+Convert characters to numbers with:
+
+.. ipython:: 
+
+    In [1]: char = '#'
+
+    In [2]: ord(char) 
 
 Problem 3
 ---------
+
+    #. XXX
+
+    #. XXX
 
 Problem Set Submission
 ----------------------
