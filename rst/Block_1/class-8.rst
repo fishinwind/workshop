@@ -2,24 +2,40 @@
 Class 8 : Python : Basics (2)
 *****************************
 
+:Class date: Wednesday 12 February 2014
+
 Goals
 =====
 #. Finish concepts from Monday (list slices)
 #. New concepts: equality, undefined, functions
 #. Importing and debugging
-#. Exercises!
+#. Exercises
 
-List slicing
-============
-We covered slicing of lists; i.e. retrieving parts:
+Review of list concepts
+=======================
+We covered slicing of lists; i.e. retrieving list parts:
 
 .. ipython::
     :verbatim:
 
-    In [11]: nums = range(100)
+    In [11]: nums = range(30)
 
     # try this again with implicit start and end
     In [12]: nums[5:10]
+
+    In [2]: reversed(nums)
+
+    # two ways to examine the contents of the iterator,
+    # same principle for sorted()
+    In [3]: [i for i in reversed(nums)]
+
+    In [3]: list(reversed(nums))
+
+    # skip reversed()
+    In [5]: range(30,0,-1)
+
+    # edit a file directly from ipython
+    In [4]: edit filename.py
 
 Sets
 ====
@@ -28,9 +44,9 @@ list of items. They support logical operations:
 
 .. ipython::
 
-    In [11]: skiiers = set(['Tom','Dick','Harry','Gurf'])
+    In [11]: skiiers = set(['Tom','Harry','Gurf'])
 
-    In [12]: snowboarders = set(['Lucy','Steve','Brian','Gurf'])
+    In [12]: snowboarders = set(['Lucy','Brian','Gurf'])
 
     # intersection
     In [13]: skiiers & snowboarders
@@ -96,8 +112,13 @@ You can define functions that encapsulate work flows
     :verbatim:
 
     In [19]: def square(numlist):
-       ....:     return [i*i for i in numlist]
-       ....: 
+       ....:     result = []
+       ....:     for i in numlist:
+       ....:         sq = i * i 
+       ....:         result.append(sq)
+       ....:         return result
+
+    # or replace loop with: return [i*i for i in numlist]
 
     In [20]: square(nums)
 
@@ -167,8 +188,8 @@ line.
        ...:         pdb.set_trace()
        ...:         
 
-In Class Exercises (2)
-======================
+In Class Exercises
+==================
 
     #. Create a :py:obj:`list` that contains multiple redundant entries.
        Covert the list to a :py:class:`set` with set(list). What happened to
@@ -178,12 +199,13 @@ In Class Exercises (2)
 
     #. Print the total coverage of entries in lamina.bed
 
-    #. Convert lamina.bed into a :py:obj:`list`. Then, print each entry in the list. 
+    #. Convert each row in lamina.bed into a :py:obj:`list`. Then, print
+       each entry in the list. 
 
     #. Find the average value of entries in lamina.bed (watch out for
-       int/float issues).
+       int / float type issues).
 
-    #. Find the median value of entries in lamina.bed.
+    #. Find the median value of entries in lamina.bed. Then find the mode.
 
 Out of Class Exercises 
 ======================
@@ -201,13 +223,7 @@ Out of Class Exercises
 
     #. Modify the previous script to use :py:mod:`argparse`, so that it
        will find entries on every chromosome by default unless given an
-       argument to look on a particular chromosome. 
-
-    #. Construct regular expressions with :py:mod:`re` to find all states
-       in states.tab hose names include 'c' and 'o' in that order, with or
-       without other letters in between.
-
-
+       argument to look on a particular chromosome (advanced)
 
 .. raw:: pdf
 
