@@ -211,28 +211,28 @@ Mostly we will use it as:
         print region['chrom']
 
 
-Application: Setup
-==================
+.. Application: Setup
+    ==================
 
-We have 3 sets of data:
+    We have 3 sets of data:
 
-#. a set of paired-end FASTQ sequence files
-#. a file that maps the FASTQ file name to a sample-id
-#. a file that maps a sample-id to a phenotype.
+    #. a set of paired-end FASTQ sequence files
+    #. a file that maps the FASTQ file name to a sample-id
+    #. a file that maps a sample-id to a phenotype.
 
-We need to integrate these 3 so that we know, for example which
-FASTQ files are associated with which phenotype.
+    We need to integrate these 3 so that we know, for example which
+    FASTQ files are associated with which phenotype.
 
-Application: Desired Output
-===========================
+.. Application: Desired Output
+    ===========================
 
-The output will be a tab-delimited file with columns for
+    The output will be a tab-delimited file with columns for
 
-#. sample-id
-#. phenotype
-#. R1 fastq name
-#. R2 fastq name
-#. other clinical or lab information ...
+    #. sample-id
+    #. phenotype
+    #. R1 fastq name
+    #. R2 fastq name
+    #. other clinical or lab information ...
 
 .. raw:: pdf
 
