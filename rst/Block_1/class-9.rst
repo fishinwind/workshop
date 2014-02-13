@@ -20,26 +20,29 @@ From hamlet.txt:
 
 #. Count the number of times that the word "therefore" appears.
 
-(hint: the `continue <http://docs.python.org/2/reference/simple_stmts.html#continue>`_ 
-statement will skip to the next loop iteration, and is usually found in an if statement)
-
+(hint: the :py:meth:`continue` statement will skip to the next loop
+iteration, and is usually found in an if statement)
 
 Counters
 ========
-`Counters <http://docs.python.org/2/library/collections.html>`_ are a 
-specialized version of Python dict objects where the keys are objects, and 
-the values are counts of those objects. Counter objects have several specific
-methods that take advantage of this, like most_common(). 
+:py:class:`~collections.Counter` objects are a type of Python dict objects
+where the keys are objects, and the values are counts of those objects.
+Counter objects have several specific methods that take advantage of this,
+like most_common(). 
 
 .. code-block:: python
 
     from collections import Counter
-    c = Counter()
+
+    word_counts = Counter()
+
     for line in open('hamlet.txt'):
         words = line.strip().split(' ')
+
         for word in words:
-            c[word] += 1
-    print c.most_common(5)
+            word_counts[word] += 1
+
+    print word_counts.most_common(5)
 
 
 Looping: Reading Multiple Lines at a Time
@@ -230,9 +233,6 @@ The output will be a tab-delimited file with columns for
 #. R1 fastq name
 #. R2 fastq name
 #. other clinical or lab information ...
-
-
-
 
 .. raw:: pdf
 
