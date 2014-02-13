@@ -6,27 +6,18 @@
 # run the script.
 # set -o nounset -o pipefail -o errexit -x
 
-# You will need to change the '???' strings below.
-#
-# define the project variable here. this should be the full path to
-# your project directory, i.e. the directory at the top of the
-# results/data/doc directories.
-
-project="$HOME/workshop-problem-sets/problem-set-2"
+# XXX: note: this will be person-dependent
+project="$HOME/devel/bio-workshop/workshop-problem-sets/problem-set-2"
 
 # fill in the date here
 date="2014-02-12"
-
-# these refer to the data file that you moved into place
 data=$project/data/$date
 datafile=$data/lamina.bed
 
-# these refer to the place where you will write the results of the
-# "analysis"
 results=$project/results/$date
 resultsfile=$results/result.tab
 
-# if the directory doesn't exist, make it
+# if the results directory doesn't exist, make it
 if [[ ! -d $results ]]; then
     mkdir -p $results
 fi
@@ -39,6 +30,8 @@ echo "Answer 1.1" > results.tab
 
 sort -k2,2nr $datafile \
     | head -n 1 >> results.tab
+
+# blank line
 echo >> results.tab
 
 # Problem 1.2
@@ -48,9 +41,11 @@ echo >> results.tab
 echo "Answer 1.2" >> results.tab
 
 awk '$1 == "chrY"' $datafile \
-    | sort -k2,2nr | head -n 1 \
+    | sort -k2,2nr \
+    | head -n 1 \
     | awk 'BEGIN {OFS=""} {print $1,":",$2,"-",$3}' \
     >> results.tab
+
 echo >> results.tab
 
 # Problem 2.1
@@ -62,6 +57,7 @@ awk 'BEGIN {OFS="\t"} {print $1, $2, $3, $4, $3-$2}' $datafile \
     | sort -k5,5nr \
     | head -n 1 \
     >> results.tab
+
 echo >> results.tab
 
 # Problem 2.2
@@ -89,7 +85,6 @@ echo >> results.tab
 
 echo "Answer 3.1" >> results.tab
 
-# print header line
 awk '$1 == "chr12" && $2 >= 5e6 && $3 <= 6e6' $datafile \
     | sort -k4,4gr \
     | awk 'BEGIN {OFS=","} {print $1,$2,$3,$4}' \
@@ -103,7 +98,9 @@ echo >> results.tab
 
 echo "Answer 3.2" >> results.tab
 
-# print header line
+# sum: total of all counts in lines
+# NR: number of rows that have data
+# i.e. sum / NR = average
 awk '$1 == "chr12" && $2 >= 5e6 && $3 <= 6e6' $datafile \
     | awk '{sum += $4} END {print sum / NR}' \
     >> results.tab

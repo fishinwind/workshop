@@ -12,12 +12,12 @@ Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
    Problem_Sets/problem_set_2/problem_set_2
    Problem_Sets/problem_set_3/problem_set_3
 
-.. _label-problem-set-submission:
+.. note::
 
-Problem Set Keys
-----------------
-You can download keys for past problem sets here:
-:download:`Problem Set Keys <Problem_Sets/problem-set-keys.tar>`.
+    Download keys for past problem sets here:
+    :download:`Problem Set Keys <Problem_Sets/problem-set-keys.tar>`.
+
+.. _label-problem-set-submission:
 
 Problem Set Submission
 ----------------------
@@ -35,4 +35,5 @@ the submission.
 .. [#] https://ucdenver.instructure.com/courses/11079/assignments/syllabus
 
 .. raw:: pdf
+
     PageBreak
