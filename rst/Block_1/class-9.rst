@@ -2,80 +2,6 @@
 Class 9 : Applied Python
 ************************
 
-Run this in **bash**
-
-.. code-block:: bash
-
-       python -c "import toolshed"
-
-If you see an error get help to install toolshed
-
-Goal
-====
-
-Take the basic concepts we've learned and do something useful.
-
-toolshed
-========
-
-`toolshed <https://pypi.python.org/pypi/toolshed>`_ is a python module
-that simplifies common file/text-processing tasks.
-For example, it assumes the first line of a file is the header
-and gives a python dictionary for each line keyed by the header.
-
-.. code-block:: python
-
-    from toolshed import reader
-
-    for region in reader('/opt/bio-workshop/data/lamina.bed'):
-        # the first line in lamina.bed is: '#chrom  start  end  value'
-
-        if region['chrom'] != "chr12": continue
-        if float(region['value']) < 0.90: continue
-        print region['chrom'], region['start'], region['end']
-
-toolshed
-========
-
-The toolshed reader function can also take gzipped files, files
-over http, bash commands, and (some) xls files.
-
-It can also accept a python class, that, for example
-converts start and end to int's.
-
-Mostly we will use it as:
-
-.. code-block:: python
-
-    from toolshed import reader
-    for region in reader('/opt/bio-workshop/data/lamina.bed'):
-        # do something with region
-        print region['chrom']
-
-
-Application: Setup
-==================
-
-We have 3 sets of data:
-
-#. a set of paired-end FASTQ sequence files
-#. a file that maps the FASTQ file name to a sample-id
-#. a file that maps a sample-id to a phenotype.
-
-We need to integrate these 3 so that we know, for example which
-FASTQ files are associated with which phenotype.
-
-Application: Desired Output
-===========================
-
-The output will be a tab-delimited file with columns for
-
-#. sample-id
-#. phenotype
-#. R1 fastq name
-#. R2 fastq name
-#. other clinical or lab information ...
-
 
 Looping Review
 ==============
@@ -90,9 +16,12 @@ From hamlet.txt:
 
 #. Print the first word of each line.
 
-#. Print only lines that are not indented.
+#. Print only lines that are not indented. 
 
 #. Count the number of times that the word "therefore" appears.
+
+(hint: the `continue <http://docs.python.org/2/reference/simple_stmts.html#continue>`_ 
+statement will skip to the next loop iteration, and is usually found in an if statement)
 
 
 Counters
@@ -226,6 +155,83 @@ In Class Exercise (Answer)
 
     print vals[:10]
     print sum(vals)
+
+
+Goal
+====
+
+Take the basic concepts we've learned and do something useful.
+
+toolshed
+========
+
+`toolshed <https://pypi.python.org/pypi/toolshed>`_ is a python module
+that simplifies common file/text-processing tasks.
+For example, it assumes the first line of a file is the header
+and gives a python dictionary for each line keyed by the header.
+
+Run this in **bash**
+
+.. code-block:: bash
+
+       python -c "import toolshed"
+
+If you see an error get help to install toolshed
+
+.. code-block:: python
+
+    from toolshed import reader
+
+    for region in reader('/opt/bio-workshop/data/lamina.bed'):
+        # the first line in lamina.bed is: '#chrom  start  end  value'
+
+        if region['chrom'] != "chr12": continue
+        if float(region['value']) < 0.90: continue
+        print region['chrom'], region['start'], region['end']
+
+toolshed
+========
+
+The toolshed reader function can also take gzipped files, files
+over http, bash commands, and (some) xls files.
+
+It can also accept a python class, that, for example
+converts start and end to int's.
+
+Mostly we will use it as:
+
+.. code-block:: python
+
+    from toolshed import reader
+    for region in reader('/opt/bio-workshop/data/lamina.bed'):
+        # do something with region
+        print region['chrom']
+
+
+Application: Setup
+==================
+
+We have 3 sets of data:
+
+#. a set of paired-end FASTQ sequence files
+#. a file that maps the FASTQ file name to a sample-id
+#. a file that maps a sample-id to a phenotype.
+
+We need to integrate these 3 so that we know, for example which
+FASTQ files are associated with which phenotype.
+
+Application: Desired Output
+===========================
+
+The output will be a tab-delimited file with columns for
+
+#. sample-id
+#. phenotype
+#. R1 fastq name
+#. R2 fastq name
+#. other clinical or lab information ...
+
+
 
 
 .. raw:: pdf
