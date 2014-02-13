@@ -13,7 +13,7 @@ If you see an error get help to install toolshed
 Goal
 ====
 
-take the basic concepts we've learned and do somethign useful.
+Take the basic concepts we've learned and do something useful.
 
 toolshed
 ========
@@ -76,14 +76,60 @@ The output will be a tab-delimited file with columns for
 #. R2 fastq name
 #. other clinical or lab information ...
 
-Application: Plan
+
+Looping Review
+==============
+Before we move on to more advanced topics, let's do some exercises 
+reviewing how loops work. First, use wget to download 
+`hamlet.txt <http://www.cs.uni.edu/~schafer/1140/assignments/pa11/hamlet.txt>`_. 
+
+In Class Exercise
 =================
 
+From hamlet.txt: 
+
+#. Print the first word of each line.
+
+#. Print only lines that are not indented.
+
+#. Count the number of times that the word "therefore" appears.
 
 
+Counters
+========
+`Counters <http://docs.python.org/2/library/collections.html>`_ are a 
+specialized version of Python dict objects where the keys are objects, and 
+the values are counts of those objects. Counter objects have several specific
+methods that take advantage of this, like most_common(). 
+
+.. code-block:: python
+
+    from collections import Counter
+    c = Counter()
+    for line in open('hamlet.txt'):
+        words = line.strip().split(' ')
+        for word in words:
+            c[word] += 1
+    print c.most_common(5)
 
 
+Looping: Reading Multiple Lines at a Time
+=========================================
+There are lots of biological data files that have information for one thing
+spread over multiple lines. A common example is a FASTA file, which is used to 
+store sequences. Each sequence has a line with '>' and some information (like a name)
+followed by another line of sequence data. For example: 
 
+.. code-block:: fasta
+
+    >Sequence name
+    AGCATCGTAGCTAGTCGTACGTAGCTATCGATCGTAGCTA
+
+In Class Exercise
+=================
+
+#. Open sample.fas and make a dictionary with four items corresponding to the sequences 
+   from the file
 
 Intermediate Concepts: Streaming
 ================================
@@ -103,12 +149,13 @@ never holds the file in memory, it just streams the data.
 
 We can do this in python.
 
+
 Intermediate : Streaming
 ========================
 
 .. warning:: 
 
-    DO NOT DO THIS!! It reads verything into memory.
+    DO NOT DO THIS!! It reads everything into memory.
 
 .. code-block:: python
 
@@ -128,7 +175,7 @@ Intermediate : Streaming
         lines += 1
 
 
-Intermediate : Streaming with yield
+Streaming with yield
 ===================================
 
 Make a bed reader that returns a useful dict
@@ -180,26 +227,6 @@ In Class Exercise (Answer)
     print vals[:10]
     print sum(vals)
 
-Useful python modules
-=====================
-There are several modules in the standard library you will use all the
-time:
-
-    - :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command
-      line
-
-    - :py:mod:`collections`: espcially :py:class:`~collections.defaultdict`
-      and :py:class:`~collections.Counter`
-
-    - :py:mod:`itertools`: tools for efficient aggregation and iteration
-
-    - :py:mod:`argparse`: command line option parsing
-
-
-In Class Exercise
-=================
-
- #. foo
 
 .. raw:: pdf
 
