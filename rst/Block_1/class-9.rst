@@ -2,15 +2,15 @@
 Class 9 : Applied Python
 ************************
 
-Goals
-=====
-#. Review Python concepts
+:Class date: Friday 14 February 2014
 
-HVD
-===
 .. code-block:: bash
 
     $ cowsay -f dragon-and-cow "Happy Valentine's Day"
+
+Goals
+=====
+#. Review Python concepts
 
 Looping Review
 ==============
