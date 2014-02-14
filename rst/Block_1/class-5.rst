@@ -220,8 +220,8 @@ We're going to take a break this class so that you can catch up on your
 exercises. Please spend some time going back through the exercises from
 classes 1-4.
 
- - :ref:`label-class-3-exercises`
- - :ref:`label-class-4-exercises`
+ - :ref:`class-3-exercises`
+ - :ref:`class-4-exercises`
 
 .. raw:: pdf
 

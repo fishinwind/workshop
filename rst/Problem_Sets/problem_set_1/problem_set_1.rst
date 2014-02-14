@@ -1,5 +1,5 @@
 
-.. _label-problem-set-1:
+.. _problem-set-1:
 
 *************
 Problem Set 1
@@ -141,7 +141,7 @@ points**). For example::
 Problem Set Submission
 ----------------------
 Submit your problem set as a tar file to Canvas
-(:ref:`label-problem-set-submission`).
+(:ref:`problem-set-submission`).
 
 .. raw:: pdf
 

@@ -1,5 +1,5 @@
 
-.. _label-problem-set-2:
+.. _problem-set-2:
 
 *************
 Problem Set 2
@@ -16,7 +16,7 @@ tools.
 .. note::
 
     Continue to use the organization scheme that we learned about in
-    :ref:`label-problem-set-1`. Part of our evaluation
+    :ref:`problem-set-1`. Part of our evaluation
     will include whether you are developing good organizational habits.
 
 In the solution for all of the problems below, print out the region(s) as
@@ -67,7 +67,7 @@ Problem 3
 Problem Set Submission
 ----------------------
 Submit your problem set as a tar file to Canvas
-(:ref:`label-problem-set-submission`).
+(:ref:`problem-set-submission`).
 
 .. raw:: pdf
 

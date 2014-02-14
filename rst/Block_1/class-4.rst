@@ -212,7 +212,7 @@ You can do a lot more with awk, here are several resources:
 
     - http://www.catonmat.net/download/awk.cheat.sheet.pdf
 
-.. _label-class-4-exercises:
+.. _class-4-exercises:
 
 In Class Exercises - Class 4
 ============================

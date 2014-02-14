@@ -1,5 +1,5 @@
 
-.. _label-problem-set-3:
+.. _problem-set-3:
 
 *************
 Problem Set 3
@@ -14,7 +14,7 @@ For this quiz you will write programs in Python to analyze data.
 .. note::
 
     Continue to use the organization scheme that we learned about in
-    :ref:`label-problem-set-1`. Part of our evaluation
+    :ref:`problem-set-1`. Part of our evaluation
     will include whether you are developing good organizational habits.
 
 Create a ``run.sh`` file that executes the commands for each problem and
@@ -47,9 +47,7 @@ Use Python to read a file in FASTQ format. FASTQ records are comprised of
     +                                 # empty line; starts with '+'
     9C;=;=<9@4868>9:67AA<9>65<=>591   # phred-scaled quality scores
 
-The FASTQ file is on amc-tesla::
-    
-    /vol1/opt/data/SP1.fq
+Download the fastq file here: :ref:`fastq-file`
 
 Write a Python program to parse the FASTQ records and report the
 following:
@@ -75,7 +73,7 @@ following:
 Problem Set Submission
 ----------------------
 Submit your problem set as a tar file to Canvas
-(:ref:`label-problem-set-submission`).
+(:ref:`problem-set-submission`).
 
 .. raw:: pdf
 

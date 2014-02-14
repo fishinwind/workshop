@@ -206,7 +206,7 @@ Note that we are using the variable FILE for the long file name
 
 Let's go through this line by line ...
 
-.. _label-class-3-exercises:
+.. _class-3-exercises:
 
 In Class Exercises - Class 3
 ============================
