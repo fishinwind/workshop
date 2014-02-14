@@ -8,7 +8,6 @@ Genome Informatics Workshop (MOLB 7620)
 ***************************************
 
 .. toctree::
-   :titlesonly:
    :glob:
 
    Syllabus

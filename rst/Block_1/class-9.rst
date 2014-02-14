@@ -6,6 +6,12 @@ Goals
 =====
 #. Review Python concepts
 
+HVD
+===
+.. code-block:: bash
+
+    $ cowsay -f dragon-and-cow "Happy Valentine's Day"
+
 Looping Review
 ==============
 Before we move on to more advanced topics, let's do some exercises 

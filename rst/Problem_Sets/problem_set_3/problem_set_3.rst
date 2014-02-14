@@ -20,6 +20,7 @@ For this quiz you will write programs in Python to analyze data.
 Create a ``run.sh`` file that executes the commands for each problem and
 writes out each result in a dated directory.
 
+
 Problem 1 (BED files)
 ---------------------
 Use Python to perform a similar tasks as Problem Set 2, where you used
@@ -34,8 +35,8 @@ following:
 
         chrom <tab> start <tab> end <tab> value <tab> region_length
 
-.. should probably make sure they understand ``continue`` or ``yield``
-   well before unleashing them on problem 2.
+Download the bed file here: :ref:`bed-file`
+
 
 Problem 2 (FASTQ files)
 -----------------------

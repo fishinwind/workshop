@@ -43,7 +43,8 @@ Instructor Information
 
 Schedule
 ========
-Mon, Wed, Fri, 2:30 - 4:00 PM
+Mon, Wed, Fri, 2:30 - 4:00 PM.
+:ref:`See specific dates. <syllabus-specific-dates>`
 
 Location
 ========
@@ -127,6 +128,8 @@ Grading Criteria
  - 50% participation
  - 35% problem sets (7 sets, 5% each)
  - 15% final project
+
+.. _syllabus-specific-dates:
 
 Specific Dates / Material to be Covered
 =======================================
