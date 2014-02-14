@@ -308,8 +308,8 @@ What does the -r flag do?
     Be careful with `rm -r` and `rm -rf`. You can accidentially remove
     entire directories that you didn't intend to.
 
-Mmoving and copying files
-=========================
+Moving and copying files
+========================
 mv [source] [dest]:
 
 .. code-block:: bash
