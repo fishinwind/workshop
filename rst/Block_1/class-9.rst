@@ -62,6 +62,8 @@ another line of sequence data. For example::
     >Sequence name
     AGCATCGTAGCTAGTCGTACGTAGCTATCGATCGTAGCTA
 
+**Download the sample FASTA file:** :ref:`fasta-file`
+
 In Class Exercise
 =================
 
@@ -94,7 +96,10 @@ Intermediate : Streaming
 
 .. code-block:: python
 
-    data = list(gzip.open('/opt/bio-workshop/data/t_R1.fastq.gz'))
+    import gzip
+    fastq_filename = '/opt/bio-workshop/data/t_R1.fastq.gz'
+
+    data = list(gzip.open(fastq_filename))
     lines = len(data)
 
 .. important:: 
@@ -103,13 +108,16 @@ Intermediate : Streaming
 
 .. code-block:: python
 
+    import gzip
+    fastq_filename = '/opt/bio-workshop/data/t_R1.fastq.gz'
+
     lines = 0
-    for line in gzip.open('/opt/bio-workshop/data/t_R1.fastq.gz'):
+    for line in gzip.open(fastq_filename):
         lines += 1
 
     # or:
 
-    lines = sum(1 for line in gzip.open('opt/bio-workshop/data/t_R1.fastq.gz'))
+    lines = sum(1 for line in gzip.open(fastq_filename))
 
 Streaming with yield
 ===================================
@@ -129,7 +137,8 @@ Then use it:
 
 .. code-block:: python
 
-    for bed in bed_generator('/opt/bio-workshop/data/lamina.bed'):
+    bedfilename = '/opt/bio-workshop/data/lamina.bed'
+    for bed in bed_generator(bedfilename):
         print bed # bed is a useful, usable thing. with numeric start and end.
 
 Note that only ever have 1 (**) line in memory at a time.
@@ -158,7 +167,7 @@ In Class Exercise (Answer)
                    'value': float(value))}
 
     vals = []
-    for bed in bed_generator('/opt/bio-workshop/data/lamina.bed'):
+    for bed in bed_generator(bedfilename):
         print bed['value']
         vals.append(bed['value'])
 

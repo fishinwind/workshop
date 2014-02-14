@@ -22,10 +22,21 @@ FASTQ format
 ============
 FASTQ format contains DNA sequence data with quality scores::
 
-    @cluster_2:UMI_ATTCCG             # record name
+    @cluster_2:UMI_ATTCCG             # record name; starts with '@'
     TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
     +                                 # empty line; starts with '+'
     9C;=;=<9@4868>9:67AA<9>65<=>591   # phred-scaled quality scores
 
 **Download a sample FASTQ file:** :download:`SP1.fq <../../data/SP1.fq>`
+
+.. _fasta-file:
+
+FASTA format
+============
+FASTQ format contains DNA sequence data with quality scores::
+
+    >cluster_2:UMI_ATTCCG             # record name; starts with '>'
+    TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
+
+**Download a sample FASTA file:** :download:`sample.fa <../../data/sample.fa>`
 
