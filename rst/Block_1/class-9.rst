@@ -2,6 +2,9 @@
 Class 9 : Applied Python
 ************************
 
+Goals
+=====
+#. Review Python concepts
 
 Looping Review
 ==============
@@ -11,24 +14,23 @@ reviewing how loops work. First, use wget to download
 
 In Class Exercise
 =================
-
 From hamlet.txt: 
 
-#. Print the first word of each line.
+ #. Print the first word of each line.
 
-#. Print only lines that are not indented. 
+ #. Print only lines that are not indented. 
 
-#. Count the number of times that the word "therefore" appears.
+ #. Count the number of times that the word "therefore" appears.
 
 (hint: the :py:meth:`continue` statement will skip to the next loop
 iteration, and is usually found in an if statement)
 
 Counters
 ========
-:py:class:`~collections.Counter` objects are a type of Python dict objects
-where the keys are objects, and the values are counts of those objects.
-Counter objects have several specific methods that take advantage of this,
-like most_common(). 
+:py:class:`~collections.Counter` objects are a type of Python dict in
+which the values are counts of the keys. Counter objects have several
+methods to query the counts, like
+:py:meth:`~collections.Counter.most_common()`. 
 
 .. code-block:: python
 
@@ -44,15 +46,12 @@ like most_common().
 
     print word_counts.most_common(5)
 
-
 Looping: Reading Multiple Lines at a Time
 =========================================
-There are lots of biological data files that have information for one thing
-spread over multiple lines. A common example is a FASTA file, which is used to 
-store sequences. Each sequence has a line with '>' and some information (like a name)
-followed by another line of sequence data. For example: 
-
-.. code-block:: fasta
+There are lots of biological data files that have information spread over
+multiple lines. For example, a FASTA file is used to store sequences. Each
+record has a line with '>' and some information (like a name) followed by
+another line of sequence data. For example::
 
     >Sequence name
     AGCATCGTAGCTAGTCGTACGTAGCTATCGATCGTAGCTA
@@ -60,18 +59,17 @@ followed by another line of sequence data. For example:
 In Class Exercise
 =================
 
-#. Open sample.fas and make a dictionary with four items corresponding to the sequences 
-   from the file
+#. Open sample.fas and make a dictionary with four items corresponding to
+   the sequences from the file
 
 Intermediate Concepts: Streaming
 ================================
-
 One of the reasons why python is so useful is that faciliates
-**iteration** over a file or *iterable* without reading the entire 
-dataset into computer memory.
+**iteration** over a file without reading the entire dataset into computer
+memory.
 
 This is similar to streaming data in the Linux tools we've discussed.
-For example
+For example:
 
 .. code-block:: bash
 
@@ -80,7 +78,6 @@ For example
 never holds the file in memory, it just streams the data.
 
 We can do this in python.
-
 
 Intermediate : Streaming
 ========================
@@ -100,22 +97,23 @@ Intermediate : Streaming
 
 .. code-block:: python
 
-    lines = sum(1 for line in gzip.open('opt/bio-workshop/data/t_R1.fastq.gz'))
-    # or:
     lines = 0
     for line in gzip.open('/opt/bio-workshop/data/t_R1.fastq.gz'):
         lines += 1
 
+    # or:
+
+    lines = sum(1 for line in gzip.open('opt/bio-workshop/data/t_R1.fastq.gz'))
 
 Streaming with yield
 ===================================
 
-Make a bed reader that returns a useful dict
+Make a bed reader that returns a useful dict:
 
 .. code-block:: python
 
-    def bed_generator(bed_file):
-        for line in open(bed_file):
+    def bed_generator(bedfilename):
+        for line in open(bedfilename):
             if line.startswith('#'): continue
             chrom, start, end, value = line.split("\t")[:4]
             start, end = int(start), int(end)
@@ -133,10 +131,10 @@ Note that only ever have 1 (**) line in memory at a time.
 In Class Exercise
 =================
 
-#. Modify the `bed_generator` code from the previous slide so that it
-   turns value into a :py:obj:`float` before yielding
-#. In the code that calls bed_generator, print out the value
-#. In the code that calls bed_generator, append value to a list.
+ #. Modify the `bed_generator` code from the previous slide so that it
+    turns value into a :py:obj:`float` before yielding
+ #. In the code that calls bed_generator, print out the value
+ #. In the code that calls bed_generator, append value to a list.
 
 In Class Exercise (Answer)
 ==========================
@@ -144,7 +142,9 @@ In Class Exercise (Answer)
 .. code-block:: python
 
     def bed_generator(bed_file):
+
         if line.startswith('#'): continue
+
         for line in open(bed_file):
             chrom, start, end, value = line.split("\t")[:4]
             start, end = int(start), int(end)
@@ -159,7 +159,6 @@ In Class Exercise (Answer)
     print vals[:10]
     print sum(vals)
 
-
 Goal
 ====
 
@@ -169,24 +168,26 @@ toolshed
 ========
 
 `toolshed <https://pypi.python.org/pypi/toolshed>`_ is a python module
-that simplifies common file/text-processing tasks.
-For example, it assumes the first line of a file is the header
-and gives a python dictionary for each line keyed by the header.
-
-Run this in **bash**
+that simplifies common file/text-processing tasks.  For example, it
+assumes the first line of a file is the header and gives a python
+dictionary for each line keyed by the header.
 
 .. code-block:: bash
 
-       python -c "import toolshed"
+    $ python -c "import toolshed"
 
-If you see an error get help to install toolshed
+    # If you see an error get help to install toolshed:
+    $ pip install toolshed
 
 .. code-block:: python
 
     from toolshed import reader
 
-    for region in reader('/opt/bio-workshop/data/lamina.bed'):
+    bedfilename = '/opt/bio-workshop/data/lamina.bed'
+
+    for region in reader(bedfilename):
         # the first line in lamina.bed is: '#chrom  start  end  value'
+        # reader uses these names as keys in a dict
 
         if region['chrom'] != "chr12": continue
         if float(region['value']) < 0.90: continue
@@ -206,13 +207,18 @@ Mostly we will use it as:
 .. code-block:: python
 
     from toolshed import reader
-    for region in reader('/opt/bio-workshop/data/lamina.bed'):
+
+    bedfilename = '/opt/bio-workshop/data/lamina.bed'
+
+    for region in reader(bedfilename):
         # do something with region
         print region['chrom']
 
-
 .. Application: Setup
     ==================
+
+toolshed (2)
+============
 
     We have 3 sets of data:
 
