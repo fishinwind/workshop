@@ -31,6 +31,38 @@ From hamlet.txt:
 (hint: the :py:meth:`continue` statement will skip to the next loop
 iteration, and is usually found in an if statement)
 
+In Class Exercise Code
+======================
+
+Print the first word of each line.
+
+.. code-block:: python
+	
+	for line in open('hamlet.txt'):
+   		words = line.strip().split(' ')
+   		print words[0]
+
+Print only lines that are not indented.
+
+.. code-block:: python
+
+	for line in open('hamlet.txt'):
+		if line[0] != ' ':
+			print line.strip()
+
+Count the number of times that the word "therefore" appears.
+
+.. code-block:: python
+
+	num = 0
+	for line in open('hamlet.txt'):
+		words = line.strip().split()
+		for word in words:
+			if word == 'therefore':
+				num += 1
+	print num
+
+
 Counters
 ========
 :py:class:`~collections.Counter` objects are a type of Python dict in
@@ -51,6 +83,21 @@ methods to query the counts, like
             word_counts[word] += 1
 
     print word_counts.most_common(5)
+    
+There is more than one way to do this. It's usually a good idea to look at the
+Python documentation to see if there's a method that does what you're trying to do.
+
+.. code-block:: python
+
+    from collections import Counter
+
+    word_counts = Counter()
+
+    for line in open('hamlet.txt'):
+        words = line.strip().split(' ')
+		word_counts.update(words)
+
+    print word_counts.most_common(5)
 
 Looping: Reading Multiple Lines at a Time
 =========================================
@@ -69,6 +116,23 @@ In Class Exercise
 
 #. Open sample.fas and make a dictionary with four items corresponding to
    the sequences from the file
+   
+.. code-block:: python
+
+	d = dict()
+	count = 0
+	name = ""
+	seq = ""
+	for line in open('sample.fas'):
+		if (count == 0):
+			name = line.strip('>\n\r')
+			count = 1
+		else:
+			seq = line.strip()
+			count = 0
+			d[name] = seq
+	d.items()
+
 
 Intermediate Concepts: Streaming
 ================================
