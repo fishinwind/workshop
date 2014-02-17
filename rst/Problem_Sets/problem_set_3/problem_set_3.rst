@@ -37,6 +37,10 @@ following:
 
 Download the bed file here: :ref:`bed-file`
 
+.. note::
+
+    See end of this page for the solution to question 1.
+
 
 Problem 2 (FASTQ files)
 -----------------------
@@ -75,6 +79,50 @@ Problem Set Submission
 ----------------------
 Submit your problem set as a tar file to Canvas
 (:ref:`problem-set-submission`).
+
+
+Question 1
+==========
+
+Here is one way to answer question 1. Note that we could also take
+advantage of the fact that the file is sorted so the largest start
+will always be the last line for each chromosome. Instead, here we
+store the largest start we've seen so far, along with the value
+in a dictionary keyed by chromosome.
+
+.. code-block:: python
+
+    import sys
+
+    bedfile = sys.argv[1]
+
+    largest_by_chrom = {}
+
+    for line in open(bedfile):
+        if line.startswith('#'): continue
+        chrom, start, end, value = line.rstrip('\r\n').split('\t')
+        start = int(start)
+
+        # hint for question 2. if we wanted to just get chrY, we could add...
+        # if chrom != "chrY": continue
+
+        # we haven't seen it before, so it has to be the largest
+        if not chrom in largest_by_chrom:
+            largest_by_chrom[chrom] = (chrom, start, end, value)
+        else:
+            # we have to check if the current start is greater
+            # than the one we've stored.
+            largest_chrom, largest_start, largest_end, largest_value \
+                                                   = largest_by_chrom[chrom]
+            if start > largest_start:
+                # if it is, then we store a new region
+                largest_by_chrom[chrom] = (chrom, start, end, value)
+
+    # see what it looks like:
+    # print largest_by_chrom
+    for chrom in largest_by_chrom:
+        chrom, start, end, value = largest_by_chrom[chrom]
+        print chrom, start, end, value
 
 .. raw:: pdf
 
