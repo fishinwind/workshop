@@ -31,3 +31,8 @@ TODO:
     1. Perhaps make these problem sets a bit easier? Or skip the focus on
        ``awk``.
 
+Problem Set 3
+=============
+:date: Mon Feb 17 10:59:24 MST 2014
+
+
