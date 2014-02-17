@@ -64,6 +64,6 @@ pdf:
 
 keys:
 	@cd .. && tar cvf $(KEYS_TAR) $(KEYS_DIR)
-	@echo "Keys available in $(KEYS_TAR)"
+	@echo "Problem Set Keys are available in $(KEYS_TAR)"
 	@echo
 
