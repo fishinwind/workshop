@@ -1,14 +1,28 @@
 #! /usr/bin/env python
 
 '''
-Problem 2.1 Which of the first 10 sequence records has the largest number of
-'C' residues in the sequence? Report its record name.
+Problem Set 3 (FASTQ)
+=====================
 
-Problem 2.2 For each of the first 10 records, Covert each character in the
-quality score to a number, and sum the numbers. Use ord() to convert
-characters to numbers
+Problem 2.1
+-----------
+Which of the first 10 sequence records has the largest number of 'C'
+residues in the sequence? Report its record name.
+
+Problem 2.2
+-----------
+For each of the first 10 records, Covert each character in the quality
+score to a number, and sum the numbers. Use ord() to convert characters to
+numbers.
 
 Problem 2.3
+-----------
+Use the Python Counter to count unique sequences in the Fastq file. Report
+the top ten most abundant sequences in the Fastq file
+
+Problem 2.4
+-----------
+Report the revese complement of each of the first 10 sequences.
 '''
 
 import sys
@@ -37,6 +51,7 @@ def parse_fastq(fastqfile):
         else:
             quals = line.strip()
             yield {'name':name, 'seq':seq, 'quals':quals}
+            # reset for next record
             name = seq = quals = None
 
 def reverse_comp(seq):
@@ -54,8 +69,10 @@ def reverse_comp(seq):
 
     return ''.join(rc_seq)
 
+# keep track of record number for first 10
 seen_records = 0
 record_limit = 10
+
 # problem 2.1 data
 scores_2_1 = []
 
@@ -89,17 +106,27 @@ seqs = Counter()
 for record in parse_fastq(open(fastqfilename)):
     seqs[record['seq']] += 1 
 
-print "Problem 2.1: the record name with the highest 'C' count is:"
+# --- print results ---------------------------------------------------
+
+print "Problem 2.1: the record name with the highest 'C' count is:\n"
 print max(scores_2_1)[1]
 
+# blank line
+print
 
-print "Problem 2.2: sums of the first 10 quality scores in ord format:"
+print "Problem 2.2: sums of the first 10 quality scores in ord format:\n"
 print '\n'.join(quals_2_2)
+
+# blank line
+print
 
 print "Problem 2.3:  most common sequences in the file:"
 for seq, count in seqs.most_common(10):
     print seq,'\t',count
 
-print "Problem 2.4: reverse complements of the first 10 seqs:"
+# blank line
+print
+
+print "Problem 2.4: reverse complements of the first 10 seqs:\n"
 print '\n'.join(quals_2_4)
 

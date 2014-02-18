@@ -1,4 +1,5 @@
-problem 1.1: largest start positions for each chrom:
+Problem 1.1: largest start positions for each chrom:
+
 chr1	245647839
 chr10	129141333
 chr11	132322333
@@ -24,11 +25,16 @@ chr9	124952737
 chrX	153719866
 chrY	15475619
 
-problem 1.2: region with largest end position on chrY, region size in 5th col:
+Problem 1.2: region with largest end position on chrY, region size in 5th col:
+
 chrY	15475619	19472504	0.8138424821	3996885
+
 Problem 2.1: the record name with the highest 'C' count is:
+
 cluster_36:UMI_AACAGA
+
 Problem 2.2: sums of the first 10 quality scores in ord format:
+
 1807
 1472
 1958
@@ -50,7 +56,9 @@ CAGCTTTGCAACCATACTCCCCCCGGAACCC 	2
 CTCAGCACCCATTGTAAATTATTTGTGGATG 	1
 CCCCCTTAAATAGCTGTTTATTTGGCCCCAG 	1
 TATCCTTGCAATACTCTCCGAACGGGAGAGC 	1
+
 Problem 2.4: reverse complements of the first 10 seqs:
+
 GCGCCCGGCTGAAGATTATGTGCCCCGGAAA
 GCTCTCCCGTTCGGAGAGTATTGCAAGGATA
 CTTGCTCTTCAATAAAATGATCTTAAACTGC
