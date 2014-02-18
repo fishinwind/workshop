@@ -2,6 +2,9 @@
 Syllabus
 ********
 
+General Information
+===================
+
 :Title: Genome Informatics Workshop
 :Course Number: MOLB 7620
 :Semester: Spring 2014
@@ -15,10 +18,11 @@ Syllabus
 :Copyright: All Rights Reserved.
 :Last updated: |today|
 
-.. important::
+PDF Content
+===========
 
-    The course content can be downloaded in PDF form: 
-    :download:`PDF Download <_build/pdf/Genome-Informatics-Workshop.pdf>`
+The course content can be downloaded in PDF form: 
+:download:`PDF Download <_build/pdf/Genome-Informatics-Workshop.pdf>`
 
 Instructor Information
 ======================
@@ -165,7 +169,6 @@ Block 2
 
     - Class 2 (M Mar 17) – ENCODE – Overview
     - Class 3 (W Mar 19) – ChIP-seq / DNaseI-seq (Read densities)
-      (**ROOM CONFLICT**)
     - Class 4 (F Mar 21) – ChIP-seq / DNaseI-seq (Peak calling)
     - Class 5 (M Mar 24) – ChIP-seq / DNaseI-seq (Motif finding with MEME)
     - Class 6 (W Mar 26) – BEDtools (Quinlan)
