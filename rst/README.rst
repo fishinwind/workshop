@@ -1,9 +1,30 @@
+***********
+Class Notes
+***********
+
+Notes for Spring 2015
+=====================
+
+ - students struggled with problem set 3 (the first python problem set).
+   we failed to go into detail on nested data structures (e.g. dict of
+   lists of tuples). we also probably should have gone over multi-line
+   data formats a bit more prior to the problem set.
+
+ - Next year, should focus less on trivial examples (e.g. fruit examples) and
+   spend more time going over biologic data.
+
+     #. create nested data types during loops
+     #. logic for determining state during looping
+     #. functions to act on data structures once created:
+
+        - min(), max()
+        - Counter.most_common()
+
 Sphinx docs for for Genome Informatics Workshop
 ===============================================
 
 Making linked slides and HTML
 -----------------------------
-
 Make linked slides with:
     
 .. code-block:: bash
@@ -12,22 +33,16 @@ Make linked slides with:
 
 Making slides
 -------------
-
 Make slides with:
 
 .. code-block:: bash
 
     $ make slides
 
-Slides will be in:
-     
-.. code-block:: bash
-
-    _build/slides
+Slides will be in ``_build/slides``
 
 Making webiste
 --------------
-
 Make HTML only with:
 
 .. code-block:: bash
