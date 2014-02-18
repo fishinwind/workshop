@@ -2,6 +2,9 @@
 Syllabus
 ********
 
+General Information
+===================
+
 :Title: Genome Informatics Workshop
 :Course Number: MOLB 7620
 :Semester: Spring 2014
@@ -15,10 +18,11 @@ Syllabus
 :Copyright: All Rights Reserved.
 :Last updated: |today|
 
-.. important::
+PDF Content
+===========
 
-    The course content can be downloaded in PDF form: 
-    :download:`PDF Download <_build/pdf/Genome-Informatics-Workshop.pdf>`
+The course content can be downloaded in PDF form: 
+:download:`PDF Download <_build/pdf/Genome-Informatics-Workshop.pdf>`
 
 Instructor Information
 ======================
