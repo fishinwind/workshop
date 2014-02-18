@@ -169,7 +169,6 @@ Block 2
 
     - Class 2 (M Mar 17) – ENCODE – Overview
     - Class 3 (W Mar 19) – ChIP-seq / DNaseI-seq (Read densities)
-      (**ROOM CONFLICT**)
     - Class 4 (F Mar 21) – ChIP-seq / DNaseI-seq (Peak calling)
     - Class 5 (M Mar 24) – ChIP-seq / DNaseI-seq (Motif finding with MEME)
     - Class 6 (W Mar 26) – BEDtools (Quinlan)
