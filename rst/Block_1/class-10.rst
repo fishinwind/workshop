@@ -60,24 +60,26 @@ Set Up The Problem
 Decide on Coding Strategy
 =========================
 
-#. read info from `sample-lab-info.tsv` (tab-delimited) into a dictionary
+#. read info from `sample-seq-info.csv` (comma-delimited) into a dictionary
    with keys of `Sample ID` and values of a dictionary containing all the
-   data for that sample. We will call this dictionary **lab_info**
+   data for that sample. We will call this dictionary **seq_info**
 
-#. loop over `sample-seq-info` (comma-delimited) to get **sample_info** for
-   each sample
+   #. skip header (skip while fields[0] != "Lane")
 
-   #. Find matching lab-info for each row by using the `Sample` column as a
-      key into **lab_info**
+#. loop (stream) over `sample-lab-info.tsv` (tab-delimited) to get **lab_info**
+   for each sample
 
-   #. The corresponding value of lab_info[sample] will be all of the laboratory
+   #. Find matching *sequence-info* for each row by using the `Sample` column as a
+      key into **seq_info**
+
+   #. The corresponding value of seq_info[sample] will be all of the laboratory
       information for that sample.
 
-   #. Add the lab_info for the current sample to the **sample_info** using:
+   #. Add the *seq_info* for the current sample to the *lab_info** using:
 
-    sample_info.update(lab_info)
+    lab_info.update(seq_info)
 
-   #. print out the **sample_info** with newly added **lab_info**
+   #. print out the **lab_info** with newly added **seq_info**
 
 
 .. raw:: pdf
