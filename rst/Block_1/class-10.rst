@@ -1,135 +1,66 @@
-*****************************
-Class 9 : Intermediate Python 
-*****************************
+******************************
+Class 10 : Intermediate Python 
+******************************
 
 Goals
 =====
 
- #. review (dicts [key=>val lookup], lists, iteration)
- #. intermediate concepts
- #. start reading useful python programs
- #. start writing useful python programs 
+ #. homework review
+ #. example application
 
-Review
-======
+
+Homework Review
+===============
 
 ....
 
-Intermediate Concepts: Streaming
-================================
+Application Impetus
+===================
 
-One of the reasons why python is so useful is that faciliates
-**iteration** over a file or *iterable* without reading the entire 
-dataset into computer memory.
+It is often helpful to read existing python code that solves a common
+problem to better understand how to use certain data-structures.
 
-This is similar to streaming data in the Linux tools we've discussed.
-For example
+We will go over a python script in class that combines data from two files:
 
-.. code-block:: bash
-
-    zless /opt/bio-workshop/data/t_R1.fastq.gz | wc -l
-
-never holds the file in memory, it just streams the data.
-
-We can do this in python.
-
-Intermediate : Streaming
-========================
-
-.. warning:: 
-
-    DO NOT DO THIS!! It reads verything into memory.
-
-.. code-block:: python
-
-    data = list(gzip.open('/opt/bio-workshop/data/t_R1.fastq.gz'))
-    lines = len(data)
-
-.. important:: 
-
-    DO THIS
-
-.. code-block:: python
-
-    lines = sum(1 for line in gzip.open('opt/bio-workshop/data/t_R1.fastq.gz'))
-    # or:
-    lines = 0
-    for line in gzip.open('/opt/bio-workshop/data/t_R1.fastq.gz'):
-        lines += 1
+#. laboratory information on immune cell measurements.
+#. information on a sequencing run for a subset of those samples.
 
 
-Intermediate : Streaming with yield
-===================================
+Data Files
+==========
 
-Make a bed reader that returns a useful dict
-
-.. code-block:: python
-
-    def bed_generator(bed_file):
-        for line in open(bed_file):
-            if line.startswith('#'): continue
-            chrom, start, end, value = line.split("\t")[:4]
-            start, end = int(start), int(end)
-            yield dict(chrom=chrom, start=start, end=end, value=value)
-
-Then use it:
-
-.. code-block:: python
-
-    for bed in bed_generator('/opt/bio-workshop/data/lamina.bed'):
-        print bed # bed is a useful, usable thing. with numeric start and end.
-
-Note that only ever have 1 (**) line in memory at a time.
-
-In Class Exercise
-=================
-
-#. Modify the `bed_generator` code from the previous slide so that it
-   turns value into a :py:obj:`float` before yielding
-#. In the code that calls bed_generator, print out the value
-#. In the code that calls bed_generator, append value to a list.
-
-In Class Exercise (Answer)
-==========================
-
-.. code-block:: python
-
-    def bed_generator(bed_file):
-        if line.startswith('#'): continue
-        for line in open(bed_file):
-            chrom, start, end, value = line.split("\t")[:4]
-            start, end = int(start), int(end)
-            yield {'chrom': chrom, 'start': start, 'end': end,
-                   'value': float(value))}
-
-    vals = []
-    for bed in bed_generator('/opt/bio-workshop/data/lamina.bed'):
-        print bed['value']
-        vals.append(bed['value'])
-
-    print vals[:10]
-    print sum(vals)
-
-Useful python modules
-=====================
-There are several modules in the standard library you will use all the
-time:
-
-    - :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command
-      line
-
-    - :py:mod:`collections`: espcially :py:class:`~collections.defaultdict`
-      and :py:class:`~collections.Counter`
-
-    - :py:mod:`itertools`: tools for efficient aggregation and iteration
-
-    - :py:mod:`argparse`: command line option parsing
+Download these files into "/opt/bio-workshop/data/"
 
 
-In Class Exercise
-=================
+**laboratory info:** :download:`sample-lab-info.tsv <../../data/sample-lab-info.tsv>`
 
- #. foo
+**sequence info:** :download:`sample-seq-info.csv <../../data/sample-seq-info.csv>`
+
+Once downloaded, look at the structure of these files with `less`
+
+
+Set Up The Problem
+==================
+
+ + We will add info from sample-seq-info.csv to sample-lab-info.tsv
+
+ + Note that sample-seq-info.csv contains a super-set of the samples in
+   sample-lab-info.csv
+
+
+ + we will match samples by the `Sample` column in sample-lab-info.tsv to
+   the `Sample ID` column in sample-seq-info.csv
+
+   * we will store rows from sample-seq-info.csv in a dictionary keyed by
+     `Sample ID`
+
+ + since we are adding to sample-lab-info.tsv, we don't even need to filter
+   out as we read from sample-seq-info.csv
+
+Decide on Coding Strategy
+=========================
+
+pass
 
 .. raw:: pdf
 
