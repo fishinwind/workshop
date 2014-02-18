@@ -60,8 +60,7 @@ Count the number of times that the word "therefore" appears.
         for word in words:
             if word == 'therefore':
                 num += 1
-	print num
-
+    print num
 
 Counters
 ========
@@ -134,7 +133,7 @@ In Class Exercise
             count = 0
             records[name] = seq
 
-    records.items()
+    print records.items()
 
 
 Intermediate Concepts: Streaming
