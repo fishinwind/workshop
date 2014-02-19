@@ -1,6 +1,16 @@
-******************************
-Class 10 : Intermediate Python 
-******************************
+*************************
+Class 10 : Applied Python 
+*************************
+
+Wednesday February 19th
+
+*if in the bash shell, you get an error from*
+
+::
+
+    python -c "import toolshed"
+
+ask for help on installation
 
 Goals
 =====
@@ -8,11 +18,20 @@ Goals
  #. homework review
  #. example application
 
-
 Homework Review
 ===============
 
-....
+ + Everyone is having trouble with the Homework. :ref:`problem-set-3`
+
+ + Trouble integrating simple python constructs (dicts, lists, strings) and
+   logic (if blocks, for loops) to perform some tasks.
+
+ + Specific questions about homework?
+
+ + Questions 1, 2.
+
+ + toolshed module
+
 
 Application Impetus
 ===================
@@ -25,6 +44,8 @@ We will go over a python script in class that combines data from two files:
 #. laboratory information on immune cell measurements.
 #. information on a sequencing run for a subset of those samples.
 
+This is real data (shuffled to protect innocent mice) and a real python script
+I need to write (data from Ken Eyring and Ted Shade)
 
 Data Files
 ==========
@@ -36,17 +57,22 @@ Download these files into "/opt/bio-workshop/data/"
 
 **sequence info:** :download:`sample-seq-info.csv <../../data/sample-seq-info.csv>`
 
-Once downloaded, look at the structure of these files with `less`
+**merging script:** :download:`sample-merge.py <../../src/sample-merge.py>`
+
+Once downloaded, look at the structure of the data files with `less`
+
+We will spend this class *deriving* / *understanding* `sample-merge.py`
 
 
 Set Up The Problem
 ==================
 
- + We will add info from sample-seq-info.csv to sample-lab-info.tsv
+ + we want to merge the information from the 2 files.
 
- + Note that sample-seq-info.csv contains a super-set of the samples in
+ + we will add info from sample-seq-info.csv to sample-lab-info.tsv
+
+ + sample-seq-info.csv contains a super-set of the samples in
    sample-lab-info.csv
-
 
  + we will match samples by the `Sample` column in sample-lab-info.tsv to
    the `Sample ID` column in sample-seq-info.csv
@@ -54,34 +80,119 @@ Set Up The Problem
    * we will store rows from sample-seq-info.csv in a dictionary keyed by
      `Sample ID`
 
- + since we are adding to sample-lab-info.tsv, we don't even need to filter
+ + since we are **adding** to sample-lab-info.tsv, we don't need to filter
    out as we read from sample-seq-info.csv
+
+Understand The Problem
+======================
+
+This is important!!
+
+Any Questions on file formats or our strategy?
 
 Decide on Coding Strategy
 =========================
 
-#. read info from `sample-seq-info.csv` (comma-delimited) into a dictionary
-   with keys of `Sample ID` and values of a dictionary containing all the
-   data for that sample. We will call this dictionary **seq_info**
+#. read from `sample-seq-info.csv` into a dictionary with
+   keys of `Sample ID` and values (dicts) with the data for that sample. We
+   This dictionary is **seq_infos**. (skip header while fields[0] != "Lane")
 
-   #. skip header (skip while fields[0] != "Lane")
-
-#. loop (stream) over `sample-lab-info.tsv` (tab-delimited) to get **lab_info**
+#. loop (stream) over `sample-lab-info.tsv` to get **lab_info**
    for each sample
 
    #. Find matching *sequence-info* for each row by using the `Sample` column as a
-      key into **seq_info**
+      key into **seq_infos**
 
-   #. The corresponding value of seq_info[sample] will be all of the laboratory
+   #. The corresponding value of seq_infos[sample] will be all of the laboratory
       information for that sample.
 
-   #. Add the *seq_info* for the current sample to the *lab_info** using:
-
-    lab_info.update(seq_info)
+   #. Add the *seq_info* for the current sample to the *lab_info* using: 
+      `lab_info.update(seq_info)`
 
    #. print out the **lab_info** with newly added **seq_info**
 
+Script
+======
 
-.. raw:: pdf
+We will go over the script block-by-block before viewing / running the
+entire script.
 
-    PageBreak
+Script: Read seq info into dictionary
+=====================================
+
+.. code-block:: python
+
+    # store data for all samples here, keys of sample-id, values of info
+    seq_infos = {}
+
+    # loop over each sample in seq_info
+    for si in reader(seq_file, sep=",",
+                     skip_while=is_extra_lines):
+        sample_id = si['Sample ID']
+        # NOTE: print si here to see what it looks like.
+        seq_infos[sample_id] = si
+
+Now we have a dictionary with keys of sample ids and values of 
+dictionaries containing the information for each sample.
+
+We will use this as a lookup-table ...
+
+Script: Iterate over lab-info and add seq-info
+==============================================
+
+We skip some error checking steps here for simplicity
+
+.. code-block:: python
+
+    for lab_info in reader(lab_file):
+        sample_id = lab_info['Sample']
+
+        # we will add more logic here in the real script.
+        seq_info = seq_infos[sample_id]
+        lab_info.update(seq_info)
+        # now lab_info has the sequene and the lab keys and values.
+
+        if is_first_line: # print a header
+            print lab_info.keys()
+            is_first_line = False
+
+        # this will print out the data for each record.
+        print lab_info.values()
+
+Script: Run
+===========
+
+Let's run the script and see what comes out
+
+.. code-block:: bash
+
+    python example-merge.py > merged.tsv
+
+look at merged with `less` and verify that it has columns from
+sample-lab-info.csv and sample-seq-info.csv
+
+
+Script: Gedit
+=============
+
+Now let's open the script in gedit and go through it line-by-line!!
+
+Script: Debug
+=============
+
+We can run the script from **ipython** as
+
+.. code-block:: ipython
+
+    In [1]: %run sample-merge.py
+
+Open a gedit window and add some print statements to the script, followed by
+"1/0" so that the script will stop and you can see what was printed.
+
+This is a quick way to follow the flow of a script. As you understand each part,
+move the print statement and the 1/0 further on in the script.
+ 
+
+    .. raw:: pdf
+
+        PageBreak
