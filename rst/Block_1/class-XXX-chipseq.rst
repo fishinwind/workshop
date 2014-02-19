@@ -1,6 +1,6 @@
-******************************
+********************
 Class XXX : ChIP-seq
-******************************
+********************
 
 Goals
 =====
@@ -10,7 +10,15 @@ Goals
 
 Chromatin Immunoprecipitation Overview
 --------------------------------------
-XXX
+
+The workflow for visulazling ChIP-seq data (and many other types of data)
+is:
+
+    #. Align reads to reference genome # FASTQ -> BAM
+    #. Generate coverage plots         # BAM -> bedGraph
+    #. Call peaks [optional]           # BAM -> BED
+    #. Make binary files               # bedGraph -> bigWig
+                                       # BED -> bigBed
 
 .. _short-read-alignment:
 
@@ -39,6 +47,8 @@ binary format (bam).
         > aln.bam
 
 .. [#] SAM format http://samtools.sourceforge.net/SAMv1.pdf
+
+.. _coverage-plots:
 
 Generate and visualize coverage plots
 -------------------------------------
@@ -72,10 +82,15 @@ This command writes a bedGraph format file called ``coverage.bg``. Use
 
 .. note::
 
-    **If you make a bed file, sort the bedfile**
+    Words to live by: **If you make a BED file, sort the BED file**
 
-    $ bedSort file.bed file.bed
-    $ bedtools sort -i - < unsorted.bed > sorted.bed
+    Many strange things can happen if you work with unsorted BED files.
+    Once you create a BED file, sort it with one of these:
+
+    .. code-block:: bash
+
+        $ bedSort file.bed file.bed
+        $ bedtools sort -i - < unsorted.bed > sorted.bed
 
 .. _peak-calling:
 
@@ -88,6 +103,8 @@ encriched in your IP experiment (i.e. peaks). We will use macs2 here.
 
     # minimal macs2 command 
     $ macs2 callpeaks --treatment <aln.bam> --name <exp.name> [options]
+
+.. _genome-browser-display:
 
 LOOK at your data
 -----------------
@@ -107,9 +124,17 @@ XXX Post data to public_html directory
 
 You can now write "tracklines" to tell where UCSC to find your data::
 
-    # URL = http://amc-sandbox.ucdenver.edu/~username/path 
+    # URL = http://amc-sandbox.ucdenver.edu/~username/path-to-binaryfile
     track type=bigWig bigDataUrl=<URL> name='coverage' color=r,g,b
     track type=bigBed bigDataUrl=<URL> name='peaks' color=r,g,b
+
+.. note::
+
+    Don't pick colors yourself, they will be ugly. Use Colorbrewer
+    http://colorbrewer2.org.
+    
+    The RGB colors in the ``Dark2`` and ``Set1`` qualitative palettes work
+    well for UCSC display.
 
 There are a large number of additional options you can use in tracklines
 to change their display [#]_.
