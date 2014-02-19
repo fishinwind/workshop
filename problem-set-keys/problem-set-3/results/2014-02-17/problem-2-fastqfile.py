@@ -34,6 +34,7 @@ if len(sys.argv) != 2:
 
 fastqfilename = sys.argv[1]
 
+# --- define functions -------------------------------------------
 def parse_fastq(fastqfile):
     ''' takes a file handle input and returns records as dicts '''
 
@@ -68,6 +69,8 @@ def reverse_comp(seq):
             rc_seq.append('G')
 
     return ''.join(rc_seq)
+
+# --- main program -------------------------------------------
 
 # keep track of record number for first 10
 seen_records = 0

@@ -21,6 +21,8 @@ if len(sys.argv) != 2:
     print >>sys.stderr, "error: specify bed file"
     sys.exit(1)
 
+# --- main program -------------------------------------------
+
 bedfilename = sys.argv[1]
 
 regions_1_1 = defaultdict(list)
