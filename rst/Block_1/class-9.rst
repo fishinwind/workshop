@@ -224,9 +224,10 @@ In Class Exercise (Answer)
 
     def bed_generator(bed_file):
 
-        if line.startswith('#'): continue
-
         for line in open(bed_file):
+
+            if line.startswith('#'): continue
+
             chrom, start, end, value = line.split("\t")[:4]
             start, end = int(start), int(end)
             yield {'chrom': chrom, 'start': start, 'end': end,
