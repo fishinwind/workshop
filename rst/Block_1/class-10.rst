@@ -196,6 +196,6 @@ move the print statement and the 1/0 further on in the script.
  
 Spend the rest of class breaking and fixing and understanding this script.
 
-    .. raw:: pdf
+.. raw:: pdf
 
-        PageBreak
+    PageBreak
