@@ -30,22 +30,23 @@ Homework Review
 
  + Questions 1, 2.
 
- + toolshed module
+ + `toolshed module <https://pypi.python.org/pypi/toolshed>`_.
+
 
 
 Application Impetus
 ===================
 
-It is often helpful to read existing python code that solves a common
-problem to better understand how to use certain data-structures.
+It is helpful to read python code that solves a common problem to
+better understand how to use data-structures.
 
-We will go over a python script in class that combines data from two files:
+A python script that combines data from two files:
 
 #. laboratory information on immune cell measurements.
 #. information on a sequencing run for a subset of those samples.
 
 This is real data (shuffled to protect innocent mice) and a real python script
-I need to write (data from Ken Eyring and Ted Shade)
+(data from Ken Eyring and Ted Shade)
 
 Data Files
 ==========
@@ -61,13 +62,13 @@ Download these files into "/opt/bio-workshop/data/"
 
 Once downloaded, look at the structure of the data files with `less`
 
-We will spend this class *deriving* / *understanding* `sample-merge.py`
+We will spend this class *deriving*/*understanding* `sample-merge.py`
 
 
 Set Up The Problem
 ==================
 
- + we want to merge the information from the 2 files.
+ + goal: merge the information from the 2 files.
 
  + we will add info from sample-seq-info.csv to sample-lab-info.tsv
 
@@ -88,7 +89,7 @@ Understand The Problem
 
 This is important!!
 
-Any Questions on file formats or our strategy?
+Any questions on file formats or our strategy?
 
 Decide on Coding Strategy
 =========================
@@ -114,8 +115,8 @@ Decide on Coding Strategy
 Script
 ======
 
-We will go over the script block-by-block before viewing / running the
-entire script.
+coming slides will go over the script block-by-block before viewing / 
+running / modifying the entire script.
 
 Script: Read seq info into dictionary
 =====================================
@@ -129,13 +130,13 @@ Script: Read seq info into dictionary
     for si in reader(seq_file, sep=",",
                      skip_while=is_extra_lines):
         sample_id = si['Sample ID']
-        # NOTE: print si here to see what it looks like.
         seq_infos[sample_id] = si
 
 Now we have a dictionary with keys of sample ids and values of 
 dictionaries containing the information for each sample.
 
-We will use this as a lookup-table ...
+We will use this as a lookup-table so that, given a sample_id from the
+**lab_info** we can find the associated **seq_info**
 
 Script: Iterate over lab-info and add seq-info
 ==============================================
@@ -152,12 +153,12 @@ We skip some error checking steps here for simplicity
         lab_info.update(seq_info)
         # now lab_info has the sequene and the lab keys and values.
 
-        if is_first_line: # print a header
-            print lab_info.keys()
+        if is_first_line: # print a header once only.
+            print "\t".join(lab_info.keys())
             is_first_line = False
 
         # this will print out the data for each record.
-        print lab_info.values()
+        print "\t".join(lab_info.values())
 
 Script: Run
 ===========
@@ -187,7 +188,8 @@ We can run the script from **ipython** as
     In [1]: %run sample-merge.py
 
 Open a gedit window and add some print statements to the script, followed by
-"1/0" so that the script will stop and you can see what was printed.
+"1/0" so that the script will stop and you can see what was printed. Save, then
+run from ipython window.
 
 This is a quick way to follow the flow of a script. As you understand each part,
 move the print statement and the 1/0 further on in the script.
