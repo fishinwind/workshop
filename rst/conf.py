@@ -66,10 +66,12 @@ try:
     import sphinxcontrib.manpage
 except ImportError:
     sys.stderr.write("please install (pip) sphinxcontrib-manpage\n")
+    sys.exit(1)
 try:
     import rst2pdf
 except ImportError:
     sys.stderr.write("please install (easy_install) rst2pdf\n")
+    sys.exit(1)
  
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
