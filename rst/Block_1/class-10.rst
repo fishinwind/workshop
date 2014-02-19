@@ -194,6 +194,7 @@ run from ipython window.
 This is a quick way to follow the flow of a script. As you understand each part,
 move the print statement and the 1/0 further on in the script.
  
+Spend the rest of class breaking and fixing and understanding this script.
 
     .. raw:: pdf
 
