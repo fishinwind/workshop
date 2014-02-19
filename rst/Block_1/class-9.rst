@@ -1,6 +1,6 @@
-************************
-Class 9 : Applied Python
-************************
+*************************
+Class 9 : Python Concepts
+*************************
 
 :Class date: Friday 14 February 2014
 
@@ -37,7 +37,7 @@ In Class Exercise Code
 Print the first word of each line.
 
 .. code-block:: python
-	
+
     for line in open('hamlet.txt'):
         words = line.strip().split(' ')
         print words[0]
