@@ -1,4 +1,3 @@
-
 .. _problem-set-4:
 
 *************
@@ -54,7 +53,8 @@ file using :ref:`yield() <python:yield>`:
         # use the records to:
         #
         # 1. calculate the distance between the start of the current record
-        # and the previous record.
+        # and the previous record. note you may need to define a variable
+        # outside of this loop.
         #
         # 2. calculate the bases covered by the intervals for each
         # chromosome. note you may have to define a structure outside of
@@ -66,8 +66,8 @@ Modify the following skeleton code to create nested data structures built
 from records in a BED file, using the function you created above.
 
 Load a BED file and create a dict() of lists() of (start, end)
-tuples. Find the largest and smallest starts for each chromosome using
-min() and max().
+tuples. Use :ref:`defaultdict <python:defaultdict>` to create this structure.
+Find the largest and smallest starts for each chromosome using min() and max().
 (**10 points**)
 
 .. code-block:: python
@@ -82,7 +82,11 @@ min() and max().
     for record in parse_bed(bedfilename):
        
         chrom = record['chrom']
-        # tuple of coords 
+        
+        # write additional code to get the start and end coordinates from
+        # the record
+        
+        # create a tuple of coords 
         coords = (start, end)
 
         # add the coords to the growing list. replace `whichmeth` with the
@@ -91,7 +95,7 @@ min() and max().
 
     for chrom in struct:
         # 1. use max() and min() in this loop to determine biggest start
-        # values?
+        # values.
         #
         # 2. how do you change the max() and min() calls to look at the `end`
         # value instead of the `start`? (RTM)
