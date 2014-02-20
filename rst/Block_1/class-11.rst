@@ -15,7 +15,7 @@ We have seen that we often want to know the index (or line number)
 that goes with an iterable. For example, in a for loop, if we know
 that we are on the first line, we can skip the header.
 
-We can know the index of an iterable with enumerate
+We can know the index of an iterable with enumerate:
 
 .. code-block:: python
 
@@ -37,7 +37,7 @@ We can skip the header in a file like this:
         # skip the header
         if i == 0: continue
         fields = line.rstrip().split("\t")
-        # ... do stuf with fields
+        # ... do stuff with fields
 
 
 modulo
@@ -47,7 +47,7 @@ Modulo is the remainder operation.
 
 So 12 modulo 4 is 0. 13 modulo 4 is 1
 
-.. code-block:: ipython
+.. ipython::
 
     In [1]: 12 % 4
     Out[1]: 0
@@ -102,6 +102,8 @@ what if we could get:
 
 Then we could use enumerate to count records:
 
+.. code-block:: python
+
     for rec_no, (name, seq, plus, qual) in enumerate(????):
         if rec_no == 10: break
         # do stuff
@@ -124,7 +126,6 @@ But how to make that happen continuously?
 
     from itertools import izip
     for name, seq, plus, qual in izip(fh, fh, fh, fh):
-
         print name, seq, plus, qual
 
 izip *zips* iterables together and here, we zip for iterables together
