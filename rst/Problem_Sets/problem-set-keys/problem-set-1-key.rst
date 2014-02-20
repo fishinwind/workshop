@@ -11,6 +11,20 @@ file:
     :language: bash
     :linenos:
 
+The output directory structure should look similar to::
+
+    .
+    `-- problem-set-1
+        |-- data
+        |   `-- 2014-02-20
+        |       `-- states.tab
+        |-- doc
+        `-- results
+            |-- 2014-02-20
+            |   |-- results.tab
+            |   `-- run.sh
+            `-- summary.txt
+    
 The output of this script looks like this:
 
 .. literalinclude:: problem-set-1/result.tab

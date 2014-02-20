@@ -65,6 +65,7 @@ need to change the '???' characters in the file to correspond to the path
 you want to write the results in (hint: it should include today's date).
 
 .. code-block:: bash
+    :linenos:
 
     #! /usr/bin/env bash
     #

@@ -91,6 +91,7 @@ store the largest start we've seen so far, along with the value
 in a dictionary keyed by chromosome.
 
 .. code-block:: python
+    :linenos:
 
     import sys
 

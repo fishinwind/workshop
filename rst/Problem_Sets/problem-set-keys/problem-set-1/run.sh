@@ -12,7 +12,7 @@ set -o nounset -o pipefail -o errexit -x
 # your project directory, i.e. the directory at the top of the
 # results/data/doc directories.
 
-project="$HOME/workshop-problem-sets/problem-set-1"
+project="$HOME/problem-set-1"
 
 # fill in the date here
 date="2014-02-12"
