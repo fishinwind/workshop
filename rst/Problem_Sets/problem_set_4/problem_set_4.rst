@@ -22,34 +22,37 @@ writes out each result in a dated directory.
 
 Use the :ref:`data-sets` for these promblems.
 
-Problems 
---------
-#.  Convert the code you wrote in :ref:`problem-set-3` to parse BED and FASTQ
-    files to functions (**10 points**). Instead of reading records like
-    this:
+Problem 1
+---------
+Start with the code you wrote in :ref:`problem-set-3` to parse BED and
+FASTQ files. Convert the parsing logic to functions (**10 points**).
 
-    ..code-block:: python
-    
-        for line in file(bedfilename):
-            fields = line.strip()
+Instead of reading records like this:
 
-    Write a function that returns records from a file using
-    :py:obj:`yield`:
+.. code-block:: python
 
-    .. code-block:: python
+    for line in file(bedfilename):
+        fields = line.strip()
 
-        def parse_bed(bedfilename):
-            # parse records
+Write a function that returns records from a file using :ref:`yield()
+<python:yield>`:
 
-        for record in parse_bed(bedfilename):
-            # use the record
+.. code-block:: python
 
-#.  Use the functions to create nested data structures built from records
-    in a BED file.
+    def parse_bed(bedfilename):
+        # parse records; return each with yield()
 
-    #. Load a BED file and create a dict() of lists() of (start, end)
-       tuples. Find the largest and smallest starts for each chromosome
-       (**10 points**)
+    for record in parse_bed(bedfilename):
+        # use the record
+
+Problem 2
+---------
+Use the functions to create nested data structures built from records
+in a BED file.
+
+Load a BED file and create a dict() of lists() of (start, end)
+tuples. Find the largest and smallest starts for each chromosome
+(**10 points**)
 
 Problem Set Submission
 ----------------------
