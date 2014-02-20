@@ -50,17 +50,38 @@ file using :ref:`yield() <python:yield>`:
         yield result
 
     for record in parse_bed(bedfilename):
-        # do something reasonably creative with the record
+        # do something reasonably creative with the record, e.g. calculate
+        # the mean region size on each chromosome
 
 Problem 2
 ---------
-Use the functions to create nested data structures built from records
-in a BED file.
+Modify the following skeleton code to create nested data structures built
+from records in a BED file, using the function you created above.
 
 Load a BED file and create a dict() of lists() of (start, end)
 tuples. Find the largest and smallest starts for each chromosome
 (**10 points**)
 
+.. code-block:: python
+
+    from collections import defaultdict
+
+    # specify the bedfilename 
+    bedfilename = 'XXX'
+    struct = defaultdict(list)
+
+    for record in parse_bed(bedfilename):
+       
+        chrom = record['chrom']
+        # tuple of coords 
+        coords = (start, end)
+
+        # add the coords to the growing list. replace `whichmeth` with the
+        # appropriate method call
+        struct[chrom].whichmeth(coords)
+
+    for chrom in struct:
+        
 Problem Set Submission
 ----------------------
 Submit your problem set as a tar file to Canvas
