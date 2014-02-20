@@ -30,7 +30,7 @@ Goals
 Homework Review
 ===============
 
- + Everyone is having trouble with the Homework. :ref:`problem-set-3`
+ + Everyone is having trouble with :ref:`problem-set-3`.
 
  + Trouble integrating simple python constructs (dicts, lists, strings) and
    logic (if blocks, for loops) to perform some tasks.
@@ -174,7 +174,7 @@ Let's run the script and see what comes out
 
 .. code-block:: bash
 
-    python example-merge.py > merged.tsv
+    $ python example-merge.py > merged.tsv
 
 look at merged info with `less` and verify that it has columns from
 sample-lab-info.csv and sample-seq-info.csv
