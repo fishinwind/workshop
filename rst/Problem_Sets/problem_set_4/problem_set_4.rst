@@ -50,8 +50,9 @@ file using :ref:`yield() <python:yield>`:
         yield result
 
     for record in parse_bed(bedfilename):
-        # do something reasonably creative with the record, e.g. calculate
-        # the mean region size on each chromosome
+        # do something reasonably creative with the records, e.g. calculate
+        # the distance between the start of the current record and the
+        # previous record .
 
 Problem 2
 ---------
@@ -59,7 +60,8 @@ Modify the following skeleton code to create nested data structures built
 from records in a BED file, using the function you created above.
 
 Load a BED file and create a dict() of lists() of (start, end)
-tuples. Find the largest and smallest starts for each chromosome
+tuples. Find the largest and smallest starts for each chromosome using
+min() and max().
 (**10 points**)
 
 .. code-block:: python
@@ -81,7 +83,12 @@ tuples. Find the largest and smallest starts for each chromosome
         struct[chrom].whichmeth(coords)
 
     for chrom in struct:
-        
+        # use max() and min() in this loop to determine biggest start
+        # values?
+        #
+        # how do you change the max() and min() calls to look at the `end`
+        # value instead of the `start`? (RTM)
+
 Problem Set Submission
 ----------------------
 Submit your problem set as a tar file to Canvas
