@@ -1,3 +1,6 @@
+
+.. _data-sets:
+
 *****************
 Sample Data files
 *****************
@@ -33,7 +36,7 @@ FASTQ format contains DNA sequence data with quality scores::
 
 FASTA format
 ============
-FASTQ format contains DNA sequence data with quality scores::
+FASTA format just contains DNA sequence data; no quality scores::
 
     >cluster_2:UMI_ATTCCG             # record name; starts with '>'
     TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
