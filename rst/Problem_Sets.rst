@@ -1,3 +1,5 @@
+.. _problem-sets:
+
 ************
 Problem Sets
 ************
@@ -12,10 +14,9 @@ Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
    Problem_Sets/problem_set_2/problem_set_2
    Problem_Sets/problem_set_3/problem_set_3
 
-.. note::
-
-    Download keys for past problem sets here:
-    :download:`Problem Set Keys <Problem_Sets/problem-set-keys.tar>`.
+Problem Set Keys
+----------------
+Download past keys at :ref:`problem-set-keys`
 
 .. _problem-set-submission:
 

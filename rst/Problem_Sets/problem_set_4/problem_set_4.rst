@@ -20,30 +20,37 @@ For this quiz you will write programs in Python to analyze data.
 Create a ``run.sh`` file that executes the commands for each problem and
 writes out each result in a dated directory.
 
-Use the :ref:`data-sets` for these promblems.
+Use the provided :ref:`data-sets` for these promblems.
 
 Problem 1
 ---------
 Start with the code you wrote in :ref:`problem-set-3` to parse BED and
 FASTQ files. Convert the parsing logic to functions (**10 points**).
 
-Instead of reading records like this:
+Instead of reading records like this ... :
 
 .. code-block:: python
 
     for line in file(bedfilename):
         fields = line.strip()
 
-Write a function that returns records from a file using :ref:`yield()
-<python:yield>`:
+... use this skeleton code to write a function that returns records from a
+file using :ref:`yield() <python:yield>`:
 
 .. code-block:: python
 
     def parse_bed(bedfilename):
-        # parse records; return each with yield()
+        ''' parse records and return each record '''
+
+        # here, you need to write code to split the fields, assign them to
+        # `chrom`, `start`, `end`, and `value`
+        # be sure to coerce the values to ints and floats as needed
+        
+        result = {'chrom':chrom, 'start':start, 'end':end, 'value':value}
+        yield result
 
     for record in parse_bed(bedfilename):
-        # use the record
+        # do something reasonably creative with the record
 
 Problem 2
 ---------
