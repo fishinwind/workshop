@@ -43,9 +43,10 @@ def parse_fastq(fastqfile):
     for line in fastqfile:
 
         if line.startswith('@'):
-            # remove the @ char
+            # record name; remove the @ char
             name = line.strip()[1:]
         elif line.strip() == '+':
+            # empty line
             continue
         elif name and not quals and not seq:       
             seq = line.strip()
