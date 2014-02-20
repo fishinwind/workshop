@@ -1,22 +1,21 @@
-********************************
-Class 11 : R : Data manipulation
-********************************
+************************
+Class 11 : Python Idioms
+************************
 
 Goals
 =====
 
- #. Learn to open R and RStudio
- #. Open and examine data in RStudio
- #. Perform operations on data frames
- #. Make a simple plot in RStudio
+ #. Learn some python tricks to write more concise code
 
-Opening R and RStudio
-=====================
-Two versions of R are installed on 
-In Class Exercise
-=================
+enumerate
+=========
 
- #. foo
+
+
+modulo
+======
+
+
 
 .. raw:: pdf
 
