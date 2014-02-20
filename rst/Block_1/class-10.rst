@@ -2,15 +2,24 @@
 Class 10 : Applied Python 
 *************************
 
-Wednesday February 19th
+:Class date: Wednesday February 19
 
-*if in the bash shell, you get an error from*
+Install Toolshed
+================
 
-::
+Confirm you have the toolshed module installed with:
 
-    python -c "import toolshed"
+.. code-block:: bash
 
-ask for help on installation
+    $ python -c "import toolshed"
+
+If you get an error, run this:
+
+.. code-block:: bash
+
+    $ pip install toolshed
+
+If you still get an error, ask for help.
 
 Goals
 =====
@@ -32,8 +41,6 @@ Homework Review
 
  + `toolshed module <https://pypi.python.org/pypi/toolshed>`_.
 
-
-
 Application Impetus
 ===================
 
@@ -53,7 +60,6 @@ Data Files
 
 Download these files into "/opt/bio-workshop/data/"
 
-
 **laboratory info:** :download:`sample-lab-info.tsv <../../data/sample-lab-info.tsv>`
 
 **sequence info:** :download:`sample-seq-info.csv <../../data/sample-seq-info.csv>`
@@ -63,7 +69,6 @@ Download these files into "/opt/bio-workshop/data/"
 Once downloaded, look at the structure of the data files with `less`
 
 We will spend this class *deriving*/*understanding* `sample-merge.py`
-
 
 Set Up The Problem
 ==================
@@ -145,6 +150,8 @@ We skip some error checking steps here for simplicity
 
 .. code-block:: python
 
+    is_first_line = True
+
     for lab_info in reader(lab_file):
         sample_id = lab_info['Sample']
 
@@ -169,7 +176,7 @@ Let's run the script and see what comes out
 
     python example-merge.py > merged.tsv
 
-look at merged with `less` and verify that it has columns from
+look at merged info with `less` and verify that it has columns from
 sample-lab-info.csv and sample-seq-info.csv
 
 
@@ -183,7 +190,7 @@ Script: Debug
 
 We can run the script from **ipython** as
 
-.. code-block:: ipython
+.. ipython:: 
 
     In [1]: %run sample-merge.py
 
@@ -194,7 +201,7 @@ run from ipython window.
 This is a quick way to follow the flow of a script. As you understand each part,
 move the print statement and the 1/0 further on in the script.
  
-Spend the rest of class breaking and fixing and understanding this script.
+Spend the rest of class breaking, fixing and understanding this script.
 
 .. raw:: pdf
 
