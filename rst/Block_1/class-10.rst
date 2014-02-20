@@ -60,9 +60,9 @@ Data Files
 
 Download these files into "/opt/bio-workshop/data/"
 
-**laboratory info:** :download:`sample-lab-info.tsv <../../data/sample-lab-info.tsv>`
+**laboratory info:** :download:`sample-lab-info.tsv <../misc/data/sample-lab-info.tsv>`
 
-**sequence info:** :download:`sample-seq-info.csv <../../data/sample-seq-info.csv>`
+**sequence info:** :download:`sample-seq-info.csv <../misc/data/sample-seq-info.csv>`
 
 **merging script:** :download:`sample-merge.py <../../src/sample-merge.py>`
 

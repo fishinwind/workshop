@@ -107,7 +107,7 @@ encriched in your IP experiment (i.e. peaks). We will use macs2 here.
 .. _genome-browser-display:
 
 LOOK at your data
-----------------
+-----------------
 You can now have the UCSC Genome Browser plot your data. Files in bedGraph
 format can be large, so UCSC created a facility for posting binary format
 data in a web-accessible directory that the browser can read.

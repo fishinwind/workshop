@@ -53,9 +53,9 @@ Learn hot keys for window management
 interaction. But the more time you spend using your mouse, the less time
 you spend with your hands on the keyboard and doing useful things.
 
-You can do most things with your keyboard. There are several hot keys [#]_
-you should learn that will maximize your productivity on the computer
-by minimizing your use of the mouse:
+You can do most things with your keyboard. There are several hot keys you
+should learn that will maximize your productivity on the computer by
+minimizing your use of the mouse:
 
     - **<Alt>-<Tab>** : Flip through windows quickly and effortlessly
       without ever touching your mouse.
