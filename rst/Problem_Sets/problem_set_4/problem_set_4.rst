@@ -50,9 +50,14 @@ file using :ref:`yield() <python:yield>`:
         yield result
 
     for record in parse_bed(bedfilename):
-        # do something reasonably creative with the records, e.g. calculate
-        # the distance between the start of the current record and the
-        # previous record .
+        # use the records to:
+        #
+        # 1. calculate the distance between the start of the current record
+        # and the previous record.
+        #
+        # 2. calculate the bases covered by the intervals for each
+        # chromosome. note you may have to define a structure outside of
+        # this loop to keep track of that information.
 
 Problem 2
 ---------
