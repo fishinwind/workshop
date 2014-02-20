@@ -38,6 +38,7 @@ Instead of reading records like this ... :
 file using :ref:`yield() <python:yield>`:
 
 .. code-block:: python
+   :linenos:
 
     def parse_bed(bedfilename):
         ''' parse records and return each record '''
@@ -70,6 +71,7 @@ min() and max().
 (**10 points**)
 
 .. code-block:: python
+   :linenos:
 
     from collections import defaultdict
 
@@ -88,10 +90,10 @@ min() and max().
         struct[chrom].whichmeth(coords)
 
     for chrom in struct:
-        # use max() and min() in this loop to determine biggest start
+        # 1. use max() and min() in this loop to determine biggest start
         # values?
         #
-        # how do you change the max() and min() calls to look at the `end`
+        # 2. how do you change the max() and min() calls to look at the `end`
         # value instead of the `start`? (RTM)
 
 Problem Set Submission
