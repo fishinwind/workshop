@@ -143,8 +143,7 @@ zip is another python function. It merges items from multiple lists:
     In [5]: c = [dict(), [], None, "hello", "world"]
 
     In [6]: zip(a, b, c)
-    Out[6]: 
-    [(0, 'a', {}),
+    Out[6]: [(0, 'a', {}),
      (1, 'b', []),
      (2, 'c', None),
      (3, 'd', 'hello'),
@@ -173,7 +172,9 @@ izip
     3 d hello
     4 e world
 
-
+Laziness is important, if for example we are zipping over a file. If we use
+**zip** it will consume the entire file immediately and read it into memory.
+**izip** will only consume the file as we request the zipped items.
 
 list comprehensions(1)
 ======================
@@ -241,7 +242,7 @@ But how to make that happen continuously?
         print (name, seq, plus, qual)
         print # add a new-line
 
-izip *zips* iterables together and here, we zip for iterables together
+izip *zips* iterables together and here, we zip 4 iterables together
 that happen to be the same file handle.
 
 parsing a fastq with enumeration
@@ -249,7 +250,7 @@ parsing a fastq with enumeration
 
 Putting it all together
 
-..code-block:: python
+.. code-block:: python
 
     fh = open('/opt/bio-workshop/data/SP1.fq')
     from itertools import izip
