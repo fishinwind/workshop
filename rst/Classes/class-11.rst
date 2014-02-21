@@ -282,8 +282,7 @@ in-class exercise
 =================
 calculate mean base-quality by base.
 
-zip the quality and the sequence together and
-store the quality for each base in a dict of lists
+zip quality with sequence. append quality for each base in a dict of lists
 
 .. code-block:: python
 
@@ -301,7 +300,7 @@ store the quality for each base in a dict of lists
             ...
     # outside the loop calculate the avg base quality:
     for base, integer_quals in quals_by_base.items():
-        mean_quals = XXX_FIX_ME_XXX
+        mean_quals = XXX_FIX_ME_XXX # remember to float()
         print base, mean_quals
 
 
