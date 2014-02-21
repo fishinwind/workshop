@@ -226,23 +226,33 @@ izip
 
 .. ipython::
 
-    In [10]: from itertools import izip
+    In [1]: from itertools import izip
 
-    In [11]: izip(a, b, c)
-    Out[11]: <itertools.izip at 0x2799d88>
+    In [2]: seq = "TTTCCGGGGCACATAATCTTCAGCCGGGCGC"
 
-    In [12]: for item_a, item_b, item_c in izip(a, b, c):
-       ....:     print item_a, item_b, item_c
-       ....:     
-    0 a {}
-    1 b []
-    2 c None
-    3 d hello
-    4 e world
+    In [3]: qual = "9C;=;=<9@4868>9:67AA<9>65<=>591"
+
+    In [4]: izip(seq, qual)
+    Out[4]: <itertools.izip at 0x2419368>
+
+    In [5]: for base, base_qual in izip(seq, qual):
+       ...:     print base, base_qual
+    T 9
+    T C
+    T ;
+    C =
+    ...
+
+
+izip laziness
+=============
 
 Laziness is important, if for example we are zipping over a file. If we use
 **zip** it will consume the entire file immediately and read it into memory.
 **izip** will only consume the file as we request the zipped items.
+
+Note that in the previous slide, we associated each base with it's base-quality.
+That's useful...
 
 list comprehensions(1)
 ======================
@@ -270,17 +280,14 @@ So the sum can be shortened to:
 
 in-class exercise
 =================
+calculate mean base-quality by base.
 
-calculate the average base-quality for by base. So that you'll
-report a separate number for A, C, T, G through the entire file.
-
-You can zip the quality and the sequence together to do that and
+zip the quality and the sequence together and
 store the quality for each base in a dict of lists
 
 .. code-block:: python
 
-    # we will append all quality scores for A nucleotides to the
-    # quals_by_base['A'] list. Likewise for C, T, G
+    # append all quality scores for A base to quals_by_base['A'] list.
     quals_by_base = {'A': [], 'C': [], 'T': [], 'G': []}
     for i, line in enumerate(open('/opt/bio-workshop/data/SP1.fq')):
         if i % 4 == 0:
@@ -290,7 +297,8 @@ store the quality for each base in a dict of lists
         elif i % 4 == 3:
             qual = line
             # update quals_by_base here since we have seq and qual
-
+            # use zip/izip
+            ...
     # outside the loop calculate the avg base quality:
     for base, integer_quals in quals_by_base.items():
         mean_quals = XXX_FIX_ME_XXX
@@ -302,6 +310,8 @@ store the quality for each base in a dict of lists
 exercises
 =========
 
++ do previous exercise without a list. instead storing running sum and count of
+  quals and using that at the end.
 + look at xrange, the lazy version of range
 + how can you implement your own version of enumerate using izip and xrange?
 + clean up some of your homeworks using the simpler fastq parsing.
