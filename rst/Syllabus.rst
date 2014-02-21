@@ -54,23 +54,21 @@ Health Sciences Library, Computer Teaching Lab 2
 Course Description
 ==================
 
-The Genome Informatics Workshop is a hands-on tutorial of skills needed to
-process large genomics data sets and visualize their results.  The class
-is taught from the standpoint of an experimentalist with practical goals
+**The Genome Informatics Workshop is a hands-on tutorial of skills needed to
+process large genomics data sets and visualize their results. The class
+is taught from the standpoint of biologist with practical goals
 (e.g. to interpret the results of a sequencing-based experiment and gain
-biologically meaningful insight).
+biologically meaningful insight).**
 
-In the first block, we focus on working in the Linux environment, with
-considerable emphasis on Linux command-line tools, Python programming and
-the R statistical computing environment. We use publicly available
-next-generation DNA sequencing data from the ENCODE project to illustrate
-standard approaches for manipulating sequencing data, aligning sequences
-to a reference genome, generating coverage plots and displaying them in
-the UCSC Genome Browser.
-
-In the second block, we focus on specific analyses used in ENCODE project,
-including ChIP-seq, DNase I footprinting, mRNA-seq and genome sequencing
-to identify single nucleotide and structural variants.
+We focus on working in the Linux environment, with emphasis on Linux
+command-line tools, Python programming and the R statistical computing
+environment. We use publicly available next-generation DNA sequencing data
+from the ENCODE project to illustrate standard approaches for manipulating
+sequencing data, aligning sequences to a reference genome, generating
+coverage plots and displaying them in the UCSC Genome Browser. We will
+cover specific analyses used in ENCODE project including ChIP-seq, DNase I
+footprinting, mRNA-seq and genome sequencing to identify single nucleotide
+and structural variants.
 
 Course Credits
 --------------
@@ -90,21 +88,18 @@ Texts and Reading Materials
 
 Course Objectives
 -----------------
-  1. First block (6 weeks, 27 Jan - 28 Feb)
 
-    - Learn to manipulate large sequencing data sets with Linux tools
-      and Python programming.
+  - Learn to manipulate large sequencing data sets with Linux tools
+    and Python programming.
 
-    - Learn to manipulate and visualize data in useful ways with the
-      R statistical computing environment.
+  - Learn to manipulate and visualize data in useful ways with the
+    R statistical computing environment.
 
-  2. Second block (6 weeks, 3 Mar - 14 Apr)
+  - Learn workflows for experiments in ENCODE: ChIP-seq DNase I
+    footprinting, mRNA-seq, variant detection.
 
-    - Learn workflows for experiments in ENCODE: ChIP-seq DNase I
-      footprinting, mRNA-seq, variant detection.
-
-    - Learn to visualize data from the ENCODE project in the UCSC Genome
-      Browser
+  - Learn to visualize data from the ENCODE project in the UCSC Genome
+    Browser
 
 Canvas 
 ======
@@ -180,16 +175,16 @@ Specific Dates / Material to be Covered
       - Python - Writing Scripts / Review
     * - Class 12
       - M Feb 24
-      - R - Data 
+      - ENCODE - Overview
     * - Class 13 
       - W Feb 26
-      - R - Data
+      - BEDtools  
     * - Class 14 
       - F Feb 28
-      - R - Plotting  / Review
+      - ChIP-seq / DNaseI-seq
     * - Class 15 
       - M Mar 3
-      - R - Plotting
+      - ChIP-seq / DNaseI-seq
     * - Class 16
       - W Mar 5
       - UCSC Genome Browser
@@ -201,7 +196,7 @@ Specific Dates / Material to be Covered
       -
     * - Class 18
       - M Mar 17 
-      - ENCODE - Overview
+      - R - Data 
     * - Class 19
       - W Mar 19 
       - ChIP-seq / DNaseI-seq - Read densities
