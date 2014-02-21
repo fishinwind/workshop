@@ -65,10 +65,10 @@ Problem 2
 Modify the following skeleton code to create nested data structures built
 from records in a BED file, using the function you created above.
 
-Load a BED file and create a dict() of lists() of (start, end)
-tuples. Use :ref:`defaultdict <python:defaultdict>` to create this structure.
-Find the largest and smallest starts for each chromosome using min() and max().
-(**10 points**)
+Load a BED file and create a dict() of lists() of (start, end) tuples. Use
+:py:class:`~collections.defaultdict` to create this structure.  Find the
+largest and smallest starts for each chromosome using :py:func:`min` and
+:py:func:`max`. (**10 points**)
 
 .. code-block:: python
    :linenos:
