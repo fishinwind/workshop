@@ -15,7 +15,7 @@ Variable Names Vs. Builtins
 you decide what to call a variable in a for loop or the name of
 a list or dictionary.
 
-Some keywords and builtins should not be changed:
+There are python keywords and builtin functions
 
 list of keywords:
 
@@ -107,8 +107,6 @@ We can skip the header in a file like this:
         # or we can get the variables directly since
         # we know there are 4 cols
         chrom, start, end, val = line.rstrip().split("\t")
-
-
 
 
 Using enumerate like this is safer than manually incrementing a variable
