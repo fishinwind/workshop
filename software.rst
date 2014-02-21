@@ -1,6 +1,15 @@
-***************
-Software for VM
-***************
+******************
+Software for Class
+******************
+
+Sphinx Software
+===============
+ - sphinx_rtd_theme
+ - hieroglyph
+ - ipython
+ - matplotlib
+ - sphinxcontrib-manpage
+ - rst2pdf
 
 VM Installation
 ===============
