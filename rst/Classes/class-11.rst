@@ -236,14 +236,14 @@ what if we could get:
 
 .. code-block:: python
 
-    for name, seq, plus, qual in ????:
+    for name, seq, plus, qual in XXsomethingXX:
         # do stuff
 
 Then we could use enumerate to count records:
 
 .. code-block:: python
 
-    for rec_no, (name, seq, plus, qual) in enumerate(????):
+    for rec_no, (name, seq, plus, qual) in enumerate(XXsomethingXX):
         if rec_no == 10: break
         # do stuff
 
@@ -283,7 +283,8 @@ Putting it all together
 
     fh = open('/opt/bio-workshop/data/SP1.fq')
     from itertools import izip
-    for record_num, (name, seq, plus, qual) in enumerate(izip(fh, fh, fh, fh)):
+    for record_num, (name, seq, plus, qual) in enumerate(izip(fh, fh,
+                                                              fh, fh)):
         if record_num > 10: break
         print (name, seq, plus, qual)
 
@@ -292,8 +293,10 @@ Now our fastq records come as a single group of 4 lines.
 exercises
 =========
 
-+ how can you implement your own version of enumerate using izip and range?
++ look at xrange, the lazy version of range
++ how can you implement your own version of enumerate using izip and xrange?
 + clean up some of your homeworks using the simpler fastq parsing.
++ look at the itertools module (http://docs.python.org/2/library/itertools.html)
 
 .. raw:: pdf
 
