@@ -5,9 +5,34 @@ Class 11 : Python Idioms
 Goals
 =====
 
- #. Learn some python tricks to write more concise code
+ #. python tricks to write more concise code
  #. Laziness
- #. Nested data structures
+ #. Data structures
+
+Variable Names Vs. Builtins
+===========================
+
+you decide what to call a variable in a for loop or the name of
+a list or dictionary.
+
+Some keywords and builtins should not be changed:
+
+list of keywords:
+
+.. code-block:: python
+
+    >>> import keyword
+    >>> print " ".join(keyword.kwlist)
+    and as assert break class continue def del elif else except exec
+    finally for from global if import in is lambda not or pass print
+    raise return try while with yield
+
+list of builtin functions:
+
+    http://docs.python.org/2/library/functions.html
+
+(includes range, open, file, list, dict, etc)
+
 
 FASTQ parsing
 =============
@@ -17,14 +42,13 @@ How do we describe the format in English?
 
    FASTQ records occur in groups of 4 in the order: name, seq, plus, qual
 
-How can we do this in python?
-
+We will learn some tools to simplify this.
 
 enumerate (1)
 =============
 
 We have seen that we often want to know the index (or line number)
-that goes with an iterable. For example, in a for loop, if we know
+that goes with an iterable. For example, if we know
 that we are on the first line, we can skip the header.
 
 We can know the index of an iterable with enumerate:
@@ -32,8 +56,14 @@ We can know the index of an iterable with enumerate:
 .. code-block:: python
 
     names = ('fred', 'sally', 'harry', 'jack', 'texan')
+
     for index, name in enumerate(names):
         print index, name
+
+    # To illustrate the freedom you have in choosing variable names
+    # the above is identical to
+    for really_bad_var_name, x42 in enumerate(names):
+        print really_bad_var_name, x42
 
 
 enumerate(2)
@@ -46,20 +76,25 @@ Try this in the ipython terminal:
     enumerate("abcdefg")
 
 Enumerate is lazy, meaning it won't consume an iterable until we ask it to
-   
+
 .. code-block:: python
 
     list(enumerate("abcdefg"))
     # OR 
     for i, letter in enumerate("abcdefg"):
         print i, letter
+    # remember we have our choice of variable names. The above is identical to
+    for xx, hello in enumerate("abcdefg"):
+        print xx, hello
 
+Generally we name index variables as *i* and give the other variables names that
+make sense.
 
 enumerate (3)
 =============
 
-So we can wrap any iterable in enumerate and we will get a tuple of
-`index, thing`. Where `thing` was the element of the list.
+When we wrap any iterable in enumerate and we get a tuple of
+`index, thing`. Where `thing` was the element of the original list.
 
 We can skip the header in a file like this:
 
@@ -69,7 +104,11 @@ We can skip the header in a file like this:
         # skip the header
         if i == 0: continue
         fields = line.rstrip().split("\t")
-        # ... do stuff with fields
+        # or we can get the variables directly since
+        # we know there are 4 cols
+        chrom, start, end, val = line.rstrip().split("\t")
+
+
 
 
 Using enumerate like this is safer than manually incrementing a variable
@@ -229,66 +268,36 @@ So the sum can be shortened to:
 
     qual_sum = sum(ord(q) for q in qual)
 
-parsing fastq
-=============
+in-class exercise
+=================
 
-what if we could get:
+calculate the average base-quality for by base. So that you'll
+report a separate number for A, C, T, G through the entire file.
 
-.. code-block:: python
-
-    for name, seq, plus, qual in XXsomethingXX:
-        # do stuff
-
-Then we could use enumerate to count records:
+You can zip the quality and the sequence together to do that and
+store the quality for each base in a dict of lists
 
 .. code-block:: python
 
-    for rec_no, (name, seq, plus, qual) in enumerate(XXsomethingXX):
-        if rec_no == 10: break
-        # do stuff
+    # we will append all quality scores for A nucleotides to the
+    # quals_by_base['A'] list. Likewise for C, T, G
+    quals_by_base = {'A': [], 'C': [], 'T': [], 'G': []}
+    for i, line in enumerate(open('/opt/bio-workshop/data/SP1.fq')):
+        if i % 4 == 0:
+            name = line
+        elif i % 4 == 1:
+            seq = line
+        elif i % 4 == 3:
+            qual = line
+            # update quals_by_base here since we have seq and qual
 
-Remember how we saw that zip and izip could merge iterables?
-
-parsing fastq (filehandles)
-===========================
-
-when you open a file, you get a python file-handle object
+    # outside the loop calculate the avg base quality:
+    for base, integer_quals in quals_by_base.items():
+        mean_quals = XXX_FIX_ME_XXX
+        print base, mean_quals
 
 
-.. code-block:: python
 
-    fh = open('/opt/bio-workshop/data/SP1.fq')
-    name, seq, plus, qual = fh.readline(), fh.readline(), \
-                              fh.readline(), fh.readline()
-
-But how to make that happen continuously?
-
-.. code-block:: python
-
-    fh = open('/opt/bio-workshop/data/SP1.fq')
-    from itertools import izip
-    for name, seq, plus, qual in izip(fh, fh, fh, fh):
-        print (name, seq, plus, qual)
-        print # add a new-line
-
-izip *zips* iterables together and here, we zip 4 iterables together
-that happen to be the same file handle.
-
-parsing a fastq with enumeration
-================================
-
-Putting it all together
-
-.. code-block:: python
-
-    fh = open('/opt/bio-workshop/data/SP1.fq')
-    from itertools import izip
-    for record_num, (name, seq, plus, qual) in enumerate(izip(fh, fh,
-                                                              fh, fh)):
-        if record_num > 10: break
-        print (name, seq, plus, qual)
-
-Now our fastq records come as a single group of 4 lines.
 
 exercises
 =========
