@@ -92,7 +92,7 @@ How does this relate to our FASTQ?
 modulo, enumerate, fastq
 ========================
 
-.. ipython
+.. ipython::
 
     In [1]: for i, line in enumerate(open('misc/data/SP1.fq')):
        ...:     print i, i % 4, line.strip()
@@ -119,11 +119,11 @@ Parse a fastq!!
 
     for i, line in enumerate(open('/opt/bio-workshop/data/SP1.fq')):
         if i % 4 == 0:
-            name == line
+            name = line
         elif i % 4 == 1:
-            seq == line
+            seq = line
         elif i % 4 == 3:
-            qual == line
+            qual = line
             # here have name, seq, qual from a single record
 
 zip
@@ -154,7 +154,7 @@ zip is another python function. It merges items from multiple lists:
 izip
 ====
 
-izip is a lazy version of zip. It doesn't consume or return elements until you
+ izip is a lazy version of zip. It doesn't consume or return elements until you
  ask for them.
 
 .. ipython::
@@ -227,7 +227,7 @@ when you open a file, you get a python file-handle object
 
 .. code-block:: python
 
-    fh = open('/opt/bio-workshop/data/lamina.bed')
+    fh = open('/opt/bio-workshop/data/SP1.fq')
     name, seq, plus, qual = fh.readline(), fh.readline(), \
                               fh.readline(), fh.readline()
 
@@ -235,7 +235,7 @@ But how to make that happen continuously?
 
 .. code-block:: python
 
-    fh = open('/opt/bio-workshop/data/lamina.bed')
+    fh = open('/opt/bio-workshop/data/SP1.fq')
     from itertools import izip
     for name, seq, plus, qual in izip(fh, fh, fh, fh):
         print (name, seq, plus, qual)
@@ -243,6 +243,19 @@ But how to make that happen continuously?
 
 izip *zips* iterables together and here, we zip for iterables together
 that happen to be the same file handle.
+
+parsing a fastq with enumeration
+================================
+
+Putting it all together
+
+..code-block:: python
+
+    fh = open('/opt/bio-workshop/data/SP1.fq')
+    from itertools import izip
+    for record_num, (name, seq, plus, qual) in enumerate(izip(fh, fh, fh, fh)):
+        if record_num > 10: break
+        print (name, seq, plus, qual)
 
 .. raw:: pdf
 
