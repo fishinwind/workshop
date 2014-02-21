@@ -1,6 +1,6 @@
-********
-Syllabus
-********
+********************
+Syllabus (MOLB 7620)
+********************
 
 General Information
 ===================
@@ -27,23 +27,20 @@ The course content can be downloaded in PDF form:
 Instructor Information
 ======================
 
-+-------------------------------------+
-| **Jay Hesselberth**                 |
-+-------------------------------------+
-| jay.hesselberth@gmail.com           |
-+-------------------------------------+
-| **Brent Pedersen**                  |
-+-------------------------------------+
-| bpederse@gmail.com                  |
-+-------------------------------------+
-| **Eric Nguyen** (TA)                |
-+-------------------------------------+
-| eric.2.nguyen@ucdenver.edu          |
-+-------------------------------------+
-| **Sally Peach** (TA)                |
-+-------------------------------------+
-| sallypeach@gmail.com                |
-+-------------------------------------+
+.. list-table::
+    :widths: 40 40
+    :header-rows: 1
+
+    * - Instructor
+      - Email
+    * - Jay Hesselberth             
+      - jay.hesselberth@gmail.com
+    * - Brent Pedersen
+      - bpederse@gmail.com
+    * - Eric Nguyen (TA)
+      - eric.2.nguyen@ucdenver.edu
+    * - Sally Peach (TA)
+      - sallypeach@gmail.com
 
 Schedule
 ========

@@ -16,18 +16,22 @@ Chromatin Immunoprecipitation Overview
 A general workflow for visulazling ChIP-seq data (and many other types of
 data) is:
 
-    +------------------------------------+---------------------+
-    |         **Operation**              | **File formats**    |
-    +====================================+=====================+
-    | #. Align reads to reference genome |    FASTQ -> BAM     |
-    +------------------------------------+---------------------+
-    | #. Generate coverage plots         |   BAM -> bedGraph   |
-    +------------------------------------+---------------------+
-    | #. Call peaks [optional]           |  BAM -> BED         |
-    +------------------------------------+---------------------+
-    | #. Make binary files               |  bedGraph -> bigWig |
-    |                                    |  BED -> bigBed      |
-    +------------------------------------+---------------------+
+.. list-table::
+    :widths: 40 40
+    :header-rows: 1
+
+    * - Operation
+      - File formats
+    * - Align reads to reference genome
+      - ``FASTQ -> BAM``
+    * - Generate coverage plots
+      - ``BAM -> bedGraph``
+    * - Call peaks 
+      - ``BAM -> BED``
+    * - Make binary files for UCSC
+      - ``bedGraph -> bigWig``, ``BED -> bigBed``
+    * - Identify motifs
+      - ``BED -> FASTA -> TXT``
 
 .. _short-read-alignment:
 
