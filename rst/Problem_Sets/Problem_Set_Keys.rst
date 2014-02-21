@@ -1,10 +1,10 @@
 .. _problem-set-keys:
 
-****************
-Problem Set Keys
-****************
+******************
+Problem Set : KEYS
+******************
 
-Problem Sets Keys for the Genome Informatics Workshop class (MOLB 7620):
+Problem Set Keys for the Genome Informatics Workshop class (MOLB 7620):
 
 .. toctree::
    :titlesonly:

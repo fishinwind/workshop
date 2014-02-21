@@ -77,6 +77,7 @@ Move HTML to bioworkshop.github.io with:
     this is codified in src/website.sh and can be run with:
 
     $ make website
+
 Check the new website http://ucd-bioworkshop.github.io/
 
 Pages are cached at this site, so it will take a few minutes to update.
