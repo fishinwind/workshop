@@ -6,6 +6,7 @@ Goals
 =====
 
  #. Learn some python tricks to write more concise code
+ #. Laziness
  #. Nested data structures
 
 FASTQ parsing
@@ -34,7 +35,27 @@ We can know the index of an iterable with enumerate:
     for index, name in enumerate(names):
         print index, name
 
-enumerate (2)
+
+enumerate(2)
+============
+
+Try this in the ipython terminal:
+
+.. code-block:: python
+
+    enumerate("abcdefg")
+
+Enumerate is lazy, meaning it won't consume an iterable until we ask it to
+   
+.. code-block:: python
+
+    list(enumerate("abcdefg"))
+    # OR 
+    for i, letter in enumerate("abcdefg"):
+        print i, letter
+
+
+enumerate (3)
 =============
 
 So we can wrap any iterable in enumerate and we will get a tuple of
@@ -51,12 +72,17 @@ We can skip the header in a file like this:
         # ... do stuff with fields
 
 
+Using enumerate like this is safer than manually incrementing a variable
+as sometimes you will forget to increment or you will *continue* before
+incrementing.
+
 modulo
 ======
 
 Modulo is the remainder operation.
 
-So 12 modulo 4 is 0. 13 modulo 4 is 1
++ 12 modulo 4 is 0
++ 13 modulo 4 is 1
 
 .. ipython::
 
@@ -125,6 +151,9 @@ Parse a fastq!!
         elif i % 4 == 3:
             qual = line
             # here have name, seq, qual from a single record
+
+note how this fairly closely matches our english explanation of the fastq
+format.
 
 zip
 ===
@@ -257,6 +286,14 @@ Putting it all together
     for record_num, (name, seq, plus, qual) in enumerate(izip(fh, fh, fh, fh)):
         if record_num > 10: break
         print (name, seq, plus, qual)
+
+Now our fastq records come as a single group of 4 lines.
+
+exercises
+=========
+
++ how can you implement your own version of enumerate using izip and range?
++ clean up some of your homeworks using the simpler fastq parsing.
 
 .. raw:: pdf
 
