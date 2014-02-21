@@ -304,8 +304,6 @@ zip quality with sequence. append quality for each base in a dict of lists
         print base, mean_quals
 
 
-
-
 exercises
 =========
 
@@ -315,6 +313,12 @@ exercises
 + how can you implement your own version of enumerate using izip and xrange?
 + clean up some of your homeworks using the simpler fastq parsing.
 + look at the itertools module (http://docs.python.org/2/library/itertools.html)
+
+Resources
+=========
+
++ idiomatic python: http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html
++ itertools: http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html
 
 .. raw:: pdf
 
