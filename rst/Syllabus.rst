@@ -135,48 +135,109 @@ Grading Criteria
 Specific Dates / Material to be Covered
 =======================================
 
-Block 1 
--------
+.. list-table::
+    :widths: 20 40 80
+    :header-rows: 1
 
-    - Class 1 (M Jan 27) – Introduction to VM, Linux and the shell
-    - Class 2 (W Jan 29) – Linux / Utilities
-    - Class 3 (F Jan 31) – Linux / Utilities
-    - Class 4 (M Feb 3) – Linux / Utilities
-    - Class 5 (W Feb 5) – Cluster Usage / Review
-    - Class 6 (F Feb 7) – Cluster Usage / Review
-    - Class 7 (M Feb 10) – Python
-    - Class 8 (W Feb 12) – Python
-    - Class 9 (F Feb 14) – Python – Advanced / Review
-
-    **No Class Feb 17 (President's Day)**
-
-    - Class 10 (W Feb 19) – Python – Advanced
-    - Class 11 (F Feb 21) – Python – Writing Scripts / Review
-    - Class 12 (M Feb 24) – R – Data 
-    - Class 13 (W Feb 26) – R – Data
-    - Class 14 (F Feb 28) – R – Plotting  / Review
-    - Class 15 (M Mar 3) – R – Plotting
-    - Class 16 (W Mar 5) – UCSC Genome Browser
-
-Block 2
--------
-    - Class 1 (F Mar 7) – UCSC Genome Browser
-
-    **No Class Mar 10-14 (Spring Break)**
-
-    - Class 2 (M Mar 17) – ENCODE – Overview
-    - Class 3 (W Mar 19) – ChIP-seq / DNaseI-seq (Read densities)
-    - Class 4 (F Mar 21) – ChIP-seq / DNaseI-seq (Peak calling)
-    - Class 5 (M Mar 24) – ChIP-seq / DNaseI-seq (Motif finding with MEME)
-    - Class 6 (W Mar 26) – BEDtools (Quinlan)
-    - Class 7 (F Mar 28) – mRNA-seq (RPKM values and ranking)
-    - Class 8 (M Mar 31) – mRNA-seq (Differential expression)
-    - Class 9 (W Apr 2) – mRNA-seq (Transcript isoforms)
-    - Class 10 (F Apr 4) – Variant detection (Alignment and reprocessing)
-    - Class 11 (M Apr 7) – Variant detection (SNP calling; heterozygotes)
-    - Class 12 (W Apr 9) – Variant detection (CNV detection)
-    - Class 13 (F Apr 11) – Variant detection (VCF files and manipulation)
-    - Class 14 (M Apr 14) – Integration / Segway (Hoffman)
+    * - Class number
+      - Date
+      - Topic
+    * - Class 1
+      - M Jan 27
+      - Introduction to VM, Linux and the shell
+    * - Class 2 
+      - W Jan 29 
+      - Linux / Utilities
+    * - Class 3 
+      - F Jan 31
+      - Linux / Utilities
+    * - Class 4 
+      - M Feb 3
+      - Linux / Utilities
+    * - Class 5 
+      - W Feb 5
+      - Cluster Usage / Review
+    * - Class 6 
+      - F Feb 7
+      - Cluster Usage / Review
+    * - Class 7 
+      - M Feb 10
+      - Python
+    * - Class 8 
+      - W Feb 12
+      - Python
+    * - Class 9 
+      - F Feb 14
+      - Python (Advanced / Review)
+    * -
+      - **No Class Feb 17 (President's Day)**
+      -
+    * - Class 10 
+      - W Feb 19
+      - Python - Advanced
+    * - Class 11 
+      - F Feb 21
+      - Python - Writing Scripts / Review
+    * - Class 12
+      - M Feb 24
+      - R - Data 
+    * - Class 13 
+      - W Feb 26
+      - R - Data
+    * - Class 14 
+      - F Feb 28
+      - R - Plotting  / Review
+    * - Class 15 
+      - M Mar 3
+      - R - Plotting
+    * - Class 16
+      - W Mar 5
+      - UCSC Genome Browser
+    * - Class 17 
+      - F Mar 7
+      - UCSC Genome Browser
+    * -
+      - **No Class Mar 10-14 (Spring Break)**
+      -
+    * - Class 18
+      - M Mar 17 
+      - ENCODE - Overview
+    * - Class 19
+      - W Mar 19 
+      - ChIP-seq / DNaseI-seq - Read densities
+    * - Class 20
+      - F Mar 21 
+      - ChIP-seq / DNaseI-seq - Peak calling
+    * - Class 21
+      - M Mar 24 
+      - ChIP-seq / DNaseI-seq  - Motif finding with MEME
+    * - Class 22
+      - W Mar 26 
+      - BEDtools  
+    * - Class 23
+      - F Mar 28 
+      - mRNA-seq - RPKM 
+    * - Class 24
+      - M Mar 31 
+      - mRNA-seq - Diff. expression
+    * - Class 25 
+      - W Apr 2 
+      - mRNA-seq - isoforms
+    * - Class 26 
+      - F Apr 4 
+      - Variant detection - reprocessing
+    * - Class 27 
+      - M Apr 7 
+      - Variant detection - SNP calling
+    * - Class 28 
+      - W Apr 9 
+      - Variant detection - CNV detection
+    * - Class 29 
+      - F Apr 11 
+      - Variant detection - VCF files 
+    * - Class 30 
+      - M Apr 14 
+      - Integration / Segway 
 
 .. raw:: pdf
 
