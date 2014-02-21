@@ -276,6 +276,28 @@ So the sum can be shortened to:
 
     qual_sum = sum(ord(q) for q in qual)
 
+Why use functions?
+==================
+Functions are useful for encapsulating reusable chunks of code. For
+exmaple, you don't want to write messy code for parsing a fastq file every
+time you need to parse a fastq file. Instead, you define a function:
+
+.. code-block:: python
+    
+    def parse_fastq(filename):
+        # parse records
+   
+Once that is defined, you can put it in a file in your PYTHONPATH called
+``mytools.py`` and use it:
+
+.. code-block:: python
+
+    # look ma! no messy parsing code!
+    from mytools import parse_fastq
+
+    for record in parse_fastq(filename):
+        # use the record
+ 
 in-class exercise
 =================
 calculate mean base-quality by base.
@@ -300,7 +322,6 @@ zip quality with sequence. append quality for each base in a dict of lists
     for base, integer_quals in quals_by_base.items():
         mean_quals = XXX_FIX_ME_XXX # remember to float()
         print base, mean_quals
-
 
 exercises
 =========
