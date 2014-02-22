@@ -5,6 +5,9 @@ Class Notes
 Notes for Spring 2015
 =====================
 
+Merge awk class into Linux command line classes, cover grep much earlier,
+and trim this to squeeze in more Python
+
 Students struggled with problem set 3 (the first python problem set).
 we failed to go into detail on nested data structures (e.g. dict of
 lists of tuples). we also probably should have gone over multi-line
