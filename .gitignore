@@ -1,6 +1,5 @@
 *.pyc
 _build
-_static
 *.html
 *.swp
 *.swo
