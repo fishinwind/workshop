@@ -312,8 +312,8 @@ slide_link_to_html = True
 slide_relative_path = "slides/"
 slide_html_relative_path = "../"
 
-slide_theme_options = {'custom_css': 'slides-2012/theme/css/default.css',
-                       'custom_js': 'slides-2012/js/slides.js'}
+slide_theme_options = {'custom_css': 'theme/css/default.css',
+                       'custom_js': 'js/slides.js'}
 
 
 # -- Intersphinx --------------------------------------------------
