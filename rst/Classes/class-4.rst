@@ -171,6 +171,7 @@ awk special variables
 
 using awk to count lines with NR
 ================================
+
 .. code-block:: bash
 
     $ wc -l /opt/bio-workshop/data/lamina.bed

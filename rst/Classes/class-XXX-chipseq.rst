@@ -164,12 +164,16 @@ to change their display [#]_.
 
 Identify sequence motifs in enriched regions
 --------------------------------------------
+You can use meme [#]_ to identify over-represented motifs in groups of
+seqeucnes (e.g. sequences covered by ChIP peaks).
 
 .. code-block:: bash
 
     # use ``qlogin`` to move to a compute node on tesla
     $ bedtools getfasta -fi <ref.fa> -bed <peaks.bed> -fo peaks.fa
     $ meme -nmotifs 100 -minw 6 -maxw 20 <peaks.fa>
+
+.. [#] MEME http://meme.nbcr.net/meme/
 
 .. _stranded-signals:
 

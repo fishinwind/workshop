@@ -75,6 +75,7 @@ Exercise (3)
 
 .. literalinclude:: code/class-6-exercise.sh
     :language: bash
+    :linenos:
 
 Exercise (4)
 ============
