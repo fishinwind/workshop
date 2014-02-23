@@ -1,6 +1,10 @@
+.. rst-class:: title-slide
+
 ********************
 Class XXX : ChIP-seq
 ********************
+
+:Class date: TBD
 
 Goals
 =====
@@ -11,7 +15,7 @@ Goals
 .. _coverage-workflow:
 
 Chromatin Immunoprecipitation Overview
---------------------------------------
+======================================
 
 A general workflow for visulazling ChIP-seq data (and many other types of
 data) is:
@@ -36,7 +40,8 @@ data) is:
 .. _short-read-alignment:
 
 Short read alignment
---------------------
+====================
+
 There are several short read alignment packages available. We will mainly
 use bowtie2 [#]_ because it is easy to use and is relatively fast.
 
@@ -64,7 +69,8 @@ binary format (bam).
 .. _coverage-plots:
 
 Generate and visualize coverage plots
--------------------------------------
+=====================================
+
 Once alignment is complete, you can create coverage plots from your aligned
 data, so that you can visualize your data.
 
@@ -80,7 +86,9 @@ data, so that you can visualize your data.
         # inspect this file so you know what it looks like
         $ fetchChromSizes hg19 > hg19.chrom.sizes
 
-To generate coverage plots, we will use ``bedtools`` [#]_, a suite of tools
+Coverage plots with BEDtools
+----------------------------
+To generate coverage plots, we will use ``BEDtools`` [#]_, a suite of tools
 that we will cover in more detail later. Here, we'll use the :ref:`genomecov
 <bedtools:genomecov>` tool.
 
@@ -109,17 +117,27 @@ This command writes a bedGraph format file called ``coverage.bg``. Use
         # or you can use bedtools; writes additional file
         $ bedtools sort -i - < unsorted.bed > sorted.bed
 
-.. _peak-calling:
+.. _stranded-signals:
 
-Peak calling
-------------
-There are several available software packages for identying regions
-encriched in your IP experiment (i.e. peaks). We will use macs2 here.
+Coverage plots split by strand
+------------------------------
+For some experiments, you will analyze the data relative to each strand of
+the reference genome. For example, RNA is transcribed in single-stranded
+form and derives from one or the other strand.
+
+During alignment, reads from an RNA-based experiment will map to either
+the positive ('+' or ``pos``) or negative ('-' or ``neg``) strand. You can
+generate signal plots for ``pos`` and ``neg`` strands separately with
+``bedtools``:
 
 .. code-block:: bash
 
-    # minimal macs2 command 
-    $ macs2 callpeaks --treatment <aln.bam> --name <exp.name> [options]
+    $ common_args="-ibam <aln.bam> -g <chrom.size> -bg"
+    $ bedtools genomecov $common_args -strand + > coverage.pos.bg
+    $ bedtools genomecov $common_args -strand - > coverage.neg.bg
+
+You would then create bigWigs for each of these display the stranded data
+in the Genome Browser.
 
 .. _genome-browser-display:
 
@@ -138,7 +156,13 @@ a web-accessible directory that the browser can read.
     # convert BED to binary format (bigBed)
     $ bedToBigBed <peaks.bed> <chrom.sizes> <peaks.bb>
 
+Posting your data
+-----------------
+
 XXX Post data to public_html directory
+
+Writing tracklines
+------------------
 
 You can now write "tracklines" to tell where UCSC to find your data::
 
@@ -160,10 +184,25 @@ to change their display [#]_.
 .. [#] UCSC Track configuration
        https://genome.ucsc.edu/goldenPath/help/customTrack.html#TRACK
 
+.. _peak-calling:
+
+Peak calling
+============
+
+There are several available software packages for identying regions
+encriched in your IP experiment (i.e. peaks). We will use macs2 here.
+
+.. code-block:: bash
+
+    # minimal macs2 command 
+    $ macs2 callpeaks --treatment <aln.bam> --name <exp.name> [options]
+
+
 .. _motif-identification:
 
 Identify sequence motifs in enriched regions
---------------------------------------------
+============================================
+
 You can use meme [#]_ to identify over-represented motifs in groups of
 seqeucnes (e.g. sequences covered by ChIP peaks).
 
@@ -175,25 +214,4 @@ seqeucnes (e.g. sequences covered by ChIP peaks).
 
 .. [#] MEME http://meme.nbcr.net/meme/
 
-.. _stranded-signals:
-
-Split coverage by strand
-------------------------
-For some experiments, you will analyze the data relative to each strand of
-the reference genome. For example, RNA is transcribed in single-stranded
-form and derives from one or the other strand.
-
-During alignment, reads from an RNA-based experiment will map to either
-the positive ('+' or ``pos``) or negative ('-' or ``neg``) strand. You can
-generate signal plots for ``pos`` and ``neg`` strands separately with
-``bedtools``:
-
-.. code-block:: bash
-
-    $ common_args="-ibam <aln.bam> -g <chrom.size> -bg"
-    $ bedtools genomecov $common_args -strand + > coverage.pos.bg
-    $ bedtools genomecov $common_args -strand - > coverage.neg.bg
-
-You would then create bigWigs for each of these display the stranded data
-in the Genome Browser.
 

@@ -1,8 +1,8 @@
 .. _problem-sets:
 
-************
+############
 Problem Sets
-************
+############
 
 Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
 
@@ -17,13 +17,15 @@ Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
    Problem_Sets/Problem_Set_Keys
 
 Problem Set Keys
-----------------
+================
+
 Past keys at :ref:`problem-set-keys`
 
 .. _problem-set-submission:
 
 Problem Set Submission
-----------------------
+======================
+
 Specify the root of your project directory and create a tar file of the
 whole directory like this (change STUDENTID to your student ID):
 

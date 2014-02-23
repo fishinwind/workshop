@@ -303,7 +303,7 @@ texinfo_documents = [
 
 # -- Options for Slide Config --------------------------------------------------
 
-slide_levels = 2
+slide_levels = 3
 slide_theme = 'single-level'
 slide_numbers = True
 slide_link_html_to_slides = True
@@ -312,8 +312,9 @@ slide_link_to_html = True
 slide_relative_path = "slides/"
 slide_html_relative_path = "../"
 
-slide_theme_options = {'custom_css': 'theme/css/default.css',
-                       'custom_js': 'js/slides.js'}
+# relative to html_static_path
+slide_theme_options = {'custom_css' : 'theme/css/default.css',
+                       'custom_js'  : 'js/slides.js'}
 
 
 # -- Intersphinx --------------------------------------------------
