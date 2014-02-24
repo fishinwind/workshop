@@ -19,7 +19,7 @@ Goals
  #. Where can I find these data on the Internet? 
  
 ENCODE Project Timeline: 2003
-=======================
+=============================
  
 The Human Genome Project was finished, giving us a list of human genes and their 
 locations. Unfortunately, we still had no idea how they were regulated. If only 
@@ -41,6 +41,18 @@ MCF7 (breast carcinoma), LHCN (myoblast), CD14+, CD20+
  
 `link <http://genome.ucsc.edu/ENCODE/cellTypes.html>`_ (this page also has very useful
 links to cell culture protocols)
+
+Experiments
+===========
+
+#. ChIP-seq: Histone marks, transcription factors
+
+#. Chromatin structure: DNaseI-seq, FAIRE, 5C/Hi-C
+
+#. RNA expression: mRNA-seq, GENCODE gene predictions
+
+#. Data Integration: Segway / ChromHMM integration of functional data
+
 
 Common File Formats
 ===================
