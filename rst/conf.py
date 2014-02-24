@@ -305,6 +305,7 @@ texinfo_documents = [
 
 slide_levels = 3
 slide_theme = 'single-level'
+# slide_theme = 'slides'
 slide_numbers = True
 slide_link_html_to_slides = True
 slide_link_html_sections_to_slides = True
@@ -312,10 +313,10 @@ slide_link_to_html = True
 slide_relative_path = "slides/"
 slide_html_relative_path = "../"
 
+# slide_theme_path = ['_static/theme']
 # relative to html_static_path
-slide_theme_options = {'custom_css' : 'theme/css/default.css',
-                       'custom_js'  : 'js/slides.js'}
-
+# slide_theme_options = {'custom_css' : 'theme/css/default.css',
+#                        'custom_js'  : 'theme/require-1.0.8.min.js'}
 
 # -- Intersphinx --------------------------------------------------
 # for python doc refs
