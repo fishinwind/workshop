@@ -17,3 +17,4 @@ Class list
    Classes/class-9
    Classes/class-10
    Classes/class-11
+   Classes/class-12
