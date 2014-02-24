@@ -6,7 +6,33 @@ Class XXX : BEDtools
 
 Goals
 =====
-#. Learn to perform operations on BED files with BEDTools
+
+#. perform operations on BED files with BEDTools
+
+BEDTools Overview
+=================
+
+BEDTools will be one of the tools with the largest return on investment. For
+example, to extract out all genes that overlap a CpG island:
+
+.. code-block:: bash
+
+    bedtools intersect -a genes.bed -b cpg_island.bed \
+                                     > genes-in-islands.bed
+
+**intersect** is a bedtools tool. It follows a common pattern in bedtools
+that the query file is specified after the *-a* flag and the *subject* file
+after the *-b* flag
+
+BEDTools Commands
+=================
+
+To see all available BEDTools commands, type
+
+.. code-block:: bash
+
+    bedtools
+
 
 BEDTools required files
 =======================
@@ -21,6 +47,9 @@ UCSC provides a tool to fetch these files:
 .. code-block:: bash
 
     $ fetchChromSizes hg19 > hg19.chrom.sizes
+
+
+
 
 BEDTools map()
 ==============
