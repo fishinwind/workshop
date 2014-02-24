@@ -1,4 +1,4 @@
-.. rst-class:: title-slide
+.. rst-class:: segue
 
 ********************
 Class XXX : ChIP-seq
@@ -74,7 +74,7 @@ Generate and visualize coverage plots
 Once alignment is complete, you can create coverage plots from your aligned
 data, so that you can visualize your data.
 
-.. note::
+.. tip::
 
     You will need a "chromsizes" flle for many BEDtools commands. This file
     contains the sizes of each chromosome in an assembly. UCSC provides a
@@ -102,7 +102,7 @@ that we will cover in more detail later. Here, we'll use the :ref:`genomecov
 This command writes a bedGraph format file called ``coverage.bg``. Use
 ``less`` to examine this file.
 
-.. note::
+.. tip::
 
     Words to live by: **If you make a BED file, sort the BED file**
 
@@ -170,7 +170,7 @@ You can now write "tracklines" to tell where UCSC to find your data::
     track type=bigWig bigDataUrl=<URL> name='coverage' color=r,g,b
     track type=bigBed bigDataUrl=<URL> name='peaks' color=r,g,b
 
-.. note::
+.. tip::
 
     Don't pick colors yourself, they will be ugly. **Use Colorbrewer**
     http://colorbrewer2.org.
