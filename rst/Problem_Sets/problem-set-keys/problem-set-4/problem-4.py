@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 
 def parse_bed(bedfilename):
     ''' parse records and return each record '''
@@ -15,6 +16,8 @@ def parse_bed(bedfilename):
 prev_start = None
 # for 2.
 coverage = defaultdict(int)
+
+bedfilename = 'lamina.bed'
 
 for record in parse_bed(bedfilename):
 
@@ -42,7 +45,7 @@ for record in parse_bed(bedfilename):
     # this loop to keep track of that information.
 
     cur_cov = record['end'] - record['start']
-    coverage[record['chrom'] += cur_cov
+    coverage[record['chrom']] += cur_cov
 
 # print out the coverage for each chromosome
 for chrom in coverage:
@@ -55,7 +58,6 @@ from collections import defaultdict
 from operator import itemgetter
 
 # specify the bedfilename 
-bedfilename = 'lamina.bed'
 struct = defaultdict(list)
 
 for record in parse_bed(bedfilename):
@@ -75,7 +77,7 @@ for record in parse_bed(bedfilename):
     # add the coords to the growing list. replace `whichmeth` with the
     # appropriate method call
 
-    # whichmeth == append
+    # XXX whichmeth == append
     struct[chrom].append(coords)
 
 for chrom in struct:
@@ -91,7 +93,7 @@ for chrom in struct:
     # 2. how do you change the max() and min() calls to look at the `end`
     # value instead of the `start`?
 
-    # itemgetter is a function that you can give to the key argument to
+    # itemgetter is a function that you pass to the key argument to
     # fetch index 1 from the list, in this case index 1 = the `end` value
 
     max_end = max(struct[chrom], key=itemgetter(1))    
