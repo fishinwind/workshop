@@ -62,8 +62,3 @@ pdf:
 	@echo "Build finished. The PDF is in $(BUILDDIR)/pdf."
 	@echo
 
-keys:
-	@cd .. && tar cvf $(KEYS_TAR) $(KEYS_DIR)
-	@echo "Problem Set Keys are available in $(KEYS_TAR)"
-	@echo
-
