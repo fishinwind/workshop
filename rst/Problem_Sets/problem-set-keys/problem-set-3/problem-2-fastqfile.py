@@ -37,24 +37,18 @@ fastqfilename = sys.argv[1]
 # --- define functions -------------------------------------------
 def parse_fastq(fastqfile):
     ''' takes a file handle input and returns records as dicts '''
-
-    name = seq = quals = None
-
+    line_num=0  # Keep track of lines in file
+    
     for line in fastqfile:
-
-        if line.startswith('@'):
-            # record name; remove the @ char
-            name = line.strip()[1:]
-        elif line.strip() == '+':
-            # empty line
-            continue
-        elif name and not quals and not seq:       
+        if line_num%4 == 0:
+            name = line.strip()[1:]  # Removes @ character from record name
+        elif line_num%4 == 1:      
             seq = line.strip()
-        else:
+        elif line_num%4 == 3:
             quals = line.strip()
             yield {'name':name, 'seq':seq, 'quals':quals}
-            # reset for next record
-            name = seq = quals = None
+        line_num+=1
+        # line incremented with every iteration of loop
 
 def reverse_comp(seq):
     ''' reverse complement a sequence. return in 5'->3' direction '''
