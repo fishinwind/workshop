@@ -1,4 +1,3 @@
-.. rst-class:: segue
 
 ********************
 Class XXX : ChIP-seq
@@ -102,12 +101,13 @@ that we will cover in more detail later. Here, we'll use the :ref:`genomecov
 
 .. [#] BEDtools http://bedtools.readthedocs.org/en/latest/
 
-.. nextslide::
-    :increment:
 
 This command writes a bedGraph format file called ``coverage.bg``. Use
 ``less`` to examine this file.
 
+.. nextslide::
+    :increment:
+    
 .. tip::
 
     Words to live by: **If you make a BED file, sort the BED file**
@@ -212,7 +212,10 @@ Identify sequence motifs in enriched regions
 ============================================
 
 You can use meme [#]_ to identify over-represented motifs in groups of
-seqeucnes (e.g. sequences covered by ChIP peaks).
+seqeucnes (e.g. sequences covered by ChIP peaks). Use the :ref:`bedtools
+getfasta <bedtools:getfasta>` command to fetch fasta sequences
+
+meme looks at both strands of a DNA sequence by default.
 
 .. code-block:: bash
 
@@ -223,3 +226,11 @@ seqeucnes (e.g. sequences covered by ChIP peaks).
 .. [#] MEME http://meme.nbcr.net/meme/
 
 
+Putting it all together
+=======================
+Here is a script that combines the above in a single workflow:
+
+.. literalinclude:: code/chipseq.sh
+   :language: bash
+   :linenos:
+   
