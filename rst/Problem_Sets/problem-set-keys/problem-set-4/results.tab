@@ -1,0 +1,96 @@
+coverage on chrY = 14758817
+coverage on chrX = 89301074
+coverage on chr13 = 37473868
+coverage on chr12 = 53348965
+coverage on chr11 = 61396658
+coverage on chr10 = 53656281
+coverage on chr17 = 18144445
+coverage on chr16 = 46512191
+coverage on chr15 = 25690026
+coverage on chr14 = 38559996
+coverage on chr19 = 16502427
+coverage on chr18 = 36207854
+coverage on chr22 = 7387330
+coverage on chr20 = 27478916
+coverage on chr21 = 9100280
+coverage on chr7 = 74721815
+coverage on chr6 = 76015525
+coverage on chr5 = 88673141
+coverage on chr4 = 104526476
+coverage on chr3 = 85446412
+coverage on chr2 = 100941122
+coverage on chr1 = 103132464
+coverage on chr9 = 76483798
+coverage on chr8 = 71753206
+on chrom chrY:
+	starts: min = 2940166, max = 15475619
+	ends: min = 7172793, max = 19472504
+on chrom chrX:
+	starts: min = 6179158, max = 153719866
+	ends: min = 6932534, max = 153904495
+on chrom chr13:
+	starts: min = 21089232, max = 110796751
+	ends: min = 21389685, max = 112247300
+on chrom chr12:
+	starts: min = 3306736, max = 129934486
+	ends: min = 5048326, max = 130052605
+on chrom chr11:
+	starts: min = 4126157, max = 132322333
+	ends: min = 5170312, max = 133410222
+on chrom chr10:
+	starts: min = 1193532, max = 129141333
+	ends: min = 3050735, max = 131552237
+on chrom chr17:
+	starts: min = 2886987, max = 68901867
+	ends: min = 3374890, max = 69681120
+on chrom chr16:
+	starts: min = 5093535, max = 82174586
+	ends: min = 8544428, max = 82374319
+on chrom chr15:
+	starts: min = 20639479, max = 99670855
+	ends: min = 22659952, max = 100095998
+on chrom chr14:
+	starts: min = 18155169, max = 103464302
+	ends: min = 19837291, max = 103617343
+on chrom chr19:
+	starts: min = 6821953, max = 61378765
+	ends: min = 7001239, max = 61498933
+on chrom chr18:
+	starts: min = 857086, max = 73058130
+	ends: min = 2083983, max = 75203259
+on chrom chr22:
+	starts: min = 14430269, max = 31610031
+	ends: min = 15909210, max = 33980242
+on chrom chr20:
+	starts: min = 11619, max = 58104509
+	ends: min = 194068, max = 58210058
+on chrom chr21:
+	starts: min = 14398328, max = 39740537
+	ends: min = 15147834, max = 39893926
+on chrom chr7:
+	starts: min = 2947476, max = 158368912
+	ends: min = 4615662, max = 158818293
+on chrom chr6:
+	starts: min = 6703164, max = 166444291
+	ends: min = 7041709, max = 166785402
+on chrom chr5:
+	starts: min = 1715774, max = 180228411
+	ends: min = 5463587, max = 180458962
+on chrom chr4:
+	starts: min = 4938426, max = 190367794
+	ends: min = 5707180, max = 191169887
+on chrom chr3:
+	starts: min = 4513773, max = 195897445
+	ends: min = 4992502, max = 196234302
+on chrom chr2:
+	starts: min = 1829412, max = 239997824
+	ends: min = 3344344, max = 240720241
+on chrom chr1:
+	starts: min = 11323785, max = 245647839
+	ends: min = 11617177, max = 247066405
+on chrom chr9:
+	starts: min = 808574, max = 124952737
+	ends: min = 2755227, max = 125061175
+on chrom chr8:
+	starts: min = 696699, max = 136731831
+	ends: min = 1664048, max = 140704572

@@ -1,23 +1,33 @@
 #! /usr/bin/env python
 
+import sys
+import pdb
+from collections import defaultdict
+from operator import itemgetter
+
+if len(sys.argv) != 2:
+    print >>sys.stderr, "error: specify bed file"
+    sys.exit(1)
+
 def parse_bed(bedfilename):
     ''' parse records and return each record '''
 
     for line in open(bedfilename):
+        if line.startswith('#'): continue
         chrom, start, end, value = line.strip().split('\t')
         start = int(start)
         end = int(end)
         value = float(value)
 
-    result = {'chrom':chrom, 'start':start, 'end':end, 'value':value}
-    yield result
+        result = {'chrom':chrom, 'start':start, 'end':end, 'value':value}
+        yield result
 
 # for 1.
 prev_start = None
 # for 2.
 coverage = defaultdict(int)
 
-bedfilename = 'lamina.bed'
+bedfilename = sys.argv[1]
 
 for record in parse_bed(bedfilename):
 
@@ -32,10 +42,9 @@ for record in parse_bed(bedfilename):
     if prev_start:
         start_dist = cur_start - prev_start
 
-    # XXX in your result, you would print this out. next line is commented
-    # out so results file is not so cluttered
+        # XXX uncomment the next line to see the output
 
-    # print "cur start dist is: %d" % start_dist
+        # print "cur start dist is: %d" % start_dist
 
     # reset for next time through the loop
     prev_start = cur_start
@@ -54,10 +63,6 @@ for chrom in coverage:
 
 # ------------------------------------------------------------------------
 
-from collections import defaultdict
-from operator import itemgetter
-
-# specify the bedfilename 
 struct = defaultdict(list)
 
 for record in parse_bed(bedfilename):
@@ -86,17 +91,20 @@ for chrom in struct:
 
     # max() and min() look at the list of tuples, implicitly sort them by
     # size based on the first position, and then grab the min / max of the
-    # sorted values
-    max_start = max(struct[chrom])
-    min_start = min(struct[chrom])
+    # sorted values. The `[0]` grabs the first item i.e. the start
+    max_start = max(struct[chrom])[0]
+    min_start = min(struct[chrom])[0]
 
     # 2. how do you change the max() and min() calls to look at the `end`
     # value instead of the `start`?
 
     # itemgetter is a function that you pass to the key argument to
-    # fetch index 1 from the list, in this case index 1 = the `end` value
+    # fetch index 1 from the list, in this case index 1 = the `end` value.
+    # the `[1]` grabs the second item i.e. the end
 
-    max_end = max(struct[chrom], key=itemgetter(1))    
-    min_end = min(struct[chrom], key=itemgetter(1))    
+    max_end = max(struct[chrom], key=itemgetter(1))[1]
+    min_end = min(struct[chrom], key=itemgetter(1))[1]
 
-    print 'on chrom %s:\n\t'
+    print 'on chrom %s:' % chrom
+    print '\tstarts: min = %s, max = %s' % (min_start, max_start)
+    print '\tends: min = %s, max = %s' % (min_end, max_end)
