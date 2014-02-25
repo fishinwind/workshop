@@ -275,8 +275,8 @@ dictionary for each line keyed by the header.
         if float(region['value']) < 0.90: continue
         print region['chrom'], region['start'], region['end']
 
-toolshed
-========
+.. nextslide::
+    :increment:
 
 The toolshed reader function can also take gzipped files, files
 over http, bash commands, and (some) xls files.
