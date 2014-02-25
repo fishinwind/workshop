@@ -30,8 +30,8 @@ data structure as it is being created
 
         print nested
 
-Python Debugging (2)
-====================
+.. nextslide::
+    :increment:
 
 Use the Python Debugger: :py:mod:`pdb`.
 
