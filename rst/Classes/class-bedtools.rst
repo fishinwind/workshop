@@ -17,12 +17,12 @@ example, to extract out all genes that overlap a CpG island:
 
 .. code-block:: bash
 
-    bedtools intersect -a genes.bed -b cpg_island.bed \
+    $ bedtools intersect -a genes.bed -b cpg_island.bed \
                                      > genes-in-islands.bed
 
-**intersect** is a bedtools tool. It follows a common pattern in bedtools
-that the query file is specified after the *-a* flag and the *subject* file
-after the *-b* flag
+:ref:`intersect <bedtools:intersect>` is a bedtools tool. It follows a common pattern in bedtools
+that the query file is specified after the ``-a`` flag and the *subject* file
+after the ``-b`` flag
 
 BEDTools Commands
 =================
@@ -31,15 +31,14 @@ To see all available BEDTools commands, type
 
 .. code-block:: bash
 
-    bedtools
-
+    $ bedtools
 
 BEDTools required files
 =======================
 Many of the BEDTools functions use a "genome file" which is a list of
 chromosomes and their sizes for a given chromsome build::
 
-    # hg18 chrom sizes file example
+    # hg19 chrom sizes file example
     # <chrom> <tab> <size>
 
 UCSC provides a tool to fetch these files:
@@ -47,9 +46,6 @@ UCSC provides a tool to fetch these files:
 .. code-block:: bash
 
     $ fetchChromSizes hg19 > hg19.chrom.sizes
-
-
-
 
 BEDTools map()
 ==============

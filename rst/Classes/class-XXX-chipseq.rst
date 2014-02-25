@@ -52,6 +52,9 @@ use bowtie2 [#]_ because it is easy to use and is relatively fast.
 
 .. [#] Bowtie2 http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 
+.. nextslide::
+    :increment:
+
 Normally, you would also pipe the SAM-format [#]_ alignment through the samtools
 suite to discard unaligned reads, sort the alignment and store it in
 binary format (bam).
@@ -98,6 +101,9 @@ that we will cover in more detail later. Here, we'll use the :ref:`genomecov
     $ bedtools genomecov -i <aln.bam> -g <chrom.sizes> -bg > coverage.bg
 
 .. [#] BEDtools http://bedtools.readthedocs.org/en/latest/
+
+.. nextslide::
+    :increment:
 
 This command writes a bedGraph format file called ``coverage.bg``. Use
 ``less`` to examine this file.
@@ -170,6 +176,9 @@ You can now write "tracklines" to tell where UCSC to find your data::
     track type=bigWig bigDataUrl=<URL> name='coverage' color=r,g,b
     track type=bigBed bigDataUrl=<URL> name='peaks' color=r,g,b
 
+.. nextslide::
+    :increment:
+
 .. tip::
 
     Don't pick colors yourself, they will be ugly. **Use Colorbrewer**
@@ -196,7 +205,6 @@ encriched in your IP experiment (i.e. peaks). We will use macs2 here.
 
     # minimal macs2 command 
     $ macs2 callpeaks --treatment <aln.bam> --name <exp.name> [options]
-
 
 .. _motif-identification:
 

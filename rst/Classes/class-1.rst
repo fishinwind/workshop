@@ -83,12 +83,18 @@ You can find what is on your PATH by typing:
 
    $ echo $PATH
 
+.. nextslide::
+    :increment:
+
 The PATH is one of several environment variables that are created when you
 login. You can see all of these with:
 
 .. code-block:: bash
 
    $ env
+
+.. nextslide::
+    :increment:
 
 One important program in the PATH is gedit. You will use this program to
 keep notes and write small programs. There are other editors (e.g. vim and
@@ -115,6 +121,9 @@ You will spend a lot of time going through these online classes, both in
 schedule class time, and outside of class time. Instead of focusing on
 teaching you these languages, we will focus on helping you get through all
 of the frustating problems that come up when you're learning the languages.
+
+.. nextslide::
+    :increment:
 
 We will spend the first ~2 weeks learning shell [#]_ and all the things
 you have access to within the shell.
