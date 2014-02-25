@@ -4,7 +4,7 @@
 Problem Set 4 : KEY
 *******************
 
-Here is bash script that runs the following two Python programs:
+Here is bash script that runs the following Python program:
 
 .. literalinclude:: problem-set-4/run.sh
     :language: bash
