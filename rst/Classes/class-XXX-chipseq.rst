@@ -107,21 +107,19 @@ This command writes a bedGraph format file called ``coverage.bg``. Use
 
 .. nextslide::
     :increment:
-    
-.. tip::
 
-    Words to live by: **If you make a BED file, sort the BED file**
+Words to live by: **If you make a BED file, sort the BED file**
 
-    Many strange things can happen if you use unsorted BED files for
-    analysis..  Once you create a BED file, sort it with one of these:
+Many strange things can happen if you use unsorted BED files for
+analysis..  Once you create a BED file, sort it with one of these:
 
-    .. code-block:: bash
+.. code-block:: bash
 
-        # same filename twice, overwrites original file
-        $ bedSort file.bed file.bed
+   # same filename twice, overwrites original file
+   $ bedSort file.bed file.bed
 
-        # or you can use bedtools; writes additional file
-        $ bedtools sort -i - < unsorted.bed > sorted.bed
+   # or you can use bedtools; writes additional file
+   $ bedtools sort -i - < unsorted.bed > sorted.bed
 
 .. _stranded-signals:
 
@@ -232,4 +230,4 @@ Here is a script that combines the above in a single workflow:
 .. literalinclude:: code/chipseq.sh
    :language: bash
    :linenos:
-   
+
