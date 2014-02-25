@@ -33,6 +33,13 @@ To see all available BEDTools commands, type
 
     $ bedtools
 
+The most commonly used are:
+
+    + :ref:`intersect <bedtools:intersect>`
+    + :ref:`genomecov <bedtools:genomecov>`
+    + :ref:`closest <bedtools:closest>`
+    + :ref:`map <bedtools:closest>`
+
 BEDTools required files
 =======================
 Many of the BEDTools functions use a "genome file" which is a list of
@@ -41,11 +48,12 @@ chromosomes and their sizes for a given chromsome build::
     # hg19 chrom sizes file example
     # <chrom> <tab> <size>
 
-UCSC provides a tool to fetch these files:
+Download these into /opt/bio-workshop/data/ from:
 
-.. code-block:: bash
+    **hg19:** :download:`hg19.genome <../misc/data/hg19.genome>`
+    **hg18:** :download:`hg18.genome <../misc/data/hg18.genome>`
 
-    $ fetchChromSizes hg19 > hg19.chrom.sizes
+
 
 BEDTools map()
 ==============
