@@ -112,6 +112,10 @@ for chrom in struct:
     # values above (line 80), and use max() / min() to look at those end
     # values
 
+    # XXX: yet another approach, without itemgetter 
+    # max_end = max(tup[1] for tup in struct[chrom])
+    # min_end = min(tup[1] for tup in struct[chrom])
+
     print 'on chrom %s:' % chrom
     print '\tstarts: min = %s, max = %s' % (min_start, max_start)
     print '\tends: min = %s, max = %s' % (min_end, max_end)
