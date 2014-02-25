@@ -1,9 +1,9 @@
 
 ********************
-Class XXX : ChIP-seq
+Class 14 : ChIP-seq
 ********************
 
-:Class date: TBD
+:Class date: 2014 Feb 28 Friday
 
 Goals
 =====
@@ -204,7 +204,7 @@ encriched in your IP experiment (i.e. peaks). We will use macs2 here.
 .. code-block:: bash
 
     # minimal macs2 command 
-    $ macs2 callpeaks --treatment <aln.bam> --name <exp.name> [options]
+    $ macs2 callpeak --treatment <aln.bam> --name <exp.name> [options]
 
 .. _motif-identification:
 
@@ -219,7 +219,6 @@ meme looks at both strands of a DNA sequence by default.
 
 .. code-block:: bash
 
-    # use ``qlogin`` to move to a compute node on tesla
     $ bedtools getfasta -fi <ref.fa> -bed <peaks.bed> -fo peaks.fa
     $ meme -nmotifs 100 -minw 6 -maxw 20 <peaks.fa>
 
