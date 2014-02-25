@@ -33,12 +33,12 @@ To see all available BEDTools commands, type
 
     $ bedtools
 
-The most commonly used are:
+The most commonly used BEDtools are:
 
     + :ref:`intersect <bedtools:intersect>`
     + :ref:`genomecov <bedtools:genomecov>`
     + :ref:`closest <bedtools:closest>`
-    + :ref:`map <bedtools:closest>`
+    + :ref:`map <bedtools:map>`
 
 BEDTools required files
 =======================
