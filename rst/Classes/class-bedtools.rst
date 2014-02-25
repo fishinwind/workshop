@@ -54,6 +54,20 @@ Download these into /opt/bio-workshop/data/ from:
     **hg18:** :download:`hg18.genome <../misc/data/hg18.genome>`
 
 
+BEDTools Documentation
+======================
+
+The BEDTools documentation is quite good and ever improving.
+
+See the documentation for :ref:`intersect <bedtools:intersect>` with:
+
+.. code-block:: bash
+
+    $ bedtools intersect
+
+The online HTML help is also good and includes pictures: 
+ https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html
+
 
 BEDTools map()
 ==============
