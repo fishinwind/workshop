@@ -13,7 +13,10 @@ def parse_bed(bedfilename):
     ''' parse records and return each record '''
 
     for line in open(bedfilename):
-        if line.startswith('#'): continue
+
+        if line.startswith('#'):
+            continue
+
         chrom, start, end, value = line.strip().split('\t')
         start = int(start)
         end = int(end)
@@ -104,6 +107,10 @@ for chrom in struct:
 
     max_end = max(struct[chrom], key=itemgetter(1))[1]
     min_end = min(struct[chrom], key=itemgetter(1))[1]
+
+    # XXX: a different approach would be to flip the end and start
+    # values above (line 80), and use max() / min() to look at those end
+    # values
 
     print 'on chrom %s:' % chrom
     print '\tstarts: min = %s, max = %s' % (min_start, max_start)
