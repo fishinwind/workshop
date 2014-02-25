@@ -15,9 +15,12 @@
 #
 
 data=/vol1/opt/data
-fastqfile=$data/wgEncodeBroadHistoneHelas3H3k4me3StdRawDataRep1.fastq.gz
+fasta=$data/hg19.fa
 bwtindex=$data/hg19
 chromsize=$data/hg19.chrom.sizes
+
+# downloaded from ENCODE website - H3K4me3 ChIP in Hela cells
+fastqfile=$data/wgEncodeBroadHistoneHelas3H3k4me3StdRawDataRep1.fastq.gz
 
 expname="chipseq.hela.h3k4me3"
 bamfile=$expname.bam
@@ -36,10 +39,9 @@ macs2 callpeak --treatment $bamfile --name $expname
 peakbed=chipseq.hela.h3k4me3_peaks.narrowPeak
 
 # find motifs
-fasta=/vol3/home/jhessel/ref/genomes/hg19/hg19.fa
 peakfasta=$expname.peaks.fa
 bedtools getfasta -fi $fasta -bed $peakbed -fo $expname.peaks.fa
-meme -nmotifs 100 -minw 6 -max2 20 $peakfasta
+meme -nmotifs 100 -minw 6 -maxw 20 $peakfasta
 
 # make coverage plots in bedgraph and bigwig
 bedgraph="$expname.bg"
