@@ -293,20 +293,6 @@ strand field then
 Will only consider as overlapping those intervals in `a.bed` that have the same
 strand as `b.bed`.
 
-Map
-===
-
-For each CpG print the sum of the values (4th column) of overlapping intervals from
-lamina.bed (and filter out those with no overlap using awk)
-
-.. code-block:: bash
-
-    $ bedtools map -a cpg.bed.gz \
-                   -b /opt/bio-workshop/data/lamina.bed  -c 4 -o sum \
-        | awk '$5 != "."'
-
-Other *-o* perations include **min**, **max**, **mean**, **median**, **concat**
-
 Closest
 =======
 
@@ -320,6 +306,20 @@ Example: report the nearest CpG to each gene as long as it is within 5KB.
 
     bedtools closest -a genes.hg19.bed.gz -b cpg.bed.gz -d \
         | awk '$NF <= 5000'
+
+Map
+===
+
+For each CpG print the sum of the values (4th column) of overlapping intervals from
+lamina.bed (and filter out those with no overlap using awk)
+
+.. code-block:: bash
+
+    $ bedtools map -a cpg.bed.gz \
+                   -b /opt/bio-workshop/data/lamina.bed  -c 4 -o sum \
+        | awk '$5 != "."'
+
+Other *-o* perations include **min**, **max**, **mean**, **median**, **concat**
 
 Sorted
 ======
