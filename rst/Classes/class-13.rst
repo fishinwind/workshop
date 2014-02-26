@@ -242,6 +242,19 @@ Extract intervals in `b.bed` that do not overlap any interval in `a.bed`
     chr1	20	30	b1	1	+
     chr1	200	210	b4	4	+
 
+Intersect Summary
+=================
+
+ + fragments of `a` that overlap `b`:
+    `intersect -a a.bed -b b.bed`
+ + complete regions of `a` that overlap `b`:
+    `intersect -a a.bed -b b.bed -u`
+ + intervals of `b` as well as `a`:
+    `intersect -a a.bed -b b.bed -wo`
+ + number of times each `a` overlaps `b`:
+    `intersect -a a.bed -b b.bed -c`
+ + intervals of `a` that do not overlap `b`:
+    `intersect -a a.bed -b b.bed -v`
 
 Exercises (Or Other Tools)
 ==========================
