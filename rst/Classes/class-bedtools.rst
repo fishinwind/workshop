@@ -1,8 +1,8 @@
 ********************
-Class XXX : BEDtools
+Class 14 : BEDtools
 ********************
 
-:Class date: XXX 
+:Class date: Wed 2014 Feb 26 
 
 Goals
 =====
@@ -20,9 +20,9 @@ example, to extract out all genes that overlap a CpG island:
     $ bedtools intersect -a genes.bed -b cpg_island.bed \
                                      > genes-in-islands.bed
 
-:ref:`intersect <bedtools:intersect>` is a bedtools tool. It follows a common pattern in bedtools
-that the query file is specified after the ``-a`` flag and the *subject* file
-after the ``-b`` flag
+:ref:`intersect <bedtools:intersect>` is a bedtools tool. It follows a
+common pattern in bedtools that the query file is specified after the
+``-a`` flag and the *subject* file after the ``-b`` flag
 
 BEDTools Commands
 =================
@@ -78,4 +78,14 @@ data across intervals and performing math operations on that data:
 
     $ bedtools map -a lamina.bed -b peaks.bed
 
+BEDTools example problems 
+=========================
+#. What are all the peaks (i.e. BED regions) in this file that overlap with
+   another set of peaks? (intersect)
+
+#. Which of these features overlap with exons / introns / transcription
+   start sites / 3' UTRs (in another BED file)? (intersect)
+
+#. What is the total signal from a bedGraph that overlaps mRNA exons?
+   (map)
 
