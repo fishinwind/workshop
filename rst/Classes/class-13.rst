@@ -10,18 +10,19 @@ Class 13 : BEDtools
     cd ~/learn-bedtools
     cp ~/src/bedtools2/test/intersect/a.bed .
     cp ~/src/bedtools2/test/intersect/b.bed .
-    curl -O https://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
-    curl -O https://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
+    wget http://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
+    wget http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
 
 
-or ask if you're not using the VM.
+Ask if you have trouble.
 
 Goals
 =====
 
-#. Introduce the BEDTools suite of tools
+#. Ask Questions!
+#. Introduce the BEDTools suite of tools.
 #. Understand why using BEDTools is needed.
-#. Practice common operations on BED files with BEDTools
+#. Practice common operations on BED files with BEDTools.
 
 BEDTools Overview
 =================
@@ -31,7 +32,7 @@ example, to extract out **all genes that overlap a CpG island**:
 
 .. code-block:: bash
 
-    $ bedtools intersect -wa -a genes.bed -b cpg_island.bed \
+    $ bedtools intersect -u -a genes.hg19.bed.gz -b cpg.bed.gz \
                                      > genes-in-islands.bed
 
 :ref:`intersect <bedtools:intersect>` is a bedtools tool. It follows a
@@ -53,7 +54,7 @@ Finding all overlaps between a pair of BED files naively in python would look li
 If *'a.bed'* has 10K entries and *'b.bed'* has 100K entries, this would involved
 checking for overlaps **1 billion times**. That will be slow.
 
-BEDTools uses an indexing scheme so that it reduces the number of tests
+BEDTools uses an indexing scheme that reduces the number of tests
 dramatically.
 
 .. note::
@@ -66,7 +67,7 @@ BEDTools Utility (2)
 
  + Fast: faster than intersect code you will write
  + Terse: syntax is terse, but readable
- + Formats: handles BED, VCF and GFF formats
+ + Formats: handles BED, VCF and GFF formats (gzip'ed or not)
  + Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
    etc.
   - (all the things that will likely be bugs in your code should you do this manually)
@@ -134,7 +135,7 @@ What will happen if you intersect those files?
 For example, the *a.bed* region `chr1:100-200` overlaps::
 
     chr1:90-101 
-    chr1:100-101
+    chr1:100-110
 
 from *b.bed*
 
@@ -182,8 +183,8 @@ We can see which intervals in *-b* are associated with *-a*
 .. code-block:: bash
 
     $ bedtools intersect -a a.bed -b b.bed -wo
-    chr1	100	200	a2	2	-	chr1	90	101	b2	2	-	1
-    chr1	100	200	a2	2	-	chr1	100	110	b3	3	+	10
+    chr1  100  200  a2  2  -  chr1  90  101  b2  2  -  1
+    chr1  100  200  a2  2  -  chr1  100  110  b3  3  +  10
 
 intersect exercise
 ==================
@@ -196,7 +197,7 @@ use::
 
    -b a.bed -a b.bed
 
-Try that with no extra flags, with -u, -wa, -wu.
+Try that with no extra flags, with -u, -wa, -wo.
 
 How does it compare to the original?
 
@@ -226,44 +227,127 @@ Extract intervals in `a.bed` that do not overlap any interval in `b.bed`
     chr1	10	20	a1	1	+
 
 Extract intervals in `b.bed` that do not overlap any interval in `a.bed`
+
 .. code-block:: bash
 
     $ bedtools intersect -a b.bed -b a.bed -v
     chr1	20	30	b1	1	+
     chr1	200	210	b4	4	+
 
+Intersect Summary
+=================
 
-Exercises
-=========
+ + fragments of `a` that overlap `b`:
+    `intersect -a a.bed -b b.bed`
+ + complete regions of `a` that overlap `b`:
+    `intersect -a a.bed -b b.bed -u`
+ + intervals of `b` as well as `a`:
+    `intersect -a a.bed -b b.bed -wo`
+ + number of times each `a` overlaps `b`:
+    `intersect -a a.bed -b b.bed -c`
+ + intervals of `a` that do not overlap `b`:
+    `intersect -a a.bed -b b.bed -v`
+
+Exercises (Or Other Tools)
+==========================
 
 #. zless :download:`cpg.bed.gz <../misc/data/cpg.bed.gz>` and :download:`genes.hg19.bed.gz <../misc/data/genes.hg19.bed.gz>`
-#. Extract the fragment of CpG Islands that touch any gene.
-#. Extract CpG's that do not touch any gene
-#. Extract (uniquely) all of each CpG Island that touches any gene.
+#. Extract the fragment of CpG Islands that touch any gene [**24611**]
+#. Extract CpG's that do not touch any gene [**7012**]
+#. Extract (uniquely) all of each CpG Island that touches any gene [**21679**]
 #. Extract CpG's that are completely contained within a gene (look at the help
-   for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %).
-#. Report genes that overlap any CpG island.
-#. Report genes that overlap more than 1 CpG Island (use -c and awk).
+   for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %). [**10714**]
+#. Report genes that overlap any CpG island. [**16908**]
+#. Report genes that overlap more than 1 CpG Island (use -c and awk). [**3703**].
 
 .. important::
 
 as you are figuring these out, make sure to pipe the output to less or head
 
-BEDTools map()
-==============
-The :ref:`BEDTools map <bedtools:map>` function is useful for aggregating
-data across intervals and performing math operations on that data:
+Other Reading
+=============
+
++ Check out the online `documentation <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_.
++ A `tutorial <http://quinlanlab.org/tutorials/cshl2013/bedtools.html>`_ by the author of BEDTools
+
+Intersect Bam
+=============
+
+We have seen that `intersect <bedtools:intersect>` takes `-a` and `-b`
+arguments. It can also intersect against an alignment BAM file by using `-abam`
+in place of `-a`
+
+e.g:
+
+.. code-block:: bash.
+
+    $ bedtools intersect -abam experiment.bam -b target-regions.bed \
+        > on-target.bam
+
+Intersect Strand
+================
+
+From the `help <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_ ,
+one can see that intersect can consider strand. For example if both files have a
+strand field then
 
 .. code-block:: bash
 
-    $ bedtools map -a lamina.bed -b peaks.bed
+    $ bedtools intersect -a a.bed -b b.bed -s
 
-BEDTools example problems 
-=========================
-#. What are all the peaks (i.e. BED regions) in this file that overlap with
-   another set of peaks? (intersect)
+Will only consider as overlapping those intervals in `a.bed` that have the same
+strand as `b.bed`.
 
-#. Which of these features overlap with exons / introns / transcription
-   start sites / 3' UTRs (in another BED file)? (intersect)
+Closest
+=======
 
+with :ref:`intersect <bedtools:intersect>` we can only get overlapping
+intervals. :ref:`closest <bedtools:closest>` reports the nearest interval even
+if it's not overlapping. 
 
+Example: report the nearest CpG to each gene as long as it is within 5KB.
+
+.. code-block:: bash
+
+    bedtools closest -a genes.hg19.bed.gz -b cpg.bed.gz -d \
+        | awk '$NF <= 5000'
+
+Map
+===
+
+For each CpG print the sum of the values (4th column) of overlapping intervals from
+lamina.bed (and filter out those with no overlap using awk)
+
+.. code-block:: bash
+
+    $ bedtools map -a cpg.bed.gz \
+                   -b /opt/bio-workshop/data/lamina.bed  -c 4 -o sum \
+        | awk '$5 != "."'
+
+Other *-o* perations include **min**, **max**, **mean**, **median**, **concat**
+
+Sorted
+======
+
+When you start dealing with larger data-files. Look at the `-sorted` flag.
+For example in :ref:`intersect <bedtools:intersect>`.
+
+ + Uses less memory
+ + Faster
+
+Takes advantage of sorted chromosome, positions in both files so it doesn't have
+to create an index.
+
+.. image:: http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png
+
+Genomecov
+=========
+
+Get coverage of intervals in BED by BAM 
+
+<<<<<<< HEAD
+=======
+.. image:: https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png
+>>>>>>> FETCH_HEAD
+
+Usually want the last option `-bg -split`

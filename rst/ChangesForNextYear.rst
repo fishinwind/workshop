@@ -22,3 +22,7 @@ More interactive.
 Replace this class with a more applied one on debugging, functions, simple
 nested data structures and program flow.
 
+class 13
+========
+
+better example for Map
