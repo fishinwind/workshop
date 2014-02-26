@@ -31,7 +31,7 @@ example, to extract out **all genes that overlap a CpG island**:
 
 .. code-block:: bash
 
-    $ bedtools intersect -wa -a genes.hg19.bed.gz -b cpg.bed.gz \
+    $ bedtools intersect -u -a genes.hg19.bed.gz -b cpg.bed.gz \
                                      > genes-in-islands.bed
 
 :ref:`intersect <bedtools:intersect>` is a bedtools tool. It follows a
@@ -332,3 +332,5 @@ For example in :ref:`intersect <bedtools:intersect>`.
 
 Takes advantage of sorted chromosome, positions in both files so it doesn't have
 to create an index.
+
+.. image:: http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png
