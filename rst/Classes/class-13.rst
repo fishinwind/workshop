@@ -31,7 +31,7 @@ example, to extract out **all genes that overlap a CpG island**:
 
 .. code-block:: bash
 
-    $ bedtools intersect -wa -a genes.bed -b cpg_island.bed \
+    $ bedtools intersect -wa -a genes.hg19.bed.gz -b cpg.bed.gz \
                                      > genes-in-islands.bed
 
 :ref:`intersect <bedtools:intersect>` is a bedtools tool. It follows a
@@ -53,7 +53,7 @@ Finding all overlaps between a pair of BED files naively in python would look li
 If *'a.bed'* has 10K entries and *'b.bed'* has 100K entries, this would involved
 checking for overlaps **1 billion times**. That will be slow.
 
-BEDTools uses an indexing scheme so that it reduces the number of tests
+BEDTools uses an indexing scheme that reduces the number of tests
 dramatically.
 
 .. note::
@@ -66,10 +66,11 @@ BEDTools Utility (2)
 
  + Fast: faster than intersect code you will write
  + Terse: syntax is terse, but readable
- + Formats: handles BED, VCF and GFF formats
+ + Formats: handles BED, VCF and GFF formats (gzip'ed or not)
  + Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
    etc.
   - (all the things that will likely be bugs in your code should you do this manually)
+
 
 
 BEDTools Commands
@@ -134,7 +135,7 @@ What will happen if you intersect those files?
 For example, the *a.bed* region `chr1:100-200` overlaps::
 
     chr1:90-101 
-    chr1:100-101
+    chr1:100-110
 
 from *b.bed*
 
@@ -190,8 +191,8 @@ We can see which intervals in *-b* are associated with *-a*
 .. code-block:: bash
 
     $ bedtools intersect -a a.bed -b b.bed -wo
-    chr1	100	200	a2	2	-	chr1	90	101	b2	2	-	1
-    chr1	100	200	a2	2	-	chr1	100	110	b3	3	+	10
+    chr1  100  200  a2  2  -  chr1  90  101  b2  2  -  1
+    chr1  100  200  a2  2  -  chr1  100  110  b3  3  +  10
 
 intersect exercise
 ==================
@@ -234,6 +235,7 @@ Extract intervals in `a.bed` that do not overlap any interval in `b.bed`
     chr1	10	20	a1	1	+
 
 Extract intervals in `b.bed` that do not overlap any interval in `a.bed`
+
 .. code-block:: bash
 
     $ bedtools intersect -a b.bed -b a.bed -v
@@ -271,9 +273,11 @@ arguments. It can also intersect against an alignment BAM file by using `-abam`
 in place of `-a`
 
 e.g:
+
 .. code-block:: bash.
 
-    $ bedtools intersect -abam experiment.bam -b target-regions.bed > on-target.bam
+    $ bedtools intersect -abam experiment.bam -b target-regions.bed \
+        > on-target.bam
 
 Intersect Strand
 ================
@@ -314,8 +318,17 @@ Example: report the nearest CpG to each gene as long as it is within 5KB.
 
 .. code-block:: bash
 
-    bedtools closest -a genes.hg19.bed.gz -b cpg.bed.gz -d | awk '$NF <= 5000'
+    bedtools closest -a genes.hg19.bed.gz -b cpg.bed.gz -d \
+        | awk '$NF <= 5000'
 
+Sorted
+======
 
+When you start dealing with larger data-files. Look at the `-sorted` flag.
+For example in :ref:`intersect <bedtools:intersect>`.
 
+ + Uses less memory
+ + Faster
 
+Takes advantage of sorted chromosome, positions in both files so it doesn't have
+to create an index.
