@@ -83,9 +83,6 @@ You can find what is on your PATH by typing:
 
    $ echo $PATH
 
-.. nextslide::
-    :increment:
-
 The PATH is one of several environment variables that are created when you
 login. You can see all of these with:
 
@@ -122,9 +119,6 @@ schedule class time, and outside of class time. Instead of focusing on
 teaching you these languages, we will focus on helping you get through all
 of the frustating problems that come up when you're learning the languages.
 
-.. nextslide::
-    :increment:
-
 We will spend the first ~2 weeks learning shell [#]_ and all the things
 you have access to within the shell.
 
@@ -149,6 +143,3 @@ all of your projects in and out of the class.
         PLoS Comput. Biol. William S. Noble
         http://dx.plos.org/10.1371/journal.pcbi.1000424
 
-.. raw:: pdf
-
-    PageBreak
