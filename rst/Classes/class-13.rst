@@ -334,3 +334,12 @@ Takes advantage of sorted chromosome, positions in both files so it doesn't have
 to create an index.
 
 .. image:: http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png
+
+Genomecov
+=========
+
+Get coverage of intervals in BED by BAM 
+
+.. image:: https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png
+
+Usually want the last option `-bg -split`
