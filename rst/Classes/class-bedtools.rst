@@ -7,7 +7,9 @@ Class 13 : BEDtools
 Goals
 =====
 
-#. perform operations on BED files with BEDTools
+#. Introduce the BEDTools suite of tools
+#. Understand why using BEDTools is needed.
+#. Practice common operations on BED files with BEDTools
 
 BEDTools Overview
 =================
@@ -17,12 +19,48 @@ example, to extract out all genes that overlap a CpG island:
 
 .. code-block:: bash
 
-    $ bedtools intersect -a genes.bed -b cpg_island.bed \
+    $ bedtools intersect -wa -a genes.bed -b cpg_island.bed \
                                      > genes-in-islands.bed
 
 :ref:`intersect <bedtools:intersect>` is a bedtools tool. It follows a
 common pattern in bedtools that the query file is specified after the
 ``-a`` flag and the *subject* file after the ``-b`` flag
+
+BEDTools Utility
+================
+
+Finding all overlaps between a pair of BED files in python would look like:
+
+.. code-block:: python
+
+    for a in parse_bed('a.bed'):
+        for b in parse_bed('b.bed'):
+            if overlaps(a, b):
+                # do stuff
+If 'a.bed' has 10K entries and 'b.bed' has 100K entries, this would involved
+checking for overlaps **1 billion times**. That will be slow.
+
+BEDTools uses an indexing scheme so that it reduces the number of tests
+dramatically.
+
+.. note::
+  
+  See the original BEDTools paper for more information: http://bioinformatics.oxfordjournals.org/content/26/6/841.full
+
+BEDTools Utility (2)
+====================
+
+ + Fast: faster than intersect code you will write
+ + Terse: syntax is terse, but readable
+ + Formats: handles BED, VCF and GFF formats
+ + Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
+   etc.
+   - (all the things that will likely be bugs in your code should you do this
+     manually)
+
+
+
+
 
 BEDTools Commands
 =================
@@ -39,6 +77,7 @@ The most commonly used BEDtools are:
     + :ref:`genomecov <bedtools:genomecov>`
     + :ref:`closest <bedtools:closest>`
     + :ref:`map <bedtools:map>`
+
 
 BEDTools required files
 =======================
@@ -67,6 +106,7 @@ See the documentation for :ref:`intersect <bedtools:intersect>` with:
 
 The online HTML help is also good and includes pictures: 
  https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html
+
 
 
 BEDTools map()
