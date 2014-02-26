@@ -241,8 +241,8 @@ Extract intervals in `b.bed` that do not overlap any interval in `a.bed`
     chr1	200	210	b4	4	+
 
 
-Exercises
-=========
+Exercises (Or Other Tools)
+==========================
 
 #. zless :download:`cpg.bed.gz <../misc/data/cpg.bed.gz>` and :download:`genes.hg19.bed.gz <../misc/data/genes.hg19.bed.gz>`
 #. Extract the fragment of CpG Islands that touch any gene.
@@ -262,3 +262,60 @@ Other Reading
 
 + Check out the online `documentation <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_.
 + A `tutorial <http://quinlanlab.org/tutorials/cshl2013/bedtools.html>`_ by the author of BEDTools
+
+Intersect Bam
+=============
+
+We have seen that `intersect <bedtools:intersect>` takes `-a` and `-b`
+arguments. It can also intersect against an alignment BAM file by using `-abam`
+in place of `-a`
+
+e.g:
+.. code-block:: bash.
+
+    $ bedtools intersect -abam experiment.bam -b target-regions.bed > on-target.bam
+
+Intersect Strand
+================
+
+From the `help <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_ ,
+one can see that intersect can consider strand. For example if both files have a
+strand field then
+
+.. code-block:: bash
+
+    $ bedtools intersect -a a.bed -b b.bed -s
+
+Will only consider as overlapping those intervals in `a.bed` that have the same
+strand as `b.bed`.
+
+Map
+===
+
+For each CpG print the sum of the values (4th column) of overlapping intervals from
+lamina.bed (and filter out those with no overlap using awk)
+
+.. code-block:: bash
+
+    $ bedtools map -a cpg.bed.gz \
+                   -b /opt/bio-workshop/data/lamina.bed  -c 4 -o sum \
+        | awk '$5 != "."'
+
+Other *-o* perations include **min**, **max**, **mean**, **median**, **concat**
+
+Closest
+=======
+
+with :ref:`intersect <bedtools:intersect>` we can only get overlapping
+intervals. :ref:`closest <bedtools:closest>` reports the nearest interval even
+if it's not overlapping. 
+
+Example: report the nearest CpG to each gene as long as it is within 5KB.
+
+.. code-block:: bash
+
+    bedtools closest -a genes.hg19.bed.gz -b cpg.bed.gz -d | awk '$NF <= 5000'
+
+
+
+
