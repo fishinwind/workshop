@@ -172,15 +172,7 @@ Often, we want the *entire interval from -a if it overlaps any interval in -b*
 
 We can get that uniquely with (-u)
 
-.. code-block:: bash
 
-    $ bedtools intersect -a a.bed -b b.bed -u
-    chr1    100 200 a2  2   -
-
-.. important::
-
-    the incantation of intersect with -u will be one of the most common that
-    you will use and see.
 
 intersect -wo
 =============
@@ -274,6 +266,4 @@ BEDTools example problems
 #. Which of these features overlap with exons / introns / transcription
    start sites / 3' UTRs (in another BED file)? (intersect)
 
-#. What is the total signal from a bedGraph that overlaps mRNA exons?
-   (map)
 
