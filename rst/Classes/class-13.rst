@@ -14,7 +14,7 @@ Class 13 : BEDtools
     curl -O https://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
 
 
-or ask if you're not using the VM.
+Ask if you have trouble.
 
 Goals
 =====
