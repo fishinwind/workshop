@@ -205,7 +205,7 @@ use::
 
    -b a.bed -a b.bed
 
-Try that with no extra flags, with -u, -wa, -wu.
+Try that with no extra flags, with -u, -wa, -wo.
 
 How does it compare to the original?
 
