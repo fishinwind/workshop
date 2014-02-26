@@ -19,6 +19,7 @@ Ask if you have trouble.
 Goals
 =====
 
+#. Ask Questions!
 #. Introduce the BEDTools suite of tools.
 #. Understand why using BEDTools is needed.
 #. Practice common operations on BED files with BEDTools.
