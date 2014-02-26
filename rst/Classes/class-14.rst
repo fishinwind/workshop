@@ -9,7 +9,6 @@ Goals
 =====
 
  #. Learn workflow for analyzing ChIP-seq data
- #. Visualize data in the UCSC Genome Browser
 
 .. _coverage-workflow:
 
@@ -90,9 +89,8 @@ data, so that you can visualize your data.
 
 Coverage plots with BEDtools
 ----------------------------
-To generate coverage plots, we will use ``BEDtools`` [#]_, a suite of tools
-that we will cover in more detail later. Here, we'll use the :ref:`genomecov
-<bedtools:genomecov>` tool.
+To generate coverage plots, we will use ``BEDtools`` [#]_. Here, we'll
+use the :ref:`genomecov <bedtools:genomecov>` tool.
 
 .. code-block:: bash
 
@@ -111,7 +109,7 @@ This command writes a bedGraph format file called ``coverage.bg``. Use
 Words to live by: **If you make a BED file, sort the BED file**
 
 Many strange things can happen if you use unsorted BED files for
-analysis..  Once you create a BED file, sort it with one of these:
+analysis. Once you create a BED file, sort it with one of these:
 
 .. code-block:: bash
 

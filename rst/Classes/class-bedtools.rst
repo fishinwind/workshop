@@ -1,5 +1,5 @@
 ********************
-Class 14 : BEDtools
+Class 13 : BEDtools
 ********************
 
 :Class date: Wed 2014 Feb 26 
