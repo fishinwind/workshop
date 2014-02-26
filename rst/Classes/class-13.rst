@@ -10,8 +10,8 @@ Class 13 : BEDtools
     cd ~/learn-bedtools
     cp ~/src/bedtools2/test/intersect/a.bed .
     cp ~/src/bedtools2/test/intersect/b.bed .
-    curl -O http://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
-    curl -O http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
+    wget http://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
+    wget http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
 
 
 Ask if you have trouble.
@@ -260,13 +260,13 @@ Exercises (Or Other Tools)
 ==========================
 
 #. zless :download:`cpg.bed.gz <../misc/data/cpg.bed.gz>` and :download:`genes.hg19.bed.gz <../misc/data/genes.hg19.bed.gz>`
-#. Extract the fragment of CpG Islands that touch any gene.
-#. Extract CpG's that do not touch any gene
-#. Extract (uniquely) all of each CpG Island that touches any gene.
+#. Extract the fragment of CpG Islands that touch any gene [**24611**]
+#. Extract CpG's that do not touch any gene [**7012**]
+#. Extract (uniquely) all of each CpG Island that touches any gene [**21679**]
 #. Extract CpG's that are completely contained within a gene (look at the help
-   for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %).
-#. Report genes that overlap any CpG island.
-#. Report genes that overlap more than 1 CpG Island (use -c and awk).
+   for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %). [**10714**]
+#. Report genes that overlap any CpG island. [**16908**]
+#. Report genes that overlap more than 1 CpG Island (use -c and awk). [**3703**].
 
 .. important::
 
