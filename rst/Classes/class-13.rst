@@ -10,8 +10,8 @@ Class 13 : BEDtools
     cd ~/learn-bedtools
     cp ~/src/bedtools2/test/intersect/a.bed .
     cp ~/src/bedtools2/test/intersect/b.bed .
-    curl -O https://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
-    curl -O https://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
+    curl -O http://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
+    curl -O http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
 
 
 Ask if you have trouble.
@@ -71,7 +71,6 @@ BEDTools Utility (2)
  + Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
    etc.
   - (all the things that will likely be bugs in your code should you do this manually)
-
 
 
 BEDTools Commands
