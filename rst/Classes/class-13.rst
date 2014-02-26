@@ -257,23 +257,8 @@ Exercises
 
 as you are figuring these out, make sure to pipe the output to less or head
 
-BEDTools map()
-==============
-The :ref:`BEDTools map <bedtools:map>` function is useful for aggregating
-data across intervals and performing math operations on that data:
+Other Reading
+=============
 
-.. code-block:: bash
-
-    $ bedtools map -a lamina.bed -b peaks.bed
-
-BEDTools example problems 
-=========================
-#. What are all the peaks (i.e. BED regions) in this file that overlap with
-   another set of peaks? (intersect)
-
-#. Which of these features overlap with exons / introns / transcription
-   start sites / 3' UTRs (in another BED file)? (intersect)
-
-#. What is the total signal from a bedGraph that overlaps mRNA exons?
-   (map)
-
++ Check out the online `documentation <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_.
++ A `tutorial <http://quinlanlab.org/tutorials/cshl2013/bedtools.html>`_ by the author of BEDTools
