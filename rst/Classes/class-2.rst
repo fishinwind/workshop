@@ -43,14 +43,17 @@ Try this in the terminal:
 
 pwd is "print working directory"
 
-Navigating In the Terminal (part 2)
-===================================
-    
+.. nextslide::
+    :increment:
+
 Change to another directory:
 
 .. code-block:: bash
 
     $ cd /tmp/
+
+.. nextslide::
+    :increment:
 
 See what's in that directory:
 
@@ -71,8 +74,9 @@ These can be separated as:
 
     $ ls -l -h
 
-Navigating In the Terminal (part 3)
-===================================
+.. nextslide::
+    :increment:
+
 The content for the class, including the source for generating this document,
 are in:
 
@@ -109,10 +113,11 @@ or:
 
 Which of those works for `ls`?
 
-Getting Help In The Terminal (2)
-================================
- + If you see an error message, read it carefully. 
- + It may seem cryptic, but it is built to inform you what went wrong.
+.. nextslide::
+    :increment:
+
++ If you see an error message, read it carefully. 
++ It may seem cryptic, but it is built to inform you what went wrong.
 
 Getting Help : Exercises
 ========================
@@ -212,6 +217,9 @@ This will work for any file path and for any programs:
 .. code-block:: bash
 
     $ hea[TAB]
+ 
+.. nextslide::
+    :increment:
 
 What happens if you do:
 
@@ -255,8 +263,9 @@ To explicitly see the current directory:
 
     $ ls ./
 
-Directory Shortcuts (part 2)
-============================
+.. nextslide::
+    :increment:
+
 We can go 2 directories up with:
 
 .. code-block:: bash
@@ -270,8 +279,9 @@ What does this do:
 
     $ ls ./*
 
-Directory Shortcuts (part 3)
-============================
+.. nextslide::
+    :increment:
+
 you can go to the last directory with:
 
 .. code-block:: bash
@@ -318,8 +328,9 @@ mv [source] [dest]:
     $ mv /tmp/asdf ~
     $ ls -lhtr ~/
 
-Moving and copying files (part 2)
-=================================
+.. nextslide::
+    :increment:
+
 In-class excercise:
 
  1. make a directory `/tmp/moveable`
@@ -410,8 +421,9 @@ You can then run it as:
 
 And you should see the same output as if you ran `ls /opt/bio-workshop` directly.
 
-Scripts (part 2)
-================
+.. nextslide::
+    :increment:
+
 Scripts will be more useful when you have a series of commands you want to
 run in series.
 
