@@ -345,9 +345,6 @@ Genomecov
 
 Get coverage of intervals in BED by BAM 
 
-<<<<<<< HEAD
-=======
 .. image:: https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png
->>>>>>> FETCH_HEAD
 
 Usually want the last option `-bg -split`
