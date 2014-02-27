@@ -8,6 +8,8 @@ Class 14 : ChIP-seq
 Goals
 =====
 
+ #. LOGIN TO THE CLUSTER: you will need access to amc-tesla to do your
+    homework. Confirm you can get on before leaving class.
  #. Learn workflow for analyzing ChIP-seq data
 
 .. _coverage-workflow:
