@@ -51,12 +51,11 @@ All encode data are available at
 https://genome.ucsc.edu/ENCODE/downloads.html
 
 For Problem Set 5, you will need these files on the amc-tesla cluster,
-available in ::
+available in::
 
     /vol1/opt/data
 
 .. list-table::
-    :header-rows: 1
     
  * - Experiment
    - Target

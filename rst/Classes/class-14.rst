@@ -37,6 +37,14 @@ data) is:
     * - Identify motifs
       - ``BED ~~> FASTA ~~> TXT / HTML``
 
+ChIP-seq data
+=============
+
+Looks at some human ChIP-seq data [#]_.
+
+.. [#] Genome Browser Session
+       http://goo.gl/WfJxcM
+
 .. _short-read-alignment:
 
 Short read alignment
@@ -163,7 +171,15 @@ a web-accessible directory that the browser can read.
 Posting your data
 -----------------
 
-XXX Post data to public_html directory
+We need to set up your accounts so that you will be able to see data
+posted in your account. When this is setup, you should be able to put
+files in::
+
+    $HOME/public_html/file.html
+
+and be able to see them like::
+
+    http://amc-sandbox.ucdenver.edu/~username/file.html
 
 Writing tracklines
 ------------------
