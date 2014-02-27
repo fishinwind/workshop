@@ -15,7 +15,7 @@ Goals
 Chromatin Immunoprecipitation Overview
 ======================================
 
-A general workflow for visulazling ChIP-seq data (and many other types of
+A general workflow for visualizing ChIP-seq data (and many other types of
 data) is:
 
 .. list-table::
@@ -41,7 +41,7 @@ Short read alignment
 ====================
 
 There are several short read alignment packages available. We will mainly
-use bowtie2 [#]_ because it is easy to use and is relatively fast.
+use bowtie2 [#]_ because it is easy to use and relatively fast.
 
 .. code-block:: bash
 

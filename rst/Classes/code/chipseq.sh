@@ -34,13 +34,13 @@ bowtie2 -x $bwtindex -U $fastqfile \
 # call peaks
 macs2 callpeak --treatment $bamfile --name $expname
 
-# this will generate a series of files, including one in
+# macs2 will generate a series of files, including one in
 # ``narrowPeak`` format, an extended BED fromat:
 peakbed=chipseq.hela.h3k4me3_peaks.narrowPeak
 
 # find motifs
 peakfasta=$expname.peaks.fa
-bedtools getfasta -fi $fasta -bed $peakbed -fo $expname.peaks.fa
+bedtools getfasta -fi $fasta -bed $peakbed -fo $peakfasta
 meme -nmotifs 100 -minw 6 -maxw 20 $peakfasta
 
 # make coverage plots in bedgraph and bigwig
