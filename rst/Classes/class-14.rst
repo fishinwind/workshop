@@ -9,8 +9,9 @@ Goals
 =====
 
  #. **LOGIN TO THE CLUSTER**
+
     You will need access to amc-tesla to do your homework. Confirm you can
-    get on before leaving class.
+    log on before leaving class.
 
  #. Learn the workflow for analyzing ChIP-seq data
 
@@ -164,6 +165,8 @@ a web-accessible directory that the browser can read.
 
 .. code-block:: bash
 
+    # NOTE: bedGraph and BED files must be sorted first
+
     # convert bedGraph to binary format (bigWig) 
     $ bedGraphToBigWig <coverage.bg> <chrom.sizes> <coverage.bw> 
 
@@ -228,7 +231,7 @@ Identify sequence motifs in enriched regions
 ============================================
 
 You can use meme [#]_ to identify over-represented motifs in groups of
-seqeucnes (e.g. sequences covered by ChIP peaks). Use the :ref:`bedtools
+sequences (e.g. sequences covered by ChIP peaks). Use the :ref:`bedtools
 getfasta <bedtools:getfasta>` command to fetch fasta sequences
 
 meme looks at both strands of a DNA sequence by default.

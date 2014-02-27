@@ -279,7 +279,7 @@ in place of `-a`
 
 e.g:
 
-.. code-block:: bash.
+.. code-block:: bash
 
     $ bedtools intersect -abam experiment.bam -b target-regions.bed \
         > on-target.bam
