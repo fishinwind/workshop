@@ -8,32 +8,42 @@ Problem Set 5
 
 Overview
 --------
-For this quiz you will write programs in Python to analyze data. 
 
-.. note::
+For this quiz you will analyze ChIP-seq data.
 
-    Continue to use the organization scheme that we learned about in
-    :ref:`problem-set-1`. Part of our evaluation
-    will include whether you are developing good organizational habits.
-
-Create a ``run.sh`` file that executes the commands for each problem and
-writes out each result in a dated directory.
-
-Use the provided :ref:`data-sets` for these promblems.
+Use the provided :ref:`encode-data` for these promblems.
 
 Problem 1
 ---------
-Start with the code you wrote in :ref:`problem-set-3` to parse BED and
-FASTQ files. Convert the parsing logic to functions (**10 points**).
 
-Instead of reading records like this ... :
+Use the peak calls from to derive a binding motif for the CTCF
+transcription factor. (**10 points**) You will need to:
+
+  - create FASTA sequence from CTCF ChIP-seq peak calls from the hg19
+    genome.
+  - use meme to identify motifs from these FASTA sequences.
+  - write a run script to drive this analysis.
+
+Keep the meme report and submit it with your homework.
 
 Problem 2
 ---------
-Modify the following skeleton code to create nested data structures built
-from records in a BED file, using the function you created above.
 
-XXX
+.. need to download clustered TFBS and DHS data and put it on the data
+   page: 
+   http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV3.bed.gz
+   http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegDnaseClustered/wgEncodeRegDnaseClusteredV2.bed.gz
+
+Use BEDtools to intersect peaks calls from the clustered transcription factor
+binding regions with the clustered DNase I peaks. (**20 points**)
+
+ #. Identify transcription factor binding peaks that were never identified
+    as DNase I hypersensitive sites. What transcription factor binding sites
+    are represented in these peaks?
+
+ #. Do the converse: identify DNase I hypersensitive sites that do not
+    have corresponding transcription factor peak calls. What motifs are
+    enriched in this set of hypersensitive sites?
 
 Problem Set Submission
 ----------------------
@@ -43,3 +53,4 @@ Submit your problem set as a tar file to Canvas
 .. raw:: pdf
 
     PageBreak
+

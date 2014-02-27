@@ -43,3 +43,37 @@ FASTA format just contains DNA sequence data; no quality scores::
 
 **Download a sample FASTA file:** :download:`sample.fa <data/sample.fa>`
 
+.. _encode-data:
+
+ENCODE data
+===========
+All encode data are available at
+https://genome.ucsc.edu/ENCODE/downloads.html
+
+For Problem Set 5, you will need these files on the amc-tesla cluster,
+available in ::
+
+    /vol1/opt/data
+
+.. list-table::
+    :header-rows: 1
+    
+ * - Experiment type
+   - Target
+   - Cell line
+   - Replicate
+   - File Type
+   - File name
+ * - ChIP-seq
+   - Histone H3 Lysine 4 trimethyl (H3K4me3)
+   - Hela-S3
+   - 1
+   - FASTQ
+   - wgEncodeBroadHistoneHelas3H3k4me3StdRawDataRep1.fastq.gz
+ * - ChIP-seq
+   - CTCF
+   - Hela-S3
+   - 1
+   - narrowPeak
+   - /vol1/opt/data/wgEncodeUwTfbsHelas3CtcfStdPkRep1.narrowPeak.gz
+
