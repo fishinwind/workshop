@@ -7,9 +7,6 @@ SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
 SRCDIR        = ../src
-KEYS_DIR      = problem-set-keys
-PROBSET_DIR   = Problem_Sets
-KEYS_TAR      = $(PROBSET_DIR)/problem-set-keys.tar
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
