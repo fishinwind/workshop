@@ -16,16 +16,20 @@ are available on the amc-tesla cluster at::
 
     /vol1/opt/data
 
+Note that the FASTA sequence for hg19 
+
 Problem 1
 ---------
 
-Use the peak calls from to derive a binding motif for the CTCF
+Use the CTCF peak calls to derive a binding motif for the CTCF
 transcription factor. (**10 points**) You will need to:
 
-  - create FASTA sequence from CTCF ChIP-seq peak calls from the hg19
-    genome.
-  - use meme to identify motifs from these FASTA sequences.
-  - write a run script to drive this analysis.
+  #. create FASTA sequence from CTCF ChIP-seq peak calls from the hg19
+     genome.
+
+  #. use meme to identify motifs from these FASTA sequences.
+
+  #.  write a run script to drive this analysis.
 
 Keep the meme report and submit it with your homework.
 
