@@ -27,15 +27,15 @@ data) is:
     * - Operation
       - File formats
     * - Align reads to reference genome
-      - ``FASTQ -> BAM``
+      - ``FASTQ ~~> BAM``
     * - Generate coverage plots
-      - ``BAM -> bedGraph``
+      - ``BAM ~~> bedGraph``
     * - Call peaks 
-      - ``BAM -> BED``
-    * - Make binary files for UCSC
-      - ``bedGraph -> bigWig``, ``BED -> bigBed``
+      - ``BAM ~~> BED``
+    * - Make binary files for UCSC display
+      - ``bedGraph ~~> bigWig``, ``BED ~~> bigBed``
     * - Identify motifs
-      - ``BED -> FASTA -> TXT``
+      - ``BED ~~> FASTA ~~> TXT / HTML``
 
 .. _short-read-alignment:
 

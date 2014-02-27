@@ -58,7 +58,7 @@ available in ::
 .. list-table::
     :header-rows: 1
     
- * - Experiment type
+ * - Experiment
    - Target
    - Cell line
    - Replicate
@@ -75,5 +75,16 @@ available in ::
    - Hela-S3
    - 1
    - narrowPeak
-   - /vol1/opt/data/wgEncodeUwTfbsHelas3CtcfStdPkRep1.narrowPeak.gz
-
+   - wgEncodeUwTfbsHelas3CtcfStdPkRep1.narrowPeak.gz
+ * - Merged TFBS ChIP-seq
+   - all
+   - all
+   - n/a
+   - BED
+   - wgEncodeRegTfbsClusteredV3.bed.gz
+ * - Merged DNase I hypersensitive sites
+   - all
+   - all
+   - n/a
+   - BED
+   - wgEncodeRegDnaseClusteredV2.bed.gz

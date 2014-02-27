@@ -11,7 +11,10 @@ Overview
 
 For this quiz you will analyze ChIP-seq data.
 
-Use the provided :ref:`encode-data` for these promblems.
+Use the provided :ref:`encode-data` for these promblems. ALl of the data
+are available on the amc-tesla cluster at::
+
+    /vol1/opt/data
 
 Problem 1
 ---------
@@ -28,11 +31,6 @@ Keep the meme report and submit it with your homework.
 
 Problem 2
 ---------
-
-.. need to download clustered TFBS and DHS data and put it on the data
-   page: 
-   http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV3.bed.gz
-   http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegDnaseClustered/wgEncodeRegDnaseClusteredV2.bed.gz
 
 Use BEDtools to intersect peaks calls from the clustered transcription factor
 binding regions with the clustered DNase I peaks. (**20 points**)
