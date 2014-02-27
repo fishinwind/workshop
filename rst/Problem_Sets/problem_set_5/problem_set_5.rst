@@ -16,7 +16,9 @@ are available on the amc-tesla cluster at::
 
     /vol1/opt/data
 
-Note that the FASTA sequence for hg19 
+Note that the FASTA sequence for hg19 is available in the same directory
+``hg19.fa``. That is a big file, so do not copy it anywhere; just use it
+out of that directory.
 
 Problem 1
 ---------
@@ -29,8 +31,6 @@ transcription factor. (**10 points**) You will need to:
 
   #. use meme to identify motifs from these FASTA sequences.
 
-  #.  write a run script to drive this analysis.
-
 Keep the meme report and submit it with your homework.
 
 Problem 2
@@ -39,13 +39,17 @@ Problem 2
 Use BEDtools to intersect peaks calls from the clustered transcription factor
 binding regions with the clustered DNase I peaks. (**20 points**)
 
- #. Identify transcription factor binding peaks that were never identified
-    as DNase I hypersensitive sites. What transcription factor binding sites
-    are represented in these peaks?
+ #. Identify transcription factor binding peaks that do not overlap with
+    DNase I hypersensitive sites.
+    
+    - What transcription factors are represented in these peaks?
+
+    - What motifs are found in the peaks?
 
  #. Do the converse: identify DNase I hypersensitive sites that do not
-    have corresponding transcription factor peak calls. What motifs are
-    enriched in this set of hypersensitive sites?
+    have corresponding transcription factor peak calls.
+    
+    - What motifs are enriched in this set of hypersensitive sites?
 
 Problem Set Submission
 ----------------------
