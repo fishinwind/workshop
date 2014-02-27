@@ -181,16 +181,16 @@ Specific Dates / Material to be Covered
       - BEDtools  
     * - Class 14 
       - F Feb 28
-      - ChIP-seq / DNaseI-seq
+      - ChIP-seq 
     * - Class 15 
       - M Mar 3
       - ChIP-seq / DNaseI-seq
     * - Class 16
       - W Mar 5
-      - UCSC Genome Browser
+      - TBD
     * - Class 17 
       - F Mar 7
-      - UCSC Genome Browser
+      - TBD
     * -
       - **No Class Mar 10-14 (Spring Break)**
       -
