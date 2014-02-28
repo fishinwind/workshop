@@ -33,6 +33,9 @@ the CTCF transcription factor. (**10 points**) You will need to:
   #. create FASTA sequence from CTCF ChIP-seq peak calls from the hg19
      genome.
 
+  #. Select out the peaks on chr22 (otherwise meme will take a long time
+     to run)
+
   #. use MEME to identify motifs from these FASTA sequences. The motifs
      in the meme output will be ranked according to their significance
      (i.e. how often this motif would occur in random sequence).
