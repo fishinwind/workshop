@@ -8,13 +8,10 @@
 # load on the head-node required modules before submitting this script
 #
 # $ module load modules modules-init modules-python
+# $ module load python
 # $ module load bowtie2
 # $ module load ucsc
 # $ module load bedtools
-<<<<<<< HEAD
-=======
-# $ module load python/2.7.2
->>>>>>> FETCH_HEAD
 # $ module load meme
 #
 
