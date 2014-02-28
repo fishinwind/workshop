@@ -45,7 +45,7 @@ peakfasta=$expname.peaks.fa
 bedtools getfasta -fi $fasta -bed $peakbed -fo $peakfasta
 
 # XXX change nmotifs to e.g. 100 to get more motifs back
-meme -nmotifs 5 -minw 6 -maxw 20 $peakfasta
+meme -nmotifs 5 -minw 6 -maxw 20 -dna $peakfasta
 
 # make coverage plots in bedgraph and bigwig
 bedgraph="$expname.bg"

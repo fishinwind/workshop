@@ -8,12 +8,14 @@ Class 14 : ChIP-seq
 Goals
 =====
 
- #. **LOGIN TO THE CLUSTER**
+ #. Learn the workflow for analyzing ChIP-seq data
+
+.. important::
+
+    **LOGIN TO THE CLUSTER**
 
     You will need access to amc-tesla to do your homework. Confirm you can
     log on before leaving class.
-
- #. Learn the workflow for analyzing ChIP-seq data
 
 .. _coverage-workflow:
 
@@ -43,30 +45,25 @@ data) is:
 ChIP-seq data
 =============
 
-Looks at some human ChIP-seq data [#]_.
-
-.. [#] Genome Browser Session
-       http://goo.gl/WfJxcM
+Look at some human ChIP-seq data [1]_.
 
 .. _short-read-alignment:
 
 Short read alignment
 ====================
 
-There are several short read alignment packages available. We will mainly
-use bowtie2 [#]_ because it is easy to use and relatively fast.
+There are several short read alignment packages available. We will use
+bowtie2 [2]_ because it is easy to use and relatively fast.
 
 .. code-block:: bash
 
     # minimal bowtie2 command
     $ bowtie2 -x <index> -U <read1.fq.gz> [options] > output.sam
 
-.. [#] Bowtie2 http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
-
 .. nextslide::
     :increment:
 
-Normally, you would also pipe the SAM-format [#]_ alignment through the samtools
+Normally, you would also pipe the SAM-format [3]_ alignment through the samtools
 suite to discard unaligned reads, sort the alignment and store it in
 binary format (bam).
 
@@ -77,8 +74,6 @@ binary format (bam).
         | samtools view -ShuF4 - \ 
         | samtools sort -o - aln.temp -m 8G \
         > aln.bam
-
-.. [#] SAM format http://samtools.sourceforge.net/SAMv1.pdf
 
 .. _coverage-plots:
 
@@ -102,16 +97,13 @@ data, so that you can visualize your data.
 
 Coverage plots with BEDtools
 ----------------------------
-To generate coverage plots, we will use ``BEDtools`` [#]_. Here, we'll
+To generate coverage plots, we will use ``BEDtools`` [4]_. Here, we'll
 use the :ref:`genomecov <bedtools:genomecov>` tool.
 
 .. code-block:: bash
 
     # -bg : write ouptput in bedGraph format
     $ bedtools genomecov -i <aln.bam> -g <chrom.sizes> -bg > coverage.bg
-
-.. [#] BEDtools http://bedtools.readthedocs.org/en/latest/
-
 
 This command writes a bedGraph format file called ``coverage.bg``. Use
 ``less`` to examine this file.
@@ -207,10 +199,7 @@ You can now write "tracklines" to tell where UCSC to find your data::
     well for UCSC display.
 
 There are a large number of additional options you can use in tracklines
-to change their display [#]_.
-
-.. [#] UCSC Track configuration
-       https://genome.ucsc.edu/goldenPath/help/customTrack.html#TRACK
+to change their display [5]_.
 
 .. _peak-calling:
 
@@ -230,19 +219,16 @@ encriched in your IP experiment (i.e. peaks). We will use macs2 here.
 Identify sequence motifs in enriched regions
 ============================================
 
-You can use meme [#]_ to identify over-represented motifs in groups of
+You can use meme [6]_ to identify over-represented motifs in groups of
 sequences (e.g. sequences covered by ChIP peaks). Use the :ref:`bedtools
 getfasta <bedtools:getfasta>` command to fetch fasta sequences
 
-meme looks at both strands of a DNA sequence by default.
+Note: meme looks at both strands of a DNA sequence by default.
 
 .. code-block:: bash
 
     $ bedtools getfasta -fi <ref.fa> -bed <peaks.bed> -fo peaks.fa
     $ meme -nmotifs 100 -minw 6 -maxw 20 <peaks.fa>
-
-.. [#] MEME http://meme.nbcr.net/meme/
-
 
 Putting it all together
 =======================
@@ -251,4 +237,11 @@ Here is a script that combines the above in a single workflow:
 .. literalinclude:: code/chipseq.sh
    :language: bash
    :linenos:
+
+.. [1] Genome Browser Session http://goo.gl/WfJxcM
+.. [2] Bowtie2 http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+.. [3] SAM format http://samtools.sourceforge.net/SAMv1.pdf
+.. [4] BEDtools http://bedtools.readthedocs.org/en/latest/
+.. [5] UCSC Track configuration https://genome.ucsc.edu/goldenPath/help/customTrack.html#TRACK
+.. [6] MEME http://meme.nbcr.net/meme/
 

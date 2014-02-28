@@ -1,8 +1,8 @@
 .. _problem-sets:
 
-############
-Problem Sets
-############
+##############
+ Problem Sets
+##############
 
 Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
 

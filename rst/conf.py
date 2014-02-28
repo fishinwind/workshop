@@ -312,6 +312,7 @@ slide_link_html_sections_to_slides = True
 slide_link_to_html = True
 slide_relative_path = "slides/"
 slide_html_relative_path = "../"
+# slide_footer = 'Genome Informatics Workshop MOLB 7620'
 
 # slide_theme_path = ['_static/theme']
 # relative to html_static_path
