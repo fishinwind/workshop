@@ -20,6 +20,35 @@ Goals
 Chromatin Immunoprecipitation Overview
 ======================================
 
+Chromatin Immunoprecipitation is used to determine where a protein of
+interest binds on a chromatin template.
+
+Figures from:
+
+    ChIP-seq: advantages and challenges of a maturing technology
+    Peter Park
+    http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html
+
+.. image:: ../_static/images/chip-workflow.png
+   :scale: 50 %
+
+ChIP-seq data
+=============
+
+.. image:: ../_static/images/chip-data.png
+   :scale: 50 %
+
+.. nextslide::
+   :increment:
+
+Look at some human ChIP-seq data [#]_.
+
+.. [#] Genome Browser Session
+       http://goo.gl/WfJxcM
+
+ChIP-seq analysis workflow
+==========================
+
 A general workflow for visualizing ChIP-seq data (and many other types of
 data) is:
 
@@ -40,13 +69,6 @@ data) is:
     * - Identify motifs
       - ``BED ~~> FASTA ~~> TXT / HTML``
 
-ChIP-seq data
-=============
-
-Looks at some human ChIP-seq data [#]_.
-
-.. [#] Genome Browser Session
-       http://goo.gl/WfJxcM
 
 .. _short-read-alignment:
 
@@ -232,7 +254,7 @@ Identify sequence motifs in enriched regions
 
 You can use meme [#]_ to identify over-represented motifs in groups of
 sequences (e.g. sequences covered by ChIP peaks). Use the :ref:`bedtools
-getfasta <bedtools:getfasta>` command to fetch fasta sequences
+getfasta <bedtools:getfasta>` command to fetch fasta sequences.
 
 meme looks at both strands of a DNA sequence by default.
 
