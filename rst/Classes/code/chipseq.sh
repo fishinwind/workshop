@@ -5,14 +5,16 @@
 #BSUB -e %J.err
 
 #
-# load required modules before submitting this script
+# load on the head-node required modules before submitting this script
 #
 # $ module load bowtie2
 # $ module load ucsc
 # $ module load bedtools
-# $ module load macs2
+# $ module load python/2.7.2
 # $ module load meme
 #
+
+set -e
 
 data=/vol1/opt/data
 fasta=$data/hg19.fa
