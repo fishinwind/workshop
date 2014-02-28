@@ -7,10 +7,10 @@
 #
 # load required modules before submitting this script
 #
+# $ module load modules modules-init modules-python
 # $ module load bowtie2
 # $ module load ucsc
 # $ module load bedtools
-# $ module load macs2
 # $ module load meme
 #
 
