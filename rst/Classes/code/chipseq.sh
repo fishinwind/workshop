@@ -43,27 +43,20 @@ peakbed=chipseq.hela.h3k4me3_peaks.narrowPeak
 peakbigbed=chipseq.hela.h3k4me3_peaks.bb
 bedToBigBed $peakbed $chromsize $peakbigbed
 
-# find motifs on chr22
-peakfasta=$expname.peaks.fa
-peak_chr22_fasta=$expname.peaks.chr22.fa
-bedtools getfasta -fi $fasta -bed $peakbed -fo $peakfasta
-<<<<<<< HEAD
-
-# XXX change nmotifs to e.g. 100 to get more motifs back
-meme -nmotifs 5 -minw 6 -maxw 20 -dna $peakfasta
-=======
-awk '$1 == "chr22"' < $peakfasta > $peak_chr22_fasta
->>>>>>> FETCH_HEAD
-
 # make coverage plots in bedgraph and bigwig
 bedgraph="$expname.bg"
 bigwig="$expname.bw"
 bedtools genomecov -ibam $bamfile -g $chromsize -bg > $bedgraph
 bedGraphToBigWig $bedgraph $chromsize $bigwig
 
-# XXX change nmotifs to e.g. 100 to get more motifs back
+# find motifs on chr22
+peakfasta=$expname.peaks.fa
+peak_chr22_fasta=$expname.peaks.chr22.fa
+bedtools getfasta -fi $fasta -bed $peakbed -fo $peakfasta
+awk '$1 == "chr22"' < $peakfasta > $peak_chr22_fasta
+
 # XXX this will take a while to run ...
-meme_args="-nmotifs 5 -minw 6 -maxw 20 -maxsize 10000000"
+meme_args="-nmotifs 5 -minw 6 -maxw 20 -maxsize 10000000 -dna"
 meme $meme_args $peak_chr22_fasta
 
 # cp the bigWig / bigBed to public_html directory
