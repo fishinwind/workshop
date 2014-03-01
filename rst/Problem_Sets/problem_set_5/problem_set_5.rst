@@ -67,7 +67,6 @@ binding regions with the clustered DNase I peaks. (**20 points**)
 **Report the factors in the peaks and the top 5 high scoring motifs from
 each meme analysis.**
 
-Report the top 5 motifs 
 Problem Set Submission
 ----------------------
 Submit your problem set as a tar file to Canvas
