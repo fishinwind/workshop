@@ -56,34 +56,36 @@ available in::
     /vol1/opt/data
 
 .. list-table::
+    :header-rows: 1
     
- * - Experiment
-   - Target
-   - Cell line
-   - Replicate
-   - File Type
-   - File name
- * - ChIP-seq
-   - Histone H3 Lysine 4 trimethyl (H3K4me3)
-   - Hela-S3
-   - 1
-   - FASTQ
-   - wgEncodeBroadHistoneHelas3H3k4me3StdRawDataRep1.fastq.gz
- * - ChIP-seq
-   - CTCF
-   - Hela-S3
-   - 1
-   - narrowPeak
-   - wgEncodeUwTfbsHelas3CtcfStdPkRep1.narrowPeak.gz
- * - Merged TFBS ChIP-seq
-   - all
-   - all
-   - n/a
-   - BED
-   - wgEncodeRegTfbsClusteredV3.bed.gz
- * - Merged DNase I hypersensitive sites
-   - all
-   - all
-   - n/a
-   - BED
-   - wgEncodeRegDnaseClusteredV2.bed.gz
+    * - Experiment
+      - Target
+      - Cell line
+      - Replicate
+      - File Type
+      - File name
+    * - ChIP-seq
+      - Histone H3 Lysine 4 trimethyl (H3K4me3)
+      - Hela-S3
+      - 1
+      - FASTQ
+      - wgEncodeBroadHistoneHelas3H3k4me3StdRawDataRep1.fastq.gz
+    * - ChIP-seq
+      - CTCF
+      - Hela-S3
+      - 1
+      - narrowPeak
+      - wgEncodeUwTfbsHelas3CtcfStdPkRep1.narrowPeak.gz
+    * - Merged TFBS ChIP-seq
+      - all
+      - all
+      - n/a
+      - BED
+      - wgEncodeRegTfbsClusteredV3.bed.gz
+    * - Merged DNase I hypersensitive sites
+      - all
+      - all
+      - n/a
+      - BED
+      - wgEncodeRegDnaseClusteredV2.bed.gz
+
