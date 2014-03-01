@@ -17,36 +17,19 @@ Goals
     You will need access to amc-tesla to do your homework. Confirm you can
     log on before leaving class.
 
-.. _coverage-workflow:
-
 Chromatin Immunoprecipitation Overview
 ======================================
 
 Chromatin Immunoprecipitation is used to determine where a protein of
-interest binds on a chromatin template.
+interest binds on a chromatin template [Park_Chipseq]_.
 
-Figures from:
-
-    ChIP-seq: advantages and challenges of a maturing technology
-    Peter Park
-    http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html
+.. [Park_Chipseq] http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html
 
 .. image:: ../_static/images/chip-workflow.png
-   :scale: 50 %
-
-ChIP-seq data
-=============
-
-.. image:: ../_static/images/chip-data.png
-   :scale: 50 %
 
 .. nextslide::
-   :increment:
 
-Look at some human ChIP-seq data [#]_.
-
-.. [#] Genome Browser Session
-       http://goo.gl/WfJxcM
+.. image:: ../_static/images/chip-data.png
 
 ChIP-seq analysis workflow
 ==========================
@@ -71,33 +54,35 @@ data) is:
     * - Identify motifs
       - ``BED ~~> FASTA ~~> TXT / HTML``
 
-<<<<<<< HEAD
 ChIP-seq data
 =============
 
-Look at some human ChIP-seq data [1]_.
-=======
->>>>>>> FETCH_HEAD
+Look at some human ChIP-seq data [#]_.
 
-.. _short-read-alignment:
+.. [#] Genome Browser Session
+       http://goo.gl/WfJxcM
 
 Short read alignment
 ====================
 
 There are several short read alignment packages available. We will use
-bowtie2 [2]_ because it is easy to use and relatively fast.
+bowtie2 [#]_ because it is easy to use and relatively fast.
 
 .. code-block:: bash
 
     # minimal bowtie2 command
     $ bowtie2 -x <index> -U <read1.fq.gz> [options] > output.sam
 
-.. nextslide::
-    :increment:
+.. [#] Bowtie2
+       http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 
-Normally, you would also pipe the SAM-format [3]_ alignment through the samtools
+.. nextslide::
+
+Normally, you would also pipe the SAM-format alignment through the samtools
 suite to discard unaligned reads, sort the alignment and store it in
 binary format (bam).
+
+SAM format: http://samtools.sourceforge.net/SAMv1.pdf
 
 .. code-block:: bash
 
@@ -107,7 +92,6 @@ binary format (bam).
         | samtools sort -o - aln.temp -m 8G \
         > aln.bam
 
-.. _coverage-plots:
 
 Generate and visualize coverage plots
 =====================================
@@ -129,7 +113,8 @@ data, so that you can visualize your data.
 
 Coverage plots with BEDtools
 ----------------------------
-To generate coverage plots, we will use ``BEDtools`` [4]_. Here, we'll
+
+To generate coverage plots, we will use BEDtools. Here, we'll
 use the :ref:`genomecov <bedtools:genomecov>` tool.
 
 .. code-block:: bash
@@ -142,6 +127,7 @@ This command writes a bedGraph format file called ``coverage.bg``. Use
 
 .. nextslide::
     :increment:
+
 
 Words to live by: **If you make a BED file, sort the BED file**
 
@@ -156,10 +142,10 @@ analysis. Once you create a BED file, sort it with one of these:
    # or you can use bedtools; writes additional file
    $ bedtools sort -i - < unsorted.bed > sorted.bed
 
-.. _stranded-signals:
 
 Coverage plots split by strand
 ------------------------------
+
 For some experiments, you will analyze the data relative to each strand of
 the reference genome. For example, RNA is transcribed in single-stranded
 form and derives from one or the other strand.
@@ -178,7 +164,6 @@ generate signal plots for ``pos`` and ``neg`` strands separately with
 You would then create bigWigs for each of these display the stranded data
 in the Genome Browser.
 
-.. _genome-browser-display:
 
 Plot coverage with the Genome Browser
 -------------------------------------
@@ -213,14 +198,16 @@ and be able to see them like::
 Writing tracklines
 ------------------
 
-You can now write "tracklines" to tell where UCSC to find your data::
+You can now write "tracklines" [#]_ to tell where UCSC to find your data::
 
     # URL = http://amc-sandbox.ucdenver.edu/~username/path-to-binaryfile
     track type=bigWig bigDataUrl=<URL> name='coverage' color=r,g,b
     track type=bigBed bigDataUrl=<URL> name='peaks' color=r,g,b
 
+.. [#] UCSC Track configuration
+       https://genome.ucsc.edu/goldenPath/help/customTrack.html#TRACK
+
 .. nextslide::
-    :increment:
 
 .. tip::
 
@@ -231,9 +218,8 @@ You can now write "tracklines" to tell where UCSC to find your data::
     well for UCSC display.
 
 There are a large number of additional options you can use in tracklines
-to change their display [5]_.
+to change their display.
 
-.. _peak-calling:
 
 Peak calling
 ============
@@ -246,21 +232,24 @@ encriched in your IP experiment (i.e. peaks). We will use macs2 here.
     # minimal macs2 command 
     $ macs2 callpeak --treatment <aln.bam> --name <exp.name> [options]
 
-.. _motif-identification:
-
 Identify sequence motifs in enriched regions
 ============================================
 
-You can use meme [6]_ to identify over-represented motifs in groups of
-sequences (e.g. sequences covered by ChIP peaks). Use the :ref:`bedtools
-getfasta <bedtools:getfasta>` command to fetch fasta sequences.
+You can use meme [#]_ to identify over-represented motifs in groups of
+sequences (e.g. sequences covered by ChIP peaks).
+
+Use the :ref:`bedtools getfasta <bedtools:getfasta>` command to fetch
+fasta sequences.
 
 Note: meme looks at both strands of a DNA sequence by default.
+
+.. [#] MEME 
+       http://meme.nbcr.net/meme/
 
 .. code-block:: bash
 
     $ bedtools getfasta -fi <ref.fa> -bed <peaks.bed> -fo peaks.fa
-    $ meme -nmotifs 100 -minw 6 -maxw 20 <peaks.fa>
+    $ meme -nmotifs 5 -minw 6 -maxw 20 -dna <peaks.fa>
 
 Putting it all together
 =======================
@@ -269,11 +258,4 @@ Here is a script that combines the above in a single workflow:
 .. literalinclude:: code/chipseq.sh
    :language: bash
    :linenos:
-
-.. [1] Genome Browser Session http://goo.gl/WfJxcM
-.. [2] Bowtie2 http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
-.. [3] SAM format http://samtools.sourceforge.net/SAMv1.pdf
-.. [4] BEDtools http://bedtools.readthedocs.org/en/latest/
-.. [5] UCSC Track configuration https://genome.ucsc.edu/goldenPath/help/customTrack.html#TRACK
-.. [6] MEME http://meme.nbcr.net/meme/
 
