@@ -168,8 +168,8 @@ in the Genome Browser.
 Peak calling
 ============
 
-There are several available software packages for identying regions
-encriched in your IP experiment (i.e. peaks). We will use macs2 here.
+There are several available software packages for identifying regions
+enriched in your IP experiment (i.e. peaks). We will use macs2 here.
 
 .. code-block:: bash
 

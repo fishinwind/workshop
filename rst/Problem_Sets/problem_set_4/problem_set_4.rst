@@ -19,7 +19,7 @@ For this quiz you will write programs in Python to analyze data.
 Create a ``run.sh`` file that executes the commands for each problem and
 writes out each result in a dated directory.
 
-Use the provided :ref:`data-sets` for these promblems.
+Use the provided :ref:`data-sets` for these problems.
 
 Problem 1
 ---------

@@ -11,7 +11,7 @@ Overview
 
 For this quiz you will analyze ChIP-seq data.
 
-Use the provided :ref:`encode-data` for these promblems. ALl of the data
+Use the provided :ref:`encode-data` for these problems. All of the data
 are available on the amc-tesla cluster at::
 
     /vol1/opt/data
