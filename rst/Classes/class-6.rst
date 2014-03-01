@@ -41,19 +41,9 @@ typical workflow for assessing sequencing data might begin with:
     #. Align reads to a reference genome
     #. Calculate coverage from the alignment
 
-.. todo::
+.. nextslide::
+    :increment:
 
-    figure out how to:
-
-        #. move the following code block to a file
-        #. have it displayed in the rendered html
-        #. provide a link to the file so that one can download (instead of
-            copying and pasting)
-
-    Maybe use this?: http://sphinx-doc.org/markup/inline.html#ref-role
-
-Exercise (2)
-============
 Login to amc-tesla.
 
 .. code-block:: bash
@@ -66,8 +56,8 @@ are located in::
 
     /vol1/opt/data
 
-Exercise (3)
-============
+.. nextslide::
+    :increment:
 
 .. note::
 
@@ -77,8 +67,9 @@ Exercise (3)
     :language: bash
     :linenos:
 
-Exercise (4)
-============
+.. nextslide::
+    :increment:
+
 Run the above script and check its status immediately:
 
 .. code-block:: bash

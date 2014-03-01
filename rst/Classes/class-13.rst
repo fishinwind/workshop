@@ -13,7 +13,6 @@ Class 13 : BEDtools
     wget http://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
     wget http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
 
-
 Ask if you have trouble.
 
 Goals
@@ -69,9 +68,7 @@ BEDTools Utility (2)
  + Terse: syntax is terse, but readable
  + Formats: handles BED, VCF and GFF formats (gzip'ed or not)
  + Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
-   etc.
-  - (all the things that will likely be bugs in your code should you do this manually)
-
+   etc. (likely to be bugs if you do code in manually)
 
 BEDTools Commands
 =================
@@ -89,7 +86,6 @@ The most commonly used BEDtools are:
     + :ref:`closest <bedtools:closest>`
     + :ref:`map <bedtools:map>`
 
-
 BEDTools Documentation
 ======================
 
@@ -103,7 +99,6 @@ See the documentation for :ref:`intersect <bedtools:intersect>` with:
 
 The online HTML help is also good and includes pictures: 
  https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html
-
 
 BEDTools intersect
 ==================
@@ -262,7 +257,7 @@ Exercises (Or Other Tools)
 
 .. important::
 
-as you are figuring these out, make sure to pipe the output to less or head
+    as you are figuring these out, make sure to pipe the output to less or head
 
 Other Reading
 =============
@@ -281,7 +276,9 @@ e.g:
 
 .. code-block:: bash
 
-    $ bedtools intersect -abam experiment.bam -b target-regions.bed \
+    $ bedtools intersect \
+        -abam experiment.bam \
+        -b target-regions.bed \
         > on-target.bam
 
 Intersect Strand
@@ -309,7 +306,9 @@ Example: report the nearest CpG to each gene as long as it is within 5KB.
 
 .. code-block:: bash
 
-    bedtools closest -a genes.hg19.bed.gz -b cpg.bed.gz -d \
+    bedtools closest \
+        -a genes.hg19.bed.gz \
+        -b cpg.bed.gz -d \
         | awk '$NF <= 5000'
 
 Map
@@ -320,8 +319,10 @@ lamina.bed (and filter out those with no overlap using awk)
 
 .. code-block:: bash
 
-    $ bedtools map -a cpg.bed.gz \
-                   -b /opt/bio-workshop/data/lamina.bed  -c 4 -o sum \
+    $ bedtools map \
+        -a cpg.bed.gz \
+        -b /opt/bio-workshop/data/lamina.bed \
+        -c 4 -o sum \
         | awk '$5 != "."'
 
 Other *-o* perations include **min**, **max**, **mean**, **median**, **concat**

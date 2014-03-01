@@ -28,7 +28,7 @@ From hamlet.txt:
 
  #. Count the number of times that the word "therefore" appears.
 
-(hint: the :py:meth:`continue` statement will skip to the next loop
+(hint: the :ref:`continue` statement will skip to the next loop
 iteration, and is usually found in an if statement)
 
 In Class Exercise Code
