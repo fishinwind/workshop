@@ -21,7 +21,7 @@ General Information
 PDF Content
 ===========
 
-The course content can be downloaded in PDF form: 
+The course content is available as a combined PDF: 
 :download:`PDF Download <_build/pdf/Genome-Informatics-Workshop.pdf>`
 
 Instructor Information
@@ -163,28 +163,28 @@ Specific Dates / Material to be Covered
       - Python
     * - Class 9 
       - F Feb 14
-      - Python (Advanced / Review)
+      - Python 
     * -
       - **No Class Feb 17 (President's Day)**
       -
     * - Class 10 
       - W Feb 19
-      - Python - Advanced
+      - Python 
     * - Class 11 
       - F Feb 21
-      - Python - Writing Scripts / Review
+      - Python 
     * - Class 12
       - M Feb 24
-      - ENCODE - Overview
+      - ENCODE Overview
     * - Class 13 
       - W Feb 26
       - BEDtools  
     * - Class 14 
       - F Feb 28
-      - ChIP-seq 
+      - ChIP-seq (coverage / peaks / motifs)
     * - Class 15 
       - M Mar 3
-      - ChIP-seq / DNaseI-seq
+      - ChIP-seq / DNaseI-seq (UCSC)
     * - Class 16
       - W Mar 5
       - TBD
@@ -199,28 +199,28 @@ Specific Dates / Material to be Covered
       - R - Data 
     * - Class 19
       - W Mar 19 
-      - ChIP-seq / DNaseI-seq - Read densities
+      - TBD
     * - Class 20
       - F Mar 21 
-      - ChIP-seq / DNaseI-seq - Peak calling
+      - TBD
     * - Class 21
       - M Mar 24 
-      - ChIP-seq / DNaseI-seq  - Motif finding with MEME
+      - TBD 
     * - Class 22
       - W Mar 26 
-      - BEDtools  
+      - TBD 
     * - Class 23
       - F Mar 28 
-      - mRNA-seq - RPKM 
+      - mRNA-seq (FPKM / diff exp)
     * - Class 24
       - M Mar 31 
       - mRNA-seq - Diff. expression
     * - Class 25 
       - W Apr 2 
-      - mRNA-seq - isoforms
+      - Variant detection - reprocessing
     * - Class 26 
       - F Apr 4 
-      - Variant detection - reprocessing
+      - Variant detection - VCF files 
     * - Class 27 
       - M Apr 7 
       - Variant detection - SNP calling
@@ -229,10 +229,10 @@ Specific Dates / Material to be Covered
       - Variant detection - CNV detection
     * - Class 29 
       - F Apr 11 
-      - Variant detection - VCF files 
+      - TBD
     * - Class 30 
       - M Apr 14 
-      - Integration / Segway 
+      - Final project presentations
 
 .. raw:: pdf
 

@@ -5,6 +5,14 @@
 
 :Class date: 2014 Mar 3 Monday
 
+Final Project
+=============
+We will have a final project that is worth 15% of your grade, due on XXX.
+
+We want you to come up with a question you can address with the tools you
+learned in the class. You should incorporate ENCODE data into your
+analysis, and you can also integrate your own data.
+
 Goals
 =====
 
@@ -17,8 +25,7 @@ ChIP-seq / DNase I data
 
 Look at some human ChIP-seq data [#]_.
 
-.. [#] Genome Browser Session
-       http://goo.gl/WfJxcM
+.. [#] Genome Browser Session http://goo.gl/WfJxcM
 
 Coverage plots for ChIP and DNase I
 -----------------------------------
