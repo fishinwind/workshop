@@ -45,7 +45,11 @@ bedtools intersect -a $clustered_tfbs_bed -b $dnase_bed -v -sorted \
     > $tfbs_no_dhs
 
 # What transcription factors are represented in these peaks?
-zcat $tfbs_no_dhs | cut -f4 | sort | uniq -c | sort -k1nr \
+zcat $tfbs_no_dhs \
+    | cut -f4 \
+    | sort \
+    | uniq -c \
+    | sort -k1nr \
     > $tfbs_no_dhs_summary
 
 # identify DNase I hypersensitive sites that do not have corresponding
