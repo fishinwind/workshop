@@ -7,33 +7,26 @@
 
 Final Project
 =============
-We will have a final project that is worth 15% of your grade, due in 1
-month on April 2.
+
+We will have a final project that is worth 15% of your grade, due on April
+2.
 
 We want you to come up with a question you can address with the tools you
 learned in the class. You should incorporate ENCODE data into your
 analysis, and you can also integrate your own data.
 
-We will talk about possible questions at the end of class today.
+We will go over some analysis vignettes on Wed and Fri to illustrate
+example final projects.
 
 Goals
 =====
 
- #. Post ChIP-seq data for the UCSC browser to see
+ #. Connet UCSC browser to bigWig / bigBed files
 
- #. Learn to process DNase I data
-
-ChIP-seq / DNase I data 
-=======================
-
-Look at some human ChIP-seq data [#]_.
-
-.. [#] Genome Browser Session http://goo.gl/WfJxcM
-
-.. make UCSC session with DNase I data loaded
+ #. Compare ChIP and DNase I data
 
 Coverage plots for ChIP and DNase I
------------------------------------
+===================================
 
 You will want to calculate coverage plots that are appropriate for the
 type of experiment. For example, in a ChIP experiment, you want to examine
@@ -52,6 +45,14 @@ flag in bedtools to only count 5' positions.
 
     $ common_args="-ibam <aln.bam> -g <chrom.size> -bg"
     $ bedtools genomecov $common_args -5 > coverage.5p.bg
+
+
+ChIP-seq / DNase I data 
+=======================
+
+Compare ChIP-seq and DNase I data in browser [#]_.
+
+.. [#] Genome Browser Session http://goo.gl/jx6fCA
 
 Plot coverage with the Genome Browser
 -------------------------------------
