@@ -6,8 +6,10 @@
 
 # run script for Problem Set 5 key
 
+set -o nounset -o pipefail -o errexit -x
+
 # XXX this will be user-specific
-project="$HOME/devel/bio-workshop/problem-set-keys/problem-set-5"
+project="$HOME/devel/bio-workshop/_test/problem-set-keys/problem-set-5"
 
 # input files
 data="/vol1/opt/data"
@@ -31,13 +33,13 @@ dhs_no_tfbs="$result/dhs_no_tfbs.bed"
 dhs_no_tfbs_chr22="$result/dhs_no_tfbs.chr22.bed"
 dhs_no_tfbs_fasta="$result/dhs_no_tfbs.chr22.fa"
 problem_1_motifs="$result/problem_1_motifs"
-probllm_2_motifs="$result/problem_2_motifs"
+problem_2_motifs="$result/problem_2_motifs"
 
 # Problem 1.1, 1.2
-awk '$1 == "chr22"' < $ctcf_bed > $ctcf_chr22_bed
-bedtools getfasta -fi $fasta -bed $ctcf_chip -fo $ctcf_fasta
+zcat $ctcf_bed | awk '$1 == "chr22"' > $ctcf_chr22_bed
+bedtools getfasta -fi $fasta -bed $ctcf_chr22_bed -fo $ctcf_fasta
 
-if [ ! -d $promlem_1_motifs ]; then
+if [[ ! -d $problem_1_motifs ]]; then
     meme -nmotifs 5 -dna -minw 6 -maxw 20 -maxsize 100000000 \
         -o $problem_1_motifs $ctcf_fasta
 fi
@@ -65,7 +67,7 @@ bedtools intersect -a $dnase_bed -b $clustered_tfbs_bed -v -sorted \
 awk '$1 == "chr22"' < $dhs_no_tfbs > $dhs_no_tfbs_chr22
 bedtools getfasta -fi $fasta -bed $dhs_no_tfbs_chr22 -fo $dhs_no_tfbs_fasta
 
-if [ ! -d $promlem_2_motifs ]; then
+if [[ ! -d $promlem_2_motifs ]]; then
     meme -nmotifs 10 -dna -minw 6 -maxw 20 -maxsize 100000000 \
         -o $problem_2_motifs $dhs_no_tfbs_fasta
 fi
