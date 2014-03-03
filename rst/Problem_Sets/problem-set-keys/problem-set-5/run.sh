@@ -24,18 +24,23 @@ fi
 
 # output files
 ctcf_fasta="$result/ctcf.chr22.fa"
-ctcf_chr22_bed="$results.ctcf.chr22.bed"
+ctcf_chr22_bed="$result/ctcf.chr22.bed"
 tfbs_no_dhs="$result/tfbs_no_dhs.bed"
 tfbs_no_dhs_summary="$result/tfbs_no_dhs.summary.tab"
 dhs_no_tfbs="$result/dhs_no_tfbs.bed"
-dhs_no_tfbs_fasta="$result/dhs_no_tfbs.fa"
+dhs_no_tfbs_chr22="$result/dhs_no_tfbs.chr22.bed"
+dhs_no_tfbs_fasta="$result/dhs_no_tfbs.chr22.fa"
+problem_1_motifs="$result/problem_1_motifs"
+probllm_2_motifs="$result/problem_2_motifs"
 
 # Problem 1.1, 1.2
-awk '$1 == chr22' < $ctcf_bed > $ctcf_chr22_bed
+awk '$1 == "chr22"' < $ctcf_bed > $ctcf_chr22_bed
 bedtools getfasta -fi $fasta -bed $ctcf_chip -fo $ctcf_fasta
 
-meme -nmotifs 5 -dna -minw 6 -maxw 20 -maxsize 100000000 \
-    -o problem_1_motifs $ctcf_fasta
+if [ ! -d $promlem_1_motifs ]; then
+    meme -nmotifs 5 -dna -minw 6 -maxw 20 -maxsize 100000000 \
+        -o $problem_1_motifs $ctcf_fasta
+fi
 
 # Problem 2
 # Identify transcription factor binding peaks that do not overlap with
@@ -45,8 +50,7 @@ bedtools intersect -a $clustered_tfbs_bed -b $dnase_bed -v -sorted \
     > $tfbs_no_dhs
 
 # What transcription factors are represented in these peaks?
-zcat $tfbs_no_dhs \
-    | cut -f4 \
+cut -f4 $tfbs_no_dhs \
     | sort \
     | uniq -c \
     | sort -k1nr \
@@ -58,8 +62,10 @@ bedtools intersect -a $dnase_bed -b $clustered_tfbs_bed -v -sorted \
     > $dhs_no_tfbs
 
 # What motifs are enriched in this set of hypersensitive sites?
-bedtools getfasta -fi $fasta -bed $dhs_no_tfbs -fo $dhs_no_tfbs_fasta
+awk '$1 == "chr22"' < $dhs_no_tfbs > $dhs_no_tfbs_chr22
+bedtools getfasta -fi $fasta -bed $dhs_no_tfbs_chr22 -fo $dhs_no_tfbs_fasta
 
-meme -nmotifs 10 -dna -minw 6 -maxw 20 -maxsize 100000000 \
-    -o problem_2_motifs $dhs_no_tfbs_fasta
-
+if [ ! -d $promlem_2_motifs ]; then
+    meme -nmotifs 10 -dna -minw 6 -maxw 20 -maxsize 100000000 \
+        -o $problem_2_motifs $dhs_no_tfbs_fasta
+fi
