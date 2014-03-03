@@ -57,7 +57,8 @@ binding sites (TFBS) with clustered DNase I peaks. (**20 points**)
  #. Do the converse: identify DNase I hypersensitive sites that do not
     have corresponding transcription factor peak calls.
     
-    + What motifs are enriched in this set of hypersensitive sites?
+    + What motifs are enriched in this set of hypersensitive sites
+      (**UPDATE: only look at sites on chrY**)?
 
     + How would you use existing tools to identify similar motifs, ideally
       ones that are previously associated with a transcription factor?
