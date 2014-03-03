@@ -30,11 +30,10 @@ abundant human transcription factor called CTCF.
 Use the CTCF peak calls in the ENCODE data to derive a binding motif for
 the CTCF transcription factor. (**10 points**) You will need to:
 
-  #. create FASTA sequence from CTCF ChIP-seq peak calls from the hg19
-     genome.
-
   #. Select out the peaks on chr22 (otherwise meme will take a long time
      to run)
+
+  #. create FASTA sequence from the peak calls from the hg19 genome.
 
   #. use MEME to identify motifs from these FASTA sequences. The motifs
      in the meme output will be ranked according to their significance
@@ -46,23 +45,25 @@ motif with what is already known about CTCF binding sites.**
 Problem 2
 ---------
 
-Use BEDtools to intersect peaks calls from the clustered transcription factor
-binding regions with the clustered DNase I peaks. (**20 points**)
+Use BEDtools to intersect peaks calls from clustered transcription factor
+binding sites (TFBS) with clustered DNase I peaks. (**20 points**)
 
- #. Identify transcription factor binding peaks that do not overlap with
+:TFBS file: wgEncodeRegTfbsClusteredV3.bed.gz
+:DNase file: wgEncodeRegDnaseClusteredV2.bed.gz
+
+ #. Identify transcription factor binding sites that do not overlap with
     DNase I hypersensitive sites.
     
-    - What transcription factors are represented in these peaks? Analyze
+    + What transcription factors are represented in these regions? Analyze
       the BED file output to get this answer.
-
-    - What motifs are found in this set of peaks? How would you use
-      existing tools to identify similar motifs, ideally ones that are
-      previously associated with a transcription factor?
 
  #. Do the converse: identify DNase I hypersensitive sites that do not
     have corresponding transcription factor peak calls.
     
-    - What motifs are enriched in this set of hypersensitive sites?
+    + What motifs are enriched in this set of hypersensitive sites?
+
+    + How would you use existing tools to identify similar motifs, ideally
+      ones that are previously associated with a transcription factor?
 
 **Report the factors in the peaks and the top 5 high scoring motifs from
 each meme analysis.**
