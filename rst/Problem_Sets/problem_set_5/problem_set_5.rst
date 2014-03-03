@@ -48,9 +48,6 @@ Problem 2
 Use BEDtools to intersect peaks calls from clustered transcription factor
 binding sites (TFBS) with clustered DNase I peaks. (**20 points**)
 
-:TFBS file: wgEncodeRegTfbsClusteredV3.bed.gz
-:DNase file: wgEncodeRegDnaseClusteredV2.bed.gz
-
  #. Identify transcription factor binding sites that do not overlap with
     DNase I hypersensitive sites.
     
