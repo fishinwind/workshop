@@ -7,11 +7,14 @@
 
 Final Project
 =============
-We will have a final project that is worth 15% of your grade, due on XXX.
+We will have a final project that is worth 15% of your grade, due in 1
+month on April 2.
 
 We want you to come up with a question you can address with the tools you
 learned in the class. You should incorporate ENCODE data into your
 analysis, and you can also integrate your own data.
+
+We will talk about possible questions at the end of class today.
 
 Goals
 =====
@@ -26,6 +29,8 @@ ChIP-seq / DNase I data
 Look at some human ChIP-seq data [#]_.
 
 .. [#] Genome Browser Session http://goo.gl/WfJxcM
+
+.. make UCSC session with DNase I data loaded
 
 Coverage plots for ChIP and DNase I
 -----------------------------------
@@ -102,4 +107,9 @@ You can now write "tracklines" [#]_ to tell where UCSC to find your data::
 
 There are a large number of additional options you can use in tracklines
 to change their display.
+
+Problem Set Questions
+=====================
+
+Anybody have questions on the problem set?
 

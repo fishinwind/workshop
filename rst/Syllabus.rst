@@ -187,46 +187,46 @@ Specific Dates / Material to be Covered
       - ChIP-seq / DNaseI-seq (UCSC)
     * - Class 16
       - W Mar 5
-      - TBD
+      - Genomic analysis vignettes 
     * - Class 17 
       - F Mar 7
-      - TBD
+      - Genomic analysis vignettes 
     * -
       - **No Class Mar 10-14 (Spring Break)**
       -
     * - Class 18
       - M Mar 17 
-      - R - Data 
+      - R data & plotting 
     * - Class 19
       - W Mar 19 
-      - TBD
+      - R data & plotting 
     * - Class 20
       - F Mar 21 
-      - TBD
+      - R data & plotting 
     * - Class 21
       - M Mar 24 
-      - TBD 
+      - R data & plotting 
     * - Class 22
       - W Mar 26 
-      - TBD 
+      - R data & plotting 
     * - Class 23
       - F Mar 28 
       - mRNA-seq (FPKM / diff exp)
     * - Class 24
       - M Mar 31 
-      - mRNA-seq - Diff. expression
+      - mRNA-seq 
     * - Class 25 
       - W Apr 2 
-      - Variant detection - reprocessing
+      - Variant detection - VCF / SNP calling 
     * - Class 26 
       - F Apr 4 
-      - Variant detection - VCF files 
+      - Variant detection - Phasing / CNV
     * - Class 27 
       - M Apr 7 
-      - Variant detection - SNP calling
+      - TBD
     * - Class 28 
       - W Apr 9 
-      - Variant detection - CNV detection
+      - TBD
     * - Class 29 
       - F Apr 11 
       - TBD
