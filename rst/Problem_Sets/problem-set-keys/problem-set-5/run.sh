@@ -64,10 +64,10 @@ bedtools intersect -a $dnase_bed -b $clustered_tfbs_bed -v -sorted \
     > $dhs_no_tfbs
 
 # What motifs are enriched in this set of hypersensitive sites?
-awk '$1 == "chr22"' < $dhs_no_tfbs > $dhs_no_tfbs_chr22
+awk '$1 == "chr22" && ($3 - $2 > 8)' < $dhs_no_tfbs > $dhs_no_tfbs_chr22
 bedtools getfasta -fi $fasta -bed $dhs_no_tfbs_chr22 -fo $dhs_no_tfbs_fasta
 
-if [[ ! -d $promlem_2_motifs ]]; then
+if [[ ! -d $problem_2_motifs ]]; then
     meme -nmotifs 10 -dna -minw 6 -maxw 20 -maxsize 100000000 \
         -o $problem_2_motifs $dhs_no_tfbs_fasta
 fi
