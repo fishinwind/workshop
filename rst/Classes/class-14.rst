@@ -136,7 +136,10 @@ analysis. Once you create a BED file, sort it with one of these:
 
 .. code-block:: bash
 
-   # same filename twice, overwrites original file
+   # using UNIX sort
+   $ sort -k1,1 -k2,2 unsorted.bed > sorted.bed
+
+   # UCSC tool. same filename twice, overwrites original file
    $ bedSort file.bed file.bed
 
    # or you can use bedtools; writes additional file
