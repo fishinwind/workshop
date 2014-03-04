@@ -10,10 +10,16 @@ Vignettes
 We will go over workflows for a few specific genomic analyses. Your final
 projects shoule be of similar scope and complexity.
 
-#. Identify human cell type specific DNase I hypersensitive sites and
-   calculate conservation levels.
+Hypothesis: XXX
 
-#. Identify signatures of modified base incorporation from 1000 Genomes
-   Data.
+#. Determine how similar patterns of DNase I hypersensitivity are across all
+   mapped human cell types.
+
+#. Calculate mean conservation scores for the matrix of cell types.
+
+#. Correlate patterns of DHS sensititvity and conservation.
+
+.. #. Identify signatures of modified base incorporation from 1000 Genomes
+      Data.
 
 
