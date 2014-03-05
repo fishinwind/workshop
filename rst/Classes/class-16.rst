@@ -8,7 +8,7 @@
 Vignettes
 =========
 We will go over workflows for a few specific genomic analyses. Your final
-projects shoule be of similar scope and complexity.
+projects should be of similar scope and complexity.
 
 Hypothesis: XXX
 
@@ -19,7 +19,13 @@ Hypothesis: XXX
 
 #. Correlate patterns of DHS sensititvity and conservation.
 
+.. Ananlysis ideas
+   --------------
+
 .. #. Identify signatures of modified base incorporation from 1000 Genomes
       Data.
 
+.. #. Correlate patterns of transitions and transversions in replication
+      timing data
 
+.. #. Identify histone marks associated with antisense transcription.
