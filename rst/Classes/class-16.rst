@@ -10,7 +10,8 @@ Vignettes
 We will go over workflows for a few specific genomic analyses. Your final
 projects should be of similar scope and complexity.
 
-Hypothesis: XXX
+:Hypothesis: Cell-type-specific DNase I hypersensitive sites are less
+             evolutionarily conserved than constitutive hypersensitve sites
 
 #. Determine how similar patterns of DNase I hypersensitivity are across all
    mapped human cell types.
