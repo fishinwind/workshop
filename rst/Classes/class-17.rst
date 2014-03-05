@@ -36,7 +36,7 @@ Some times you will have long bash scripts and you will misspell variables
 
 .. code-block:: bash
 
-    expname="chipseq.hela.h3k4me3"
+    expname="chipseq.hela"
     bamfile=$exnpame.bam
    
 The above code will run without error.
