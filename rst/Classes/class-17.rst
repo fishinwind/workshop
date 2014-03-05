@@ -8,34 +8,116 @@
 Goals
 =====
 
- #. 
+ #. Debugging in bash
 
- #. 
+ #. QC Sequence and Alignments
 
-Coverage plots for ChIP and DNase I
-===================================
 
-You will want to calculate coverage plots that are appropriate for the
-type of experiment. For example, in a ChIP experiment, you want to examine
-the entire region covered by sequences.
+Pybedtools
+==========
+
+The pybedtools documentation is very good: https://pythonhosted.org/pybedtools/
+
+Citable from: http://www.ncbi.nlm.nih.gov/pubmed/21949271
+
+installable as:
+
+.. code-block:: python
+
+    pip install pybedtools
+
+(How it began)
+
+
+Bashing
+=======
+
+Some times you will have long bash scripts and you will misspell variables
 
 .. code-block:: bash
 
-    $ common_args="-ibam <aln.bam> -g <chrom.size> -bg"
-    $ bedtools genomecov $common_args > coverage.bg
-
-But in a DNase I mapping experiment, you only want to know the exact
-position where DNase I cut the DNA, i.e. the 5' position. Use the ``-5``
-flag in bedtools to only count 5' positions.
+    expname="chipseq.hela.h3k4me3"
+    bamfile=$exnpame.bam
+   
+The above code will run without error.
+But, if you add:
 
 .. code-block:: bash
 
-    $ common_args="-ibam <aln.bam> -g <chrom.size> -bg"
-    $ bedtools genomecov $common_args -5 > coverage.5p.bg
+    set -o nounset
+
+To the **top of the script**. Accessing an undefined variable will raise an error.
 
 
-Problem Set Questions
-=====================
+Bashing (2)
+===========
 
-Anybody have questions on the problem set?
+In a long bash script, you may have a series of commands:
 
+.. code-block:: bash
+
+    eco "hello world" > useful-file.txt
+    cowsay < useful-file.txt
+
+In this case, the first line will show an error, but the second will still run.
+To make it **stop on the first error**, add the following to the **top of the
+script**
+
+.. code-block:: bash
+
+    set -e
+
+Bashing (3)
+===========
+
+Sometimes some of you were getting confused about what you were doing after all
+of the variables. You can force `bash` to echo the expanded commands it is
+running (including setting variable names) with
+
+.. code-block:: bash
+
+    set -x
+
+Bashing Summary
+===============
+
+Do this at the top of every script:
+
+.. code-block:: bash
+
+   set -eo nounset -o pipefail
+   set -x # this can sometimes be removed
+
+Pipefail gives more useful error messages when piping (|) commands.
+
+
+FASTQ
+=====
+
+fastq is ...
+
+FASTQC
+======
+
+BAM
+===
+
+bam is
+
+
+
+picard
+======
+
+metrics
+
+samtools
+========
+
+view alignments...
+
+
+Projects
+========
+
+come up with an idea for your projects.
