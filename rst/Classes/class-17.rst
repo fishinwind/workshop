@@ -1,9 +1,11 @@
 
-*********************************
-  Class 17 : 
-*********************************
+*************************
+  Class 17 : Bash and Bam
+*************************
 
 :Class date: 2014 Mar 7 Friday
+
+Log in to amc-tesla.
 
 Goals
 =====
@@ -26,7 +28,13 @@ installable as:
 
     pip install pybedtools
 
-(How it began)
+iterable:
+
+.. code-block:: python
+
+    for feature in BedTool('my.bed'):
+        if feature.strand == "+":
+            print feature.chrom, feature.start, feature.end
 
 
 Bashing
@@ -94,20 +102,52 @@ Pipefail gives more useful error messages when piping (|) commands.
 FASTQ
 =====
 
-fastq is ...
+remember fastq is [(name, seq, +, qual), ...]::
+
+    @cluster_2:UMI_ATTCCG
+    TTTCCGGGGCACATAATCTTCAGCCGGGCGC
+    +
+    9C;=;=<9@4868>9:67AA<9>65<=>591
+    @cluster_8:UMI_CTTTGA
+    TATCCTTGCAATACTCTCCGAACGGGAGAGC
+    +
+    1/04.72,(003,-2-22+00-12./.-.4-
+
+We often want to see how quality scores degrade over the read,
+check for adaptors, and see some info about our sequences...
 
 FASTQC
 ======
 
+fastqc is run as:
+
+.. code-block:: bash
+
+    fastqc /path/to/your/your.fastq
+
+and it creates an output directory containing html, e.g.:
+
+    http://amc-sandbox.ucdenver.edu/~brentp/fastqc/real_R1_fastqc/fastqc_report.html
+
 BAM
 ===
 
-bam is
+A BAM is **B** inary **A** lignment **F** ormat. It is the binary
+version of SAM format. 
+All of the alignments from high-throughput data you are likely to encounter will
+be in BAM format.
+
+Example Data
+============
+
+There are 4 example BAM files in ?????
 
 
 
 picard
 ======
+
+
 
 metrics
 
