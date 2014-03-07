@@ -1,7 +1,7 @@
 
-******************************
-  Genomic Analysis Vignettes 
-******************************
+************************************
+Class 16: Genomic Analysis Vignettes 
+************************************
 
 :Class date: 2014 Mar 5 Wednesday
 

@@ -49,7 +49,7 @@ Some times you will have long bash scripts and you will misspell variables
 
 .. code-block:: bash
 
-    expname="chipseq.hela"
+    expname="project1"
     bamfile=$exnpame.bam
    
 The above code will run without error.
@@ -59,8 +59,8 @@ But, if you add:
 
     set -o nounset
 
-To the **top of the script**. Accessing an undefined variable will raise an error.
-
+To the **top of the script**, then accessing an undefined variable will
+raise an error.
 
 Bashing (2)
 ===========
@@ -79,6 +79,8 @@ script**
 .. code-block:: bash
 
     set -e
+
+**YOU SHOULD ALWAYS ADD THIS TO YOUR BASH SCRIPTS**
 
 Bashing (3)
 ===========
@@ -151,7 +153,7 @@ version of SAM format.
 All of the alignments from high-throughput data you are likely to encounter will
 be in BAM format.
 
-You can easily transfer between Binary BAM and text SAM using samtools view:
+You can easily transfer between Binary BAM and text SAM using samtools view::
 
     samtools view a.bam | python process-sam-text.py > processes.sam
 
@@ -177,8 +179,8 @@ Since they are in binary format, you'll need to use samtools to `view` them
     $ samtools view /vol1/opt/data/bams/2_8-bwa.bam | less
 
 + Alignments contain a lot of information!
-+ Look at the format and read on the samtools site for more info.
-+ The example data is only for chromosome 4.
++ Check the output and read on the samtools site for more info
++ The example data is only for chromosome 4
 
 Picard
 ======
