@@ -5,7 +5,7 @@
 
 :Class date: 2014 Mar 7 Friday
 
-Log in to amc-tesla and do this:
+Log in to amc-tesla and do this::
 
     cd ~
     cp /vol1/opt/data/class-17.tar.gz .
@@ -178,9 +178,9 @@ Since they are in binary format, you'll need to use samtools to `view` them
 
 + Alignments contain a lot of information!
 + Look at the format and read on the samtools site for more info.
++ The example data is only for chromosome 4.
 
-
-picard
+Picard
 ======
 
 http://picard.sourceforge.net/
@@ -192,10 +192,17 @@ We will look at alignment metrics.
 The 4 example bams are from a targetted sequencing project so we will
 examine the percent on and off-target along with the coverage.
 
-picard metrics
+Picard Metrics
 ==============
 
- explain from terminal
+ To gauge the on/off-target reads, we use a BED file of the target
+ regions that has a header of all the sequences from the BAM. 
+
+.. code-block:: bash
+
+    less /vol1/opt/data/bams/intervals.txt
+
+... explain from terminal ... (see run.sh)
 
 picard output
 =============
