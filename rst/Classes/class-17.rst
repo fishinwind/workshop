@@ -216,3 +216,10 @@ Projects
 ========
 
 come up with an idea for your projects.
+
+In/Out Class Exercise
+=====================
+
+Use bedtools intersect with the `-abam` flag on one of the example BAM's and
+`mm10.capture.chr4.bed` to count the number of on and off-target reads.
+Does it match what picard says?
