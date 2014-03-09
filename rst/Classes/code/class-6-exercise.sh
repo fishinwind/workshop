@@ -31,3 +31,4 @@ grep -v '^@' $align \
     | uniq -c \
     | awk 'BEGIN {OFS="\t"} {print $2,$3,$1}' \
     | gzip -c > $coverage
+

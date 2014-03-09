@@ -10,11 +10,6 @@ Here is bash script that runs the analysis:
     :language: bash
     :linenos:
 
-The output of the run script looks like this:
-
-.. literalinclude:: problem-set-5/result.tab
-    :linenos:
-
 .. raw:: pdf
 
     PageBreak
