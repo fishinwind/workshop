@@ -134,6 +134,16 @@ In R, it is:
     # or
     library('ggplot2')
 
+R paths
+=======
+
+get/set working directory
+
+.. code-block:: r
+
+    getwd() # print
+    setwd('C:\whatever\path\') # on windows
+    setwd('/opt/bio-workshop/data/') # on linux
 
 ggplot2
 =======
