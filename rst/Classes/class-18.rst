@@ -10,7 +10,7 @@ Class 18 : R : Getting Started
 
     Download the recommended for your system (Ubuntu 10+, 32-bit)
 
-    $ dpkg -i ~/Downloads/rstudio*.deb
+    $ sudo dpkg -i ~/Downloads/rstudio*.deb
 
 Goals
 =====
