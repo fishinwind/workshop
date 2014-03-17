@@ -2,8 +2,6 @@
 Class 18 : R : Getting Started
 ******************************
 
-:Class date: 2014 Mar 17 Monday
-
 .. important::
 
     Within your VirtualBox, Google Search for *"rstudio desktop download"* and Follow the first link.
@@ -11,6 +9,8 @@ Class 18 : R : Getting Started
     Download the recommended for your system (Ubuntu 10+, 32-bit)
 
     $ sudo dpkg -i ~/Downloads/rstudio*.deb
+
+    $ sudo apt-get -f install
 
 Goals
 =====
