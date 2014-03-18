@@ -236,13 +236,16 @@ a histogram of your data:
     # or
     hist(log(df$expression))
 
-You can make these look a lot nicer with ggplot2
+You can make these look a lot nicer with ggplot2.
+
+**Hist** does not work with ggplot, you'll have to use the
+ggplot2 machinery for that.
 
 Exercise
 ========
 
-Make a histogram using ggplot and separate out cases from controls
-either by **facet**.
+Make a histogram using ggplot and separate cases from controls
+either by **facet** or by **fill**. 
 
 .. raw:: pdf
 
