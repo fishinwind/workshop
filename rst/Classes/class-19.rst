@@ -208,6 +208,10 @@ The data.frame from plyr is in ``wide`` format.
 Exercises
 =========
 
+#. Figure out how to move overlapping points so categorical data is
+   viewable (hint: look at geom_jitter() or the `position` argument to
+   geom_point()) 
+
 #. Load a BED file (e.g. ``lamina.bed``) and calculate the mean length of
    regions on each chromosome in the BED file with plyr.  Plot the result as
    a bar plot with ggplot2.
