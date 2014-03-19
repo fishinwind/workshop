@@ -66,6 +66,17 @@ There are several data sets that are built-in to R including:
     # see all built-in data sets
     > library(help = "datasets")
 
+Introduction to plyr
+====================
+
+The ``plyr`` package provides several methods for flexible manipulation of
+data. Think "pliers".
+
+The main function we will use is called ``ddply``. The first ``d``
+says that the input is a ``data.frame`` and the second ``d`` says that the
+output is a ``data.frame``. 
+
+
 Introduction to reshape
 =======================
 The ``reshape`` package provides two important functions called
@@ -76,7 +87,7 @@ common operation is to convert data tables from `wide` format to `long`
 format and back.
 
 Wide format (or `unstacked`)
----------------------
+----------------------------
 
 Values for each variable are in a separate column.
 
@@ -97,7 +108,7 @@ Values for each variable are in a separate column.
       - 95
 
 Long format (or `stacked`)
--------------------
+--------------------------
 
 One column contains the variables, one column contains the values.
 
@@ -129,19 +140,40 @@ One column contains the variables, one column contains the values.
 How is ``reshape`` useful?
 ==========================
 
-XXX
+The ``ggplot2`` expects data in ``long`` format, where points are
+categorized.
 
-Introduction to plyr
-====================
-The ``plyr`` package provides several methods for flexible manipulation of
-data. Think "pliers".
+.. code-block:: r
 
-The main function we will use is called ``ddply``. The first ``d``
-says that the input is a ``data.frame`` and the second ``d`` says that the
-output is a ``data.frame``. 
+    > library(plyr)
+    > library(reshape2)
+    > library(ggplot2)
+
+    > colnames <- c('chrom','start','end')
+    > dfx <- read.delim('/opt/bio-workshop/data/lamina.bed',
+                        col.names=colnames)
+
+    # measure lengths for each entry
+    > dfx$length = dfx$end - dfx$start
+
+    > summary <- ddply(dfx, "chrom", summarize,
+                       mean.len = mean(length),
+                       median.len = median(length))
+
+Look at the ``summary`` data.frame. Is it in ``wide`` or ``long`` format?
 
 .. nextslide::
-    :increment:
+   :increment:
+
+The data.frame from plyr is in ``wide`` format. 
+
+.. code-block:: r
+
+    # covert to long format
+    > long.summary <- melt(summary, id=c('chrom'))
+
+    > gp <- ggplot(long.summary, aes(x=chrom, y=value, fill=variable))
+    > gp + geom_bar(stat='identity', position='dodge')
 
 Exercises
 =========
@@ -149,16 +181,6 @@ Exercises
 #. Load a BED file (e.g. ``lamina.bed``) and calculate the mean length of
    regions on each chromosome in the BED file with plyr.  Plot the result as
    a bar plot with ggplot2.
-
-.. answer
-
-.. > colnames <- c('chrom','start','end')
-.. > dfx <- read.delim('/opt/bio-workshop/data/lamina.bed',
-            col.names=colnames)
-
-.. > dfx$length = dfx$end - dfx$start
-.. > summary <- ddply(dfx, "chrom", summarize, mean.length = 
-                      mean(length))
 
 .. raw:: pdf
 
