@@ -116,9 +116,6 @@ a BED file.
                        mean.len = mean(length),
                        median.len = median(length))
 
-.. nextslide::
-   :increment:
-
 
 Introduction to reshape
 =======================
@@ -217,7 +214,6 @@ Exercises
    a bar plot with ggplot2.
 
 #. Install ``dplyr`` and work through the vignette.
-
    http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
 
 .. raw:: pdf
