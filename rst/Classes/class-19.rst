@@ -4,11 +4,13 @@ Class 19 : R : Manipulation & Plotting
 
 Goals
 =====
+
  #. Learn to load data with ``read.delim``
  #. Begin to manipulate data with ``reshape`` and ``plyr``
 
 Loading data into R
 ===================
+
 The main function for loading data is ``read.delim()``:
 
 .. code-block:: r
@@ -78,6 +80,9 @@ The function we will use initially is called ``ddply``. The first ``d``
 says that the input is a ``data.frame`` and the second ``d`` says that the
 output is a ``data.frame``. 
 
+.. nextslide::
+   :increment:
+
 Break down a ddply() function:
 
 .. code-block:: r
@@ -103,7 +108,7 @@ a BED file.
     > library(plyr)
 
     # load data
-    > colnames <- c('chrom','start','end')
+    > colnames <- c('chrom','start','end','value')
     > dfx <- read.delim('/opt/bio-workshop/data/lamina.bed',
                         col.names=colnames)
 
@@ -119,12 +124,18 @@ a BED file.
 
 Introduction to reshape
 =======================
-The ``reshape`` package provides two important functions called
-``melt()`` and ``cast()``.
+
+The ``reshape2`` package provides two important functions called
+``melt()`` and ``recast()``.
 
 These functions allow you to manipulate the shape of data frames. One
 common operation is to convert data tables from `wide` format to `long`
 format and back.
+
+There are useful examples in the article describing the reshape package
+[#]_. Check out the ``french fries`` case study.
+
+.. [#] http://www.jstatsoft.org/v21/i12/paper
 
 Wide format (or `unstacked`)
 ----------------------------
@@ -180,7 +191,7 @@ One column contains the variables, one column contains the values.
 How is ``reshape`` useful?
 ==========================
 
-The ``ggplot2`` expects data in ``long`` format, where points are
+``ggplot2`` expects data in ``long`` format, where individual points are
 categorized.
 
 **Question:** Look at the ``summary`` data.frame. Is it in ``wide`` or
