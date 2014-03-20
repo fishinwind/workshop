@@ -211,10 +211,10 @@ Specific Dates / Material to be Covered
       - R data & plotting 
     * - Class 23
       - F Mar 28 
-      - mRNA-seq (FPKM / diff exp)
+      - R data & plotting 
     * - Class 24
       - M Mar 31 
-      - mRNA-seq 
+      - mRNA-seq (FPKM / diff exp)
     * - Class 25 
       - W Apr 2 
       - Variant detection - VCF / SNP calling 
@@ -223,7 +223,7 @@ Specific Dates / Material to be Covered
       - Variant detection - Phasing / CNV
     * - Class 27 
       - M Apr 7 
-      - TBD
+      - TBD (**FINAL PROJECTS DUE**)
     * - Class 28 
       - W Apr 9 
       - TBD
