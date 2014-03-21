@@ -9,7 +9,7 @@ Problem Set 6
 Problem 1
 =========
 
-Write up a short description of the goals for your final project (**15
+Write up a short description of the goals for your final project (**20
 points**).
 
 This description should include:
@@ -43,8 +43,8 @@ Workflow
 Problem 2
 =========
 
-Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (**15
-points**).
+Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (**10
+points**). You can use Python to filter the data prior to analysis. 
 
 #. Load the peaks BED file and find the 10 factors that have the largest
    range in peak width. Inspect a geom_boxplot() or geom_viol in() to
@@ -52,13 +52,12 @@ points**).
    geom_jitter()).
 
 #. Repeat the above, but only examine peaks do not overlap with any other
-   peak (use bedtools to find these).
+   peak (e.g. use bedtools to find these).
 
 Problem Set Submission
 ======================
 
-Submit your problem set as a tar file to Canvas
-(:ref:`problem-set-submission`).
+Submit your problem set as a tar file to Canvas (:ref:`problem-set-submission`).
 
 .. raw:: pdf
 
