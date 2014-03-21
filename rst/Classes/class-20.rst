@@ -6,10 +6,9 @@ Goals
 =====
 
  #. Learn to keep a running script in RStudio to save your work.
-
+ #. more reshape and dplyr
  #. Exercises 
 
-<<<<<<< HEAD
 RStudio practice
 ================
 
@@ -23,6 +22,17 @@ reshape2 review
 
 There are two functions in the reshape2 package: ``melt()`` and
 ``dcast()``. The ``d`` means it returns a data.frame.
+
+``dcast()`` takes a data.frame, a forumula and an optional function
+
+.. code-block:: r
+
+   > library(reshape2)
+   > library(dplyr)
+   > mycars <- mutate(mtcars, car.name = rownames(mtcars))
+   > mycarsm <- melt(mtcars, id=c('car.name','gear'))
+   # examine mycarsm. is it wide or long?
+   > dcast(mycarsm, gear ~ variable, mean)
 
 dplyr
 =====
@@ -44,8 +54,29 @@ string manipulations together:
 
     > summary <- dfx %.% select() %.% group_by() %.% summarize()
 
-.. nextslide::
-    :increment:
+plyr / dplyr comparison
+=======================
+
+.. code-block:: r
+
+    dfx <- read.table('misc/data/expr-geno-covs.txt', header=TRUE)
+
+    # calculate some simple stats with plyr and dplyr
+
+    # with plyr
+    ddply(dfx, .(condition, genotype), summarise, mean.age = mean(age), count = n())
+
+    # with dplyr
+    grouped <- group_by(dfx, condition, genotype)
+    summarize(grouped, count = n(), mean.age = mean(age))
+
+    # even better
+    dfx %.% group_by(condition, genotype) %.%
+        summarize(grouped, count = n(),
+        mean.age = mean(age))
+
+dplyr example
+=============
 
 Summarize transcription factor binding site peaks:
 
@@ -66,34 +97,14 @@ Summarize transcription factor binding site peaks:
 + ``group_by()`` takes the place of the variables in ``ddply``
 + ``n()`` is a special function for counting observations
 + assign the whole thing to a new data.frame
-=======
-plyr / dplyr comparison
-=======================
-
-.. code-block:: r
-
-    dfx <- read.table('misc/data/expr-geno-covs.txt', header=TRUE)
-
-    # calculate some simple stats with plyr and dplyr
-
-    # with plyr
-    ddply(dfx, .(condition, genotype), summarise, mean.age = mean(age), count = n())
-
-    # with dplyr
-    grouped <- group_by(dfx, condition, genotype)
-    summarize(grouped, count = n(), mean.age = mean(age))
->>>>>>> FETCH_HEAD
 
 Exercises
 =========
 
-<<<<<<< HEAD
 #. Melt the `expr-geno-covs.txt` data table. Recast it with ``dcast()``
    and calculate the mean for each variable conditioned on gender. Plot
    the result.
 
-=======
->>>>>>> FETCH_HEAD
 #. Load the `expr-geno-covs.txt <../misc/data/expr-geno-covs.txt>` data.
    Use ``dplyr`` to calculate the mean age of smokers grouped by gender
    and smoking status. Plot the result.
@@ -102,11 +113,6 @@ Exercises
    model through these curves (use geom_smooth) on the plot.
 
 #. Load a BED file (e.g. ``lamina.bed``) and calculate the mean length of
-<<<<<<< HEAD
    regions on each chromosome in the BED file with dplyr. Plot the result as
    a bar plot.
-=======
-   regions on each chromosome in the BED file with plyr.  Plot the result as
-   a bar plot with ggplot2.
->>>>>>> FETCH_HEAD
 
