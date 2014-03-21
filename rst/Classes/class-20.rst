@@ -12,10 +12,10 @@ Goals
 RStudio practice
 ================
 
-#. open a new R script with File -> New -> R script
+ #. open a new R script with File -> New -> R script
 
-#. As you run interactive analyses, paste the commands that work into the
-   script.
+ #. As you run interactive analyses, paste the commands that work into the
+    script.
 
 reshape2 review
 ===============
@@ -78,6 +78,8 @@ plyr / dplyr comparison
 dplyr example
 =============
 
+Fetch the peaks.bed.gz file <http://amc-sandbox.ucdenver.edu/~jhessel/outbox/2014/peaks.bed.gz>
+
 Summarize transcription factor binding site peaks:
 
 .. code-block:: r
@@ -112,6 +114,6 @@ Exercises
    model through these curves (use geom_smooth) on the plot.
 
 #. Load the peaks BED file and find the 10 factors that have the largest range
-   in peak width. Inspect a geom_boxplot() or geom_violin() to support
-   your answer (also add individual points to the plot with geom_jitter()).
+   in peak width. Inspect a ``geom_boxplot()`` or ``geom_violin()`` to support
+   your answer (also add individual points to the plot with ``geom_jitter()``).
 
