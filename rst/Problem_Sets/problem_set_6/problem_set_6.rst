@@ -19,6 +19,7 @@ This description should include:
 
 Example
 -------
+
 I will examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
 marks are enriched in high confidence CTCF-mediated chromatin loops::
 
@@ -28,6 +29,7 @@ marks are enriched in high confidence CTCF-mediated chromatin loops::
              H3K4me3 peak?                 H3K4me3 peak?
 
 Workflow
+--------
 
 #. download ENCODE ChIA-PET/CTCF and histone ChIP  data for K562 cell line
 #. Determine which histone marks are present in the regions defined by

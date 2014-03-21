@@ -37,8 +37,7 @@ There are two functions in the reshape2 package: ``melt()`` and
 dplyr
 =====
 
-The ``dplyr`` package is uses syntax that is much more appealing that
-``plyr``. It provides these simple methods:
+``dplyr`` provides these simple methods:
 
     #. ``summarise()``
     #. ``filter()``
@@ -63,17 +62,18 @@ plyr / dplyr comparison
 
     # calculate some simple stats with plyr and dplyr
 
-    # with plyr
-    ddply(dfx, .(condition, genotype), summarise, mean.age = mean(age), count = n())
+    # with plyr - ugly
+    ddply(dfx, .(condition, genotype), summarise,
+        mean.age = mean(age), count = n())
 
     # with dplyr
     grouped <- group_by(dfx, condition, genotype)
     summarize(grouped, count = n(), mean.age = mean(age))
 
     # even better
-    dfx %.% group_by(condition, genotype) %.%
-        summarize(grouped, count = n(),
-        mean.age = mean(age))
+    dfx %.% 
+        group_by(condition, genotype) %.%
+        summarize(count = n(), mean.age = mean(age))
 
 dplyr example
 =============
@@ -105,14 +105,13 @@ Exercises
    and calculate the mean for each variable conditioned on gender. Plot
    the result.
 
-#. Load the `expr-geno-covs.txt <../misc/data/expr-geno-covs.txt>` data.
-   Use ``dplyr`` to calculate the mean age of smokers grouped by gender
+#. Use ``dplyr`` to calculate the mean age of smokers grouped by gender
    and smoking status. Plot the result.
 
 #. Make a plot of age by expression faceted by genotype. Fit a linear
    model through these curves (use geom_smooth) on the plot.
 
-#. Load a BED file (e.g. ``lamina.bed``) and calculate the mean length of
-   regions on each chromosome in the BED file with dplyr. Plot the result as
-   a bar plot.
+#. Load the peaks BED file and find the 10 factors that have the largest range
+   in peak width. Inspect a geom_boxplot() or geom_violin() to support
+   your answer (also add individual points to the plot with geom_jitter()).
 
