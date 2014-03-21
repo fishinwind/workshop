@@ -47,9 +47,9 @@ Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (**15
 points**).
 
 #. Load the peaks BED file and find the 10 factors that have the largest
-   range in peak width. Inspect a geom_boxplot() or geom_viol in() to
-   support your answer (also add individual points to the plot with
-   geom_jitter()).
+   range in peak width. Inspect a ``geom_boxplot()`` or ``geom_violin()``
+   to support your answer (also add individual points to the plot with
+   ``geom_jitter()``).
 
 #. Repeat the above, but only examine peaks do not overlap with any other
    peak (use bedtools to find these).
