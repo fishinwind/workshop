@@ -7,7 +7,7 @@ Goals
 
  #. Understand data.frames in more detail
  #. Practice manipulating data.frames
- #. dplyr, reshape, ggplot
+ #. melt, dplyr, ggplot
 
 data.frames
 ===========
@@ -112,25 +112,6 @@ There are two functions in the reshape2 package: ``melt()`` and
 + Q: what is melt.cars?
 + A: for every car:gear combination, it gives, the mpg
 
-dcast
-=====
-
-``dcast()`` takes a data.frame, a forumula and an optional function
-
-To get the mean mpg by gear (across all cars), we can do:
-
-.. code-block:: r
-
-   dcast(melt.cars, gear ~ variable, mean)
-
-
-Or mean mpg by car (across all gears for that car):
-
-.. code-block:: r
-
-   dcast(melt.cars, car.name ~ variable, mean)
-
-
 dplyr review
 ============
 
@@ -143,29 +124,78 @@ dplyr review
     #. ``arrange()``
     #. ``group_by()``
 
+
+dplyr
+=====
 ``dplyr`` also provides an operator called ``%.%`` that allows you to
-chain manipulations together:
+chain manipulations together.
+
+To get mean expression level by condition (case/control)
 
 .. code-block:: r
 
-    dfx %.% 
-        group_by(condition, genotype) %.%
-        summarize(count = n(), mean.age = mean(age))
+    covs %.% group_by(condition) \
+         %.% summarize(count=n(), mean.expr=mean(expression))
 
-Exercises
-=========
+Mean expression by condition and genotype
 
-#. Melt the `expr-geno-covs.txt` data table. Recast it with ``dcast()``
-   and calculate the mean for each variable conditioned on gender. Plot
-   the result.
+.. code-block:: r
 
-#. Use ``dplyr`` to calculate the mean age of smokers grouped by gender
-   and smoking status. Plot the result.
+    covs %.% group_by(condition, genotype) \
+         %.% summarize(count=n(), mean.expr=mean(expression))
 
-#. Make a plot of age by expression faceted by genotype. Fit a linear
-   model through these curves (use geom_smooth) on the plot.
 
-#. Load the peaks BED file and find the 10 factors that have the largest range
-   in peak width. Inspect a ``geom_boxplot()`` or ``geom_violin()`` to support
-   your answer (also add individual points to the plot with ``geom_jitter()``).
+Exercise
+========
+
+#. What is the difference in mean age between cases and controls?
+#. What is the difference in mean age by genotype?
+
+
+ggplot
+======
+
+Above, we had mean expression by condition and genotype as:
+
+.. code-block:: r
+
+    covs %.% group_by(condition, genotype) \
+         %.% summarize(count=n(), mean.expr=mean(expression)) \
+
+We can add to that expression (after typing 'library(ggplot2)')
+
+.. code-block:: r
+
+        %.% ggplot(aes(x=genotype, y=expression) \
+            + geom_histogram(stat='identity')
+
+how can we change the color of all the bars to 'red'? [Hint, it's not
+**color** ='red']
+
+ggplot histograms
+=================
+
+Since `expr-geno-covs.txt` is already in long format, we can use it directly in
+ggplot:
+
+.. code-block:: r
+
+    ggplot(covs, aes(x=expression)) + 
+           geom_histogram() +
+           scale_x_log10()
+
+Exercise
+========
+Adjust this:
+
+.. code-block:: r
+
+    ggplot(covs, aes(x=expression)) + 
+           geom_histogram() +
+           scale_x_log10()
+
+
+#. to color by genotype
+#. and to split plots (facet_wrap) by condition (case/control)
+#. to color by age (> 50 vs < 50)
 
