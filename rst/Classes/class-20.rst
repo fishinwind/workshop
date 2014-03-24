@@ -80,6 +80,9 @@ dplyr example
 
 Fetch the peaks.bed.gz file <http://amc-sandbox.ucdenver.edu/~jhessel/outbox/2014/peaks.bed.gz>
 
+.. nextslide::
+   :increment:
+
 Summarize transcription factor binding site peaks:
 
 .. code-block:: r
