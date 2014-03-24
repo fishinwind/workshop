@@ -7,7 +7,7 @@ Goals
 
  #. Understand data.frames in more detail
  #. Practice manipulating data.frames
- #. melt, dplyr, ggplot
+ #. dplyr, ggplot
 
 data.frames
 ===========
@@ -60,6 +60,16 @@ that as the row id:
 
     covs[c('sample_1', 'sample_14'),]
 
+We can still extract them with numbers:
+
+    covs[c(1, 4),]
+
+.. warning::
+
+    Be careful with data.frames where the row.names are
+    from an integer column
+
+
 Boolean Operations on Colums
 ============================
 
@@ -67,7 +77,7 @@ Boolean Operations on Colums
     
     is_old = covs$age > 65
 
-now `is_old` is a list of true falses. We can extract only those > 65 as:
+now `is_old` is a list of TRUE / FALSE values. We can extract only those > 65 as:
 
 .. code-block:: r
 
@@ -92,25 +102,6 @@ Remember for combining expressions, you can create a variable for each, `is_AA`,
 #. How many people have genotype 'CC' or 'AA'?
 #. How many people have genotype of 'CC' or 'AA' and are under 65 years old.
 #. How many males have genotype of 'CC' or 'AA' and are under 65 years old.
-
-
-reshape2 review
-===============
-
-There are two functions in the reshape2 package: ``melt()`` and
-``dcast()``. The ``d`` means it returns a data.frame.
-
-
-.. code-block:: r
-
-   > library(reshape2)
-   > library(dplyr)
-   > mut.cars <- mutate(mtcars, car.name = rownames(mtcars))
-   > melt.cars <- melt(mut.cars, id=c('car.name','gear'), measure.vars="mpg")
-
-
-+ Q: what is melt.cars?
-+ A: for every car:gear combination, it gives, the mpg
 
 dplyr review
 ============
@@ -148,9 +139,9 @@ Mean expression by condition and genotype
 Exercise
 ========
 
-#. What is the difference in mean age between cases and controls?
-#. What is the difference in mean age by genotype?
-
+#. What are the mean ages by cases and controls?
+#. What are the mean ages by genotype?
+#. How can you order the output by ascending and descending mean expression?
 
 ggplot
 ======
@@ -197,5 +188,6 @@ Adjust this:
 
 #. to color by genotype
 #. and to split plots (facet_wrap) by condition (case/control)
-#. to color by age (> 50 vs < 50)
+#. to color by age > 60 vs. <= 60 (use row selection stuff from start of class to
+   make a new column named, e.g. `is_old`)
 
