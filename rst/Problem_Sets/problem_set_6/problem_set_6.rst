@@ -54,6 +54,16 @@ points**). You can use Python to filter the data prior to analysis.
 #. Repeat the above, but only examine peaks do not overlap with any other
    peak (e.g. use bedtools to find these).
 
+.. note:: Clarification
+
+   What do I mean by peak width? Good question.
+
+   You should calcuate a min.width and max.width for each factor. Then the
+   range is the difference between the two.
+
+   Hint: you can ``summarize()`` to calculate the min and max, and then
+   ``mutate()`` that summary to add a `range` column.
+
 Problem Set Submission
 ======================
 
