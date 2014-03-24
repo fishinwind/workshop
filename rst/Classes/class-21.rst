@@ -92,6 +92,18 @@ We can combine selections with '&' for and and '|' for or
     old_with_disease = (covs$age > 65) & (covs$condition == "case")
     owd = covs[old_with_disease,]
 
+.. nextslide::
+   :increment:
+
+.. code-block:: r
+
+   # with subset
+   old <- subset(covs, age > 65)
+
+   # select on membership
+   genos <- c('AC', 'CA')
+   hets  <- subset(covs, genotype %in% genos)
+
 Excercises
 ==========
 
