@@ -30,7 +30,7 @@ There are two functions in the reshape2 package: ``melt()`` and
    > library(reshape2)
    > library(dplyr)
    > mycars <- mutate(mtcars, car.name = rownames(mtcars))
-   > mycarsm <- melt(mtcars, id=c('car.name','gear'))
+   > mycarsm <- melt(mycars, id=c('car.name','gear'))
    # examine mycarsm. is it wide or long?
    > dcast(mycarsm, gear ~ variable, mean)
 
