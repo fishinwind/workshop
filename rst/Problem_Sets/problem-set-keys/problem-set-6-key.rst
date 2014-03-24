@@ -40,8 +40,11 @@ violin plots.
     # returns rows where name is in the factors data.frame
     > peaks.subset <- subset(peaks_tbl, name %in% factors.top10)
 
-    > gp <- ggplot(peaks.subset, aes(x=(end - start), color=name))
-    > gp + geom_boxplot() + coord_flip()
+    # end - start = width
+    > gp <- ggplot(peaks.subset, aes(name, end - start, color=name))
+    > gp + geom_boxplot() + coord_trans(y="log10") + coord_flip()
+
+    # or use geom_violin()
     > gp + geom_violin() + coord_flip()
 
 Problem 2.2
