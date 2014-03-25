@@ -61,7 +61,6 @@ Grab the peaks that do not overlap any other peaks (besides itself). Strategy:
 .. code-block:: bash
 
     $ fname="peaks.bed.gz"
-
     $ bedtools intersect -a $fname -b $fname -c \
         | awk '$NF == 1' \
         | gzip -c \
