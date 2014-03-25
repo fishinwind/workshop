@@ -42,7 +42,7 @@ violin plots.
 
     # end - start = width
     > gp <- ggplot(peaks.subset, aes(name, end - start, color=name))
-    > gp + geom_boxplot() + coord_trans(y="log10") + coord_flip()
+    > gp + geom_boxplot() + scale_y_log10() + coord_flip()
 
     # or use geom_violin()
     > gp + geom_violin() + coord_flip()
