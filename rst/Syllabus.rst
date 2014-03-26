@@ -1,22 +1,22 @@
-********************
-Syllabus (MOLB 7620)
-********************
+************************
+  Syllabus (MOLB 7620)
+************************
 
 General Information
 ===================
 
-:Title: Genome Informatics Workshop
+:Title:         Genome Informatics Workshop
 :Course Number: MOLB 7620
-:Semester: Spring 2014
-:Homepage: http://ucd-bioworkshop.github.io
-:Author: Jay R. Hesselberth
-:Author: Brent Pedersen
-:Organization: University of Colorado School of Medicine
-:Address: Department of Biochemistry and Molecular Genetics
-:Address: Department of Medicine
-:Copyright: 2013-2014 Jay R. Hesselberth, Brent Pedersen
-:Copyright: All Rights Reserved.
-:Last updated: |today|
+:Semester:      Spring 2014
+:Homepage:      http://ucd-bioworkshop.github.io
+:Author:        Jay R. Hesselberth
+:Author:        Brent Pedersen
+:Organization:  University of Colorado School of Medicine
+:Address:       Department of Biochemistry and Molecular Genetics
+:Address:       Department of Medicine
+:Copyright:     2013-2014 Jay R. Hesselberth, Brent Pedersen
+:Copyright:     All Rights Reserved.
+:Last updated:  |today|
 
 PDF Content
 ===========
@@ -44,11 +44,13 @@ Instructor Information
 
 Schedule
 ========
+
 Mon, Wed, Fri, 2:30 - 4:00 PM.
 :ref:`See specific dates. <syllabus-specific-dates>`
 
 Location
 ========
+
 Health Sciences Library, Computer Teaching Lab 2
 
 Course Description
@@ -72,6 +74,7 @@ and structural variants.
 
 Course Credits
 --------------
+
 This is a 2 credit course.
 
 Texts and Reading Materials
@@ -229,10 +232,7 @@ Specific Dates / Material to be Covered
       - TBD
     * - Class 29 
       - F Apr 11 
-      - TBD
-    * - Class 30 
-      - M Apr 14 
-      - Final project presentations
+      - Final project presentations > Happy Hour
 
 .. raw:: pdf
 
