@@ -54,10 +54,22 @@ points**). You can use Python to filter the data prior to analysis.
 #. Repeat the above, but only examine peaks do not overlap with any other
    peak (e.g. use bedtools to find these).
 
+.. note:: Clarification
+
+   What do I mean by `range in peak width`? Good question.
+
+   You should calcuate a min.width and max.width for each transcription
+   factor in the BED file. Then the range is the difference between the
+   max.width and min.width.
+
+   Hint: you can ``summarize()`` to calculate the min.width and max.width,
+   and then ``mutate()`` the summary to add a `range` column.
+
 Problem Set Submission
 ======================
 
-Submit your problem set as a tar file to Canvas (:ref:`problem-set-submission`).
+Submit your problem set as a tar file to Canvas
+(:ref:`problem-set-submission`).
 
 .. raw:: pdf
 
