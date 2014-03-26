@@ -82,10 +82,13 @@ Texts and Reading Materials
 
 #. **Required**: Learn Python the Hard Way,
     http://learnpythonthehardway.org/book/
+
 #. **Required**: Command Line Crash Course
     http://cli.learncodethehardway.org/book/
+
 #. **Required**: ggplot2: Elegant Graphics for Data Analysis
     http://ggplot2.org/book/
+
 #. **Required**: A Quick Guide to Organizing Computational Biology Projects
     http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
 
@@ -119,11 +122,13 @@ problem sets are uploaded
 
 Assessment
 ==========
+
 Progress of individual students will be assessed during the daily exercise
 session, weekly problem sets, as well as a final project.
 
 Grading Criteria
 ----------------
+
  - 50% participation
  - 35% problem sets (7 sets, 5% each)
  - 15% final project

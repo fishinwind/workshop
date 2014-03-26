@@ -39,10 +39,19 @@ Excercises
     - conditions
     - gender
 
- #. 
-
 ggplot manipulations
 ====================
+
+Once you make a plot that you like, you can save it with:
+
+.. code-block:: r
+
+   # ggsave uses the last plot by default and learns format from the file
+   # suffix
+   > ggsave('myplot.pdf')
+
+.. nextslide::
+    :increment:
 
 Often you will have observations of two variables that are both 
 continuous data. How can you examine the relationships between these?
@@ -52,8 +61,10 @@ Use ``geom_boxplot()`` with the ``group`` aesthetic:
 .. code-block:: r
 
     # ``round_any()`` is provided by ``plyr``
-    > gp <- ggplot(covs, aes(x = expr, y = age,
-                             group = round_any(expr, 100)))
+    > library(plyr)
+    > gp <- ggplot(covs, aes(x = age, y = expression, 
+                   group = round_any(age, 2)))
+
     > gp + geom_boxplot()
 
 .. nextslide::
@@ -74,25 +85,28 @@ overall relationship:
 R Model Syntax
 ==============
 
-You can also fit a linear model separately and plot the data:
+You can also fit and examine a linear model:
 
 .. code-block:: r
 
     > model <- lm(expression ~ genotype + condition + gender , data = covs)
     > summary(model)
 
+    # look at diagnostic plots
+    > plot(model)
 
-    > gp + geom_abline(intercept = coef(model)[1], 
-                       slope = coef(model)[2])
+..  XXX is this model plottable?
+..    # use ggplot to plot the data
+..    > gp + geom_point()
+..    > gp + geom_abline(intercept = coef(model)[1], 
+..                       slope = coef(model)[2])
 
 Exercises
 ---------
 
-#. Does adding age to the existing model (expression ~ genotype + condition +
-   gender) change the signficance of the other variables? 
+ #. Does adding age to the existing model (expression ~ genotype + condition +
+    gender) change the signficance of the other variables? 
 
-#. How does removing condition from the model affect the significance of
-   genotype and vice-versa?
-
-
+ #. How does removing condition from the model affect the significance of
+    genotype and vice-versa?
 
