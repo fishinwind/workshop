@@ -44,8 +44,14 @@ violin plots.
     > gp <- ggplot(peaks.subset, aes(name, end - start, color=name))
     > gp + geom_boxplot() + scale_y_log10() + coord_flip()
 
+    # save the plot
+    ggsave('problem-2-1-boxplot.pdf')
+
     # or use geom_violin()
     > gp + geom_violin() + coord_flip()
+    
+    # save the plot
+    ggsave('problem-2-1-violin.pdf')
 
 Problem 2.2
 ===========
