@@ -1,7 +1,7 @@
 
-************************************
-Class 22 : R : DataFrames & Plotting
-************************************
+*******************************************
+Class 22 : R : Data Manipulation & Plotting
+*******************************************
 
 Goals
 =====
@@ -56,6 +56,9 @@ Use ``geom_boxplot()`` with the ``group`` aesthetic:
                              group = round_any(expr, 100)))
     > gp + geom_boxplot()
 
+.. nextslide::
+    :increment:
+
 Or you can plot the data and fit a curve or linear model to examine the
 overall relationship:
 
@@ -67,6 +70,9 @@ overall relationship:
 
     # fit and plot a straight line
     > gp + stat_smooth(method='lm')
+
+.. nextslide::
+    :increment:
 
 You can also fit a linear model separately and plot the data:
 
