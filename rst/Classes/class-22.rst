@@ -34,15 +34,15 @@ Excercises
 ----------
 
  #. Use ``t.test()`` determine whether there are significant expression
-    differences between:
+    differences between in `expr-geno-covs.txt`:
 
     - conditions
-    - conditions grouped by gender
+    - gender
 
  #. 
 
-ggplot maninpulations
-=====================
+ggplot manipulations
+====================
 
 Often you will have observations of two variables that are both 
 continuous data. How can you examine the relationships between these?
@@ -71,23 +71,28 @@ overall relationship:
     # fit and plot a straight line
     > gp + stat_smooth(method='lm')
 
-.. nextslide::
-    :increment:
+R Model Syntax
+==============
 
 You can also fit a linear model separately and plot the data:
 
 .. code-block:: r
 
-    # intercept = coef(model)[1]
-    # slope = coef(model)[2]
+    > model <- lm(expression ~ genotype + condition + gender , data = covs)
+    > summary(model)
 
-    > model <- lm(age ~ expr, data = covs)
+
     > gp + geom_abline(intercept = coef(model)[1], 
                        slope = coef(model)[2])
 
 Exercises
 ---------
 
-foo
+#. Does adding age to the existing model (expression ~ genotype + condition +
+   gender) change the signficance of the other variables? 
+
+#. How does removing condition from the model affect the significance of
+   genotype and vice-versa?
+
 
 
