@@ -14,6 +14,7 @@ Problem Set Keys for the Genome Informatics Workshop class (MOLB 7620):
    problem-set-keys/problem-set-3-key
    problem-set-keys/problem-set-4-key
    problem-set-keys/problem-set-5-key
+   problem-set-keys/problem-set-6-key
 
 .. raw:: pdf
 
