@@ -219,22 +219,22 @@ Specific Dates / Material to be Covered
       - R data & plotting 
     * - Class 23
       - F Mar 28 
-      - R data & plotting 
+      - mRNA-seq (FPKM / diff exp)
     * - Class 24
       - M Mar 31 
       - mRNA-seq (FPKM / diff exp)
     * - Class 25 
       - W Apr 2 
-      - Variant detection - VCF / SNP calling 
+      - mRNA-seq (FPKM / diff exp)
     * - Class 26 
       - F Apr 4 
-      - Variant detection - Phasing / CNV
+      - Variant detection - pipeline
     * - Class 27 
       - M Apr 7 
-      - TBD (**FINAL PROJECTS DUE**)
+      - Eric! (or Sally) (**FINAL PROJECTS DUE**)
     * - Class 28 
       - W Apr 9 
-      - TBD
+      - Sally! (or Eric)
     * - Class 29 
       - F Apr 11 
       - Final project presentations > Happy Hour
