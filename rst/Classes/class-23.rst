@@ -192,6 +192,7 @@ On amc-tesla
     cp ~brentp/class-23/run.sh ~/class-23/
     cp ~brentp/class-23/src/clean-counts.py ~/class-23/src/
     cd ~/class-23/src/
-
-
+    module load sickle
+    module load subread
+    module load bowtie2
 
