@@ -20,6 +20,16 @@ projects should be of similar scope and complexity.
 
 #. Correlate patterns of DHS sensititvity and conservation.
 
+Terminal session
+----------------
+
+.. raw:: html
+
+    <script type="text/javascript"
+            src="https://asciinema.org/a/8031.js"
+            id="asciicast-8031" async>
+    </script>
+
 .. Ananlysis ideas
    --------------
 
