@@ -50,11 +50,27 @@ libraries prepared from these `C. elegans` strains:
  * - RtcB mutant
    - Tunicamycin (induces UPR)
 
-RtcB is an RNA ligase. The expectation is that RtcB mutants will be unable
-to ligate specific RNA substrates together, thus the mRNA library in the
-mutant might contain altered levels of RNA fragments relative to the
-wild-type.
+.. nextslide::
+    :increment:
 
+RtcB is an RNA ligase. RtcB wild-type and mutant strains were treated with
+tunicamycin, which inhibits protein glycosylation in the endoplasmic
+reticulum and triggers the "unfolded protein reponse"::
+
+    ER stress ~~>
+        Ire1 multimerization ~~>
+            Ire1 ribonuclease domain cuts
+            xbp-1 transcript to release intron ~~>
+                RtcB ligates xbp-1 exons together ~~>
+                    Xbp-1 protein is made, which activates UPR-related genes
+                    in the nucleus.
+
+The expectation is that RtcB mutants will be unable to ligate specific RNA
+substrates together, thus the mRNA library in the mutant might contain
+altered levels of RNA fragments relative to the wild-type. In particular,
+xbp-1 [#]_ fragments should accumulate in the mutant.
+
+.. [#] http://www.wormbase.org/species/c_elegans/gene/WBGene00006959?query=xbp-1#0-9e-3
 
 Analysis Plan
 =============
