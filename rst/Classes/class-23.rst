@@ -85,10 +85,81 @@ Analysis Plan
 
  #. Count reads by gene with featureCounts (from subread)
  #. Differential Expression statistics with DESeq2
+ #. Differential Transcript Use and fusion transcripts (if time)
 
 QC Reads
 ========
 
 We will use fastqc to check the quality of the reads and look for adapter
 contamination
+
+    $ fastqc -o ~/public_html/fqc-$sample $data/${sample}_R2.fastq.gz
+
+Quality Trim Reads
+==================
+
+We will trim low-quality bases from reads using sickle:
+https://github.com/najoshi/sickle
+
+Lenient trimming has been shown to improve mapping rates in
+RNA-Seq. See, e.g. http://genomebio.org/is-trimming-is-beneficial-in-rna-seq/
+
+QC Quality Trimmed Reads
+========================
+
+Compare before/after. Makes most difference in bad datasets.
+
+Align with Tophat2
+==================
+
+Many RNA-Seq (splice-aware) aligners:
+
+ + Tophat/Tophat2
+ + GSNAP
+ + STAR
+ + RUM
+ + MapSplice
+ + etc.
+
+We will use tophat2.
+
+IGenomes
+=========
+
+If you work with a model organism, you can get bowtie (tophat2) genome
+indexes and feature annotation in normalized format from Illumina.
+
+http://tophat.cbcb.umd.edu/igenomes.shtml
+
+We will use the *C. elegans* data downloaded to `amc-tesla:~brentp/data/ce/`
+
+ + Using this will save you a lot of trouble
+ + Tophat2 uses known transcripts and attempts to align to those as well as to
+   novel transcripts
+
+Spliced Alignment
+=================
+
+From tophat paper:
+
+.. image:: http://bioinformatics.oxfordjournals.org/content/25/9/1105/F1.large.jpg
+
+Spliced Alignment
+=================
+
+From tophat2 paper:
+
+.. image:: http://genomebiology.com/2013/14/4/R36/figure/F1?highres=y
+
+Tophat2 Invocation
+==================
+
+.. code-block:: bash
+
+    tophat2 -o $out/results/$sample $reference $fq_1 $fq2 \
+        --fusion-search -p 6 --transcriptome_index $TINDEX \
+        --GTF $ANNOTATION_GTF
+
+Output will be in accepted_hits.bam
+
 
