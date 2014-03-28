@@ -1,14 +1,16 @@
 General
 =======
 
+
 get rid of awk class and add a python class (or cover more grep)
+
+add all data that we used this year.
 
 
 Problem Set 3
 =============
 
 was quite hard. We could make it simpler by providing stubs
-
 
 
 class 10

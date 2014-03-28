@@ -72,6 +72,24 @@ xbp-1 [#]_ fragments should accumulate in the mutant.
 
 .. [#] http://www.wormbase.org/species/c_elegans/gene/WBGene00006959?query=xbp-1#0-9e-3
 
+Experimental Design
+===================
+
+.. important::
+   
+   Please do not do RNA-Seq on fewer than 6 samples (3 vs 3).
+
+   Even in a pilot study.
+
+See: http://bioinformatics.oxfordjournals.org/content/30/3/301
+
+Titled: **RNA-seq differential expression studies: more sequence or more
+replication?**
+
+Answer: **more replication**
+
+Your bioinformatician will thank you.
+
 Analysis Plan
 =============
 
@@ -79,6 +97,7 @@ Analysis Plan
  #. Trim reads by quality with sickle
  #. Re-check QC on trimmed reads
  #. Align reads with Tophat
+
     #. give a GTF to help it to find known transcripts
     #. also allow novel junctions
     #. fusion transcripts
@@ -149,7 +168,7 @@ Spliced Alignment
 
 From tophat2 paper:
 
-.. image:: http://genomebiology.com/2013/14/4/R36/figure/F1?highres=y
+.. image:: http://genomebiology.com/content/figures/gb-2013-14-4-r36-1-l.jpg
 
 Tophat2 Invocation
 ==================
