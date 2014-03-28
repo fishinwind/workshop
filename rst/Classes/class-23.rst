@@ -39,16 +39,16 @@ libraries prepared from these `C. elegans` strains:
 .. list-table::
     :header-rows: 1
 
- * - Strain
-   - Treatment
- * - RtcB wild-type
-   - No treatment
- * - RtcB wild-type
-   - Tunicamycin (induces UPR)
- * - RtcB mutant
-   - No treatment
- * - RtcB mutant
-   - Tunicamycin (induces UPR)
+    * - Strain
+      - Treatment
+    * - RtcB wild-type
+      - No treatment
+    * - RtcB wild-type
+      - Tunicamycin (induces UPR)
+    * - RtcB mutant
+      - No treatment
+    * - RtcB mutant
+      - Tunicamycin (induces UPR)
 
 .. nextslide::
     :increment:
