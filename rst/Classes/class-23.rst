@@ -21,19 +21,40 @@ RNA-Seq
 Library Prep
 ============
 
-Jay ??
+Libraries were prepared by a standard RNA-seq protocol including:
+
+ #. Oligo-dT purification of polyadenylated mRNA
+ #. Reverse transcription with random nonamers
+ #. Second strand sythesis to create double stranded DNA (dsDNA)
+ #. Shearing of dsDNA to 300-600 bp
+ #. End polishing, adaptor ligation, PCR with indexed primers
+ #. Quantify libraries, Mix, sequence.
 
 Example Data
 ============
 
-We will look at 10 million reads from 4 samples:
+We will look at ~10 million 75 base paired-end reads from 4 RNA-seq
+libraries prepared from these `C. elegans` strains:
 
- + 2 x controls
- + 2 x RTCB
+.. list-table::
+    :header-rows: 1
 
-Jay RTCB ??
+ * - Strain
+   - Treatment
+ * - RtcB wild-type
+   - No treatment
+ * - RtcB wild-type
+   - Tunicamycin (induces UPR)
+ * - RtcB mutant
+   - No treatment
+ * - RtcB mutant
+   - Tunicamycin (induces UPR)
 
-75 base paired-end reads
+RtcB is an RNA ligase. The expectation is that RtcB mutants will be unable
+to ligate specific RNA substrates together, thus the mRNA library in the
+mutant might contain altered levels of RNA fragments relative to the
+wild-type.
+
 
 Analysis Plan
 =============
