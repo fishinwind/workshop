@@ -181,4 +181,17 @@ Tophat2 Invocation
 
 Output will be in accepted_hits.bam
 
+Just Do It
+==========
+
+On amc-tesla
+
+.. code-block:: bash
+
+    mkdir -p ~/class-23/src/
+    cp ~brentp/class-23/run.sh ~/class-23/
+    cp ~brentp/class-23/src/clean-counts.py ~/class-23/src/
+    cd ~/class-23/src/
+
+
 
