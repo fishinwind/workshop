@@ -1,6 +1,6 @@
 
 ********************
-Class 22 : RNA-Seq I
+Class 23 : RNA-Seq I
 ********************
 
 Goals
