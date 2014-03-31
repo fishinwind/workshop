@@ -7,6 +7,7 @@ Goals
 =====
 
  #. Check Alignments
+ #. Sort Alignments
  #. Count reads
  #. Differential Expression
 
@@ -20,7 +21,7 @@ Since it was a long-running job, we should check the logs:
 
     ls -lhtr logs/ | tail -n 4
 
-And less one of the .err logs. The end should look something like this::
+And *less one of the .err* logs. The end should look something like this::
 
     [2014-03-28 16:38:53] Run complete: 01:26:06 elapsed
     + exit
@@ -49,18 +50,31 @@ count the number of paired reads
 
      samtools view -cf2 results/CNTRL_002_CGATGT_L002.tophat2/accepted_hits.bam
 
+Samtools Sort
+=============
+
+With paired-end reads, we should sort the alignments by name so
+that reads from the same pair are adjacent in the BAM.
+
+.. code-block:: bash
+
+    samtools sort -n some.bam some.sort
+
+
 FastQC
 ======
 
-We can run fastqc on these. *see run.sh*
+We can run fastqc on the alignments. *see run.sh*
 
 
 Count Reads
 ===========
 
-subread/featureCounts: uses same GTF as tophat and counts number of reads
-in each gene. We will then adjust the file format with the python
-script in `src/`
+subread/featureCounts: 
+
+ + uses same GTF as tophat to counts number of reads per gene
+ + we will adjust resulting file format with python script
+ + send to DESeq for differential expression
 
 Differential Expression
 =======================
@@ -68,6 +82,4 @@ Differential Expression
 From `featureCounts` we get a matrix of differential expression. We can 
 send this to DESeq2 for differential expression.
 
-
-
-
+See `run.sh`
