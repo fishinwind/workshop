@@ -56,6 +56,7 @@ Alignment
 
     http://arxiv.org/pdf/1303.3997v2.pdf
 
+
 Mark Duplicates
 ===============
 
@@ -71,6 +72,18 @@ variant calling.
  + Recommended by the variant caller that we will use.
 
  + To mark or not to mark? http://seqanswers.com/forums/showthread.php?t=6854
+
+Read Groups
+===========
+
+Your alignments should have read-groups.
+
+These tell downstream tools what library and sample your data came from
+
+Used for calling duplicates (repeats must be from same library)
+
+With read-groups, can have multiple samples in a single BAM.
+
 
 Variant Calling
 ===============
@@ -115,3 +128,6 @@ from a population and a reference genome to determine the most-likely combinatio
 of genotypes for the population at each position in the reference. It reports
 positions which it finds putatively polymorphic in variant call file (VCF) format.**
 
+
+VCF Format
+==========
