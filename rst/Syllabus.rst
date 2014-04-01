@@ -225,10 +225,10 @@ Specific Dates / Material to be Covered
       - mRNA-seq (FPKM / diff exp)
     * - Class 25 
       - W Apr 2 
-      - mRNA-seq (FPKM / diff exp)
+      - Exome Alignment
     * - Class 26 
       - F Apr 4 
-      - Variant detection - pipeline
+      - Exome Variant Calling
     * - Class 27 
       - M Apr 7 
       - Eric! (or Sally) (**FINAL PROJECTS DUE**)
