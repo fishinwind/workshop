@@ -1,7 +1,7 @@
 
-*******************************
-Class 24 : Exome-Seq - Aligment
-*******************************
+********************************
+Class 25 : Exome-Seq - Alignment
+********************************
 
 Goals
 =====
@@ -45,7 +45,7 @@ Analysis
 
  + What if we find 1 million SNPs total?
 
- + How can we filter
+ + How can we filter?
 
 Alignment
 =========
@@ -56,6 +56,10 @@ Alignment
 
     http://arxiv.org/pdf/1303.3997v2.pdf
 
+BWA mem
+=======
+
+.. image:: ../_static/images/bwa-mem-roc.png
 
 Mark Duplicates
 ===============
@@ -119,15 +123,41 @@ Freebayes
 
 https://github.com/ekg/freebayes
 
-**FreeBayes is haplotype-based, in the sense that it calls variants based on the
+*FreeBayes is haplotype-based, in the sense that it calls variants based on the
 literal sequences of reads aligned to a particular target, not their precise
-alignment.**
+alignment.*
 
-**FreeBayes uses short-read alignments (BAM files) for any number of individuals
+*FreeBayes uses short-read alignments (BAM files) for any number of individuals
 from a population and a reference genome to determine the most-likely combination
 of genotypes for the population at each position in the reference. It reports
-positions which it finds putatively polymorphic in variant call file (VCF) format.**
+positions which it finds putatively polymorphic in variant call file (VCF) format.*
 
 
 VCF Format
 ==========
+
+File format for SNP/indel calls:
+http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41
+::
+
+    CHROM      1
+    POS        2345544
+    ID         rs1234..
+    REF        C
+    ALT        TA
+    QUAL       55.2
+    FILTER     PASS
+    INFO       NS=3;DP=14;AF=0.5;DB
+    FORMAT     GT:GQ:DP:HQ
+    sample_1   0|0:48:1:51,51
+    ...
+    sample_n
+
+":" delimited chunks from samples match the format in `FORMAT`
+
+
+Pipeline
+========
+
+Walk through .sh scripts on *amc-tesla*
+
