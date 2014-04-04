@@ -31,4 +31,5 @@ Class list
    Classes/class-23
    Classes/class-24
    Classes/class-25
+   Classes/class-26
 

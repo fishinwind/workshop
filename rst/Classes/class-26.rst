@@ -106,6 +106,8 @@ Remember we annotated with DBSNP and by effect.
 Java
 ====
 
+.. code-block:: bash
+
     module load java/1.7
     qlogin
     java -Xmx4G -jar ~brentp/opt/snpEff/SnpSift.jar
@@ -124,8 +126,12 @@ Filters
 Filters II
 ==========
 
-Get variants with quality score greater than 40 with 5
-hets and 3 reference to sort of match the study design.
+To (kinda) match the study design.
+Get variants with:
+ + quality score greater than 40
+ + with 5 hets and 3 reference 
+ + high/moderate impact
+
 
 .. code-block:: bash
 
@@ -133,10 +139,13 @@ hets and 3 reference to sort of match the study design.
     java -Xmx4G -jar ~brentp/opt/snpEff/SnpSift.jar \
      filter  "(
      (QUAL >= 40) &
-     (countHet() = 5 & countRef() = 3) 
-     )
-     
-     " | less
+     (countHet() = 5 & countRef() = 3) &
+     ((EFF[*].IMPACT = 'HIGH') | (EFF[*].IMPACT = 'MODERATE'))
+     ) " | less
+
+NOTE extra parens around impact of `HIGH` or `MODERATE`
+
+How many variants does that give us?
 
 Filters III
 ===========
@@ -149,8 +158,7 @@ and the 2nd samples is reference
 
     "isVariant(GEN[0]) & isRef(GEN[1])"
 
-*How can we use this to extract variants that match our criteria?*
-
+*use this to extract variants that match our exact criteria*
 
 
 Filters Applied
@@ -189,3 +197,37 @@ Filtered
 
 Since we are likely interested in novel variants, we can then filter
 to exclude things with an `rs` number.
+
+Viewing on UCSC
+===============
+
+    http://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&position=chr12%3A12022530-12022539&hg.customText=http://amc-sandbox.ucdenver.edu/~brentp/exome-region/info.bed
+
+Viewing in IGV
+==============
+
+.. image:: ../_static/images/igv_snapshot.png
+
+Viewing with samtools tview
+===========================
+
+.. code-block:: bash
+
+    #module load samtools/0.1.19
+
+    samtools tview -p 12:12022535 \
+        ~brentp/exomes/results/ll-1.dedup.bam \
+        ~brentp/data/Homo_sapiens/Ensembl/GRCh37/Sequence/BWAIndex/genome.fa
+
+Extracting parts of the alignment
+=================================
+
+When you only want to look at part of the alignment. No need to transfer
+20GB of `BAM` files to your laptop
+
+.. code-block:: bash
+
+    samtools view -h results/$sample.dedup.bam 12:12022035-12023035 \
+            > ~/cpy/save.$sample.bam
+
+will save on the portion that we are interested in.
