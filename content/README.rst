@@ -51,6 +51,9 @@ Name expansion needs to be explained a bit better. one slide should have:
     for idx, item in enumerate(list):
         ...
 
+- should include ``BEDTools`` examples from
+  https://github.com/arq5x/bedtools-protocols
+
 Sphinx docs for for Genome Informatics Workshop
 ===============================================
 
