@@ -11,7 +11,7 @@ set -x
 
 WEBSITEDIR=$HOME/devel/bio-workshop-io
 SRCDIR=$HOME/devel/bio-workshop
-RSTDIR=$SRCDIR/rst
+RSTDIR=$SRCDIR/content
 BUILDDIR=$RSTDIR/_build
 
 echo ">> pulling content ..."

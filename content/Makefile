@@ -30,7 +30,6 @@ help:
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
 	@echo "  website    to copy and push website to github"
-	@echo "  keys       to create tarball of problem set keys"
 
 clean:
 	rm -rf $(BUILDDIR)/*

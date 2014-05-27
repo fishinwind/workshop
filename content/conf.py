@@ -304,8 +304,8 @@ texinfo_documents = [
 # -- Options for Slide Config --------------------------------------------------
 
 slide_levels = 3
-slide_theme = 'single-level'
-# slide_theme = 'slides2'
+# slide_theme = 'single-level'
+slide_theme = 'slides2'
 # slide_numbers = True
 slide_link_html_to_slides = True
 slide_link_html_sections_to_slides = True
