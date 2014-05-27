@@ -222,7 +222,6 @@ Specific Dates / Material to be Covered
       - Th Mar 26
       - R data & plotting 
       - **PS7 due** (Mon Mar 30 12:00 AM)
-      - 
     * - Class 19
       - T Mar 31
       - R data & plotting 
@@ -231,7 +230,6 @@ Specific Dates / Material to be Covered
       - Th Apr 2
       - R data & plotting 
       - **PS8 due** (Mon Apr 6 12:00 AM)
-      - 
     * - Class 21
       - T Apr 7
       - R data & plotting 
@@ -240,7 +238,6 @@ Specific Dates / Material to be Covered
       - Th Apr 9
       - R data & plotting 
       - **PS9 due** (Mon Apr 13 12:00 AM)
-      - 
     * - Class 23
       - T Apr 14 
       - mRNA-seq (FPKM / diff exp)
@@ -249,7 +246,6 @@ Specific Dates / Material to be Covered
       - Th Apr 16 
       - mRNA-seq (FPKM / diff exp)
       - **PS10 due** (Mon Apr 20 12:00 AM)
-      - 
     * - Class 25 
       - T Apr 21
       - Exome Alignment
