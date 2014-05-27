@@ -1,5 +1,5 @@
 ************************
-  Syllabus (MOLB 7620)
+  Syllabus (MOLB FIXME)
 ************************
 
 General Information
@@ -37,15 +37,15 @@ Instructor Information
       - jay.hesselberth@gmail.com
     * - Brent Pedersen
       - bpederse@gmail.com
-    * - Eric Nguyen (TA)
-      - eric.2.nguyen@ucdenver.edu
-    * - Sally Peach (TA)
-      - sallypeach@gmail.com
+    * - XXX
+      - XXX
+    * - XXX
+      - XXX
 
 Schedule
 ========
 
-Mon, Wed, Fri, 2:30 - 4:00 PM.
+Tue & Thurs, 1:00 - 3:00 PM. TA office hours from 3:30 PM
 :ref:`See specific dates. <syllabus-specific-dates>`
 
 Location
@@ -75,7 +75,7 @@ and structural variants.
 Course Credits
 --------------
 
-This is a 2 credit course.
+This is a 3 credit course.
 
 Texts and Reading Materials
 ---------------------------
@@ -130,8 +130,8 @@ Grading Criteria
 ----------------
 
  - 50% participation
- - 35% problem sets (7 sets, 5% each)
- - 15% final project
+ - 40% problem sets (10 sets, 4% each)
+ - 10% final project
 
 .. _syllabus-specific-dates:
 
@@ -139,105 +139,133 @@ Specific Dates / Material to be Covered
 =======================================
 
 .. list-table::
-    :widths: 20 40 80
+    :widths: 20 40 80 20
     :header-rows: 1
 
     * - Class number
       - Date
       - Topic
+      - Problem Set
     * - Class 1
-      - M Jan 27
+      - T Jan 20
       - Introduction to VM, Linux and the shell
+      - 
     * - Class 2 
-      - W Jan 29 
+      - Th Jan 22
       - Linux / Utilities
+      - **PS1 due** (Mon Jan 26 12:00 AM)
     * - Class 3 
-      - F Jan 31
+      - T Jan 27
       - Linux / Utilities
+      - 
     * - Class 4 
-      - M Feb 3
+      - Th Jan 29
       - Linux / Utilities
+      - **PS2 due** (Mon Feb 212:00 AM)
     * - Class 5 
-      - W Feb 5
+      - T Feb 3
       - Cluster Usage / Review
+      - 
     * - Class 6 
-      - F Feb 7
+      - Th Feb 5
       - Cluster Usage / Review
+      - **PS3 due** (Mon Feb 9 12:00 AM)
     * - Class 7 
-      - M Feb 10
+      - T Feb 10
       - Python
+      - 
     * - Class 8 
-      - W Feb 12
+      - Th Feb 12
       - Python
+      - **PS4 due** (Mon Feb 16 12:00 AM)
     * - Class 9 
-      - F Feb 14
+      - T Feb 17
       - Python 
-    * -
-      - **No Class Feb 17 (President's Day)**
-      -
+      - 
     * - Class 10 
-      - W Feb 19
+      - Th Feb 19
       - Python 
+      - **PS5 due** (Mon Feb 23 12:00 AM)
     * - Class 11 
-      - F Feb 21
+      - T Feb 24
       - Python 
+      - 
     * - Class 12
-      - M Feb 24
+      - Th Feb 26
       - ENCODE Overview
+      - **PS6 due** (Mon Mar 2 12:00 AM)
     * - Class 13 
-      - W Feb 26
+      - T Mar 3
       - BEDtools  
+      - 
     * - Class 14 
-      - F Feb 28
+      - Th Mar 5
       - ChIP-seq (coverage / peaks / motifs)
+      - **PS6 due** (Mon Mar 9 12:00 AM)
     * - Class 15 
-      - M Mar 3
+      - T Mar 10 
       - ChIP-seq / DNaseI-seq (UCSC)
+      - 
     * - Class 16
-      - W Mar 5
+      - Th Mar 12
       - Genomic analysis vignettes 
-    * - Class 17 
-      - F Mar 7
-      - Genomic analysis vignettes 
+      - 
     * -
-      - **No Class Mar 10-14 (Spring Break)**
+      - ** No Class Mar 16-20 (Campus Spring Break) **
       -
+      - 
+    * - Class 17 
+      - T Mar 24
+      - Genomic analysis vignettes 
+      - 
     * - Class 18
-      - M Mar 17 
+      - Th Mar 26
       - R data & plotting 
+      - **PS7 due** (Mon Mar 30 12:00 AM)
+      - 
     * - Class 19
-      - W Mar 19 
+      - T Mar 31
       - R data & plotting 
+      - 
     * - Class 20
-      - F Mar 21 
+      - Th Apr 2
       - R data & plotting 
+      - **PS8 due** (Mon Apr 6 12:00 AM)
+      - 
     * - Class 21
-      - M Mar 24 
+      - T Apr 7
       - R data & plotting 
+      - 
     * - Class 22
-      - W Mar 26 
+      - Th Apr 9
       - R data & plotting 
+      - **PS9 due** (Mon Apr 13 12:00 AM)
+      - 
     * - Class 23
-      - F Mar 28 
+      - T Apr 14 
       - mRNA-seq (FPKM / diff exp)
+      - 
     * - Class 24
-      - M Mar 31 
+      - Th Apr 16 
       - mRNA-seq (FPKM / diff exp)
+      - **PS10 due** (Mon Apr 20 12:00 AM)
+      - 
     * - Class 25 
-      - W Apr 2 
+      - T Apr 21
       - Exome Alignment
+      - 
     * - Class 26 
-      - F Apr 4 
+      - Th Apr 23
       - Exome Variant Calling
+      - 
     * - Class 27 
-      - M Apr 7 
-      - Eric! (or Sally) (**FINAL PROJECTS DUE**)
+      - T Apr 28
+      - TBD
+      - 
     * - Class 28 
-      - W Apr 9 
-      - Sally! (or Eric)
-    * - Class 29 
-      - F Apr 11 
-      - Final project presentations > Happy Hour
+      - Th Apr 30
+      - Final project presentations
+      - 
 
 .. raw:: pdf
 
