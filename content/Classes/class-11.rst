@@ -44,8 +44,8 @@ How do we describe the format in English?
 
 We will learn some tools to simplify this.
 
-enumerate (1)
-=============
+enumerate
+=========
 
 We have seen that we often want to know the index (or line number)
 that goes with an iterable. For example, if we know
@@ -65,9 +65,8 @@ We can know the index of an iterable with enumerate:
     for really_bad_var_name, x42 in enumerate(names):
         print really_bad_var_name, x42
 
-
-enumerate(2)
-============
+.. nextslide::
+    :increment:
 
 Try this in the ipython terminal:
 
@@ -90,8 +89,8 @@ Enumerate is lazy, meaning it won't consume an iterable until we ask it to
 Generally we name index variables as *i* and give the other variables names that
 make sense.
 
-enumerate (3)
-=============
+.. nextslide::
+    :increment:
 
 When we wrap any iterable in enumerate and we get a tuple of
 `index, thing`. Where `thing` was the element of the original list.
@@ -252,8 +251,8 @@ Laziness is important, if for example we are zipping over a file. If we use
 Note that in the previous slide, we associated each base with it's base-quality.
 That's useful...
 
-list comprehensions(1)
-======================
+list comprehensions
+===================
 
 In one problem you had to sum the ord()'s of the quality line.
 The common way to do that was this:
