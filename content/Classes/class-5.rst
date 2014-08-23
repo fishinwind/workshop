@@ -30,8 +30,9 @@ To find all lines that start with a number sign:
     # FYI dollar sign ($) matches the end
     $ grep '^#' /opt/bio-workshop/data/lamina.bed
 
-grep (2)
-========
+.. nextslide::
+    :increment:
+
 To find any line that *does not* start with "chr":
 
 .. code-block:: bash
@@ -50,15 +51,21 @@ You can find exact matches that are split on words with the ``-w`` flag:
 
 .. code-block:: bash
 
+    # this will only match chr1
     $ grep -w chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
 
-grep (3)
-========
-Also beware of using ``grep`` to search for numbers:
+.. nextslide::
+    :increment:
+
+Beware of using ``grep`` to search for numbers:
 
 .. code-block:: bash
 
+    # finds all strings that match `100`
     $ grep 100 /opt/bio-workshop/data/lamina.bed | head -n 20
+
+    # better, but doesn't look at numeric value
+    $ grep -w 100 /opt/bio-workshop/data/lamina.bed | head -n 20
 
 .. tip::
 
