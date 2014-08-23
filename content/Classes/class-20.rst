@@ -46,33 +46,27 @@ dplyr
     #. ``arrange()``
     #. ``group_by()``
 
-``dplyr`` also provides an operator called ``%.%`` that allows you to
+``dplyr`` also provides an operator called ``%>%`` that allows you to
 string manipulations together:
 
 .. code-block:: r
 
-    > summary <- dfx %.% select() %.% group_by() %.% summarize()
+    > summary <- df %>% select() %>% group_by() %>% summarize()
 
-plyr / dplyr comparison
-=======================
+dplyr example 
+=============
 
 .. code-block:: r
 
     dfx <- read.table('misc/data/expr-geno-covs.txt', header=TRUE)
 
-    # calculate some simple stats with plyr and dplyr
-
-    # with plyr - ugly
-    ddply(dfx, .(condition, genotype), summarise,
-        mean.age = mean(age), count = n())
-
-    # with dplyr
+    # calculate some simple stats with dplyr
     grouped <- group_by(dfx, condition, genotype)
     summarize(grouped, count = n(), mean.age = mean(age))
 
     # even better
-    dfx %.% 
-        group_by(condition, genotype) %.%
+    dfx %>% 
+        group_by(condition, genotype) %>%
         summarize(count = n(), mean.age = mean(age))
 
 dplyr example
@@ -99,7 +93,6 @@ Summarize transcription factor binding site peaks:
         summarize(count = n(), mean.width = mean(peak.width)) %.%
         arrange(desc(count))
 
-+ ``group_by()`` takes the place of the variables in ``ddply``
 + ``n()`` is a special function for counting observations
 + assign the whole thing to a new data.frame
 

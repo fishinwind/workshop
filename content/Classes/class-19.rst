@@ -68,60 +68,6 @@ There are several data sets that are built-in to R, including:
     # see all built-in data sets
     > library(help = "datasets")
 
-Introduction to plyr
-====================
-
-The ``plyr`` package provides several methods for flexible manipulation of
-data. Think "pliers".
-
-``plyr`` uses the `split-apply-combine` strategy of data analysis.
-
-The function we will use initially is called ``ddply``. The first ``d``
-says that the input is a ``data.frame`` and the second ``d`` says that the
-output is a ``data.frame``. 
-
-.. nextslide::
-   :increment:
-
-Break down a ddply() function:
-
-.. code-block:: r
-
-   # ddply(data, variables, function)
-   > ddply(mtcars, rownames(mtcars), summarize, mpg_g = mpg / gear)
-
-``plyr`` provides several helper functions:
-
-.. code-block:: r
-
-   # see the bottom of this page
-   > ?plyr
-
-.. nextslide::
-   :increment:
-
-Exercise: calculate some statistics on the regions from each chromosome in
-a BED file.
-
-.. code-block:: r
-
-    > library(plyr)
-
-    # load data
-    > colnames <- c('chrom','start','end','value')
-    > dfx <- read.delim('/opt/bio-workshop/data/lamina.bed',
-                        col.names=colnames)
-
-    # measure lengths for each entry
-    # mutate() is a plyr helper function that adds or modifies existing
-    # columns
-    > dfx <- mutate(dfx, length = end - start)
-
-    > summary <- ddply(dfx, "chrom", summarize,
-                       mean.len = mean(length),
-                       median.len = median(length))
-
-
 Introduction to reshape
 =======================
 
