@@ -101,8 +101,8 @@ Course Objectives
   - Learn to manipulate and visualize data in useful ways with the
     R statistical computing environment.
 
-  - Learn workflows for experiments in ENCODE: ChIP-seq DNase I
-    footprinting, mRNA-seq, variant detection.
+  - Learn workflows for experiments in ENCODE including ChIP-seq, DNaseI
+    footprinting, mRNA-seq and variant detection.
 
   - Learn to visualize data from the ENCODE project in the UCSC Genome
     Browser
