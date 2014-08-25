@@ -217,8 +217,8 @@ position.
 
     In [3]: words.extend(['bar','baz'])
 
-Lists (2)
-=========
+.. nextslide::
+    :increment::
 
 .. ipython::
     :verbatim:
@@ -239,6 +239,31 @@ Lists (2)
 
     # a "list comprehension"
     In [2]: [type(i) for i in words]
+
+Dictionaries (dicts)
+====================
+A :py:class:`dict` contains key:value mappings. 
+
+.. ipython::
+    :verbatim:
+
+    # set up new dicts with {}
+    In [14]: produce  = {'lettuce':'green', 'apple':'red',
+       ....: 'banana':'yellow'}
+
+    In [5]: produce.keys()
+
+    In [7]: produce.values()
+
+    In [7]: produce.items()
+
+    # sorted by keys
+    In [8]: sorted(produce.items())
+
+    # test for membership
+    In [9]: 'apple' in produce
+
+    In [10]: not 'orange' in produce
 
 Python Exceptions
 =================
@@ -280,8 +305,8 @@ Now we'll read some data from a file and operate on each line:
        ...:     if start > 5000:
        ...:         print fields 
     
-In Class Exercises (1)
-======================
+In Class Exercises
+==================
 
     #. Use :py:func:`range` to count from 0 to 100 **by 10**. How do you get
        100 in the result?
@@ -294,31 +319,6 @@ In Class Exercises (1)
     #. Use :py:func:`sorted` and :py:func:`reversed` on a list.
 
     #. Do type conversion on each of the fields in the lamina.bed file
-
-Dictionaries (dicts)
-====================
-A :py:class:`dict` contains key:value mappings. 
-
-.. ipython::
-    :verbatim:
-
-    # set up new dicts with {}
-    In [14]: produce  = {'lettuce':'green', 'apple':'red',
-       ....: 'banana':'yellow'}
-
-    In [5]: produce.keys()
-
-    In [7]: produce.values()
-
-    In [7]: produce.items()
-
-    # sorted by keys
-    In [8]: sorted(produce.items())
-
-    # test for membership
-    In [9]: 'apple' in produce
-
-    In [10]: not 'orange' in produce
 
 .. raw:: pdf
 
