@@ -1,14 +1,14 @@
-************************
+*************************
   Syllabus (MOLB FIXME)
-************************
+*************************
 
 General Information
 ===================
 
 :Title:         Genome Informatics Workshop
-:Course Number: MOLB 7620
-:Semester:      Spring 2014
-:Homepage:      http://ucd-bioworkshop.github.io
+:Course Number: MOLB FIXME 
+:Semester:      Spring 2015
+:Homepage:      http://hesselberthlab.github.io/workshop 
 :Author:        Jay R. Hesselberth
 :Author:        Brent Pedersen
 :Organization:  University of Colorado School of Medicine
@@ -44,13 +44,11 @@ Instructor Information
 
 Schedule
 ========
-
 Tue & Thurs, 1:00 - 3:00 PM. TA office hours from 3:30 PM
 :ref:`See specific dates. <syllabus-specific-dates>`
 
 Location
 ========
-
 Health Sciences Library, Computer Teaching Lab 2
 
 Course Description

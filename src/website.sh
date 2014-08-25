@@ -9,10 +9,14 @@ set -o pipefail
 set -o errexit
 set -x
 
-WEBSITEDIR=$HOME/devel/bio-workshop-io
-SRCDIR=$HOME/devel/bio-workshop
+WEBSITEDIR=$HOME/devel/hesselberthlab.github.io/workshop
+SRCDIR=$HOME/devel/genomics-workshop
 RSTDIR=$SRCDIR/content
 BUILDDIR=$RSTDIR/_build
+
+if [[ ! -d WEBSITEDIR ]]; then
+    mkdir -p $WEBSITEDIR
+fi
 
 echo ">> pulling content ..."
 cd $WEBSITEDIR
