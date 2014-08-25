@@ -1,10 +1,11 @@
+
 Genome Informatics Workshop 
 ===========================
 
 :Title: Genome Informatics Workshop
 :Course Number: MOLB 7620
 :Semester: Spring 2014
-:Homepage: http://ucd-bioworkshop.github.io
+:Homepage: http://hesselberthlab.github.io/workshop
 :Author: Jay R. Hesselberth
 :Author: Brent Pedersen
 :Organization: University of Colorado School of Medicine
@@ -12,4 +13,23 @@ Genome Informatics Workshop
           Department of Medicine
 :Copyright: 2013-2014 Jay R. Hesselberth, Brent Pedersen
 :Last updated: |today|
+
+
+Making linked slides and HTML
+-----------------------------
+Make linked slides with:
+    
+.. code-block:: bash
+
+    $ make html slides
+
+Content will be in ``_build/html`` and ``_build/slides``.
+
+Making webiste
+--------------
+Move HTML to github.io site with:
+
+.. code-block:: bash
+
+    $ make website
 
