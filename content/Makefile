@@ -50,7 +50,7 @@ slides:
 
 website:
 	@echo
-	. $(SRCDIR)/website.sh; 
+	. $(SRCDIR)/website-upload.sh; 
 
 pdf:
 	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
