@@ -39,6 +39,7 @@ Bioinformatic tools
 R packages
 ----------
  - ggplot2
+ - dplyr
  - limma
  - biocondcutor
 

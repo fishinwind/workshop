@@ -1,9 +1,10 @@
 #! /usr/bin/env bash
 #
-# install script to push workshop html and slides to github.io site
+# Script to install script to push workshop html
+# and slides to github.io site.
 # 
-# XXX: confirm this is working
-#
+# Contact: jay hesselberth at gmail.com
+
 set -o nounset
 set -o pipefail
 set -o errexit
