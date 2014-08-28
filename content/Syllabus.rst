@@ -10,11 +10,9 @@ General Information
 :Semester:      Spring 2015
 :Homepage:      http://hesselberthlab.github.io/workshop 
 :Author:        Jay R. Hesselberth
-:Author:        Brent Pedersen
 :Organization:  University of Colorado School of Medicine
 :Address:       Department of Biochemistry and Molecular Genetics
-:Address:       Department of Medicine
-:Copyright:     2013-2014 Jay R. Hesselberth, Brent Pedersen
+:Copyright:     2014 Jay R. Hesselberth
 :Copyright:     All Rights Reserved.
 :Last updated:  |today|
 
@@ -35,10 +33,6 @@ Instructor Information
       - Email
     * - Jay Hesselberth             
       - jay.hesselberth@gmail.com
-    * - Brent Pedersen
-      - bpederse@gmail.com
-    * - XXX
-      - XXX
     * - XXX
       - XXX
 

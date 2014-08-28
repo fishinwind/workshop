@@ -90,7 +90,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Genome Informatics Workshop'
-copyright = u'2014, Brent Pedersen, Jay Hesselberth'
+copyright = u'2014, Jay Hesselberth'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -312,8 +312,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'bio-workshop.tex', u'bio-workshop Documentation',
-   u'Brent Pedersen, Jay Hesselberth', 'manual'),
+  ('index', 'genomics-workshop.tex', u'Genome Informatics Workshop',
+   u'Jay Hesselberth', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -342,8 +342,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'bio-workshop', u'bio-workshop Documentation',
-     [u'Brent Pedersen, Jay Hesselberth'], 1)
+    ('index', 'genomics-workshop', u'Genome Informatics Workshop Documentation',
+     [u'Jay Hesselberth'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -357,7 +357,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'bio-workshop', u'bio-workshop Documentation',
-   u'Brent Pedersen, Jay Hesselberth', 'bio-workshop', 'One line description of project.',
+   u'Jay Hesselberth', 'bio-workshop', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -412,16 +412,10 @@ intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None),
 # would mean that specific document would be compressed
 # regardless of the global pdf_compressed setting.
 
-# pdf_documents = [
-#     ('index', u'Genome-Informatics-Workshop',
-#      u'Genome-Informatics-Workshop',
-#      u'Brent Pedersen\\Jay Hesselberth',
-#      dict(pdf_compressed = True))]
-
 pdf_documents = [
     ('index', u'Genome-Informatics-Workshop',
      u'Genome Informatics Workshop MOLB 7620',
-     u'Brent Pedersen\\Jay Hesselberth',
+     u'Jay Hesselberth',
      u'Bio Workshop', u'Genomics with Linux, Python, R and ENCODE examples',
      u'Computational Biology',
      dict(pdf_compressed=True))]
@@ -435,7 +429,7 @@ pdf_style_path = ['.', '_styles']
 # Create a compressed PDF
 # Use True/False or 1/0
 # Example: compressed=True
-pdf_compressed = False
+# pdf_compressed = False
 
 # A colon-separated list of folders to search for fonts. Example:
 # pdf_font_path = ['/usr/share/fonts', '/usr/share/texmf-dist/fonts/']
