@@ -178,14 +178,14 @@ html_theme_options = {
     'navbar_sidebarrel': False,
 
     # Render the current pages TOC in the navbar. (Default: true)
-    'navbar_pagenav': True,
+    'navbar_pagenav': False,
 
     # Tab name for the current pages TOC. (Default: "Page")
     'navbar_pagenav_name': "Current TOC",
 
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
-    'globaltoc_depth': 2,
+    'globaltoc_depth': 0,
 
     # Include hidden TOCs in Site navbar?
     #
@@ -217,6 +217,8 @@ html_theme_options = {
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)
     'bootstrap_version': "3",
+
+#    'nosidebar':"true",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -257,8 +259,7 @@ html_last_updated_fmt = '%b %d, %Y'
 # html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {'**':['globaltoc.html', 'sourcelink.html',
-                       'searchbox.html']}
+html_sidebars = {'**':['globaltoc.html', 'localtoc.html']}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -378,7 +379,7 @@ slide_levels = 3
 # slide_theme = 'single-level'
 slide_theme = 'slides2'
 # slide_numbers = True
-slide_link_html_to_slides = True
+# slide_link_html_to_slides = True
 slide_link_html_sections_to_slides = True
 slide_link_to_html = True
 slide_relative_path = "slides/"

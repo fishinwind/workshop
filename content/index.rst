@@ -7,6 +7,16 @@ Genome Informatics Workshop
 :Next offered: Spring 2015
 :Course Number: MOLB 7620
 
+Contents:
+
+.. toctree::
+   :maxdepth: 1
+
+   Syllabus
+   Classes
+   Problem_Sets
+   Miscellaneous
+
 **The Genome Informatics Workshop is a hands-on tutorial of skills needed to
 process large genomics data sets and visualize their results. The class
 is taught from the standpoint of biologist with practical goals
@@ -23,11 +33,4 @@ cover specific analyses used in ENCODE project including ChIP-seq, DNase I
 footprinting, mRNA-seq and genome sequencing to identify single nucleotide
 and structural variants.
 
-.. toctree::
-   :maxdepth: 1
-
-   Syllabus
-   Classes
-   Problem_Sets
-   Miscellaneous
 
