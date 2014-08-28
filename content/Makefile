@@ -30,6 +30,8 @@ help:
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
 	@echo "  website    to copy and push website to github"
+	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
+
 
 clean:
 	rm -rf $(BUILDDIR)/*
@@ -57,4 +59,11 @@ pdf:
 	@echo
 	@echo "Build finished. The PDF is in $(BUILDDIR)/pdf."
 	@echo
+
+latex:
+	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+	@echo
+	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
+	@echo "Run \`make all-pdf' or \`make all-ps' in that directory to" \
+          "run these through (pdf)latex."
 
