@@ -12,7 +12,9 @@ Genome Informatics Workshop
 .. note::
 
     Class size is limited to 20. We anticipate being full, so register
-    early. Postdocs can now get tuition waivers.
+    early.
+
+**Tuition waivers** are available for Postdocs and PRAs (http://goo.gl/bltqNn)
 
 Contents
 ~~~~~~~~
