@@ -126,12 +126,11 @@ Filters
 Filters II
 ==========
 
-To (kinda) match the study design.
-Get variants with:
+To (kinda) match the study design. Get variants with:
+
  + quality score greater than 40
  + with 5 hets and 3 reference 
  + high/moderate impact
-
 
 .. code-block:: bash
 

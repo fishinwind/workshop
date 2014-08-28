@@ -125,7 +125,6 @@ You will also sometimes use `-u` to get unique entries.
 
 Sort Questions
 ==============
-
 How do you:
 
    #. sort by a particular column? (-k 4)

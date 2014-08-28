@@ -97,7 +97,7 @@ Questions
  #. Modify the ``awk`` command in the script to print out a valid BED4
     format::
     
-    chrom <tab> start <tab> end <tab> count
+        chrom <tab> start <tab> end <tab> count
     
  #. Find out how many unique UMI sequences are associted with each
     chromosomal coordinate (note: not as easy).

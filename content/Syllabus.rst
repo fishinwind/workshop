@@ -1,6 +1,6 @@
-*************************
-  Syllabus (MOLB FIXME)
-*************************
+************
+  Syllabus
+************
 
 General Information
 ===================
@@ -9,12 +9,10 @@ General Information
 :Course Number: MOLB FIXME 
 :Semester:      Spring 2015
 :Homepage:      http://hesselberthlab.github.io/workshop 
-:Author:        Jay R. Hesselberth
-:Author:        Brent Pedersen
+:Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
 :Address:       Department of Biochemistry and Molecular Genetics
-:Address:       Department of Medicine
-:Copyright:     2013-2014 Jay R. Hesselberth, Brent Pedersen
+:Copyright:     2014 Jay R. Hesselberth
 :Copyright:     All Rights Reserved.
 :Last updated:  |today|
 
@@ -35,10 +33,6 @@ Instructor Information
       - Email
     * - Jay Hesselberth             
       - jay.hesselberth@gmail.com
-    * - Brent Pedersen
-      - bpederse@gmail.com
-    * - XXX
-      - XXX
     * - XXX
       - XXX
 
@@ -93,17 +87,16 @@ Texts and Reading Materials
 Course Objectives
 -----------------
 
-  - Learn to manipulate large sequencing data sets with Linux tools
-    and Python programming.
+  - Learn to manipulate large sequencing data sets with Linux command line
+    tools and Python programming.
 
-  - Learn to manipulate and visualize data in useful ways with the
-    R statistical computing environment.
+  - Learn to manipulate and visualize data with the R statistical
+    computing environment.
 
-  - Learn workflows for experiments in ENCODE including ChIP-seq, DNaseI
+  - Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
     footprinting, mRNA-seq and variant detection.
 
-  - Learn to visualize data from the ENCODE project in the UCSC Genome
-    Browser
+  - Learn to visualize data in the UCSC Genome Browser
 
 Canvas 
 ======
