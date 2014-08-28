@@ -4,13 +4,18 @@
 Genome Informatics Workshop 
 ***************************
 
-:Instructor: Jay Hesselberth
-:Contact: jay.hesselberth gmail.com
+:Instructor: Jay Hesselberth (jay.hesselberth gmail.com)
+:Website: http://hesselberthlab.github.io/workshop
 :Next offered: Spring 2015
 :Course Number: MOLB 7620
 
-Contents:
+.. note::
 
+    Class size is limited to 20. We anticipate being full, so register
+    early. Postdocs can now get tuition waivers.
+
+Contents
+~~~~~~~~
 .. toctree::
    :maxdepth: 1
 
@@ -19,13 +24,8 @@ Contents:
    Problem_Sets
    Miscellaneous
 
-.. note::
-
-    Class size is limited to 20. We anticipate being full, so register
-    early. Postdocs can now get tuition waivers.
-
 Course Description
-------------------
+~~~~~~~~~~~~~~~~~~
 **The Genome Informatics Workshop is a hands-on tutorial of skills needed
 to process large genomics data sets and visualize their results. The class
 is taught from the standpoint of a biologist with practical goals (e.g. to
