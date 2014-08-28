@@ -9,7 +9,7 @@ General Information
 :Course Number: MOLB FIXME 
 :Semester:      Spring 2015
 :Homepage:      http://hesselberthlab.github.io/workshop 
-:Instructor     Jay Hesselberth
+:Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
 :Address:       Department of Biochemistry and Molecular Genetics
 :Copyright:     2014 Jay R. Hesselberth
