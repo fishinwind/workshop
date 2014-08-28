@@ -19,9 +19,16 @@ Contents:
    Problem_Sets
    Miscellaneous
 
+.. note::
+
+    Class size is limited to 20. We anticipate being full, so register
+    early. Postdocs can now get tuition waivers.
+
+Course Description
+------------------
 **The Genome Informatics Workshop is a hands-on tutorial of skills needed
 to process large genomics data sets and visualize their results. The class
-is taught from the standpoint of biologist with practical goals (e.g. to
+is taught from the standpoint of a biologist with practical goals (e.g. to
 interpret the results of a sequencing-based experiment and gain
 biologically meaningful insight).**
 
