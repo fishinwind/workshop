@@ -258,7 +258,11 @@ html_last_updated_fmt = '%b %d, %Y'
 # html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {'**':['localtoc.html']}
+html_sidebars = {'index':[],
+                 'Classes':[],
+                 'Problem_Sets':[],
+                 'Miscellaneous':[],
+                 '**':['localtoc.html']}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
