@@ -47,10 +47,6 @@ slides:
 	@echo "Build finished. The HTML slides are in $(BUILDDIR)/slides."
 	@echo
 
-website:
-	@echo
-	. $(SRCDIR)/website-upload.sh; 
-
 pdf:
 	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/html/_downloads
 	@echo
