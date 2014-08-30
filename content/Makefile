@@ -29,14 +29,11 @@ help:
 	@echo "  pdf        to make standalone PDF"
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
-	@echo "  website    to copy and push website to github"
+	@echo "  publish    push website to github gh-pages"
 	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
-
 
 clean:
 	rm -rf $(BUILDDIR)/*
-
-all: clean pdf html slides website
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
@@ -45,7 +42,7 @@ html:
 	@echo
 
 slides:
-	$(SPHINXBUILD) -b slides $(ALLSPHINXOPTS) $(BUILDDIR)/slides
+	$(SPHINXBUILD) -b slides $(ALLSPHINXOPTS) $(BUILDDIR)/html/slides
 	@echo
 	@echo "Build finished. The HTML slides are in $(BUILDDIR)/slides."
 	@echo
@@ -55,7 +52,7 @@ website:
 	. $(SRCDIR)/website-upload.sh; 
 
 pdf:
-	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
+	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/html/_downloads
 	@echo
 	@echo "Build finished. The PDF is in $(BUILDDIR)/pdf."
 	@echo
@@ -66,4 +63,9 @@ latex:
 	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
 	@echo "Run \`make all-pdf' or \`make all-ps' in that directory to" \
           "run these through (pdf)latex."
+
+publish: html slides pdf
+	ghp-import -n -p ./_build/html
+	@echo
+	@echo "HTML output published on github-pages"
 
