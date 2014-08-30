@@ -43,13 +43,13 @@ html:
 slides:
 	$(SPHINXBUILD) -b slides $(ALLSPHINXOPTS) $(BUILDDIR)/html/slides
 	@echo
-	@echo "Build finished. The HTML slides are in $(BUILDDIR)/slides."
+	@echo "Build finished. The HTML slides are in $(BUILDDIR)/html/slides."
 	@echo
 
 pdf:
 	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/html/_downloads
 	@echo
-	@echo "Build finished. The PDF is in $(BUILDDIR)/pdf."
+	@echo "Build finished. The PDF is in $(BUILDDIR)/html/_downloads."
 	@echo
 
 latex:
