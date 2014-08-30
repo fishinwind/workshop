@@ -4,27 +4,19 @@
 Genome Informatics Workshop 
 ***************************
 
-:Instructor: Jay Hesselberth (jay.hesselberth gmail.com)
+:Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
 :Website: http://hesselberthlab.github.io/workshop
 :Next offered: Spring 2015
 :Course Number: MOLB 7620
 
-.. note::
+Announcements
+~~~~~~~~~~~~~
+  + **Class size is limited to 20. We anticipate being full, so register
+    early.**
 
-    Class size is limited to 20. We anticipate being full, so register
-    early.
-
-**Tuition waivers** are available for Postdocs and PRAs (http://goo.gl/bltqNn)
-
-Contents
-~~~~~~~~
-.. toctree::
-   :maxdepth: 1
-
-   Syllabus
-   Classes
-   Problem_Sets
-   Miscellaneous
+  + `Tuition waivers
+    <https://www.cu.edu/employee-services/tuition-waiver-benefit-cu-denveranschutz>`_
+    are available for Postdocs and PRAs
 
 Course Description
 ~~~~~~~~~~~~~~~~~~
@@ -43,4 +35,14 @@ coverage plots and displaying them in the UCSC Genome Browser. We will
 cover specific analyses used in ENCODE project including ChIP-seq, DNase I
 footprinting, mRNA-seq and genome sequencing to identify single nucleotide
 and structural variants.
+
+Contents
+~~~~~~~~
+.. toctree::
+   :maxdepth: 1
+
+   Syllabus
+   Classes
+   Problem_Sets
+   Miscellaneous
 
