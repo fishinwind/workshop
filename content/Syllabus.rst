@@ -20,7 +20,7 @@ PDF Content
 ===========
 
 The course content is available as a combined PDF: 
-:download:`PDF Download <_build/pdf/Genome-Informatics-Workshop.pdf>`
+:download:`PDF Download <_build/html/_downloads/Genome-Informatics-Workshop.pdf>`
 
 Instructor Information
 ======================
