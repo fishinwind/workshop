@@ -17,9 +17,10 @@ Announcements
   + **Class size is limited to 20. We anticipate being full, so register
     early.**
 
-  + `Tuition waivers
-    <https://www.cu.edu/employee-services/tuition-waiver-benefit-cu-denveranschutz>`_
-    are available for Postdocs and PRAs
+  + Tuition waivers are available for Postdocs and PRAs (see Syllabus on
+    website for details)
+
+  + We will not accept auditors for the class.
 
 Course Objectives
 ~~~~~~~~~~~~~~~~~
