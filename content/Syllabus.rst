@@ -33,8 +33,12 @@ Instructor Information
       - Email
     * - Jay Hesselberth             
       - jay.hesselberth@gmail.com
-    * - XXX
-      - XXX
+    * - Sally Peach 
+      - sally.peach@gmail.com 
+    * - Charlotte Siska 
+      - charlotte.siska@ucdenver.edu 
+    * - Kyle Smith 
+      - kyle.s.smith@ucdenver.edu
 
 Schedule
 ========
@@ -72,8 +76,9 @@ This is a 3 credit course.
 Texts and Reading Materials
 ---------------------------
 
-#. **Required**: Learn Python the Hard Way,
-    http://learnpythonthehardway.org/book/
+
+#. **Required**: A Quick Guide to Organizing Computational Biology Projects
+    http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
 
 #. **Required**: Command Line Crash Course
     http://cli.learncodethehardway.org/book/
@@ -81,8 +86,8 @@ Texts and Reading Materials
 #. **Required**: ggplot2: Elegant Graphics for Data Analysis
     http://ggplot2.org/book/
 
-#. **Required**: A Quick Guide to Organizing Computational Biology Projects
-    http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
+#. **Required**: Learn Python the Hard Way,
+    http://learnpythonthehardway.org/book/
 
 Course Objectives
 -----------------
@@ -152,7 +157,7 @@ Specific Dates / Material to be Covered
     * - Class 4 
       - Th Jan 29
       - Linux / Utilities
-      - **PS2 due** (Mon Feb 212:00 AM)
+      - **PS2 due** (Mon Feb 12:00 AM)
     * - Class 5 
       - T Feb 3
       - Cluster Usage / Review
