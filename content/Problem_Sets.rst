@@ -4,7 +4,7 @@
  Problem Sets
 **************
 
-Problem Sets for the Genome Informatics Workshop class (MOLB 7620):
+Problem Sets for the Genome Analysis Workshop class (MOLB 7621):
 
 .. toctree::
    :titlesonly:

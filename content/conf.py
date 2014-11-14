@@ -88,7 +88,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Genome Informatics Workshop'
+project = u'Genome Analysis Workshop'
 copyright = u'2014, Jay Hesselberth'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -160,7 +160,7 @@ html_theme_options = {
     'navbar_title': "",
 
     # Tab name for entire site. (Default: "Site")
-    'navbar_site_name': "Genome Informatics Workshop",
+    'navbar_site_name': "Genome Analysis Workshop",
 
     # A list of tuples containing pages or urls to link to.
     # Valid tuples should be in the following forms:
@@ -315,7 +315,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'genomics-workshop.tex', u'Genome Informatics Workshop',
+  ('index', 'genomics-workshop.tex', u'Genome Analysis Workshop',
    u'Jay Hesselberth', 'manual'),
 ]
 
@@ -345,7 +345,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'genomics-workshop', u'Genome Informatics Workshop Documentation',
+    ('index', 'genomics-workshop', u'Genome Analysis Workshop Documentation',
      [u'Jay Hesselberth'], 1)
 ]
 
@@ -359,8 +359,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'bio-workshop', u'bio-workshop Documentation',
-   u'Jay Hesselberth', 'bio-workshop', 'One line description of project.',
+  ('index', 'Genome Analysis Workshop', u'MOLB 7621 Documentation',
+   u'Jay Hesselberth', 'MOLB 7621',
+   'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -387,7 +388,7 @@ slide_link_html_sections_to_slides = True
 slide_link_to_html = True
 slide_relative_path = "slides/"
 slide_html_relative_path = "../"
-# slide_footer = 'Genome Informatics Workshop MOLB 7620'
+# slide_footer = 'Genome Analysis Workshop MOLB 7621'
 
 # slide_theme_path = ['_static/theme']
 # relative to html_static_path
@@ -416,10 +417,10 @@ intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None),
 # regardless of the global pdf_compressed setting.
 
 pdf_documents = [
-    ('index', u'Genome-Informatics-Workshop',
-     u'Genome Informatics Workshop MOLB 7620',
+    ('index', u'Genome-Analysis-Workshop',
+     u'Genome Analysis Workshop MOLB 7621',
      u'Jay Hesselberth',
-     u'Bio Workshop', u'Genomics with Linux, Python, R and ENCODE examples',
+     u'MOLB 7621', u'Genomics with Linux, Python, R and ENCODE examples',
      u'Computational Biology',
      dict(pdf_compressed=True))]
 

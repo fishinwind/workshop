@@ -1,7 +1,7 @@
 .. _main-page:
 
 ***************************
-Genome Informatics Workshop 
+Genome Analysis Workshop 
 ***************************
 
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
@@ -20,7 +20,7 @@ Announcements
 
 Course Description
 ~~~~~~~~~~~~~~~~~~
-**The Genome Informatics Workshop is a hands-on tutorial of skills needed
+**The Genome Analysis Workshop is a hands-on tutorial of skills needed
 to process large genomics data sets and visualize their results. The class
 is taught from the standpoint of a biologist with practical goals (e.g. to
 interpret the results of a sequencing-based experiment and gain

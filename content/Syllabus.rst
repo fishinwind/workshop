@@ -5,7 +5,7 @@
 General Information
 ===================
 
-:Title:         Genome Informatics Workshop
+:Title:         Genome Analysis Workshop
 :Course Number: MOLB 7621
 :Semester:      Spring 2015
 :Homepage:      http://hesselberthlab.github.io/workshop 
@@ -20,7 +20,7 @@ PDF Content
 ===========
 
 The course content is available as a combined PDF: 
-:download:`PDF Download <_build/html/_downloads/Genome-Informatics-Workshop.pdf>`
+:download:`PDF Download <_build/html/_downloads/Genome-Analysis-Workshop.pdf>`
 
 Instructor Information
 ======================
@@ -52,7 +52,7 @@ Health Sciences Library, Computer Teaching Lab 2
 Course Description
 ==================
 
-**The Genome Informatics Workshop is a hands-on tutorial of skills needed to
+**The Genome Analysis Workshop is a hands-on tutorial of skills needed to
 process large genomics data sets and visualize their results. The class
 is taught from the standpoint of biologist with practical goals
 (e.g. to interpret the results of a sequencing-based experiment and gain

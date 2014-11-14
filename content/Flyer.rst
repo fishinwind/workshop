@@ -1,11 +1,12 @@
 .. _flyer:
 
 ***************************
-Genome Informatics Workshop 
+Genome Analysis Workshop 
 ***************************
 
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
 :Website: http://hesselberthlab.github.io/workshop
+:Course Name: Genome Analysis Workshop 
 :Course Number: MOLB 7621
 :Next offered: Spring 2015
 :Credit Hours: 3
