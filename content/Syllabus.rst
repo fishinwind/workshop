@@ -6,7 +6,7 @@ General Information
 ===================
 
 :Title:         Genome Informatics Workshop
-:Course Number: MOLB FIXME 
+:Course Number: MOLB 7621
 :Semester:      Spring 2015
 :Homepage:      http://hesselberthlab.github.io/workshop 
 :Instructor:    Jay Hesselberth

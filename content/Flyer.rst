@@ -6,7 +6,7 @@ Genome Informatics Workshop
 
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
 :Website: http://hesselberthlab.github.io/workshop
-:Course Number: MOLB 7620
+:Course Number: MOLB 7621
 :Next offered: Spring 2015
 :Credit Hours: 3
 :Schedule: Tues & Thurs 1-3 PM (20 Jan - 30 Apr)
