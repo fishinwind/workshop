@@ -1,17 +1,15 @@
 
-Genome Informatics Workshop 
+Genome Analysis Workshop 
 ===========================
 
-:Title: Genome Informatics Workshop
-:Course Number: MOLB 7620
+:Title: Genome Analysis Workshop
+:Course Number: MOLB 7621
 :Semester: Spring 2015
 :Homepage: http://hesselberthlab.github.io/workshop
 :Author: Jay R. Hesselberth
 :Organization: University of Colorado School of Medicine
 :Address: Department of Biochemistry and Molecular Genetics
-:Copyright: 2013-2014 Jay R. Hesselberth, Brent Pedersen
-:Last updated: |today|
-
+:Copyright: 2013-2014 Jay R. Hesselberth
 
 Making linked slides and HTML
 -----------------------------
