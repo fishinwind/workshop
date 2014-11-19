@@ -1,6 +1,7 @@
-ipython
+sphinx
 hieroglyph
-rst2pdf
 sphinx_bootstrap_theme
-matplotlib
 sphinxcontrib-manpage
+ipython
+rst2pdf
+matplotlib
