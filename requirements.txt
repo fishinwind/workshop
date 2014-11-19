@@ -1,0 +1,6 @@
+ipython
+hieroglyph
+rst2pdf
+sphinx_bootstrap_theme
+matplotlib
+sphinxcontrib-manpage
