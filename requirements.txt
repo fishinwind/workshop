@@ -1,0 +1,8 @@
+sphinx
+hieroglyph
+sphinx_bootstrap_theme
+sphinx_rtd_theme
+sphinxcontrib-manpage
+ipython
+rst2pdf
+matplotlib
