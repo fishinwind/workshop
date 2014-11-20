@@ -6,8 +6,8 @@ Class 3 : The command-line (part 2)
 
 Goals
 =====
-1. learn additional linux utilities (cut, sort, zless, uniq, wget)
-2. understand how to combine tools with pipes (|)
+#. learn additional linux utilities (cut, sort, zless, uniq, wget)
+#. understand how to combine tools with pipes (|)
 
 wget
 ====
@@ -127,13 +127,13 @@ Sort Questions
 ==============
 How do you:
 
-   #. sort by a particular column? (-k 4)
-   #. sort as a number (-k4n)
-   #. sort as a general number (1e-3 < 0.05) (-k4g)
-   #. change the default delimiter (-t,
-   #. sort by 2 columns (-k1,1 -k2,2n)
-   #. sort in reverse as a number (-k1rn)
-   #. get unique entries (-u)
+#. sort by a particular column? (-k 4)
+#. sort as a number (-k4n)
+#. sort as a general number (1e-3 < 0.05) (-k4g)
+#. change the default delimiter (-t,
+#. sort by 2 columns (-k1,1 -k2,2n)
+#. sort in reverse as a number (-k1rn)
+#. get unique entries (-u)
 
 If you know all these, you'll know 99% of what you'll use sort for.
 
@@ -176,12 +176,12 @@ Application 1
 Use pipes (|) chained together to look see which transcription factor
 binding sites are the most common in a set of putative sites from ENCODE.
 
-  + data file available from http (wget)
-  + compressed BED format (zless)
-  + TF name in 4th column (cut)
-  + count frequency (uniq -c) after sorting (sort)
-  + sort resulting frequencies so most common are first (sort -rn)
-  + show top 10 (head)
++ data file available from http (wget)
++ compressed BED format (zless)
++ TF name in 4th column (cut)
++ count frequency (uniq -c) after sorting (sort)
++ sort resulting frequencies so most common are first (sort -rn)
++ show top 10 (head)
 
 Application 2
 =============

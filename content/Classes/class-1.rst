@@ -36,22 +36,22 @@ useful.
 
 To install the VM:
 
- #. Download VirtualBox from virtualbox.org
+#. Download VirtualBox from virtualbox.org
 
- #. Open VirtualBox. Click "New" in the upper left corner.
+#. Open VirtualBox. Click "New" in the upper left corner.
 
- #. In the "Name" field, type bio-workshop.  For "Type" select Linux.  For
-    "Version"  select Ubuntu.  Click continue.
+#. In the "Name" field, type bio-workshop.  For "Type" select Linux.  For
+   "Version"  select Ubuntu.  Click continue.
 
- #. Allocate an amount of memory that keeps the bar in the green zone.
-    2048MB is a nice number.  Click continue.
+#. Allocate an amount of memory that keeps the bar in the green zone.
+   2048MB is a nice number.  Click continue.
 
- #. Click the "Use an existing virtual hard drive file" radio button.
-    Click the folder icon.  Select the .vdi file provided on your USB stick.
+#. Click the "Use an existing virtual hard drive file" radio button.
+   Click the folder icon.  Select the .vdi file provided on your USB stick.
 
- #. Click create.
+#. Click create.
 
- #. Press the "Start" button.
+#. Press the "Start" button.
 
 Important Directories
 =====================

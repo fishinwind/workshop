@@ -6,18 +6,18 @@ Class 22 : R : Data Manipulation & Plotting
 Goals
 =====
 
- #. Simple statistics 
- #. ggplot2 manipulations
+#. Simple statistics 
+#. ggplot2 manipulations
 
 Statistics in R
 ===============
 
 R provides a number of builtin statistics:
 
-    - ``t.test()``
-    - ``fisher.test()``
-    - ``wilcox.test()``
-    - ``ks.set()``
+- ``t.test()``
+- ``fisher.test()``
+- ``wilcox.test()``
+- ``ks.set()``
 
 Each of these functions takes 2 vectors on input, and return a result
 object:
@@ -33,11 +33,11 @@ object:
 Excercises
 ----------
 
- #. Use ``t.test()`` determine whether there are significant expression
-    differences between in `expr-geno-covs.txt`:
+#. Use ``t.test()`` determine whether there are significant expression
+   differences between in `expr-geno-covs.txt`:
 
-    - conditions
-    - gender
+- conditions
+- gender
 
 ggplot manipulations
 ====================
@@ -104,9 +104,9 @@ You can also fit and examine a linear model:
 Exercises
 ---------
 
- #. Does adding age to the existing model (expression ~ genotype + condition +
-    gender) change the signficance of the other variables? 
+#. Does adding age to the existing model (expression ~ genotype + condition +
+   gender) change the signficance of the other variables? 
 
- #. How does removing condition from the model affect the significance of
-    genotype and vice-versa?
+#. How does removing condition from the model affect the significance of
+   genotype and vice-versa?
 

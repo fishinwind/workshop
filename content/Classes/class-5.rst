@@ -172,9 +172,9 @@ The queueing system (3)
 The ``#BSUB`` lines are comments, but are read by the ``bsub`` program to
 identify features associated with your job. 
 
-    - ``-J`` sets the job's name
-    - ``%J`` is a unique job ID that is set when you run the job.
-    - ``-e`` and ``-o`` set the filenames for stderr and stdout from the job
+- ``-J`` sets the job's name
+- ``%J`` is a unique job ID that is set when you run the job.
+- ``-e`` and ``-o`` set the filenames for stderr and stdout from the job
 
 The queueing system (4)
 =======================
@@ -227,8 +227,8 @@ We're going to take a break this class so that you can catch up on your
 exercises. Please spend some time going back through the exercises from
 classes 1-4.
 
- - :ref:`class-3-exercises`
- - :ref:`class-4-exercises`
+- :ref:`class-3-exercises`
+- :ref:`class-4-exercises`
 
 .. raw:: pdf
 

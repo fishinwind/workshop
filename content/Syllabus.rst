@@ -78,30 +78,30 @@ Texts and Reading Materials
 
 
 #. **Required**: A Quick Guide to Organizing Computational Biology Projects
-    http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
+   http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
 
 #. **Required**: Command Line Crash Course
-    http://cli.learncodethehardway.org/book/
+   http://cli.learncodethehardway.org/book/
 
 #. **Required**: ggplot2: Elegant Graphics for Data Analysis
-    http://ggplot2.org/book/
+   http://ggplot2.org/book/
 
 #. **Required**: Learn Python the Hard Way,
-    http://learnpythonthehardway.org/book/
+   http://learnpythonthehardway.org/book/
 
 Course Objectives
 -----------------
 
-  - Learn to manipulate large sequencing data sets with Linux command line
-    tools and Python programming.
++ Learn to manipulate large sequencing data sets with Linux command line
+  tools and Python programming.
 
-  - Learn to manipulate and visualize data with the R statistical
-    computing environment.
++ Learn to manipulate and visualize data with the R statistical
+  computing environment.
 
-  - Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
-    footprinting, mRNA-seq and variant detection.
++ Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
+  footprinting, mRNA-seq and variant detection.
 
-  - Learn to visualize data in the UCSC Genome Browser
++ Learn to visualize data in the UCSC Genome Browser
 
 Canvas 
 ======
@@ -125,9 +125,9 @@ session, weekly problem sets, as well as a final project.
 Grading Criteria
 ----------------
 
- - 50% participation
- - 40% problem sets (10 sets, 4% each)
- - 10% final project
++ 50% participation
++ 40% problem sets (10 sets, 4% each)
++ 10% final project
 
 .. _syllabus-specific-dates:
 

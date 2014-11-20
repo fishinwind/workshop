@@ -56,11 +56,11 @@ Use the Python Debugger: :py:mod:`pdb`.
 Goals
 =====
 
- #. What is the ENCODE project?
+#. What is the ENCODE project?
  
- #. What kinds of data did the ENCODE project produce? 
+#. What kinds of data did the ENCODE project produce? 
  
- #. Where can I find these data on the Internet? 
+#. Where can I find these data on the Internet? 
  
 ENCODE Project Timeline: 2003
 =============================

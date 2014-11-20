@@ -11,12 +11,13 @@ Genome Analysis Workshop
 
 Announcements
 ~~~~~~~~~~~~~
-  + **Class size is limited to 20. We anticipate being full, so register
-    early.**
 
-  + `Tuition waivers
-    <https://www.cu.edu/employee-services/tuition-waiver-benefit-cu-denveranschutz>`_
-    are available for Postdocs and PRAs
+* **Class size is limited to 20. We anticipate being full, so register
+  early.**
+
+* `Tuition waivers
+  <https://www.cu.edu/employee-services/tuition-waiver-benefit-cu-denveranschutz>`_
+  are available for Postdocs and PRAs
 
 Course Description
 ~~~~~~~~~~~~~~~~~~

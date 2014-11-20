@@ -64,11 +64,11 @@ dramatically.
 BEDTools Utility (2)
 ====================
 
- + Fast: faster than intersect code you will write
- + Terse: syntax is terse, but readable
- + Formats: handles BED, VCF and GFF formats (gzip'ed or not)
- + Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
-   etc. (likely to be bugs if you do code in manually)
++ Fast: faster than intersect code you will write
++ Terse: syntax is terse, but readable
++ Formats: handles BED, VCF and GFF formats (gzip'ed or not)
++ Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
+  etc. (likely to be bugs if you do code in manually)
 
 BEDTools Commands
 =================
@@ -81,10 +81,10 @@ To see all available BEDTools commands, type
 
 The most commonly used BEDtools are:
 
-    + :ref:`intersect <bedtools:intersect>`
-    + :ref:`genomecov <bedtools:genomecov>`
-    + :ref:`closest <bedtools:closest>`
-    + :ref:`map <bedtools:map>`
++ :ref:`intersect <bedtools:intersect>`
++ :ref:`genomecov <bedtools:genomecov>`
++ :ref:`closest <bedtools:closest>`
++ :ref:`map <bedtools:map>`
 
 BEDTools Documentation
 ======================
@@ -232,16 +232,16 @@ Extract intervals in `b.bed` that do not overlap any interval in `a.bed`
 Intersect Summary
 =================
 
- + fragments of `a` that overlap `b`:
-    `intersect -a a.bed -b b.bed`
- + complete regions of `a` that overlap `b`:
-    `intersect -a a.bed -b b.bed -u`
- + intervals of `b` as well as `a`:
-    `intersect -a a.bed -b b.bed -wo`
- + number of times each `a` overlaps `b`:
-    `intersect -a a.bed -b b.bed -c`
- + intervals of `a` that do not overlap `b`:
-    `intersect -a a.bed -b b.bed -v`
++ fragments of `a` that overlap `b`:
+  `intersect -a a.bed -b b.bed`
++ complete regions of `a` that overlap `b`:
+  `intersect -a a.bed -b b.bed -u`
++ intervals of `b` as well as `a`:
+  `intersect -a a.bed -b b.bed -wo`
++ number of times each `a` overlaps `b`:
+  `intersect -a a.bed -b b.bed -c`
++ intervals of `a` that do not overlap `b`:
+  `intersect -a a.bed -b b.bed -v`
 
 Exercises (Or Other Tools)
 ==========================
@@ -333,8 +333,8 @@ Sorted
 When you start dealing with larger data-files. Look at the `-sorted` flag.
 For example in :ref:`intersect <bedtools:intersect>`.
 
- + Uses less memory
- + Faster
++ Uses less memory
++ Faster
 
 Takes advantage of sorted chromosome, positions in both files so it doesn't have
 to create an index.

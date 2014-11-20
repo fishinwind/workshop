@@ -16,12 +16,12 @@ Notes for Spring 2015
 - Next year, should focus less on trivial examples (e.g. fruit examples) and
   spend more time going over biologic data.
 
-     #. create nested data types during loops
-     #. logic for determining state during looping
-     #. functions to act on data structures once created:
+#. create nested data types during loops
+#. logic for determining state during looping
+#. functions to act on data structures once created:
 
-        - min(), max()
-        - Counter.most_common()
+- min(), max()
+- Counter.most_common()
 
 - In class 10: Dont included the extra lines in `sample-seq-info.csv` it
   was too confusing to use the skip_while arg to toolshed.reader to pass a

@@ -5,9 +5,9 @@ Class 11 : Python Idioms
 Goals
 =====
 
- #. python tricks to write more concise code
- #. Laziness
- #. Data structures
+#. python tricks to write more concise code
+#. Laziness
+#. Data structures
 
 Variable Names Vs. Builtins
 ===========================

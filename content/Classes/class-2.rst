@@ -6,11 +6,11 @@ Class 2 : The command-line
 
 Goals
 =====
-1. The ``bash`` shell
-2. continue learning to navigate within the terminal
-3. understand the linux philosophy (small tools that do one thing well)
-4. understand how to apply some common linux utilities to files
-5. ``gedit`` to edit files
+#. The ``bash`` shell
+#. continue learning to navigate within the terminal
+#. understand the linux philosophy (small tools that do one thing well)
+#. understand how to apply some common linux utilities to files
+#. ``gedit`` to edit files
 
 Unix Philosophy
 ===============
@@ -121,22 +121,22 @@ Which of those works for `ls`?
 
 Getting Help : Exercises
 ========================
- + use `man` to find out how to list files so that the most
-   recently modified files are listed last.
++ use `man` to find out how to list files so that the most
+  recently modified files are listed last.
 
 (This is common when you're working on something and only
 care about the most recently modified files)
 
- + use google to find the same thing. how else can you
-   sort the output of `ls`?
++ use google to find the same thing. how else can you
+  sort the output of `ls`?
 
 Getting Help Outside The Terminal
 =================================
 Use google. Useful sites include:
 
- + stackexchange.com
- + biostars.org
- + seqanswers.com
++ stackexchange.com
++ biostars.org
++ seqanswers.com
 
 In many cases, if you receive and error, you can copy-paste it into google
 and find some info.
@@ -167,8 +167,8 @@ Word Counts (wc)
 ================
 Exercise:
 
-    + use **wc** to determine how many **lines** are in /opt/bio-workshop/data/lamina.bed
-    + use **wc** to determine how many **words** are in /opt/bio-workshop/data/lamina.bed
++ use **wc** to determine how many **lines** are in /opt/bio-workshop/data/lamina.bed
++ use **wc** to determine how many **words** are in /opt/bio-workshop/data/lamina.bed
 
 Less (is More)
 ==============
@@ -333,9 +333,9 @@ mv [source] [dest]:
 
 In-class excercise:
 
- 1. make a directory `/tmp/moveable`
- 2. move that directory to ~
- 3. copy that directory to `/tmp/subdir/`
+#. make a directory `/tmp/moveable`
+#. move that directory to ~
+#. copy that directory to `/tmp/subdir/`
 
 echo
 ====
@@ -379,8 +379,8 @@ excercise:
 
 use `man` to determine the function of:
 
-    + wget
-    + uniq
++ wget
++ uniq
 
 How many records are present for each chromosome in
 /opt/bio-workshop/data/lamina.bed (assume it is sorted by chromosome)?
@@ -429,10 +429,10 @@ run in series.
 
 For example a pipeline where you:
 
- #. run quality control on some ChIP-seq reads 
- #. align reads to a reference genome
- #. find peaks (binding sites)
- #. annotate the binding sites.
+#. run quality control on some ChIP-seq reads 
+#. align reads to a reference genome
+#. find peaks (binding sites)
+#. annotate the binding sites.
 
 In cases like that, a script will provide a record of what you have done.
 

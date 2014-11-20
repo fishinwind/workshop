@@ -21,9 +21,9 @@ example final projects.
 Goals
 =====
 
- #. Connect UCSC browser to bigWig / bigBed files
+#. Connect UCSC browser to bigWig / bigBed files
 
- #. Compare ChIP and DNase I data
+#. Compare ChIP and DNase I data
 
 Coverage plots for ChIP and DNase I
 ===================================

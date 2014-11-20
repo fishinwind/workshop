@@ -6,29 +6,29 @@ Class 23 : RNA-Seq I
 Goals
 =====
 
- #. Why RNA-Seq
- #. QC.
- #. Align Reads
+#. Why RNA-Seq
+#. QC.
+#. Align Reads
 
 RNA-Seq
 =======
 
- + We use RNA-Seq primarily to measure gene expression
- + We can also find transcript use (transcript-switching/alternative-splicing)
- + Fusion Transcripts
- + Possible to call variants (SNPs) on RNA-Seq data
++ We use RNA-Seq primarily to measure gene expression
++ We can also find transcript use (transcript-switching/alternative-splicing)
++ Fusion Transcripts
++ Possible to call variants (SNPs) on RNA-Seq data
 
 Library Prep
 ============
 
 Libraries were prepared by a standard RNA-seq protocol including:
 
- #. Oligo-dT purification of polyadenylated mRNA
- #. Reverse transcription with random nonamers
- #. Second strand sythesis to create double stranded DNA (dsDNA)
- #. Shearing of dsDNA to 300-600 bp
- #. End polishing, adaptor ligation, PCR with indexed primers
- #. Quantify libraries, Mix, sequence.
+#. Oligo-dT purification of polyadenylated mRNA
+#. Reverse transcription with random nonamers
+#. Second strand sythesis to create double stranded DNA (dsDNA)
+#. Shearing of dsDNA to 300-600 bp
+#. End polishing, adaptor ligation, PCR with indexed primers
+#. Quantify libraries, Mix, sequence.
 
 Example Data
 ============
@@ -93,18 +93,18 @@ Your bioinformatician will thank you.
 Analysis Plan
 =============
 
- #. QC reads with Fastqc
- #. Trim reads by quality with sickle
- #. Re-check QC on trimmed reads
- #. Align reads with Tophat
+#. QC reads with Fastqc
+#. Trim reads by quality with sickle
+#. Re-check QC on trimmed reads
+#. Align reads with Tophat
 
-    #. give a GTF to help it to find known transcripts
-    #. also allow novel junctions
-    #. fusion transcripts
+#. give a GTF to help it to find known transcripts
+#. also allow novel junctions
+#. fusion transcripts
 
- #. Count reads by gene with featureCounts (from subread)
- #. Differential Expression statistics with DESeq2
- #. Differential Transcript Use and fusion transcripts (if time)
+#. Count reads by gene with featureCounts (from subread)
+#. Differential Expression statistics with DESeq2
+#. Differential Transcript Use and fusion transcripts (if time)
 
 QC Reads
 ========
@@ -133,12 +133,12 @@ Align with Tophat2
 
 Many RNA-Seq (splice-aware) aligners:
 
- + Tophat/Tophat2
- + GSNAP
- + STAR
- + RUM
- + MapSplice
- + etc.
++ Tophat/Tophat2
++ GSNAP
++ STAR
++ RUM
++ MapSplice
++ etc.
 
 We will use tophat2.
 
@@ -152,9 +152,9 @@ http://tophat.cbcb.umd.edu/igenomes.shtml
 
 We will use the *C. elegans* data downloaded to `amc-tesla:~brentp/data/ce/`
 
- + Using this will save you a lot of trouble
- + Tophat2 uses known transcripts and attempts to align to those as well as to
-   novel transcripts
++ Using this will save you a lot of trouble
++ Tophat2 uses known transcripts and attempts to align to those as well as to
+  novel transcripts
 
 Spliced Alignment
 =================

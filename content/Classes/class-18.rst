@@ -15,11 +15,11 @@ Class 18 : R : Getting Started
 Goals
 =====
 
- #. Remember Python
- #. Startup RStudio
- #. Learn to navigate in RStudio
- #. load the ggplot2 library
- #. Learn to load external data
+#. Remember Python
+#. Startup RStudio
+#. Learn to navigate in RStudio
+#. load the ggplot2 library
+#. Learn to load external data
 
 Python
 ======
@@ -35,11 +35,12 @@ We will learn R, but remember key python concepts.
                        end=int(fields[2]), value=float(fields[4]))
 
 This contains important points: 
- #. function **def** inition.
- #. iterate over file
- #. strip() and split() a string to get a list
- #. create a dictionary after converting the types to int/float
- #. yield the dictionary back to the caller()
+
+#. function **def** inition.
+#. iterate over file
+#. strip() and split() a string to get a list
+#. create a dictionary after converting the types to int/float
+#. yield the dictionary back to the caller()
 
 Data
 ====
@@ -167,8 +168,8 @@ ggplot2 basic syntax
 ggplot2 syntax
 ==============
 
- + aes() stands for **aesthetics**, means pull the coordiantes/colors/size/etc
-     from these columns in the data.frame.
+`aes()` stands for **aesthetics**, means pull the coordiantes/colors/size/etc
+from these columns in the data.frame.
 
 .. code-block:: r
 
@@ -220,8 +221,8 @@ DataFrame
 
 As you've seen, in a data.frame, we read everything into memory
 
- + R figures out if it is int/character/numeric
- + each column of the data.frame is accessed by `$`  e.g df$genotype
++ R figures out if it is int/character/numeric
++ each column of the data.frame is accessed by `$`  e.g df$genotype
 
 Hist
 ====

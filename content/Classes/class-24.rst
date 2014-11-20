@@ -6,10 +6,10 @@ Class 24 : RNA-Seq II
 Goals
 =====
 
- #. Check Alignments
- #. Sort Alignments
- #. Count reads
- #. Differential Expression
+#. Check Alignments
+#. Sort Alignments
+#. Count reads
+#. Differential Expression
 
 
 Alignment QC
@@ -72,9 +72,9 @@ Count Reads
 
 subread/featureCounts: 
 
- + uses same GTF as tophat to counts number of reads per gene
- + we will adjust resulting file format with python script
- + send to DESeq for differential expression
++ uses same GTF as tophat to counts number of reads per gene
++ we will adjust resulting file format with python script
++ send to DESeq for differential expression
 
 Differential Expression
 =======================

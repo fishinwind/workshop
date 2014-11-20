@@ -22,11 +22,11 @@ In Class Exercise
 =================
 From hamlet.txt: 
 
- #. Print the first word of each line.
+#. Print the first word of each line.
 
- #. Print only lines that are not indented. 
+#. Print only lines that are not indented. 
 
- #. Count the number of times that the word "therefore" appears.
+#. Count the number of times that the word "therefore" appears.
 
 (hint: the :ref:`continue` statement will skip to the next loop
 iteration, and is usually found in an if statement)
@@ -212,10 +212,10 @@ Note that only ever have 1 (**) line in memory at a time.
 In Class Exercise
 =================
 
- #. Modify the `bed_generator` code from the previous slide so that it
-    turns value into a :py:obj:`float` before yielding
- #. In the code that calls bed_generator, print out the value
- #. In the code that calls bed_generator, append value to a list.
+#. Modify the `bed_generator` code from the previous slide so that it
+   turns value into a :py:obj:`float` before yielding
+#. In the code that calls bed_generator, print out the value
+#. In the code that calls bed_generator, append value to a list.
 
 In Class Exercise (Answer)
 ==========================
