@@ -4,7 +4,7 @@
 Problem Set : KEYS
 ******************
 
-Problem Set Keys for the Genome Informatics Workshop class (MOLB 7620):
+Problem Set Keys for the Genome Analyais Workshop (MOLB 7621):
 
 .. toctree::
    :titlesonly:

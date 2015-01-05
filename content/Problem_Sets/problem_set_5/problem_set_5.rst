@@ -31,13 +31,13 @@ Use the CTCF peak calls in the ENCODE data to derive a binding motif for
 the CTCF transcription factor. (**10 points**) You will need to:
 
 #. Select out the peaks on chr22 (otherwise meme will take a long time
-  to run)
+   to run)
 
 #. create FASTA sequence from the peak calls from the hg19 genome.
 
 #. use MEME to identify motifs from these FASTA sequences. The motifs
-  in the meme output will be ranked according to their significance
-  (i.e. how often this motif would occur in random sequence).
+   in the meme output will be ranked according to their significance
+   (i.e. how often this motif would occur in random sequence).
 
 **Report the top 5 high scoring motifs, and compare your most significant
 motif with what is already known about CTCF binding sites.**
