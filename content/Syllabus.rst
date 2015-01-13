@@ -107,14 +107,10 @@ Canvas
 ======
 
 The course has a Canvas page [#]_ where announcements are made and
-problem sets are uploaded
+problem sets are uploaded. You need to login to see Announcements and
+Problem Sets.
 
-.. [#] https://ucdenver.instructure.com/courses/11079/assignments/syllabus
-
-.. note::
-
-    Be sure to **login** to the Canvas site to be able to see Announcements,
-    upload Problem Sets, etc.
+.. [#] https://ucdenver.instructure.com/courses/325063 
 
 Assessment
 ==========
