@@ -35,17 +35,14 @@ In programming you use a variety of characters that you don't always use
 typing other kinds of documents. Learn the locations of the following by
 heart:
 
-    - Number sign (for commenting): #
-    - Dollar sign (for variables): $
-    - Underscore (for variable naming): _
-    - Parentheses: ()
-    - Brackets: []
-    - Curly brackets: {}
-    - Tilde (i.e. the squiggle; for going $HOME): ~
-    - Math symbols ("+", "-", "*", "/", "=")
-
-OK, so after I made this list, I realized it's basically everything on the
-keyboard isn't a letter or number. But you need to learn them anyway.
++ Number sign (for commenting): #
++ Dollar sign (for variables): $
++ Underscore (for variable naming): _
++ Parentheses: ()
++ Brackets: []
++ Curly brackets: {}
++ Tilde (i.e. the squiggle; for going $HOME): ~
++ Math symbols ("+", "-", "*", "/", "=")
 
 Learn hot keys for window management
 ====================================
@@ -57,9 +54,9 @@ You can do most things with your keyboard. There are several hot keys you
 should learn that will maximize your productivity on the computer by
 minimizing your use of the mouse:
 
-    - **<Alt>-<Tab>** : Flip through windows quickly and effortlessly
-      without ever touching your mouse.
-    - **<Ctrl>-<Page Up/Down>** : Switch between Terminal windows on Linux
++ **<Alt>-<Tab>** : Flip through windows quickly and effortlessly
+  without ever touching your mouse.
++ **<Ctrl>-<Page Up/Down>** : Switch between Terminal windows on Linux
 
 .. tip::
 
@@ -75,19 +72,19 @@ the next level, you need to learn to use a text editor.
 
 There are two types of nerds in this world: 
 
-    1. ``vim`` users
-    2. ``emacs`` users
+- ``vim`` users
+- ``emacs`` users
     
 I'm a ``vim``-user. I can't even log out of an ``emacs`` session.
 
 Learning a terminal text editor like ``vim`` increases productivity
 substantially, because it allows you to:
 
-    - run the editor within an existing terminal, without opening a new
-      window
-    - work on multiple documents simultaneously
-    - syntax highlight your code
-    - manipulate blocks of text quickly and efficiently
++ run the editor within an existing terminal, without opening a new
+  window
++ work on multiple documents simultaneously
++ syntax highlight your code
++ manipulate blocks of text quickly and efficiently
 
 You can run ``vim`` from the terminal prompt:
 
@@ -97,9 +94,9 @@ You can run ``vim`` from the terminal prompt:
 
 To quit a vim session, you need to:
 
-    1. enter `command mode` with the colon key
-    2. write the file
-    3. quit the program
+#. enter `command mode` with the colon key
+#. write the file
+#. quit the program
 
 This can be accomplished by typing::
 

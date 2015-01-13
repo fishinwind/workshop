@@ -5,9 +5,9 @@ Class 21 : R : DataFrames & Plotting
 Goals
 =====
 
- #. Understand data.frames in more detail
- #. Practice manipulating data.frames
- #. dplyr, ggplot
+#. Understand data.frames in more detail
+#. Practice manipulating data.frames
+#. dplyr, ggplot
 
 data.frames
 ===========
@@ -120,13 +120,12 @@ dplyr review
 
 ``dplyr`` provides these simple methods:
 
-    #. ``summarise()``
-    #. ``filter()``
-    #. ``select()``
-    #. ``mutate()``
-    #. ``arrange()``
-    #. ``group_by()``
-
+#. ``summarise()``
+#. ``filter()``
+#. ``select()``
+#. ``mutate()``
+#. ``arrange()``
+#. ``group_by()``
 
 dplyr
 =====

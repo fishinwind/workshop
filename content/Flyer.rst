@@ -15,25 +15,25 @@ Genome Analysis Workshop
 Announcements
 ~~~~~~~~~~~~~
 
-  + **Class size is limited to 20. We anticipate being full, so register
-    early.**
++ **Class size is limited to 20. We anticipate being full, so register
+  early.**
 
-  + Tuition waivers are available for Postdocs and PRAs (see Syllabus on
-    website for details)
++ Tuition waivers are available for Postdocs and PRAs (see Syllabus on
+  website for details)
 
-  + We will not accept auditors for the class.
++ We will not accept auditors for the class.
 
 Course Objectives
 ~~~~~~~~~~~~~~~~~
 
-  + Learn to manipulate large sequencing data sets with Linux command line
-    tools and Python programming.
++ Learn to manipulate large sequencing data sets with Linux command line
+  tools and Python programming.
 
-  + Learn to manipulate and visualize data with the R statistical
-    computing environment.
++ Learn to manipulate and visualize data with the R statistical
+  computing environment.
 
-  + Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
-    footprinting, mRNA-seq and variant detection.
++ Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
+  footprinting, mRNA-seq and variant detection.
 
-  + Learn to visualize data in the UCSC Genome Browser
++ Learn to visualize data in the UCSC Genome Browser
 

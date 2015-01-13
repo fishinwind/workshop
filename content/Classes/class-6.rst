@@ -38,8 +38,8 @@ time points, etc.) However, the initial steps of processing sequencing
 data use common steps to process the data into an interpretable form. A
 typical workflow for assessing sequencing data might begin with:
 
-    #. Align reads to a reference genome
-    #. Calculate coverage from the alignment
+#. Align reads to a reference genome
+#. Calculate coverage from the alignment
 
 .. nextslide::
     :increment:
@@ -87,39 +87,39 @@ different samples.
 Questions
 =========
 
- #. Check the ``.err`` files from the run. What information do they
-    contain? What does this tell you about your starting sequences?
+#. Check the ``.err`` files from the run. What information do they
+   contain? What does this tell you about your starting sequences?
 
- #. Find out how you would modify the ``bowtie2`` command to write out the
-    unaligned reads into a new file. Re-run the analysis to report those
-    reads.
+#. Find out how you would modify the ``bowtie2`` command to write out the
+   unaligned reads into a new file. Re-run the analysis to report those
+   reads.
 
- #. Modify the ``awk`` command in the script to print out a valid BED4
-    format::
+#. Modify the ``awk`` command in the script to print out a valid BED4
+   format::
     
         chrom <tab> start <tab> end <tab> count
     
- #. Find out how many unique UMI sequences are associted with each
-    chromosomal coordinate (note: not as easy).
+#. Find out how many unique UMI sequences are associted with each
+   chromosomal coordinate (note: not as easy).
 
 More exercises
 ==============
 
- #. use ``grep`` to identify lines in lamina.bed where the second field
-    (start) begins with ``100``.
+#. use ``grep`` to identify lines in lamina.bed where the second field
+   (start) begins with ``100``.
 
- #. use ``grep`` to identify lines in lamina.bed where the third field
-    (end) ends with 99 .
+#. use ``grep`` to identify lines in lamina.bed where the third field
+   (end) ends with 99 .
 
- #. use ``grep`` with its ``-w`` flag to count the number of 'chr1'
-    records in lamina.bed.
+#. use ``grep`` with its ``-w`` flag to count the number of 'chr1'
+   records in lamina.bed.
 
- #. use ``grep`` to count how many fastq records are in the
-    /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
-    '@' symbol)
+#. use ``grep`` to count how many fastq records are in the
+   /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
+   '@' symbol)
 
- #. login to amc-tesla. use ``grep`` to count the number of fastq records
-    in /vol1/opt/data/SP1.fq.gz
+#. login to amc-tesla. use ``grep`` to count the number of fastq records
+   in /vol1/opt/data/SP1.fq.gz
 
 .. raw:: pdf
 

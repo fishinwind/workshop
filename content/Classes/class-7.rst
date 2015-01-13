@@ -125,10 +125,10 @@ Python Types
 ============
 There are several core types in Python that you will use a lot.
 
-    - :py:obj:`str` is a collection of characters (words and sentences).
-    - :py:obj:`int` and :py:obj:`float` are numbers.
-    - :py:obj:`list` is a group of other objects.
-    - :py:class:`dict` contains key:value mappings.
+- :py:obj:`str` is a collection of characters (words and sentences).
+- :py:obj:`int` and :py:obj:`float` are numbers.
+- :py:obj:`list` is a group of other objects.
+- :py:class:`dict` contains key:value mappings.
 
 Strings
 =======
@@ -308,17 +308,17 @@ Now we'll read some data from a file and operate on each line:
 In Class Exercises
 ==================
 
-    #. Use :py:func:`range` to count from 0 to 100 **by 10**. How do you get
-       100 in the result?
+#. Use :py:func:`range` to count from 0 to 100 **by 10**. How do you get
+   100 in the result?
 
-    #. Get **every other** value of ``words`` (hint: use a slice)
+#. Get **every other** value of ``words`` (hint: use a slice)
 
-    #. Use :py:func:`enumerate` on a list (hint: convert the
-       result with list(result))
+#. Use :py:func:`enumerate` on a list (hint: convert the
+   result with list(result))
 
-    #. Use :py:func:`sorted` and :py:func:`reversed` on a list.
+#. Use :py:func:`sorted` and :py:func:`reversed` on a list.
 
-    #. Do type conversion on each of the fields in the lamina.bed file
+#. Do type conversion on each of the fields in the lamina.bed file
 
 .. raw:: pdf
 

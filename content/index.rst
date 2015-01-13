@@ -7,16 +7,18 @@ Genome Analysis Workshop
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
 :Website: http://hesselberthlab.github.io/workshop
 :Next offered: Spring 2015
-:Course Number: MOLB 7621
+:Course Number: MOLB 7621 (cross-listed with STBB 7621)
+:Last updated:  |today|
 
 Announcements
 ~~~~~~~~~~~~~
-  + **Class size is limited to 20. We anticipate being full, so register
-    early.**
 
-  + `Tuition waivers
-    <https://www.cu.edu/employee-services/tuition-waiver-benefit-cu-denveranschutz>`_
-    are available for Postdocs and PRAs
+* **Class size is limited to 20. We anticipate being full, so register
+  early.**
+
+* `Tuition waivers
+  <https://www.cu.edu/employee-services/tuition-waiver-benefit-cu-denveranschutz>`_
+  are available for Postdocs and PRAs
 
 Course Description
 ~~~~~~~~~~~~~~~~~~

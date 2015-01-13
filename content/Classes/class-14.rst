@@ -8,7 +8,7 @@ Class 14 : ChIP-seq
 Goals
 =====
 
- #. Learn the workflow for analyzing ChIP-seq data
+#. Learn the workflow for analyzing ChIP-seq data
 
 .. important::
 

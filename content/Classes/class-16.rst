@@ -30,7 +30,7 @@ Terminal session
             id="asciicast-8031" async>
     </script>
 
-.. Ananlysis ideas
+.. Analysis ideas
    --------------
 
 .. #. Identify signatures of modified base incorporation from 1000 Genomes

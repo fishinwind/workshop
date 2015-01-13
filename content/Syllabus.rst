@@ -12,7 +12,7 @@ General Information
 :Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
 :Address:       Department of Biochemistry and Molecular Genetics
-:Copyright:     2014 Jay R. Hesselberth
+:Copyright:     2014,2015 Jay R. Hesselberth
 :Copyright:     All Rights Reserved.
 :Last updated:  |today|
 
@@ -78,30 +78,30 @@ Texts and Reading Materials
 
 
 #. **Required**: A Quick Guide to Organizing Computational Biology Projects
-    http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
+   http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
 
 #. **Required**: Command Line Crash Course
-    http://cli.learncodethehardway.org/book/
+   http://cli.learncodethehardway.org/book/
 
 #. **Required**: ggplot2: Elegant Graphics for Data Analysis
-    http://ggplot2.org/book/
+   http://ggplot2.org/book/
 
 #. **Required**: Learn Python the Hard Way,
-    http://learnpythonthehardway.org/book/
+   http://learnpythonthehardway.org/book/
 
 Course Objectives
 -----------------
 
-  - Learn to manipulate large sequencing data sets with Linux command line
-    tools and Python programming.
++ Learn to manipulate large sequencing data sets with Linux command line
+  tools and Python programming.
 
-  - Learn to manipulate and visualize data with the R statistical
-    computing environment.
++ Learn to manipulate and visualize data with the R statistical
+  computing environment.
 
-  - Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
-    footprinting, mRNA-seq and variant detection.
++ Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
+  footprinting, mRNA-seq and variant detection.
 
-  - Learn to visualize data in the UCSC Genome Browser
++ Learn to visualize data in the UCSC Genome Browser
 
 Canvas 
 ======
@@ -121,9 +121,9 @@ session, weekly problem sets, as well as a final project.
 Grading Criteria
 ----------------
 
- - 50% participation
- - 40% problem sets (10 sets, 4% each)
- - 10% final project
++ 50% participation
++ 40% problem sets (10 sets, 4% each)
++ 10% final project
 
 .. _syllabus-specific-dates:
 
@@ -139,23 +139,23 @@ Specific Dates / Material to be Covered
       - Topic
       - Problem Set
     * - Class 1
-      - T Jan 20
+      - T Jan 27
       - Introduction to VM, Linux and the shell
       - 
     * - Class 2 
-      - Th Jan 22
+      - Th Jan 29
       - Linux / Utilities
       - **PS1 due** (Mon Jan 26 12:00 AM)
     * - Class 3 
-      - T Jan 27
+      - T Feb 3
       - Linux / Utilities
       - 
     * - Class 4 
-      - Th Jan 29
+      - Th Feb 5
       - Linux / Utilities
       - **PS2 due** (Mon Feb 12:00 AM)
     * - Class 5 
-      - T Feb 3
+      - T Feb 10
       - Cluster Usage / Review
       - 
     * - Class 6 
@@ -163,43 +163,43 @@ Specific Dates / Material to be Covered
       - Cluster Usage / Review
       - **PS3 due** (Mon Feb 9 12:00 AM)
     * - Class 7 
-      - T Feb 10
+      - T Feb 17
       - Python
       - 
     * - Class 8 
-      - Th Feb 12
+      - Th Feb 19
       - Python
       - **PS4 due** (Mon Feb 16 12:00 AM)
     * - Class 9 
-      - T Feb 17
-      - Python 
-      - 
-    * - Class 10 
-      - Th Feb 19
-      - Python 
-      - **PS5 due** (Mon Feb 23 12:00 AM)
-    * - Class 11 
       - T Feb 24
       - Python 
       - 
-    * - Class 12
+    * - Class 10 
       - Th Feb 26
+      - Python 
+      - **PS5 due** (Mon Feb 23 12:00 AM)
+    * - Class 11 
+      - T Mar 3
+      - Python 
+      - 
+    * - Class 12
+      - Th Mar 5
       - ENCODE Overview
       - **PS6 due** (Mon Mar 2 12:00 AM)
     * - Class 13 
-      - T Mar 3
+      - T Mar 10
       - BEDtools  
       - 
     * - Class 14 
-      - Th Mar 5
+      - Th Mar 12
       - ChIP-seq (coverage / peaks / motifs)
       - **PS6 due** (Mon Mar 9 12:00 AM)
     * - Class 15 
-      - T Mar 10 
+      - T Mar 24
       - ChIP-seq / DNaseI-seq (UCSC)
       - 
     * - Class 16
-      - Th Mar 12
+      - Th Mar 26
       - Genomic analysis vignettes 
       - 
     * -
@@ -207,52 +207,44 @@ Specific Dates / Material to be Covered
       -
       - 
     * - Class 17 
-      - T Mar 24
+      - T Mar 31
       - Genomic analysis vignettes 
       - 
     * - Class 18
-      - Th Mar 26
+      - Th Apr 2
       - R data & plotting 
       - **PS7 due** (Mon Mar 30 12:00 AM)
     * - Class 19
-      - T Mar 31
-      - R data & plotting 
-      - 
-    * - Class 20
-      - Th Apr 2
-      - R data & plotting 
-      - **PS8 due** (Mon Apr 6 12:00 AM)
-    * - Class 21
       - T Apr 7
       - R data & plotting 
       - 
-    * - Class 22
+    * - Class 20
       - Th Apr 9
+      - R data & plotting 
+      - **PS8 due** (Mon Apr 6 12:00 AM)
+    * - Class 21
+      - T Apr 14
+      - R data & plotting 
+      - 
+    * - Class 22
+      - Th Apr 16
       - R data & plotting 
       - **PS9 due** (Mon Apr 13 12:00 AM)
     * - Class 23
-      - T Apr 14 
+      - T Apr 21
       - mRNA-seq (FPKM / diff exp)
       - 
     * - Class 24
-      - Th Apr 16 
+      - Th Apr 23
       - mRNA-seq (FPKM / diff exp)
       - **PS10 due** (Mon Apr 20 12:00 AM)
     * - Class 25 
-      - T Apr 21
+      - T Apr 28
       - Exome Alignment
       - 
     * - Class 26 
-      - Th Apr 23
-      - Exome Variant Calling
-      - 
-    * - Class 27 
-      - T Apr 28
-      - TBD
-      - 
-    * - Class 28 
       - Th Apr 30
-      - Final project presentations
+      - Exome Variant Calling
       - 
 
 .. raw:: pdf

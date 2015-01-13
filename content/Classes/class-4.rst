@@ -30,16 +30,16 @@ Named after authors **A** ho, **W** einberger & **K** ernighan
 basic principles
 ================
 
- #. awk operates on each line of a text file
- #. in an awk program, $1 is an alias for the 1st column, $2 for the 2nd, etc. 
- #. awk can filter lines by a pattern
+#. awk operates on each line of a text file
+#. in an awk program, $1 is an alias for the 1st column, $2 for the 2nd, etc. 
+#. awk can filter lines by a pattern
 
 awk program structure
 =====================
 
- + **BEGIN** runs before the program starts
- + **END** runs after the program runs through all lines in the file
- + **PATTERN** and **ACTIONS** check and execute on each line.
++ **BEGIN** runs before the program starts
++ **END** runs after the program runs through all lines in the file
++ **PATTERN** and **ACTIONS** check and execute on each line.
 
 .. code-block:: bash
 
@@ -162,12 +162,11 @@ remember we can simply filter to the lines > 5000 with:
 
 awk special variables
 =====================
- #. we know *$1*, *$2*, ... for the column numbers
- #. NR is a special variable that holds the line number
- #. NF is a special variable that holds the number of fields in the line
-
- #. FS and OFS are the (F)ield and (O)output (F)ield (S)eparators
-    --meaning the delimiters (default is any space character)
+#. we know *$1*, *$2*, ... for the column numbers
+#. NR is a special variable that holds the line number
+#. NF is a special variable that holds the number of fields in the line
+#. FS and OFS are the (F)ield and (O)output (F)ield (S)eparators
+   --meaning the delimiters (default is any space character)
 
 using awk to count lines with NR
 ================================
@@ -207,11 +206,11 @@ advanced awk
 ============
 You can do a lot more with awk, here are several resources:
 
-    - http://www.hcs.harvard.edu/~dholland/computers/awk.html
+- http://www.hcs.harvard.edu/~dholland/computers/awk.html
 
-    - http://doc.infosnel.nl/quickawk.html
+- http://doc.infosnel.nl/quickawk.html
 
-    - http://www.catonmat.net/download/awk.cheat.sheet.pdf
+- http://www.catonmat.net/download/awk.cheat.sheet.pdf
 
 .. _class-4-exercises:
 
@@ -221,14 +220,14 @@ we will do the first 2. of these together
 
 1. use NR to print each line of `lamina.bed` *preceded* by it's line number
 
-  a. do the above, but only for regions on chromosome 12
+a. do the above, but only for regions on chromosome 12
 
 2. use NF to see how many columns are in each row of `states.tab`
 
-  a. use sort and uniq -c to see uniq column counts.
-  b. why are there 2 numbers?
-  c. can you adjust the file separator so that awk thinks all rows have
-     the same number of columns?
+a. use sort and uniq -c to see uniq column counts.
+b. why are there 2 numbers?
+c. can you adjust the file separator so that awk thinks all rows have
+   the same number of columns?
 
 review
 ======
@@ -248,19 +247,19 @@ review
 In Class Exercises - Class 4 (2)
 ================================
 
- #. are there any regions in `lamina.bed` with start > end?
+#. are there any regions in `lamina.bed` with start > end?
 
- #. what is the total coverage [sum of (end - start)] of regions on chr13 in `lamina.bed`?
+#. what is the total coverage [sum of (end - start)] of regions on chr13 in `lamina.bed`?
 
- #. what is the mean value (4th column) on chromome 3 of `lamina.bed`
+#. what is the mean value (4th column) on chromome 3 of `lamina.bed`
 
- #. print out only the header and the entry for colorado in `states.tab`
+#. print out only the header and the entry for colorado in `states.tab`
 
- #. what is the (single-number) sum of all the incomes for `states.tab` with illiteracy rate:
-    a. less than 0.1?
-    b. greater than 2?
+#. what is the (single-number) sum of all the incomes for `states.tab` with illiteracy rate:
+a. less than 0.1?
+b. greater than 2?
 
- #. use NR to filter out the header from `lamina.bed` (hint: what is NR for the header?)
+#. use NR to filter out the header from `lamina.bed` (hint: what is NR for the header?)
 
 .. raw:: pdf
 

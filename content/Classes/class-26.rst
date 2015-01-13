@@ -6,10 +6,10 @@ Class 26 : Exome-Seq - Variants
 Goals
 =====
 
- #. Review cluster usage
- #. BAM format
- #. VCF format
- #. Filter VCF
+#. Review cluster usage
+#. BAM format
+#. VCF format
+#. Filter VCF
 
 LSF Job Arrays
 ==============
@@ -94,10 +94,10 @@ Project Design
 SNPEff/SNPSift
 ==============
 
- + find **Eff** ect of variant (missense/nonsense/etc)
- + filter variants by presence in DBSNP
- + filter variants by genotype across samples
- + filter variants by *lots of stuff*
++ find **Eff** ect of variant (missense/nonsense/etc)
++ filter variants by presence in DBSNP
++ filter variants by genotype across samples
++ filter variants by *lots of stuff*
 
 http://snpeff.sourceforge.net/SnpEff_manual.html
 
@@ -115,7 +115,7 @@ Java
 Filters
 =======
 
- + Get variants with quality score greater than 40:
++ Get variants with quality score greater than 40:
 
 .. code-block:: bash
 
@@ -128,9 +128,9 @@ Filters II
 
 To (kinda) match the study design. Get variants with:
 
- + quality score greater than 40
- + with 5 hets and 3 reference 
- + high/moderate impact
++ quality score greater than 40
++ with 5 hets and 3 reference 
++ high/moderate impact
 
 .. code-block:: bash
 

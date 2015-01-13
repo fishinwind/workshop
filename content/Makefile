@@ -24,7 +24,6 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo
-	@echo "  all        to create all class files and post to website"
 	@echo "  pdf        to make standalone PDF"
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"

@@ -5,17 +5,17 @@ Class 20 : R : Manipulation & Plotting
 Goals
 =====
 
- #. Learn to keep a running script in RStudio to save your work.
- #. more reshape and dplyr
- #. Exercises 
+#. Learn to keep a running script in RStudio to save your work.
+#. more reshape and dplyr
+#. Exercises 
 
 RStudio practice
 ================
 
- #. open a new R script with File -> New -> R script
+#. open a new R script with File -> New -> R script
 
- #. As you run interactive analyses, paste the commands that work into the
-    script.
+#. As you run interactive analyses, paste the commands that work into the
+   script.
 
 reshape2 review
 ===============
@@ -39,12 +39,12 @@ dplyr
 
 ``dplyr`` provides these simple methods:
 
-    #. ``summarise()``
-    #. ``filter()``
-    #. ``select()``
-    #. ``mutate()``
-    #. ``arrange()``
-    #. ``group_by()``
+#. ``summarise()``
+#. ``filter()``
+#. ``select()``
+#. ``mutate()``
+#. ``arrange()``
+#. ``group_by()``
 
 ``dplyr`` also provides an operator called ``%>%`` that allows you to
 string manipulations together:

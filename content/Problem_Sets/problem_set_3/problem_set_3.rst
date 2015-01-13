@@ -27,13 +27,13 @@ Use Python to perform a similar tasks as Problem Set 2, where you used
 ``awk``. Write a Python program to read the lamina.bed file and report the
 following:
 
-    #. What is the region with the largest start position (2nd column) **for
-       each** chromosome in `lamina.bed`? (**5 points**)
+- What is the region with the largest start position (2nd column) **for
+  each** chromosome in `lamina.bed`? (**5 points**)
 
-    #. What is the region with the largest end position on chrY in
-       lamina.bed? (**5 points**) Report as::
+- What is the region with the largest end position on chrY in
+  lamina.bed? (**5 points**) Report as::
 
-        chrom <tab> start <tab> end <tab> value <tab> region_length
+   chrom <tab> start <tab> end <tab> value <tab> region_length
 
 Download the bed file here: :ref:`bed-file`
 
@@ -57,19 +57,19 @@ Download the fastq file here: :ref:`fastq-file`
 Write a Python program to parse the FASTQ records and report the
 following:
 
-    #. Which of the first 10 sequence records has the largest number of 'C'
-       residues in the sequence? Report its record name (**5 points**).
+- Which of the first 10 sequence records has the largest number of 'C'
+  residues in the sequence? Report its record name (**5 points**).
     
-    #. For each of the first 10 records, Covert each character in the
-       quality score to a number, and sum the numbers. Use :py:func:`ord`
-       to convert characters to numbers (**5 points**).
+- For each of the first 10 records, Covert each character in the
+  quality score to a number, and sum the numbers. Use :py:func:`ord`
+  to convert characters to numbers (**5 points**).
 
-    #. Use the Python :py:class:`~collections.Counter` to count unique
-       sequences in the Fastq file. Report the top ten most abundant
-       sequences in the Fastq file (**5 points**).
+- Use the Python :py:class:`~collections.Counter` to count unique
+  sequences in the Fastq file. Report the top ten most abundant
+  sequences in the Fastq file (**5 points**).
 
-    #. Report the revese complement of each of the first 10 sequences (**5
-       points**)
+- Report the revese complement of each of the first 10 sequences (**5
+  points**)
 
 .. note::
 

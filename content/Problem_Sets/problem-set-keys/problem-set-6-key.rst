@@ -58,11 +58,11 @@ Problem 2.2
 
 Grab the peaks that do not overlap any other peaks (besides itself). Strategy:
 
- #. Use :ref:`bedtools intersect <bedtools:intersect>`
- #. Give the same filename to ``-a`` and ``-b``
- #. Count the number of overlaps with ``-c``
- #. Use ``awk`` to select those regions with only 1 overlap (i.e. 1 means
-    the only overlap is with itself)
+#. Use :ref:`bedtools intersect <bedtools:intersect>`
+#. Give the same filename to ``-a`` and ``-b``
+#. Count the number of overlaps with ``-c``
+#. Use ``awk`` to select those regions with only 1 overlap (i.e. 1 means
+   the only overlap is with itself)
 
 .. code-block:: bash
 

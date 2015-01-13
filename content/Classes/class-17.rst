@@ -15,9 +15,9 @@ Log in to amc-tesla and do this::
 Goals
 =====
 
- #. Debugging and Scripting in bash
+#. Debugging and Scripting in bash
 
- #. QC Sequence and Alignments
+#. QC Sequence and Alignments
 
 
 Pybedtools

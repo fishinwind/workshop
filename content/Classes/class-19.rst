@@ -5,8 +5,8 @@ Class 19 : R : Manipulation & Plotting
 Goals
 =====
 
- #. Learn to load data with ``read.delim``
- #. Begin to manipulate data with ``reshape`` and ``plyr``
+#. Learn to load data with ``read.delim``
+#. Begin to manipulate data with ``reshape`` and ``plyr``
 
 Loading data into R
 ===================

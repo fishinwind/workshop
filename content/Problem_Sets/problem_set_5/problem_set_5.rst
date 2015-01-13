@@ -30,14 +30,14 @@ abundant human transcription factor called CTCF.
 Use the CTCF peak calls in the ENCODE data to derive a binding motif for
 the CTCF transcription factor. (**10 points**) You will need to:
 
-  #. Select out the peaks on chr22 (otherwise meme will take a long time
-     to run)
+#. Select out the peaks on chr22 (otherwise meme will take a long time
+   to run)
 
-  #. create FASTA sequence from the peak calls from the hg19 genome.
+#. create FASTA sequence from the peak calls from the hg19 genome.
 
-  #. use MEME to identify motifs from these FASTA sequences. The motifs
-     in the meme output will be ranked according to their significance
-     (i.e. how often this motif would occur in random sequence).
+#. use MEME to identify motifs from these FASTA sequences. The motifs
+   in the meme output will be ranked according to their significance
+   (i.e. how often this motif would occur in random sequence).
 
 **Report the top 5 high scoring motifs, and compare your most significant
 motif with what is already known about CTCF binding sites.**
@@ -48,20 +48,20 @@ Problem 2
 Use BEDtools to intersect peaks calls from clustered transcription factor
 binding sites (TFBS) with clustered DNase I peaks. (**20 points**)
 
- #. Identify transcription factor binding sites that do not overlap with
-    DNase I hypersensitive sites.
+- Identify transcription factor binding sites that do not overlap with
+  DNase I hypersensitive sites.
     
-    + What transcription factors are represented in these regions? Analyze
-      the BED file output to get this answer.
+  * What transcription factors are represented in these regions? Analyze
+    the BED file output to get this answer.
 
- #. Do the converse: identify DNase I hypersensitive sites that do not
-    have corresponding transcription factor peak calls.
+- Do the converse: identify DNase I hypersensitive sites that do not
+  have corresponding transcription factor peak calls.
     
-    + What motifs are enriched in this set of hypersensitive sites
-      (**UPDATE: only look at sites on chrY**)?
+  * What motifs are enriched in this set of hypersensitive sites
+    (**UPDATE: only look at sites on chrY**)?
 
-    + How would you use existing tools to identify similar motifs, ideally
-      ones that are previously associated with a transcription factor?
+  * How would you use existing tools to identify similar motifs, ideally
+    ones that are previously associated with a transcription factor?
 
 **Report the factors in the peaks and the top 5 high scoring motifs from
 each meme analysis.**

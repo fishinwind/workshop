@@ -24,22 +24,22 @@ If you still get an error, ask for help.
 Goals
 =====
 
- #. homework review
- #. example application
+#. homework review
+#. example application
 
 Homework Review
 ===============
 
- + Everyone is having trouble with :ref:`problem-set-3`.
++ Everyone is having trouble with :ref:`problem-set-3`.
 
- + Trouble integrating simple python constructs (dicts, lists, strings) and
-   logic (if blocks, for loops) to perform some tasks.
++ Trouble integrating simple python constructs (dicts, lists, strings) and
+  logic (if blocks, for loops) to perform some tasks.
 
- + Specific questions about homework?
++ Specific questions about homework?
 
- + Questions 1, 2.
++ Questions 1, 2.
 
- + `toolshed module <https://pypi.python.org/pypi/toolshed>`_.
++ `toolshed module <https://pypi.python.org/pypi/toolshed>`_.
 
 Application Impetus
 ===================
@@ -73,21 +73,21 @@ We will spend this class *deriving*/*understanding* `sample-merge.py`
 Set Up The Problem
 ==================
 
- + goal: merge the information from the 2 files.
++ goal: merge the information from the 2 files.
 
- + we will add info from sample-seq-info.csv to sample-lab-info.tsv
++ we will add info from sample-seq-info.csv to sample-lab-info.tsv
 
- + sample-seq-info.csv contains a super-set of the samples in
-   sample-lab-info.csv
++ sample-seq-info.csv contains a super-set of the samples in
+  sample-lab-info.csv
 
- + we will match samples by the `Sample` column in sample-lab-info.tsv to
-   the `Sample ID` column in sample-seq-info.csv
++ we will match samples by the `Sample` column in sample-lab-info.tsv to
+  the `Sample ID` column in sample-seq-info.csv
 
-   * we will store rows from sample-seq-info.csv in a dictionary keyed by
-     `Sample ID`
+  * we will store rows from sample-seq-info.csv in a dictionary keyed by
+    `Sample ID`
 
- + since we are **adding** to sample-lab-info.tsv, we don't need to filter
-   out as we read from sample-seq-info.csv
++ since we are **adding** to sample-lab-info.tsv, we don't need to filter
+  out as we read from sample-seq-info.csv
 
 Understand The Problem
 ======================
@@ -106,16 +106,16 @@ Decide on Coding Strategy
 #. loop (stream) over `sample-lab-info.tsv` to get **lab_info**
    for each sample
 
-   #. Find matching *sequence-info* for each row by using the `Sample` column as a
-      key into **seq_infos**
+#. Find matching *sequence-info* for each row by using the `Sample` column as a
+   key into **seq_infos**
 
-   #. The corresponding value of seq_infos[sample] will be all of the laboratory
-      information for that sample.
+#. The corresponding value of seq_infos[sample] will be all of the laboratory
+   information for that sample.
 
-   #. Add the *seq_info* for the current sample to the *lab_info* using: 
-      `lab_info.update(seq_info)`
+#. Add the *seq_info* for the current sample to the *lab_info* using: 
+   `lab_info.update(seq_info)`
 
-   #. print out the **lab_info** with newly added **seq_info**
+#. print out the **lab_info** with newly added **seq_info**
 
 Script
 ======
