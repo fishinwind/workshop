@@ -18,7 +18,9 @@ Announcements
 
 * `Tuition waivers
   <https://www.cu.edu/employee-services/tuition-waiver-benefit-cu-denveranschutz>`_
-  are available for Postdocs and PRAs
+  are available for Postdocs and PRAs. You also need to fill out a
+  `non-degree application
+  <http://www.ucdenver.edu/student-services/resources/registrar/Documents/RegistrarForms/AMC/AMCNonDegreeApp.pdf>`_.
 
 Course Description
 ~~~~~~~~~~~~~~~~~~
