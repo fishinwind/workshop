@@ -1,234 +1,93 @@
-******************************************
-Class 5 : Working in a cluster environment
-******************************************
+********************************
+Class 5 : The ENCODE Project
+********************************
 
-:Class date: Wednesday 5 February 2014
+:Class date: Tues 12 Feb 2015
 
 Goals
 =====
-#. Grep overview
-#. Login to cluster
-#. Learn about cluster-specific commands
-#. Queueing system basics
 
-grep
-====
-Use :linuxman:`grep(1)` to identify lines in a file that match a specified pattern.
+#. What is the ENCODE project?
+ 
+#. What kinds of data did the ENCODE project produce? 
+ 
+#. Where can I find these data on the Internet? 
+ 
+ENCODE Project Timeline: 2003
+=============================
+ 
+The Human Genome Project was finished, giving us a list of human genes and their 
+locations. Unfortunately, we still had no idea how they were regulated. If only 
+there was an `ENCyclopedia Of Dna Elements 
+<http://www.sciencemag.org.hsl-ezproxy.ucdenver.edu/content/306/5696/636.full>`_…
 
-To find any instance of *chr5* in the lamina.bed file
+Advantages: massive amounts of information on key cell lines, reproducible 
+experiments, public data access, technology development.
 
-.. code-block:: bash
+ENCODE Project Cell Lines
+=========================
 
-    # grep [pattern] [filename]
-    $ grep chr5 /opt/bio-workshop/data/lamina.bed | head
+Tier 1: GM12878 (EBV-transformed lymphoblast), K562 (CML lymphoblast), H1-hESC
 
-To find all lines that start with a number sign:
+Tier 2: HeLa-S3 (cervical cancer), HepG2 (liver carcinoma), HUVEC (umbilical vein)
 
-.. code-block:: bash
+Tier 2.5: SKNSH (neuroblastoma), IMR90 (lung fibroblast), A549 (lung carcinoma), 
+MCF7 (breast carcinoma), LHCN (myoblast), CD14+, CD20+
+ 
+`link <http://genome.ucsc.edu/ENCODE/cellTypes.html>`_ (this page also has very useful
+links to cell culture protocols)
 
-    # The caret (^) matches the beginning of the line
-    # FYI dollar sign ($) matches the end
-    $ grep '^#' /opt/bio-workshop/data/lamina.bed
+Experiments
+===========
 
-.. nextslide::
-    :increment:
+#. ChIP-seq: Histone marks, transcription factors
 
-To find any line that *does not* start with "chr":
+#. Chromatin structure: DNaseI-seq, FAIRE, 5C/Hi-C
 
-.. code-block:: bash
+#. RNA expression: mRNA-seq, GENCODE gene predictions
 
-    # the -v flag inverts the match (grep "not" [pattern])
-    $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
+#. Data Integration: Segway / ChromHMM integration of functional data
 
-Beware of using ``grep`` to find patterns that might be partial matches:
-
-.. code-block:: bash
-
-    # this will match chr1, chr10, chr11 etc.
-    $ grep chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
-
-You can find exact matches that are split on words with the ``-w`` flag:
-
-.. code-block:: bash
-
-    # this will only match chr1
-    $ grep -w chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
-
-.. nextslide::
-    :increment:
-
-Beware of using ``grep`` to search for numbers:
-
-.. code-block:: bash
-
-    # finds all strings that match `100`
-    $ grep 100 /opt/bio-workshop/data/lamina.bed | head -n 20
-
-    # better, but doesn't look at numeric value
-    $ grep -w 100 /opt/bio-workshop/data/lamina.bed | head -n 20
-
-.. tip::
-
-    If you're trying to find numeric values in a file, use ``awk``
-    instead::
-
-        $ awk '$2 == 500' /opt/bio-workshop/data/lamina.bed
-
-Cluster access
-==============
-We have set up accounts for the class on our departmental cluster. We will
-set up your accounts at the end of class and reset your passwords:
-
-.. code-block:: bash
-
-    # the -X flag starts an X11 connection 
-    $ ssh -X username@amc-tesla.ucdenver.pvt
-
-    ...
-
-    # once you are logged in, text your X11 connection with
-    $ xeyes
-
-Cluster etiquette
-=================
-There are some specific rules you need to know when you're operating in a
-cluster environment.
-
-.. graphviz::
-
-    digraph cluster {
-        "YOU" [shape=box];
-        "amc-tesla" [shape=box];
-        "filesystem" [shape=box];
-        "compute nodes" [shape=box];
-        "YOU" -> "amc-tesla";
-        "amc-tesla" -> "filesystem";
-        "amc-tesla" -> "compute nodes";
-    }
-
-.. important::
-
-  **DO NOT** run jobs on the head node (amc-tesla). The head node is the
-  brains of the cluster and it can easily be overextended. Use ``qlogin``
-  instead.
-
-Example commands on the cluster
-===============================
-Find the size of the file system:
-
-.. code-block:: bash
-
-    $ df -h
-
-Find how much space you have allocated:
-
-.. code-block:: bash
-
-    $ quota -h
-
-The queueing system
+Common File Formats
 ===================
-First you will grab a single CPU from the queueing system so that you can
-work without affecting the head node. We use ``qlogin`` for this:
 
-.. code-block:: bash
+#. FASTQ: Raw sequencing data.
 
-    jhessel@amc-tesla ~
-    $ qlogin 
+#. BAM/SAM: Aligned sequence data
 
-    Job <492536> is submitted to queue <interactive>.
-    <<ssh X11 forwarding job>>
-    <<Waiting for dispatch ...>>
-    <<Starting on compute00>>
+#. Bed/bigBed: List of genomic regions
 
-    jhessel@compute00 ~
-    $ 
+#. Bedgraph/Wig/bigWig: Continuous signal (e.g. methylation mapping)
 
-.. note:: 
+ENCODE Project Timeline: 2007
+==============================
 
-    The host in the prompt changed from ``amc-tesla`` to ``compute00``.
-    
-You can now execute long-running processes without worry of affecting the
-cluster. Type ``exit`` to return back to your head node login.
+Completion of `pilot project <http://genome.ucsc.edu/ENCODE/encode.hg18.html>`_ 
+(1% of the human genome). 
+(`summary paper with list of analyses in Table 1: 
+<http://www.nature.com/nature/journal/v447/n7146/full/nature05874.html>`_)
 
-The queueing system (2)
-=======================
-The cluster uses a queueing system that will run jobs that you submit to
-it. You can write a small test script to see how the system works. First,
-write this into a run.sh file:
+GENCODE
+=======
 
-.. code-block:: bash
+ENCODE identifies functional genomic elements; `GENCODE <http://www.gencodegenes.org>`_ 
+is the annotation of those elements based on ENCODE data. This will ideally be the 
+most comprehensive reference gene set once the project is complete. 
 
-    #!/usr/bin/env bash
+ENCODE Project Timeline: 2012
+=============================
 
-    #BSUB -J sleeper
-    #BSUB -e %J.err
-    #BSUB -o %J.out
+Completion of the entire project, and a ton of papers: 
+`Nature <http://www.nature.com/nature/journal/v489/n7414/index.html>`_, 
+`Genome Research <http://genome.cshlp.org/content/22/9.toc>`_, 
+`Genome Biology <http://genomebiology.com/content/13/9>`_, 
+`paper viewer that is also an iPad app <http://www.nature.com/encode/#/threads>`_, 
+and the `front page of the New York Times <http://www.nytimes.com/2012/09/06/science/far-from-junk-dna-dark-matter-proves-crucial-to-health.html?pagewanted=all>`_
 
-    sleep 20
+How to Access ENCODE Data
+=========================
 
-The queueing system (3)
-=======================
-The ``#BSUB`` lines are comments, but are read by the ``bsub`` program to
-identify features associated with your job. 
-
-- ``-J`` sets the job's name
-- ``%J`` is a unique job ID that is set when you run the job.
-- ``-e`` and ``-o`` set the filenames for stderr and stdout from the job
-
-The queueing system (4)
-=======================
-Now you can submit the script to the queuing system. As soon as you submit
-it, you can check on its progress:
-
-.. code-block:: bash
-
-    $ bsub < run.sh
-    $ bjobs
-
-After the job finishes, you should see two new files that end
-`.out` and `.err`; these stdout and stderr from the running job.
-Look at the contents of those files so you know what is in
-each one.
-
-Killing jobs
-============
-Sometimes you need to kill your jobs. You can kill specific jobs using
-their job ID numbers, obtained from checking ``bjobs``:
-
-.. code-block:: bash
-
-    $ bkill <jobid> 
-
-You can also kill **all** of your jobs at once:
-
-.. code-block:: bash
-
-    $ bkill 0 
-
-.. warning::
-
-    ``bkill 0`` is dangerous – it will wipe out all of your jobs. If
-    you have long-running jobs that you forgot about, you will kill them
-    too if you are not careful!
-
-Other cluster-specific commands
-===============================
-.. code-block:: bash
-
-    $ bhosts     # hosts in the cluster
-    $ man bhosts # bsub man page
-    $ bqueues    # available queues
-    $ lsload     # check load values for all hosts
-
-In Class Exercises
-==================
-We're going to take a break this class so that you can catch up on your
-exercises. Please spend some time going back through the exercises from
-classes 1-4.
-
-- :ref:`class-3-exercises`
-- :ref:`class-4-exercises`
+See genome browser
 
 .. raw:: pdf
 

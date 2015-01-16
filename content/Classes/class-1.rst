@@ -1,8 +1,8 @@
 *****************************************************
-Class 1 : Virtual Machine (VM) and Linux Introduction
+             Class 1 : Class Introduction
 *****************************************************
 
-:Class date: XXX 
+:Class date: Tues 2015 Jan 27
 
 Goals
 =====
@@ -12,12 +12,12 @@ Goals
 
 Class Overview
 ==============
-Each class is 90 minutes. We intend to spend the first 30 min going
+Each class is 2 hours. We intend to spend the first 60 min going
 through exercises that demonstrate how specific tools are useful in
 bioinformatics. During the remaining hour, we expect you to work through
 exercises, asking for help when you get stuck. 
 
-We will record the first 30 minutes using Panopto Screen Capture, and
+We will record the first 60 minutes using Panopto Screen Capture, and
 these recordings will be available in Canvas. We have found that simply
 watching someone work in a terminal (move around, open up text editors,
 write and execute simple programs) can be a very effective way to get
@@ -27,31 +27,15 @@ purpose.
 Each week, we will have 1 take home quiz, due the following Tuesday at 5
 PM. 
 
-The Virtual Machine (VM)
-========================
-The VM will let you run Linux on your laptop, or the laptops available at
-the Teaching Lab. The VM has many of the tools you will need for analysis
-pre-installed. Feel free to install other tools that you think will be
-useful.
+Linux installations
+===================
+The PCs in the library have Virtual Box installed with a minimal Linux
+installation. If you have your own PC laptop, you can install Virtual Box
+and any standard Linux distribution (Ubuntu or Mint). If you have a Mac
+laptop, you can do the same, or just use the native terminal.
 
-To install the VM:
-
-#. Download VirtualBox from virtualbox.org
-
-#. Open VirtualBox. Click "New" in the upper left corner.
-
-#. In the "Name" field, type bio-workshop.  For "Type" select Linux.  For
-   "Version"  select Ubuntu.  Click continue.
-
-#. Allocate an amount of memory that keeps the bar in the green zone.
-   2048MB is a nice number.  Click continue.
-
-#. Click the "Use an existing virtual hard drive file" radio button.
-   Click the folder icon.  Select the .vdi file provided on your USB stick.
-
-#. Click create.
-
-#. Press the "Start" button.
+In any case, we will create logins on our compute cluster (amc-tesla) and
+all your work will be done through that.
 
 Important Directories
 =====================
@@ -112,10 +96,10 @@ Shell and Python Programming
 It is important that you learn a few new computer languages. Others have
 developed very good guides to teach you these languages, and we are going
 to use those in the class. We expect you to begin taking these classes
-immediately, doing them within the VM for practice.
+immediately.
 
 You will spend a lot of time going through these online classes, both in
-schedule class time, and outside of class time. Instead of focusing on
+scheduled class time, and outside of class time. Instead of focusing on
 teaching you these languages, we will focus on helping you get through all
 of the frustating problems that come up when you're learning the languages.
 
@@ -125,9 +109,12 @@ you have access to within the shell.
 .. [#] The Command Line Crash Course
         http://cli.learncodethehardway.org/book/
 
-After learning shell, we will begin learning Python [#]_. The Python
-language allows you to do more sophisticated things that would be possible
-in shell, but would be considerably more clunky.
+After learning the shell, we will begin learning R and several packages
+within R.
+
+Finally, we will begin learning Python [#]_. The Python language allows
+you to do more sophisticated things that would be possible in shell or R, but
+would be considerably more clunky.
 
 .. [#] Learn Python the Hard Way
         http://learnpythonthehardway.org/book/

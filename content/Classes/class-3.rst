@@ -2,16 +2,16 @@
 Class 3 : The command-line (part 2)
 ***********************************
 
-:Class date: Friday 31 January 2014
+:Class date: Tues 3 Feb 2015
 
 Goals
 =====
-#. learn additional linux utilities (cut, sort, zless, uniq, wget)
-#. understand how to combine tools with pipes (|)
+#. learn additional linux utilities (cut, sort, uniq, less, wget)
+#. understand how to combine tools with pipes (`|`)
 
 wget
 ====
-fetch a a file from the web with ``wget``
+fetch a a file from the web with `wget`:
 
 .. code-block:: bash
 
@@ -20,7 +20,7 @@ fetch a a file from the web with ``wget``
 
 cut
 ===
-The ``cut`` command allows you to extract certain columns of a file
+The `cut` command allows you to extract certain columns of a file:
 
 .. code-block:: bash
 
@@ -38,7 +38,7 @@ The ``cut`` command allows you to extract certain columns of a file
 
 uniq
 ====
-The ``uniq`` command  allows you to get and count unique entries
+The `uniq` command  allows you to get and count unique entries
 
 .. code-block:: bash
 
@@ -53,14 +53,14 @@ The ``uniq`` command  allows you to get and count unique entries
 
 .. important::
 
+   `uniq` assumes that file is sorted by the column of interest.
 
-   ``uniq`` assumes that file is sorted by the column of interest.
-
-   Use ``sort`` to sort the data before ``uniq``-ing it.
+   Use `sort` to sort the data before `uniq`-ing it.
 
 Redirection of output
 =====================
-To send the output of a command (or a file) to another file, use ">"
+To send the output of a command (or a file) to another file, use th `>`
+operator:
 
 .. code-block:: bash
 
@@ -68,7 +68,7 @@ To send the output of a command (or a file) to another file, use ">"
     $ head output.txt
 
 To **append** the output of a command (or a file) to another file, use
-">>"
+the `>>` operator:
 
 .. code-block:: bash
 
@@ -77,13 +77,13 @@ To **append** the output of a command (or a file) to another file, use
 
 Compressed Files
 ================
-The most common way to uncompress single files is ``gunzip``
+The most common way to uncompress single files is `gunzip`:
 
 .. code-block:: bash
 
     $ gunzip /opt/bio-workshop/data/t_R1.fastq.gz
 
-And re-zip the file with ``gzip``
+And re-zip the file with `gzip`:
 
 .. code-block:: bash 
 
@@ -104,10 +104,9 @@ We probably want to do something with the file as we uncompress it
 
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz | head
 
-We already know the head command prints the first -n lines.
+We already know the head command prints the first `-n` lines.
 
-Try piping the output to some other commands (tail|echo|cowsay)
-
+Try piping the output to some other commands (tail|echo|cowsay).
 
 Sort
 ====
@@ -130,12 +129,12 @@ How do you:
 #. sort by a particular column? (-k 4)
 #. sort as a number (-k4n)
 #. sort as a general number (1e-3 < 0.05) (-k4g)
-#. change the default delimiter (-t,
+#. change the default delimiter (-t ".")
 #. sort by 2 columns (-k1,1 -k2,2n)
 #. sort in reverse as a number (-k1rn)
 #. get unique entries (-u)
 
-If you know all these, you'll know 99% of what you'll use sort for.
+If you know all these, you'll know 99% of what you'll use `sort` for.
 
 Sort Example
 ============
@@ -209,31 +208,30 @@ Let's go through this line by line ...
 
 In Class Exercises - Class 3
 ============================
-.. code-block:: bash
 
-    1. To learn about piping (|), use cowsay to:
+1. To learn about piping (|), use cowsay to:
 
-         a. show your current working directory
-         b. show the number of lines in /opt/bio-workshop/data/lamina.bed
-         c. show the most recently modified file/dir in $HOME
+     a. show your current working directory
+     b. show the number of lines in /opt/bio-workshop/data/lamina.bed
+     c. show the most recently modified file/dir in $HOME
 
-    2. write a bash script that you can run to list only the 2 most
-    recently modified files in a given directory (using what you've
-    learned in this class)
+2. write a bash script that you can run to list only the 2 most
+recently modified files in a given directory (using what you've
+learned in this class)
 
-    3. make that script executable (use google to learn how to do this).
+3. make that script executable (use google to learn how to do this).
 
-    4. With `head`, you can see the first line of a file with head -n1.
-    How can you see all of a file *except* the first line. (use google)
+4. With `head`, you can see the first line of a file with head -n1.
+How can you see all of a file *except* the first line. (use google)
 
-    5. Without using your history, how few keystrokes can you use to run
-    the following command (must work from any directory)?
+5. Without using your history, how few keystrokes can you use to run
+the following command (must work from any directory)?
 
 .. code-block:: bash
 
         $ ls /opt/bio-workshop/data/lamina.bed
 
-    6. How few keystrokes can you do 5. using your history?
+6. How few keystrokes can you do 5. using your history?
 
 .. raw:: pdf
 

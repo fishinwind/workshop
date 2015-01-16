@@ -1,8 +1,8 @@
-*************
-Class 4 : awk
-*************
+***************
+ Class 4 : awk
+***************
 
-:Class date: Monday 3 February 2014
+:Class date: Thurs 5 Feb 2015
 
 Goals
 =====
@@ -10,13 +10,8 @@ Goals
 #. remember BED format (chr, start, end)
 #. learn awk basics to filter and manipulate text
 
-Review
-======
-
- what we've learned
-
 awk
----
+===
 http://en.wikipedia.org/wiki/AWK
 
 ``AWK`` is an interpreted **programming language** designed for text
@@ -48,7 +43,7 @@ awk program structure
 awk BEGIN
 =========
 
-Using begin, we don't need a file. We just do one thing then exit:
+You can use **BEGIN** without a file. We just do one thing then exit:
 
 .. code-block:: bash
 
@@ -58,7 +53,8 @@ Same with **END**:
 
 .. code-block:: bash
 
-   awk 'END { print 12 * 13 }' # then type ctrl+d so it knows it's not getting more input.
+   awk 'END { print 12 * 13 }'
+   # then type ctrl+d so it knows it's not getting more input.
  
 filtering
 =========
@@ -86,6 +82,7 @@ We can also filter on start position using '&&' which means 'and':
 
 program structure
 =================
+
 .. code-block:: bash
 
     awk '($1 == "chr12" && $2 < 9599990)' /opt/bio-workshop/data/lamina.bed
@@ -118,7 +115,7 @@ print total bases covered on chromosome 13:
 .. code-block:: bash
 
     awk '($1 == "chr13") { coverage = coverage + $3 - $2 }
-         END{ print coverage }' /opt/bio-workshop/data/lamina.bed
+         END { print coverage }' /opt/bio-workshop/data/lamina.bed
 
 .. important::
     

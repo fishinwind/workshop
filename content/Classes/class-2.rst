@@ -2,7 +2,7 @@
 Class 2 : The command-line
 **************************
 
-:Class date: Wednesday 29 January 2014
+:Class date: Thurs 29 January 2015
 
 Goals
 =====
@@ -41,7 +41,7 @@ Try this in the terminal:
 
     $ pwd
 
-pwd is "print working directory"
+pwd stands for "print working directory"
 
 .. nextslide::
     :increment:
@@ -67,8 +67,9 @@ Show more information:
 
     $ ls -lh
 
-The "-lh" letters are flags, or modifier arguments to the *ls* command.
-These can be separated as:
+The `-lh` part are flags for the `ls` command.
+
+These can also be separated like:
 
 .. code-block:: bash
 
@@ -77,27 +78,16 @@ These can be separated as:
 .. nextslide::
     :increment:
 
-The content for the class, including the source for generating this document,
-are in:
-
-.. code-block:: bash
-
-    /opt/bio-workshop/
-
-on your virtual machine.
-
-Navigate to that directory and look around with `ls`
-
 Getting Help In The Terminal
 ============================
-How can you find out the arguments that *ls* accepts (or expects):
+How can you find out the arguments that `ls` accepts (or expects):
 
 .. code-block:: bash
 
     $ man ls
 
-and use spacebar to go through the pages. *man* is short for manual
-and can be used on all commands that we will learn. 
+and use spacebar to go through the pages. `man` is short for "manual" and
+can be used on most of the commands that we will learn. 
 
 In other linux software, it is common to get help by using:
 
@@ -111,13 +101,15 @@ or:
 
     $ <program> --help
 
-Which of those works for `ls`?
+Which of these works for `ls`?
 
 .. nextslide::
     :increment:
 
-+ If you see an error message, read it carefully. 
-+ It may seem cryptic, but it is built to inform you what went wrong.
+.. note::
+
+    If you see an error message, read it carefully.  It may seem cryptic,
+    but it is designed to inform you what went wrong.
 
 Getting Help : Exercises
 ========================
@@ -132,7 +124,7 @@ care about the most recently modified files)
 
 Getting Help Outside The Terminal
 =================================
-Use google. Useful sites include:
+*Use google*. Useful sites include:
 
 + stackexchange.com
 + biostars.org
@@ -143,15 +135,15 @@ and find some info.
 
 Other Commands In The Terminal
 ==============================
-Use the *man* command to determine what *head* does.
+Use the `man` command to determine what `head` does.
 
-Use *head* on the file /opt/bio-workshop/data/lamina.bed
+Use `head` on the file /opt/bio-workshop/data/lamina.bed
 
-Use *tail* to see the end of the file.
+Use `tail` to see the end of the file.
 
 Questions
 ^^^^^^^^^
-By default, head and tail show 10 lines. How can you see 13 lines?
++ By default, head and tail show 10 lines. How can you see 13 lines?
 
 Other Commands In The Terminal (Answers)
 ========================================
@@ -363,7 +355,6 @@ You can do::
     $ important=/opt/bio-workshop/data/lamina.bed
     $ ls -lh $important
 
-
 sudo
 ====
 .. image:: http://imgs.xkcd.com/comics/sandwich.png
@@ -427,18 +418,18 @@ And you should see the same output as if you ran `ls /opt/bio-workshop` directly
 Scripts will be more useful when you have a series of commands you want to
 run in series.
 
-For example a pipeline where you:
+For example, a pipeline where you:
 
 #. run quality control on some ChIP-seq reads 
 #. align reads to a reference genome
 #. find peaks (binding sites)
 #. annotate the binding sites.
 
-In cases like that, a script will provide a record of what you have done.
+a script will provide a record of what you have done.
 
 Scripts : Commenting
 ====================
-For the homework you will comment your scripts. 
+For the homework, it if helpful to us if  you comment your scripts. 
 
 Comments are not read by the shell, but they tell us (and you) what
 you were trying to do. You can comment your code using the "#" symbol.
