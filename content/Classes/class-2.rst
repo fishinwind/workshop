@@ -10,7 +10,7 @@ Goals
 #. continue learning to navigate within the terminal
 #. understand the linux philosophy (small tools that do one thing well)
 #. understand how to apply some common linux utilities to files
-#. ``gedit`` to edit files
+#. ``vim`` to edit files
 
 Unix Philosophy
 ===============
@@ -352,7 +352,10 @@ key component of programming.
 
 You can do::
 
+    # define a variable called "important"
     $ important=/opt/bio-workshop/data/lamina.bed
+
+    # "dereference" (refer to) the variable with a dollah-bill sign
     $ ls -lh $important
 
 sudo

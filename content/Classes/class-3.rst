@@ -211,9 +211,9 @@ In Class Exercises - Class 3
 
 1. To learn about piping (|), use cowsay to:
 
-     a. show your current working directory
-     b. show the number of lines in /opt/bio-workshop/data/lamina.bed
-     c. show the most recently modified file/dir in $HOME
+a. show your current working directory
+b. show the number of lines in /opt/bio-workshop/data/lamina.bed
+c. show the most recently modified file/dir in $HOME
 
 2. write a bash script that you can run to list only the 2 most
 recently modified files in a given directory (using what you've

@@ -2,7 +2,7 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    = 
+SPHINXOPTS    = -j 4
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
@@ -57,6 +57,8 @@ latex:
 	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
 	@echo "Run \`make all-pdf' or \`make all-ps' in that directory to" \
           "run these through (pdf)latex."
+
+all: html slides pdf
 
 publish: html slides pdf
 	ghp-import -n -p ./_build/html

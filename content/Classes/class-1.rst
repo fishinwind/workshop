@@ -8,7 +8,7 @@ Goals
 =====
 #. Class overview
 #. Get the VM running
-#. Overall goals for the Blocks and Class
+#. Overall goals for the Classes
 
 Class Overview
 ==============
@@ -53,8 +53,8 @@ a directory like:
 
    /opt/bio-workshop/homeworks/section_1/week1/
 
-Terminal and Gedit
-==================
+Terminal and text editors
+=========================
 When you open a Terminal, you also launch a shell process, typically a
 bash process. At the prompt, you can type things that bash understands,
 and it will do them. The shell has its own language, which you will learn
@@ -77,19 +77,34 @@ login. You can see all of these with:
 .. nextslide::
     :increment:
 
-One important program in the PATH is gedit. You will use this program to
-keep notes and write small programs. There are other editors (e.g. vim and
-emacs) that have additional features; it's up to you whether you would
-like to learn those or stick with the graphical gedit.
+One important program in the PATH is `vim`. You will use this program to
+keep notes and write small programs. 
 
-To run gedit, use:
+You can run ``vim`` from the terminal prompt:
 
 .. code-block:: bash
 
-   $ gedit
+    $ vim filename.txt
 
-This will open a window where you can type. You can write a small test
-document and save it.
+You should notice that the prompt will disappear and you will be in a
+`vim` session.
+
+Now press the `i` key to enter `insert` mode, and start typing. Press
+`ESC` to exit `insert` mode.
+
+To quit a vim session, you need to:
+
+#. enter `command mode` with the colon key
+#. write the file
+#. quit the program
+
+This can be accomplished by typing::
+
+    :wq <enter>
+
+Practice using `vim` with this tutorial [#]_.
+
+.. [#] OpenVim http://www.openvim.com/ 
 
 Shell and Python Programming
 ============================
@@ -129,4 +144,8 @@ all of your projects in and out of the class.
 .. [#] A Quick Guide to Organizing Computational Biology Projects (2009)
         PLoS Comput. Biol. William S. Noble
         http://dx.plos.org/10.1371/journal.pcbi.1000424
+
+.. raw:: pdf
+
+    PageBreak
 
