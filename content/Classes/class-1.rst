@@ -37,22 +37,6 @@ laptop, you can do the same, or just use the native terminal.
 In any case, we will create logins on our compute cluster (amc-tesla) and
 all your work will be done through that.
 
-Important Directories
-=====================
-You will learn about directories in the next class, but note that the
-content for this class is available in:
-
-.. code-block:: bash
-
-    /opt/bio-workshop/
-
-When you write answers to your homeworks, they should be runnable from
-a directory like:
-
-.. code-block:: bash
-
-   /opt/bio-workshop/homeworks/section_1/week1/
-
 Terminal and text editors
 =========================
 When you open a Terminal, you also launch a shell process, typically a
