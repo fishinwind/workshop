@@ -60,7 +60,7 @@ You need to create a run.sh shell script that runs the following code, and
 writes the output into a results directory with the current date (**10
 points**).
 
-You should copy the following code block into a file using gedit. You will
+You should copy the following code block into a file using `vim`. You will
 need to change the '???' characters in the file to correspond to the path
 you want to write the results in (hint: it should include today's date).
 

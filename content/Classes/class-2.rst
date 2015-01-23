@@ -30,7 +30,7 @@ Navigating In the Terminal
 ==========================
 When you start the terminal, you will be in your home directory.
 
-In Linux home is represented as `~` and also as `$HOME`
+In Linux home is represented as ``~`` and also as ``$HOME``.
 
 We will often show commands preceded with a '$' as you see in your
 terminal.
@@ -67,7 +67,7 @@ Show more information:
 
     $ ls -lh
 
-The `-lh` part are flags for the `ls` command.
+The ``-lh`` part are flags for the ``ls`` command.
 
 These can also be separated like:
 
@@ -80,13 +80,13 @@ These can also be separated like:
 
 Getting Help In The Terminal
 ============================
-How can you find out the arguments that `ls` accepts (or expects):
+How can you find out the arguments that ``ls`` accepts (or expects):
 
 .. code-block:: bash
 
     $ man ls
 
-and use spacebar to go through the pages. `man` is short for "manual" and
+and use spacebar to go through the pages. ``man`` is short for "manual" and
 can be used on most of the commands that we will learn. 
 
 In other linux software, it is common to get help by using:
@@ -101,7 +101,7 @@ or:
 
     $ <program> --help
 
-Which of these works for `ls`?
+Which of these works for ``ls``?
 
 .. nextslide::
     :increment:
@@ -113,14 +113,14 @@ Which of these works for `ls`?
 
 Getting Help : Exercises
 ========================
-+ use `man` to find out how to list files so that the most
++ use ``man`` to find out how to list files so that the most
   recently modified files are listed last.
 
 (This is common when you're working on something and only
 care about the most recently modified files)
 
 + use google to find the same thing. how else can you
-  sort the output of `ls`?
+  sort the output of ``ls``?
 
 Getting Help Outside The Terminal
 =================================
@@ -135,11 +135,11 @@ and find some info.
 
 Other Commands In The Terminal
 ==============================
-Use the `man` command to determine what `head` does.
+Use the ``man`` command to determine what ``head`` does.
 
-Use `head` on the file /opt/bio-workshop/data/lamina.bed
+Use ``head`` on the file /opt/bio-workshop/data/lamina.bed
 
-Use `tail` to see the end of the file.
+Use ``tail`` to see the end of the file.
 
 Questions
 ^^^^^^^^^
@@ -227,8 +227,8 @@ or:
 
 Directory Shortcuts
 ===================
-We have already used the `cd` command to change directories. And we have
-used the "~" shortcut for home.
+We have already used the ``cd`` command to change directories. And we have
+used the ``~`` shortcut for home.
 
 .. code-block:: bash
 
@@ -325,13 +325,13 @@ mv [source] [dest]:
 
 In-class excercise:
 
-#. make a directory `/tmp/moveable`
+#. make a directory called ``/tmp/moveable``
 #. move that directory to ~
-#. copy that directory to `/tmp/subdir/`
+#. copy that directory to ``/tmp/subdir/``
 
 echo
 ====
-`echo` means "print":
+``echo`` means "print":
 
 .. code-block:: bash
 
@@ -371,7 +371,7 @@ other commands
 ==============
 excercise:
 
-use `man` to determine the function of:
+use ``man`` to determine the function of:
 
 + wget
 + uniq
@@ -379,19 +379,6 @@ use `man` to determine the function of:
 How many records are present for each chromosome in
 /opt/bio-workshop/data/lamina.bed (assume it is sorted by chromosome)?
 
-gedit
-=====
-In order to edit files as you would using `notepad` or `word` in windows,
-we will use the simple editor "gedit".
-
-You can open gedit from the terminal using:
-
-.. code-block:: bash
-
-    $ gedit
-
-This will open a new window with GUI controls. Use gedit to write/edit
-scripts for this class.
 
 Scripts
 =======
@@ -404,8 +391,8 @@ Put this text:
 
     $ ls /opt/bio-workshop/
 
-Into the file *`run.sh`* by opening `gedit` pasting that text then `save
-as..` using the GUI controls
+Into the file *`run.sh`* by opening ``vim`` pasting that text then saving
+the file.
 
 You can then run it as:
 
@@ -413,7 +400,7 @@ You can then run it as:
 
     $ bash run.sh
 
-And you should see the same output as if you ran `ls /opt/bio-workshop` directly.
+And you should see the same output as if you ran ``ls /opt/bio-workshop`` directly.
 
 .. nextslide::
     :increment:
