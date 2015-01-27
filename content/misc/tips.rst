@@ -67,9 +67,6 @@ minimizing your use of the mouse:
 
 Learn to use a terminal text editor
 ===================================
-``gedit`` is great for newbies. But if you want to bring your script-fu to
-the next level, you need to learn to use a text editor.
-
 There are two types of nerds in this world: 
 
 - ``vim`` users
