@@ -4,6 +4,9 @@ Class 2 : The command-line
 
 :Class date: Thurs 29 January 2015
 
+Things to fix from last class
+=============================
+
 Do this on tesla::
 
     $ cp ~jhessel/.vimrc ~
@@ -83,9 +86,6 @@ These can also be separated like:
 
     $ ls -l -h
 
-.. nextslide::
-    :increment:
-
 Getting Help In The Terminal
 ============================
 How can you find out the arguments that ``ls`` accepts (or expects):
@@ -150,8 +150,9 @@ Use ``head`` on the file /opt/bio-workshop/data/lamina.bed
 Use ``tail`` to see the end of the file.
 
 Questions
-^^^^^^^^^
+=========
 + By default, head and tail show 10 lines. How can you see 13 lines?
+
 
 Other Commands In The Terminal (Answers)
 ========================================
@@ -198,7 +199,7 @@ through commands that start with that prefix.
 
 Tab-Completion
 ==============
-The shell (bash) when set up properly can give you a lot of help
+The ``bash`` shell has several built-in utilities for expediting typing.
 
 Type the following where [TAB] means the Tab key on the keyboard:
 
@@ -257,14 +258,14 @@ Or 3 directories up with:
     $ ls ../../..
     $ cd ../../..
 
+.. nextslide::
+    :increment:
+
 To explicitly see the current directory:
 
 .. code-block:: bash
 
     $ ls ./
-
-.. nextslide::
-    :increment:
 
 We can go 2 directories up with:
 
@@ -292,6 +293,7 @@ and switch back and forth by using that repeatedly.
 
 Make and remove directories
 ===========================
+
 .. code-block:: bash
 
     $ mkdir ~/tmp # OK
@@ -301,7 +303,7 @@ Make and remove directories
     $ mkdir -p ~/tmp/asdf/asdf # OK
 
 
-What does -p do?
+What does ``-p`` do?
 
 Remove directories:
 
@@ -368,6 +370,10 @@ You can do::
 
 sudo
 ====
+``sudo`` lets you run commands as root (the super-user). You won't be able
+to do this on tesla, but you should be able to run ``sudo`` on the virtual
+machine.
+
 .. image:: http://imgs.xkcd.com/comics/sandwich.png
 
 .. code-block:: bash

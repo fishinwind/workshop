@@ -5,7 +5,7 @@
 Problem Set 1
 *************
 
-:Due date: 2014 Feb 11 at 5 PM MST
+:Due date: 2015 Feb 2 at 5 PM MST
 
 Reading
 -------
@@ -137,7 +137,7 @@ points**). For example::
     Captain's log, star date 2014-07-16
     -----------------------------------
     After examining the results.tab file, learned that Alaska has the highest
-    income per person. Wut?
+    income per person. Something must be wrong ...
 
 Problem Set Submission
 ----------------------

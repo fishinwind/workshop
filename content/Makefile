@@ -27,6 +27,7 @@ help:
 	@echo "  pdf        to make standalone PDF"
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
+	@echo "  all        to test make html, slides and PDF"
 	@echo "  publish    push website to github gh-pages"
 	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
 
@@ -60,7 +61,7 @@ latex:
 
 all: html slides pdf
 
-publish: html slides pdf
+publish: all 
 	ghp-import -n -p ./_build/html
 	@echo
 	@echo "HTML output published on github-pages"
