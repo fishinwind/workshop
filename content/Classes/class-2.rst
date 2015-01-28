@@ -4,6 +4,13 @@ Class 2 : The command-line
 
 :Class date: Thurs 29 January 2015
 
+Do this on tesla::
+
+    $ cp ~jhessel/.vimrc ~
+
+This will give line numbers (and a bunch of other stuff) when you run
+``vim``.
+
 Goals
 =====
 #. The ``bash`` shell
@@ -11,6 +18,7 @@ Goals
 #. understand the linux philosophy (small tools that do one thing well)
 #. understand how to apply some common linux utilities to files
 #. ``vim`` to edit files
+
 
 Unix Philosophy
 ===============
