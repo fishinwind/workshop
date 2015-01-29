@@ -58,7 +58,7 @@ the data file to the appropriate *dated* directory.
 
 .. code-block:: bash
 
-    $ wget http://hesselberthlab.github.io/workshop/_downloads/states.tab)
+    $ wget http://hesselberthlab.github.io/workshop/_downloads/states.tab
 
 
 You need to create a run.sh shell script that runs the following code, and
