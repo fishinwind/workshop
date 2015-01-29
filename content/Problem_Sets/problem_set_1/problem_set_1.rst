@@ -55,7 +55,10 @@ Problem 2
 ---------
 Download the the following data table: :download:`states.tab`.  Then move
 the data file to the appropriate *dated* directory.
-(Try wget http://hesselberthlab.github.io/workshop/_downloads/states.tab)
+
+.. code-block:: bash
+
+    $ wget http://hesselberthlab.github.io/workshop/_downloads/states.tab)
 
 You need to create a run.sh shell script that runs the following code, and
 writes the output into a results directory with the current date (**10
