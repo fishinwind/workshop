@@ -7,11 +7,11 @@ Class 3 : The command-line (part 2)
 Goals
 =====
 #. learn additional linux utilities (cut, sort, uniq, less, wget)
-#. understand how to combine tools with pipes (`|`)
+#. understand how to combine tools with pipes (``|``)
 
 wget
 ====
-fetch a a file from the web with `wget`:
+fetch a a file from the web with ``wget``:
 
 .. code-block:: bash
 
@@ -20,7 +20,7 @@ fetch a a file from the web with `wget`:
 
 cut
 ===
-The `cut` command allows you to extract certain columns of a file:
+The ``cut`` command allows you to extract certain columns of a file:
 
 .. code-block:: bash
 
@@ -38,7 +38,7 @@ The `cut` command allows you to extract certain columns of a file:
 
 uniq
 ====
-The `uniq` command  allows you to get and count unique entries
+The ``uniq`` command  allows you to get and count unique entries
 
 .. code-block:: bash
 
@@ -59,7 +59,7 @@ The `uniq` command  allows you to get and count unique entries
 
 Redirection of output
 =====================
-To send the output of a command (or a file) to another file, use th `>`
+To send the output of a command (or a file) to another file, use the ``>``
 operator:
 
 .. code-block:: bash
@@ -68,7 +68,7 @@ operator:
     $ head output.txt
 
 To **append** the output of a command (or a file) to another file, use
-the `>>` operator:
+the ``>>`` operator:
 
 .. code-block:: bash
 
@@ -77,13 +77,13 @@ the `>>` operator:
 
 Compressed Files
 ================
-The most common way to uncompress single files is `gunzip`:
+The most common way to uncompress single files is ``gunzip``:
 
 .. code-block:: bash
 
     $ gunzip /opt/bio-workshop/data/t_R1.fastq.gz
 
-And re-zip the file with `gzip`:
+And re-zip the file with ``gzip``:
 
 .. code-block:: bash 
 
@@ -104,7 +104,7 @@ We probably want to do something with the file as we uncompress it
 
     $ zless /opt/bio-workshop/data/t_R1.fastq.gz | head
 
-We already know the head command prints the first `-n` lines.
+We already know the head command prints the first ``-n`` lines.
 
 Try piping the output to some other commands (tail|echo|cowsay).
 
@@ -134,7 +134,7 @@ How do you:
 #. sort in reverse as a number (-k1rn)
 #. get unique entries (-u)
 
-If you know all these, you'll know 99% of what you'll use `sort` for.
+If you know all these, you'll know 99% of what you'll use ``sort`` for.
 
 Sort Example
 ============
@@ -152,7 +152,7 @@ start [column 2] as a number.
 Question:
 +++++++++
 
-    What happens if you omit the `n` ?
+What happens if you omit the `n` ?
 
 Sort Example (part 2)
 =====================
