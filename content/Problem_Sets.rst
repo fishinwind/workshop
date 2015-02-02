@@ -36,7 +36,8 @@ whole directory like this (change STUDENTID to your student ID):
     $ projectdir=$HOME/project
     $ tar -cvf STUDENTID-pset1.tar $projectdir
 
-Upload the tar file to the Problem Set at the Canvas site [#]_ to complete
+E-mail the full path to the tarfile (/vol3/home/username/...) to sallypeach@gmail.com
+or upload the tar file to the Problem Set at the Canvas site [#]_ to complete
 the submission.
 
 .. [#] https://ucdenver.instructure.com/courses/325063/assignments
