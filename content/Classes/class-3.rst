@@ -16,7 +16,9 @@ fetch a a file from the web with ``wget``:
 .. code-block:: bash
 
     $ cd /opt/bio-workshop/data/
-    $ wget http://ucd-bioworkshop.github.io/_downloads/states.tab
+    $ wget http://hesselberthlab.github.io/workshop/_downloads/states.tab
+    $ wget http://hesselberthlab.github.io/workshop/_downloads/lamina.bed
+    $ wget http://hesselberthlab.github.io/workshop/_downloads/t_R1.fastq.gz
 
 cut
 ===
