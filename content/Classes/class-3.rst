@@ -7,7 +7,7 @@ Class 3 : The command-line (part 2)
 Goals
 =====
 #. learn additional linux utilities (cut, sort, uniq, less, wget)
-#. understand how to combine tools with pipes (``|``)
+#. understand redirects (``>``, ``<``) and how to combine tools with pipes (``|``)
 
 wget
 ====
@@ -15,7 +15,9 @@ fetch a file from the web with ``wget``:
 
 .. code-block:: bash
 
-    $ cd /vol1/opt/data/
+    # N.B.: All common data will be on tesla in /vol1/opt/data
+
+    $ cd # go $HOME
     $ wget http://hesselberthlab.github.io/workshop/_downloads/states.tab
     $ wget http://hesselberthlab.github.io/workshop/_downloads/lamina.bed
     $ wget http://hesselberthlab.github.io/workshop/_downloads/t_R1.fastq.gz
@@ -224,7 +226,7 @@ learned in this class)
 
 3. make that script executable (use google to learn how to do this).
 
-4. With `head`, you can see the first line of a file with head -n1.
+4. With ``head``, you can see the first line of a file with head -n1.
 How can you see all of a file *except* the first line. (use google)
 
 5. Without using your history, how few keystrokes can you use to run
