@@ -64,13 +64,13 @@ first column is chr12:
 
 .. code-block:: bash
 
-    awk '($1 == "chr12")' /opt/bio-workshop/data/lamina.bed
+    awk '($1 == "chr12")' /vol1/opt/data/lamina.bed
 
 We can also filter on start position using '&&' which means 'and':
 
 .. code-block:: bash
 
-    awk '($1 == "chr12" && $2 < 9599990)' /opt/bio-workshop/data/lamina.bed
+    awk '($1 == "chr12" && $2 < 9599990)' /vol1/opt/data/lamina.bed
 
 .. important::
 
@@ -85,7 +85,7 @@ program structure
 
 .. code-block:: bash
 
-    awk '($1 == "chr12" && $2 < 9599990)' /opt/bio-workshop/data/lamina.bed
+    awk '($1 == "chr12" && $2 < 9599990)' /vol1/opt/data/lamina.bed
 
 .. important::
 
@@ -115,7 +115,7 @@ print total bases covered on chromosome 13:
 .. code-block:: bash
 
     awk '($1 == "chr13") { coverage = coverage + $3 - $2 }
-         END { print coverage }' /opt/bio-workshop/data/lamina.bed
+         END { print coverage }' /vol1/opt/data/lamina.bed
 
 .. important::
     
@@ -134,7 +134,7 @@ below is how we find coverage for chr13.
 .. code-block:: bash
 
     awk '($1 == "chr13") { coverage += $3 - $2 }
-         END{ print coverage }' /opt/bio-workshop/data/lamina.bed
+         END{ print coverage }' /vol1/opt/data/lamina.bed
 
 how can we find the total coverage for all chromsomes **except** 13?
 
@@ -149,13 +149,13 @@ multiple patterns
 
       awk '$3 >= 5000 { print $0"\tGREATER" }
            $3  < 5000   { print $0"\tLESS" }' \
-            /opt/bio-workshop/data/states.tab
+            /vol1/opt/data/states.tab
 
 remember we can simply filter to the lines > 5000 with:
 
 .. code-block:: bash
 
-      awk '$3 >= 5000' /opt/bio-workshop/data/states.tab
+      awk '$3 >= 5000' /vol1/opt/data/states.tab
 
 awk special variables
 =====================
@@ -170,9 +170,9 @@ using awk to count lines with NR
 
 .. code-block:: bash
 
-    $ wc -l /opt/bio-workshop/data/lamina.bed
+    $ wc -l /vol1/opt/data/lamina.bed
 
-    $ awk 'END { print NR }' /opt/bio-workshop/data/lamina.bed
+    $ awk 'END { print NR }' /vol1/opt/data/lamina.bed
 
 
 using FS and OFS
@@ -184,7 +184,7 @@ remember FS is the input separator and OFS is the output delimiter
 .. code-block:: bash
 
     $ awk 'BEGIN{FS="\t"; OFS=","}
-        ($1 == "chr12"){ print $1,$2,$3 }' /opt/bio-workshop/data/lamina.bed
+        ($1 == "chr12"){ print $1,$2,$3 }' /vol1/opt/data/lamina.bed
 
 regular expressions
 ===================
@@ -194,7 +194,7 @@ The following finds lines containing chr2 (chr2, chr20, chr21) in the first colu
 
 .. code-block:: bash
 
-   $ awk '$1 ~ /chr2/' /opt/bio-workshop/data/lamina.bed
+   $ awk '$1 ~ /chr2/' /vol1/opt/data/lamina.bed
 
 Often we can get by without *regular expressions* but they are extremeley powerful
 and available in nearly all programming languages.
