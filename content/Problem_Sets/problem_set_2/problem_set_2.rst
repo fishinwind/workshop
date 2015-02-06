@@ -66,7 +66,8 @@ Problem 3
 
 Problem Set Submission
 ----------------------
-Submit your problem set as a tar file to Canvas
+Submit your problem set by posting the path to your tar file on the Canvas
+page.
 (:ref:`problem-set-submission`).
 
 .. raw:: pdf
