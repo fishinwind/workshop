@@ -28,6 +28,14 @@ Past keys at :ref:`problem-set-keys`
 Problem Set Submission
 ======================
 
+In general, we want one run.sh file that includes all of the code
+necessary to run the problem set.  This run.sh file should create any new
+directories (ex. a dated directory in the results folder), perform
+commands (ex. awk, cut, etc), and output results into a well-named file
+(ex. > $results/$date/problem1.txt).  For each problem set, you should
+also create a log file summarizing your results.
+
+Once your problem set is complete, you will need to create a tar file.
 Specify the root of your project directory and create a tar file of the
 whole directory like this (change STUDENTID to your student ID):
 
@@ -36,9 +44,10 @@ whole directory like this (change STUDENTID to your student ID):
     $ projectdir=$HOME/project
     $ tar -cvf STUDENTID-pset1.tar $projectdir
 
-E-mail the full path to the tarfile (/vol3/home/username/.../blahblah.tar) to sallypeach@gmail.com
-or upload the tar file to the Problem Set at the Canvas site [#]_ to complete
-the submission.
+Post the full path to the tarfile (/vol3/home/username/.../blahblah.tar)
+as a comment on the Problem Set submission page at the Canvas site [#]_ to
+complete the submission. Auditors can e-mail their path to
+sallypeach@gmail.com.
 
 .. [#] https://ucdenver.instructure.com/courses/325063/assignments
 
