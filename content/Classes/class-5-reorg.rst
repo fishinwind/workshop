@@ -20,7 +20,7 @@ To find any instance of *chr5* in the lamina.bed file
 .. code-block:: bash
 
     # grep [pattern] [filename]
-    $ grep chr5 /opt/bio-workshop/data/lamina.bed | head
+    $ grep chr5 /vol1/opt/data/lamina.bed | head
 
 To find all lines that start with a number sign:
 
@@ -28,7 +28,7 @@ To find all lines that start with a number sign:
 
     # The caret (^) matches the beginning of the line
     # FYI dollar sign ($) matches the end
-    $ grep '^#' /opt/bio-workshop/data/lamina.bed
+    $ grep '^#' /vol1/opt/data/lamina.bed
 
 .. nextslide::
     :increment:
@@ -38,21 +38,21 @@ To find any line that *does not* start with "chr":
 .. code-block:: bash
 
     # the -v flag inverts the match (grep "not" [pattern])
-    $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
+    $ grep -v '^chr' /vol1/opt/data/lamina.bed
 
 Beware of using ``grep`` to find patterns that might be partial matches:
 
 .. code-block:: bash
 
     # this will match chr1, chr10, chr11 etc.
-    $ grep chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
+    $ grep chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
 
 You can find exact matches that are split on words with the ``-w`` flag:
 
 .. code-block:: bash
 
     # this will only match chr1
-    $ grep -w chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
+    $ grep -w chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
 
 .. nextslide::
     :increment:
@@ -62,17 +62,17 @@ Beware of using ``grep`` to search for numbers:
 .. code-block:: bash
 
     # finds all strings that match `100`
-    $ grep 100 /opt/bio-workshop/data/lamina.bed | head -n 20
+    $ grep 100 /vol1/opt/data/lamina.bed | head -n 20
 
     # better, but doesn't look at numeric value
-    $ grep -w 100 /opt/bio-workshop/data/lamina.bed | head -n 20
+    $ grep -w 100 /vol1/opt/data/lamina.bed | head -n 20
 
 .. tip::
 
     If you're trying to find numeric values in a file, use ``awk``
     instead::
 
-        $ awk '$2 == 500' /opt/bio-workshop/data/lamina.bed
+        $ awk '$2 == 500' /vol1/opt/data/lamina.bed
 
 Cluster access
 ==============

@@ -319,7 +319,7 @@ lamina.bed (and filter out those with no overlap using awk)
 
     $ bedtools map \
         -a cpg.bed.gz \
-        -b /opt/bio-workshop/data/lamina.bed \
+        -b /vol1/opt/data/lamina.bed \
         -c 4 -o sum \
         | awk '$5 != "."'
 

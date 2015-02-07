@@ -30,7 +30,7 @@ You can also specify headers explicitly with:
 
 .. code-block:: r
 
-    > bedfilename <- '/opt/bio-workshop/data/lamina.bed'
+    > bedfilename <- '/vol1/opt/data/lamina.bed'
     > colnames <- c('chrom','start','end','name','score','strand')
     > dfx <- read.delim(bedfilename, col.names=colnames)
 

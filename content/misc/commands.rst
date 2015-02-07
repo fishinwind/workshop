@@ -10,7 +10,7 @@ change directories:
 
     $ cd /tmp/
     $ cd ~ # chage to home directory
-    $ cd /opt/bio-workshop/
+    $ cd /vol1/opt/
     $ cd - # change to previous directory
 
 cp
@@ -44,15 +44,15 @@ extract columns from a file:
 
 .. code-block:: bash
 
-    $ cut -f 1-3 /opt/bio-workshop/data/lamina.bed
-    $ cut -f 1,3 /opt/bio-workshop/data/lamina.bed
-    $ cut -f 1 /opt/bio-workshop/data/lamina.bed
+    $ cut -f 1-3 /vol1/opt/data/lamina.bed
+    $ cut -f 1,3 /vol1/opt/data/lamina.bed
+    $ cut -f 1 /vol1/opt/data/lamina.bed
 
     # use comma as delimiter instead of default tab
     $ cut -f 1-3 -d, /path/to/some.csv
 
     # keep all columns after the 1st:
-    $ cut -f 2- /opt/bio-workshop/data/lamina.bed
+    $ cut -f 2- /vol1/opt/data/lamina.bed
 
 echo
 ====
@@ -68,10 +68,10 @@ show the start of a file:
 
 .. code-block:: bash
 
-    $ head /opt/bio-workshop/data/lamina.bed
+    $ head /vol1/opt/data/lamina.bed
 
     # show the first 4 lines
-    $ head -n 4 /opt/bio-workshop/data/lamina.bed
+    $ head -n 4 /vol1/opt/data/lamina.bed
 
 grep
 ====
@@ -80,7 +80,7 @@ To find any instance of *chr5* in the lamina.bed file
 .. code-block:: bash
 
     # grep [pattern] [filename]
-    $ grep chr5 /opt/bio-workshop/data/lamina.bed | head
+    $ grep chr5 /vol1/opt/data/lamina.bed | head
 
 To find all lines that start with a number sign:
 
@@ -88,20 +88,20 @@ To find all lines that start with a number sign:
 
     # The caret (^) matches the beginning of the line
     # FYI dollar sign ($) matches the end
-    $ grep '^#' /opt/bio-workshop/data/lamina.bed
+    $ grep '^#' /vol1/opt/data/lamina.bed
 
 To find any line that *does not* start with "chr":
 
 .. code-block:: bash
 
     # the -v flag inverts the match (grep "not" [pattern])
-    $ grep -v '^chr' /opt/bio-workshop/data/lamina.bed
+    $ grep -v '^chr' /vol1/opt/data/lamina.bed
 
 Find exact matches that are split on words with the ``-w`` flag:
 
 .. code-block:: bash
 
-    $ grep -w chr1 /opt/bio-workshop/data/lamina.bed | cut -f1 | uniq
+    $ grep -w chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
 
 less
 ====
@@ -109,7 +109,7 @@ page through a file:
 
 .. code-block:: bash
 
-    $ less /opt/bio-workshop/data/lamina.bed
+    $ less /vol1/opt/data/lamina.bed
 
 use "/", "?" to search forward, backard. 'q' to exit.
 
@@ -185,33 +185,33 @@ sort a file by selected columns:
     
 .. code-block:: bash
 
-    $ sort -k1n /opt/bio-workshop/data/lamina.bed
+    $ sort -k1n /vol1/opt/data/lamina.bed
 
 sort a BED file by chromosome (1st column) as character and then by start
 (2nd column) as number:
 
 .. code-block:: bash
 
-    $ sort -k1,1 -k2,2n /opt/bio-workshop/data/lamina.bed
+    $ sort -k1,1 -k2,2n /vol1/opt/data/lamina.bed
 
 sort by 4th column as a general number, including scientific notation
 showing largest numbers first:
 
 .. code-block:: bash
 
-    $ sort -k4,4rg /opt/bio-workshop/data/lamina.bed | head
+    $ sort -k4,4rg /vol1/opt/data/lamina.bed | head
 
 use literal tab ('\\t') as the delimiter (default is whitespace):
 
 .. code-block:: bash
 
-    $ sort -t$'\t' -k4,4rg /opt/bio-workshop/data/lamina.bed | head
+    $ sort -t$'\t' -k4,4rg /vol1/opt/data/lamina.bed | head
 
 Sometimes we want to get uniq entries with sort -u:
 
 .. code-block:: bash
 
-    $ cut -f 1 /opt/bio-workshop/data/lamina.bed | sort -u
+    $ cut -f 1 /vol1/opt/data/lamina.bed | sort -u
 
 will print out the uniq chromsomes represent in the BED file.
 
@@ -221,9 +221,9 @@ show the end of a file:
 
 .. code-block:: bash
 
-    $ tail /opt/bio-workshop/data/lamina.bed
+    $ tail /vol1/opt/data/lamina.bed
     # show the last 4 lines
-    $ tail -n 4 /opt/bio-workshop/data/lamina.bed
+    $ tail -n 4 /vol1/opt/data/lamina.bed
 
 tar
 ===
@@ -244,10 +244,10 @@ show or count unique or non-unique entries in a file:
 .. code-block:: bash
 
     # count number of times each chromosome appears.
-    $ cut -f 1 /opt/bio-workshop/data/lamina.bed | uniq -c
+    $ cut -f 1 /vol1/opt/data/lamina.bed | uniq -c
 
     # get non unique entries
-    $ cut -f 2 /opt/bio-workshop/data/lamina.bed | uniq -d
+    $ cut -f 2 /vol1/opt/data/lamina.bed | uniq -d
 
 .. important::
     
@@ -268,7 +268,7 @@ like less, but for compressed files:
 
 .. code-block:: bash
 
-    $ zless /opt/bio-workshop/data/t_R1.fastq.gz
+    $ zless /vol1/opt/data/t_R1.fastq.gz
 
 Redirection (>> and >)
 ======================

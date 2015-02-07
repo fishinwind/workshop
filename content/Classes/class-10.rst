@@ -58,7 +58,7 @@ This is real data (shuffled to protect innocent mice) and a real python script
 Data Files
 ==========
 
-Download these files into "/opt/bio-workshop/data/"
+Download these files into "/vol1/opt/data/"
 
 **laboratory info:** :download:`sample-lab-info.tsv <../misc/data/sample-lab-info.tsv>`
 
