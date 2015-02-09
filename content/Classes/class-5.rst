@@ -53,20 +53,12 @@ Experiments
 Common File Formats
 ===================
 
-+ FASTQ: Raw sequencing data. `[link]
-<http://maq.sourceforge.net/fastq.shtml>`
++ FASTQ: Raw sequencing data. `[link] <http://maq.sourceforge.net/fastq.shtml>`
++ SAM/BAM: Aligned sequence data `[link] <http://samtools.github.io/hts-specs/SAMv1.pdf>`
++ Bed/bigBed: List of genomic regions `[link] <http://genome.ucsc.edu/FAQ/FAQformat.html#format1>`
++ Bedgraph/Wig/bigWig: Continuous signal `[link] <http://genome.ucsc.edu/goldenPath/help/bedgraph.html>` 
 
-+ SAM/BAM: Aligned sequence data `[link]
-<http://samtools.github.io/hts-specs/SAMv1.pdf>`
-
-+ Bed/bigBed: List of genomic regions `[link]
-<http://genome.ucsc.edu/FAQ/FAQformat.html#format1>`
-
-+ Bedgraph/Wig/bigWig: Continuous signal `[link]
-<http://genome.ucsc.edu/goldenPath/help/bedgraph.html>` 
-
-Many other formats are described on this `page
-<http://genome.ucsc.edu/FAQ/FAQformat.html>`_
+Many other formats are described on this `page <http://genome.ucsc.edu/FAQ/FAQformat.html>`_
 
 References
 ==========

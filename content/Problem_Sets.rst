@@ -1,5 +1,7 @@
 .. _problem-sets:
 
+.. include:: _static/substitutions/due_dates.rst
+
 **************
  Problem Sets
 **************

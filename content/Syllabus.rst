@@ -1,3 +1,6 @@
+
+.. include:: _static/substitutions/due_dates.rst
+
 ************
   Syllabus
 ************
@@ -145,7 +148,7 @@ Specific Dates / Material to be Covered
     * - Class 2 
       - Th Jan 29
       - Linux / Utilities
-      - **PS1 due** (Mon Feb 2 5:00 PM)
+      - **PS1 due** (|pset1-due|)
     * - Class 3 
       - T Feb 3
       - Linux / Utilities
@@ -153,7 +156,7 @@ Specific Dates / Material to be Covered
     * - Class 4 
       - Th Feb 5
       - Linux / Utilities
-      - **PS2 due** (Mon Feb 9 5:00 PM)
+      - **PS2 due** (|pset2-due|)
     * - Class 5 
       - T Feb 10
       - Cluster Usage / Review
@@ -161,7 +164,7 @@ Specific Dates / Material to be Covered
     * - Class 6 
       - Th Feb 12
       - Cluster Usage / Review
-      - **PS3 due** (Mon Feb 16 5:00 PM)
+      - **PS3 due** (|pset3-due|)
     * - Class 7 
       - T Feb 17
       - Python
@@ -169,7 +172,7 @@ Specific Dates / Material to be Covered
     * - Class 8 
       - Th Feb 19
       - Python
-      - **PS4 due** (Mon Feb 23 5:00 PM)
+      - **PS4 due** (|pset4-due|)
     * - Class 9 
       - T Feb 24
       - Python 
@@ -177,7 +180,7 @@ Specific Dates / Material to be Covered
     * - Class 10 
       - Th Feb 26
       - Python 
-      - **PS5 due** (Mon Mar 2 5:00 PM)
+      - **PS5 due** (|pset5-due|)
     * - Class 11 
       - T Mar 3
       - Python 
@@ -185,7 +188,7 @@ Specific Dates / Material to be Covered
     * - Class 12
       - Th Mar 5
       - ENCODE Overview
-      - **PS6 due** (Mon Mar 9 5:00 PM)
+      - **PS6 due** (|pset6-due|)
     * - Class 13 
       - T Mar 10
       - BEDtools  
@@ -193,7 +196,7 @@ Specific Dates / Material to be Covered
     * - Class 14 
       - Th Mar 12
       - ChIP-seq (coverage / peaks / motifs)
-      - **PS7 due** (Mon Mar 16 5:00 PM)
+      - **PS7 due** (|pset7-due|)
     * -
       - ** No Class Mar 16-20 (Campus Spring Break) **
       -
@@ -213,7 +216,7 @@ Specific Dates / Material to be Covered
     * - Class 18
       - Th Apr 2
       - R data & plotting 
-      - **PS8 due** (Mon Apr 6 5:00 PM)
+      - **PS8 due** (|pset8-due|)
     * - Class 19
       - T Apr 7
       - R data & plotting 
@@ -221,7 +224,7 @@ Specific Dates / Material to be Covered
     * - Class 20
       - Th Apr 9
       - R data & plotting 
-      - **PS9 due** (Mon Apr 13 5:00 PM)
+      - **PS9 due** (|pset9-due|)
     * - Class 21
       - T Apr 14
       - R data & plotting 
@@ -229,7 +232,7 @@ Specific Dates / Material to be Covered
     * - Class 22
       - Th Apr 16
       - R data & plotting 
-      - **PS10 due** (Mon Apr 20 5:00 PM)
+      - **PS10 due** (|pset10-due|)
     * - Class 23
       - T Apr 21
       - mRNA-seq (FPKM / diff exp)
@@ -237,7 +240,7 @@ Specific Dates / Material to be Covered
     * - Class 24
       - Th Apr 23
       - mRNA-seq (FPKM / diff exp)
-      - **PS11 due** (Mon Apr 27 5:00 PM)
+      - **PS11 due** (|pset11-due|)
     * - Class 25 
       - T Apr 28
       - Exome Alignment

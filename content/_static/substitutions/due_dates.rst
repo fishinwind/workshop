@@ -8,3 +8,4 @@
 .. |pset8-due| replace:: 2015 Apr 6 5:00 PM
 .. |pset9-due| replace:: 2015 Apr 13 5:00 PM
 .. |pset10-due| replace:: 2015 Apr 20 5:00 PM
+.. |pset11-due| replace:: 2015 Apr 27 5:00 PM

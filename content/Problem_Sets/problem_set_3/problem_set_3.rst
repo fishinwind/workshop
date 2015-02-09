@@ -1,11 +1,13 @@
 
+.. include:: ../../_static/substitutions/due_dates.rst
+
 .. _problem-set-3:
 
 *************
 Problem Set 3
 *************
 
-:Due date: 2015 Feb 16 at 5 PM MST
+:Due date: |pset3-due| 
 
 Overview
 --------
