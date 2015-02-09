@@ -6,3 +6,4 @@ sphinxcontrib-manpage
 ipython
 rst2pdf
 matplotlib
+ghp-import
