@@ -120,7 +120,6 @@ This command writes a bedGraph format file called ``coverage.bg``. Use
 .. nextslide::
     :increment:
 
-
 Words to live by: **If you make a BED file, sort the BED file**
 
 Many strange things can happen if you use unsorted BED files for
