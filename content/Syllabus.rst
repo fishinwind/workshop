@@ -145,7 +145,7 @@ Specific Dates / Material to be Covered
     * - Class 2 
       - Th Jan 29
       - Linux / Utilities
-      - **PS1 due** (Mon Jan 26 12:00 AM)
+      - **PS1 due** (Mon Feb 2 5:00 PM)
     * - Class 3 
       - T Feb 3
       - Linux / Utilities
@@ -153,15 +153,15 @@ Specific Dates / Material to be Covered
     * - Class 4 
       - Th Feb 5
       - Linux / Utilities
-      - **PS2 due** (Mon Feb 12:00 AM)
+      - **PS2 due** (Mon Feb 9 5:00 PM)
     * - Class 5 
       - T Feb 10
       - Cluster Usage / Review
       - 
     * - Class 6 
-      - Th Feb 5
+      - Th Feb 12
       - Cluster Usage / Review
-      - **PS3 due** (Mon Feb 9 12:00 AM)
+      - **PS3 due** (Mon Feb 16 5:00 PM)
     * - Class 7 
       - T Feb 17
       - Python
@@ -169,7 +169,7 @@ Specific Dates / Material to be Covered
     * - Class 8 
       - Th Feb 19
       - Python
-      - **PS4 due** (Mon Feb 16 12:00 AM)
+      - **PS4 due** (Mon Feb 23 5:00 PM)
     * - Class 9 
       - T Feb 24
       - Python 
@@ -177,7 +177,7 @@ Specific Dates / Material to be Covered
     * - Class 10 
       - Th Feb 26
       - Python 
-      - **PS5 due** (Mon Feb 23 12:00 AM)
+      - **PS5 due** (Mon Mar 2 5:00 PM)
     * - Class 11 
       - T Mar 3
       - Python 
@@ -185,7 +185,7 @@ Specific Dates / Material to be Covered
     * - Class 12
       - Th Mar 5
       - ENCODE Overview
-      - **PS6 due** (Mon Mar 2 12:00 AM)
+      - **PS6 due** (Mon Mar 9 5:00 PM)
     * - Class 13 
       - T Mar 10
       - BEDtools  
@@ -193,7 +193,11 @@ Specific Dates / Material to be Covered
     * - Class 14 
       - Th Mar 12
       - ChIP-seq (coverage / peaks / motifs)
-      - **PS6 due** (Mon Mar 9 12:00 AM)
+      - **PS7 due** (Mon Mar 16 5:00 PM)
+    * -
+      - ** No Class Mar 16-20 (Campus Spring Break) **
+      -
+      - 
     * - Class 15 
       - T Mar 24
       - ChIP-seq / DNaseI-seq (UCSC)
@@ -202,10 +206,6 @@ Specific Dates / Material to be Covered
       - Th Mar 26
       - Genomic analysis vignettes 
       - 
-    * -
-      - ** No Class Mar 16-20 (Campus Spring Break) **
-      -
-      - 
     * - Class 17 
       - T Mar 31
       - Genomic analysis vignettes 
@@ -213,7 +213,7 @@ Specific Dates / Material to be Covered
     * - Class 18
       - Th Apr 2
       - R data & plotting 
-      - **PS7 due** (Mon Mar 30 12:00 AM)
+      - **PS8 due** (Mon Apr 6 5:00 PM)
     * - Class 19
       - T Apr 7
       - R data & plotting 
@@ -221,7 +221,7 @@ Specific Dates / Material to be Covered
     * - Class 20
       - Th Apr 9
       - R data & plotting 
-      - **PS8 due** (Mon Apr 6 12:00 AM)
+      - **PS9 due** (Mon Apr 13 5:00 PM)
     * - Class 21
       - T Apr 14
       - R data & plotting 
@@ -229,7 +229,7 @@ Specific Dates / Material to be Covered
     * - Class 22
       - Th Apr 16
       - R data & plotting 
-      - **PS9 due** (Mon Apr 13 12:00 AM)
+      - **PS10 due** (Mon Apr 20 5:00 PM)
     * - Class 23
       - T Apr 21
       - mRNA-seq (FPKM / diff exp)
@@ -237,7 +237,7 @@ Specific Dates / Material to be Covered
     * - Class 24
       - Th Apr 23
       - mRNA-seq (FPKM / diff exp)
-      - **PS10 due** (Mon Apr 20 12:00 AM)
+      - **PS11 due** (Mon Apr 27 5:00 PM)
     * - Class 25 
       - T Apr 28
       - Exome Alignment
