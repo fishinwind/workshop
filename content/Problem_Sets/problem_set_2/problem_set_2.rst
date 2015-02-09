@@ -5,7 +5,7 @@
 Problem Set 2
 *************
 
-:Due date: 2014 Feb 11 at 5 PM MST
+:Due date: 2015 Feb 9 at 5 PM MST
 
 Overview
 --------
