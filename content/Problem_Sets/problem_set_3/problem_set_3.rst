@@ -1,5 +1,5 @@
 
-.. include:: ../../_static/substitutions/due_dates.rst
+.. include:: /_static/substitutions.txt 
 
 .. _problem-set-3:
 

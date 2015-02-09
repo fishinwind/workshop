@@ -1,6 +1,7 @@
-.. _problem-sets:
 
-.. include:: _static/substitutions/due_dates.rst
+.. include:: /_static/substitutions.txt 
+
+.. _problem-sets:
 
 **************
  Problem Sets
@@ -14,11 +15,11 @@ Problem Sets for the Genome Analysis Workshop class (MOLB 7621):
 
    Problem_Sets/problem_set_1/problem_set_1
    Problem_Sets/problem_set_2/problem_set_2
+   Problem_Sets/Problem_Set_Keys
 ..   Problem_Sets/problem_set_3/problem_set_3
 ..   Problem_Sets/problem_set_4/problem_set_4
 ..   Problem_Sets/problem_set_5/problem_set_5
 ..   Problem_Sets/problem_set_6/problem_set_6
-..   Problem_Sets/Problem_Set_Keys
 
 Problem Set Keys
 ================
@@ -50,7 +51,9 @@ On the specific Problem Set assignment page at the Canvas site [#]_,
 click the Submit Assignment button on the top right and paste the
 full path to the tarfile (/vol3/home/username/.../foo.tar) in the text
 box. Click the Submit Assignment button below the text box to complete 
-the submission. Auditors can e-mail their path to sallypeach@gmail.com.
+the submission.
+
+Auditors can e-mail their path to the TAs here: :ref:`contact-info`.
 
 .. [#] https://ucdenver.instructure.com/courses/325063/assignments
 

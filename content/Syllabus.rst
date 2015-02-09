@@ -1,5 +1,5 @@
 
-.. include:: _static/substitutions/due_dates.rst
+.. include:: /_static/substitutions.txt 
 
 ************
   Syllabus
@@ -25,6 +25,8 @@ PDF Content
 The course content is available as a combined PDF: 
 :download:`PDF Download <_build/html/_downloads/Genome-Analysis-Workshop.pdf>`
 
+.. _contact-info:
+
 Instructor Information
 ======================
 
@@ -45,7 +47,7 @@ Instructor Information
 
 Schedule
 ========
-Tue & Thurs, 1:00 - 3:00 PM. TA office hours from 3:30 PM
+Tue & Thurs, 1:00 - 3:00 PM. TA office hours until 3:30 PM
 :ref:`See specific dates. <syllabus-specific-dates>`
 
 Location
