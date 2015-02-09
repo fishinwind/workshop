@@ -19,6 +19,18 @@ megbase regions) in a simple format [#]_:
 .. [#] BED documentation 
        http://genome.ucsc.edu/FAQ/FAQformat.html#format1
 
+.. _fasta-file:
+
+FASTA format
+============
+FASTA format just contains DNA sequence data; no quality scores::
+
+    >cluster_2:UMI_ATTCCG             # record name; starts with '>'
+    TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
+
+**Download a sample FASTA file:** :download:`sample.fa <data/sample.fa>`
+
+
 .. _fastq-file:
 
 FASTQ format
@@ -32,17 +44,6 @@ FASTQ format contains DNA sequence data with quality scores::
 
 **Download a sample FASTQ file:** :download:`SP1.fq <data/SP1.fq>`
 
-.. _fasta-file:
-
-FASTA format
-============
-FASTA format just contains DNA sequence data; no quality scores::
-
-    >cluster_2:UMI_ATTCCG             # record name; starts with '>'
-    TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
-
-**Download a sample FASTA file:** :download:`sample.fa <data/sample.fa>`
-
 .. _encode-data:
 
 ENCODE data
@@ -50,7 +51,7 @@ ENCODE data
 All encode data are available at
 https://genome.ucsc.edu/ENCODE/downloads.html
 
-For Problem Set 5, you will need these files on the amc-tesla cluster,
+For Problem Set 3, you will need these files on the amc-tesla cluster,
 available in::
 
     /vol1/opt/data

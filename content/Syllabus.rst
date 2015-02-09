@@ -10,6 +10,7 @@ General Information
 
 :Title:         Genome Analysis Workshop
 :Course Number: MOLB 7621
+:Crosslistings: STBB 7621
 :Semester:      Spring 2015
 :Homepage:      http://hesselberthlab.github.io/workshop 
 :Instructor:    Jay Hesselberth
