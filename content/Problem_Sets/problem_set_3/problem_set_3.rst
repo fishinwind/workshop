@@ -51,19 +51,20 @@ Problem 2
 Use BEDtools to intersect peaks calls from clustered transcription factor
 binding sites (TFBS) with clustered DNase I peaks. (**20 points**)
 
-- Identify transcription factor binding sites that do not overlap with
-  DNase I hypersensitive sites.
-    
-  * What transcription factors are represented in these regions? Analyze
-    the BED file output to get this answer.
+#. Identify transcription factor binding sites that do not overlap with
+   DNase I hypersensitive sites.
+   
+   #. What transcription factors are represented in these regions? Analyze
+      the BED file output to get this answer.
 
-- Do the converse: identify DNase I hypersensitive sites that do not
-  have corresponding transcription factor peak calls.
+#. Do the converse: identify DNase I hypersensitive sites that do not have
+   corresponding transcription factor peak calls.
     
-  * What motifs are enriched in this set of hypersensitive sites on chr22?
+   #. What motifs are enriched in this set of hypersensitive sites on
+      chr22?
 
-  * How would you use existing tools to identify similar motifs, ideally
-    ones that are previously associated with a transcription factor?
+   #. How would you use existing tools to identify similar motifs, ideally
+      ones that are previously associated with a transcription factor?
 
 **Report the factors in the peaks and the top 5 high scoring motifs from
 each meme analysis.**
