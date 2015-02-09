@@ -52,7 +52,7 @@ Download the data.
 
 .. code-block:: bash
 
-    cd /opt/bio-workshop/data/
+    cd /vol1/opt/data/
     wget https://ucd-bioworkshop.github.io/_downloads/expr-geno-covs.txt
 
 
@@ -144,7 +144,7 @@ get/set working directory
 
     getwd() # print
     setwd('C:\whatever\path\') # on windows
-    setwd('/opt/bio-workshop/data/') # on linux
+    setwd('/vol1/opt/data/') # on linux
 
 ggplot2
 =======

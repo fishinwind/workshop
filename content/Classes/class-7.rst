@@ -296,7 +296,7 @@ Now we'll read some data from a file and operate on each line:
 .. ipython::
     :verbatim:
 
-    In [3]: filename = '/opt/bio-workshop/data/lamina.bed'
+    In [3]: filename = '/vol1/opt/data/lamina.bed'
 
     # What is the BUG in this block?
     In [4]: for line in open(filename):

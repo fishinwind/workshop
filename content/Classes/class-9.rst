@@ -147,7 +147,7 @@ For example:
 
 .. code-block:: bash
 
-    zless /opt/bio-workshop/data/t_R1.fastq.gz | wc -l
+    zless /vol1/opt/data/t_R1.fastq.gz | wc -l
 
 never holds the file in memory, it just streams the data.
 
@@ -163,7 +163,7 @@ Intermediate : Streaming
 .. code-block:: python
 
     import gzip
-    fastq_filename = '/opt/bio-workshop/data/t_R1.fastq.gz'
+    fastq_filename = '/vol1/opt/data/t_R1.fastq.gz'
 
     data = list(gzip.open(fastq_filename))
     lines = len(data)
@@ -175,7 +175,7 @@ Intermediate : Streaming
 .. code-block:: python
 
     import gzip
-    fastq_filename = '/opt/bio-workshop/data/t_R1.fastq.gz'
+    fastq_filename = '/vol1/opt/data/t_R1.fastq.gz'
 
     lines = 0
     for line in gzip.open(fastq_filename):
@@ -203,7 +203,7 @@ Then use it:
 
 .. code-block:: python
 
-    bedfilename = '/opt/bio-workshop/data/lamina.bed'
+    bedfilename = '/vol1/opt/data/lamina.bed'
     for bed in bed_generator(bedfilename):
         print bed # bed is a useful, usable thing. with numeric start and end.
 
@@ -265,7 +265,7 @@ dictionary for each line keyed by the header.
 
     from toolshed import reader
 
-    bedfilename = '/opt/bio-workshop/data/lamina.bed'
+    bedfilename = '/vol1/opt/data/lamina.bed'
 
     for region in reader(bedfilename):
         # the first line in lamina.bed is: '#chrom  start  end  value'
@@ -290,7 +290,7 @@ Mostly we will use it as:
 
     from toolshed import reader
 
-    bedfilename = '/opt/bio-workshop/data/lamina.bed'
+    bedfilename = '/vol1/opt/data/lamina.bed'
 
     for region in reader(bedfilename):
         # do something with region

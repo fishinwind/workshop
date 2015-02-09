@@ -5,126 +5,73 @@
 Problem Set 3
 *************
 
-:Due date: 2014 Feb 21 at 9 PM MST
+:Due date: 2015 Feb 16 at 5 PM MST
 
 Overview
 --------
-For this quiz you will write programs in Python to analyze data. 
 
-.. note::
+For this quiz you will analyze ChIP-seq data.
 
-    Continue to use the organization scheme that we learned about in
-    :ref:`problem-set-1`. Part of our evaluation
-    will include whether you are developing good organizational habits.
+Use the provided :ref:`encode-data` for these problems. All of the data
+are available on the amc-tesla cluster at::
 
-Create a ``run.sh`` file that executes the commands for each problem and
-writes out each result in a dated directory.
+    /vol1/opt/data
 
+Note that the FASTA sequence for hg19 is available in the same directory
+``hg19.fa``. That is a big file, so do not copy it anywhere; just use it
+out of that directory.
 
-Problem 1 (BED files)
----------------------
-Use Python to perform a similar tasks as Problem Set 2, where you used
-``awk``. Write a Python program to read the lamina.bed file and report the
-following:
+Problem 1
+---------
 
-- What is the region with the largest start position (2nd column) **for
-  each** chromosome in `lamina.bed`? (**5 points**)
+Transcription factors bind specific DNA sequences. In this exercise, you
+will determine the specific DNA sequence bound by an abundant human
+transcription factor called CTCF.
 
-- What is the region with the largest end position on chrY in
-  lamina.bed? (**5 points**) Report as::
+Use the CTCF peak calls in the ENCODE data to derive a binding motif for
+the CTCF transcription factor. (**10 points**) You will need to:
 
-   chrom <tab> start <tab> end <tab> value <tab> region_length
+#. Select out the peaks on chr22 (otherwise meme will take a long time
+   to run)
 
-Download the bed file here: :ref:`bed-file`
+#. create FASTA sequence from the peak calls from the hg19 genome.
 
-.. note::
+#. use MEME to identify motifs from these FASTA sequences. The motifs
+   in the meme output will be ranked according to their significance
+   (i.e. how often this motif would occur in random sequence).
 
-    See end of this page for the solution to question 1.
+**Report the top 5 high scoring motifs, and compare your most significant
+motif with what is already known about CTCF binding sites.**
 
+Problem 2
+---------
 
-Problem 2 (FASTQ files)
------------------------
-Use Python to read a file in FASTQ format. FASTQ records are comprised of
-4 sections; in this case each section will be on a unique line::
+Use BEDtools to intersect peaks calls from clustered transcription factor
+binding sites (TFBS) with clustered DNase I peaks. (**20 points**)
 
-    @cluster_2:UMI_ATTCCG             # record name
-    TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
-    +                                 # empty line; starts with '+'
-    9C;=;=<9@4868>9:67AA<9>65<=>591   # phred-scaled quality scores
-
-Download the fastq file here: :ref:`fastq-file`
-
-Write a Python program to parse the FASTQ records and report the
-following:
-
-- Which of the first 10 sequence records has the largest number of 'C'
-  residues in the sequence? Report its record name (**5 points**).
+- Identify transcription factor binding sites that do not overlap with
+  DNase I hypersensitive sites.
     
-- For each of the first 10 records, Covert each character in the
-  quality score to a number, and sum the numbers. Use :py:func:`ord`
-  to convert characters to numbers (**5 points**).
+  * What transcription factors are represented in these regions? Analyze
+    the BED file output to get this answer.
 
-- Use the Python :py:class:`~collections.Counter` to count unique
-  sequences in the Fastq file. Report the top ten most abundant
-  sequences in the Fastq file (**5 points**).
+- Do the converse: identify DNase I hypersensitive sites that do not
+  have corresponding transcription factor peak calls.
+    
+  * What motifs are enriched in this set of hypersensitive sites on chr22?
 
-- Report the revese complement of each of the first 10 sequences (**5
-  points**)
+  * How would you use existing tools to identify similar motifs, ideally
+    ones that are previously associated with a transcription factor?
 
-.. note::
-
-    The reverse complement of ``5'-AGCTCGTA-3''`` is ``5'-TACGAGCT-3'``
+**Report the factors in the peaks and the top 5 high scoring motifs from
+each meme analysis.**
 
 Problem Set Submission
 ----------------------
 Submit your problem set as a tar file to Canvas
 (:ref:`problem-set-submission`).
 
-
-Question 1
-==========
-
-Here is one way to answer question 1. Note that we could also take
-advantage of the fact that the file is sorted so the largest start
-will always be the last line for each chromosome. Instead, here we
-store the largest start we've seen so far, along with the value
-in a dictionary keyed by chromosome.
-
-.. code-block:: python
-    :linenos:
-
-    import sys
-
-    bedfile = sys.argv[1]
-
-    largest_by_chrom = {}
-
-    for line in open(bedfile):
-        if line.startswith('#'): continue
-        chrom, start, end, value = line.rstrip('\r\n').split('\t')
-        start = int(start)
-
-        # hint for question 2. if we wanted to just get chrY, we could add...
-        # if chrom != "chrY": continue
-
-        # we haven't seen it before, so it has to be the largest
-        if not chrom in largest_by_chrom:
-            largest_by_chrom[chrom] = (chrom, start, end, value)
-        else:
-            # we have to check if the current start is greater
-            # than the one we've stored.
-            largest_chrom, largest_start, largest_end, largest_value \
-                                                   = largest_by_chrom[chrom]
-            if start > largest_start:
-                # if it is, then we store a new region
-                largest_by_chrom[chrom] = (chrom, start, end, value)
-
-    # see what it looks like:
-    # print largest_by_chrom
-    for chrom in largest_by_chrom:
-        chrom, start, end, value = largest_by_chrom[chrom]
-        print chrom, start, end, value
-
 .. raw:: pdf
 
     PageBreak
+

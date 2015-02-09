@@ -99,7 +99,7 @@ We can skip the header in a file like this:
 
 .. code-block:: python
 
-    for i, line in enumerate(open('/opt/bio-workshop/data/lamina.bed')):
+    for i, line in enumerate(open('/vol1/opt/data/lamina.bed')):
         # skip the header
         if i == 0: continue
         fields = line.rstrip().split("\t")
@@ -179,7 +179,7 @@ Parse a fastq!!
 
 .. code-block:: python
 
-    for i, line in enumerate(open('/opt/bio-workshop/data/SP1.fq')):
+    for i, line in enumerate(open('/vol1/opt/data/SP1.fq')):
         if i % 4 == 0:
             name = line
         elif i % 4 == 1:
@@ -307,7 +307,7 @@ zip quality with sequence. append quality for each base in a dict of lists
 
     # append all quality scores for A base to quals_by_base['A'] list.
     quals_by_base = {'A': [], 'C': [], 'T': [], 'G': []}
-    for i, line in enumerate(open('/opt/bio-workshop/data/SP1.fq')):
+    for i, line in enumerate(open('/vol1/opt/data/SP1.fq')):
         if i % 4 == 0:
             name = line
         elif i % 4 == 1:

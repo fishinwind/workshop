@@ -145,7 +145,7 @@ Other Commands In The Terminal
 ==============================
 Use the ``man`` command to determine what ``head`` does.
 
-Use ``head`` on the file /opt/bio-workshop/data/lamina.bed
+Use ``head`` on the file /vol1/opt/data/lamina.bed
 
 Use ``tail`` to see the end of the file.
 
@@ -160,22 +160,22 @@ Other Commands In The Terminal (Answers)
 .. code-block:: bash
 
     $ man head
-    $ head /opt/bio-workshop/data/lamina.bed
-    $ tail /opt/bio-workshop/data/lamina.bed
-    $ head -n 13 /opt/bio-workshop/data/lamina.bed
+    $ head /vol1/opt/data/lamina.bed
+    $ tail /vol1/opt/data/lamina.bed
+    $ head -n 13 /vol1/opt/data/lamina.bed
 
 Word Counts (wc)
 ================
 Exercise:
 
-+ use **wc** to determine how many **lines** are in /opt/bio-workshop/data/lamina.bed
-+ use **wc** to determine how many **words** are in /opt/bio-workshop/data/lamina.bed
++ use **wc** to determine how many **lines** are in /vol1/opt/data/lamina.bed
++ use **wc** to determine how many **words** are in /vol1/opt/data/lamina.bed
 
 Less (is More)
 ==============
 To view a large file, use less::
 
-    less /opt/bio-workshop/data/lamina.bed
+    less /vol1/opt/data/lamina.bed
 
 You can forward-search in the file using "/"
 
@@ -363,7 +363,7 @@ key component of programming.
 You can do::
 
     # define a variable called "important"
-    $ important=/opt/bio-workshop/data/lamina.bed
+    $ important=/vol1/opt/data/lamina.bed
 
     # "dereference" (refer to) the variable with a dollah-bill sign
     $ ls -lh $important
@@ -391,7 +391,7 @@ use ``man`` to determine the function of:
 + uniq
 
 How many records are present for each chromosome in
-/opt/bio-workshop/data/lamina.bed (assume it is sorted by chromosome)?
+/vol1/opt/data/lamina.bed (assume it is sorted by chromosome)?
 
 
 Scripts
@@ -403,7 +403,7 @@ Put this text:
 
 .. code-block:: bash
 
-    $ ls /opt/bio-workshop/
+    $ ls /vol1/opt/
 
 Into the file *`run.sh`* by opening ``vim`` pasting that text then saving
 the file.
@@ -414,7 +414,7 @@ You can then run it as:
 
     $ bash run.sh
 
-And you should see the same output as if you ran ``ls /opt/bio-workshop`` directly.
+And you should see the same output as if you ran ``ls /vol1/opt`` directly.
 
 .. nextslide::
     :increment:
@@ -454,7 +454,7 @@ We can see lines 5-10 of a file with:
 
 .. code-block:: bash
 
-    $ head /opt/bio-workshop/data/lamina.bed | tail -n 5
+    $ head /vol1/opt/data/lamina.bed | tail -n 5
 
 .. raw:: pdf
 
