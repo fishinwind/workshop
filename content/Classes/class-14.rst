@@ -10,13 +10,6 @@ Goals
 
 #. Learn the workflow for analyzing ChIP-seq data
 
-.. important::
-
-    **LOGIN TO THE CLUSTER**
-
-    You will need access to amc-tesla to do your homework. Confirm you can
-    log on before leaving class.
-
 Chromatin Immunoprecipitation Overview
 ======================================
 
@@ -91,7 +84,6 @@ SAM format: http://samtools.sourceforge.net/SAMv1.pdf
         | samtools view -ShuF4 - \ 
         | samtools sort -o - aln.temp -m 8G \
         > aln.bam
-
 
 Generate and visualize coverage plots
 =====================================

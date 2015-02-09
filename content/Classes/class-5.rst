@@ -1,8 +1,8 @@
-********************************
-Class 5 : The ENCODE Project
-********************************
+*************************************
+ Class 5 : Working with genomic data 
+*************************************
 
-:Class date: Tues 12 Feb 2015
+:Class date: Tues 10 Feb 2015
 
 Goals
 =====
@@ -12,9 +12,11 @@ Goals
 #. What kinds of data did the ENCODE project produce? 
  
 #. Where can I find these data on the Internet? 
+
+#. What can I do with these data sets?
  
-ENCODE Project Timeline: 2003
-=============================
+ENCODE
+======
  
 The Human Genome Project was finished, giving us a list of human genes and their 
 locations. Unfortunately, we still had no idea how they were regulated. If only 
@@ -51,43 +53,35 @@ Experiments
 Common File Formats
 ===================
 
-#. FASTQ: Raw sequencing data.
++ FASTQ: Raw sequencing data. `[link]
+<http://maq.sourceforge.net/fastq.shtml>`
 
-#. BAM/SAM: Aligned sequence data
++ SAM/BAM: Aligned sequence data `[link]
+<http://samtools.github.io/hts-specs/SAMv1.pdf>`
 
-#. Bed/bigBed: List of genomic regions
++ Bed/bigBed: List of genomic regions `[link]
+<http://genome.ucsc.edu/FAQ/FAQformat.html#format1>`
 
-#. Bedgraph/Wig/bigWig: Continuous signal (e.g. methylation mapping)
++ Bedgraph/Wig/bigWig: Continuous signal `[link]
+<http://genome.ucsc.edu/goldenPath/help/bedgraph.html>` 
 
-ENCODE Project Timeline: 2007
-==============================
+Many other formats are described on this `page
+<http://genome.ucsc.edu/FAQ/FAQformat.html>`_
 
-Completion of `pilot project <http://genome.ucsc.edu/ENCODE/encode.hg18.html>`_ 
-(1% of the human genome). 
-(`summary paper with list of analyses in Table 1: 
-<http://www.nature.com/nature/journal/v447/n7146/full/nature05874.html>`_)
-
-GENCODE
-=======
-
-ENCODE identifies functional genomic elements; `GENCODE <http://www.gencodegenes.org>`_ 
-is the annotation of those elements based on ENCODE data. This will ideally be the 
-most comprehensive reference gene set once the project is complete. 
-
-ENCODE Project Timeline: 2012
-=============================
+References
+==========
 
 Completion of the entire project, and a ton of papers: 
 `Nature <http://www.nature.com/nature/journal/v489/n7414/index.html>`_, 
 `Genome Research <http://genome.cshlp.org/content/22/9.toc>`_, 
 `Genome Biology <http://genomebiology.com/content/13/9>`_, 
-`paper viewer that is also an iPad app <http://www.nature.com/encode/#/threads>`_, 
-and the `front page of the New York Times <http://www.nytimes.com/2012/09/06/science/far-from-junk-dna-dark-matter-proves-crucial-to-health.html?pagewanted=all>`_
 
 How to Access ENCODE Data
 =========================
 
-See genome browser
+The `ENCODE project page <https://www.encodeproject.org/>`_ is the portal
+to all of the ENCODE data.
+
 
 .. raw:: pdf
 
