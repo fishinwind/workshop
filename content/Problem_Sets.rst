@@ -44,10 +44,11 @@ whole directory like this (change STUDENTID to your student ID):
     $ projectdir=$HOME/project
     $ tar -cvf STUDENTID-pset1.tar $projectdir
 
-Post the full path to the tarfile (/vol3/home/username/.../blahblah.tar)
-as a comment on the Problem Set submission page at the Canvas site [#]_ to
-complete the submission. Auditors can e-mail their path to
-sallypeach@gmail.com.
+On the specific Problem Set assignment page at the Canvas site [#]_,
+click the Submit Assignment button on the top right and paste the
+full path to the tarfile (/vol3/home/username/.../foo.tar) in the text
+box. Click the Submit Assignment button below the text box to complete 
+the submission. Auditors can e-mail their path to sallypeach@gmail.com.
 
 .. [#] https://ucdenver.instructure.com/courses/325063/assignments
 
