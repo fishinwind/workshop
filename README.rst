@@ -1,6 +1,7 @@
 
+========================
 Genome Analysis Workshop 
-===========================
+========================
 
 :Title: Genome Analysis Workshop
 :Course Number: MOLB 7621
@@ -9,23 +10,28 @@ Genome Analysis Workshop
 :Author: Jay R. Hesselberth
 :Organization: University of Colorado School of Medicine
 :Address: Department of Biochemistry and Molecular Genetics
-:Copyright: 2013-2014 Jay R. Hesselberth
+:Copyright: 2013-2015 Jay R. Hesselberth
 
-Making linked slides and HTML
------------------------------
-Make linked slides with:
-    
-.. code-block:: bash
+Making content 
+--------------
+These are the ``make`` targets for content:
 
-    $ make html slides
+.. code-block:: makefile
 
-Content will be in ``_build/html`` and ``_build/slides``.
+  pdf        to make standalone PDF
+  html       to make standalone HTML files
+  slides     to make standalone HTML5 slides
+  all        to test make html, slides and PDF
+  publish    push website to github gh-pages
+  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter
+
+Content will be in ``_build/<target>`` e.g. ``_build/html``.
 
 Making webiste
 --------------
-Move HTML to github.io site with:
+Push content to the github.io website with:
 
 .. code-block:: bash
 
-    $ make website
+    $ make publish
 
