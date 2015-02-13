@@ -664,4 +664,84 @@ The `ENCODE project page <https://www.encodeproject.org/>`_ is the portal
 to all of the ENCODE data.
 
 
+Chromatin Immunoprecipitation Overview
+======================================
+
+Chromatin Immunoprecipitation is used to determine where a protein of
+interest binds on a chromatin template [Park_Chipseq]_.
+
+.. [Park_Chipseq] http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html
+
+.. image:: ../_static/images/chip-workflow.png
+
+.. nextslide::
+
+.. image:: ../_static/images/chip-data.png
+
+ChIP-seq analysis workflow
+==========================
+
+A general workflow for visualizing ChIP-seq data (and many other types of
+data) is:
+
+.. list-table::
+    :widths: 40 40
+    :header-rows: 1
+
+    * - Operation
+      - File formats
+    * - Align reads to reference genome
+      - ``FASTQ ~~> BAM``
+    * - Generate coverage plots
+      - ``BAM ~~> bedGraph``
+    * - Call peaks 
+      - ``BAM ~~> BED``
+    * - Make binary files for UCSC display
+      - ``bedGraph ~~> bigWig``, ``BED ~~> bigBed``
+    * - Identify motifs
+      - ``BED ~~> FASTA ~~> TXT / HTML``
+
+ChIP-seq data
+=============
+
+Look at some human ChIP-seq data [#]_.
+
+.. [#] Genome Browser Session
+       http://goo.gl/WfJxcM
+
+(We'll talk more in depth about ChIP-Seq workflows in the future,
+but for now, just a brief introdcution to a few commands you can use to
+work on ChIP-Seq data (and pset3)).
+
+
+Peak calling
+============
+
+There are several available software packages for identifying regions
+enriched in your IP experiment (i.e. peaks). We will use macs2 here.
+
+.. code-block:: bash
+
+    # minimal macs2 command 
+    $ macs2 callpeak --treatment <aln.bam> --name <exp.name> [options]
+
+Identify sequence motifs in enriched regions
+============================================
+
+You can use meme [#]_ to identify over-represented motifs in groups of
+sequences (e.g. sequences covered by ChIP peaks).
+
+Use the :ref:`bedtools getfasta <bedtools:getfasta>` command to fetch
+fasta sequences.
+
+Note: meme looks at both strands of a DNA sequence by default.
+
+.. [#] MEME 
+       http://meme.nbcr.net/meme/
+
+.. code-block:: bash
+
+    $ bedtools getfasta -fi <ref.fa> -bed <peaks.bed> -fo peaks.fa
+    $ meme -nmotifs 5 -minw 6 -maxw 20 -dna <peaks.fa>
+
 

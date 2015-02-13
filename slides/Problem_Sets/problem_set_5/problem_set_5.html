@@ -1,0 +1,210 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Problem Set 5 &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../../_static/js/slides"
+            src="../../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Problem Set 5<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#problem-set-5" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Due date:</th><td class="field-body">2014 Mar 4 at 9 PM MST</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Overview<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>For this quiz you will analyze ChIP-seq data.</p>
+<p>Use the provided <a class="reference internal" href="../../misc/data.html#encode-data"><em>ENCODE data</em></a> for these problems. All of the data
+are available on the amc-tesla cluster at:</p>
+<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data
+</pre></div>
+</div>
+<p>Note that the FASTA sequence for hg19 is available in the same directory
+<tt class="docutils literal"><span class="pre">hg19.fa</span></tt>. That is a big file, so do not copy it anywhere; just use it
+out of that directory.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem 1<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#problem-1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Transcription factors (usually) bind specific DNA sequences. In this
+exercise, you will determine the specific DNA sequence bound by an
+abundant human transcription factor called CTCF.</p>
+<p>Use the CTCF peak calls in the ENCODE data to derive a binding motif for
+the CTCF transcription factor. (<strong>10 points</strong>) You will need to:</p>
+<ol class="arabic simple">
+<li>Select out the peaks on chr22 (otherwise meme will take a long time
+to run)</li>
+<li>create FASTA sequence from the peak calls from the hg19 genome.</li>
+<li>use MEME to identify motifs from these FASTA sequences. The motifs
+in the meme output will be ranked according to their significance
+(i.e. how often this motif would occur in random sequence).</li>
+</ol>
+<p><strong>Report the top 5 high scoring motifs, and compare your most significant
+motif with what is already known about CTCF binding sites.</strong></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem 2<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#problem-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use BEDtools to intersect peaks calls from clustered transcription factor
+binding sites (TFBS) with clustered DNase I peaks. (<strong>20 points</strong>)</p>
+<ul class="simple">
+<li>Identify transcription factor binding sites that do not overlap with
+DNase I hypersensitive sites.<ul>
+<li>What transcription factors are represented in these regions? Analyze
+the BED file output to get this answer.</li>
+</ul>
+</li>
+<li>Do the converse: identify DNase I hypersensitive sites that do not
+have corresponding transcription factor peak calls.<ul>
+<li>What motifs are enriched in this set of hypersensitive sites
+(<strong>UPDATE: only look at sites on chrY</strong>)?</li>
+<li>How would you use existing tools to identify similar motifs, ideally
+ones that are previously associated with a transcription factor?</li>
+</ul>
+</li>
+</ul>
+<p><strong>Report the factors in the peaks and the top 5 high scoring motifs from
+each meme analysis.</strong></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem Set Submission<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#problem-set-submission" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Submit your problem set as a tar file to Canvas
+(<a class="reference internal" href="../../Problem_Sets.html#problem-set-submission"><em>Problem Set Submission</em></a>).</p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
