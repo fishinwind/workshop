@@ -1,0 +1,412 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 17 : Bash and Bam &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 17 : Bash and Bam<a class="headerlink" href="../../Classes/class-17.html#class-17-bash-and-bam" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2014 Mar 7 Friday</td>
+</tr>
+</tbody>
+</table>
+<p>Log in to amc-tesla and do this:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd ~
+cp /vol1/opt/data/class-17.tar.gz .
+tar xzvf class-17.tar.gz
+cd class-17
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-17.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Debugging and Scripting in bash</li>
+<li>QC Sequence and Alignments</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Pybedtools<a class="headerlink" href="../../Classes/class-17.html#pybedtools" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The pybedtools documentation is very good: <a class="reference external" href="https://pythonhosted.org/pybedtools/">https://pythonhosted.org/pybedtools/</a></p>
+<p>Citable from: <a class="reference external" href="http://www.ncbi.nlm.nih.gov/pubmed/21949271">http://www.ncbi.nlm.nih.gov/pubmed/21949271</a></p>
+<p>installable as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">pybedtools</span>
+</pre></div>
+</div>
+<p>iterable:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">BedTool</span><span class="p">(</span><span class="s">&#39;my.bed&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">feature</span><span class="o">.</span><span class="n">strand</span> <span class="o">==</span> <span class="s">&quot;+&quot;</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">feature</span><span class="o">.</span><span class="n">chrom</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">end</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Bashing<a class="headerlink" href="../../Classes/class-17.html#bashing" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Some times you will have long bash scripts and you will misspell variables</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">expname</span><span class="o">=</span><span class="s2">&quot;project1&quot;</span>
+<span class="nv">bamfile</span><span class="o">=</span><span class="nv">$exnpame</span>.bam
+</pre></div>
+</div>
+<p>The above code will run without error.
+But, if you add:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">set</span> -o nounset
+</pre></div>
+</div>
+<p>To the <strong>top of the script</strong>, then accessing an undefined variable will
+raise an error.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Bashing (2)<a class="headerlink" href="../../Classes/class-17.html#bashing-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>In a long bash script, you may have a series of commands:</p>
+<div class="highlight-bash"><div class="highlight"><pre>eco <span class="s2">&quot;hello world&quot;</span> &gt; useful-file.txt
+cowsay &lt; useful-file.txt
+</pre></div>
+</div>
+<p>In this case, the first line will show an error, but the second will still run.
+To make it <strong>stop on the first error</strong>, add the following to the <strong>top of the
+script</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">set</span> -e
+</pre></div>
+</div>
+<p><strong>YOU SHOULD ALWAYS ADD THIS TO YOUR BASH SCRIPTS</strong></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Bashing (3)<a class="headerlink" href="../../Classes/class-17.html#bashing-3" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Sometimes some of you were getting confused about what you were doing after all
+of the variables. You can force <cite>bash</cite> to echo the expanded commands it is
+running (including setting variable names) with</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">set</span> -x
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Bashing Summary<a class="headerlink" href="../../Classes/class-17.html#bashing-summary" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Do this at the top of every script:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">set</span> -eo nounset -o pipefail
+<span class="nb">set</span> -x <span class="c"># this can sometimes be removed</span>
+</pre></div>
+</div>
+<p>Pipefail gives more useful error messages when piping (|) commands.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>FASTQ<a class="headerlink" href="../../Classes/class-17.html#fastq" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>remember fastq is [(name, seq, +, qual), ...]:</p>
+<div class="highlight-python"><div class="highlight"><pre>@cluster_2:UMI_ATTCCG
+TTTCCGGGGCACATAATCTTCAGCCGGGCGC
++
+9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591
+@cluster_8:UMI_CTTTGA
+TATCCTTGCAATACTCTCCGAACGGGAGAGC
++
+1/04.72,(003,-2-22+00-12./.-.4-
+</pre></div>
+</div>
+<p>We often want to see how quality scores degrade over the read,
+check for adaptors, and see some info about our sequences...</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>FASTQC<a class="headerlink" href="../../Classes/class-17.html#fastqc" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>fastqc is run as:</p>
+<div class="highlight-bash"><div class="highlight"><pre>fastqc /path/to/your/your.fastq
+</pre></div>
+</div>
+<p>and it creates an output directory containing html, e.g.:</p>
+<q>
+<a class="reference external" href="http://amc-sandbox.ucdenver.edu/~brentp/fastqc/real_R1_fastqc/fastqc_report.html">http://amc-sandbox.ucdenver.edu/~brentp/fastqc/real_R1_fastqc/fastqc_report.html</a></q>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>FASTQC SP1<a class="headerlink" href="../../Classes/class-17.html#fastqc-sp1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Add a comment '#' before the line &quot;&lt;&lt;FASTQC&quot; in class-17/run.sh</li>
+<li>Reason about what that block will do</li>
+<li>Save and exit and run</li>
+<li>Open the printed path in the browser</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>BAM<a class="headerlink" href="../../Classes/class-17.html#bam" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A BAM is <strong>B</strong> inary <strong>A</strong> lignment <strong>F</strong> ormat. It is the binary
+version of SAM format.
+All of the alignments from high-throughput data you are likely to encounter will
+be in BAM format.</p>
+<p>You can easily transfer between Binary BAM and text SAM using samtools view:</p>
+<div class="highlight-python"><div class="highlight"><pre>samtools view a.bam | python process-sam-text.py &gt; processes.sam
+</pre></div>
+</div>
+<p><a class="reference external" href="http://samtools.sourceforge.net/samtools.shtml">http://samtools.sourceforge.net/samtools.shtml</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Example Data<a class="headerlink" href="../../Classes/class-17.html#example-data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>There are 4 small example BAM files in <cite>/vol1/opt/data/bams/</cite></p>
+<div class="highlight-bash"><div class="highlight"><pre>ls -lh /vol1/opt/data/bams/*.bam
+</pre></div>
+</div>
+<p>Since they are in binary format, you'll need to use samtools to <cite>view</cite> them</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># view the header:</span>
+<span class="nv">$ </span>samtools view -H /vol1/opt/data/bams/2_8-bwa.bam <span class="p">|</span> less
+<span class="c"># view the alignments:</span>
+<span class="nv">$ </span>samtools view /vol1/opt/data/bams/2_8-bwa.bam <span class="p">|</span> less
+</pre></div>
+</div>
+<ul class="simple">
+<li>Alignments contain a lot of information!</li>
+<li>Check the output and read on the samtools site for more info</li>
+<li>The example data is only for chromosome 4</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Picard<a class="headerlink" href="../../Classes/class-17.html#picard" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><a class="reference external" href="http://picard.sourceforge.net/">http://picard.sourceforge.net/</a></p>
+<p>Picard has a number of tools for manipulating alignment files.</p>
+<p>We will look at alignment metrics.</p>
+<p>The 4 example bams are from a targetted sequencing project so we will
+examine the percent on and off-target along with the coverage.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Picard Metrics<a class="headerlink" href="../../Classes/class-17.html#picard-metrics" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <q>
+To gauge the on/off-target reads, we use a BED file of the target
+regions that has a header of all the sequences from the BAM.</q>
+<div class="highlight-bash"><div class="highlight"><pre>less /vol1/opt/data/bams/intervals.txt
+</pre></div>
+</div>
+<p>... explain from terminal ... (see run.sh)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>picard output<a class="headerlink" href="../../Classes/class-17.html#picard-output" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The output from picard is 1 sample per file with a bunch of extra lines.
+We will parse them into a single, useful file with class-17/src/merge-metrics.py</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Projects<a class="headerlink" href="../../Classes/class-17.html#projects" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>come up with an idea for your projects.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>In/Out Class Exercise<a class="headerlink" href="../../Classes/class-17.html#in-out-class-exercise" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use bedtools intersect with the <cite>-abam</cite> flag on one of the example BAM's and
+<cite>mm10.capture.chr4.bed</cite> to count the number of on and off-target reads.
+Does it match what picard says?</p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 5 : Working in a cluster environment &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 5 : Working in a cluster environment<a class="headerlink" href="../../Classes/class-5-reorg.html#class-5-working-in-a-cluster-environment" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Wednesday 5 February 2014</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-5-reorg.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Grep overview</li>
+<li>Login to cluster</li>
+<li>Learn about cluster-specific commands</li>
+<li>Queueing system basics</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>grep<a class="headerlink" href="../../Classes/class-5-reorg.html#grep" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use <a class="reference external" href="http://linux.die.net/man/1/grep">grep(1)</a> to identify lines in a file that match a specified pattern.</p>
+<p>To find any instance of <em>chr5</em> in the lamina.bed file</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># grep [pattern] [filename]</span>
+<span class="nv">$ </span>grep chr5 /vol1/opt/data/lamina.bed <span class="p">|</span> head
+</pre></div>
+</div>
+<p>To find all lines that start with a number sign:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># The caret (^) matches the beginning of the line</span>
+<span class="c"># FYI dollar sign ($) matches the end</span>
+<span class="nv">$ </span>grep <span class="s1">&#39;^#&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>grep (2)<a class="headerlink" href="../../Classes/class-5-reorg.html#id1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>To find any line that <em>does not</em> start with &quot;chr&quot;:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -v flag inverts the match (grep &quot;not&quot; [pattern])</span>
+<span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>Beware of using <tt class="docutils literal"><span class="pre">grep</span></tt> to find patterns that might be partial matches:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will match chr1, chr10, chr11 etc.</span>
+<span class="nv">$ </span>grep chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+</pre></div>
+</div>
+<p>You can find exact matches that are split on words with the <tt class="docutils literal"><span class="pre">-w</span></tt> flag:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will only match chr1</span>
+<span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>grep (3)<a class="headerlink" href="../../Classes/class-5-reorg.html#id2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Beware of using <tt class="docutils literal"><span class="pre">grep</span></tt> to search for numbers:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># finds all strings that match `100`</span>
+<span class="nv">$ </span>grep <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
+
+<span class="c"># better, but doesn&#39;t look at numeric value</span>
+<span class="nv">$ </span>grep -w <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>If you're trying to find numeric values in a file, use <tt class="docutils literal"><span class="pre">awk</span></tt>
+instead:</p>
+<div class="last highlight-python"><div class="highlight"><pre>$ awk &#39;$2 == 500&#39; /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Cluster access<a class="headerlink" href="../../Classes/class-5-reorg.html#cluster-access" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
+<span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
+
+...
+
+<span class="c"># once you are logged in, text your X11 connection with</span>
+<span class="nv">$ </span>xeyes
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Cluster etiquette<a class="headerlink" href="../../Classes/class-5-reorg.html#cluster-etiquette" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>There are some specific rules you need to know when you're operating in a
+cluster environment.</p>
+<p class="graphviz">
+<img src="../_images/graphviz-23b92947c32d4cd35df4fce8fa40a0148601675d.png" alt="digraph cluster {
+    &quot;YOU&quot; [shape=box];
+    &quot;amc-tesla&quot; [shape=box];
+    &quot;filesystem&quot; [shape=box];
+    &quot;compute nodes&quot; [shape=box];
+    &quot;YOU&quot; -&gt; &quot;amc-tesla&quot;;
+    &quot;amc-tesla&quot; -&gt; &quot;filesystem&quot;;
+    &quot;amc-tesla&quot; -&gt; &quot;compute nodes&quot;;
+}" />
+</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last"><strong>DO NOT</strong> run jobs on the head node (amc-tesla). The head node is the
+brains of the cluster and it can easily be overextended. Use <tt class="docutils literal"><span class="pre">qlogin</span></tt>
+instead.</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Example commands on the cluster<a class="headerlink" href="../../Classes/class-5-reorg.html#example-commands-on-the-cluster" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Find the size of the file system:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>df -h
+</pre></div>
+</div>
+<p>Find how much space you have allocated:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>quota -h
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>The queueing system<a class="headerlink" href="../../Classes/class-5-reorg.html#the-queueing-system" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>First you will grab a single CPU from the queueing system so that you can
+work without affecting the head node. We use <tt class="docutils literal"><span class="pre">qlogin</span></tt> for this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>jhessel@amc-tesla ~
+$ qlogin
+
+Job &lt;492536&gt; is submitted to queue &lt;interactive&gt;.
+&lt;&lt;ssh X11 forwarding job&gt;&gt;
+&lt;&lt;Waiting for dispatch ...&gt;&gt;
+&lt;&lt;Starting on compute00&gt;&gt;
+
+jhessel@compute00 ~
+$
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The host in the prompt changed from <tt class="docutils literal"><span class="pre">amc-tesla</span></tt> to <tt class="docutils literal"><span class="pre">compute00</span></tt>.</p>
+</div>
+<p>You can now execute long-running processes without worry of affecting the
+cluster. Type <tt class="docutils literal"><span class="pre">exit</span></tt> to return back to your head node login.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>The queueing system (2)<a class="headerlink" href="../../Classes/class-5-reorg.html#the-queueing-system-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The cluster uses a queueing system that will run jobs that you submit to
+it. You can write a small test script to see how the system works. First,
+write this into a run.sh file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+
+<span class="c">#BSUB -J sleeper</span>
+<span class="c">#BSUB -e %J.err</span>
+<span class="c">#BSUB -o %J.out</span>
+
+sleep 20
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>The queueing system (3)<a class="headerlink" href="../../Classes/class-5-reorg.html#the-queueing-system-3" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <tt class="docutils literal"><span class="pre">#BSUB</span></tt> lines are comments, but are read by the <tt class="docutils literal"><span class="pre">bsub</span></tt> program to
+identify features associated with your job.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">-J</span></tt> sets the job's name</li>
+<li><tt class="docutils literal"><span class="pre">%J</span></tt> is a unique job ID that is set when you run the job.</li>
+<li><tt class="docutils literal"><span class="pre">-e</span></tt> and <tt class="docutils literal"><span class="pre">-o</span></tt> set the filenames for stderr and stdout from the job</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>The queueing system (4)<a class="headerlink" href="../../Classes/class-5-reorg.html#the-queueing-system-4" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Now you can submit the script to the queuing system. As soon as you submit
+it, you can check on its progress:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bsub &lt; run.sh
+<span class="nv">$ </span>bjobs
+</pre></div>
+</div>
+<p>After the job finishes, you should see two new files that end
+<cite>.out</cite> and <cite>.err</cite>; these stdout and stderr from the running job.
+Look at the contents of those files so you know what is in
+each one.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Killing jobs<a class="headerlink" href="../../Classes/class-5-reorg.html#killing-jobs" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Sometimes you need to kill your jobs. You can kill specific jobs using
+their job ID numbers, obtained from checking <tt class="docutils literal"><span class="pre">bjobs</span></tt>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bkill &lt;jobid&gt;
+</pre></div>
+</div>
+<p>You can also kill <strong>all</strong> of your jobs at once:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bkill 0
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><tt class="docutils literal"><span class="pre">bkill</span> <span class="pre">0</span></tt> is dangerous – it will wipe out all of your jobs. If
+you have long-running jobs that you forgot about, you will kill them
+too if you are not careful!</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Other cluster-specific commands<a class="headerlink" href="../../Classes/class-5-reorg.html#other-cluster-specific-commands" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bhosts     <span class="c"># hosts in the cluster</span>
+<span class="nv">$ </span>man bhosts <span class="c"># bsub man page</span>
+<span class="nv">$ </span>bqueues    <span class="c"># available queues</span>
+<span class="nv">$ </span>lsload     <span class="c"># check load values for all hosts</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>In Class Exercises<a class="headerlink" href="../../Classes/class-5-reorg.html#in-class-exercises" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We're going to take a break this class so that you can catch up on your
+exercises. Please spend some time going back through the exercises from
+classes 1-4.</p>
+<ul class="simple">
+<li><a class="reference internal" href="class-3.html#class-3-exercises"><em>In Class Exercises - Class 3</em></a></li>
+<li><a class="reference internal" href="class-4.html#class-4-exercises"><em>In Class Exercises - Class 4</em></a></li>
+</ul>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

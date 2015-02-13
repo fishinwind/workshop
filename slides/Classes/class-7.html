@@ -1,0 +1,534 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 7 : Python : Basics &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 7 : Python : Basics<a class="headerlink" href="../../Classes/class-7.html#class-7-python-basics" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Monday 10 February 2014</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-7.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Learn the basics of python syntax</li>
+<li>Learn to start ipython</li>
+<li>Learn basic types in python</li>
+<li>Write simple python scripts</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Overview<a class="headerlink" href="../../Classes/class-7.html#overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Python is a popular programming language that is commonly used for
+bioinformatics. We will use it to process and filter files. When you can't
+write a simple script in <tt class="docutils literal"><span class="pre">awk</span></tt>, it is better to use python.</p>
+<p>The Python documentation <a class="footnote-reference" href="#id2" id="id1">[1]</a> is very helpful, with lots of examples. You
+should read it to become familiar with the language and refer to it when
+you get stuck.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Python 2.x docs <a class="reference external" href="http://docs.python.org/2/">http://docs.python.org/2/</a></td></tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last"><strong>You should begin the Python tutorial</strong> <a class="footnote-reference" href="#id4" id="id3">[2]</a>. We will cover some language
+specifics of Python, but will quickly move to using Python  in the
+context of bioinformatic applications.</p>
+</div>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Learn Python the Hard Way
+<a class="reference external" href="http://learnpythonthehardway.org/book/">http://learnpythonthehardway.org/book/</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>IPython<a class="headerlink" href="../../Classes/class-7.html#ipython" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Ipython is an (I)nteractive python terminal that lets you
+type in python expressions and see the results immediately</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ipython
+</pre></div>
+</div>
+<p>This command puts you in a shell that accepts python commands, much like
+the login terminal accepts <tt class="docutils literal"><span class="pre">bash</span></tt> commands.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Python indentation<a class="headerlink" href="../../Classes/class-7.html#python-indentation" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Python depends on proper indentation of your code. This does not work:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+<span class="k">print</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p>Instead you have to indent the <tt class="docutils literal"><span class="pre">print</span></tt> statement to nest it in the for
+loop:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">i</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Use spaces instead of <em>tab</em> characters for indentation.</p>
+<p class="last">Update your gedit preferences: <cite>Edit -&gt; Preferences</cite>,
+check the <cite>Insert spaces instead of tabs</cite> box.</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Python Help<a class="headerlink" href="../../Classes/class-7.html#python-help" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>You can find more about any python type or function using <tt class="docutils literal"><span class="pre">pydoc</span></tt>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># learn about the python ``string`` type</span>
+<span class="nv">$ </span>pydoc str
+</pre></div>
+</div>
+<p>At the <tt class="docutils literal"><span class="pre">ipython</span></tt> prompt, you can also use:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="nb">str</span><span class="err">?</span>
+</pre></div>
+</div>
+<p>In these slides, links will take you to the python docs: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a></p>
+<p>Finally, ask Google (e.g. python string split).</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>For Loops (iteration)<a class="headerlink" href="../../Classes/class-7.html#for-loops-iteration" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Many things in python are <strong>iterable</strong>, meaning we can write loops over
+them. For example, a string is iterable:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">sentence</span> <span class="o">=</span> <span class="s">&#39;i LOVE programming&#39;</span>
+
+<span class="gp">In [3]: </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">char</span>
+<span class="gp">   ...: </span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>For Loops (range)<a class="headerlink" href="../../Classes/class-7.html#for-loops-range" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Automate repetitive tasks with a for loop:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># Print &quot;hello&quot; 5 times:</span>
+<span class="gp">In [4]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="gp">   ...: </span>    <span class="k">print</span> <span class="s">&quot;hello&quot;</span>
+<span class="gp">   ...: </span>
+
+<span class="go"># now print the numbers</span>
+<span class="gp">In [5]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span>
+<span class="gp">   ...: </span>
+</pre></div>
+</div>
+<p>where the <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#range" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">range()</span></tt></a> function generates the numbers <cite>0, 1, 2, 3, 4</cite>.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Python Types<a class="headerlink" href="../../Classes/class-7.html#python-types" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>There are several core types in Python that you will use a lot.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a> is a collection of characters (words and sentences).</li>
+<li><a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a> and <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a> are numbers.</li>
+<li><a class="reference external" href="http://docs.python.org/2.7/library/functions.html#list" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">list</span></tt></a> is a group of other objects.</li>
+<li><a class="reference external" href="http://docs.python.org/2.7/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> contains key:value mappings.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Strings<a class="headerlink" href="../../Classes/class-7.html#strings" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">str</span></tt></a> is a collection of characters. You can make strings with
+single, double and triple quotes.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">phrase</span> <span class="o">=</span> <span class="s">&#39;this that other&#39;</span>
+
+<span class="gp">In [7]: </span><span class="n">phrase</span>
+
+<span class="go"># uppercase</span>
+<span class="gp">In [8]: </span><span class="n">phrase</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="go"># number of characters (including spaces) in phrase</span>
+<span class="gp">In [9]: </span><span class="nb">len</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Numbers (Ints and math)<a class="headerlink" href="../../Classes/class-7.html#numbers-ints-and-math" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Python has integer numbers (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#int" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">int</span></tt></a>) and floating point numbers
+(<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#float" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a>). Math operations work within and across both types:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># set up some ints</span>
+<span class="gp">In [10]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="gp">In [11]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="gp">In [12]: </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="go"># add</span>
+<span class="gp">In [13]: </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="go"># subtract</span>
+<span class="gp">In [14]: </span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+
+<span class="go"># x * y</span>
+<span class="gp">In [15]: </span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Numbers (Float division)<a class="headerlink" href="../../Classes/class-7.html#numbers-float-division" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>For division you need to pay attention to <tt class="docutils literal"><span class="pre">type</span></tt>:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># try to divide the ints ...</span>
+<span class="gp">In [16]: </span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+
+<span class="go"># need float conversion!</span>
+<span class="gp">In [17]: </span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="go"># make floats directly and divide</span>
+<span class="gp">In [18]: </span><span class="n">x</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="gp">In [19]: </span><span class="n">y</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+<span class="gp">In [20]: </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="gp">In [21]: </span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Lists<a class="headerlink" href="../../Classes/class-7.html#lists" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#list" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">list</span></tt></a> is a collection of other objects. You create lists
+directly using brackets (<tt class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></tt>), or they can be created from other
+objects.</p>
+<p>Lists are <em>subscriptable</em>, meaning that you can access items in a list by
+position.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># convert to list, str.split() defaults to space</span>
+<span class="gp">In [22]: </span><span class="n">words</span> <span class="o">=</span> <span class="n">phrase</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="go"># number of items in list</span>
+<span class="gp">In [23]: </span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="go"># two ways to add new words</span>
+<span class="gp">In [24]: </span><span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+
+<span class="gp">In [25]: </span><span class="n">words</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s">&#39;bar&#39;</span><span class="p">,</span><span class="s">&#39;baz&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>:increment::<a class="headerlink" href="../../Classes/class-7.html#id5" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-ipython"><div class="highlight"><pre><span class="go"># first item only, zero-based</span>
+<span class="gp">In [26]: </span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="go"># first through third, start is implicit</span>
+<span class="gp">In [27]: </span><span class="n">words</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="go"># iterate over the list</span>
+<span class="gp">In [28]: </span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">word</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="gp">   ....: </span>
+
+<span class="go"># mix types in lists</span>
+<span class="gp">In [29]: </span><span class="n">words</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="go"># a &quot;list comprehension&quot;</span>
+<span class="gp">In [30]: </span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Dictionaries (dicts)<a class="headerlink" href="../../Classes/class-7.html#dictionaries-dicts" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A <a class="reference external" href="http://docs.python.org/2.7/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> contains key:value mappings.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># set up new dicts with {}</span>
+<span class="gp">In [31]: </span><span class="n">produce</span>  <span class="o">=</span> <span class="p">{</span><span class="s">&#39;lettuce&#39;</span><span class="p">:</span><span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="s">&#39;apple&#39;</span><span class="p">:</span><span class="s">&#39;red&#39;</span><span class="p">,</span>
+<span class="gp">   ....: </span><span class="s">&#39;banana&#39;</span><span class="p">:</span><span class="s">&#39;yellow&#39;</span><span class="p">}</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [32]: </span><span class="n">produce</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="gp">In [33]: </span><span class="n">produce</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+<span class="gp">In [34]: </span><span class="n">produce</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+
+<span class="go"># sorted by keys</span>
+<span class="gp">In [35]: </span><span class="nb">sorted</span><span class="p">(</span><span class="n">produce</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="go"># test for membership</span>
+<span class="gp">In [36]: </span><span class="s">&#39;apple&#39;</span> <span class="ow">in</span> <span class="n">produce</span>
+
+<span class="gp">In [37]: </span><span class="ow">not</span> <span class="s">&#39;orange&#39;</span> <span class="ow">in</span> <span class="n">produce</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Python Exceptions<a class="headerlink" href="../../Classes/class-7.html#python-exceptions" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>When you're learning to program in Python, you will see lots of errors.
+Examples: <a class="reference external" href="http://docs.python.org/2.7/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">ValueError</span></tt></a>,
+<a class="reference external" href="http://docs.python.org/2.7/library/exceptions.html#exceptions.IndexError" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">IndexError</span></tt></a> and <a class="reference external" href="http://docs.python.org/2.7/library/exceptions.html#exceptions.KeyError" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">KeyError</span></tt></a></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [38]: </span><span class="nb">int</span><span class="p">(</span><span class="s">&#39;blah&#39;</span><span class="p">)</span>
+
+<span class="gp">In [39]: </span><span class="n">words</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+
+<span class="gp">In [40]: </span><span class="n">parts</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;hip&#39;</span><span class="p">:</span><span class="s">&#39;thigh&#39;</span><span class="p">}</span>
+
+<span class="gp">In [41]: </span><span class="n">parts</span><span class="p">[</span><span class="s">&#39;nose&#39;</span><span class="p">]</span>
+
+<span class="go"># Catch errors, print useful debugging messages</span>
+<span class="gp">In [42]: </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="n">nums</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<span class="gp">   ....: </span><span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&quot;error: not enough nums&quot;</span>
+<span class="gp">   ....: </span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Reading data from a file<a class="headerlink" href="../../Classes/class-7.html#reading-data-from-a-file" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Now we'll read some data from a file and operate on each line:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [43]: </span><span class="n">filename</span> <span class="o">=</span> <span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span>
+
+<span class="go"># What is the BUG in this block?</span>
+<span class="gp">In [44]: </span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="n">start</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">5000</span><span class="p">:</span>
+<span class="gp">   ....: </span>        <span class="k">print</span> <span class="n">fields</span>
+<span class="gp">   ....: </span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>In Class Exercises<a class="headerlink" href="../../Classes/class-7.html#in-class-exercises" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Use <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#range" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">range()</span></tt></a> to count from 0 to 100 <strong>by 10</strong>. How do you get
+100 in the result?</li>
+<li>Get <strong>every other</strong> value of <tt class="docutils literal"><span class="pre">words</span></tt> (hint: use a slice)</li>
+<li>Use <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#enumerate" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">enumerate()</span></tt></a> on a list (hint: convert the
+result with list(result))</li>
+<li>Use <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#sorted" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">sorted()</span></tt></a> and <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#reversed" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">reversed()</span></tt></a> on a list.</li>
+<li>Do type conversion on each of the fields in the lamina.bed file</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

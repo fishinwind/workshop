@@ -1,0 +1,494 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 4 : awk &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Week 3 : Working with genomic data" href="class-5.html" />
+    <link rel="prev" title="Class 3 : The command-line (part 2)" href="class-3.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 4 : awk<a class="headerlink" href="../../Classes/class-4.html#class-4-awk" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Thurs 5 Feb 2015</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-4.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Review</li>
+<li>remember BED format (chr, start, end)</li>
+<li>learn awk basics to filter and manipulate text</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>awk<a class="headerlink" href="../../Classes/class-4.html#awk" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><a class="reference external" href="http://en.wikipedia.org/wiki/AWK">http://en.wikipedia.org/wiki/AWK</a></p>
+<p><tt class="docutils literal"><span class="pre">AWK</span></tt> is an interpreted <strong>programming language</strong> designed for text
+processing and typically used as a data extraction and reporting tool. It
+is a standard feature of most Unix-like operating systems.</p>
+<p>Named after authors <strong>A</strong> ho, <strong>W</strong> einberger &amp; <strong>K</strong> ernighan</p>
+<p><strong>This is programming</strong></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>basic principles<a class="headerlink" href="../../Classes/class-4.html#basic-principles" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>awk operates on each line of a text file</li>
+<li>in an awk program, $1 is an alias for the 1st column, $2 for the 2nd, etc.</li>
+<li>awk can filter lines by a pattern</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>awk program structure<a class="headerlink" href="../../Classes/class-4.html#awk-program-structure" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li><strong>BEGIN</strong> runs before the program starts</li>
+<li><strong>END</strong> runs after the program runs through all lines in the file</li>
+<li><strong>PATTERN</strong> and <strong>ACTIONS</strong> check and execute on each line.</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;BEGIN {} (PATTERN) { ACTIONS } END {}&#39;</span> some.file.txt
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>awk BEGIN<a class="headerlink" href="../../Classes/class-4.html#awk-begin" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>You can use <strong>BEGIN</strong> without a file. We just do one thing then exit:</p>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;BEGIN { print 12 * 12 }&#39;</span>
+</pre></div>
+</div>
+<p>Same with <strong>END</strong>:</p>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;END { print 12 * 13 }&#39;</span>
+<span class="c"># then type ctrl+d so it knows it&#39;s not getting more input.</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>filtering<a class="headerlink" href="../../Classes/class-4.html#filtering" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A simple and powerful use of awk is lines that match a pattern or meet set
+of criteria. Here, we match (and implicitly print) only lines where the
+first column is chr12:</p>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr12&quot;)&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>We can also filter on start position using '&amp;&amp;' which means 'and':</p>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr12&quot; &amp;&amp; $2 &lt; 9599990)&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p><tt class="docutils literal"><span class="pre">=</span></tt> and <tt class="docutils literal"><span class="pre">==</span></tt> are not the same thing, and are frequently mixed up.</p>
+<p class="last"><tt class="docutils literal"><span class="pre">=</span></tt> is the assignment operator
+<tt class="docutils literal"><span class="pre">==</span></tt> tests for equality
+<tt class="docutils literal"><span class="pre">!=</span></tt> tests for inequality.</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>program structure<a class="headerlink" href="../../Classes/class-4.html#program-structure" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr12&quot; &amp;&amp; $2 &lt; 9599990)&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<ul class="last simple">
+<li>when we are checking as a character (&quot;chr12&quot;) we need the quotes.</li>
+<li>when we are checking as a number (9599990) can not use quotes.</li>
+<li>can't use commas (e.g. 9,599,990) in numbers</li>
+</ul>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>in-class exercise<a class="headerlink" href="../../Classes/class-4.html#in-class-exercise" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>we will do the first of these together.</p>
+<ol class="arabic simple">
+<li>how many regions (lines) in lamina.bed have a start less than 1,234,567 on any chromosome?</li>
+<li>how many regions in lamina.bed have a start less than 1,234,567 on chromosome 8?</li>
+<li>how many regions (lines) in lamina.bed have a start between 50,000 and 951,000</li>
+<li>how many regions in lamina.bed overlap the interval <strong>chr12:5,000,000-6,000,000</strong> ?</li>
+</ol>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">the last question is not trivial and understanding it will be useful</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>awk program structure (actions)<a class="headerlink" href="../../Classes/class-4.html#awk-program-structure-actions" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>print total bases covered on chromosome 13:</p>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr13&quot;) { coverage = coverage + $3 - $2 }</span>
+<span class="s1">     END { print coverage }&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<ol class="last arabic simple">
+<li>the entire awk program must be wrapped in quotes. Nearly always best to use
+single quotes (') on the outside.</li>
+<li><em>coverage</em> is a variable that stores values; we don't use
+a $ to access it like we do in bash or like we do for the $1,
+$2, ... columns</li>
+</ol>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>in-class exercise<a class="headerlink" href="../../Classes/class-4.html#id1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>below is how we find coverage for chr13.</p>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr13&quot;) { coverage += $3 - $2 }</span>
+<span class="s1">     END{ print coverage }&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>how can we find the total coverage for all chromsomes <strong>except</strong> 13?</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>awk continued<a class="headerlink" href="../../Classes/class-4.html#awk-continued" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <tt class="docutils literal"><span class="pre">$0</span></tt> variable contains the entire line.</p>
+<p>multiple patterns</p>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;$3 &gt;= 5000 { print $0&quot;\tGREATER&quot; }</span>
+<span class="s1">     $3  &lt; 5000   { print $0&quot;\tLESS&quot; }&#39;</span> <span class="se">\</span>
+      /vol1/opt/data/states.tab
+</pre></div>
+</div>
+<p>remember we can simply filter to the lines &gt; 5000 with:</p>
+<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;$3 &gt;= 5000&#39;</span> /vol1/opt/data/states.tab
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>awk special variables<a class="headerlink" href="../../Classes/class-4.html#awk-special-variables" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>we know <em>$1</em>, <em>$2</em>, ... for the column numbers</li>
+<li>NR is a special variable that holds the line number</li>
+<li>NF is a special variable that holds the number of fields in the line</li>
+<li>FS and OFS are the (F)ield and (O)output (F)ield (S)eparators
+--meaning the delimiters (default is any space character)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>using awk to count lines with NR<a class="headerlink" href="../../Classes/class-4.html#using-awk-to-count-lines-with-nr" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wc -l /vol1/opt/data/lamina.bed
+
+<span class="nv">$ </span>awk <span class="s1">&#39;END { print NR }&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>using FS and OFS<a class="headerlink" href="../../Classes/class-4.html#using-fs-and-ofs" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Let's convert lamina.bed to comma-delimited but only for chr12</p>
+<p>remember FS is the input separator and OFS is the output delimiter</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>awk <span class="s1">&#39;BEGIN{FS=&quot;\t&quot;; OFS=&quot;,&quot;}</span>
+<span class="s1">    ($1 == &quot;chr12&quot;){ print $1,$2,$3 }&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>regular expressions<a class="headerlink" href="../../Classes/class-4.html#regular-expressions" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>we won't cover these in detail, but you can match on <em>regular expressions</em>.</p>
+<p>The following finds lines containing chr2 (chr2, chr20, chr21) in the first column</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>awk <span class="s1">&#39;$1 ~ /chr2/&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>Often we can get by without <em>regular expressions</em> but they are extremeley powerful
+and available in nearly all programming languages.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>advanced awk<a class="headerlink" href="../../Classes/class-4.html#advanced-awk" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>You can do a lot more with awk, here are several resources:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.hcs.harvard.edu/~dholland/computers/awk.html">http://www.hcs.harvard.edu/~dholland/computers/awk.html</a></li>
+<li><a class="reference external" href="http://doc.infosnel.nl/quickawk.html">http://doc.infosnel.nl/quickawk.html</a></li>
+<li><a class="reference external" href="http://www.catonmat.net/download/awk.cheat.sheet.pdf">http://www.catonmat.net/download/awk.cheat.sheet.pdf</a></li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>In Class Exercises - Class 4<a class="headerlink" href="../../Classes/class-4.html#in-class-exercises-class-4" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>we will do the first 2. of these together</p>
+<ol class="arabic simple">
+<li>use NR to print each line of <cite>lamina.bed</cite> <em>preceded</em> by it's line number</li>
+</ol>
+<ol class="loweralpha simple">
+<li>do the above, but only for regions on chromosome 12</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>use NF to see how many columns are in each row of <cite>states.tab</cite></li>
+</ol>
+<ol class="loweralpha simple">
+<li>use sort and uniq -c to see uniq column counts.</li>
+<li>why are there 2 numbers?</li>
+<li>can you adjust the file separator so that awk thinks all rows have
+the same number of columns?</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>review<a class="headerlink" href="../../Classes/class-4.html#review" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>$1, $2, $3 (default sep is space)</li>
+<li>adjust sep with: OFS=&quot;t&quot;; FS=&quot;,&quot;</li>
+<li>$0 # entire line</li>
+</ul>
+<div class="highlight-awk"><div class="highlight"><pre><span class="nb">BEGIN</span> <span class="p">{}</span>
+<span class="p">(</span><span class="kr">match</span><span class="p">)</span> <span class="p">{</span> <span class="nx">coverage</span> <span class="o">+=</span> <span class="o">$</span><span class="mi">3</span> <span class="o">-</span> <span class="o">$</span><span class="mi">2</span> <span class="p">}</span>
+<span class="nb">END</span> <span class="p">{</span> <span class="kr">print</span> <span class="nx">coverage</span> <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>NR is line number; NF is number of fields;</li>
+<li>BEGIN {} filter { action } END { }</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>In Class Exercises - Class 4 (2)<a class="headerlink" href="../../Classes/class-4.html#in-class-exercises-class-4-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>are there any regions in <cite>lamina.bed</cite> with start &gt; end?</li>
+<li>what is the total coverage [sum of (end - start)] of regions on chr13 in <cite>lamina.bed</cite>?</li>
+<li>what is the mean value (4th column) on chromome 3 of <cite>lamina.bed</cite></li>
+<li>print out only the header and the entry for colorado in <cite>states.tab</cite></li>
+</ol>
+<p>#. what is the (single-number) sum of all the incomes for <cite>states.tab</cite> with illiteracy rate:
+a. less than 0.1?
+b. greater than 2?</p>
+<ol class="arabic simple">
+<li>use NR to filter out the header from <cite>lamina.bed</cite> (hint: what is NR for the header?)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

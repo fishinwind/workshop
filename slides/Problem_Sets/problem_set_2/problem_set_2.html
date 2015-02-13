@@ -1,0 +1,226 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Problem Set 2 &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../../_static/js/slides"
+            src="../../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Problem Sets" href="../../Problem_Sets.html" />
+    <link rel="next" title="Problem Set : KEYS" href="../Problem_Set_Keys.html" />
+    <link rel="prev" title="Problem Set 1" href="../problem_set_1/problem_set_1.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Problem Set 2<a class="headerlink" href="../../../Problem_Sets/problem_set_2/problem_set_2.html#problem-set-2" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Due date:</th><td class="field-body">2015 Feb 9 5:00 PM</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Overview<a class="headerlink" href="../../../Problem_Sets/problem_set_2/problem_set_2.html#overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>For this quiz you will use the tools we learned about in the last several
+classes, focusing on manipulating text files with Linux command line
+tools.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Continue to use the organization scheme that we learned about in
+<a class="reference internal" href="../problem_set_1/problem_set_1.html#problem-set-1"><em>Problem Set 1</em></a>. Part of our evaluation
+will include whether you are developing good organizational habits.</p>
+</div>
+<p>In the solution for all of the problems below, print out the region(s) as
+they appear in the BED file, with additional columns at the end. e.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">chr12</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="mi">1234</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="mi">5678</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="mf">0.93</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">my</span><span class="o">-</span><span class="n">extra</span><span class="o">-</span><span class="n">info</span>
+</pre></div>
+</div>
+<p>These should be separated by tabs (a <tt class="docutils literal"><span class="pre">\t</span></tt> character), <strong>not spaces</strong>,
+unless otherwise indicated.</p>
+<p>Combine <tt class="docutils literal"><span class="pre">awk</span></tt> with the other utilities you have learned. Create a
+<tt class="docutils literal"><span class="pre">run.sh</span></tt> file that executes the commands for each problem and writes out
+each result in a dated directory.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem 1<a class="headerlink" href="../../../Problem_Sets/problem_set_2/problem_set_2.html#problem-1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>What is the region with the largest start position (2nd column) on any
+chromosome in <cite>lamina.bed</cite>? (<strong>5 points</strong>)</li>
+<li>What is the region with the largest end position on chrY in
+lamina.bed? Report this region in the format: <tt class="docutils literal"><span class="pre">chr12:1234-5678</span></tt>&quot;
+(<strong>5 points</strong>)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem 2<a class="headerlink" href="../../../Problem_Sets/problem_set_2/problem_set_2.html#problem-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic">
+<li><p class="first">What is the longest region (end - start) in <cite>lamina.bed</cite>? (<strong>5 points</strong>)
+Report as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">chrom</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">start</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">end</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">value</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">region_length</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">What is the longest region (end - start) in <cite>lamina.bed</cite> with a value
+(4th column) greater than 0.9 on chr13. Report the header (1st line) in
+lamina.bed as well as the region (<strong>5 points</strong>).</p>
+</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem 3<a class="headerlink" href="../../../Problem_Sets/problem_set_2/problem_set_2.html#problem-3" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>What are the regions that overlap this interval in <cite>lamina.bed</cite>:
+<tt class="docutils literal"><span class="pre">chr12:5,000,000-6,000,000</span></tt>? Report regions so that they are ordered
+by descending value (4th column), and the columns are separated by commas
+rather than tabs (<strong>5 points</strong>).</li>
+<li>What is the average value (4th column) of those regions from <cite>lamina.bed</cite>
+that overlap the region (<strong>5 points</strong>): <tt class="docutils literal"><span class="pre">chr12:5,000,000-6,000,000?</span></tt></li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem Set Submission<a class="headerlink" href="../../../Problem_Sets/problem_set_2/problem_set_2.html#problem-set-submission" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Submit your problem set by posting the path to your tar file on the Canvas
+page.
+(<a class="reference internal" href="../../Problem_Sets.html#problem-set-submission"><em>Problem Set Submission</em></a>).</p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

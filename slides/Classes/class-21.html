@@ -1,0 +1,377 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 21 : R : DataFrames &amp; Plotting &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 21 : R : DataFrames &amp; Plotting<a class="headerlink" href="../../Classes/class-21.html#class-21-r-dataframes-plotting" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-21.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Understand data.frames in more detail</li>
+<li>Practice manipulating data.frames</li>
+<li>dplyr, ggplot</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>data.frames<a class="headerlink" href="../../Classes/class-21.html#data-frames" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Read in a data.frame, view the first few lines and
+extract a single column</p>
+<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>covs<span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>covs<span class="o">$</span>genotype<span class="p">)</span>
+
+<span class="c1"># or</span>
+<span class="kp">head</span><span class="p">(</span>covs<span class="p">[,</span><span class="s">&quot;genotype&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>To extract multiple selected columns:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="kp">head</span><span class="p">(</span>covs<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Extracting From data.frames<a class="headerlink" href="../../Classes/class-21.html#extracting-from-data-frames" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The order is rows, columns. By having nothing before the comma:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="kp">head</span><span class="p">(</span>covs<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>We extract all rows. We can manually extract the first 5 rows and our 2 columns
+as:</p>
+<div class="highlight-r"><div class="highlight"><pre>covs<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Named rows in data.frames<a class="headerlink" href="../../Classes/class-21.html#named-rows-in-data-frames" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>In <cite>expr-geno-covs.txt</cite>, there is a sample column, we may wish to use
+that as the row id:</p>
+<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">,</span> row.names<span class="o">=</span><span class="s">&#39;sample_id&#39;</span><span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>covs<span class="p">)</span>
+
+covs<span class="p">[</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;sample_1&#39;</span><span class="p">,</span> <span class="s">&#39;sample_14&#39;</span><span class="p">),]</span>
+</pre></div>
+</div>
+<p>We can still extract them with numbers:</p>
+<q>
+covs[c(1, 4),]</q>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be careful with data.frames where the row.names are
+from an integer column</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Boolean Operations on Colums<a class="headerlink" href="../../Classes/class-21.html#boolean-operations-on-colums" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre>is_old <span class="o">=</span> covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span>
+</pre></div>
+</div>
+<p>now <cite>is_old</cite> is a list of TRUE / FALSE values. We can extract only those &gt; 65 as:</p>
+<div class="highlight-r"><div class="highlight"><pre>old <span class="o">=</span> covs<span class="p">[</span>is_old<span class="p">,]</span>
+<span class="c1"># same as:</span>
+old <span class="o">=</span> covs<span class="p">[</span>covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span><span class="p">,]</span>
+</pre></div>
+</div>
+<p>We can combine selections with '&amp;' for and and '|' for or</p>
+<div class="highlight-r"><div class="highlight"><pre>old_with_disease <span class="o">=</span> <span class="p">(</span>covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>covs<span class="o">$</span>condition <span class="o">==</span> <span class="s">&quot;case&quot;</span><span class="p">)</span>
+owd <span class="o">=</span> covs<span class="p">[</span>old_with_disease<span class="p">,]</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Boolean Operations on Colums (2)<a class="headerlink" href="../../Classes/class-21.html#id2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span class="c1"># with subset</span>
+old <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p">(</span>covs<span class="p">,</span> age <span class="o">&gt;</span> <span class="m">65</span><span class="p">)</span>
+
+<span class="c1"># select on membership</span>
+genos <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;AC&#39;</span><span class="p">,</span> <span class="s">&#39;CA&#39;</span><span class="p">)</span>
+hets  <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p">(</span>covs<span class="p">,</span> genotype <span class="o">%in%</span> genos<span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Excercises<a class="headerlink" href="../../Classes/class-21.html#excercises" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Remember for combining expressions, you can create a variable for each, <cite>is_AA</cite>,
+<cite>is_CC</cite> and then combine after.</p>
+<ol class="arabic simple">
+<li>How many people have genotype 'CC'</li>
+<li>How many people have genotype 'CC' or 'AA'?</li>
+<li>How many people have genotype of 'CC' or 'AA' and are under 65 years old.</li>
+<li>How many males have genotype of 'CC' or 'AA' and are under 65 years old.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>dplyr review<a class="headerlink" href="../../Classes/class-21.html#dplyr-review" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><tt class="docutils literal"><span class="pre">dplyr</span></tt> provides these simple methods:</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">summarise()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">filter()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">select()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">mutate()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">arrange()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">group_by()</span></tt></li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>dplyr<a class="headerlink" href="../../Classes/class-21.html#dplyr" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><tt class="docutils literal"><span class="pre">dplyr</span></tt> also provides an operator called <tt class="docutils literal"><span class="pre">%.%</span></tt> that allows you to
+chain manipulations together.</p>
+<p>To get mean expression level by condition (case/control)</p>
+<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">%.%</span> group_by<span class="p">(</span>condition<span class="p">)</span> \
+     <span class="o">%.%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Mean expression by condition and genotype</p>
+<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">%.%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
+     <span class="o">%.%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Exercise<a class="headerlink" href="../../Classes/class-21.html#exercise" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>What are the mean ages by cases and controls?</li>
+<li>What are the mean ages by genotype?</li>
+<li>How can you order the output by ascending and descending mean expression?</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ggplot<a class="headerlink" href="../../Classes/class-21.html#ggplot" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Above, we had mean expression by condition and genotype as:</p>
+<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">%.%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
+     <span class="o">%.%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span> \
+</pre></div>
+</div>
+<p>We can add to that expression (after typing 'library(ggplot2)')</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">%.%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">)</span> \
+    <span class="o">+</span> geom_histogram<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>how can we change the color of all the bars to 'red'? [Hint, it's not
+<strong>color</strong> ='red']</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ggplot histograms<a class="headerlink" href="../../Classes/class-21.html#ggplot-histograms" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Since <cite>expr-geno-covs.txt</cite> is already in long format, we can use it directly in
+ggplot:</p>
+<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+       geom_histogram<span class="p">()</span> <span class="o">+</span>
+       scale_x_log10<span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Exercise<a class="headerlink" href="../../Classes/class-21.html#id1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Adjust this:</p>
+<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+       geom_histogram<span class="p">()</span> <span class="o">+</span>
+       scale_x_log10<span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>to color by genotype</li>
+<li>and to split plots (facet_wrap) by condition (case/control)</li>
+<li>to color by age &gt; 60 vs. &lt;= 60 (use row selection stuff from start of class to
+make a new column named, e.g. <cite>is_old</cite>)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Syllabus &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="_static/js/slides"
+            src="_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="index.html" />
+    <link rel="next" title="Class list" href="Classes.html" />
+    <link rel="prev" title="Genome Analysis Workshop" href="index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Syllabus<a class="headerlink" href="../Syllabus.html#syllabus" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>General Information<a class="headerlink" href="../Syllabus.html#general-information" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Title:</th><td class="field-body">Genome Analysis Workshop</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Course Number:</th><td class="field-body">MOLB 7621</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Crosslistings:</th><td class="field-body">STBB 7621</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Semester:</th><td class="field-body">Spring 2015</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Homepage:</th><td class="field-body"><a class="reference external" href="http://hesselberthlab.github.io/workshop">http://hesselberthlab.github.io/workshop</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Instructor:</th><td class="field-body">Jay Hesselberth</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Organization:</th><td class="field-body">University of Colorado School of Medicine</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Address:</th><td class="field-body">Department of Biochemistry and Molecular Genetics</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Copyright:</th><td class="field-body">2014,2015 Jay R. Hesselberth</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body">All Rights Reserved.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">February 13, 2015</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>PDF Content<a class="headerlink" href="../Syllabus.html#pdf-content" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The course content is available as a combined PDF:
+<tt class="xref download docutils literal"><span class="pre">PDF</span> <span class="pre">Download</span></tt></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Instructor Information<a class="headerlink" href="../Syllabus.html#instructor-information" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Instructor</th>
+<th class="head">Email</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Jay Hesselberth</td>
+<td><a class="reference external" href="mailto:jay&#46;hesselberth&#37;&#52;&#48;gmail&#46;com">jay<span>&#46;</span>hesselberth<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+</tr>
+<tr class="row-odd"><td>Sally Peach</td>
+<td><a class="reference external" href="mailto:sally&#46;peach&#37;&#52;&#48;gmail&#46;com">sally<span>&#46;</span>peach<span>&#64;</span>gmail<span>&#46;</span>com</a></td>
+</tr>
+<tr class="row-even"><td>Charlotte Siska</td>
+<td><a class="reference external" href="mailto:charlotte&#46;siska&#37;&#52;&#48;ucdenver&#46;edu">charlotte<span>&#46;</span>siska<span>&#64;</span>ucdenver<span>&#46;</span>edu</a></td>
+</tr>
+<tr class="row-odd"><td>Kyle Smith</td>
+<td><a class="reference external" href="mailto:kyle&#46;s&#46;smith&#37;&#52;&#48;ucdenver&#46;edu">kyle<span>&#46;</span>s<span>&#46;</span>smith<span>&#64;</span>ucdenver<span>&#46;</span>edu</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Schedule<a class="headerlink" href="../Syllabus.html#schedule" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Tue &amp; Thurs, 1:00 - 3:00 PM. TA office hours until 3:30 PM
+<a class="reference internal" href="#syllabus-specific-dates"><em>See specific dates.</em></a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Location<a class="headerlink" href="../Syllabus.html#location" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Health Sciences Library, Computer Teaching Lab 2</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Course Description<a class="headerlink" href="../Syllabus.html#course-description" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><strong>The Genome Analysis Workshop is a hands-on tutorial of skills needed to
+process large genomics data sets and visualize their results. The class
+is taught from the standpoint of biologist with practical goals
+(e.g. to interpret the results of a sequencing-based experiment and gain
+biologically meaningful insight).</strong></p>
+<p>We focus on working in the Linux environment, with emphasis on Linux
+command-line tools, Python programming and the R statistical computing
+environment. We use publicly available next-generation DNA sequencing data
+from the ENCODE project to illustrate standard approaches for manipulating
+sequencing data, aligning sequences to a reference genome, generating
+coverage plots and displaying them in the UCSC Genome Browser. We will
+cover specific analyses used in ENCODE project including ChIP-seq, DNase I
+footprinting, mRNA-seq and genome sequencing to identify single nucleotide
+and structural variants.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Course Credits<a class="headerlink" href="../Syllabus.html#course-credits" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <p>This is a 3 credit course.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Texts and Reading Materials<a class="headerlink" href="../Syllabus.html#texts-and-reading-materials" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li><strong>Required</strong>: A Quick Guide to Organizing Computational Biology Projects
+<a class="reference external" href="http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424">http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424</a></li>
+<li><strong>Required</strong>: Command Line Crash Course
+<a class="reference external" href="http://cli.learncodethehardway.org/book/">http://cli.learncodethehardway.org/book/</a></li>
+<li><strong>Required</strong>: ggplot2: Elegant Graphics for Data Analysis
+<a class="reference external" href="http://ggplot2.org/book/">http://ggplot2.org/book/</a></li>
+<li><strong>Required</strong>: Learn Python the Hard Way,
+<a class="reference external" href="http://learnpythonthehardway.org/book/">http://learnpythonthehardway.org/book/</a></li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Course Objectives<a class="headerlink" href="../Syllabus.html#course-objectives" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Learn to manipulate large sequencing data sets with Linux command line
+tools and Python programming.</li>
+<li>Learn to manipulate and visualize data with the R statistical
+computing environment.</li>
+<li>Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
+footprinting, mRNA-seq and variant detection.</li>
+<li>Learn to visualize data in the UCSC Genome Browser</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Canvas<a class="headerlink" href="../Syllabus.html#canvas" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The course has a Canvas page <a class="footnote-reference" href="#id2" id="id1">[1]</a> where announcements are made and
+problem sets are uploaded. You need to login to see Announcements and
+Problem Sets.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://ucdenver.instructure.com/courses/325063">https://ucdenver.instructure.com/courses/325063</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Assessment<a class="headerlink" href="../Syllabus.html#assessment" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Progress of individual students will be assessed during the daily exercise
+session, weekly problem sets, as well as a final project.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Grading Criteria<a class="headerlink" href="../Syllabus.html#grading-criteria" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>50% participation</li>
+<li>40% problem sets (10 sets, 4% each)</li>
+<li>10% final project</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Specific Dates / Material to be Covered<a class="headerlink" href="../Syllabus.html#specific-dates-material-to-be-covered" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="25%" />
+<col width="50%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Class number</th>
+<th class="head">Date</th>
+<th class="head">Topic</th>
+<th class="head">Problem Set</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Class 1</td>
+<td>T Jan 27</td>
+<td>Introduction to VM, Linux and the shell</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 2</td>
+<td>Th Jan 29</td>
+<td>Linux / Utilities</td>
+<td><strong>PS1 due</strong> (2015 Feb 2 5:00 PM)</td>
+</tr>
+<tr class="row-even"><td>Class 3</td>
+<td>T Feb 3</td>
+<td>Linux / Utilities</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 4</td>
+<td>Th Feb 5</td>
+<td>Linux / Utilities</td>
+<td><strong>PS2 due</strong> (2015 Feb 9 5:00 PM)</td>
+</tr>
+<tr class="row-even"><td>Class 5</td>
+<td>T Feb 10</td>
+<td>Cluster Usage / Review</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 6</td>
+<td>Th Feb 12</td>
+<td>Cluster Usage / Review</td>
+<td><strong>PS3 due</strong> (2015 Feb 16 5:00 PM)</td>
+</tr>
+<tr class="row-even"><td>Class 7</td>
+<td>T Feb 17</td>
+<td>Python</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 8</td>
+<td>Th Feb 19</td>
+<td>Python</td>
+<td><strong>PS4 due</strong> (2015 Feb 23 5:00 PM)</td>
+</tr>
+<tr class="row-even"><td>Class 9</td>
+<td>T Feb 24</td>
+<td>Python</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 10</td>
+<td>Th Feb 26</td>
+<td>Python</td>
+<td><strong>PS5 due</strong> (2015 Mar 2 5:00 PM)</td>
+</tr>
+<tr class="row-even"><td>Class 11</td>
+<td>T Mar 3</td>
+<td>Python</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 12</td>
+<td>Th Mar 5</td>
+<td>ENCODE Overview</td>
+<td><strong>PS6 due</strong> (2015 Mar 9 5:00 PM)</td>
+</tr>
+<tr class="row-even"><td>Class 13</td>
+<td>T Mar 10</td>
+<td>BEDtools</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 14</td>
+<td>Th Mar 12</td>
+<td>ChIP-seq (coverage / peaks / motifs)</td>
+<td><strong>PS7 due</strong> (2015 Mar 16 5:00 PM)</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>** No Class Mar 16-20 (Campus Spring Break) **</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 15</td>
+<td>T Mar 24</td>
+<td>ChIP-seq / DNaseI-seq (UCSC)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Class 16</td>
+<td>Th Mar 26</td>
+<td>Genomic analysis vignettes</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Class 17</td>
+<td>T Mar 31</td>
+<td>Genomic analysis vignettes</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Class 18</td>
+<td>Th Apr 2</td>
+<td>R data &amp; plotting</td>
+<td><strong>PS8 due</strong> (2015 Apr 6 5:00 PM)</td>
+</tr>
+<tr class="row-odd"><td>Class 19</td>
+<td>T Apr 7</td>
+<td>R data &amp; plotting</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Class 20</td>
+<td>Th Apr 9</td>
+<td>R data &amp; plotting</td>
+<td><strong>PS9 due</strong> (2015 Apr 13 5:00 PM)</td>
+</tr>
+<tr class="row-odd"><td>Class 21</td>
+<td>T Apr 14</td>
+<td>R data &amp; plotting</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Class 22</td>
+<td>Th Apr 16</td>
+<td>R data &amp; plotting</td>
+<td><strong>PS10 due</strong> (2015 Apr 20 5:00 PM)</td>
+</tr>
+<tr class="row-odd"><td>Class 23</td>
+<td>T Apr 21</td>
+<td>mRNA-seq (FPKM / diff exp)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Class 24</td>
+<td>Th Apr 23</td>
+<td>mRNA-seq (FPKM / diff exp)</td>
+<td><strong>PS11 due</strong> (2015 Apr 27 5:00 PM)</td>
+</tr>
+<tr class="row-odd"><td>Class 25</td>
+<td>T Apr 28</td>
+<td>Exome Alignment</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Class 26</td>
+<td>Th Apr 30</td>
+<td>Exome Variant Calling</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

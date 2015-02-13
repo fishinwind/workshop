@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Problem Set 6 &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Problem Set 6</a><ul>
+<li><a class="reference internal" href="#problem-1">Problem 1</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#workflow">Workflow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problem-2">Problem 2</a></li>
+<li><a class="reference internal" href="#problem-set-submission">Problem Set Submission</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="problem-set-6">
+<span id="id1"></span><h1>Problem Set 6<a class="headerlink" href="#problem-set-6" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_6/problem_set_6.html#problem-set-6" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Due date:</th><td class="field-body">2014 Mar 25 at 9 PM MST</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="problem-1">
+<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_6/problem_set_6.html#problem-1" title="Slides">§</a></h2>
+<p>Write up a short description of the goals for your final project (<strong>20
+points</strong>).</p>
+<p>This description should include:</p>
+<ol class="arabic simple">
+<li>a biological question motivating the analysis</li>
+<li>how you will address the question</li>
+</ol>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_6/problem_set_6.html#example" title="Slides">§</a></h3>
+<p>I will examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
+marks are enriched in high confidence CTCF-mediated chromatin loops:</p>
+<div class="highlight-python"><div class="highlight"><pre>----CTCF-----------------------------------------------CTCF----
+     |
+     -------------------loop region----------------------
+         H3K4me3 peak?                 H3K4me3 peak?
+</pre></div>
+</div>
+</div>
+<div class="section" id="workflow">
+<h3>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_6/problem_set_6.html#workflow" title="Slides">§</a></h3>
+<ol class="arabic simple">
+<li>download ENCODE ChIA-PET/CTCF and histone ChIP data for K562 cell line</li>
+<li>Determine which histone marks are present in the regions defined by
+CTCF Chia-PET boundaries (as a control, determine which are outside)
+use <tt class="docutils literal"><span class="pre">bedtools</span> <span class="pre">intersect</span></tt> and other bedtools</li>
+<li>Generate summary statistics for which histone marks are enriched in
+CTCF loops. use <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">ggplot2</span></tt> for this.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="problem-2">
+<h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_6/problem_set_6.html#problem-2" title="Slides">§</a></h2>
+<p>Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (<strong>10
+points</strong>). You can use Python to filter the data prior to analysis.</p>
+<ol class="arabic simple">
+<li>Load the peaks BED file and find the 10 factors that have the largest
+range in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or <tt class="docutils literal"><span class="pre">geom_violin()</span></tt>
+to support your answer (also add individual points to the plot with
+<tt class="docutils literal"><span class="pre">geom_jitter()</span></tt>).</li>
+<li>Repeat the above, but only examine peaks do not overlap with any other
+peak (e.g. use bedtools to find these).</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Clarification</p>
+<p>What do I mean by <cite>range in peak width</cite>? Good question.</p>
+<p>You should calcuate a min.width and max.width for each transcription
+factor in the BED file. Then the range is the difference between the
+max.width and min.width.</p>
+<p class="last">Hint: you can <tt class="docutils literal"><span class="pre">summarize()</span></tt> to calculate the min.width and max.width,
+and then <tt class="docutils literal"><span class="pre">mutate()</span></tt> the summary to add a <cite>range</cite> column.</p>
+</div>
+</div>
+<div class="section" id="problem-set-submission">
+<h2>Problem Set Submission<a class="headerlink" href="#problem-set-submission" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_6/problem_set_6.html#problem-set-submission" title="Slides">§</a></h2>
+<p>Submit your problem set as a tar file to Canvas
+(<a class="reference internal" href="../../Problem_Sets.html#problem-set-submission"><em>Problem Set Submission</em></a>).</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/Problem_Sets/problem_set_6/problem_set_6.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Jay Hesselberth.<br/>
+      Last updated on Feb 09, 2015.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

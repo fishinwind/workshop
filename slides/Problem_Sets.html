@@ -1,0 +1,179 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Problem Sets &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="_static/js/slides"
+            src="_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="index.html" />
+    <link rel="next" title="Problem Set 1" href="Problem_Sets/problem_set_1/problem_set_1.html" />
+    <link rel="prev" title="Week 3 : Working with genomic data" href="Classes/class-5.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Problem Sets<a class="headerlink" href="../Problem_Sets.html#problem-sets" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>Problem Sets for the Genome Analysis Workshop class (MOLB 7621):</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Problem_Sets/problem_set_1/problem_set_1.html">Problem Set 1</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Problem_Sets/problem_set_2/problem_set_2.html">Problem Set 2</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Problem_Sets/Problem_Set_Keys.html">Problem Set : KEYS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Problem_Sets/problem-set-keys/problem-set-1-key.html">Problem Set 1 : KEY</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem Set Keys<a class="headerlink" href="../Problem_Sets.html#problem-set-keys" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Past keys at <a class="reference internal" href="Problem_Sets/Problem_Set_Keys.html#problem-set-keys"><em>Problem Set : KEYS</em></a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem Set Submission<a class="headerlink" href="../Problem_Sets.html#problem-set-submission" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>In general, we want one run.sh file that includes all of the code
+necessary to run the problem set.  This run.sh file should create any new
+directories (ex. a dated directory in the results folder), perform
+commands (ex. awk, cut, etc), and output results into a well-named file
+(ex. &gt; $results/$date/problem1.txt).  For each problem set, you should
+also create a log file summarizing your results.</p>
+<p>Once your problem set is complete, you will need to create a tar file.
+Specify the root of your project directory and create a tar file of the
+whole directory like this (change STUDENTID to your student ID):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ projectdir</span><span class="o">=</span><span class="nv">$HOME</span>/project
+<span class="nv">$ </span>tar -cvf STUDENTID-pset1.tar <span class="nv">$projectdir</span>
+</pre></div>
+</div>
+<p>On the specific Problem Set assignment page at the Canvas site <a class="footnote-reference" href="#id4" id="id3">[1]</a>,
+click the Submit Assignment button on the top right and paste the
+full path to the tarfile (/vol3/home/username/.../foo.tar) in the text
+box. Click the Submit Assignment button below the text box to complete
+the submission.</p>
+<p>Auditors can e-mail their path to the TAs here: <a class="reference internal" href="Syllabus.html#contact-info"><em>Instructor Information</em></a>.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td><a class="reference external" href="https://ucdenver.instructure.com/courses/325063/assignments">https://ucdenver.instructure.com/courses/325063/assignments</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

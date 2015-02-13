@@ -1,0 +1,194 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Genome Analysis Workshop &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="_static/js/slides"
+            src="_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="#" />
+    <link rel="next" title="Syllabus" href="Syllabus.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Genome Analysis Workshop<a class="headerlink" href="../index.html#genome-analysis-workshop" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Instructor:</th><td class="field-body">Jay Hesselberth &lt;<a class="reference external" href="mailto:jay&#46;hesselberth&#37;&#52;&#48;gmail&#46;com">jay<span>&#46;</span>hesselberth<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Website:</th><td class="field-body"><a class="reference external" href="http://hesselberthlab.github.io/workshop">http://hesselberthlab.github.io/workshop</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Next offered:</th><td class="field-body">Spring 2015</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Course Number:</th><td class="field-body">MOLB 7621</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Crosslistings:</th><td class="field-body">STBB 7621</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 09, 2015</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Announcements<a class="headerlink" href="../index.html#announcements" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li><strong>Class size is limited to 20. We anticipate being full, so register
+early.</strong></li>
+<li><a class="reference external" href="https://www.cu.edu/employee-services/tuition-waiver-benefit-cu-denveranschutz">Tuition waivers</a>
+are available for Postdocs and PRAs. You also need to fill out a
+<a class="reference external" href="http://www.ucdenver.edu/student-services/resources/registrar/Documents/RegistrarForms/AMC/AMCNonDegreeApp.pdf">non-degree application</a>.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Course Description<a class="headerlink" href="../index.html#course-description" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><strong>The Genome Analysis Workshop is a hands-on tutorial of skills needed
+to process large genomics data sets and visualize their results. The class
+is taught from the standpoint of a biologist with practical goals (e.g. to
+interpret the results of a sequencing-based experiment and gain
+biologically meaningful insight).</strong></p>
+<p>We focus on working in the Linux environment, with emphasis on
+command-line tools, Python programming and the R statistical computing
+environment. We use publicly available next-generation DNA sequencing data
+from the ENCODE project to illustrate standard approaches for manipulating
+sequencing data, aligning sequences to a reference genome, generating
+coverage plots and displaying them in the UCSC Genome Browser. We will
+cover specific analyses used in ENCODE project including ChIP-seq, DNase I
+footprinting, mRNA-seq and genome sequencing to identify single nucleotide
+and structural variants.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Contents<a class="headerlink" href="../index.html#contents" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</div>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
