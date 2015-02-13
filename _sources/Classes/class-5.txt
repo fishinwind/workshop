@@ -663,9 +663,9 @@ How to Access ENCODE Data
 The `ENCODE project page <https://www.encodeproject.org/>`_ is the portal
 to all of the ENCODE data.
 
-
+**************************************
 Chromatin Immunoprecipitation Overview
-======================================
+**************************************
 
 Chromatin Immunoprecipitation is used to determine where a protein of
 interest binds on a chromatin template [Park_Chipseq]_.
