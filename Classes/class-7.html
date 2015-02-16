@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>BEDTools vignette &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 7 : BEDTools vignette &mdash; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -113,7 +113,7 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">BEDTools vignette</a><ul>
+<li><a class="reference internal" href="#">Class 7 : BEDTools vignette</a><ul>
 <li><a class="reference internal" href="#goals">Goals</a></li>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#annotations">Annotations</a></li>
@@ -122,6 +122,7 @@
 <li><a class="reference internal" href="#make-windows">Make windows</a></li>
 <li><a class="reference internal" href="#map-signal-to-the-annotations">Map signal to the annotations</a></li>
 <li><a class="reference internal" href="#grouping-the-data">Grouping the data</a></li>
+<li><a class="reference internal" href="#code">Code</a></li>
 <li><a class="reference internal" href="#plotting">Plotting</a></li>
 </ul>
 </li>
@@ -131,8 +132,8 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="bedtools-vignette">
-<h1>BEDTools vignette<a class="headerlink" href="#bedtools-vignette" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-7.html#bedtools-vignette" title="Slides">§</a></h1>
+  <div class="section" id="class-7-bedtools-vignette">
+<h1>Class 7 : BEDTools vignette<a class="headerlink" href="#class-7-bedtools-vignette" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-7.html#class-7-bedtools-vignette" title="Slides">§</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -147,8 +148,7 @@
 <li>Go over BEDTools analysis vignette to show how to combine different
 tools</li>
 </ol>
-<p>There are several vignettes <cite>here.
-&lt;https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md&gt;_</cite></p>
+<p>There are several vignettes <a class="reference external" href="https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md">here.</a></p>
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-7.html#overview" title="Slides">§</a></h2>
@@ -159,12 +159,10 @@ transcription start sites).</p>
 <ol class="arabic simple">
 <li>Obtain genome annotations (we will use TSS)</li>
 <li>Obtain signals in bedGraph format (we will use Pol II ChIP-seq)</li>
-<li>Use <cite>slop &lt;bedtools:slop&gt;</cite> to create regions to examine [optional]</li>
-<li>Break the regions into windows with <cite>makewindows
-&lt;bedtools:makewindows&gt;</cite>.</li>
-<li><cite>map &lt;bedtools:map&gt;</cite> data onto the windows.</li>
-<li>Calculate a summary statistic for each window with <cite>groupby
-&lt;bedtools:groupby&gt;</cite>.</li>
+<li>Use <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.22.1)"><em class="xref std std-ref">slop</em></a> to create regions to examine [optional]</li>
+<li>Break the regions into windows with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/makewindows.html#makewindows" title="(in bedtools v2.22.1)"><em class="xref std std-ref">makewindows</em></a>.</li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.22.1)"><em class="xref std std-ref">map</em></a> data onto the windows.</li>
+<li>Calculate a summary statistic for each window with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/groupby.html#groupby" title="(in bedtools v2.22.1)"><em class="xref std std-ref">groupby</em></a>.</li>
 </ol>
 </div>
 <div class="section" id="annotations">
@@ -175,12 +173,14 @@ transcription start sites).</p>
 <span class="nv">$ tssbed</span><span class="o">=</span>tss.bed
 
 <span class="c"># need to grab the start or end based on the strand field</span>
-<span class="nv">$ </span>zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1,$2,$2+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
-<span class="nv">$ </span>zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1,$3,$3+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+<span class="nv">$ </span>zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$2,$2+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+<span class="nv">$ </span>zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$3,$3+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
 
 <span class="c"># we made a bed file, so now we sort it.</span>
 <span class="nv">$ </span>bedSort <span class="nv">$tssbed</span> <span class="nv">$tssbed</span>
 <span class="nv">$ </span>gzip <span class="nv">$tssbed</span>
+<span class="c"># rename it for future use</span>
+<span class="nv">$ tssbed</span><span class="o">=</span>tss.bed.gz
 </pre></div>
 </div>
 </div>
@@ -205,13 +205,13 @@ gzip &lt;bedgraph&gt;
 <h2>Slop<a class="headerlink" href="#slop" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-7.html#slop" title="Slides">§</a></h2>
 <p>Each of the TSS regions we made is 1 base in size. We need to make these
 bigger so that we can examine coverage in a larger region. Let&#8217;s make them
-2 kb with the <cite>slop &lt;bedtools:slop</cite> command:</p>
+2 kb with the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.22.1)"><em class="xref std std-ref">slop</em></a> command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ chromsize</span><span class="o">=</span>/vol1/opt/data/hg19.chrom.sizes
 <span class="nv">$ slopbed</span><span class="o">=</span>tss.slop.2000.bed
 <span class="nv">$ </span>bedtools slop -b <span class="m">2000</span> -i <span class="nv">$tssbed</span> -g <span class="nv">$chromsize</span> &gt; <span class="nv">$slopbed</span>
 </pre></div>
 </div>
-<p>romsize=/vol1/opt/data/hg19.chrom.sizesInspect the slop&#8217;d file and make sure you understand how it is different
+<p>Inspect the slop&#8217;d file and make sure you understand how it is different
 from the input BED file.</p>
 </div>
 <div class="section" id="make-windows">
@@ -223,8 +223,8 @@ as we move away from TSS.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ windowbed</span><span class="o">=</span>tss.slop.2000.5bp.windows.bed
 
 <span class="nv">$ </span>bedtools makewindows -b <span class="nv">$slopbed</span> -w <span class="m">5</span> -i srcwinnum <span class="se">\</span>
-    sort -k1,1 -k2,2n <span class="se">\</span>
-    tr <span class="s2">&quot;_&quot;</span> <span class="s2">&quot;\t&quot;</span> <span class="se">\</span>
+    <span class="p">|</span> sort -k1,1 -k2,2n <span class="se">\</span>
+    <span class="p">|</span> tr <span class="s2">&quot;_&quot;</span> <span class="s2">&quot;\t&quot;</span> <span class="se">\</span>
     &gt; <span class="nv">$windowbed</span>
 </pre></div>
 </div>
@@ -244,17 +244,112 @@ as we move away from TSS.</p>
 </div>
 <div class="section" id="grouping-the-data">
 <h2>Grouping the data<a class="headerlink" href="#grouping-the-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-7.html#grouping-the-data" title="Slides">§</a></h2>
-<p>Now we can calculate summary statistics on the mapped data with <cite>groupby
-&lt;bedtools:groupby&gt;</cite>:</p>
+<p>Now we can calculate summary statistics on the mapped data with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/groupby.html#groupby" title="(in bedtools v2.22.1)"><em class="xref std std-ref">groupby</em></a>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># Note that the mapped data has to be sorted by window number</span>
 <span class="nv">$ </span>sort -t<span class="s1">$&#39;\t&#39;</span> -k5,5n <span class="nv">$signalmap</span> <span class="se">\</span>
-    bedtools groupby <span class="se">\</span>
+    <span class="p">|</span> bedtools groupby <span class="se">\</span>
         -i - <span class="se">\</span>
         -g <span class="m">5</span> -c <span class="m">6</span> -o sum <span class="se">\</span>
         &gt; output.tab
 </pre></div>
 </div>
 <p>Inspect the output so you know what it looks like.</p>
+</div>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-7.html#code" title="Slides">§</a></h2>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /usr/bin/env bash</span>
+
+<span class="c">#BSUB -J bedtools.vignette</span>
+<span class="c">#BSUB -o vignette.%J.out</span>
+<span class="c">#BSUB -e vignette.%J.err</span>
+
+<span class="nv">genes</span><span class="o">=</span>/vol1/opt/data/encode/refGene.bed.gz
+<span class="nv">tss</span><span class="o">=</span>tss.bed
+
+<span class="c"># make annotations</span>
+zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="se">\</span>
+    <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$2,$2+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="se">\</span>
+    <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$3,$3+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+
+bedSort <span class="nv">$tssbed</span> <span class="nv">$tssbed</span>
+gzip <span class="nv">$tssbed</span>
+
+<span class="nv">signal</span><span class="o">=</span>/vol1/opt/data/endcode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
+
+<span class="nv">chromsize</span><span class="o">=</span>/vol1/opt/data/hg19/hg19.chrom.sizes
+<span class="nv">slopbed</span><span class="o">=</span>tss.slop.2000.bed
+
+<span class="c"># make slop</span>
+bedtools slop -b <span class="m">2000</span> -i <span class="nv">$tssbed</span> -g <span class="nv">$chromsize</span> &gt; <span class="nv">$slopbed</span>
+
+<span class="c"># make windows</span>
+<span class="nv">windowbed</span><span class="o">=</span>tss.slop.2000.5bp.windows.bed
+bedtools makewindows -b <span class="nv">$slopbed</span> -w <span class="m">5</span> -i srcwinnum <span class="se">\</span>
+    <span class="p">|</span> sort -k1,1 -k2,2n <span class="se">\</span>
+    <span class="p">|</span> tr <span class="s2">&quot;_&quot;</span> <span class="s2">&quot;\t&quot;</span> <span class="se">\</span>
+    &gt; <span class="nv">$windowbed</span>
+
+<span class="c"># map data</span>
+<span class="nv">signalmap</span><span class="o">=</span>signal.map.bg
+bedtools map -a <span class="nv">$windowbed</span> <span class="se">\</span>
+    -b &lt;<span class="o">(</span>bigWigToBedGraph <span class="nv">$signal</span> stdout<span class="o">)</span> <span class="se">\</span>
+    -c <span class="m">4</span> -o mean -null <span class="m">0</span> <span class="se">\</span>
+    &gt; <span class="nv">$signalmap</span> 
+
+<span class="c"># group data</span>
+sort -t<span class="s1">$&#39;\t&#39;</span> -k5,5n <span class="nv">$signalmap</span> <span class="se">\</span>
+    <span class="p">|</span> bedtools groupby <span class="se">\</span>
+        -i - <span class="se">\</span>
+        -g <span class="m">5</span> -c <span class="m">6</span> -o sum <span class="se">\</span>
+        &gt; output.tab 
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="plotting">
 <h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-7.html#plotting" title="Slides">§</a></h2>

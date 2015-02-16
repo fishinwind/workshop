@@ -4,7 +4,6 @@ Class list
 
 .. toctree::
    :titlesonly:
-   :glob: 
 
    Classes/class-1
    Classes/class-2

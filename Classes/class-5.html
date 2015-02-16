@@ -120,8 +120,6 @@
 <li><a class="reference internal" href="#the-queueing-system">The queueing system</a></li>
 <li><a class="reference internal" href="#killing-jobs">Killing jobs</a></li>
 <li><a class="reference internal" href="#other-cluster-specific-commands">Other cluster-specific commands</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#bedtools">BEDTools</a><ul>
 <li><a class="reference internal" href="#id1">Goals</a></li>
 <li><a class="reference internal" href="#bedtools-overview">BEDTools Overview</a></li>
@@ -142,9 +140,9 @@
 <li><a class="reference internal" href="#intersect-bam">Intersect Bam</a></li>
 <li><a class="reference internal" href="#intersect-strand">Intersect Strand</a></li>
 <li><a class="reference internal" href="#closest">Closest</a></li>
-<li><a class="reference internal" href="#map">Map</a></li>
-<li><a class="reference internal" href="#sorted">Sorted</a></li>
 <li><a class="reference internal" href="#genomecov">Genomecov</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -263,11 +261,10 @@ too if you are not careful!</p>
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="bedtools">
-<h1>BEDTools<a class="headerlink" href="#bedtools" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools" title="Slides">§</a></h1>
+<h2>BEDTools<a class="headerlink" href="#bedtools" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools" title="Slides">§</a></h2>
 <div class="section" id="id1">
-<h2>Goals<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#id1" title="Slides">§</a></h2>
+<h3>Goals<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#id1" title="Slides">§</a></h3>
 <ol class="arabic simple">
 <li>Introduce the BEDTools suite of tools.</li>
 <li>Understand why using BEDTools is needed.</li>
@@ -275,7 +272,7 @@ too if you are not careful!</p>
 </ol>
 </div>
 <div class="section" id="bedtools-overview">
-<h2>BEDTools Overview<a class="headerlink" href="#bedtools-overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-overview" title="Slides">§</a></h2>
+<h3>BEDTools Overview<a class="headerlink" href="#bedtools-overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-overview" title="Slides">§</a></h3>
 <p>BEDTools will be one of the tools with the best return on investment. For
 example, to extract out <strong>all genes that overlap a CpG island</strong>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -u -a genes.hg19.bed.gz -b cpg.bed.gz <span class="se">\</span>
@@ -287,7 +284,7 @@ common pattern in bedtools that the query file is specified after the
 <tt class="docutils literal"><span class="pre">-a</span></tt> flag and the <em>subject</em> file after the <tt class="docutils literal"><span class="pre">-b</span></tt> flag</p>
 </div>
 <div class="section" id="bedtools-utility">
-<h2>BEDTools Utility<a class="headerlink" href="#bedtools-utility" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-utility" title="Slides">§</a></h2>
+<h3>BEDTools Utility<a class="headerlink" href="#bedtools-utility" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-utility" title="Slides">§</a></h3>
 <p>Finding all overlaps between a pair of BED files naively in python would look like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">):</span>
@@ -313,7 +310,7 @@ etc. (likely to be bugs if you do code in manually)</li>
 </ul>
 </div>
 <div class="section" id="bedtools-commands">
-<h2>BEDTools Commands<a class="headerlink" href="#bedtools-commands" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-commands" title="Slides">§</a></h2>
+<h3>BEDTools Commands<a class="headerlink" href="#bedtools-commands" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-commands" title="Slides">§</a></h3>
 <p>To see all available BEDTools commands, type</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools
 </pre></div>
@@ -327,7 +324,7 @@ etc. (likely to be bugs if you do code in manually)</li>
 </ul>
 </div>
 <div class="section" id="bedtools-documentation">
-<h2>BEDTools Documentation<a class="headerlink" href="#bedtools-documentation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-documentation" title="Slides">§</a></h2>
+<h3>BEDTools Documentation<a class="headerlink" href="#bedtools-documentation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-documentation" title="Slides">§</a></h3>
 <p>The BEDTools documentation is quite good and ever improving.</p>
 <p>See the documentation for <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a> with:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect
@@ -339,7 +336,7 @@ etc. (likely to be bugs if you do code in manually)</li>
 </dl>
 </div>
 <div class="section" id="bedtools-intersect">
-<h2>BEDTools intersect<a class="headerlink" href="#bedtools-intersect" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-intersect" title="Slides">§</a></h2>
+<h3>BEDTools intersect<a class="headerlink" href="#bedtools-intersect" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#bedtools-intersect" title="Slides">§</a></h3>
 <p>Have a browser window open to <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">BEDTools intersect documentation</em></a>.
 It will likely be the BEDTools function that you use the most. It has a lot of
 options.</p>
@@ -348,7 +345,7 @@ options.</p>
 intervals in <cite>-b</cite></p>
 </div>
 <div class="section" id="example-files">
-<h2>Example Files<a class="headerlink" href="#example-files" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#example-files" title="Slides">§</a></h2>
+<h3>Example Files<a class="headerlink" href="#example-files" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#example-files" title="Slides">§</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cat a.bed
 chr1    <span class="m">10</span>  <span class="m">20</span>  a1  <span class="m">1</span>   +
 chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m">2</span>   -
@@ -369,7 +366,7 @@ chr1:100-110
 <p>from <em>b.bed</em></p>
 </div>
 <div class="section" id="intersect">
-<h2>intersect<a class="headerlink" href="#intersect" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect" title="Slides">§</a></h2>
+<h3>intersect<a class="headerlink" href="#intersect" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect" title="Slides">§</a></h3>
 <p>intersect with default arguments means <strong>extract chunks of `-a` that overlap
 regions in `-b`</strong></p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed
@@ -388,7 +385,7 @@ chr1        100     110     b3      3       +
 </div>
 </div>
 <div class="section" id="intersect-wa">
-<h2>intersect -wa<a class="headerlink" href="#intersect-wa" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-wa" title="Slides">§</a></h2>
+<h3>intersect -wa<a class="headerlink" href="#intersect-wa" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-wa" title="Slides">§</a></h3>
 <p>Often, we want the <em>entire interval from -a if it overlaps any interval in -b</em></p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -wa
 chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m">2</span>   -
@@ -398,7 +395,7 @@ chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m
 <p>We can get that uniquely with (-u)</p>
 </div>
 <div class="section" id="intersect-wo">
-<h2>intersect -wo<a class="headerlink" href="#intersect-wo" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-wo" title="Slides">§</a></h2>
+<h3>intersect -wo<a class="headerlink" href="#intersect-wo" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-wo" title="Slides">§</a></h3>
 <p>We can see which intervals in <em>-b</em> are associated with <em>-a</em></p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -wo
 chr1  <span class="m">100</span>  <span class="m">200</span>  a2  <span class="m">2</span>  -  chr1  <span class="m">90</span>  <span class="m">101</span>  b2  <span class="m">2</span>  -  1
@@ -407,7 +404,7 @@ chr1  <span class="m">100</span>  <span class="m">200</span>  a2  <span class="m
 </div>
 </div>
 <div class="section" id="intersect-exercise">
-<h2>intersect exercise<a class="headerlink" href="#intersect-exercise" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-exercise" title="Slides">§</a></h2>
+<h3>intersect exercise<a class="headerlink" href="#intersect-exercise" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-exercise" title="Slides">§</a></h3>
 <p>What happens if you reverse the arguments? E.g. instead of:</p>
 <div class="highlight-python"><div class="highlight"><pre>-a a.bed -b b.bed
 </pre></div>
@@ -420,7 +417,7 @@ chr1  <span class="m">100</span>  <span class="m">200</span>  a2  <span class="m
 <p>How does it compare to the original?</p>
 </div>
 <div class="section" id="intersect-c">
-<h2>intersect -c<a class="headerlink" href="#intersect-c" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-c" title="Slides">§</a></h2>
+<h3>intersect -c<a class="headerlink" href="#intersect-c" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-c" title="Slides">§</a></h3>
 <p>We can count overlaps for each interval in <em>-a</em> with those in <em>-b</em> with</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -c
 chr1        <span class="m">10</span>      <span class="m">20</span>      a1      <span class="m">1</span>       +       0
@@ -431,7 +428,7 @@ chr1        <span class="m">100</span>     <span class="m">200</span>     a2    
 overlaps</strong> with <cite>b.bed</cite></p>
 </div>
 <div class="section" id="intersect-v">
-<h2>intersect -v<a class="headerlink" href="#intersect-v" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-v" title="Slides">§</a></h2>
+<h3>intersect -v<a class="headerlink" href="#intersect-v" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-v" title="Slides">§</a></h3>
 <p>Extract intervals in <cite>a.bed</cite> that do not overlap any interval in <cite>b.bed</cite></p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -v
 chr1        <span class="m">10</span>      <span class="m">20</span>      a1      <span class="m">1</span>       +
@@ -445,7 +442,7 @@ chr1        <span class="m">200</span>     <span class="m">210</span>     b4    
 </div>
 </div>
 <div class="section" id="intersect-summary">
-<h2>Intersect Summary<a class="headerlink" href="#intersect-summary" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-summary" title="Slides">§</a></h2>
+<h3>Intersect Summary<a class="headerlink" href="#intersect-summary" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-summary" title="Slides">§</a></h3>
 <ul class="simple">
 <li>fragments of <cite>a</cite> that overlap <cite>b</cite>: <cite>intersect -a a.bed -b b.bed</cite></li>
 <li>complete regions of <cite>a</cite> that overlap <cite>b</cite>: <cite>intersect -a a.bed -b b.bed -u</cite></li>
@@ -455,7 +452,7 @@ chr1        <span class="m">200</span>     <span class="m">210</span>     b4    
 </ul>
 </div>
 <div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#exercises" title="Slides">§</a></h2>
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#exercises" title="Slides">§</a></h3>
 <p>Use the <cite>cpg.bed.gz</cite> and <cite>genes.hg19.bed.gz</cite> files for the following
 exercises:</p>
 <ol class="arabic simple">
@@ -474,14 +471,14 @@ help for a flag to indicate that you want the fraction of overlap to be 1
 </div>
 </div>
 <div class="section" id="other-reading">
-<h2>Other Reading<a class="headerlink" href="#other-reading" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#other-reading" title="Slides">§</a></h2>
+<h3>Other Reading<a class="headerlink" href="#other-reading" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#other-reading" title="Slides">§</a></h3>
 <ul class="simple">
 <li>Check out the online <a class="reference external" href="https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html">documentation</a>.</li>
 <li>A <a class="reference external" href="http://quinlanlab.org/tutorials/cshl2013/bedtools.html">tutorial</a> by the author of BEDTools</li>
 </ul>
 </div>
 <div class="section" id="intersect-bam">
-<h2>Intersect Bam<a class="headerlink" href="#intersect-bam" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-bam" title="Slides">§</a></h2>
+<h3>Intersect Bam<a class="headerlink" href="#intersect-bam" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-bam" title="Slides">§</a></h3>
 <p>We have seen that <cite>intersect &lt;bedtools:intersect&gt;</cite> takes <cite>-a</cite> and <cite>-b</cite>
 arguments. It can also intersect against an alignment BAM file by using <cite>-abam</cite>
 in place of <cite>-a</cite></p>
@@ -494,7 +491,7 @@ in place of <cite>-a</cite></p>
 </div>
 </div>
 <div class="section" id="intersect-strand">
-<h2>Intersect Strand<a class="headerlink" href="#intersect-strand" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-strand" title="Slides">§</a></h2>
+<h3>Intersect Strand<a class="headerlink" href="#intersect-strand" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#intersect-strand" title="Slides">§</a></h3>
 <p>From the <a class="reference external" href="https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html">help</a> ,
 one can see that intersect can consider strand. For example if both files have a
 strand field then</p>
@@ -505,7 +502,7 @@ strand field then</p>
 strand as <cite>b.bed</cite>.</p>
 </div>
 <div class="section" id="closest">
-<h2>Closest<a class="headerlink" href="#closest" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#closest" title="Slides">§</a></h2>
+<h3>Closest<a class="headerlink" href="#closest" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#closest" title="Slides">§</a></h3>
 <p>with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a> we can only get overlapping
 intervals. <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.1)"><em class="xref std std-ref">closest</em></a> reports the nearest interval even
 if it&#8217;s not overlapping.</p>
@@ -517,36 +514,12 @@ if it&#8217;s not overlapping.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="map">
-<h2>Map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#map" title="Slides">§</a></h2>
-<p>For each CpG print the sum of the values (4th column) of overlapping intervals from
-lamina.bed (and filter out those with no overlap using awk)</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools map <span class="se">\</span>
-    -a cpg.bed.gz <span class="se">\</span>
-    -b /vol1/opt/data/lamina.bed <span class="se">\</span>
-    -c <span class="m">4</span> -o sum <span class="se">\</span>
-    <span class="p">|</span> awk <span class="s1">&#39;$5 != &quot;.&quot;&#39;</span>
-</pre></div>
-</div>
-<p>Other <em>-o</em> perations include <strong>min</strong>, <strong>max</strong>, <strong>mean</strong>, <strong>median</strong>, <strong>concat</strong></p>
-</div>
-<div class="section" id="sorted">
-<h2>Sorted<a class="headerlink" href="#sorted" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#sorted" title="Slides">§</a></h2>
-<p>When you start dealing with larger data-files. Look at the <cite>-sorted</cite> flag.
-For example in <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a>.</p>
-<ul class="simple">
-<li>Uses less memory</li>
-<li>Faster</li>
-</ul>
-<p>Takes advantage of sorted chromosome, positions in both files so it doesn&#8217;t have
-to create an index.</p>
-<img alt="http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png" src="http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png" />
-</div>
 <div class="section" id="genomecov">
-<h2>Genomecov<a class="headerlink" href="#genomecov" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#genomecov" title="Slides">§</a></h2>
+<h3>Genomecov<a class="headerlink" href="#genomecov" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#genomecov" title="Slides">§</a></h3>
 <p>Get coverage of intervals in BED by BAM</p>
 <img alt="https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png" src="https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png" />
 <p>Usually want the last option <cite>-bg -split</cite></p>
+</div>
 </div>
 </div>
 
