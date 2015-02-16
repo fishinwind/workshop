@@ -89,7 +89,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Genome Analysis Workshop'
-copyright = u'2014, Jay Hesselberth'
+copyright = u'2013-2015, Jay Hesselberth'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
