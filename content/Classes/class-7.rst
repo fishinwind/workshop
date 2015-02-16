@@ -1,6 +1,6 @@
-=================
-BEDTools vignette
-=================
+=============================
+Class 7 : BEDTools vignette
+=============================
 
 :Class date: T Feb 17
 
@@ -10,7 +10,7 @@ Goals
    tools
 
 There are several vignettes `here.
-<https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md>_`
+<https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md>`_
 
 Overview
 --------
@@ -24,14 +24,14 @@ This simple process can be broken down into several individual steps:
 
 #. Obtain signals in bedGraph format (we will use Pol II ChIP-seq)
 
-#. Use `slop <bedtools:slop>` to create regions to examine [optional]
+#. Use :ref:`slop <bedtools:slop>` to create regions to examine [optional]
 
-#. Break the regions into windows with `makewindows
+#. Break the regions into windows with :ref:`makewindows
    <bedtools:makewindows>`.
 
-#. `map <bedtools:map>` data onto the windows.
+#. :ref:`map <bedtools:map>` data onto the windows.
 
-#. Calculate a summary statistic for each window with `groupby
+#. Calculate a summary statistic for each window with :ref:`groupby
    <bedtools:groupby>`.
 
 Annotations
@@ -45,12 +45,14 @@ First we need some annotations. Let's get some transcription start sites
     $ tssbed=tss.bed
 
     # need to grab the start or end based on the strand field
-    $ zcat $genes | awk '$6 == "+"' | awk '{print $1,$2,$2+1}' > $tssbed
-    $ zcat $genes | awk '$6 == "-"' | awk '{print $1,$3,$3+1}' > $tssbed
+    $ zcat $genes | awk '$6 == "+"' | awk 'BEGIN {OFS="\t"} {print $1,$2,$2+1}' > $tssbed
+    $ zcat $genes | awk '$6 == "-"' | awk 'BEGIN {OFS="\t"} {print $1,$3,$3+1}' > $tssbed
 
     # we made a bed file, so now we sort it.
     $ bedSort $tssbed $tssbed
     $ gzip $tssbed
+    # rename it for future use
+    $ tssbed=tss.bed.gz
 
 Signal
 ------
@@ -72,7 +74,7 @@ Slop
 ----
 Each of the TSS regions we made is 1 base in size. We need to make these
 bigger so that we can examine coverage in a larger region. Let's make them
-2 kb with the `slop <bedtools:slop` command:
+2 kb with the :ref:`slop <bedtools:slop>` command:
 
 .. code-block:: bash
 
@@ -80,7 +82,7 @@ bigger so that we can examine coverage in a larger region. Let's make them
     $ slopbed=tss.slop.2000.bed
     $ bedtools slop -b 2000 -i $tssbed -g $chromsize > $slopbed
 
-romsize=/vol1/opt/data/hg19.chrom.sizesInspect the slop'd file and make sure you understand how it is different
+Inspect the slop'd file and make sure you understand how it is different
 from the input BED file.
 
 Make windows
@@ -95,8 +97,8 @@ as we move away from TSS.
     $ windowbed=tss.slop.2000.5bp.windows.bed
 
     $ bedtools makewindows -b $slopbed -w 5 -i srcwinnum \
-        sort -k1,1 -k2,2n \
-        tr "_" "\t" \
+        | sort -k1,1 -k2,2n \
+        | tr "_" "\t" \
         > $windowbed 
     
 What would the signal look like if we didn't do this?
@@ -117,19 +119,26 @@ Inspect this file and make sure you know what it looks like.
 
 Grouping the data
 -----------------
-Now we can calculate summary statistics on the mapped data with `groupby
+Now we can calculate summary statistics on the mapped data with :ref:`groupby
 <bedtools:groupby>`:
 
 .. code-block:: bash
 
     # Note that the mapped data has to be sorted by window number
     $ sort -t$'\t' -k5,5n $signalmap \
-        bedtools groupby \
+        | bedtools groupby \
             -i - \
             -g 5 -c 6 -o sum \
             > output.tab
 
 Inspect the output so you know what it looks like.
+
+Code
+----
+
+.. literalinclude:: /Classes/code/class-7.sh
+    :language: bash
+    :linenos:
 
 Plotting
 --------

@@ -8,8 +8,10 @@ genes=/vol1/opt/data/encode/refGene.bed.gz
 tss=tss.bed
 
 # make annotations
-zcat $genes | awk '$6 == "+"' | awk '{print $1,$2,$2+1}' > $tssbed
-zcat $genes | awk '$6 == "-"' | awk '{print $1,$3,$3+1}' > $tssbed
+zcat $genes | awk '$6 == "+"' \
+    | awk 'BEGIN {OFS="\t"} {print $1,$2,$2+1}' > $tssbed
+zcat $genes | awk '$6 == "-"' \
+    | awk 'BEGIN {OFS="\t"} {print $1,$3,$3+1}' > $tssbed
 
 bedSort $tssbed $tssbed
 gzip $tssbed
