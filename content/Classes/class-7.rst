@@ -45,8 +45,8 @@ First we need some annotations. Let's get some transcription start sites
     $ tssbed=tss.bed
 
     # need to grab the start or end based on the strand field
-    $ zcat $genes | awk '$6 == "+" | awk '{print $1,$2,$2+1}' > $tssbed
-    $ zcat $genes | awk '$6 == "-" | awk '{print $1,$3,$3+1}' > $tssbed
+    $ zcat $genes | awk '$6 == "+"' | awk '{print $1,$2,$2+1}' > $tssbed
+    $ zcat $genes | awk '$6 == "-"' | awk '{print $1,$3,$3+1}' > $tssbed
 
     # we made a bed file, so now we sort it.
     $ bedSort $tssbed $tssbed
@@ -56,7 +56,7 @@ Signal
 ------
 The signal we will use is human Pol II ChIP-seq signal. The file is::
 
-    signal=/vol1/opt/data/endcode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
+    signal=/vol1/opt/data/encode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
 
 bigWig is a compressed form of bedGraph. You can either convert to bedGraph
 and compress::
@@ -80,7 +80,7 @@ bigger so that we can examine coverage in a larger region. Let's make them
     $ slopbed=tss.slop.2000.bed
     $ bedtools slop -b 2000 -i $tssbed -g $chromsize > $slopbed
 
-Inspect the slop'd file and make sure you understand how it is different
+romsize=/vol1/opt/data/hg19.chrom.sizesInspect the slop'd file and make sure you understand how it is different
 from the input BED file.
 
 Make windows
@@ -139,12 +139,18 @@ Now we'll make a plot with R. Navigate to::
 
 and login with your tesla credentials. You should see R Studio open up.
 Navigate to the directory where you did you work with the `Files` menu on
-the lower right.
+the lower right, and then set the working directory with `More` --> `Set
+as Working Directory`.
+
+Now make a plot!
 
 .. code-block:: r
 
     > library(ggplot2)
     > col.names <- c('window','signal')
-    > df <- read.table('output.tab')
-    > qplot(data = df,
+    > df <- read.table('output.tab', col.names=col.names)
+
+    # coerce to numbers
+    > df$signal <- as.double(df$signal)
+    > qplot(window, signal, data = df)
 
