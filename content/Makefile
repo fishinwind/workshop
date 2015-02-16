@@ -1,6 +1,12 @@
 # Makefile for Sphinx documentation
 #
 
+# the `branch` and `push` commands wipe the gh-pages branch, then the
+# `ghp-import` command creates an entirely new copy
+#
+# $ git branch -D gh-pages
+# $ git push origin :gh-pages
+
 # You can set these variables from the command line.
 SPHINXOPTS    = -j 4
 SPHINXBUILD   = sphinx-build
