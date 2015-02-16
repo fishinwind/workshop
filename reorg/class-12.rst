@@ -1,5 +1,5 @@
 ************************************
-Class 21 : R : DataFrames & Plotting
+Class 12 : R : DataFrames & Plotting
 ************************************
 
 Goals

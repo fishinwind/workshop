@@ -1,5 +1,5 @@
 ******************************
-Class 18 : R : Getting Started
+Class 9 : R : Getting Started
 ******************************
 
 .. important::

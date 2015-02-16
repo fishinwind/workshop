@@ -1,5 +1,5 @@
 ************************
-Class 11 : Python Idioms
+Class 20 : Python Idioms
 ************************
 
 Goals

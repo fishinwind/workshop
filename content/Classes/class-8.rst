@@ -1,230 +1,98 @@
-*****************************
-Class 8 : Python : Basics (2)
-*****************************
 
-:Class date: Wednesday 12 February 2014
+*********************************
+    Class 8 : Genome Browser 
+*********************************
+
+:Class date: T Feb 17 
 
 Goals
 =====
-#. Finish concepts from Monday (list slices)
-#. New concepts: equality, undefined, functions
-#. Importing and debugging
-#. Exercises
 
-Review of list concepts
+#. Connect UCSC browser to bigWig / bigBed files
+
+#. Compare ChIP and DNase I data
+
+Coverage plots for ChIP and DNase I
+===================================
+
+You will want to calculate coverage plots that are appropriate for the
+type of experiment. For example, in a ChIP experiment, you want to examine
+the entire region covered by sequences.
+
+.. code-block:: bash
+
+    $ common_args="-ibam <aln.bam> -g <chrom.size> -bg"
+    $ bedtools genomecov $common_args > coverage.bg
+
+But in a DNase I mapping experiment, you only want to know the exact
+position where DNase I cut the DNA, i.e. the 5' position. Use the ``-5``
+flag in bedtools to only count 5' positions.
+
+.. code-block:: bash
+
+    $ common_args="-ibam <aln.bam> -g <chrom.size> -bg"
+    $ bedtools genomecov $common_args -5 > coverage.5p.bg
+
+
+ChIP-seq / DNase I data 
 =======================
-We covered slicing of lists; i.e. retrieving list parts:
 
-.. ipython::
-    :verbatim:
+Compare ChIP-seq and DNase I data in browser [#]_.
 
-    In [11]: nums = range(30)
+.. [#] Genome Browser Session http://goo.gl/jx6fCA
 
-    # try this again with implicit start and end
-    In [12]: nums[5:10]
+Plot coverage with the Genome Browser
+-------------------------------------
 
-    In [2]: reversed(nums)
+Use the UCSC Genome Browser to plot your data. Files in bedGraph format
+can be large, so UCSC created a facility for posting binary format data in
+a web-accessible directory that the browser can read.
 
-    # two ways to examine the contents of the iterator,
-    # same principle for sorted()
-    In [3]: [i for i in reversed(nums)]
+.. code-block:: bash
 
-    In [3]: list(reversed(nums))
+    # NOTE: bedGraph and BED files must be sorted first
 
-    # skip reversed()
-    In [5]: range(30,0,-1)
+    # convert bedGraph to binary format (bigWig) 
+    $ bedGraphToBigWig <coverage.bg> <chrom.sizes> <coverage.bw> 
 
-    # edit a file directly from ipython
-    In [4]: edit filename.py
+    # convert BED to binary format (bigBed)
+    $ bedToBigBed <peaks.bed> <chrom.sizes> <peaks.bb>
 
-Sets
-====
-A :py:class:`set` is another type in python that lets you store a non-redundant
-list of items. They support logical operations:
+Posting your data
+-----------------
 
-.. ipython::
+We need to set up your accounts so that you will be able to see data
+posted in your account. When this is setup, you should be able to put
+files in::
 
-    In [11]: skiiers = set(['Tom','Harry','Gurf'])
+    $HOME/public_html/file.html
 
-    In [12]: snowboarders = set(['Lucy','Brian','Gurf'])
+and be able to see them like::
 
-    # intersection
-    In [13]: skiiers & snowboarders
+    http://amc-sandbox.ucdenver.edu/~username/file.html
 
-    # union
-    In [14]: skiiers | snowboarders
+Writing tracklines
+------------------
 
-    # difference 
-    In [14]: skiiers - snowboarders
+You can now write "tracklines" [#]_ to tell where UCSC to find your data::
 
-Equality and Logic
-==================
-Use ``if``:``elif``:``else`` statements to test conditions and act on the
-result. The ``==`` and ``!=`` operators test for equality and inequality, and
-work on many object comparisons.
+    # URL = http://amc-sandbox.ucdenver.edu/~username/path-to-binaryfile
+    track type=bigWig bigDataUrl=<URL> name='coverage' color=r,g,b
+    track type=bigBed bigDataUrl=<URL> name='peaks' color=r,g,b
 
-.. ipython::
-    :verbatim:
+.. [#] UCSC Track configuration
+       https://genome.ucsc.edu/goldenPath/help/customTrack.html#TRACK
 
-    # animal colors
-    In [3]: cat = 'white'
+.. nextslide::
 
-    In [4]: dog = 'black'
+.. tip::
 
-    In [5]: if cat == dog: 
-       ...:     print "same color"
-       ...: elif cat != dog:
-       ...:     print "different color"
-       ...: else:
-       ...:     print "not going to happen"
-       ...:     
+    Don't pick colors yourself, they will be ugly. **Use Colorbrewer**
+    http://colorbrewer2.org.
+    
+    RGB colors in the ``Dark2`` and ``Set1`` qualitative palettes work
+    well for UCSC display.
 
-Undefined values in Python 
-==========================
-.. ipython::
-    :verbatim:
+There are a large number of additional options you can use in tracklines
+to change their display.
 
-    In [1]: this = None
-
-    In [4]: bool(this)
-
-    In [2]: not this
-
-    # the following if statements are equivalent:
-    In [6]: if this is None:
-       ...:     print 'foo'
-       ...:     
-
-    In [5]: if not this:
-       ...:     print 'foo'
-       ...:     
-
-    # set the following and test with ``not this``
-    In [7]: this = 0
-
-    In [9]: this = ''
-
-Defining functions
-==================
-You can define functions that encapsulate work flows
-
-.. ipython::
-    :verbatim:
-
-    In [19]: def square(numlist):
-       ....:     result = []
-       ....:     for i in numlist:
-       ....:         sq = i * i 
-       ....:         result.append(sq)
-       ....:         return result
-
-    # or replace loop with: return [i*i for i in numlist]
-
-    In [20]: square(nums)
-
-Importing modules
-=================
-There are a number of modules with objects and functions in the standard
-library, and there are a also a huge number of Python modules on the web
-(check github).
-
-To be able to access the contents of a module, you need to import it into
-your `namespace`:
-
-.. ipython::
-
-    In [1]: import math
-
-    In [2]: math.log10(1000)
-
-    In [3]: import sys
-
-.. Regular Expressions
-.. ===================
-.. Python provides a regular expression module for pattern matching. We'll
-.. cover some basics of writing regular expressions:
-
-.. .. ipython::
-..     :verbatim:
-
-..    In [1]: phrase = 'how now brown cow'
-
-..    In [2]: import re
-
-..    In [3]: regex = re.compile('brown')
-
-..    In [6]: regex.findall(phrase) 
-
-Useful python modules
-=====================
-There are several modules in the standard library you will use all the
-time:
-
-- :py:mod:`sys`: :py:obj:`sys.argv` has all the arguments from the command
-  line
-
-- :py:mod:`collections`: espcially :py:class:`~collections.defaultdict`
-  and :py:class:`~collections.Counter`
-
-- :py:mod:`itertools`: tools for efficient aggregation and iteration
-
-- :py:mod:`argparse`: command line option parsing
-
-Debugging Python code
-=====================
-The :py:mod:`pdb` is the Python Debugger. You can use it to debug programs by
-dropping you into a shell that allows you to step through the program, line by
-line.
-
-.. ipython::
-    :verbatim:
-
-    In [6]: import pdb
-
-    # this will drop you into a shell. find the value of ``i`` at the (Pdb)
-    # prompt
-    In [7]: for i in range(100):
-       ...:     if i == 50:
-       ...:         pdb.set_trace()
-       ...:         
-
-In Class Exercises
-==================
-
-#. Create a :py:obj:`list` that contains multiple redundant entries.
-   Covert the list to a :py:class:`set` with set(list). What happened to
-   the redundant entries?
-
-#. Open lamina.bed and print the start position of each entry
-
-#. Print the total coverage of entries in lamina.bed
-
-#. Convert each row in lamina.bed into a :py:obj:`list`. Then, print
-   each entry in the list. 
-
-#. Find the average value of entries in lamina.bed (watch out for
-   int / float type issues).
-
-#. Find the median value of entries in lamina.bed. Then find the mode.
-
-Out of Class Exercises 
-======================
-
-#. Use a python :py:class:`dict` object to count the number of entries
-   on each chromosome in lamina.bed. 
-
-#. Do the same thing as the previous exercise, but using a
-   :py:class:`~collections.Counter` object. Then, use the Counter()
-   methods to find out which chromosomes have the largest and smallest
-   number of entries. 
-
-#. Create a python script that takes a chromosome number, and finds all entries
-   in lamina.bed that are on that chromosome. 
-
-#. Modify the previous script to use :py:mod:`argparse`, so that it
-   will find entries on every chromosome by default unless given an
-   argument to look on a particular chromosome (advanced)
-
-.. raw:: pdf
-
-    PageBreak

@@ -158,47 +158,47 @@ Specific Dates / Material to be Covered
       - 
     * - Class 4 
       - Th Feb 5
-      - Linux / Utilities
+      - grep and awk
       - **PS2 due** (|pset2-due|)
     * - Class 5 
       - T Feb 10
-      - Cluster Usage / Review
+      - BEDTools
       - 
     * - Class 6 
       - Th Feb 12
-      - Cluster Usage / Review
+      - Analysis vignette: ChIP-seq 
       - **PS3 due** (|pset3-due|)
     * - Class 7 
       - T Feb 17
-      - Python
+      - BEDTools
       - 
     * - Class 8 
       - Th Feb 19
-      - Python
+      - Genome Browser 
       - **PS4 due** (|pset4-due|)
     * - Class 9 
       - T Feb 24
-      - Python 
+      - R Data & Plotting
       - 
     * - Class 10 
       - Th Feb 26
-      - Python 
+      - R Data & Plotting
       - **PS5 due** (|pset5-due|)
     * - Class 11 
       - T Mar 3
-      - Python 
+      - R Data & Plotting
       - 
     * - Class 12
       - Th Mar 5
-      - ENCODE Overview
+      - R Data & Plotting
       - **PS6 due** (|pset6-due|)
     * - Class 13 
       - T Mar 10
-      - BEDtools  
+      - R Data & Plotting
       - 
     * - Class 14 
       - Th Mar 12
-      - ChIP-seq (coverage / peaks / motifs)
+      - R Data & Plotting
       - **PS7 due** (|pset7-due|)
     * -
       - ** No Class Mar 16-20 (Campus Spring Break) **
@@ -206,51 +206,51 @@ Specific Dates / Material to be Covered
       - 
     * - Class 15 
       - T Mar 24
-      - ChIP-seq / DNaseI-seq (UCSC)
+      - Python
       - 
     * - Class 16
       - Th Mar 26
-      - Genomic analysis vignettes 
+      - Python
       - 
     * - Class 17 
       - T Mar 31
-      - Genomic analysis vignettes 
+      - Python
       - 
     * - Class 18
       - Th Apr 2
-      - R data & plotting 
+      - Python 
       - **PS8 due** (|pset8-due|)
     * - Class 19
       - T Apr 7
-      - R data & plotting 
+      - Python 
       - 
     * - Class 20
       - Th Apr 9
-      - R data & plotting 
+      - Python
       - **PS9 due** (|pset9-due|)
     * - Class 21
       - T Apr 14
-      - R data & plotting 
+      - mRNA-seq
       - 
     * - Class 22
       - Th Apr 16
-      - R data & plotting 
+      - mRNA-seq
       - **PS10 due** (|pset10-due|)
     * - Class 23
       - T Apr 21
-      - mRNA-seq (FPKM / diff exp)
+      - Exome analysis 
       - 
     * - Class 24
       - Th Apr 23
-      - mRNA-seq (FPKM / diff exp)
+      - Exome analysis
       - **PS11 due** (|pset11-due|)
     * - Class 25 
       - T Apr 28
-      - Exome Alignment
+      - Final Projects 
       - 
     * - Class 26 
       - Th Apr 30
-      - Exome Variant Calling
+      - Final Projects 
       - 
 
 .. raw:: pdf

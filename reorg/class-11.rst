@@ -1,5 +1,5 @@
 **************************************
-Class 20 : R : Manipulation & Plotting
+Class 11 : R : Manipulation & Plotting
 **************************************
 
 Goals

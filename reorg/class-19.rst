@@ -1,25 +1,21 @@
 *************************
-Class 10 : Applied Python 
+Class 19 : Applied Python 
 *************************
 
-:Class date: Wednesday February 19
+:Class date: Th Mar 26  
 
-Install Toolshed
-================
+Final Project
+=============
 
-Confirm you have the toolshed module installed with:
+We will have a final project that is worth 15% of your grade, due on April
+2.
 
-.. code-block:: bash
+We want you to come up with a question you can address with the tools you
+learned in the class. You should incorporate ENCODE data into your
+analysis, and you can also integrate your own data.
 
-    $ python -c "import toolshed"
-
-If you get an error, run this:
-
-.. code-block:: bash
-
-    $ pip install toolshed
-
-If you still get an error, ask for help.
+We will go over some analysis vignettes on Wed and Fri to illustrate
+example final projects.
 
 Goals
 =====

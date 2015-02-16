@@ -1,6 +1,6 @@
 
 *******************************************
-Class 22 : R : Data Manipulation & Plotting
+Class 13 : R : Data Manipulation & Plotting
 *******************************************
 
 Goals

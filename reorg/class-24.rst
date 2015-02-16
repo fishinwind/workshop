@@ -1,6 +1,6 @@
 
 *******************************
-Class 26 : Exome-Seq - Variants
+Class 24 : Exome-Seq - Variants
 *******************************
 
 Goals

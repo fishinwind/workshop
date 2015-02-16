@@ -1,6 +1,6 @@
 
 ********************************
-Class 25 : Exome-Seq - Alignment
+Class 23 : Exome-Seq - Alignment
 ********************************
 
 Goals
