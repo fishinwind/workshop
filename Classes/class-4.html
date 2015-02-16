@@ -219,8 +219,8 @@ records in lamina.bed.</li>
 <li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to count how many fastq records are in the
 /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
 &#8216;&#64;&#8217; symbol)</li>
-<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to count the number of fastq records
-in /vol1/opt/data/SP1.fq.gz</li>
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to count the number of fastq records in
+/vol1/opt/data/SP1.fq.gz</li>
 </ol>
 </div>
 <div class="section" id="awk">
@@ -320,12 +320,20 @@ first column is chr12:</p>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<ol class="last arabic simple">
-<li>the entire awk program must be wrapped in quotes. Nearly always best to use
-single quotes (&#8216;) on the outside.</li>
-<li><em>coverage</em> is a variable that stores values; we don&#8217;t use
-a $ to access it like we do in bash or like we do for the $1,
-$2, ... columns</li>
+<ol class="last arabic">
+<li><dl class="first docutils">
+<dt>the entire awk program must be wrapped in quotes. Nearly always best to use</dt>
+<dd><p class="first last">single quotes (&#8216;) on the outside.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>coverage</em> is a variable that stores values; we don&#8217;t use</dt>
+<dd><p class="first last">a $ to access it like we do in bash or like we do for the $1,
+$2, ... columns</p>
+</dd>
+</dl>
+</li>
 </ol>
 </div>
 </div>
@@ -359,7 +367,7 @@ $2, ... columns</li>
 <li>NR is a special variable that holds the line number</li>
 <li>NF is a special variable that holds the number of fields in the line</li>
 <li>FS and OFS are the (F)ield and (O)output (F)ield (S)eparators
-&#8211;meaning the delimiters (default is any space character)</li>
+i.e. the delimiters (default is any space character)</li>
 </ol>
 </div>
 <div class="section" id="using-awk-to-count-lines-with-nr">
@@ -400,21 +408,10 @@ and available in nearly all programming languages.</p>
 </div>
 <div class="section" id="in-class-exercises-class-4">
 <span id="class-4-exercises"></span><h2>In Class Exercises - Class 4<a class="headerlink" href="#in-class-exercises-class-4" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-4.html#in-class-exercises-class-4" title="Slides">§</a></h2>
-<p>we will do the first 2. of these together</p>
+<p>we will do the first 2 of these together.</p>
 <ol class="arabic simple">
 <li>use NR to print each line of <cite>lamina.bed</cite> <em>preceded</em> by it&#8217;s line number</li>
-</ol>
-<ol class="loweralpha simple">
-<li>do the above, but only for regions on chromosome 12</li>
-</ol>
-<ol class="arabic simple" start="2">
 <li>use NF to see how many columns are in each row of <cite>states.tab</cite></li>
-</ol>
-<ol class="loweralpha simple">
-<li>use sort and uniq -c to see uniq column counts.</li>
-<li>why are there 2 numbers?</li>
-<li>can you adjust the file separator so that awk thinks all rows have
-the same number of columns?</li>
 </ol>
 </div>
 <div class="section" id="review">
@@ -436,25 +433,14 @@ the same number of columns?</li>
 </div>
 <div class="section" id="id2">
 <h2>Exercises<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-4.html#id2" title="Slides">§</a></h2>
-<ol class="arabic">
-<li><p class="first">are there any regions in <cite>lamina.bed</cite> with start &gt; end?</p>
-</li>
-<li><p class="first">what is the total coverage [sum of (end - start)] of regions on chr13 in <cite>lamina.bed</cite>?</p>
-</li>
-<li><p class="first">what is the mean value (4th column) on chromome 3 of <cite>lamina.bed</cite></p>
-</li>
-<li><p class="first">print out only the header and the entry for colorado in <cite>states.tab</cite></p>
-</li>
-<li><p class="first">what is the (single-number) sum of all the incomes for <cite>states.tab</cite> with illiteracy rate:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>less than 0.1?</li>
-<li>greater than 2?</li>
-</ol>
-</div></blockquote>
-</li>
-<li><p class="first">use NR to filter out the header from <cite>lamina.bed</cite> (hint: what is NR for the header?)</p>
-</li>
+<ol class="arabic simple">
+<li>are there any regions in <cite>lamina.bed</cite> with start &gt; end?</li>
+<li>what is the total coverage [sum of (end - start)] of regions on chr13 in <cite>lamina.bed</cite>?</li>
+<li>what is the mean value (4th column) on chromome 3 of <cite>lamina.bed</cite></li>
+<li>print out only the header and the entry for colorado in <cite>states.tab</cite></li>
+<li>what is the (single-number) sum of all the incomes for <cite>states.tab</cite>
+with illiteracy rate less than 0.1? greater than 2?</li>
+<li>use NR to filter out the header from <cite>lamina.bed</cite> (hint: what is NR for the header?)</li>
 </ol>
 </div>
 </div>

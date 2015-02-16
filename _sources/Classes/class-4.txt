@@ -7,7 +7,9 @@
 Goals
 =====
 #. Review
+
 #. remember BED format (chr, start, end)
+
 #. learn grep and awk basics to filter and manipulate text
 
 grep
@@ -89,8 +91,8 @@ Exercises
    /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
    '@' symbol)
 
-#. use ``grep`` to count the number of fastq records
-   in /vol1/opt/data/SP1.fq.gz
+#. use ``grep`` to count the number of fastq records in
+   /vol1/opt/data/SP1.fq.gz
 
 awk
 ===
@@ -106,17 +108,20 @@ Named after authors **A** ho, **W** einberger & **K** ernighan
 
 basic principles
 ================
-
 #. awk operates on each line of a text file
+
 #. in an awk program, $1 is an alias for the 1st column, $2 for the 2nd, etc. 
+
 #. awk can filter lines by a pattern
 
 awk program structure
 =====================
 
-+ **BEGIN** runs before the program starts
-+ **END** runs after the program runs through all lines in the file
-+ **PATTERN** and **ACTIONS** check and execute on each line.
+- **BEGIN** runs before the program starts
+
+- **END** runs after the program runs through all lines in the file
+
+- **PATTERN** and **ACTIONS** check and execute on each line.
 
 .. code-block:: bash
 
@@ -137,7 +142,7 @@ Same with **END**:
 
    awk 'END { print 12 * 13 }'
    # then type ctrl+d so it knows it's not getting more input.
- 
+
 filtering
 =========
 A simple and powerful use of awk is lines that match a pattern or meet set
@@ -181,8 +186,11 @@ in-class exercise
 we will do the first of these together.
 
 #. how many regions (lines) in lamina.bed have a start less than 1,234,567 on any chromosome?
+
 #. how many regions in lamina.bed have a start less than 1,234,567 on chromosome 8?
+
 #. how many regions (lines) in lamina.bed have a start between 50,000 and 951,000
+
 #. how many regions in lamina.bed overlap the interval **chr12:5,000,000-6,000,000** ?
 
 .. important::
@@ -201,12 +209,12 @@ print total bases covered on chromosome 13:
 
 .. important::
     
- #. the entire awk program must be wrapped in quotes. Nearly always best to use
-    single quotes (') on the outside.
- #. *coverage* is a variable that stores values; we don't use
-    a $ to access it like we do in bash or like we do for the $1,
-    $2, ... columns
+    1. the entire awk program must be wrapped in quotes. Nearly always best to use
+        single quotes (') on the outside.
 
+    2. *coverage* is a variable that stores values; we don't use
+        a $ to access it like we do in bash or like we do for the $1,
+        $2, ... columns
 
 in-class exercise
 =================
@@ -242,10 +250,13 @@ remember we can simply filter to the lines > 5000 with:
 awk special variables
 =====================
 #. we know *$1*, *$2*, ... for the column numbers
+
 #. NR is a special variable that holds the line number
+
 #. NF is a special variable that holds the number of fields in the line
+
 #. FS and OFS are the (F)ield and (O)output (F)ield (S)eparators
-   --meaning the delimiters (default is any space character)
+   i.e. the delimiters (default is any space character)
 
 using awk to count lines with NR
 ================================
@@ -295,18 +306,11 @@ You can do a lot more with awk, here are several resources:
 
 In Class Exercises - Class 4
 ============================
-we will do the first 2. of these together
+we will do the first 2 of these together.
 
-1. use NR to print each line of `lamina.bed` *preceded* by it's line number
+#. use NR to print each line of `lamina.bed` *preceded* by it's line number
 
-a. do the above, but only for regions on chromosome 12
-
-2. use NF to see how many columns are in each row of `states.tab`
-
-a. use sort and uniq -c to see uniq column counts.
-b. why are there 2 numbers?
-c. can you adjust the file separator so that awk thinks all rows have
-   the same number of columns?
+#. use NF to see how many columns are in each row of `states.tab`
 
 review
 ======
@@ -334,11 +338,8 @@ Exercises
 
 #. print out only the header and the entry for colorado in `states.tab`
 
-#. what is the (single-number) sum of all the incomes for `states.tab` with illiteracy rate:
-
-    #. less than 0.1?
-
-    #. greater than 2?
+#. what is the (single-number) sum of all the incomes for `states.tab`
+   with illiteracy rate less than 0.1? greater than 2?
 
 #. use NR to filter out the header from `lamina.bed` (hint: what is NR for the header?)
 

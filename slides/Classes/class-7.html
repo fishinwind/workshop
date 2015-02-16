@@ -1,0 +1,427 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 7 : BEDTools vignette &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Problem Sets" href="../Problem_Sets.html" />
+    <link rel="prev" title="Class 6 : Genomic Data Vignette: ChIP-seq" href="class-6.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 7 : BEDTools vignette<a class="headerlink" href="../../Classes/class-7.html#class-7-bedtools-vignette" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">T Feb 17</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-7.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Go over BEDTools analysis vignette to show how to combine different
+tools</li>
+</ol>
+<p>There are several vignettes <a class="reference external" href="https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md">here.</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Overview<a class="headerlink" href="../../Classes/class-7.html#overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A common situation in genomic analysis is to examine how signals (e.g.,
+coverage in a ChIP-seq experiment) relate to genome annotations (e.g.,
+transcription start sites).</p>
+<p>This simple process can be broken down into several individual steps:</p>
+<ol class="arabic simple">
+<li>Obtain genome annotations (we will use TSS)</li>
+<li>Obtain signals in bedGraph format (we will use Pol II ChIP-seq)</li>
+<li>Use <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.22.1)"><em class="xref std std-ref">slop</em></a> to create regions to examine [optional]</li>
+<li>Break the regions into windows with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/makewindows.html#makewindows" title="(in bedtools v2.22.1)"><em class="xref std std-ref">makewindows</em></a>.</li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.22.1)"><em class="xref std std-ref">map</em></a> data onto the windows.</li>
+<li>Calculate a summary statistic for each window with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/groupby.html#groupby" title="(in bedtools v2.22.1)"><em class="xref std std-ref">groupby</em></a>.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Annotations<a class="headerlink" href="../../Classes/class-7.html#annotations" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>First we need some annotations. Let's get some transcription start sites
+(TSSs) from a BED file of gene annotations.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ genes</span><span class="o">=</span>/vol1/opt/data/refGene.bed.gz
+<span class="nv">$ tssbed</span><span class="o">=</span>tss.bed
+
+<span class="c"># need to grab the start or end based on the strand field</span>
+<span class="nv">$ </span>zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$2,$2+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+<span class="nv">$ </span>zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$3,$3+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+
+<span class="c"># we made a bed file, so now we sort it.</span>
+<span class="nv">$ </span>bedSort <span class="nv">$tssbed</span> <span class="nv">$tssbed</span>
+<span class="nv">$ </span>gzip <span class="nv">$tssbed</span>
+<span class="c"># rename it for future use</span>
+<span class="nv">$ tssbed</span><span class="o">=</span>tss.bed.gz
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Signal<a class="headerlink" href="../../Classes/class-7.html#signal" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The signal we will use is human Pol II ChIP-seq signal. The file is:</p>
+<div class="highlight-python"><div class="highlight"><pre>signal=/vol1/opt/data/encode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
+</pre></div>
+</div>
+<p>bigWig is a compressed form of bedGraph. You can either convert to bedGraph
+and compress:</p>
+<div class="highlight-python"><div class="highlight"><pre>bigWigToBedGraph &lt;wig file&gt; &lt;bedgraph&gt;
+gzip &lt;bedgraph&gt;
+</pre></div>
+</div>
+<p>Or you can use it in a stream with:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;(bigWigToBedGraph &lt;wigfile&gt; stdout)
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Slop<a class="headerlink" href="../../Classes/class-7.html#slop" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Each of the TSS regions we made is 1 base in size. We need to make these
+bigger so that we can examine coverage in a larger region. Let's make them
+2 kb with the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.22.1)"><em class="xref std std-ref">slop</em></a> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ chromsize</span><span class="o">=</span>/vol1/opt/data/hg19.chrom.sizes
+<span class="nv">$ slopbed</span><span class="o">=</span>tss.slop.2000.bed
+<span class="nv">$ </span>bedtools slop -b <span class="m">2000</span> -i <span class="nv">$tssbed</span> -g <span class="nv">$chromsize</span> &gt; <span class="nv">$slopbed</span>
+</pre></div>
+</div>
+<p>Inspect the slop'd file and make sure you understand how it is different
+from the input BED file.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Make windows<a class="headerlink" href="../../Classes/class-7.html#make-windows" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Now that we have a 2 kb window around each TSS, we can break the regions up
+into <cite>windows</cite> and examine signal in each. The idea here is that we would
+like to see a peak of signal at the middle window, and it should descrease
+as we move away from TSS.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ windowbed</span><span class="o">=</span>tss.slop.2000.5bp.windows.bed
+
+<span class="nv">$ </span>bedtools makewindows -b <span class="nv">$slopbed</span> -w <span class="m">5</span> -i srcwinnum <span class="se">\</span>
+    <span class="p">|</span> sort -k1,1 -k2,2n <span class="se">\</span>
+    <span class="p">|</span> tr <span class="s2">&quot;_&quot;</span> <span class="s2">&quot;\t&quot;</span> <span class="se">\</span>
+    &gt; <span class="nv">$windowbed</span>
+</pre></div>
+</div>
+<p>What would the signal look like if we didn't do this?</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Map signal to the annotations<a class="headerlink" href="../../Classes/class-7.html#map-signal-to-the-annotations" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Now we can map the signal to each of the windows that we made.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ signalmap</span><span class="o">=</span>signal.map.bg
+<span class="nv">$ </span>bedtools map -a <span class="nv">$windowbed</span> <span class="se">\</span>
+    -b &lt;<span class="o">(</span>bigWigToBedGraph <span class="nv">$signal</span> stdout<span class="o">)</span> <span class="se">\</span>
+    -c <span class="m">4</span> -o mean -null <span class="m">0</span> <span class="se">\</span>
+    &gt; <span class="nv">$signalmap</span>
+</pre></div>
+</div>
+<p>Inspect this file and make sure you know what it looks like.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Grouping the data<a class="headerlink" href="../../Classes/class-7.html#grouping-the-data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Now we can calculate summary statistics on the mapped data with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/groupby.html#groupby" title="(in bedtools v2.22.1)"><em class="xref std std-ref">groupby</em></a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Note that the mapped data has to be sorted by window number</span>
+<span class="nv">$ </span>sort -t<span class="s1">$&#39;\t&#39;</span> -k5,5n <span class="nv">$signalmap</span> <span class="se">\</span>
+    <span class="p">|</span> bedtools groupby <span class="se">\</span>
+        -i - <span class="se">\</span>
+        -g <span class="m">5</span> -c <span class="m">6</span> -o sum <span class="se">\</span>
+        &gt; output.tab
+</pre></div>
+</div>
+<p>Inspect the output so you know what it looks like.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Code<a class="headerlink" href="../../Classes/class-7.html#code" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /usr/bin/env bash</span>
+
+<span class="c">#BSUB -J bedtools.vignette</span>
+<span class="c">#BSUB -o vignette.%J.out</span>
+<span class="c">#BSUB -e vignette.%J.err</span>
+
+<span class="nv">genes</span><span class="o">=</span>/vol1/opt/data/encode/refGene.bed.gz
+<span class="nv">tss</span><span class="o">=</span>tss.bed
+
+<span class="c"># make annotations</span>
+zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="se">\</span>
+    <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$2,$2+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="se">\</span>
+    <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$3,$3+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+
+bedSort <span class="nv">$tssbed</span> <span class="nv">$tssbed</span>
+gzip <span class="nv">$tssbed</span>
+
+<span class="nv">signal</span><span class="o">=</span>/vol1/opt/data/endcode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
+
+<span class="nv">chromsize</span><span class="o">=</span>/vol1/opt/data/hg19/hg19.chrom.sizes
+<span class="nv">slopbed</span><span class="o">=</span>tss.slop.2000.bed
+
+<span class="c"># make slop</span>
+bedtools slop -b <span class="m">2000</span> -i <span class="nv">$tssbed</span> -g <span class="nv">$chromsize</span> &gt; <span class="nv">$slopbed</span>
+
+<span class="c"># make windows</span>
+<span class="nv">windowbed</span><span class="o">=</span>tss.slop.2000.5bp.windows.bed
+bedtools makewindows -b <span class="nv">$slopbed</span> -w <span class="m">5</span> -i srcwinnum <span class="se">\</span>
+    <span class="p">|</span> sort -k1,1 -k2,2n <span class="se">\</span>
+    <span class="p">|</span> tr <span class="s2">&quot;_&quot;</span> <span class="s2">&quot;\t&quot;</span> <span class="se">\</span>
+    &gt; <span class="nv">$windowbed</span>
+
+<span class="c"># map data</span>
+<span class="nv">signalmap</span><span class="o">=</span>signal.map.bg
+bedtools map -a <span class="nv">$windowbed</span> <span class="se">\</span>
+    -b &lt;<span class="o">(</span>bigWigToBedGraph <span class="nv">$signal</span> stdout<span class="o">)</span> <span class="se">\</span>
+    -c <span class="m">4</span> -o mean -null <span class="m">0</span> <span class="se">\</span>
+    &gt; <span class="nv">$signalmap</span> 
+
+<span class="c"># group data</span>
+sort -t<span class="s1">$&#39;\t&#39;</span> -k5,5n <span class="nv">$signalmap</span> <span class="se">\</span>
+    <span class="p">|</span> bedtools groupby <span class="se">\</span>
+        -i - <span class="se">\</span>
+        -g <span class="m">5</span> -c <span class="m">6</span> -o sum <span class="se">\</span>
+        &gt; output.tab 
+</pre></div>
+</td></tr></table></div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Plotting<a class="headerlink" href="../../Classes/class-7.html#plotting" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Now we'll make a plot with R. Navigate to:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://amc-tesla.ucdenver.pvt/rstudio
+</pre></div>
+</div>
+<p>and login with your tesla credentials. You should see R Studio open up.
+Navigate to the directory where you did you work with the <cite>Files</cite> menu on
+the lower right, and then set the working directory with <cite>More</cite> --&gt; <cite>Set
+as Working Directory</cite>.</p>
+<p>Now make a plot!</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="o">&gt;</span> col.names <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;window&#39;</span><span class="p">,</span><span class="s">&#39;signal&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> df <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;output.tab&#39;</span><span class="p">,</span> col.names<span class="o">=</span>col.names<span class="p">)</span>
+
+<span class="c1"># coerce to numbers</span>
+<span class="o">&gt;</span> df<span class="o">$</span>signal <span class="o">&lt;-</span> <span class="kp">as.double</span><span class="p">(</span>df<span class="o">$</span>signal<span class="p">)</span>
+<span class="o">&gt;</span> qplot<span class="p">(</span>window<span class="p">,</span> signal<span class="p">,</span> data <span class="o">=</span> df<span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
