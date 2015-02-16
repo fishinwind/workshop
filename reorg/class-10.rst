@@ -1,5 +1,5 @@
 **************************************
-Class 19 : R : Manipulation & Plotting
+Class 10 : R : Manipulation & Plotting
 **************************************
 
 Goals

@@ -2,7 +2,7 @@
    http://matplotlib.org/sampledoc/ipython_directive.html
 
 *************************
-Class 7 : Python : Basics
+Class 15 : Python : Basics
 *************************
 
 :Class date: Monday 10 February 2014

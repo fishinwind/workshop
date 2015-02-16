@@ -11,7 +11,7 @@ Class list
    Classes/class-3
    Classes/class-4
    Classes/class-5
-..   Classes/class-6
+   Classes/class-6
 ..   Classes/class-7
 ..   Classes/class-8
 ..   Classes/class-9

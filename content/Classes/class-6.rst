@@ -1,349 +1,156 @@
-********************
-Class 6 : BEDtools
-********************
+*****************************************
+Class 6 : Genomic Data Vignette: ChIP-seq
+*****************************************
 
-:Class date: Thurs 14 Feb 2015 
-
-.. code-block:: bash
-
-    mkdir ~/learn-bedtools/
-    cd ~/learn-bedtools
-    cp ~/src/bedtools2/test/intersect/a.bed .
-    cp ~/src/bedtools2/test/intersect/b.bed .
-    wget http://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
-    wget http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
-
-Ask if you have trouble.
+:Class date: Thurs 12 Feb 2015
 
 Goals
 =====
 
-#. Ask Questions!
-#. Introduce the BEDTools suite of tools.
-#. Understand why using BEDTools is needed.
-#. Practice common operations on BED files with BEDTools.
+#. Learn workflows for analyzing ChIP-seq data 
 
-BEDTools Overview
-=================
+#. Derive DNA sequence motifs from ChIP-seq peaks 
 
-BEDTools will be one of the tools with the best return on investment. For
-example, to extract out **all genes that overlap a CpG island**:
+ENCODE
+======
+ 
+The Human Genome Project was finished, giving us a list of human genes and their 
+locations. Unfortunately, we still had no idea how they were regulated. If only 
+there was an `ENCyclopedia Of Dna Elements 
+<http://www.sciencemag.org.hsl-ezproxy.ucdenver.edu/content/306/5696/636.full>`_…
 
-.. code-block:: bash
+Advantages: massive amounts of information on key cell lines, reproducible 
+experiments, public data access, technology development.
 
-    $ bedtools intersect -u -a genes.hg19.bed.gz -b cpg.bed.gz \
-                                     > genes-in-islands.bed
+ENCODE Project Cell Lines
+=========================
 
-:ref:`intersect <bedtools:intersect>` is a bedtools tool. It follows a
-common pattern in bedtools that the query file is specified after the
-``-a`` flag and the *subject* file after the ``-b`` flag
+Tier 1: GM12878 (EBV-transformed lymphoblast), K562 (CML lymphoblast), H1-hESC
 
-BEDTools Utility
-================
+Tier 2: HeLa-S3 (cervical cancer), HepG2 (liver carcinoma), HUVEC (umbilical vein)
 
-Finding all overlaps between a pair of BED files naively in python would look like:
+Tier 2.5: SKNSH (neuroblastoma), IMR90 (lung fibroblast), A549 (lung carcinoma), 
+MCF7 (breast carcinoma), LHCN (myoblast), CD14+, CD20+
+ 
+`link <http://genome.ucsc.edu/ENCODE/cellTypes.html>`_ (this page also has very useful
+links to cell culture protocols)
 
-.. code-block:: python
+Experiments
+===========
 
-    for a in parse_bed('a.bed'):
-        for b in parse_bed('b.bed'):
-            if overlaps(a, b):
-                # do stuff
+#. ChIP-seq: Histone marks, transcription factors
 
-If *'a.bed'* has 10K entries and *'b.bed'* has 100K entries, this would
-involved checking for overlaps **1 billion times**. That will be slow.
+#. Chromatin structure: DNaseI-seq, FAIRE, 5C/Hi-C
 
-BEDTools uses an indexing scheme that reduces the number of tests
-dramatically.
+#. RNA expression: mRNA-seq, GENCODE gene predictions
 
-.. note::
-  
-  See the original BEDTools paper for more information:
-  http://bioinformatics.oxfordjournals.org/content/26/6/841.full
+#. Data Integration: Segway / ChromHMM integration of functional data
 
-BEDTools Utility (2)
-====================
+Common File Formats
+===================
 
-+ Fast: faster than intersect code you will write
-+ Terse: syntax is terse, but readable
-+ Formats: handles BED, VCF and GFF formats (gzip'ed or not)
-+ Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
-  etc. (likely to be bugs if you do code in manually)
++ FASTQ: Raw sequencing data. `[link] <http://maq.sourceforge.net/fastq.shtml>`
 
-BEDTools Commands
-=================
++ SAM/BAM: Aligned sequence data `[link] <http://samtools.github.io/hts-specs/SAMv1.pdf>`
 
-To see all available BEDTools commands, type
++ Bed/bigBed: List of genomic regions `[link] <http://genome.ucsc.edu/FAQ/FAQformat.html#format1>`
 
-.. code-block:: bash
++ Bedgraph/Wig/bigWig: Continuous signal `[link] <http://genome.ucsc.edu/goldenPath/help/bedgraph.html>` 
 
-    $ bedtools
+Many other formats are described on this `page <http://genome.ucsc.edu/FAQ/FAQformat.html>`_
 
-The most commonly used BEDtools are:
+References
+==========
 
-+ :ref:`intersect <bedtools:intersect>`
-+ :ref:`genomecov <bedtools:genomecov>`
-+ :ref:`closest <bedtools:closest>`
-+ :ref:`map <bedtools:map>`
+Completion of the entire project, and a ton of papers: 
+`Nature <http://www.nature.com/nature/journal/v489/n7414/index.html>`_, 
+`Genome Research <http://genome.cshlp.org/content/22/9.toc>`_, 
+`Genome Biology <http://genomebiology.com/content/13/9>`_, 
 
-BEDTools Documentation
-======================
+How to Access ENCODE Data
+=========================
 
-The BEDTools documentation is quite good and ever improving.
+The `ENCODE project page <https://www.encodeproject.org/>`_ is the portal
+to all of the ENCODE data.
 
-See the documentation for :ref:`intersect <bedtools:intersect>` with:
 
-.. code-block:: bash
+Chromatin Immunoprecipitation Overview
+======================================
 
-    $ bedtools intersect
+Chromatin Immunoprecipitation is used to determine where a protein of
+interest binds on a chromatin template [Park_Chipseq]_.
 
-The online HTML help is also good and includes pictures: 
- https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html
+.. [Park_Chipseq] http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html
 
-BEDTools intersect
-==================
-Have a browser window open to :ref:`BEDTools intersect documentation <bedtools:intersect>`.
-It will likely be the BEDTools function that you use the most. It has a lot of
-options.
+.. image:: ../_static/images/chip-workflow.png
 
-.. image:: http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png
+.. nextslide::
 
-"-v" means (like grep) include all intervals from `-a` that do not overlap
-intervals in `-b`
+.. image:: ../_static/images/chip-data.png
 
-Example Files
-=============
-
-.. code-block:: bash
-
-    $ cat a.bed 
-    chr1    10  20  a1  1   +
-    chr1    100 200 a2  2   -
-
-    $ cat b.bed 
-    chr1    20  30  b1  1   +
-    chr1    90  101 b2  2   -
-    chr1    100 110 b3  3   +
-    chr1    200 210 b4  4   +
-
-What will happen if you intersect those files?
-For example, the *a.bed* region `chr1:100-200` overlaps::
-
-    chr1:90-101 
-    chr1:100-110
-
-from *b.bed*
-
-intersect
-=========
-
-intersect with default arguments means **extract chunks of `-a` that overlap
-regions in `-b`**
-
-.. code-block:: bash
-
-    $ bedtools intersect -a a.bed -b b.bed
-    chr1    100 101 a2  2   -
-    chr1    100 110 a2  2   -
-
-Here is the original interval from *a.bed*::
-
-    chr1	100	200	a2	2	-
-
-And the overlapping intervals from *b.bed*::
-
-    chr1	90	101	b2	2	-
-    chr1	100	110	b3	3	+
-
-intersect -wa
-=============
-
-Often, we want the *entire interval from -a if it overlaps any interval in -b*
-
-.. code-block:: bash
-
-    $ bedtools intersect -a a.bed -b b.bed -wa
-    chr1    100 200 a2  2   -
-    chr1    100 200 a2  2   -
-
-We can get that uniquely with (-u)
-
-intersect -wo
-=============
-
-We can see which intervals in *-b* are associated with *-a*
-
-.. code-block:: bash
-
-    $ bedtools intersect -a a.bed -b b.bed -wo
-    chr1  100  200  a2  2  -  chr1  90  101  b2  2  -  1
-    chr1  100  200  a2  2  -  chr1  100  110  b3  3  +  10
-
-intersect exercise
-==================
-
-What happens if you reverse the arguments? E.g. instead of::
-
-  -a a.bed -b b.bed
-
-use::
-
-   -b a.bed -a b.bed
-
-Try that with no extra flags, with -u, -wa, -wo.
-
-How does it compare to the original?
-
-intersect -c
-============
-
-We can count overlaps for each interval in *-a* with those in *-b* with
-
-.. code-block:: bash
-
-    $ bedtools intersect -a a.bed -b b.bed -c
-    chr1	10	20	a1	1	+	0
-    chr1	100	200	a2	2	-	2
-
-This is our original `a.bed` with an **additional column indicating number of
-overlaps** with `b.bed`
-
-
-intersect -v
-============
-
-Extract intervals in `a.bed` that do not overlap any interval in `b.bed`
-
-.. code-block:: bash
-
-    $ bedtools intersect -a a.bed -b b.bed -v
-    chr1	10	20	a1	1	+
-
-Extract intervals in `b.bed` that do not overlap any interval in `a.bed`
-
-.. code-block:: bash
-
-    $ bedtools intersect -a b.bed -b a.bed -v
-    chr1	20	30	b1	1	+
-    chr1	200	210	b4	4	+
-
-Intersect Summary
-=================
-
-+ fragments of `a` that overlap `b`:
-  `intersect -a a.bed -b b.bed`
-+ complete regions of `a` that overlap `b`:
-  `intersect -a a.bed -b b.bed -u`
-+ intervals of `b` as well as `a`:
-  `intersect -a a.bed -b b.bed -wo`
-+ number of times each `a` overlaps `b`:
-  `intersect -a a.bed -b b.bed -c`
-+ intervals of `a` that do not overlap `b`:
-  `intersect -a a.bed -b b.bed -v`
-
-Exercises (Or Other Tools)
+ChIP-seq analysis workflow
 ==========================
 
-#. zless :download:`cpg.bed.gz <../misc/data/cpg.bed.gz>` and :download:`genes.hg19.bed.gz <../misc/data/genes.hg19.bed.gz>`
-#. Extract the fragment of CpG Islands that touch any gene [**24611**]
-#. Extract CpG's that do not touch any gene [**7012**]
-#. Extract (uniquely) all of each CpG Island that touches any gene [**21679**]
-#. Extract CpG's that are completely contained within a gene (look at the help
-   for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %). [**10714**]
-#. Report genes that overlap any CpG island. [**16908**]
-#. Report genes that overlap more than 1 CpG Island (use -c and awk). [**3703**].
+A general workflow for visualizing ChIP-seq data (and many other types of
+data) is:
 
-.. important::
+.. list-table::
+    :widths: 40 40
+    :header-rows: 1
 
-    as you are figuring these out, make sure to pipe the output to less or head
+    * - Operation
+      - File formats
+    * - Align reads to reference genome
+      - ``FASTQ ~~> BAM``
+    * - Generate coverage plots
+      - ``BAM ~~> bedGraph``
+    * - Call peaks 
+      - ``BAM ~~> BED``
+    * - Make binary files for UCSC display
+      - ``bedGraph ~~> bigWig``, ``BED ~~> bigBed``
+    * - Identify motifs
+      - ``BED ~~> FASTA ~~> TXT / HTML``
 
-Other Reading
+ChIP-seq data
 =============
 
-+ Check out the online `documentation <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_.
-+ A `tutorial <http://quinlanlab.org/tutorials/cshl2013/bedtools.html>`_ by the author of BEDTools
+Look at some human ChIP-seq data [#]_.
 
-Intersect Bam
-=============
+.. [#] Genome Browser Session
+       http://goo.gl/WfJxcM
 
-We have seen that `intersect <bedtools:intersect>` takes `-a` and `-b`
-arguments. It can also intersect against an alignment BAM file by using `-abam`
-in place of `-a`
+(We'll talk more in depth about ChIP-Seq workflows in the future,
+but for now, just a brief introdcution to a few commands you can use to
+work on ChIP-Seq data (and pset3)).
 
-e.g:
 
-.. code-block:: bash
+Peak calling
+============
 
-    $ bedtools intersect \
-        -abam experiment.bam \
-        -b target-regions.bed \
-        > on-target.bam
-
-Intersect Strand
-================
-
-From the `help <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_ ,
-one can see that intersect can consider strand. For example if both files have a
-strand field then
+There are several available software packages for identifying regions
+enriched in your IP experiment (i.e. peaks). We will use macs2 here.
 
 .. code-block:: bash
 
-    $ bedtools intersect -a a.bed -b b.bed -s
+    # minimal macs2 command 
+    $ macs2 callpeak --treatment <aln.bam> --name <exp.name> [options]
 
-Will only consider as overlapping those intervals in `a.bed` that have the same
-strand as `b.bed`.
+Identify sequence motifs in enriched regions
+============================================
 
-Closest
-=======
+You can use meme [#]_ to identify over-represented motifs in groups of
+sequences (e.g. sequences covered by ChIP peaks).
 
-with :ref:`intersect <bedtools:intersect>` we can only get overlapping
-intervals. :ref:`closest <bedtools:closest>` reports the nearest interval even
-if it's not overlapping. 
+Use the :ref:`bedtools getfasta <bedtools:getfasta>` command to fetch
+fasta sequences.
 
-Example: report the nearest CpG to each gene as long as it is within 5KB.
+Note: meme looks at both strands of a DNA sequence by default.
 
-.. code-block:: bash
-
-    bedtools closest \
-        -a genes.hg19.bed.gz \
-        -b cpg.bed.gz -d \
-        | awk '$NF <= 5000'
-
-Map
-===
-
-For each CpG print the sum of the values (4th column) of overlapping intervals from
-lamina.bed (and filter out those with no overlap using awk)
+.. [#] MEME 
+       http://meme.nbcr.net/meme/
 
 .. code-block:: bash
 
-    $ bedtools map \
-        -a cpg.bed.gz \
-        -b /vol1/opt/data/lamina.bed \
-        -c 4 -o sum \
-        | awk '$5 != "."'
+    $ bedtools getfasta -fi <ref.fa> -bed <peaks.bed> -fo peaks.fa
+    $ meme -nmotifs 5 -minw 6 -maxw 20 -dna <peaks.fa>
 
-Other *-o* perations include **min**, **max**, **mean**, **median**, **concat**
-
-Sorted
-======
-
-When you start dealing with larger data-files. Look at the `-sorted` flag.
-For example in :ref:`intersect <bedtools:intersect>`.
-
-+ Uses less memory
-+ Faster
-
-Takes advantage of sorted chromosome, positions in both files so it doesn't have
-to create an index.
-
-.. image:: http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png
-
-Genomecov
-=========
-
-Get coverage of intervals in BED by BAM 
-
-.. image:: https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png
-
-Usually want the last option `-bg -split`

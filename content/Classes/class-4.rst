@@ -1,6 +1,6 @@
-***************
- Class 4 : awk
-***************
+************************
+ Class 4 : grep and awk
+************************
 
 :Class date: Thurs 5 Feb 2015
 
@@ -8,7 +8,89 @@ Goals
 =====
 #. Review
 #. remember BED format (chr, start, end)
-#. learn awk basics to filter and manipulate text
+#. learn grep and awk basics to filter and manipulate text
+
+grep
+====
+Use :linuxman:`grep(1)` to identify lines in a file that match a specified pattern.
+
+To find any instance of *chr5* in the lamina.bed file
+
+.. code-block:: bash
+
+    # grep [pattern] [filename]
+    $ grep chr5 /vol1/opt/data/lamina.bed | head
+
+To find all lines that start with a number sign:
+
+.. code-block:: bash
+
+    # The caret (^) matches the beginning of the line
+    # FYI dollar sign ($) matches the end
+    $ grep '^#' /vol1/opt/data/lamina.bed
+
+.. nextslide::
+    :increment:
+
+To find any line that *does not* start with "chr":
+
+.. code-block:: bash
+
+    # the -v flag inverts the match (grep "not" [pattern])
+    $ grep -v '^chr' /vol1/opt/data/lamina.bed
+
+Beware of using ``grep`` to find patterns that might be partial matches:
+
+.. code-block:: bash
+
+    # this will match chr1, chr10, chr11 etc.
+    $ grep chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
+
+You can find exact matches that are split on words with the ``-w`` flag:
+
+.. code-block:: bash
+
+    # this will only match chr1
+    $ grep -w chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
+
+.. nextslide::
+    :increment:
+
+Beware of using ``grep`` to search for numbers:
+
+.. code-block:: bash
+
+    # finds all strings that match `100`
+    $ grep 100 /vol1/opt/data/lamina.bed | head -n 20
+
+    # better, but doesn't look at numeric value
+    $ grep -w 100 /vol1/opt/data/lamina.bed | head -n 20
+
+.. tip::
+
+    If you're trying to find numeric values in a file, use ``awk``
+    instead::
+
+        $ awk '$2 == 500' /vol1/opt/data/lamina.bed
+
+Exercises
+=========
+
+#. use ``grep`` to identify lines in lamina.bed where the second field
+   (start) begins with ``100``.
+
+#. use ``grep`` to identify lines in lamina.bed where the third field
+   (end) ends with 99 .
+
+#. use ``grep`` with its ``-w`` flag to count the number of 'chr1'
+   records in lamina.bed.
+
+#. use ``grep`` to count how many fastq records are in the
+   /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
+   '@' symbol)
+
+#. use ``grep`` to count the number of fastq records
+   in /vol1/opt/data/SP1.fq.gz
 
 awk
 ===
@@ -241,8 +323,8 @@ review
 + NR is line number; NF is number of fields;
 + BEGIN {} filter { action } END { }
 
-In Class Exercises - Class 4 (2)
-================================
+Exercises
+=========
 
 #. are there any regions in `lamina.bed` with start > end?
 
@@ -253,8 +335,10 @@ In Class Exercises - Class 4 (2)
 #. print out only the header and the entry for colorado in `states.tab`
 
 #. what is the (single-number) sum of all the incomes for `states.tab` with illiteracy rate:
-a. less than 0.1?
-b. greater than 2?
+
+    #. less than 0.1?
+
+    #. greater than 2?
 
 #. use NR to filter out the header from `lamina.bed` (hint: what is NR for the header?)
 
