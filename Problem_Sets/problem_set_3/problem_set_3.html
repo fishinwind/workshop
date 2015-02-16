@@ -174,13 +174,14 @@ binding sites (TFBS) with clustered DNase I peaks. (<strong>20 points</strong>)<
 <li>Identify transcription factor binding sites that do not overlap with
 DNase I hypersensitive sites.<ol class="arabic">
 <li>What transcription factors are represented in these regions? Analyze
-the BED file output to get this answer.</li>
+the BED file output to get this answer. Only analzye the first 500
+FASTA records to speed up runtime.</li>
 </ol>
 </li>
 <li>Do the converse: identify DNase I hypersensitive sites that do not have
 corresponding transcription factor peak calls.<ol class="arabic">
 <li>What motifs are enriched in this set of hypersensitive sites on
-chr22?</li>
+chr22? Only analzye the first 500 FASTA records to speed up runtime.</li>
 <li>How would you use existing tools to identify similar motifs, ideally
 ones that are previously associated with a transcription factor?</li>
 </ol>
@@ -216,7 +217,7 @@ each meme analysis.</strong></p>
     </p>
     <p>
         &copy; Copyright 2014, Jay Hesselberth.<br/>
-      Last updated on Feb 13, 2015.<br/>
+      Last updated on Feb 16, 2015.<br/>
     </p>
   </div>
 </footer>

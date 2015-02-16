@@ -218,6 +218,57 @@ keep notes and write small programs.</p>
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
+      <h2>Cluster access<a class="headerlink" href="../../Classes/class-1.html#cluster-access" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
+<span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
+
+...
+
+<span class="c"># once you are logged in, text your X11 connection with</span>
+<span class="nv">$ </span>xeyes
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Running jobs on the cluster<a class="headerlink" href="../../Classes/class-1.html#running-jobs-on-the-cluster" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>First you will grab a single CPU from the queueing system so that you can
+work without affecting the head node. We use <tt class="docutils literal"><span class="pre">qlogin</span></tt> for this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>jhessel@amc-tesla ~
+$ qlogin
+
+Job &lt;492536&gt; is submitted to queue &lt;interactive&gt;.
+&lt;&lt;ssh X11 forwarding job&gt;&gt;
+&lt;&lt;Waiting for dispatch ...&gt;&gt;
+&lt;&lt;Starting on compute00&gt;&gt;
+
+jhessel@compute00 ~
+$
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The host in the prompt changed from <tt class="docutils literal"><span class="pre">amc-tesla</span></tt> to <tt class="docutils literal"><span class="pre">compute00</span></tt>.</p>
+</div>
+<p>You can now execute long-running processes without worry of affecting the
+cluster. Type <tt class="docutils literal"><span class="pre">exit</span></tt> to return back to your head node login.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
       <h2>Shell and Python Programming<a class="headerlink" href="../../Classes/class-1.html#shell-and-python-programming" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">

@@ -216,6 +216,17 @@ set up your accounts at the end of class and reset your passwords:</p>
     <article class="">
       <p>There are some specific rules you need to know when you're operating in a
 cluster environment.</p>
+<p class="graphviz">
+<img src="../_images/graphviz-23b92947c32d4cd35df4fce8fa40a0148601675d.png" alt="digraph cluster {
+    &quot;YOU&quot; [shape=box];
+    &quot;amc-tesla&quot; [shape=box];
+    &quot;filesystem&quot; [shape=box];
+    &quot;compute nodes&quot; [shape=box];
+    &quot;YOU&quot; -&gt; &quot;amc-tesla&quot;;
+    &quot;amc-tesla&quot; -&gt; &quot;filesystem&quot;;
+    &quot;amc-tesla&quot; -&gt; &quot;compute nodes&quot;;
+}" />
+</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last"><strong>DO NOT</strong> run jobs on the head node (amc-tesla). The head node is the

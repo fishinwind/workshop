@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Class 4 : awk &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 4 : grep and awk &mdash; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
-    <link rel="next" title="Class 5 : The ENCODE Project" href="class-5.html" />
+    <link rel="next" title="Class 5 : BEDTools" href="class-5.html" />
     <link rel="prev" title="Class 3 : The command-line (part 2)" href="class-3.html" /> 
 
 <!-- Google Analytics tracking code -->
@@ -113,8 +113,10 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Class 4 : awk</a><ul>
+<li><a class="reference internal" href="#">Class 4 : grep and awk</a><ul>
 <li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#grep">grep</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
 <li><a class="reference internal" href="#awk">awk</a></li>
 <li><a class="reference internal" href="#basic-principles">basic principles</a></li>
 <li><a class="reference internal" href="#awk-program-structure">awk program structure</a></li>
@@ -132,7 +134,7 @@
 <li><a class="reference internal" href="#advanced-awk">advanced awk</a></li>
 <li><a class="reference internal" href="#in-class-exercises-class-4">In Class Exercises - Class 4</a></li>
 <li><a class="reference internal" href="#review">review</a></li>
-<li><a class="reference internal" href="#in-class-exercises-class-4-2">In Class Exercises - Class 4 (2)</a></li>
+<li><a class="reference internal" href="#id2">Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -141,8 +143,8 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="class-4-awk">
-<h1>Class 4 : awk<a class="headerlink" href="#class-4-awk" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-4.html#class-4-awk" title="Slides">§</a></h1>
+  <div class="section" id="class-4-grep-and-awk">
+<h1>Class 4 : grep and awk<a class="headerlink" href="#class-4-grep-and-awk" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-4.html#class-4-grep-and-awk" title="Slides">§</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -156,7 +158,69 @@
 <ol class="arabic simple">
 <li>Review</li>
 <li>remember BED format (chr, start, end)</li>
-<li>learn awk basics to filter and manipulate text</li>
+<li>learn grep and awk basics to filter and manipulate text</li>
+</ol>
+</div>
+<div class="section" id="grep">
+<h2>grep<a class="headerlink" href="#grep" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-4.html#grep" title="Slides">§</a></h2>
+<p>Use <a class="reference external" href="http://linux.die.net/man/1/grep">grep(1)</a> to identify lines in a file that match a specified pattern.</p>
+<p>To find any instance of <em>chr5</em> in the lamina.bed file</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># grep [pattern] [filename]</span>
+<span class="nv">$ </span>grep chr5 /vol1/opt/data/lamina.bed <span class="p">|</span> head
+</pre></div>
+</div>
+<p>To find all lines that start with a number sign:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># The caret (^) matches the beginning of the line</span>
+<span class="c"># FYI dollar sign ($) matches the end</span>
+<span class="nv">$ </span>grep <span class="s1">&#39;^#&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>To find any line that <em>does not</em> start with &#8220;chr&#8221;:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -v flag inverts the match (grep &quot;not&quot; [pattern])</span>
+<span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>Beware of using <tt class="docutils literal"><span class="pre">grep</span></tt> to find patterns that might be partial matches:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will match chr1, chr10, chr11 etc.</span>
+<span class="nv">$ </span>grep chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+</pre></div>
+</div>
+<p>You can find exact matches that are split on words with the <tt class="docutils literal"><span class="pre">-w</span></tt> flag:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will only match chr1</span>
+<span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+</pre></div>
+</div>
+<p>Beware of using <tt class="docutils literal"><span class="pre">grep</span></tt> to search for numbers:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># finds all strings that match `100`</span>
+<span class="nv">$ </span>grep <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
+
+<span class="c"># better, but doesn&#39;t look at numeric value</span>
+<span class="nv">$ </span>grep -w <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>If you&#8217;re trying to find numeric values in a file, use <tt class="docutils literal"><span class="pre">awk</span></tt>
+instead:</p>
+<div class="last highlight-python"><div class="highlight"><pre>$ awk &#39;$2 == 500&#39; /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-4.html#exercises" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to identify lines in lamina.bed where the second field
+(start) begins with <tt class="docutils literal"><span class="pre">100</span></tt>.</li>
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to identify lines in lamina.bed where the third field
+(end) ends with 99 .</li>
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> with its <tt class="docutils literal"><span class="pre">-w</span></tt> flag to count the number of &#8216;chr1&#8217;
+records in lamina.bed.</li>
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to count how many fastq records are in the
+/vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
+&#8216;&#64;&#8217; symbol)</li>
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to count the number of fastq records
+in /vol1/opt/data/SP1.fq.gz</li>
 </ol>
 </div>
 <div class="section" id="awk">
@@ -370,19 +434,27 @@ the same number of columns?</li>
 <li>BEGIN {} filter { action } END { }</li>
 </ul>
 </div>
-<div class="section" id="in-class-exercises-class-4-2">
-<h2>In Class Exercises - Class 4 (2)<a class="headerlink" href="#in-class-exercises-class-4-2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-4.html#in-class-exercises-class-4-2" title="Slides">§</a></h2>
-<ol class="arabic simple">
-<li>are there any regions in <cite>lamina.bed</cite> with start &gt; end?</li>
-<li>what is the total coverage [sum of (end - start)] of regions on chr13 in <cite>lamina.bed</cite>?</li>
-<li>what is the mean value (4th column) on chromome 3 of <cite>lamina.bed</cite></li>
-<li>print out only the header and the entry for colorado in <cite>states.tab</cite></li>
+<div class="section" id="id2">
+<h2>Exercises<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-4.html#id2" title="Slides">§</a></h2>
+<ol class="arabic">
+<li><p class="first">are there any regions in <cite>lamina.bed</cite> with start &gt; end?</p>
+</li>
+<li><p class="first">what is the total coverage [sum of (end - start)] of regions on chr13 in <cite>lamina.bed</cite>?</p>
+</li>
+<li><p class="first">what is the mean value (4th column) on chromome 3 of <cite>lamina.bed</cite></p>
+</li>
+<li><p class="first">print out only the header and the entry for colorado in <cite>states.tab</cite></p>
+</li>
+<li><p class="first">what is the (single-number) sum of all the incomes for <cite>states.tab</cite> with illiteracy rate:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>less than 0.1?</li>
+<li>greater than 2?</li>
 </ol>
-<p>#. what is the (single-number) sum of all the incomes for <cite>states.tab</cite> with illiteracy rate:
-a. less than 0.1?
-b. greater than 2?</p>
-<ol class="arabic simple">
-<li>use NR to filter out the header from <cite>lamina.bed</cite> (hint: what is NR for the header?)</li>
+</div></blockquote>
+</li>
+<li><p class="first">use NR to filter out the header from <cite>lamina.bed</cite> (hint: what is NR for the header?)</p>
+</li>
 </ol>
 </div>
 </div>
@@ -407,7 +479,7 @@ b. greater than 2?</p>
     </p>
     <p>
         &copy; Copyright 2014, Jay Hesselberth.<br/>
-      Last updated on Feb 03, 2015.<br/>
+      Last updated on Feb 16, 2015.<br/>
     </p>
   </div>
 </footer>

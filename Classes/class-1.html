@@ -118,6 +118,8 @@
 <li><a class="reference internal" href="#class-overview">Class Overview</a></li>
 <li><a class="reference internal" href="#linux-installations">Linux installations</a></li>
 <li><a class="reference internal" href="#terminal-and-text-editors">Terminal and text editors</a></li>
+<li><a class="reference internal" href="#cluster-access">Cluster access</a></li>
+<li><a class="reference internal" href="#running-jobs-on-the-cluster">Running jobs on the cluster</a></li>
 <li><a class="reference internal" href="#shell-and-python-programming">Shell and Python Programming</a></li>
 <li><a class="reference internal" href="#first-quiz-reading">First Quiz : Reading</a></li>
 </ul>
@@ -214,6 +216,43 @@ keep notes and write small programs.</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="cluster-access">
+<h2>Cluster access<a class="headerlink" href="#cluster-access" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-1.html#cluster-access" title="Slides">§</a></h2>
+<p>We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
+<span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
+
+...
+
+<span class="c"># once you are logged in, text your X11 connection with</span>
+<span class="nv">$ </span>xeyes
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-jobs-on-the-cluster">
+<h2>Running jobs on the cluster<a class="headerlink" href="#running-jobs-on-the-cluster" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-1.html#running-jobs-on-the-cluster" title="Slides">§</a></h2>
+<p>First you will grab a single CPU from the queueing system so that you can
+work without affecting the head node. We use <tt class="docutils literal"><span class="pre">qlogin</span></tt> for this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>jhessel@amc-tesla ~
+$ qlogin
+
+Job &lt;492536&gt; is submitted to queue &lt;interactive&gt;.
+&lt;&lt;ssh X11 forwarding job&gt;&gt;
+&lt;&lt;Waiting for dispatch ...&gt;&gt;
+&lt;&lt;Starting on compute00&gt;&gt;
+
+jhessel@compute00 ~
+$
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The host in the prompt changed from <tt class="docutils literal"><span class="pre">amc-tesla</span></tt> to <tt class="docutils literal"><span class="pre">compute00</span></tt>.</p>
+</div>
+<p>You can now execute long-running processes without worry of affecting the
+cluster. Type <tt class="docutils literal"><span class="pre">exit</span></tt> to return back to your head node login.</p>
+</div>
 <div class="section" id="shell-and-python-programming">
 <h2>Shell and Python Programming<a class="headerlink" href="#shell-and-python-programming" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-1.html#shell-and-python-programming" title="Slides">§</a></h2>
 <p>It is important that you learn a few new computer languages. Others have
@@ -283,7 +322,7 @@ PLoS Comput. Biol. William S. Noble
     </p>
     <p>
         &copy; Copyright 2014, Jay Hesselberth.<br/>
-      Last updated on Feb 13, 2015.<br/>
+      Last updated on Feb 16, 2015.<br/>
     </p>
   </div>
 </footer>

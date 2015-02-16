@@ -1,0 +1,586 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 13 : BEDtools &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 14 : ChIP-seq" href="class-14.html" />
+    <link rel="prev" title="Class 12 : The ENCODE Project" href="class-12.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 13 : BEDtools<a class="headerlink" href="../../Classes/class-13.html#class-13-bedtools" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Wed 2014 Feb 26</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir ~/learn-bedtools/
+<span class="nb">cd</span> ~/learn-bedtools
+cp ~/src/bedtools2/test/intersect/a.bed .
+cp ~/src/bedtools2/test/intersect/b.bed .
+wget http://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
+wget http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
+</pre></div>
+</div>
+<p>Ask if you have trouble.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-13.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Ask Questions!</li>
+<li>Introduce the BEDTools suite of tools.</li>
+<li>Understand why using BEDTools is needed.</li>
+<li>Practice common operations on BED files with BEDTools.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>BEDTools Overview<a class="headerlink" href="../../Classes/class-13.html#bedtools-overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>BEDTools will be one of the tools with the best return on investment. For
+example, to extract out <strong>all genes that overlap a CpG island</strong>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -u -a genes.hg19.bed.gz -b cpg.bed.gz <span class="se">\</span>
+                                 &gt; genes-in-islands.bed
+</pre></div>
+</div>
+<p><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.0)"><em class="xref std std-ref">intersect</em></a> is a bedtools tool. It follows a
+common pattern in bedtools that the query file is specified after the
+<tt class="docutils literal"><span class="pre">-a</span></tt> flag and the <em>subject</em> file after the <tt class="docutils literal"><span class="pre">-b</span></tt> flag</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>BEDTools Utility<a class="headerlink" href="../../Classes/class-13.html#bedtools-utility" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Finding all overlaps between a pair of BED files naively in python would look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">overlaps</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+            <span class="c"># do stuff</span>
+</pre></div>
+</div>
+<p>If <em>'a.bed'</em> has 10K entries and <em>'b.bed'</em> has 100K entries, this would involved
+checking for overlaps <strong>1 billion times</strong>. That will be slow.</p>
+<p>BEDTools uses an indexing scheme that reduces the number of tests
+dramatically.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">See the original BEDTools paper for more information:
+<a class="reference external" href="http://bioinformatics.oxfordjournals.org/content/26/6/841.full">http://bioinformatics.oxfordjournals.org/content/26/6/841.full</a></p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>BEDTools Utility (2)<a class="headerlink" href="../../Classes/class-13.html#bedtools-utility-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Fast: faster than intersect code you will write</li>
+<li>Terse: syntax is terse, but readable</li>
+<li>Formats: handles BED, VCF and GFF formats (gzip'ed or not)</li>
+<li>Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
+etc. (likely to be bugs if you do code in manually)</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>BEDTools Commands<a class="headerlink" href="../../Classes/class-13.html#bedtools-commands" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>To see all available BEDTools commands, type</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools
+</pre></div>
+</div>
+<p>The most commonly used BEDtools are:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.0)"><em class="xref std std-ref">intersect</em></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/genomecov.html#genomecov" title="(in bedtools v2.22.0)"><em class="xref std std-ref">genomecov</em></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.0)"><em class="xref std std-ref">closest</em></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.22.0)"><em class="xref std std-ref">map</em></a></li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>BEDTools Documentation<a class="headerlink" href="../../Classes/class-13.html#bedtools-documentation" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The BEDTools documentation is quite good and ever improving.</p>
+<p>See the documentation for <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.0)"><em class="xref std std-ref">intersect</em></a> with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>The online HTML help is also good and includes pictures:</dt>
+<dd><a class="reference external" href="https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html">https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html</a></dd>
+</dl>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>BEDTools intersect<a class="headerlink" href="../../Classes/class-13.html#bedtools-intersect" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Have a browser window open to <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.0)"><em class="xref std std-ref">BEDTools intersect documentation</em></a>.
+It will likely be the BEDTools function that you use the most. It has a lot of
+options.</p>
+<img alt="http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png" src="http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png" />
+<p>&quot;-v&quot; means (like grep) include all intervals from <cite>-a</cite> that do not overlap
+intervals in <cite>-b</cite></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Example Files<a class="headerlink" href="../../Classes/class-13.html#example-files" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cat a.bed
+chr1    <span class="m">10</span>  <span class="m">20</span>  a1  <span class="m">1</span>   +
+chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m">2</span>   -
+
+<span class="nv">$ </span>cat b.bed
+chr1    <span class="m">20</span>  <span class="m">30</span>  b1  <span class="m">1</span>   +
+chr1    <span class="m">90</span>  <span class="m">101</span> b2  <span class="m">2</span>   -
+chr1    <span class="m">100</span> <span class="m">110</span> b3  <span class="m">3</span>   +
+chr1    <span class="m">200</span> <span class="m">210</span> b4  <span class="m">4</span>   +
+</pre></div>
+</div>
+<p>What will happen if you intersect those files?
+For example, the <em>a.bed</em> region <cite>chr1:100-200</cite> overlaps:</p>
+<div class="highlight-python"><div class="highlight"><pre>chr1:90-101
+chr1:100-110
+</pre></div>
+</div>
+<p>from <em>b.bed</em></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>intersect<a class="headerlink" href="../../Classes/class-13.html#intersect" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>intersect with default arguments means <strong>extract chunks of `-a` that overlap
+regions in `-b`</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed
+chr1    <span class="m">100</span> <span class="m">101</span> a2  <span class="m">2</span>   -
+chr1    <span class="m">100</span> <span class="m">110</span> a2  <span class="m">2</span>   -
+</pre></div>
+</div>
+<p>Here is the original interval from <em>a.bed</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre>chr1        100     200     a2      2       -
+</pre></div>
+</div>
+<p>And the overlapping intervals from <em>b.bed</em>:</p>
+<div class="highlight-python"><div class="highlight"><pre>chr1        90      101     b2      2       -
+chr1        100     110     b3      3       +
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>intersect -wa<a class="headerlink" href="../../Classes/class-13.html#intersect-wa" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Often, we want the <em>entire interval from -a if it overlaps any interval in -b</em></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -wa
+chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m">2</span>   -
+chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m">2</span>   -
+</pre></div>
+</div>
+<p>We can get that uniquely with (-u)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>intersect -wo<a class="headerlink" href="../../Classes/class-13.html#intersect-wo" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We can see which intervals in <em>-b</em> are associated with <em>-a</em></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -wo
+chr1  <span class="m">100</span>  <span class="m">200</span>  a2  <span class="m">2</span>  -  chr1  <span class="m">90</span>  <span class="m">101</span>  b2  <span class="m">2</span>  -  1
+chr1  <span class="m">100</span>  <span class="m">200</span>  a2  <span class="m">2</span>  -  chr1  <span class="m">100</span>  <span class="m">110</span>  b3  <span class="m">3</span>  +  10
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>intersect exercise<a class="headerlink" href="../../Classes/class-13.html#intersect-exercise" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>What happens if you reverse the arguments? E.g. instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre>-a a.bed -b b.bed
+</pre></div>
+</div>
+<p>use:</p>
+<div class="highlight-python"><div class="highlight"><pre>-b a.bed -a b.bed
+</pre></div>
+</div>
+<p>Try that with no extra flags, with -u, -wa, -wo.</p>
+<p>How does it compare to the original?</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>intersect -c<a class="headerlink" href="../../Classes/class-13.html#intersect-c" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We can count overlaps for each interval in <em>-a</em> with those in <em>-b</em> with</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -c
+chr1        <span class="m">10</span>      <span class="m">20</span>      a1      <span class="m">1</span>       +       0
+chr1        <span class="m">100</span>     <span class="m">200</span>     a2      <span class="m">2</span>       -       2
+</pre></div>
+</div>
+<p>This is our original <cite>a.bed</cite> with an <strong>additional column indicating number of
+overlaps</strong> with <cite>b.bed</cite></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>intersect -v<a class="headerlink" href="../../Classes/class-13.html#intersect-v" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Extract intervals in <cite>a.bed</cite> that do not overlap any interval in <cite>b.bed</cite></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -v
+chr1        <span class="m">10</span>      <span class="m">20</span>      a1      <span class="m">1</span>       +
+</pre></div>
+</div>
+<p>Extract intervals in <cite>b.bed</cite> that do not overlap any interval in <cite>a.bed</cite></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a b.bed -b a.bed -v
+chr1        <span class="m">20</span>      <span class="m">30</span>      b1      <span class="m">1</span>       +
+chr1        <span class="m">200</span>     <span class="m">210</span>     b4      <span class="m">4</span>       +
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Intersect Summary<a class="headerlink" href="../../Classes/class-13.html#intersect-summary" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>fragments of <cite>a</cite> that overlap <cite>b</cite>:
+<cite>intersect -a a.bed -b b.bed</cite></li>
+<li>complete regions of <cite>a</cite> that overlap <cite>b</cite>:
+<cite>intersect -a a.bed -b b.bed -u</cite></li>
+<li>intervals of <cite>b</cite> as well as <cite>a</cite>:
+<cite>intersect -a a.bed -b b.bed -wo</cite></li>
+<li>number of times each <cite>a</cite> overlaps <cite>b</cite>:
+<cite>intersect -a a.bed -b b.bed -c</cite></li>
+<li>intervals of <cite>a</cite> that do not overlap <cite>b</cite>:
+<cite>intersect -a a.bed -b b.bed -v</cite></li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Exercises (Or Other Tools)<a class="headerlink" href="../../Classes/class-13.html#exercises-or-other-tools" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>zless <a class="reference download internal" href="../_downloads/cpg.bed.gz"><tt class="xref download docutils literal"><span class="pre">cpg.bed.gz</span></tt></a> and <a class="reference download internal" href="../_downloads/genes.hg19.bed.gz"><tt class="xref download docutils literal"><span class="pre">genes.hg19.bed.gz</span></tt></a></li>
+<li>Extract the fragment of CpG Islands that touch any gene [<strong>24611</strong>]</li>
+<li>Extract CpG's that do not touch any gene [<strong>7012</strong>]</li>
+<li>Extract (uniquely) all of each CpG Island that touches any gene [<strong>21679</strong>]</li>
+<li>Extract CpG's that are completely contained within a gene (look at the help
+for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %). [<strong>10714</strong>]</li>
+<li>Report genes that overlap any CpG island. [<strong>16908</strong>]</li>
+<li>Report genes that overlap more than 1 CpG Island (use -c and awk). [<strong>3703</strong>].</li>
+</ol>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">as you are figuring these out, make sure to pipe the output to less or head</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Other Reading<a class="headerlink" href="../../Classes/class-13.html#other-reading" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Check out the online <a class="reference external" href="https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html">documentation</a>.</li>
+<li>A <a class="reference external" href="http://quinlanlab.org/tutorials/cshl2013/bedtools.html">tutorial</a> by the author of BEDTools</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Intersect Bam<a class="headerlink" href="../../Classes/class-13.html#intersect-bam" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We have seen that <cite>intersect &lt;bedtools:intersect&gt;</cite> takes <cite>-a</cite> and <cite>-b</cite>
+arguments. It can also intersect against an alignment BAM file by using <cite>-abam</cite>
+in place of <cite>-a</cite></p>
+<p>e.g:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect <span class="se">\</span>
+    -abam experiment.bam <span class="se">\</span>
+    -b target-regions.bed <span class="se">\</span>
+    &gt; on-target.bam
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Intersect Strand<a class="headerlink" href="../../Classes/class-13.html#intersect-strand" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>From the <a class="reference external" href="https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html">help</a> ,
+one can see that intersect can consider strand. For example if both files have a
+strand field then</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -s
+</pre></div>
+</div>
+<p>Will only consider as overlapping those intervals in <cite>a.bed</cite> that have the same
+strand as <cite>b.bed</cite>.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Closest<a class="headerlink" href="../../Classes/class-13.html#closest" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.0)"><em class="xref std std-ref">intersect</em></a> we can only get overlapping
+intervals. <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.0)"><em class="xref std std-ref">closest</em></a> reports the nearest interval even
+if it's not overlapping.</p>
+<p>Example: report the nearest CpG to each gene as long as it is within 5KB.</p>
+<div class="highlight-bash"><div class="highlight"><pre>bedtools closest <span class="se">\</span>
+    -a genes.hg19.bed.gz <span class="se">\</span>
+    -b cpg.bed.gz -d <span class="se">\</span>
+    <span class="p">|</span> awk <span class="s1">&#39;$NF &lt;= 5000&#39;</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Map<a class="headerlink" href="../../Classes/class-13.html#map" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>For each CpG print the sum of the values (4th column) of overlapping intervals from
+lamina.bed (and filter out those with no overlap using awk)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools map <span class="se">\</span>
+    -a cpg.bed.gz <span class="se">\</span>
+    -b /opt/bio-workshop/data/lamina.bed <span class="se">\</span>
+    -c <span class="m">4</span> -o sum <span class="se">\</span>
+    <span class="p">|</span> awk <span class="s1">&#39;$5 != &quot;.&quot;&#39;</span>
+</pre></div>
+</div>
+<p>Other <em>-o</em> perations include <strong>min</strong>, <strong>max</strong>, <strong>mean</strong>, <strong>median</strong>, <strong>concat</strong></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Sorted<a class="headerlink" href="../../Classes/class-13.html#sorted" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>When you start dealing with larger data-files. Look at the <cite>-sorted</cite> flag.
+For example in <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.0)"><em class="xref std std-ref">intersect</em></a>.</p>
+<ul class="simple">
+<li>Uses less memory</li>
+<li>Faster</li>
+</ul>
+<p>Takes advantage of sorted chromosome, positions in both files so it doesn't have
+to create an index.</p>
+<img alt="http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png" src="http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Genomecov<a class="headerlink" href="../../Classes/class-13.html#genomecov" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Get coverage of intervals in BED by BAM</p>
+<img alt="https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png" src="https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png" />
+<p>Usually want the last option <cite>-bg -split</cite></p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

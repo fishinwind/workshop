@@ -90,6 +90,50 @@ Practice using `vim` with this tutorial [#]_.
 
 .. [#] OpenVim http://www.openvim.com/ 
 
+Cluster access
+==============
+We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords:
+
+.. code-block:: bash
+
+    # the -X flag starts an X11 connection 
+    $ ssh -X username@amc-tesla.ucdenver.pvt
+
+    ...
+
+    # once you are logged in, text your X11 connection with
+    $ xeyes
+
+Running jobs on the cluster
+===========================
+First you will grab a single CPU from the queueing system so that you can
+work without affecting the head node. We use ``qlogin`` for this:
+
+.. code-block:: bash
+
+    jhessel@amc-tesla ~
+    $ qlogin 
+
+    Job <492536> is submitted to queue <interactive>.
+    <<ssh X11 forwarding job>>
+    <<Waiting for dispatch ...>>
+    <<Starting on compute00>>
+
+    jhessel@compute00 ~
+    $ 
+
+.. note:: 
+
+    The host in the prompt changed from ``amc-tesla`` to ``compute00``.
+    
+You can now execute long-running processes without worry of affecting the
+cluster. Type ``exit`` to return back to your head node login.
+
+.. nextslide::
+    :increment: 
+
+
 Shell and Python Programming
 ============================
 It is important that you learn a few new computer languages. Others have

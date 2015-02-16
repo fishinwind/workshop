@@ -10,7 +10,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 <html>
 <head>
-  <title>Class 6 : BEDtools &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <title>Class 6 : Genomic Data Vignette: ChIP-seq &mdash; Genome Analysis Workshop 0.2 documentation</title>
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -51,8 +51,8 @@ URL: https://code.google.com/p/io-2012-slides
     
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
-    <link rel="next" title="Problem Sets" href="../Problem_Sets.html" />
-    <link rel="prev" title="Class 5 : Working with genomic data" href="class-5.html" /> 
+    <link rel="next" title="BEDTools vignette" href="class-7.html" />
+    <link rel="prev" title="Class 5 : BEDTools" href="class-5.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -86,26 +86,17 @@ URL: https://code.google.com/p/io-2012-slides
   
     <slide class="level-1">
     <hgroup>
-      <h1>Class 6 : BEDtools<a class="headerlink" href="../../Classes/class-6.html#class-6-bedtools" title="View HTML">§</a></h1>
+      <h1>Class 6 : Genomic Data Vignette: ChIP-seq<a class="headerlink" href="../../Classes/class-6.html#class-6-genomic-data-vignette-chip-seq" title="View HTML">§</a></h1>
     </hgroup>
     <article class="">
       <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Thurs 14 Feb 2015</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Thurs 12 Feb 2015</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-bash"><div class="highlight"><pre>mkdir ~/learn-bedtools/
-<span class="nb">cd</span> ~/learn-bedtools
-cp ~/src/bedtools2/test/intersect/a.bed .
-cp ~/src/bedtools2/test/intersect/b.bed .
-wget http://ucd-bioworkshop.github.io/_downloads/cpg.bed.gz
-wget http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
-</pre></div>
-</div>
-<p>Ask if you have trouble.</p>
 
 
 
@@ -117,10 +108,8 @@ wget http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
     </hgroup>
     <article class="">
       <ol class="arabic simple">
-<li>Ask Questions!</li>
-<li>Introduce the BEDTools suite of tools.</li>
-<li>Understand why using BEDTools is needed.</li>
-<li>Practice common operations on BED files with BEDTools.</li>
+<li>Learn workflows for analyzing ChIP-seq data</li>
+<li>Derive DNA sequence motifs from ChIP-seq peaks</li>
 </ol>
 
 
@@ -129,18 +118,14 @@ wget http://ucd-bioworkshop.github.io/_downloads/genes.hg19.bed.gz
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>BEDTools Overview<a class="headerlink" href="../../Classes/class-6.html#bedtools-overview" title="View HTML">§</a></h2>
+      <h2>ENCODE<a class="headerlink" href="../../Classes/class-6.html#encode" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>BEDTools will be one of the tools with the best return on investment. For
-example, to extract out <strong>all genes that overlap a CpG island</strong>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -u -a genes.hg19.bed.gz -b cpg.bed.gz <span class="se">\</span>
-                                 &gt; genes-in-islands.bed
-</pre></div>
-</div>
-<p><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a> is a bedtools tool. It follows a
-common pattern in bedtools that the query file is specified after the
-<tt class="docutils literal"><span class="pre">-a</span></tt> flag and the <em>subject</em> file after the <tt class="docutils literal"><span class="pre">-b</span></tt> flag</p>
+      <p>The Human Genome Project was finished, giving us a list of human genes and their
+locations. Unfortunately, we still had no idea how they were regulated. If only
+there was an <a class="reference external" href="http://www.sciencemag.org.hsl-ezproxy.ucdenver.edu/content/306/5696/636.full">ENCyclopedia Of Dna Elements</a>…</p>
+<p>Advantages: massive amounts of information on key cell lines, reproducible
+experiments, public data access, technology development.</p>
 
 
 
@@ -148,25 +133,15 @@ common pattern in bedtools that the query file is specified after the
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>BEDTools Utility<a class="headerlink" href="../../Classes/class-6.html#bedtools-utility" title="View HTML">§</a></h2>
+      <h2>ENCODE Project Cell Lines<a class="headerlink" href="../../Classes/class-6.html#encode-project-cell-lines" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Finding all overlaps between a pair of BED files naively in python would look like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="s">&#39;a.bed&#39;</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="s">&#39;b.bed&#39;</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">overlaps</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-            <span class="c"># do stuff</span>
-</pre></div>
-</div>
-<p>If <em>'a.bed'</em> has 10K entries and <em>'b.bed'</em> has 100K entries, this would
-involved checking for overlaps <strong>1 billion times</strong>. That will be slow.</p>
-<p>BEDTools uses an indexing scheme that reduces the number of tests
-dramatically.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">See the original BEDTools paper for more information:
-<a class="reference external" href="http://bioinformatics.oxfordjournals.org/content/26/6/841.full">http://bioinformatics.oxfordjournals.org/content/26/6/841.full</a></p>
-</div>
+      <p>Tier 1: GM12878 (EBV-transformed lymphoblast), K562 (CML lymphoblast), H1-hESC</p>
+<p>Tier 2: HeLa-S3 (cervical cancer), HepG2 (liver carcinoma), HUVEC (umbilical vein)</p>
+<p>Tier 2.5: SKNSH (neuroblastoma), IMR90 (lung fibroblast), A549 (lung carcinoma),
+MCF7 (breast carcinoma), LHCN (myoblast), CD14+, CD20+</p>
+<p><a class="reference external" href="http://genome.ucsc.edu/ENCODE/cellTypes.html">link</a> (this page also has very useful
+links to cell culture protocols)</p>
 
 
 
@@ -174,264 +149,15 @@ dramatically.</p>
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>BEDTools Utility (2)<a class="headerlink" href="../../Classes/class-6.html#bedtools-utility-2" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <ul class="simple">
-<li>Fast: faster than intersect code you will write</li>
-<li>Terse: syntax is terse, but readable</li>
-<li>Formats: handles BED, VCF and GFF formats (gzip'ed or not)</li>
-<li>Special Cases: handles stranded-ness, 1-base overlaps, abutted intervals,
-etc. (likely to be bugs if you do code in manually)</li>
-</ul>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>BEDTools Commands<a class="headerlink" href="../../Classes/class-6.html#bedtools-commands" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>To see all available BEDTools commands, type</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools
-</pre></div>
-</div>
-<p>The most commonly used BEDtools are:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/genomecov.html#genomecov" title="(in bedtools v2.22.1)"><em class="xref std std-ref">genomecov</em></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.1)"><em class="xref std std-ref">closest</em></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.22.1)"><em class="xref std std-ref">map</em></a></li>
-</ul>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>BEDTools Documentation<a class="headerlink" href="../../Classes/class-6.html#bedtools-documentation" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>The BEDTools documentation is quite good and ever improving.</p>
-<p>See the documentation for <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a> with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>The online HTML help is also good and includes pictures:</dt>
-<dd><a class="reference external" href="https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html">https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html</a></dd>
-</dl>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>BEDTools intersect<a class="headerlink" href="../../Classes/class-6.html#bedtools-intersect" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Have a browser window open to <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">BEDTools intersect documentation</em></a>.
-It will likely be the BEDTools function that you use the most. It has a lot of
-options.</p>
-<img alt="http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png" src="http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png" />
-<p>&quot;-v&quot; means (like grep) include all intervals from <cite>-a</cite> that do not overlap
-intervals in <cite>-b</cite></p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Example Files<a class="headerlink" href="../../Classes/class-6.html#example-files" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cat a.bed
-chr1    <span class="m">10</span>  <span class="m">20</span>  a1  <span class="m">1</span>   +
-chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m">2</span>   -
-
-<span class="nv">$ </span>cat b.bed
-chr1    <span class="m">20</span>  <span class="m">30</span>  b1  <span class="m">1</span>   +
-chr1    <span class="m">90</span>  <span class="m">101</span> b2  <span class="m">2</span>   -
-chr1    <span class="m">100</span> <span class="m">110</span> b3  <span class="m">3</span>   +
-chr1    <span class="m">200</span> <span class="m">210</span> b4  <span class="m">4</span>   +
-</pre></div>
-</div>
-<p>What will happen if you intersect those files?
-For example, the <em>a.bed</em> region <cite>chr1:100-200</cite> overlaps:</p>
-<div class="highlight-python"><div class="highlight"><pre>chr1:90-101
-chr1:100-110
-</pre></div>
-</div>
-<p>from <em>b.bed</em></p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>intersect<a class="headerlink" href="../../Classes/class-6.html#intersect" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>intersect with default arguments means <strong>extract chunks of `-a` that overlap
-regions in `-b`</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed
-chr1    <span class="m">100</span> <span class="m">101</span> a2  <span class="m">2</span>   -
-chr1    <span class="m">100</span> <span class="m">110</span> a2  <span class="m">2</span>   -
-</pre></div>
-</div>
-<p>Here is the original interval from <em>a.bed</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre>chr1        100     200     a2      2       -
-</pre></div>
-</div>
-<p>And the overlapping intervals from <em>b.bed</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre>chr1        90      101     b2      2       -
-chr1        100     110     b3      3       +
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>intersect -wa<a class="headerlink" href="../../Classes/class-6.html#intersect-wa" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Often, we want the <em>entire interval from -a if it overlaps any interval in -b</em></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -wa
-chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m">2</span>   -
-chr1    <span class="m">100</span> <span class="m">200</span> a2  <span class="m">2</span>   -
-</pre></div>
-</div>
-<p>We can get that uniquely with (-u)</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>intersect -wo<a class="headerlink" href="../../Classes/class-6.html#intersect-wo" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>We can see which intervals in <em>-b</em> are associated with <em>-a</em></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -wo
-chr1  <span class="m">100</span>  <span class="m">200</span>  a2  <span class="m">2</span>  -  chr1  <span class="m">90</span>  <span class="m">101</span>  b2  <span class="m">2</span>  -  1
-chr1  <span class="m">100</span>  <span class="m">200</span>  a2  <span class="m">2</span>  -  chr1  <span class="m">100</span>  <span class="m">110</span>  b3  <span class="m">3</span>  +  10
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>intersect exercise<a class="headerlink" href="../../Classes/class-6.html#intersect-exercise" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>What happens if you reverse the arguments? E.g. instead of:</p>
-<div class="highlight-python"><div class="highlight"><pre>-a a.bed -b b.bed
-</pre></div>
-</div>
-<p>use:</p>
-<div class="highlight-python"><div class="highlight"><pre>-b a.bed -a b.bed
-</pre></div>
-</div>
-<p>Try that with no extra flags, with -u, -wa, -wo.</p>
-<p>How does it compare to the original?</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>intersect -c<a class="headerlink" href="../../Classes/class-6.html#intersect-c" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>We can count overlaps for each interval in <em>-a</em> with those in <em>-b</em> with</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -c
-chr1        <span class="m">10</span>      <span class="m">20</span>      a1      <span class="m">1</span>       +       0
-chr1        <span class="m">100</span>     <span class="m">200</span>     a2      <span class="m">2</span>       -       2
-</pre></div>
-</div>
-<p>This is our original <cite>a.bed</cite> with an <strong>additional column indicating number of
-overlaps</strong> with <cite>b.bed</cite></p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>intersect -v<a class="headerlink" href="../../Classes/class-6.html#intersect-v" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Extract intervals in <cite>a.bed</cite> that do not overlap any interval in <cite>b.bed</cite></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -v
-chr1        <span class="m">10</span>      <span class="m">20</span>      a1      <span class="m">1</span>       +
-</pre></div>
-</div>
-<p>Extract intervals in <cite>b.bed</cite> that do not overlap any interval in <cite>a.bed</cite></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a b.bed -b a.bed -v
-chr1        <span class="m">20</span>      <span class="m">30</span>      b1      <span class="m">1</span>       +
-chr1        <span class="m">200</span>     <span class="m">210</span>     b4      <span class="m">4</span>       +
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Intersect Summary<a class="headerlink" href="../../Classes/class-6.html#intersect-summary" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <ul class="simple">
-<li>fragments of <cite>a</cite> that overlap <cite>b</cite>:
-<cite>intersect -a a.bed -b b.bed</cite></li>
-<li>complete regions of <cite>a</cite> that overlap <cite>b</cite>:
-<cite>intersect -a a.bed -b b.bed -u</cite></li>
-<li>intervals of <cite>b</cite> as well as <cite>a</cite>:
-<cite>intersect -a a.bed -b b.bed -wo</cite></li>
-<li>number of times each <cite>a</cite> overlaps <cite>b</cite>:
-<cite>intersect -a a.bed -b b.bed -c</cite></li>
-<li>intervals of <cite>a</cite> that do not overlap <cite>b</cite>:
-<cite>intersect -a a.bed -b b.bed -v</cite></li>
-</ul>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Exercises (Or Other Tools)<a class="headerlink" href="../../Classes/class-6.html#exercises-or-other-tools" title="View HTML">§</a></h2>
+      <h2>Experiments<a class="headerlink" href="../../Classes/class-6.html#experiments" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
       <ol class="arabic simple">
-<li>zless <a class="reference download internal" href="../_downloads/cpg.bed.gz"><tt class="xref download docutils literal"><span class="pre">cpg.bed.gz</span></tt></a> and <a class="reference download internal" href="../_downloads/genes.hg19.bed.gz"><tt class="xref download docutils literal"><span class="pre">genes.hg19.bed.gz</span></tt></a></li>
-<li>Extract the fragment of CpG Islands that touch any gene [<strong>24611</strong>]</li>
-<li>Extract CpG's that do not touch any gene [<strong>7012</strong>]</li>
-<li>Extract (uniquely) all of each CpG Island that touches any gene [<strong>21679</strong>]</li>
-<li>Extract CpG's that are completely contained within a gene (look at the help
-for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %). [<strong>10714</strong>]</li>
-<li>Report genes that overlap any CpG island. [<strong>16908</strong>]</li>
-<li>Report genes that overlap more than 1 CpG Island (use -c and awk). [<strong>3703</strong>].</li>
+<li>ChIP-seq: Histone marks, transcription factors</li>
+<li>Chromatin structure: DNaseI-seq, FAIRE, 5C/Hi-C</li>
+<li>RNA expression: mRNA-seq, GENCODE gene predictions</li>
+<li>Data Integration: Segway / ChromHMM integration of functional data</li>
 </ol>
-<div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">as you are figuring these out, make sure to pipe the output to less or head</p>
-</div>
 
 
 
@@ -439,13 +165,16 @@ for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %)
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>Other Reading<a class="headerlink" href="../../Classes/class-6.html#other-reading" title="View HTML">§</a></h2>
+      <h2>Common File Formats<a class="headerlink" href="../../Classes/class-6.html#common-file-formats" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
       <ul class="simple">
-<li>Check out the online <a class="reference external" href="https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html">documentation</a>.</li>
-<li>A <a class="reference external" href="http://quinlanlab.org/tutorials/cshl2013/bedtools.html">tutorial</a> by the author of BEDTools</li>
+<li>FASTQ: Raw sequencing data. <cite>[link] &lt;http://maq.sourceforge.net/fastq.shtml&gt;</cite></li>
+<li>SAM/BAM: Aligned sequence data <cite>[link] &lt;http://samtools.github.io/hts-specs/SAMv1.pdf&gt;</cite></li>
+<li>Bed/bigBed: List of genomic regions <cite>[link] &lt;http://genome.ucsc.edu/FAQ/FAQformat.html#format1&gt;</cite></li>
+<li>Bedgraph/Wig/bigWig: Continuous signal <cite>[link] &lt;http://genome.ucsc.edu/goldenPath/help/bedgraph.html&gt;</cite></li>
 </ul>
+<p>Many other formats are described on this <a class="reference external" href="http://genome.ucsc.edu/FAQ/FAQformat.html">page</a></p>
 
 
 
@@ -453,17 +182,130 @@ for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %)
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>Intersect Bam<a class="headerlink" href="../../Classes/class-6.html#intersect-bam" title="View HTML">§</a></h2>
+      <h2>References<a class="headerlink" href="../../Classes/class-6.html#references" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>We have seen that <cite>intersect &lt;bedtools:intersect&gt;</cite> takes <cite>-a</cite> and <cite>-b</cite>
-arguments. It can also intersect against an alignment BAM file by using <cite>-abam</cite>
-in place of <cite>-a</cite></p>
-<p>e.g:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect <span class="se">\</span>
-    -abam experiment.bam <span class="se">\</span>
-    -b target-regions.bed <span class="se">\</span>
-    &gt; on-target.bam
+      <p>Completion of the entire project, and a ton of papers:
+<a class="reference external" href="http://www.nature.com/nature/journal/v489/n7414/index.html">Nature</a>,
+<a class="reference external" href="http://genome.cshlp.org/content/22/9.toc">Genome Research</a>,
+<a class="reference external" href="http://genomebiology.com/content/13/9">Genome Biology</a>,</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>How to Access ENCODE Data<a class="headerlink" href="../../Classes/class-6.html#how-to-access-encode-data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <a class="reference external" href="https://www.encodeproject.org/">ENCODE project page</a> is the portal
+to all of the ENCODE data.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Chromatin Immunoprecipitation Overview<a class="headerlink" href="../../Classes/class-6.html#chromatin-immunoprecipitation-overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Chromatin Immunoprecipitation is used to determine where a protein of
+interest binds on a chromatin template <a class="reference internal" href="#park-chipseq" id="id1">[Park_Chipseq]</a>.</p>
+<table class="docutils citation" frame="void" id="park-chipseq" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Park_Chipseq]</a></td><td><a class="reference external" href="http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html">http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html</a></td></tr>
+</tbody>
+</table>
+<img alt="../_images/chip-workflow.png" src="../_images/chip-workflow.png" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Chromatin Immunoprecipitation Overview<a class="headerlink" href="../../Classes/class-6.html#id6" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <img alt="../_images/chip-data.png" src="../_images/chip-data.png" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ChIP-seq analysis workflow<a class="headerlink" href="../../Classes/class-6.html#chip-seq-analysis-workflow" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A general workflow for visualizing ChIP-seq data (and many other types of
+data) is:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">File formats</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Align reads to reference genome</td>
+<td><tt class="docutils literal"><span class="pre">FASTQ</span> <span class="pre">~~&gt;</span> <span class="pre">BAM</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Generate coverage plots</td>
+<td><tt class="docutils literal"><span class="pre">BAM</span> <span class="pre">~~&gt;</span> <span class="pre">bedGraph</span></tt></td>
+</tr>
+<tr class="row-even"><td>Call peaks</td>
+<td><tt class="docutils literal"><span class="pre">BAM</span> <span class="pre">~~&gt;</span> <span class="pre">BED</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Make binary files for UCSC display</td>
+<td><tt class="docutils literal"><span class="pre">bedGraph</span> <span class="pre">~~&gt;</span> <span class="pre">bigWig</span></tt>, <tt class="docutils literal"><span class="pre">BED</span> <span class="pre">~~&gt;</span> <span class="pre">bigBed</span></tt></td>
+</tr>
+<tr class="row-even"><td>Identify motifs</td>
+<td><tt class="docutils literal"><span class="pre">BED</span> <span class="pre">~~&gt;</span> <span class="pre">FASTA</span> <span class="pre">~~&gt;</span> <span class="pre">TXT</span> <span class="pre">/</span> <span class="pre">HTML</span></tt></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ChIP-seq data<a class="headerlink" href="../../Classes/class-6.html#chip-seq-data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Look at some human ChIP-seq data <a class="footnote-reference" href="#id3" id="id2">[1]</a>.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Genome Browser Session
+<a class="reference external" href="http://goo.gl/WfJxcM">http://goo.gl/WfJxcM</a></td></tr>
+</tbody>
+</table>
+<p>(We'll talk more in depth about ChIP-Seq workflows in the future,
+but for now, just a brief introdcution to a few commands you can use to
+work on ChIP-Seq data (and pset3)).</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Peak calling<a class="headerlink" href="../../Classes/class-6.html#peak-calling" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>There are several available software packages for identifying regions
+enriched in your IP experiment (i.e. peaks). We will use macs2 here.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># minimal macs2 command</span>
+<span class="nv">$ </span>macs2 callpeak --treatment &lt;aln.bam&gt; --name &lt;exp.name&gt; <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 
@@ -473,89 +315,25 @@ in place of <cite>-a</cite></p>
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>Intersect Strand<a class="headerlink" href="../../Classes/class-6.html#intersect-strand" title="View HTML">§</a></h2>
+      <h2>Identify sequence motifs in enriched regions<a class="headerlink" href="../../Classes/class-6.html#identify-sequence-motifs-in-enriched-regions" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>From the <a class="reference external" href="https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html">help</a> ,
-one can see that intersect can consider strand. For example if both files have a
-strand field then</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect -a a.bed -b b.bed -s
+      <p>You can use meme <a class="footnote-reference" href="#id5" id="id4">[2]</a> to identify over-represented motifs in groups of
+sequences (e.g. sequences covered by ChIP peaks).</p>
+<p>Use the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/getfasta.html#getfasta" title="(in bedtools v2.22.1)"><em class="xref std std-ref">bedtools getfasta</em></a> command to fetch
+fasta sequences.</p>
+<p>Note: meme looks at both strands of a DNA sequence by default.</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td>MEME
+<a class="reference external" href="http://meme.nbcr.net/meme/">http://meme.nbcr.net/meme/</a></td></tr>
+</tbody>
+</table>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools getfasta -fi &lt;ref.fa&gt; -bed &lt;peaks.bed&gt; -fo peaks.fa
+<span class="nv">$ </span>meme -nmotifs <span class="m">5</span> -minw <span class="m">6</span> -maxw <span class="m">20</span> -dna &lt;peaks.fa&gt;
 </pre></div>
 </div>
-<p>Will only consider as overlapping those intervals in <cite>a.bed</cite> that have the same
-strand as <cite>b.bed</cite>.</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Closest<a class="headerlink" href="../../Classes/class-6.html#closest" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a> we can only get overlapping
-intervals. <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.1)"><em class="xref std std-ref">closest</em></a> reports the nearest interval even
-if it's not overlapping.</p>
-<p>Example: report the nearest CpG to each gene as long as it is within 5KB.</p>
-<div class="highlight-bash"><div class="highlight"><pre>bedtools closest <span class="se">\</span>
-    -a genes.hg19.bed.gz <span class="se">\</span>
-    -b cpg.bed.gz -d <span class="se">\</span>
-    <span class="p">|</span> awk <span class="s1">&#39;$NF &lt;= 5000&#39;</span>
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Map<a class="headerlink" href="../../Classes/class-6.html#map" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>For each CpG print the sum of the values (4th column) of overlapping intervals from
-lamina.bed (and filter out those with no overlap using awk)</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools map <span class="se">\</span>
-    -a cpg.bed.gz <span class="se">\</span>
-    -b /vol1/opt/data/lamina.bed <span class="se">\</span>
-    -c <span class="m">4</span> -o sum <span class="se">\</span>
-    <span class="p">|</span> awk <span class="s1">&#39;$5 != &quot;.&quot;&#39;</span>
-</pre></div>
-</div>
-<p>Other <em>-o</em> perations include <strong>min</strong>, <strong>max</strong>, <strong>mean</strong>, <strong>median</strong>, <strong>concat</strong></p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Sorted<a class="headerlink" href="../../Classes/class-6.html#sorted" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>When you start dealing with larger data-files. Look at the <cite>-sorted</cite> flag.
-For example in <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a>.</p>
-<ul class="simple">
-<li>Uses less memory</li>
-<li>Faster</li>
-</ul>
-<p>Takes advantage of sorted chromosome, positions in both files so it doesn't have
-to create an index.</p>
-<img alt="http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png" src="http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png" />
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Genomecov<a class="headerlink" href="../../Classes/class-6.html#genomecov" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Get coverage of intervals in BED by BAM</p>
-<img alt="https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png" src="https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png" />
-<p>Usually want the last option <cite>-bg -split</cite></p>
 
 
 

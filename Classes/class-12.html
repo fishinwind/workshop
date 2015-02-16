@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 12 : The ENCODE Project &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 13 : BEDtools" href="class-13.html" />
+    <link rel="prev" title="Class 11 : Python Idioms" href="class-11.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 12 : The ENCODE Project</a><ul>
+<li><a class="reference internal" href="#problem-set-submission">Problem Set Submission</a></li>
+<li><a class="reference internal" href="#python-debugging">Python Debugging</a></li>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#encode-project-timeline-2003">ENCODE Project Timeline: 2003</a></li>
+<li><a class="reference internal" href="#encode-project-cell-lines">ENCODE Project Cell Lines</a></li>
+<li><a class="reference internal" href="#experiments">Experiments</a></li>
+<li><a class="reference internal" href="#common-file-formats">Common File Formats</a></li>
+<li><a class="reference internal" href="#encode-project-timeline-2007">ENCODE Project Timeline: 2007</a></li>
+<li><a class="reference internal" href="#gencode">GENCODE</a></li>
+<li><a class="reference internal" href="#encode-project-timeline-2012">ENCODE Project Timeline: 2012</a></li>
+<li><a class="reference internal" href="#how-to-access-encode-data">How to Access ENCODE Data</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-12-the-encode-project">
+<h1>Class 12 : The ENCODE Project<a class="headerlink" href="#class-12-the-encode-project" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#class-12-the-encode-project" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Monday February 24</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="problem-set-submission">
+<h2>Problem Set Submission<a class="headerlink" href="#problem-set-submission" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#problem-set-submission" title="Slides">§</a></h2>
+<p>See the whiteboard.</p>
+</div>
+<div class="section" id="python-debugging">
+<h2>Python Debugging<a class="headerlink" href="#python-debugging" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#python-debugging" title="Slides">§</a></h2>
+<p>Many people are struggling with simple debugging issues. Stratgies:</p>
+<p>Use <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#print" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">print()</span></tt></a> copiously. For example, Print out a nested
+data structure as it is being created</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">nested</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">chrom</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="n">bedfile</span><span class="p">):</span>
+
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+    <span class="n">nested</span><span class="p">[</span><span class="n">chrom</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+
+<span class="hll">    <span class="k">print</span> <span class="n">nested</span>
+</span></pre></div>
+</div>
+<p>Use the Python Debugger: <a class="reference external" href="http://docs.python.org/2.7/library/pdb.html#module-pdb" title="(in Python v2.7)"><tt class="xref py py-mod docutils literal"><span class="pre">pdb</span></tt></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="hll"><span class="kn">import</span> <span class="nn">pdb</span>
+</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="o">...</span>
+<span class="hll">    <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</span>
+<span class="c"># keys:</span>
+<span class="c"># c(ontinue) : move through the current context (i.e. loop)</span>
+<span class="c"># &lt;ctrl&gt;-c   : exit the debugger</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">idx</span>
+<span class="mi">0</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">c</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">idx</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>What is the ENCODE project?</li>
+<li>What kinds of data did the ENCODE project produce?</li>
+<li>Where can I find these data on the Internet?</li>
+</ol>
+</div>
+<div class="section" id="encode-project-timeline-2003">
+<h2>ENCODE Project Timeline: 2003<a class="headerlink" href="#encode-project-timeline-2003" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#encode-project-timeline-2003" title="Slides">§</a></h2>
+<p>The Human Genome Project was finished, giving us a list of human genes and their
+locations. Unfortunately, we still had no idea how they were regulated. If only
+there was an <a class="reference external" href="http://www.sciencemag.org.hsl-ezproxy.ucdenver.edu/content/306/5696/636.full">ENCyclopedia Of Dna Elements</a>…</p>
+<p>Advantages: massive amounts of information on key cell lines, reproducible
+experiments, public data access, technology development.</p>
+</div>
+<div class="section" id="encode-project-cell-lines">
+<h2>ENCODE Project Cell Lines<a class="headerlink" href="#encode-project-cell-lines" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#encode-project-cell-lines" title="Slides">§</a></h2>
+<p>Tier 1: GM12878 (EBV-transformed lymphoblast), K562 (CML lymphoblast), H1-hESC</p>
+<p>Tier 2: HeLa-S3 (cervical cancer), HepG2 (liver carcinoma), HUVEC (umbilical vein)</p>
+<p>Tier 2.5: SKNSH (neuroblastoma), IMR90 (lung fibroblast), A549 (lung carcinoma),
+MCF7 (breast carcinoma), LHCN (myoblast), CD14+, CD20+</p>
+<p><a class="reference external" href="http://genome.ucsc.edu/ENCODE/cellTypes.html">link</a> (this page also has very useful
+links to cell culture protocols)</p>
+</div>
+<div class="section" id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#experiments" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>ChIP-seq: Histone marks, transcription factors</li>
+<li>Chromatin structure: DNaseI-seq, FAIRE, 5C/Hi-C</li>
+<li>RNA expression: mRNA-seq, GENCODE gene predictions</li>
+<li>Data Integration: Segway / ChromHMM integration of functional data</li>
+</ol>
+</div>
+<div class="section" id="common-file-formats">
+<h2>Common File Formats<a class="headerlink" href="#common-file-formats" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#common-file-formats" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>FASTQ: You&#8217;ve already seen this; it&#8217;s raw sequencing data.</li>
+<li>BAM/SAM: Aligned sequence data</li>
+<li>Bed/bigBed: List of genomic regions</li>
+<li>Bedgraph/Wig/bigWig: Continuous signal (e.g. methylation mapping)</li>
+</ol>
+</div>
+<div class="section" id="encode-project-timeline-2007">
+<h2>ENCODE Project Timeline: 2007<a class="headerlink" href="#encode-project-timeline-2007" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#encode-project-timeline-2007" title="Slides">§</a></h2>
+<p>Completion of <a class="reference external" href="http://genome.ucsc.edu/ENCODE/encode.hg18.html">pilot project</a>
+(1% of the human genome).
+(<a class="reference external" href="http://www.nature.com/nature/journal/v447/n7146/full/nature05874.html">summary paper with list of analyses in Table 1:</a>)</p>
+</div>
+<div class="section" id="gencode">
+<h2>GENCODE<a class="headerlink" href="#gencode" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#gencode" title="Slides">§</a></h2>
+<p>ENCODE identifies functional genomic elements; <a class="reference external" href="http://www.gencodegenes.org">GENCODE</a>
+is the annotation of those elements based on ENCODE data. This will ideally be the
+most comprehensive reference gene set once the project is complete.</p>
+</div>
+<div class="section" id="encode-project-timeline-2012">
+<h2>ENCODE Project Timeline: 2012<a class="headerlink" href="#encode-project-timeline-2012" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#encode-project-timeline-2012" title="Slides">§</a></h2>
+<p>Completion of the entire project, and a ton of papers:
+<a class="reference external" href="http://www.nature.com/nature/journal/v489/n7414/index.html">Nature</a>,
+<a class="reference external" href="http://genome.cshlp.org/content/22/9.toc">Genome Research</a>,
+<a class="reference external" href="http://genomebiology.com/content/13/9">Genome Biology</a>,
+<a class="reference external" href="http://www.nature.com/encode/#/threads">paper viewer that is also an iPad app</a>,
+and the <a class="reference external" href="http://www.nytimes.com/2012/09/06/science/far-from-junk-dna-dark-matter-proves-crucial-to-health.html?pagewanted=all">front page of the New York Times</a></p>
+</div>
+<div class="section" id="how-to-access-encode-data">
+<h2>How to Access ENCODE Data<a class="headerlink" href="#how-to-access-encode-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-12.html#how-to-access-encode-data" title="Slides">§</a></h2>
+<p>See genome browser</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/Classes/class-12.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Jay Hesselberth.<br/>
+      Last updated on Jan 14, 2015.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
