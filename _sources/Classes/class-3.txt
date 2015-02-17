@@ -1,8 +1,11 @@
+
+.. include:: /_static/substitutions.txt
+
 ***********************************
 Class 3 : The command-line (part 2)
 ***********************************
 
-:Class date: Tues 3 Feb 2015
+:Class date: |c3-date| 
 
 Goals
 =====

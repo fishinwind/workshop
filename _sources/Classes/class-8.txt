@@ -1,6 +1,11 @@
+
+.. include:: /_static/substitutions.txt
+
 ******************************
 Class 8 : R : Getting Started
 ******************************
+
+:Class date: |c8-date|
 
 Goals
 =====
@@ -13,15 +18,9 @@ Goals
 Data
 ====
 
-Download the data.
+The data file we will use is::
 
-**Download Link:** :download:`expr-geno-covs.txt <../misc/data/expr-geno-covs.txt>`
-
-
-.. code-block:: bash
-
-    cd /vol1/opt/data/
-    wget https://ucd-bioworkshop.github.io/_downloads/expr-geno-covs.txt
+    /vol1/opt/data/expr-geno-covs.txt
 
 RStudio
 =======
@@ -29,15 +28,43 @@ RStudio
 RStudio is a useful interface for R, encapsulates the R prompt, data views
 and plotting in a single User Interface.
 
-.. code-block:: bash
+Navigate to http://amc-sandbox.ucdenver.pvt/rstudio and enter your tesla
+credentials.
 
-    $ rstudio
+Note you need to use VPN if you are off campus.
 
 Loading data in R
 =================
 
- ``df`` is short for `data frame`, the basic R data structure
- ``<-`` is the R assignment operator, can also use ``=``
+The main function for loading data is ``read.delim()``:
+
+.. code-block:: r
+
+    # dfx is a data.frame. look at it with ``summary`` and ``head``
+    > dfx <- read.delim('lamina.bed')
+    > is.data.frame(dfx)
+
+If the column names are specified in a header line (begins with ``#``),
+then you can load them as the column names with:
+
+.. code-block:: r
+
+    # this uses the names in the comment line as header names
+    > dfx <- read.delim('lamina.bed', header=TRUE)
+
+You can also specify headers explicitly with:
+
+.. code-block:: r
+
+    > bedfilename <- '/vol1/opt/data/lamina.bed'
+    > colnames <- c('chrom','start','end','name','score','strand')
+    > dfx <- read.delim(bedfilename, col.names=colnames)
+
+.. nextslide::
+    :increment:
+
+``df`` is short for `data frame`, the basic R data structure
+``<-`` is the R assignment operator, can also use ``=``
 
 .. code-block:: r
 
@@ -64,22 +91,41 @@ with:
    ?read.delim
    ?head
 
+Recall that you access the column data with the ``$`` character:
+
+.. code-block:: r
+
+    > dfx$chrom 
+
+.. nextslide::
+    :increment:
+
+There are several data sets that are built-in to R, including:
+
+.. code-block:: r
+
+    > mtcars   # Motor Trend Cars Road Tests
+    > baseball # in ``libarary(plyr)``
+
+    # see all built-in data sets
+    > library(help = "datasets")
+
+
 print
 =====
 
 .. code-block:: r
 
-    print("hello world")
+    > print("hello world")
     
-
 libraries
 =========
 
 .. code-block:: r
 
-    library(ggplot2)
+    > library(ggplot2)
     # or
-    library('ggplot2')
+    > library('ggplot2')
 
 R paths
 =======
@@ -88,9 +134,9 @@ get/set working directory
 
 .. code-block:: r
 
-    getwd() # print
-    setwd('C:\whatever\path\') # on windows
-    setwd('/vol1/opt/data/') # on linux
+    > getwd()                    # print
+    > setwd('C:\whatever\path\') # on windows
+    > setwd('/vol1/opt/data/')   # on linux
 
 ggplot2
 =======
@@ -179,7 +225,7 @@ a histogram of your data:
 
 You can make these look a lot nicer with ggplot2.
 
-**Hist** does not work with ggplot, you'll have to use the
+``hist()`` does not work with ggplot, you'll have to use the
 ggplot2 machinery for that.
 
 Exercise

@@ -1,8 +1,11 @@
+
+.. include:: /_static/substitutions.txt
+
 **************************
 Class 2 : The command-line
 **************************
 
-:Class date: Thurs 29 January 2015
+:Class date: |c2-date| 
 
 Things to fix from last class
 =============================

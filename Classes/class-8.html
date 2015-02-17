@@ -139,6 +139,14 @@
       
   <div class="section" id="class-8-r-getting-started">
 <h1>Class 8 : R : Getting Started<a class="headerlink" href="#class-8-r-getting-started" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-8.html#class-8-r-getting-started" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 19 Thurs</td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-8.html#goals" title="Slides">§</a></h2>
 <ol class="arabic simple">
@@ -150,10 +158,8 @@
 </div>
 <div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-8.html#data" title="Slides">§</a></h2>
-<p>Download the data.</p>
-<p><strong>Download Link:</strong> <a class="reference download internal" href="../_downloads/expr-geno-covs.txt"><tt class="xref download docutils literal"><span class="pre">expr-geno-covs.txt</span></tt></a></p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> /vol1/opt/data/
-wget https://ucd-bioworkshop.github.io/_downloads/expr-geno-covs.txt
+<p>The data file we will use is:</p>
+<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data/expr-geno-covs.txt
 </pre></div>
 </div>
 </div>
@@ -161,15 +167,32 @@ wget https://ucd-bioworkshop.github.io/_downloads/expr-geno-covs.txt
 <h2>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-8.html#rstudio" title="Slides">§</a></h2>
 <p>RStudio is a useful interface for R, encapsulates the R prompt, data views
 and plotting in a single User Interface.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rstudio
-</pre></div>
-</div>
+<p>Navigate to <a class="reference external" href="http://amc-sandbox.ucdenver.pvt/rstudio">http://amc-sandbox.ucdenver.pvt/rstudio</a> and enter your tesla
+credentials.</p>
+<p>Note you need to use VPN if you are off campus.</p>
 </div>
 <div class="section" id="loading-data-in-r">
 <h2>Loading data in R<a class="headerlink" href="#loading-data-in-r" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-8.html#loading-data-in-r" title="Slides">§</a></h2>
-<blockquote>
-<div><tt class="docutils literal"><span class="pre">df</span></tt> is short for <cite>data frame</cite>, the basic R data structure
-<tt class="docutils literal"><span class="pre">&lt;-</span></tt> is the R assignment operator, can also use <tt class="docutils literal"><span class="pre">=</span></tt></div></blockquote>
+<p>The main function for loading data is <tt class="docutils literal"><span class="pre">read.delim()</span></tt>:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="c1"># dfx is a data.frame. look at it with ``summary`` and ``head``</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;lamina.bed&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">is.data.frame</span><span class="p">(</span>dfx<span class="p">)</span>
+</pre></div>
+</div>
+<p>If the column names are specified in a header line (begins with <tt class="docutils literal"><span class="pre">#</span></tt>),
+then you can load them as the column names with:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="c1"># this uses the names in the comment line as header names</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;lamina.bed&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also specify headers explicitly with:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> bedfilename <span class="o">&lt;-</span> <span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span>
+<span class="o">&gt;</span> colnames <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">,</span><span class="s">&#39;score&#39;</span><span class="p">,</span><span class="s">&#39;strand&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span>bedfilename<span class="p">,</span> col.names<span class="o">=</span><span class="kp">colnames</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">df</span></tt> is short for <cite>data frame</cite>, the basic R data structure
+<tt class="docutils literal"><span class="pre">&lt;-</span></tt> is the R assignment operator, can also use <tt class="docutils literal"><span class="pre">=</span></tt></p>
 <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> df <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="kp">summary</span><span class="p">(</span>df<span class="p">)</span>
 <span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>df<span class="p">)</span>
@@ -187,27 +210,39 @@ with:</p>
 <span class="o">?</span><span class="kp">head</span>
 </pre></div>
 </div>
+<p>Recall that you access the column data with the <tt class="docutils literal"><span class="pre">$</span></tt> character:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> dfx<span class="o">$</span>chrom
+</pre></div>
+</div>
+<p>There are several data sets that are built-in to R, including:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> mtcars   <span class="c1"># Motor Trend Cars Road Tests</span>
+<span class="o">&gt;</span> baseball <span class="c1"># in ``libarary(plyr)``</span>
+
+<span class="c1"># see all built-in data sets</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>help <span class="o">=</span> <span class="s">&quot;datasets&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="print">
 <h2>print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-8.html#print" title="Slides">§</a></h2>
-<div class="highlight-r"><div class="highlight"><pre><span class="kp">print</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kp">print</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="libraries">
 <h2>libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-8.html#libraries" title="Slides">§</a></h2>
-<div class="highlight-r"><div class="highlight"><pre><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 <span class="c1"># or</span>
-<span class="kn">library</span><span class="p">(</span><span class="s">&#39;ggplot2&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span><span class="s">&#39;ggplot2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="r-paths">
 <h2>R paths<a class="headerlink" href="#r-paths" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-8.html#r-paths" title="Slides">§</a></h2>
 <p>get/set working directory</p>
-<div class="highlight-r"><div class="highlight"><pre>getwd() # print
-setwd(&#39;C:\whatever\path\&#39;) # on windows
-setwd(&#39;/vol1/opt/data/&#39;) # on linux
+<div class="highlight-r"><div class="highlight"><pre>&gt; getwd()                    # print
+&gt; setwd(&#39;C:\whatever\path\&#39;) # on windows
+&gt; setwd(&#39;/vol1/opt/data/&#39;)   # on linux
 </pre></div>
 </div>
 </div>
@@ -281,7 +316,7 @@ hist<span class="p">(</span><span class="kp">log</span><span class="p">(</span>d
 </pre></div>
 </div>
 <p>You can make these look a lot nicer with ggplot2.</p>
-<p><strong>Hist</strong> does not work with ggplot, you&#8217;ll have to use the
+<p><tt class="docutils literal"><span class="pre">hist()</span></tt> does not work with ggplot, you&#8217;ll have to use the
 ggplot2 machinery for that.</p>
 </div>
 <div class="section" id="exercise">

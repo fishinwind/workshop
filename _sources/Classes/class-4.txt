@@ -1,8 +1,11 @@
+
+.. include:: /_static/substitutions.txt
+
 ************************
  Class 4 : grep and awk
 ************************
 
-:Class date: Thurs 5 Feb 2015
+:Class date: |c4-date|
 
 Goals
 =====

@@ -1,8 +1,10 @@
+.. include:: /_static/substitutions.txt
+
 *****************************************************
              Class 1 : Class Introduction
 *****************************************************
 
-:Class date: Tues 2015 Jan 27
+:Class date: |c1-date| 
 
 Goals
 =====

@@ -93,7 +93,7 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">T Feb 17</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 17 Tues</td>
 </tr>
 </tbody>
 </table>
@@ -111,7 +111,9 @@ URL: https://code.google.com/p/io-2012-slides
 <li>Go over BEDTools analysis vignette to show how to combine different
 tools</li>
 </ol>
-<p>There are several vignettes <a class="reference external" href="https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md">here.</a></p>
+<p>There are several more vignettes <a class="reference external" href="https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md">here.</a>
+Looking over these may be helpful to understand some of the questions on
+<a class="reference internal" href="../Problem_Sets/problem_set_4/problem_set_4.html#problem-set-4"><em>Problem Set 4</em></a>.</p>
 
 
 
@@ -195,7 +197,7 @@ gzip &lt;bedgraph&gt;
     </hgroup>
     <article class="">
       <p>Each of the TSS regions we made is 1 base in size. We need to make these
-bigger so that we can examine coverage in a larger region. Let's make them
+bigger so that we can examine coverage within a larger region. Let's make them
 2 kb with the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.22.1)"><em class="xref std std-ref">slop</em></a> command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ chromsize</span><span class="o">=</span>/vol1/opt/data/hg19.chrom.sizes
 <span class="nv">$ slopbed</span><span class="o">=</span>tss.slop.2000.bed
@@ -203,7 +205,8 @@ bigger so that we can examine coverage in a larger region. Let's make them
 </pre></div>
 </div>
 <p>Inspect the slop'd file and make sure you understand how it is different
-from the input BED file.</p>
+from the input BED file. Check the new widths of each region using
+<tt class="docutils literal"><span class="pre">awk</span></tt>.</p>
 
 
 
@@ -226,6 +229,9 @@ as we move away from TSS.</p>
     &gt; <span class="nv">$windowbed</span>
 </pre></div>
 </div>
+<p>Note that each window now has a unique number, and the relative positions
+of each window of a given number are the same. For example, all the
+windows labeled &quot;1&quot; are 2000 bases upstream of the original annotated TSS.</p>
 <p>What would the signal look like if we didn't do this?</p>
 
 
@@ -245,6 +251,11 @@ as we move away from TSS.</p>
     &gt; <span class="nv">$signalmap</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li>the <tt class="docutils literal"><span class="pre">-c</span></tt> flag specifies the values to operate on.</li>
+<li>the <tt class="docutils literal"><span class="pre">-o</span></tt> flag specifices the operation to perform (e.g. mean)</li>
+<li>What does <tt class="docutils literal"><span class="pre">-null</span> <span class="pre">0</span></tt> do? Why is it important?</li>
+</ul>
 <p>Inspect this file and make sure you know what it looks like.</p>
 
 
@@ -265,6 +276,11 @@ as we move away from TSS.</p>
         &gt; output.tab
 </pre></div>
 </div>
+<ul class="simple">
+<li>the <tt class="docutils literal"><span class="pre">-g</span></tt> flag specifies the column to group on</li>
+<li>the <tt class="docutils literal"><span class="pre">-c</span></tt> flag specifies the values to aggregate.</li>
+<li>the <tt class="docutils literal"><span class="pre">-o</span></tt> flag specifices the operation to perform (e.g. sum)</li>
+</ul>
 <p>Inspect the output so you know what it looks like.</p>
 
 
@@ -321,7 +337,11 @@ as we move away from TSS.</p>
 43
 44
 45
-46</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /usr/bin/env bash</span>
+46
+47
+48
+49
+50</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /usr/bin/env bash</span>
 
 <span class="c">#BSUB -J bedtools.vignette</span>
 <span class="c">#BSUB -o vignette.%J.out</span>
@@ -338,6 +358,8 @@ zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1
 
 bedSort <span class="nv">$tssbed</span> <span class="nv">$tssbed</span>
 gzip <span class="nv">$tssbed</span>
+<span class="c"># rename after gzipping</span>
+<span class="nv">tss</span><span class="o">=</span>tss.bed.gz
 
 <span class="nv">signal</span><span class="o">=</span>/vol1/opt/data/endcode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
 
@@ -367,6 +389,8 @@ sort -t<span class="s1">$&#39;\t&#39;</span> -k5,5n <span class="nv">$signalmap<
         -i - <span class="se">\</span>
         -g <span class="m">5</span> -c <span class="m">6</span> -o sum <span class="se">\</span>
         &gt; output.tab 
+
+<span class="c"># inspect output.tab to see how to plot the data</span>
 </pre></div>
 </td></tr></table></div>
 
