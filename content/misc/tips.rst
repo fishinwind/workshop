@@ -56,6 +56,7 @@ minimizing your use of the mouse:
 
 + **<Alt>-<Tab>** : Flip through windows quickly and effortlessly
   without ever touching your mouse.
+
 + **<Ctrl>-<Page Up/Down>** : Switch between Terminal windows on Linux
 
 .. tip::

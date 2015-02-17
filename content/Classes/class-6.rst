@@ -1,8 +1,10 @@
+.. include:: /_static/substitutions.txt
+
 *****************************************
 Class 6 : Genomic Data Vignette: ChIP-seq
 *****************************************
 
-:Class date: Thurs 12 Feb 2015
+:Class date: |c6-date| 
 
 Goals
 =====

@@ -15,6 +15,8 @@ zcat $genes | awk '$6 == "-"' \
 
 bedSort $tssbed $tssbed
 gzip $tssbed
+# rename after gzipping
+tss=tss.bed.gz
 
 signal=/vol1/opt/data/endcode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
 
@@ -45,3 +47,4 @@ sort -t$'\t' -k5,5n $signalmap \
         -g 5 -c 6 -o sum \
         > output.tab 
 
+# inspect output.tab to see how to plot the data

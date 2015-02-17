@@ -1,30 +1,34 @@
 .. Class dates
-.. |c1-date| replace:: 2015 T Jan 27
-.. |c2-date| replace:: 2015 Th Jan 29
-.. |c3-date| replace:: 2015 T Feb 3
-.. |c4-date| replace:: 2015 Th Feb 5
-.. |c5-date| replace:: 2015 T Feb 10
-.. |c6-date| replace:: 2015 Th Feb 12
-.. |c7-date| replace:: 2015 T Feb 17
-.. |c8-date| replace:: 2015 Th Feb 19
-.. |c9-date| replace:: 2015 T Feb 24
-.. |c10-date| replace:: 2015 Th Feb 26
-.. |c11-date| replace:: 2015 T Mar 3
-.. |c12-date| replace:: 2015 Th Mar 5
-.. |c13-date| replace:: 2015 T Mar 10 
-.. |c14-date| replace:: 2015 Th Mar 12 
-.. |c15-date| replace:: 2015 T Mar 24
-.. |c16-date| replace:: 2015 Th Mar 26
-.. |c17-date| replace:: 2015 T Mar 31
-.. |c18-date| replace:: 2015 Th Apr 2 
-.. |c19-date| replace:: 2015 T Apr 7 
-.. |c20-date| replace:: 2015 Th Apr 9 
-.. |c21-date| replace:: 2015 T Apr 14
-.. |c22-date| replace:: 2015 Th Apr 16
-.. |c23-date| replace:: 2015 T Apr 21
-.. |c24-date| replace:: 2015 Th Apr 23
-.. |c25-date| replace:: 2015 T Apr 28
-.. |c26-date| replace:: 2015 Th Apr 30
+.. Once the first day of classes for the spring has been announced, update
+.. these values. THEN make sure to reserve the library teaching lab ASAP
+.. after that, as there have been several conflicts with the room
+.. reservation.
+.. |c1-date| replace:: 2015 Jan 27 Tues
+.. |c2-date| replace:: 2015 Jan 29 Thurs
+.. |c3-date| replace:: 2015 Feb 3 Tues
+.. |c4-date| replace:: 2015 Feb 5 Thurs
+.. |c5-date| replace:: 2015 Feb 10 Tues
+.. |c6-date| replace:: 2015 Feb 12 Thurs
+.. |c7-date| replace:: 2015 Feb 17 Tues
+.. |c8-date| replace:: 2015 Feb 19 Thurs
+.. |c9-date| replace:: 2015 Feb 24 Tues
+.. |c10-date| replace:: 2015 Feb 26 Thurs
+.. |c11-date| replace:: 2015 Mar 3 Tues
+.. |c12-date| replace:: 2015 Mar 5 Thurs
+.. |c13-date| replace:: 2015 Mar 10 Tues
+.. |c14-date| replace:: 2015 Mar 12 Thurs
+.. |c15-date| replace:: 2015 Mar 24 Tues
+.. |c16-date| replace:: 2015 Mar 26 Thurs
+.. |c17-date| replace:: 2015 Mar 31 Tues
+.. |c18-date| replace:: 2015 Apr 2 Thurs
+.. |c19-date| replace:: 2015 Apr 7 Tues
+.. |c20-date| replace:: 2015 Apr 9 Thurs
+.. |c21-date| replace:: 2015 Apr 14 Tues
+.. |c22-date| replace:: 2015 Apr 16 Thurs
+.. |c23-date| replace:: 2015 Apr 21 Tues
+.. |c24-date| replace:: 2015 Apr 23 Thurs
+.. |c25-date| replace:: 2015 Apr 28 Tues
+.. |c26-date| replace:: 2015 Apr 30 Thurs
 
 .. Problem set due dates
 .. |pset1-due| replace:: 2015 Feb 2 5:00 PM
