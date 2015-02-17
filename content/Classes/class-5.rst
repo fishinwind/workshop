@@ -1,8 +1,11 @@
+
+.. include:: /_static/substitutions.txt
+
 *********************
   Class 5 : BEDTools 
 *********************
 
-:Class date: Tues 10 Feb 2015
+:Class date: |c5-date| 
 
 Goals
 =====
