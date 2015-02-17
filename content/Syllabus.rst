@@ -185,19 +185,19 @@ Specific Dates / Material to be Covered
       - R Data & Plotting
       - **PS5 due** (|pset5-due|)
     * - Class 11 
-      - T Mar 3
+      - |c11-date| 
       - R Data & Plotting
       - 
     * - Class 12
-      - Th Mar 5
+      - |c12-date| 
       - R Data & Plotting
       - **PS6 due** (|pset6-due|)
     * - Class 13 
-      - T Mar 10
+      - |c13-date| 
       - R Data & Plotting
       - 
     * - Class 14 
-      - Th Mar 12
+      - |c14-date| 
       - R Data & Plotting
       - **PS7 due** (|pset7-due|)
     * -
@@ -205,51 +205,51 @@ Specific Dates / Material to be Covered
       -
       - 
     * - Class 15 
-      - T Mar 24
+      - |c15-date| 
       - Python
       - 
     * - Class 16
-      - Th Mar 26
+      - |c16-date| 
       - Python
       - 
     * - Class 17 
-      - T Mar 31
+      - |c17-date| 
       - Python
       - 
     * - Class 18
-      - Th Apr 2
+      - |c18-date| 
       - Python 
       - **PS8 due** (|pset8-due|)
     * - Class 19
-      - T Apr 7
+      - |c19-date| 
       - Python 
       - 
     * - Class 20
-      - Th Apr 9
+      - |c20-date| 
       - Python
       - **PS9 due** (|pset9-due|)
     * - Class 21
-      - T Apr 14
+      - |c21-date| 
       - mRNA-seq
       - 
     * - Class 22
-      - Th Apr 16
+      - |c22-date| 
       - mRNA-seq
       - **PS10 due** (|pset10-due|)
     * - Class 23
-      - T Apr 21
+      - |c23-date|
       - Exome analysis 
       - 
     * - Class 24
-      - Th Apr 23
+      - |c24-date|
       - Exome analysis
       - **PS11 due** (|pset11-due|)
     * - Class 25 
-      - T Apr 28
+      - |c25-date|
       - Final Projects 
       - 
     * - Class 26 
-      - Th Apr 30
+      - |c26-date|
       - Final Projects 
       - 
 
