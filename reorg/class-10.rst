@@ -5,74 +5,13 @@ Class 10 : R : Manipulation & Plotting
 Goals
 =====
 
-#. Learn to load data with ``read.delim``
-#. Begin to manipulate data with ``reshape`` and ``plyr``
+#. Begin to manipulate data with ``tidyr`` and ``dplyr``
 
-Loading data into R
-===================
-
-The main function for loading data is ``read.delim()``:
-
-.. code-block:: r
-
-    # dfx is a data.frame. look at it with ``summary`` and ``head``
-    > dfx <- read.delim('lamina.bed')
-    > is.data.frame(dfx)
-
-If the column names are specified in a header line (begins with ``#``),
-then you can load them as the column names with:
-
-.. code-block:: r
-
-    > dfx <- read.delim('lamina.bed', header=TRUE)
-
-You can also specify headers explicitly with:
-
-.. code-block:: r
-
-    > bedfilename <- '/vol1/opt/data/lamina.bed'
-    > colnames <- c('chrom','start','end','name','score','strand')
-    > dfx <- read.delim(bedfilename, col.names=colnames)
-
-.. nextslide::
-    :increment:
-
-Recall that you access the column data with the ``$`` character:
-
-.. code-block:: r
-
-    > dfx$chrom 
-
-You can also ``attach`` and ``detach`` data.frames if you will be
-repeatedly accessing the data:
-
-.. code-block:: r
-
-    > attach(dfx)
-    # now, columns can be referred to directly
-    > chrom
-    > detach(dfx)
-    # back to original style
-    > dfx$chrom
-
-.. nextslide::
-    :increment:
-
-There are several data sets that are built-in to R, including:
-
-.. code-block:: r
-
-    > mtcars   # Motor Trend Cars Road Tests
-    > baseball # in ``libarary(plyr)``
-
-    # see all built-in data sets
-    > library(help = "datasets")
-
-Introduction to reshape
+Introduction to tidyr 
 =======================
 
-The ``reshape2`` package provides two important functions called
-``melt()`` and ``recast()``.
+The ``tidyr`` package provides two important functions called
+``gather()`` and ``separate()``.
 
 These functions allow you to manipulate the shape of data frames. One
 common operation is to convert data tables from `wide` format to `long`
@@ -85,7 +24,6 @@ There are useful examples in the article describing the reshape package
 
 Wide format (or `unstacked`)
 ----------------------------
-
 Values for each variable are in a separate column.
 
 .. list-table::
@@ -134,10 +72,10 @@ One column contains the variables, one column contains the values.
       - Weight
       - 95
 
-How is ``reshape`` useful?
+How is ``tidyr`` useful?
 ==========================
 
-``ggplot2`` expects data in ``long`` format, where individual points are
+``ggplot2`` expects data in `long` format, where individual points are
 categorized.
 
 **Question:** Look at the ``summary`` data.frame. Is it in ``wide`` or
@@ -146,18 +84,19 @@ categorized.
 .. nextslide::
    :increment:
 
-The data.frame from plyr is in ``wide`` format. 
+The data.frame from dplyr is in ``wide`` format. 
 
 .. code-block:: r
 
-    > library(reshape2)
+    > library(tidyr)
     > library(ggplot2)
 
     # covert to long format
-    > long.summary <- melt(summary, id=c('chrom'))
+    > long.summary <- gather(summary, chrom)
 
     > gp <- ggplot(long.summary, aes(x=chrom, y=value, fill=variable))
-    > gp + geom_bar(stat='identity', position='dodge')
+    > gp <- gp + geom_bar(stat='identity', position='dodge')
+    > gp
 
 Exercises
 =========
@@ -167,10 +106,10 @@ Exercises
    geom_point()) 
 
 #. Load a BED file (e.g. ``lamina.bed``) and calculate the mean length of
-   regions on each chromosome in the BED file with plyr.  Plot the result as
+   regions on each chromosome in the BED file with dplyr.  Plot the result as
    a bar plot with ggplot2.
 
-#. Install ``dplyr`` and work through the vignette.
+#. Worth through the ``dplyr`` vignette.
    http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
 
 .. raw:: pdf
