@@ -10,14 +10,16 @@ General Information
 
 :Title:         Genome Analysis Workshop
 :Course Number: MOLB 7621
-:Crosslistings: STBB 7621
+:Cross listings: STBB 7621
 :Semester:      Spring 2015
 :Homepage:      http://hesselberthlab.github.io/workshop 
 :Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
 :Address:       Department of Biochemistry and Molecular Genetics
+                RC1 South 10104
+                Aurora CO 80045
 :Copyright:     2014,2015 Jay R. Hesselberth
-:Copyright:     All Rights Reserved.
+                All Rights Reserved.
 :Last updated:  |today|
 
 PDF Content
@@ -200,9 +202,9 @@ Specific Dates / Material to be Covered
       - |c14-date| 
       - R Data & Plotting
       - **PS7 due** (|pset7-due|)
-    * -
-      - ** No Class Mar 16-20 (Campus Spring Break) **
-      -
+    * - 
+      - ** No Class Mar 16-20 ** 
+      - ** Spring Break **
       - 
     * - Class 15 
       - |c15-date| 
