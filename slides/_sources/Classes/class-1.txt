@@ -166,7 +166,7 @@ First Quiz : Reading
 ====================
 Computational biology projects inevitably accrue a lot of files. For the
 first quiz, you'll need to read a paper [#]_ and be able to put a set of
-files in the correct places. We highly recommend adopting this scheme for
+files in the correct places. We require that you use this scheme for
 all of your projects in and out of the class.
 
 .. [#] A Quick Guide to Organizing Computational Biology Projects (2009)

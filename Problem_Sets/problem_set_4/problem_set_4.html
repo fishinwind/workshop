@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Problem Set 4 &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Problem Sets" href="../../Problem_Sets.html" />
+    <link rel="next" title="Problem Set : KEYS" href="../Problem_Set_Keys.html" />
+    <link rel="prev" title="Problem Set 3" href="../problem_set_3/problem_set_3.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Classes.html">Class list</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Problem Set 4</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#problem-1">Problem 1</a></li>
+<li><a class="reference internal" href="#problem-2">Problem 2</a></li>
+<li><a class="reference internal" href="#problem-set-submission">Problem Set Submission</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="problem-set-4">
+<span id="id1"></span><h1>Problem Set 4<a class="headerlink" href="#problem-set-4" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_4/problem_set_4.html#problem-set-4" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Due date:</th><td class="field-body">2015 Feb 23 5:00 PM</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_4/problem_set_4.html#overview" title="Slides">§</a></h2>
+<p>For this quiz you will use BEDTools and command line tools to make some
+simple summary files and plots.</p>
+</div>
+<div class="section" id="problem-1">
+<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_4/problem_set_4.html#problem-1" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Examine Pol II distribution in a 5 kb window around transcription
+termination sites (TTSs)?  Make a plot of the result and
+save it as a PDF. (<strong>15 points</strong>)</li>
+<li>Pick one other factor you might expect to find at a TTS iand analyze its
+distribution. You can find bigWig files of ChIP-seq experiemnts done for a
+variety of factors at UCSC <a class="footnote-reference" href="#id4" id="id2">[1]</a> and the ENCODE <a class="footnote-reference" href="#id5" id="id3">[2]</a> website. Make a plot of the
+result and save it as a PDF. (<strong>15 points</strong>)</li>
+</ol>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>ENCODE Project at UCSC Encyclopedia of DNA Elements at UCSC
+<a class="reference external" href="http://genome.ucsc.edu/ENCODE/">http://genome.ucsc.edu/ENCODE/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Current ENCODE data
+<a class="reference external" href="https://www.encodeproject.org/">https://www.encodeproject.org/</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="problem-2">
+<h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_4/problem_set_4.html#problem-2" title="Slides">§</a></h2>
+<ol class="arabic">
+<li><p class="first">Examine the relationship between SNP density and gene structure. Use
+1000Genomes SNP data in VCF format, and assume that each
+SNP in the file is the same in terms of quality (<strong>20 points</strong>).</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Calculate SNP density (SNPs / bp) for first exons of refGene
+annotations. Pay attention to strand.</li>
+<li>Do the same for the first intron of each gene.</li>
+<li>Make a histogram of the results (use <tt class="docutils literal"><span class="pre">geom_hist()</span></tt>).</li>
+<li>Add text annotations to the plot with <tt class="docutils literal"><span class="pre">geom_text()</span></tt> and
+<tt class="docutils literal"><span class="pre">ggtitle</span></tt>. E.g. how many SNPs were examined? How many exon /
+intron regions?</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="problem-set-submission">
+<h2>Problem Set Submission<a class="headerlink" href="#problem-set-submission" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_4/problem_set_4.html#problem-set-submission" title="Slides">§</a></h2>
+<p>Submit your problem set as a tar file to Canvas
+(<a class="reference internal" href="../../Problem_Sets.html#problem-set-submission"><em>Problem Set Submission</em></a>).</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../../_sources/Problem_Sets/problem_set_4/problem_set_4.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
+      Last updated on Feb 17, 2015.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

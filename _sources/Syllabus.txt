@@ -145,59 +145,59 @@ Specific Dates / Material to be Covered
       - Topic
       - Problem Set
     * - Class 1
-      - T Jan 27
+      - |c1-date|
       - Introduction to VM, Linux and the shell
       - 
     * - Class 2 
-      - Th Jan 29
+      - |c2-date|
       - Linux / Utilities
       - **PS1 due** (|pset1-due|)
     * - Class 3 
-      - T Feb 3
+      - |c3-date|
       - Linux / Utilities
       - 
     * - Class 4 
-      - Th Feb 5
+      - |c4-date|
       - grep and awk
       - **PS2 due** (|pset2-due|)
     * - Class 5 
-      - T Feb 10
+      - |c5-date|
       - BEDTools
       - 
     * - Class 6 
-      - Th Feb 12
+      - |c6-date|
       - Analysis vignette: ChIP-seq 
       - **PS3 due** (|pset3-due|)
     * - Class 7 
-      - T Feb 17
+      - |c7-date|
       - BEDTools
       - 
     * - Class 8 
-      - Th Feb 19
+      - |c8-date|
       - Genome Browser 
       - **PS4 due** (|pset4-due|)
     * - Class 9 
-      - T Feb 24
+      - |c9-date| 
       - R Data & Plotting
       - 
     * - Class 10 
-      - Th Feb 26
+      - |c10-date| 
       - R Data & Plotting
       - **PS5 due** (|pset5-due|)
     * - Class 11 
-      - T Mar 3
+      - |c11-date| 
       - R Data & Plotting
       - 
     * - Class 12
-      - Th Mar 5
+      - |c12-date| 
       - R Data & Plotting
       - **PS6 due** (|pset6-due|)
     * - Class 13 
-      - T Mar 10
+      - |c13-date| 
       - R Data & Plotting
       - 
     * - Class 14 
-      - Th Mar 12
+      - |c14-date| 
       - R Data & Plotting
       - **PS7 due** (|pset7-due|)
     * -
@@ -205,51 +205,51 @@ Specific Dates / Material to be Covered
       -
       - 
     * - Class 15 
-      - T Mar 24
+      - |c15-date| 
       - Python
       - 
     * - Class 16
-      - Th Mar 26
+      - |c16-date| 
       - Python
       - 
     * - Class 17 
-      - T Mar 31
+      - |c17-date| 
       - Python
       - 
     * - Class 18
-      - Th Apr 2
+      - |c18-date| 
       - Python 
       - **PS8 due** (|pset8-due|)
     * - Class 19
-      - T Apr 7
+      - |c19-date| 
       - Python 
       - 
     * - Class 20
-      - Th Apr 9
+      - |c20-date| 
       - Python
       - **PS9 due** (|pset9-due|)
     * - Class 21
-      - T Apr 14
+      - |c21-date| 
       - mRNA-seq
       - 
     * - Class 22
-      - Th Apr 16
+      - |c22-date| 
       - mRNA-seq
       - **PS10 due** (|pset10-due|)
     * - Class 23
-      - T Apr 21
+      - |c23-date|
       - Exome analysis 
       - 
     * - Class 24
-      - Th Apr 23
+      - |c24-date|
       - Exome analysis
       - **PS11 due** (|pset11-due|)
     * - Class 25 
-      - T Apr 28
+      - |c25-date|
       - Final Projects 
       - 
     * - Class 26 
-      - Th Apr 30
+      - |c26-date|
       - Final Projects 
       - 
 

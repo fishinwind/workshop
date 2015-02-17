@@ -1,5 +1,30 @@
 .. Class dates
-.. XXX
+.. |c1-date| replace:: 2015 T Jan 27
+.. |c2-date| replace:: 2015 Th Jan 29
+.. |c3-date| replace:: 2015 T Feb 3
+.. |c4-date| replace:: 2015 Th Feb 5
+.. |c5-date| replace:: 2015 T Feb 10
+.. |c6-date| replace:: 2015 Th Feb 12
+.. |c7-date| replace:: 2015 T Feb 17
+.. |c8-date| replace:: 2015 Th Feb 19
+.. |c9-date| replace:: 2015 T Feb 24
+.. |c10-date| replace:: 2015 Th Feb 26
+.. |c11-date| replace:: 2015 T Mar 3
+.. |c12-date| replace:: 2015 Th Mar 5
+.. |c13-date| replace:: 2015 T Mar 10 
+.. |c14-date| replace:: 2015 Th Mar 12 
+.. |c15-date| replace:: 2015 T Mar 24
+.. |c16-date| replace:: 2015 Th Mar 26
+.. |c17-date| replace:: 2015 T Mar 31
+.. |c18-date| replace:: 2015 Th Apr 2 
+.. |c19-date| replace:: 2015 T Apr 7 
+.. |c20-date| replace:: 2015 Th Apr 9 
+.. |c21-date| replace:: 2015 T Apr 14
+.. |c22-date| replace:: 2015 Th Apr 16
+.. |c23-date| replace:: 2015 T Apr 21
+.. |c24-date| replace:: 2015 Th Apr 23
+.. |c25-date| replace:: 2015 T Apr 28
+.. |c26-date| replace:: 2015 Th Apr 30
 
 .. Problem set due dates
 .. |pset1-due| replace:: 2015 Feb 2 5:00 PM
