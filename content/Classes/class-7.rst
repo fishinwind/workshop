@@ -1,16 +1,21 @@
+
+.. include:: /_static/substitutions.txt
+
 =============================
 Class 7 : BEDTools vignette
 =============================
 
-:Class date: T Feb 17
+:Class date: |c7-date|
 
 Goals
 -----
 #. Go over BEDTools analysis vignette to show how to combine different
    tools
 
-There are several vignettes `here.
+There are several more vignettes `here.
 <https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md>`_
+Looking over these may be helpful to understand some of the questions on
+:ref:`problem-set-4`.
 
 Overview
 --------
@@ -73,7 +78,7 @@ Or you can use it in a stream with::
 Slop
 ----
 Each of the TSS regions we made is 1 base in size. We need to make these
-bigger so that we can examine coverage in a larger region. Let's make them
+bigger so that we can examine coverage within a larger region. Let's make them
 2 kb with the :ref:`slop <bedtools:slop>` command:
 
 .. code-block:: bash
@@ -83,7 +88,8 @@ bigger so that we can examine coverage in a larger region. Let's make them
     $ bedtools slop -b 2000 -i $tssbed -g $chromsize > $slopbed
 
 Inspect the slop'd file and make sure you understand how it is different
-from the input BED file.
+from the input BED file. Check the new widths of each region using
+``awk``.
 
 Make windows
 ------------
@@ -101,6 +107,10 @@ as we move away from TSS.
         | tr "_" "\t" \
         > $windowbed 
     
+Note that each window now has a unique number, and the relative positions
+of each window of a given number are the same. For example, all the
+windows labeled "1" are 2000 bases upstream of the original annotated TSS.
+
 What would the signal look like if we didn't do this?
 
 Map signal to the annotations
@@ -114,6 +124,10 @@ Now we can map the signal to each of the windows that we made.
         -b <(bigWigToBedGraph $signal stdout) \
         -c 4 -o mean -null 0 \
         > $signalmap
+
+- the ``-c`` flag specifies the values to operate on. 
+- the ``-o`` flag specifices the operation to perform (e.g. mean)
+- What does ``-null 0`` do? Why is it important?
 
 Inspect this file and make sure you know what it looks like.
 
@@ -130,6 +144,10 @@ Now we can calculate summary statistics on the mapped data with :ref:`groupby
             -i - \
             -g 5 -c 6 -o sum \
             > output.tab
+
+- the ``-g`` flag specifies the column to group on
+- the ``-c`` flag specifies the values to aggregate. 
+- the ``-o`` flag specifices the operation to perform (e.g. sum)
 
 Inspect the output so you know what it looks like.
 
