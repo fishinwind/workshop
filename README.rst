@@ -35,3 +35,15 @@ Push content to the github.io website with:
 
     $ make publish
 
+Organization
+------------
+`content/` has all of the active content.
+
+`reorg/` is used for oragnizing and renaming files. It is outside of the
+sphinx root and will not be used during build.
+
+Updating new dates
+------------------
+Dates are stored in `_static/substituions.txt` and are referred to via
+sphinx substitutions in the content. Update these and the changes will
+propagate site-wide.
