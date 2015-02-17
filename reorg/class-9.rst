@@ -2,45 +2,13 @@
 Class 9 : R : Getting Started
 ******************************
 
-.. important::
-
-    Within your VirtualBox, Google Search for *"rstudio desktop download"* and Follow the first link.
-
-    Download the recommended for your system (Ubuntu 10+, 32-bit)
-
-    $ sudo dpkg -i ~/Downloads/rstudio*.deb
-
-    $ sudo apt-get -f install
-
 Goals
 =====
 
-#. Remember Python
 #. Startup RStudio
 #. Learn to navigate in RStudio
 #. load the ggplot2 library
 #. Learn to load external data
-
-Python
-======
-
-We will learn R, but remember key python concepts.
-
-.. code-block:: python
-
-    def parse_bed(fname):
-        for line in open(fname):
-            fields = line.rstrip().split("\t")
-            yield dict(chrom=fields[0], start=int(fields[1]),
-                       end=int(fields[2]), value=float(fields[4]))
-
-This contains important points: 
-
-#. function **def** inition.
-#. iterate over file
-#. strip() and split() a string to get a list
-#. create a dictionary after converting the types to int/float
-#. yield the dictionary back to the caller()
 
 Data
 ====
@@ -55,9 +23,6 @@ Download the data.
     cd /vol1/opt/data/
     wget https://ucd-bioworkshop.github.io/_downloads/expr-geno-covs.txt
 
-
- 
-
 RStudio
 =======
 
@@ -67,8 +32,6 @@ and plotting in a single User Interface.
 .. code-block:: bash
 
     $ rstudio
-
-
 
 Loading data in R
 =================
@@ -83,8 +46,8 @@ Loading data in R
     > head(df)
     > head(df$expression)
 
-Loading data in R(2)
-====================
+.. nextslide::
+    :increment:
 
 The most common ways to read in data in R are:
 
@@ -105,14 +68,6 @@ with:
 print
 =====
 
-In python, we can write
-
-.. code-block:: python
-
-    print "hello world"
-
-In R, we must write
-
 .. code-block:: r
 
     print("hello world")
@@ -120,14 +75,6 @@ In R, we must write
 
 libraries
 =========
-
-in python, we did:
-
-.. code-block:: python
-
-    import pybedtools
-
-In R, it is:
 
 .. code-block:: r
 
@@ -152,9 +99,8 @@ We will learn to use it to create plots like this
 
 .. image:: ../_static/images/ggplot-ex.png
 
-
-ggplot2 basic syntax
-====================
+ggplot2 syntax
+==============
 
 .. code-block:: r
 
@@ -164,9 +110,8 @@ ggplot2 basic syntax
     ggplot(df, aes(x=genotype, y=expression)) +
         geom_point()
 
-
-ggplot2 syntax
-==============
+.. nextslide::
+    :increment:
 
 `aes()` stands for **aesthetics**, means pull the coordiantes/colors/size/etc
 from these columns in the data.frame.
@@ -175,10 +120,8 @@ from these columns in the data.frame.
 
     aes(x=genotype, y=expression, color=gender)
 
-
- + geom_point() means plot these as points, could be geom_line() or 
+`geom_point()` means plot these as points, could be geom_line() or 
    a number of other geom_ things.
-
 
 googling with ggplot2
 =====================
@@ -218,15 +161,13 @@ of the plot above so that males and females are color'ed differently.
 
 DataFrame
 =========
-
-As you've seen, in a data.frame, we read everything into memory
+In a data.frame, we read everything into memory
 
 + R figures out if it is int/character/numeric
 + each column of the data.frame is accessed by `$`  e.g df$genotype
 
 Hist
 ====
-
 One of the simplest things to do in R, without ggplot is to look at 
 a histogram of your data:
 
