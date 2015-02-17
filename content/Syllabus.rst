@@ -145,43 +145,43 @@ Specific Dates / Material to be Covered
       - Topic
       - Problem Set
     * - Class 1
-      - T Jan 27
+      - |c1-date|
       - Introduction to VM, Linux and the shell
       - 
     * - Class 2 
-      - Th Jan 29
+      - |c2-date|
       - Linux / Utilities
       - **PS1 due** (|pset1-due|)
     * - Class 3 
-      - T Feb 3
+      - |c3-date|
       - Linux / Utilities
       - 
     * - Class 4 
-      - Th Feb 5
+      - |c4-date|
       - grep and awk
       - **PS2 due** (|pset2-due|)
     * - Class 5 
-      - T Feb 10
+      - |c5-date|
       - BEDTools
       - 
     * - Class 6 
-      - Th Feb 12
+      - |c6-date|
       - Analysis vignette: ChIP-seq 
       - **PS3 due** (|pset3-due|)
     * - Class 7 
-      - T Feb 17
+      - |c7-date|
       - BEDTools
       - 
     * - Class 8 
-      - Th Feb 19
+      - |c8-date|
       - Genome Browser 
       - **PS4 due** (|pset4-due|)
     * - Class 9 
-      - T Feb 24
+      - |c9-date| 
       - R Data & Plotting
       - 
     * - Class 10 
-      - Th Feb 26
+      - |c10-date| 
       - R Data & Plotting
       - **PS5 due** (|pset5-due|)
     * - Class 11 
