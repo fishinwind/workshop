@@ -124,6 +124,7 @@
 <li><a class="reference internal" href="#grouping-the-data">Grouping the data</a></li>
 <li><a class="reference internal" href="#code">Code</a></li>
 <li><a class="reference internal" href="#plotting">Plotting</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -371,6 +372,20 @@ as Working Directory</cite>.</p>
 <span class="o">&gt;</span> qplot<span class="p">(</span>window<span class="p">,</span> signal<span class="p">,</span> data <span class="o">=</span> df<span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-7.html#exercises" title="Slides">§</a></h2>
+<p>Try to generalize this approach to other types of data. How would you:</p>
+<ol class="arabic simple">
+<li>Look at Pol II distribution near transcription termination sites
+(TTSs)? Write this program and run it. (easy)</li>
+<li>Analyze the distribution of H3K36me3 ChIP-seq signal relative to coding
+exons?  Download some H3K36me3 data and <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/bed12tobed6.html#bed12tobed6" title="(in bedtools v2.22.1)"><em class="xref std std-ref">bed12tobed6</em></a>.</li>
+<li>Analyze the distribution of H3K36me3 ChIP-seq relative to introns?
+Use the <tt class="docutils literal"><span class="pre">-n</span></tt> option in <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/makewindows.html#makewindows" title="(in bedtools v2.22.1)"><em class="xref std std-ref">makewindows</em></a>.</li>
+<li>Determine levels of evolutionary conservation surrounding different
+types of non-coding variants? (medium). Use dbSnp and phyloP scores.</li>
+</ol>
 </div>
 </div>
 
