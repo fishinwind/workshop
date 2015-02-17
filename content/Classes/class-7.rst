@@ -163,3 +163,20 @@ Now make a plot!
     > df$signal <- as.double(df$signal)
     > qplot(window, signal, data = df)
 
+Exercises
+---------
+Try to generalize this approach to other types of data. How would you:
+
+#. Look at Pol II distribution near transcription termination sites
+   (TTSs)? Write this program and run it. (easy)
+
+#. Analyze the distribution of H3K36me3 ChIP-seq signal relative to coding
+   exons?  Download some H3K36me3 data and :ref:`bed12tobed6
+   <bedtools:bed12tobed6>`.
+
+#. Analyze the distribution of H3K36me3 ChIP-seq relative to introns?
+   Use the ``-n`` option in :ref:`makewindows <bedtools:makewindows>`.
+
+#. Determine levels of evolutionary conservation surrounding different
+   types of non-coding variants? (medium). Use dbSnp and phyloP scores.
+
