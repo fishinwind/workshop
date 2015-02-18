@@ -139,15 +139,15 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_4/problem_set_4.html#overview" title="Slides">§</a></h2>
 <p>For this quiz you will use BEDTools and command line tools to make some
-simple summary files and plots.</p>
+simple summary files and will use ggplot2 to make some plots.</p>
 </div>
 <div class="section" id="problem-1">
 <h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_4/problem_set_4.html#problem-1" title="Slides">§</a></h2>
 <ol class="arabic simple">
 <li>Examine Pol II distribution in a 5 kb window around transcription
-termination sites (TTSs)?  Make a plot of the result and
-save it as a PDF. (<strong>15 points</strong>)</li>
-<li>Pick one other factor you might expect to find at a TTS iand analyze its
+termination sites (TTSs) at a resolution of 50 bp?  Make a plot of the
+result and save it as a PDF. (<strong>15 points</strong>)</li>
+<li>Pick one other factor you might expect to find at a TTS and analyze its
 distribution. You can find bigWig files of ChIP-seq experiemnts done for a
 variety of factors at UCSC <a class="footnote-reference" href="#id4" id="id2">[1]</a> and the ENCODE <a class="footnote-reference" href="#id5" id="id3">[2]</a> website. Make a plot of the
 result and save it as a PDF. (<strong>15 points</strong>)</li>
@@ -169,15 +169,22 @@ result and save it as a PDF. (<strong>15 points</strong>)</li>
 </div>
 <div class="section" id="problem-2">
 <h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_4/problem_set_4.html#problem-2" title="Slides">§</a></h2>
+<p>1000 genomes VCF file is at:</p>
+<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data/hg19/1000genomes/phase3.vcf.gz
+</pre></div>
+</div>
 <ol class="arabic">
 <li><p class="first">Examine the relationship between SNP density and gene structure. Use
 1000Genomes SNP data in VCF format, and assume that each
 SNP in the file is the same in terms of quality (<strong>20 points</strong>).</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Calculate SNP density (SNPs / bp) for first exons of refGene
-annotations. Pay attention to strand.</li>
-<li>Do the same for the first intron of each gene.</li>
+<li>Calculate SNP density (SNPs per bp) for first exons of refGene
+annotations. (hint: use the <tt class="docutils literal"><span class="pre">-n</span></tt> option of
+<a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/bed12tobed6.html#bed12tobed6" title="(in bedtools v2.22.1)"><em class="xref std std-ref">bed12tobed6</em></a>)</li>
+<li>Do the same for the introns of each gene. (hint: use
+<a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/subtract.html#subtract" title="(in bedtools v2.22.1)"><em class="xref std std-ref">subtract</em></a> with BED files for genes and
+exons)</li>
 <li>Make a histogram of the results (use <tt class="docutils literal"><span class="pre">geom_hist()</span></tt>).</li>
 <li>Add text annotations to the plot with <tt class="docutils literal"><span class="pre">geom_text()</span></tt> and
 <tt class="docutils literal"><span class="pre">ggtitle</span></tt>. E.g. how many SNPs were examined? How many exon /
@@ -214,7 +221,7 @@ intron regions?</li>
     </p>
     <p>
         &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
-      Last updated on Feb 17, 2015.<br/>
+      Last updated on Feb 18, 2015.<br/>
     </p>
   </div>
 </footer>
