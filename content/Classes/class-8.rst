@@ -258,8 +258,15 @@ The ggplot2 docs are very good: http://docs.ggplot2.org/current/
 Look at the `geom_point()` documentation and change the color
 of the plot above so that males and females are color'ed differently.
 
-Hist
-====
+DataFrame
+=========
+In a data.frame, we read everything into memory
+
++ R figures out if it is int/character/numeric
++ each column of the data.frame is accessed by `$`  e.g df$genotype
+
+Histograms
+==========
 One of the simplest things to do in R, without ggplot is to look at 
 a histogram of your data:
 
@@ -272,13 +279,43 @@ a histogram of your data:
 You can make these look a lot nicer with ggplot2.
 
 ``hist()`` does not work with ggplot, you'll have to use the
-ggplot2 machinery for that.
+ggplot2 machinery for that:
 
-Exercise
-========
+.. nextslide::
+    :increment:
 
-Make a histogram using ggplot and separate cases from controls
-either by **facet** or by **fill**. 
+.. code-block:: r
+
+    gp <- ggplot(dfx, aex(x=log10(expression))
+    gp + geom_histgram()
+
+Try to figure out how to overlay a density plot with ``geom_density()``.
+
+.. nextslide::
+    :increment:
+
+You can also make effective separate visualizations with ``facet_grid()``
+and ``facet_wrap()``. You need to specify a formula to determine how to
+separate:
+
+.. code-block:: r
+
+    gp <- ggplot(df, aes(x=genotype, y=expression)) + geom_point()
+
+    # separate by gender
+    gp + facet_grid(~ gender)
+
+    # separate by gender and condition
+    gp + facet_grid(condition ~ gender)
+
+Exercises
+=========
+
+#. Make a histogram using ggplot and separate cases from controls by
+   changing fill color and symbol type.
+
+#. Make a histogram using ggplot and separate cases from controls
+   using ``facet_grid()``, ``facet_wrap()``.
 
 .. raw:: pdf
 
