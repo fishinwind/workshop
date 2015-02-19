@@ -1,4 +1,5 @@
 
+.. this file has the dates for classes and problem sets
 .. include:: /_static/substitutions.txt 
 
 ************
