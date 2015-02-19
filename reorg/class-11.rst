@@ -86,11 +86,11 @@ Summarize transcription factor binding site peaks:
     # use ``gzfile`` to load gzipped data
     > peaks <- read.table(gzfile(bedfilename), col.names=colnames)
 
-    > peaks %.% 
-        group_by(name) %.%
-        mutate(peak.width = end - start) %.%
-        filter(peak.width > 500 ) %.%
-        summarize(count = n(), mean.width = mean(peak.width)) %.%
+    > peaks %>% 
+        group_by(name) %>%
+        mutate(peak.width = end - start) %>%
+        filter(peak.width > 500 ) %>%
+        summarize(count = n(), mean.width = mean(peak.width)) %>%
         arrange(desc(count))
 
 + ``n()`` is a special function for counting observations
