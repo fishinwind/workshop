@@ -47,9 +47,11 @@ Problem 2
     #. Calculate SNP density (SNPs per bp) for first exons of refGene
        annotations. (hint: use the ``-n`` option of 
        :ref:`bed12tobed6 <bedtools:bed12tobed6>`)
+
     #. Do the same for the introns of each gene. (hint: use
        :ref:`subtract <bedtools:subtract>` with BED files for genes and
        exons) 
+
     #. Make a histogram of the results (use ``geom_hist()``).
     #. Add text annotations to the plot with ``geom_text()`` and
        ``ggtitle``. E.g. how many SNPs were examined? How many exon /
