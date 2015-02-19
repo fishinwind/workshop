@@ -40,16 +40,14 @@ Problem 2
    1000Genomes SNP data in VCF format, and assume that each
    SNP in the file is the same in terms of quality (**20 points**).
 
-        #. Calculate SNP density (SNPs / bp) for first exons of refGene
-           annotations. Pay attention to strand.
+    - Calculate SNP density (SNPs / bp) for first exons of refGene
+      annotations.
           
-        #. Do the same for the first intron of each gene. 
+    - Make a histogram of the results (use ``geom_hist()``).
 
-        #. Make a histogram of the results (use ``geom_hist()``).
-
-        #. Add text annotations to the plot with ``geom_text()`` and
-           ``ggtitle``. E.g. how many SNPs were examined? How many exon /
-           intron regions?
+    - Add text annotations to the plot with ``geom_text()`` and
+      ``ggtitle()``. E.g. how many SNPs were examined? How many exon /
+      intron regions?
 
 Problem Set Submission
 ----------------------
