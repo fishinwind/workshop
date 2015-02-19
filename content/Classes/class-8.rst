@@ -7,8 +7,10 @@ Class 8 : R : Getting Started
 
 :Class date: |c8-date|
 
+
 Setting up web access to tesla
 ==============================
+
 You can access html and images via the web if you:
 
 #. Create a `public_html` directory in your $HOME::
