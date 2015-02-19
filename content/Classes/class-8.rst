@@ -7,6 +7,26 @@ Class 8 : R : Getting Started
 
 :Class date: |c8-date|
 
+Setting up web access to tesla
+==============================
+You can access html and images via the web if you:
+
+#. Create a `public_html` directory in your $HOME::
+    
+    $ mkdir $HOME/public_html
+
+#. Copy content into the `public_html` directory.
+
+#. Make sure that permissions of your $HOME are accessible by all::
+
+    $ chmod 755 $HOME
+
+#. Access tesla on campus, or via VPN at the URL::
+
+    http://amc-tesla/~username
+
+    http://amc-tesla.ucdenver.pvt/~username
+
 Goals
 =====
 
@@ -21,6 +41,8 @@ Data
 The data file we will use is::
 
     /vol1/opt/data/expr-geno-covs.txt
+
+Copy this to a working directory e.g. ``$HOME/class/class-8``
 
 RStudio
 =======
@@ -80,8 +102,8 @@ The most common ways to read in data in R are:
    
 .. code-block:: r
 
-    read.csv('some.csv')
-    read.delim('some.tab.txt')
+    read.csv('file.csv')
+    read.delim('file.txt')
 
 These take common arguments. You can get help on a function in R
 with:
@@ -91,11 +113,25 @@ with:
    ?read.delim
    ?head
 
-Recall that you access the column data with the ``$`` character:
+DataFrame
+=========
+The ``read()`` functions load a ``data.frame``. In a data.frame,
+everything is read into memory.
+
++ R figures out the types of each column e.g. numeric/character/factor
++ each column of the data.frame is accessed by `$`  e.g df$genotype
+
+Access the column data with the ``$`` character:
 
 .. code-block:: r
 
-    > dfx$chrom 
+    > dfx$chrom
+
+And some functions allow you to refer to columns by name:
+
+.. code-block:: r
+
+    > subset(dfx, chrom == 'chr1')
 
 .. nextslide::
     :increment:
@@ -109,7 +145,6 @@ There are several data sets that are built-in to R, including:
 
     # see all built-in data sets
     > library(help = "datasets")
-
 
 print
 =====
@@ -138,11 +173,28 @@ get/set working directory
     > setwd('C:\whatever\path\') # on windows
     > setwd('/vol1/opt/data/')   # on linux
 
+Writing and running R scripts in RStudio
+========================================
+Open up a new R Script with `File --> New File --> R Script`. You should
+see a new editor window open in the top left.
+
+You can write a simple R script like:
+
+.. code-block:: r
+
+    plot(rnorm(1000))
+
+And then save the file as `plot.R`.
+
+You can then highlight all of the lines, or just select the `plot` line,
+and run that portion of the program by presseing the `Run` button in the
+window, or with `<Cmd>-<Return>` on Macs and `<Ctrl>-<Return>` on Windows.
+
 ggplot2
 =======
 We will learn to use it to create plots like this
 
-.. image:: ../_static/images/ggplot-ex.png
+.. image:: /_static/images/ggplot-ex.png
 
 ggplot2 syntax
 ==============
@@ -150,23 +202,23 @@ ggplot2 syntax
 .. code-block:: r
 
     library(ggplot2)
-    df = read.delim('expr-geno-covs.txt')
+    dfx <- read.delim('expr-geno-covs.txt')
 
-    ggplot(df, aes(x=genotype, y=expression)) +
+    ggplot(dfx, aes(x=genotype, y=expression)) +
         geom_point()
 
 .. nextslide::
     :increment:
 
-``aes()`` stands for **aesthetics**, means pull the coordiantes/colors/size/etc
-from these columns in the data.frame.
+``aes()`` stands for **aesthetics**, which specifies the the coordinates,
+colors, size, etc from these columns in the data.frame.
 
 .. code-block:: r
 
     aes(x=genotype, y=expression, color=gender)
 
 ``geom_point()`` means plot these as points, could be ``geom_line()`` or 
-a number of other `geom_` things.
+a number of other `geoms`.
 
 googling with ggplot2
 =====================
@@ -176,20 +228,21 @@ Use google to find how to change the y-scale on this plot to log10
 .. code-block:: r
 
     library(ggplot2)
-    df = read.delim('expr-geno-covs.txt')
+    dfx = read.delim('expr-geno-covs.txt')
 
-    ggplot(df, aes(x=genotype, y=expression)) +
+    ggplot(dfx, aes(x=genotype, y=expression)) +
             geom_point()
 
 answer
 ======
 
 .. code-block:: r
+    :emphasize-lines: 6
 
     library(ggplot2)
-    df = read.delim('expr-geno-covs.txt')
+    dfx <- read.delim('expr-geno-covs.txt')
 
-    ggplot(df, aes(x=genotype, y=expression)) +
+    ggplot(dfx, aes(x=genotype, y=expression)) +
             geom_point() +
             scale_y_log10()
 
@@ -203,14 +256,6 @@ The ggplot2 docs are very good: http://docs.ggplot2.org/current/
 Look at the `geom_point()` documentation and change the color
 of the plot above so that males and females are color'ed differently.
 
-
-DataFrame
-=========
-In a data.frame, we read everything into memory
-
-+ R figures out if it is int/character/numeric
-+ each column of the data.frame is accessed by `$`  e.g df$genotype
-
 Hist
 ====
 One of the simplest things to do in R, without ggplot is to look at 
@@ -218,10 +263,9 @@ a histogram of your data:
 
 .. code-block:: r
 
-    df = read.delim('expr-geno-covs.txt')
-    hist(df$expression)
+    hist(dfx$expression)
     # or
-    hist(log(df$expression))
+    hist(log(dfx$expression))
 
 You can make these look a lot nicer with ggplot2.
 
