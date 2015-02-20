@@ -36,12 +36,12 @@ Problem 1
 Problem 2
 ---------
 
-1000 genomes VCF file is at::
+1000 genomes BED file is at::
 
-    /vol1/opt/data/hg19/1000genomes/phase3.vcf.gz
+    /vol1/opt/data/hg19/1000genomes/snp138.bed.gz
 
 #. Examine the relationship between SNP density and gene structure. Use
-   1000Genomes SNP data in VCF format, and assume that each
+   1000Genomes SNP data in BED format, and assume that each
    SNP in the file is the same in terms of quality (**20 points**).
 
     #. Calculate SNP density (SNPs per bp) for first exons of refGene
