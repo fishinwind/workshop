@@ -87,7 +87,7 @@ Texts and Reading Materials
 
 
 #. **Required**: A Quick Guide to Organizing Computational Biology Projects
-   http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
+   :pubmed:`19649301` 
 
 #. **Required**: Command Line Crash Course
    http://cli.learncodethehardway.org/book/
