@@ -108,174 +108,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <ol class="arabic simple">
-<li>Begin to manipulate data with <tt class="docutils literal"><span class="pre">tidyr</span></tt> and <tt class="docutils literal"><span class="pre">dplyr</span></tt></li>
-</ol>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Introduction to tidyr<a class="headerlink" href="../../Classes/class-9.html#introduction-to-tidyr" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>The <tt class="docutils literal"><span class="pre">tidyr</span></tt> package provides two important functions called
-<tt class="docutils literal"><span class="pre">gather()</span></tt> and <tt class="docutils literal"><span class="pre">separate()</span></tt>.</p>
-<p>These functions allow you to manipulate the shape of data frames. One
-common operation is to convert data tables from <cite>wide</cite> format to <cite>long</cite>
-format and back.</p>
-<p>There are useful examples in the article describing the reshape package
-<a class="footnote-reference" href="#id2" id="id1">[1]</a>. Check out the <tt class="docutils literal"><span class="pre">french</span> <span class="pre">fries</span></tt> case study.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.jstatsoft.org/v21/i12/paper">http://www.jstatsoft.org/v21/i12/paper</a></td></tr>
-</tbody>
-</table>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-3">
-    <hgroup>
-      <h3>Wide format (or <cite>unstacked</cite>)<a class="headerlink" href="../../Classes/class-9.html#wide-format-or-unstacked" title="View HTML">§</a></h3>
-    </hgroup>
-    <article class="">
-      <p>Values for each variable are in a separate column.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Person</th>
-<th class="head">Age</th>
-<th class="head">Weight</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Bob</td>
-<td>32</td>
-<td>128</td>
-</tr>
-<tr class="row-odd"><td>Alice</td>
-<td>24</td>
-<td>86</td>
-</tr>
-<tr class="row-even"><td>Steve</td>
-<td>64</td>
-<td>95</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-3">
-    <hgroup>
-      <h3>Long format (or <cite>stacked</cite>)<a class="headerlink" href="../../Classes/class-9.html#long-format-or-stacked" title="View HTML">§</a></h3>
-    </hgroup>
-    <article class="">
-      <p>One column contains the variables, one column contains the values.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Person</th>
-<th class="head">Variable</th>
-<th class="head">Value</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Bob</td>
-<td>Age</td>
-<td>32</td>
-</tr>
-<tr class="row-odd"><td>Bob</td>
-<td>Weight</td>
-<td>128</td>
-</tr>
-<tr class="row-even"><td>Alice</td>
-<td>Age</td>
-<td>24</td>
-</tr>
-<tr class="row-odd"><td>Alice</td>
-<td>Weight</td>
-<td>86</td>
-</tr>
-<tr class="row-even"><td>Steve</td>
-<td>Age</td>
-<td>64</td>
-</tr>
-<tr class="row-odd"><td>Steve</td>
-<td>Weight</td>
-<td>95</td>
-</tr>
-</tbody>
-</table>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>How is <tt class="docutils literal"><span class="pre">tidyr</span></tt> useful?<a class="headerlink" href="../../Classes/class-9.html#how-is-tidyr-useful" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p><tt class="docutils literal"><span class="pre">ggplot2</span></tt> expects data in <cite>long</cite> format, where individual points are
-categorized.</p>
-<p><strong>Question:</strong> Look at the <tt class="docutils literal"><span class="pre">summary</span></tt> data.frame. Is it in <tt class="docutils literal"><span class="pre">wide</span></tt> or
-<tt class="docutils literal"><span class="pre">long</span></tt> format?</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>How is tidyr useful? (2)<a class="headerlink" href="../../Classes/class-9.html#id5" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>The data.frame from dplyr is in <tt class="docutils literal"><span class="pre">wide</span></tt> format.</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
-<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
-
-<span class="c1"># covert to long format</span>
-<span class="o">&gt;</span> long.summary <span class="o">&lt;-</span> gather<span class="p">(</span><span class="kp">summary</span><span class="p">,</span> chrom<span class="p">)</span>
-
-<span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>long.summary<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>chrom<span class="p">,</span> y<span class="o">=</span>value<span class="p">,</span> fill<span class="o">=</span>variable<span class="p">))</span>
-<span class="o">&gt;</span> gp <span class="o">&lt;-</span> gp <span class="o">+</span> geom_bar<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">,</span> position<span class="o">=</span><span class="s">&#39;dodge&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span> gp
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Exercises<a class="headerlink" href="../../Classes/class-9.html#exercises" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <ol class="arabic simple">
-<li>Figure out how to move overlapping points so categorical data is
-viewable (hint: look at geom_jitter() or the <cite>position</cite> argument to
-geom_point())</li>
-<li>Load a BED file (e.g. <tt class="docutils literal"><span class="pre">lamina.bed</span></tt>) and calculate the mean length of
-regions on each chromosome in the BED file with dplyr.  Plot the result as
-a bar plot with ggplot2.</li>
-<li>Worth through the <tt class="docutils literal"><span class="pre">dplyr</span></tt> vignette.
-<a class="reference external" href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html</a></li>
+<li>Begin to manipulate data with and <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">tidyr</span></tt></li>
 </ol>
 
 
@@ -287,17 +120,19 @@ a bar plot with ggplot2.</li>
       <h2>dplyr<a class="headerlink" href="../../Classes/class-9.html#dplyr" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p><tt class="docutils literal"><span class="pre">dplyr</span></tt> provides these simple methods:</p>
-<ol class="arabic simple">
+      <p><tt class="docutils literal"><span class="pre">dplyr</span></tt> provides several methods:</p>
+<ul class="simple">
 <li><tt class="docutils literal"><span class="pre">summarise()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">filter()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">select()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">mutate()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">arrange()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">group_by()</span></tt></li>
-</ol>
+</ul>
 <p><tt class="docutils literal"><span class="pre">dplyr</span></tt> also provides an operator called <tt class="docutils literal"><span class="pre">%&gt;%</span></tt> that allows you to
-string manipulations together:</p>
+string manipulations together.</p>
+<p>By combining these functions together, you can quickly and easily
+manipulate data.frames and generate useful data summaries.</p>
 <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> summary <span class="o">&lt;-</span> df <span class="o">%&gt;%</span> select<span class="p">()</span> <span class="o">%&gt;%</span> group_by<span class="p">()</span> <span class="o">%&gt;%</span> summarize<span class="p">()</span>
 </pre></div>
 </div>
@@ -306,12 +141,12 @@ string manipulations together:</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>dplyr example<a class="headerlink" href="../../Classes/class-9.html#dplyr-example" title="View HTML">§</a></h2>
+      <h3>dplyr example<a class="headerlink" href="../../Classes/class-9.html#dplyr-example" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <div class="highlight-r"><div class="highlight"><pre>dfx <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;misc/data/expr-geno-covs.txt&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+      <div class="highlight-r"><div class="highlight"><pre>dfx <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="c1"># calculate some simple stats with dplyr</span>
 grouped <span class="o">&lt;-</span> group_by<span class="p">(</span>dfx<span class="p">,</span> condition<span class="p">,</span> genotype<span class="p">)</span>
@@ -328,25 +163,20 @@ dfx <span class="o">%&gt;%</span>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>dplyr example<a class="headerlink" href="../../Classes/class-9.html#id3" title="View HTML">§</a></h2>
+      <h3>dplyr example (2)<a class="headerlink" href="../../Classes/class-9.html#id1" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <p>Fetch the peaks.bed.gz file &lt;<a class="reference external" href="http://amc-sandbox.ucdenver.edu/~jhessel/outbox/2014/peaks.bed.gz">http://amc-sandbox.ucdenver.edu/~jhessel/outbox/2014/peaks.bed.gz</a>&gt;</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>dplyr example (2)<a class="headerlink" href="../../Classes/class-9.html#id6" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Summarize transcription factor binding site peaks:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> colnames <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
+      <p>Summarize transcription factor binding site peaks in:</p>
+<div class="highlight-python"><div class="highlight"><pre># columns 1-4 from merged peak calls
+/vol1/opt/data/encode/peaks.bed.gz
+</pre></div>
+</div>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<span class="o">&gt;</span> colnames <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> bedfilename <span class="o">=</span> <span class="s">&#39;peaks.bed.gz&#39;</span>
+
 <span class="c1"># use ``gzfile`` to load gzipped data</span>
 <span class="o">&gt;</span> peaks <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="kp">gzfile</span><span class="p">(</span>bedfilename<span class="p">),</span> col.names<span class="o">=</span><span class="kp">colnames</span><span class="p">)</span>
 
@@ -360,22 +190,19 @@ dfx <span class="o">%&gt;%</span>
 </div>
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">n()</span></tt> is a special function for counting observations</li>
-<li>assign the whole thing to a new data.frame</li>
+<li>assign the summary to a new data.frame</li>
 </ul>
 
 
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>Exercises<a class="headerlink" href="../../Classes/class-9.html#id4" title="View HTML">§</a></h2>
+      <h3>Exercises with dplyr<a class="headerlink" href="../../Classes/class-9.html#exercises-with-dplyr" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
       <ol class="arabic simple">
-<li>Melt the <cite>expr-geno-covs.txt</cite> data table. Recast it with <tt class="docutils literal"><span class="pre">dcast()</span></tt>
-and calculate the mean for each variable conditioned on gender. Plot
-the result.</li>
 <li>Use <tt class="docutils literal"><span class="pre">dplyr</span></tt> to calculate the mean age of smokers grouped by gender
 and smoking status. Plot the result.</li>
 <li>Make a plot of age by expression faceted by genotype. Fit a linear
@@ -383,6 +210,87 @@ model through these curves (use geom_smooth) on the plot.</li>
 <li>Load the peaks BED file and find the 10 factors that have the largest range
 in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or <tt class="docutils literal"><span class="pre">geom_violin()</span></tt> to support
 your answer (also add individual points to the plot with <tt class="docutils literal"><span class="pre">geom_jitter()</span></tt>).</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Combining with ggplot<a class="headerlink" href="../../Classes/class-9.html#combining-with-ggplot" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We had mean expression by condition and genotype as:</p>
+<div class="highlight-r"><div class="highlight"><pre>dfx <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
+    <span class="o">%&gt;%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span> \
+</pre></div>
+</div>
+<p>We can add to that expression (after typing 'library(ggplot2)')</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">%&gt;%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">)</span> \
+    <span class="o">+</span> geom_histogram<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>how can we change the color of all the bars to 'red'? [Hint, it's not
+<strong>color</strong> ='red']</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ggplot histograms<a class="headerlink" href="../../Classes/class-9.html#ggplot-histograms" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Since <cite>expr-geno-covs.txt</cite> is already in long format, we can use it directly in
+ggplot:</p>
+<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+       geom_histogram<span class="p">()</span> <span class="o">+</span>
+       scale_x_log10<span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Exercise<a class="headerlink" href="../../Classes/class-9.html#exercise" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Adjust this:</p>
+<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+       geom_histogram<span class="p">()</span> <span class="o">+</span>
+       scale_x_log10<span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>to color by genotype</li>
+<li>and to split plots (facet_wrap) by condition (case/control)</li>
+<li>to color by age &gt; 60 vs. &lt;= 60 (use row selection stuff from start of class to
+make a new column named, e.g. <cite>is_old</cite>)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Exercises<a class="headerlink" href="../../Classes/class-9.html#exercises" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Figure out how to move overlapping points so categorical data is
+viewable (hint: look at geom_jitter() or the <cite>position</cite> argument to
+geom_point())</li>
+<li>Load a BED file (e.g. <tt class="docutils literal"><span class="pre">lamina.bed</span></tt>) and calculate the mean length of
+regions on each chromosome in the BED file with dplyr.  Plot the result as
+a bar plot with ggplot2.</li>
+<li>Work through the <tt class="docutils literal"><span class="pre">dplyr</span></tt> vignette.
+<a class="reference external" href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html</a></li>
 </ol>
 
 

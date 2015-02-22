@@ -141,9 +141,9 @@ extract a single column</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>Extracting From data.frames<a class="headerlink" href="../../Classes/class-10.html#extracting-from-data-frames" title="View HTML">§</a></h2>
+      <h3>Extracting From data.frames<a class="headerlink" href="../../Classes/class-10.html#extracting-from-data-frames" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
       <p>The order is rows, columns. By having nothing before the comma:</p>
@@ -160,9 +160,9 @@ as:</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>Named rows in data.frames<a class="headerlink" href="../../Classes/class-10.html#named-rows-in-data-frames" title="View HTML">§</a></h2>
+      <h3>Named rows in data.frames<a class="headerlink" href="../../Classes/class-10.html#named-rows-in-data-frames" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
       <p>In <cite>expr-geno-covs.txt</cite>, there is a sample column, we may wish to use
@@ -188,7 +188,7 @@ from an integer column</p>
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>Boolean Operations on Colums<a class="headerlink" href="../../Classes/class-10.html#boolean-operations-on-colums" title="View HTML">§</a></h2>
+      <h2>Boolean Operations on Columns<a class="headerlink" href="../../Classes/class-10.html#boolean-operations-on-columns" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
       <div class="highlight-r"><div class="highlight"><pre>is_old <span class="o">=</span> covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span>
@@ -212,7 +212,7 @@ owd <span class="o">=</span> covs<span class="p">[</span>old_with_disease<span c
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>Boolean Operations on Colums (2)<a class="headerlink" href="../../Classes/class-10.html#id2" title="View HTML">§</a></h2>
+      <h2>Boolean Operations on Columns (2)<a class="headerlink" href="../../Classes/class-10.html#id3" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
       <div class="highlight-r"><div class="highlight"><pre><span class="c1"># with subset</span>
@@ -248,116 +248,146 @@ hets  <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p"
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
-      <h2>dplyr review<a class="headerlink" href="../../Classes/class-10.html#dplyr-review" title="View HTML">§</a></h2>
+      <h2>Introduction to tidyr<a class="headerlink" href="../../Classes/class-10.html#introduction-to-tidyr" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p><tt class="docutils literal"><span class="pre">dplyr</span></tt> provides these simple methods:</p>
-<ol class="arabic simple">
-<li><tt class="docutils literal"><span class="pre">summarise()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">filter()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">select()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">mutate()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">arrange()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">group_by()</span></tt></li>
-</ol>
+      <p>The <tt class="docutils literal"><span class="pre">tidyr</span></tt> package provides two important functions called
+<tt class="docutils literal"><span class="pre">gather()</span></tt> and <tt class="docutils literal"><span class="pre">separate()</span></tt>.</p>
+<p>These functions allow you to manipulate the shape of data frames. One
+common operation is to convert data tables from <cite>wide</cite> format to <cite>long</cite>
+format and back.</p>
+<p>There are useful examples in the article describing the reshape package
+<a class="footnote-reference" href="#id2" id="id1">[1]</a>. Check out the <tt class="docutils literal"><span class="pre">french</span> <span class="pre">fries</span></tt> case study.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.jstatsoft.org/v21/i12/paper">http://www.jstatsoft.org/v21/i12/paper</a></td></tr>
+</tbody>
+</table>
 
 
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>dplyr<a class="headerlink" href="../../Classes/class-10.html#dplyr" title="View HTML">§</a></h2>
+      <h3>Wide format (or <cite>unstacked</cite>)<a class="headerlink" href="../../Classes/class-10.html#wide-format-or-unstacked" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <p><tt class="docutils literal"><span class="pre">dplyr</span></tt> also provides an operator called <tt class="docutils literal"><span class="pre">%&gt;%</span></tt> that allows you to
-chain manipulations together.</p>
-<p>To get mean expression level by condition (case/control)</p>
-<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">)</span> \
-     <span class="o">%&gt;%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>Mean expression by condition and genotype</p>
-<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
-     <span class="o">%&gt;%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
-</pre></div>
-</div>
+      <p>Values for each variable are in a separate column.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Person</th>
+<th class="head">Age</th>
+<th class="head">Weight</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Bob</td>
+<td>32</td>
+<td>128</td>
+</tr>
+<tr class="row-odd"><td>Alice</td>
+<td>24</td>
+<td>86</td>
+</tr>
+<tr class="row-even"><td>Steve</td>
+<td>64</td>
+<td>95</td>
+</tr>
+</tbody>
+</table>
 
 
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>Exercise<a class="headerlink" href="../../Classes/class-10.html#exercise" title="View HTML">§</a></h2>
+      <h3>Long format (or <cite>stacked</cite>)<a class="headerlink" href="../../Classes/class-10.html#long-format-or-stacked" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <ol class="arabic simple">
-<li>What are the mean ages by cases and controls?</li>
-<li>What are the mean ages by genotype?</li>
-<li>How can you order the output by ascending and descending mean expression?</li>
-</ol>
+      <p>One column contains the variables, one column contains the values.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Person</th>
+<th class="head">Variable</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Bob</td>
+<td>Age</td>
+<td>32</td>
+</tr>
+<tr class="row-odd"><td>Bob</td>
+<td>Weight</td>
+<td>128</td>
+</tr>
+<tr class="row-even"><td>Alice</td>
+<td>Age</td>
+<td>24</td>
+</tr>
+<tr class="row-odd"><td>Alice</td>
+<td>Weight</td>
+<td>86</td>
+</tr>
+<tr class="row-even"><td>Steve</td>
+<td>Age</td>
+<td>64</td>
+</tr>
+<tr class="row-odd"><td>Steve</td>
+<td>Weight</td>
+<td>95</td>
+</tr>
+</tbody>
+</table>
 
 
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>ggplot<a class="headerlink" href="../../Classes/class-10.html#ggplot" title="View HTML">§</a></h2>
+      <h3>Why is <tt class="docutils literal"><span class="pre">tidyr</span></tt> useful?<a class="headerlink" href="../../Classes/class-10.html#why-is-tidyr-useful" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <p>Above, we had mean expression by condition and genotype as:</p>
-<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
-     <span class="o">%&gt;%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span> \
-</pre></div>
-</div>
-<p>We can add to that expression (after typing 'library(ggplot2)')</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">%&gt;%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">)</span> \
-    <span class="o">+</span> geom_histogram<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>how can we change the color of all the bars to 'red'? [Hint, it's not
-<strong>color</strong> ='red']</p>
+      <p><tt class="docutils literal"><span class="pre">ggplot2</span></tt> expects data in <cite>long</cite> format, where individual points are
+categorized.</p>
+<p><strong>Question:</strong> Look at the <tt class="docutils literal"><span class="pre">summary</span></tt> data.frame. Is it in <tt class="docutils literal"><span class="pre">wide</span></tt> or
+<tt class="docutils literal"><span class="pre">long</span></tt> format?</p>
 
 
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-3">
     <hgroup>
-      <h2>ggplot histograms<a class="headerlink" href="../../Classes/class-10.html#ggplot-histograms" title="View HTML">§</a></h2>
+      <h3>Why is tidyr useful? (2)<a class="headerlink" href="../../Classes/class-10.html#id4" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <p>Since <cite>expr-geno-covs.txt</cite> is already in long format, we can use it directly in
-ggplot:</p>
-<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
-       geom_histogram<span class="p">()</span> <span class="o">+</span>
-       scale_x_log10<span class="p">()</span>
+      <p>The data.frame from dplyr is in <tt class="docutils literal"><span class="pre">wide</span></tt> format.</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+
+<span class="c1"># covert to long format</span>
+<span class="o">&gt;</span> long.summary <span class="o">&lt;-</span> gather<span class="p">(</span><span class="kp">summary</span><span class="p">,</span> chrom<span class="p">)</span>
+
+<span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>long.summary<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>chrom<span class="p">,</span> y<span class="o">=</span>value<span class="p">,</span> fill<span class="o">=</span>variable<span class="p">))</span>
+<span class="o">&gt;</span> gp <span class="o">&lt;-</span> gp <span class="o">+</span> geom_bar<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">,</span> position<span class="o">=</span><span class="s">&#39;dodge&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> gp
 </pre></div>
 </div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2">
-    <hgroup>
-      <h2>Exercise<a class="headerlink" href="../../Classes/class-10.html#id1" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Adjust this:</p>
-<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
-       geom_histogram<span class="p">()</span> <span class="o">+</span>
-       scale_x_log10<span class="p">()</span>
-</pre></div>
-</div>
-<ol class="arabic simple">
-<li>to color by genotype</li>
-<li>and to split plots (facet_wrap) by condition (case/control)</li>
-<li>to color by age &gt; 60 vs. &lt;= 60 (use row selection stuff from start of class to
-make a new column named, e.g. <cite>is_old</cite>)</li>
-</ol>
 
 
 
