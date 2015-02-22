@@ -6,7 +6,7 @@ Goals
 =====
 
 #. Learn to keep a running script in RStudio to save your work.
-#. more reshape and dplyr
+#. tidyr and dplyr
 #. Exercises 
 
 RStudio practice
@@ -16,23 +16,6 @@ RStudio practice
 
 #. As you run interactive analyses, paste the commands that work into the
    script.
-
-reshape2 review
-===============
-
-There are two functions in the reshape2 package: ``melt()`` and
-``dcast()``. The ``d`` means it returns a data.frame.
-
-``dcast()`` takes a data.frame, a forumula and an optional function
-
-.. code-block:: r
-
-   > library(reshape2)
-   > library(dplyr)
-   > mycars <- mutate(mtcars, car.name = rownames(mtcars))
-   > mycarsm <- melt(mycars, id=c('car.name','gear'))
-   # examine mycarsm. is it wide or long?
-   > dcast(mycarsm, gear ~ variable, mean)
 
 dplyr
 =====
@@ -99,7 +82,7 @@ Summarize transcription factor binding site peaks:
 Exercises
 =========
 
-#. Melt the `expr-geno-covs.txt` data table. Recast it with ``dcast()``
+#. Melt the `expr-geno-covs.txt` data table. Recast it with ``tidyr:gather()``
    and calculate the mean for each variable conditioned on gender. Plot
    the result.
 
@@ -107,7 +90,7 @@ Exercises
    and smoking status. Plot the result.
 
 #. Make a plot of age by expression faceted by genotype. Fit a linear
-   model through these curves (use geom_smooth) on the plot.
+   model through these curves (use ``geom_smooth()``) on the plot.
 
 #. Load the peaks BED file and find the 10 factors that have the largest range
    in peak width. Inspect a ``geom_boxplot()`` or ``geom_violin()`` to support
