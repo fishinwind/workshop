@@ -91,96 +91,54 @@ Exercises with dplyr
    in peak width. Inspect a ``geom_boxplot()`` or ``geom_violin()`` to support
    your answer (also add individual points to the plot with ``geom_jitter()``).
 
-Introduction to tidyr 
+Combining with ggplot
 =====================
 
-The ``tidyr`` package provides two important functions called
-``gather()`` and ``separate()``.
-
-These functions allow you to manipulate the shape of data frames. One
-common operation is to convert data tables from `wide` format to `long`
-format and back.
-
-There are useful examples in the article describing the reshape package
-[#]_. Check out the ``french fries`` case study.
-
-.. [#] http://www.jstatsoft.org/v21/i12/paper
-
-Wide format (or `unstacked`)
-----------------------------
-Values for each variable are in a separate column.
-
-.. list-table::
-    :header-rows: 1
-
-    * - Person
-      - Age
-      - Weight
-    * - Bob
-      - 32
-      - 128
-    * - Alice
-      - 24
-      - 86
-    * - Steve
-      - 64
-      - 95
-
-Long format (or `stacked`)
---------------------------
-
-One column contains the variables, one column contains the values.
-
-.. list-table::
-    :header-rows: 1
-
-    * - Person
-      - Variable
-      - Value
-    * - Bob
-      - Age
-      - 32
-    * - Bob
-      - Weight
-      - 128
-    * - Alice
-      - Age
-      - 24
-    * - Alice
-      - Weight
-      - 86
-    * - Steve
-      - Age
-      - 64
-    * - Steve
-      - Weight
-      - 95
-
-Why is ``tidyr`` useful?
-------------------------
-
-``ggplot2`` expects data in `long` format, where individual points are
-categorized.
-
-**Question:** Look at the ``summary`` data.frame. Is it in ``wide`` or
-``long`` format?
-
-.. nextslide::
-   :increment:
-
-The data.frame from dplyr is in ``wide`` format. 
+We had mean expression by condition and genotype as:
 
 .. code-block:: r
 
-    > library(tidyr)
-    > library(ggplot2)
+    dfx %>% group_by(condition, genotype) \
+        %>% summarize(count=n(), mean.expr=mean(expression)) \
 
-    # covert to long format
-    > long.summary <- gather(summary, chrom)
+We can add to that expression (after typing 'library(ggplot2)')
 
-    > gp <- ggplot(long.summary, aes(x=chrom, y=value, fill=variable))
-    > gp <- gp + geom_bar(stat='identity', position='dodge')
-    > gp
+.. code-block:: r
+
+        %>% ggplot(aes(x=genotype, y=expression) \
+            + geom_histogram(stat='identity')
+
+how can we change the color of all the bars to 'red'? [Hint, it's not
+**color** ='red']
+
+ggplot histograms
+=================
+
+Since `expr-geno-covs.txt` is already in long format, we can use it directly in
+ggplot:
+
+.. code-block:: r
+
+    ggplot(covs, aes(x=expression)) + 
+           geom_histogram() +
+           scale_x_log10()
+
+Exercise
+========
+Adjust this:
+
+.. code-block:: r
+
+    ggplot(covs, aes(x=expression)) + 
+           geom_histogram() +
+           scale_x_log10()
+
+#. to color by genotype
+
+#. and to split plots (facet_wrap) by condition (case/control)
+
+#. to color by age > 60 vs. <= 60 (use row selection stuff from start of class to
+   make a new column named, e.g. `is_old`)
 
 Exercises
 ---------
@@ -193,7 +151,7 @@ Exercises
    regions on each chromosome in the BED file with dplyr.  Plot the result as
    a bar plot with ggplot2.
 
-#. Worth through the ``dplyr`` vignette.
+#. Work through the ``dplyr`` vignette.
    http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
 
 .. raw:: pdf
