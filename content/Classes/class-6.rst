@@ -5,6 +5,7 @@ Class 6 : Genomic Data Vignette: ChIP-seq
 *****************************************
 
 :Class date: |c6-date| 
+:Last updated: |today|
 
 Goals
 =====

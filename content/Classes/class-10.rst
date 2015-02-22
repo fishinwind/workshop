@@ -6,6 +6,7 @@ Class 10 : R : DataFrames & Plotting
 ************************************
 
 :Class date: |c10-date|
+:Last updated: |today|
 
 Goals
 =====

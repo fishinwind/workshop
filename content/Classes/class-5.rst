@@ -6,6 +6,7 @@
 *********************
 
 :Class date: |c5-date| 
+:Last updated: |today|
 
 Goals
 =====

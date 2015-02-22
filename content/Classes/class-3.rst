@@ -6,6 +6,7 @@ Class 3 : The command-line (part 2)
 ***********************************
 
 :Class date: |c3-date| 
+:Last updated: |today|
 
 Goals
 =====

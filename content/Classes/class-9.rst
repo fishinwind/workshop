@@ -6,7 +6,7 @@ Class 9 : R : Manipulation & Plotting
 **************************************
 
 :Class date: |c9-date|
-
+:Last updated: |today|
 
 Goals
 =====

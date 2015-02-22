@@ -6,6 +6,7 @@ Class 7 : BEDTools vignette
 =============================
 
 :Class date: |c7-date|
+:Last updated: |today|
 
 Goals
 -----
