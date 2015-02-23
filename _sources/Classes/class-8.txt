@@ -6,7 +6,7 @@ Class 8 : R : Getting Started
 ******************************
 
 :Class date: |c8-date|
-
+:Last updated: |today|
 
 Setting up web access to tesla
 ==============================

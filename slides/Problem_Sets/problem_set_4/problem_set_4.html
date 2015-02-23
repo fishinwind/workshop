@@ -1,0 +1,215 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Problem Set 4 &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../../_static/js/slides"
+            src="../../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Problem Sets" href="../../Problem_Sets.html" />
+    <link rel="next" title="Problem Set : KEYS" href="../Problem_Set_Keys.html" />
+    <link rel="prev" title="Problem Set 3" href="../problem_set_3/problem_set_3.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Problem Set 4<a class="headerlink" href="../../../Problem_Sets/problem_set_4/problem_set_4.html#problem-set-4" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Due date:</th><td class="field-body">2015 Feb 23 5:00 PM</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Overview<a class="headerlink" href="../../../Problem_Sets/problem_set_4/problem_set_4.html#overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>For this quiz you will use BEDTools and command line tools to make some
+simple summary files and will use ggplot2 to make some plots.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem 1<a class="headerlink" href="../../../Problem_Sets/problem_set_4/problem_set_4.html#problem-1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Examine Pol II distribution in a 5 kb window around transcription
+termination sites (TTSs) at a resolution of 50 bp?  Make a plot of the
+result and save it as a PDF. (<strong>15 points</strong>)</li>
+<li>Pick one other factor you might expect to find at a TTS and analyze its
+distribution. You can find bigWig files of ChIP-seq experiemnts done for a
+variety of factors at UCSC <a class="footnote-reference" href="#id4" id="id2">[1]</a> and the ENCODE <a class="footnote-reference" href="#id5" id="id3">[2]</a> website. Make a plot of the
+result and save it as a PDF. (<strong>15 points</strong>)</li>
+</ol>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>ENCODE Project at UCSC Encyclopedia of DNA Elements at UCSC
+<a class="reference external" href="http://genome.ucsc.edu/ENCODE/">http://genome.ucsc.edu/ENCODE/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Current ENCODE data
+<a class="reference external" href="https://www.encodeproject.org/">https://www.encodeproject.org/</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem 2<a class="headerlink" href="../../../Problem_Sets/problem_set_4/problem_set_4.html#problem-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>1000 genomes BED file is at:</p>
+<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data/hg19/1000genomes/snp138.bed.gz
+</pre></div>
+</div>
+<ul class="simple">
+<li>Examine the relationship between SNP density and gene structure. Use
+1000Genomes SNP data in BED format, and assume that each
+SNP in the file is the same in terms of quality (<strong>20 points</strong>).<ul>
+<li>Calculate SNP density (SNPs per bp) for first exons of refGene
+annotations. (hint: use the <tt class="docutils literal"><span class="pre">-n</span></tt> option of
+<a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/bed12tobed6.html#bed12tobed6" title="(in bedtools v2.22.1)"><em class="xref std std-ref">bed12tobed6</em></a>)</li>
+<li>Do the same for the introns of each gene. (hint: use
+<a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/subtract.html#subtract" title="(in bedtools v2.22.1)"><em class="xref std std-ref">subtract</em></a> with BED files for genes and
+exons)</li>
+<li>Make a histogram of the results (use <tt class="docutils literal"><span class="pre">geom_hist()</span></tt>).</li>
+<li>Add text annotations to the plot with <tt class="docutils literal"><span class="pre">geom_text()</span></tt> and
+<tt class="docutils literal"><span class="pre">ggtitle</span></tt>. E.g. how many SNPs were examined? How many exon /
+intron regions?</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Problem Set Submission<a class="headerlink" href="../../../Problem_Sets/problem_set_4/problem_set_4.html#problem-set-submission" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Submit your problem set as a tar file to Canvas
+(<a class="reference internal" href="../../Problem_Sets.html#problem-set-submission"><em>Problem Set Submission</em></a>).</p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

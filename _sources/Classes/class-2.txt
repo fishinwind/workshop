@@ -6,6 +6,7 @@ Class 2 : The command-line
 **************************
 
 :Class date: |c2-date| 
+:Last updated: |today|
 
 Things to fix from last class
 =============================
