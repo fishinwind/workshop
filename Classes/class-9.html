@@ -121,9 +121,9 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#combining-with-ggplot">Combining with ggplot</a></li>
-<li><a class="reference internal" href="#ggplot-histograms">ggplot histograms</a><ul>
+<li><a class="reference internal" href="#ggplot-histograms">ggplot histograms</a></li>
+<li><a class="reference internal" href="#exercise">Exercise</a><ul>
 <li><a class="reference internal" href="#exercises">Exercises</a></li>
-<li><a class="reference internal" href="#practice">Practice</a></li>
 </ul>
 </li>
 </ul>
@@ -142,7 +142,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 24 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 23, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 24, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -246,22 +246,23 @@ ggplot:</p>
        scale_x_log10<span class="p">()</span>
 </pre></div>
 </div>
-<div class="section" id="exercises">
-<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-9.html#exercises" title="Slides">§</a></h3>
-<ol class="arabic simple">
-<li>Adjust this:</li>
-</ol>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-9.html#exercise" title="Slides">§</a></h2>
+<p>Adjust this:</p>
 <div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
        geom_histogram<span class="p">()</span> <span class="o">+</span>
        scale_x_log10<span class="p">()</span>
 </pre></div>
 </div>
-<ul class="simple">
+<ol class="arabic simple">
 <li>to color by genotype</li>
 <li>and to split plots (facet_wrap) by condition (case/control)</li>
 <li>to color by age &gt; 60 vs. &lt;= 60 (use row selection stuff from start of class to
 make a new column named, e.g. <cite>is_old</cite>)</li>
-</ul>
+</ol>
+<div class="section" id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-9.html#exercises" title="Slides">§</a></h3>
 <ol class="arabic simple">
 <li>Figure out how to move overlapping points so categorical data is
 viewable (hint: look at geom_jitter() or the <cite>position</cite> argument to
@@ -269,16 +270,9 @@ geom_point())</li>
 <li>Load a BED file (e.g. <tt class="docutils literal"><span class="pre">lamina.bed</span></tt>) and calculate the mean length of
 regions on each chromosome in the BED file with dplyr.  Plot the result as
 a bar plot with ggplot2.</li>
+<li>Work through the <tt class="docutils literal"><span class="pre">dplyr</span></tt> vignette.
+<a class="reference external" href="http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html</a></li>
 </ol>
-</div>
-<div class="section" id="practice">
-<h3>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-9.html#practice" title="Slides">§</a></h3>
-<p>Practice <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">tidyr</span></tt> with <tt class="docutils literal"><span class="pre">swirl</span></tt>:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>swirl<span class="p">)</span>
-<span class="o">&gt;</span> install_from_swirl<span class="p">(</span><span class="s">&quot;Getting_and_Cleaning_Data&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> swirl<span class="p">()</span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -303,7 +297,7 @@ a bar plot with ggplot2.</li>
     </p>
     <p>
         &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
-      Last updated on Feb 23, 2015.<br/>
+      Last updated on Feb 24, 2015.<br/>
     </p>
   </div>
 </footer>
