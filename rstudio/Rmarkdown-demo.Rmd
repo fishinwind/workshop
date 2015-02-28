@@ -1,0 +1,44 @@
+---
+title: "Rmarkdown demo"
+author: "Jay Hesselberth"
+date: "February 28, 2015"
+output: html_document
+---
+
+# Summary
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Common libraries
+```{r}
+library(dplyr, warn=FALSE, quiet=TRUE)
+library(ggplot2)
+```
+
+## Loading data
+
+```{r}
+# assumes workshop repo is in $HOME/devel
+setwd("~/devel/workshop/content/misc/data")
+# load bed data
+bed.df <- read.delim('lamina.bed', header=TRUE)
+# fixup chrom name
+names(bed.df)[1] <- 'chrom'
+
+# load expr data
+expr.df <- read.delim('expr-geno-covs.txt', header=TRUE)
+```
+
+First, we can dynamically generate some simple statistics. For example, there are `r length(unique(bed.df$chrom))` chromosomes in the BED file we loaded.
+
+Let's have a look at the distribution of CpG sizes on each chromosome in the `lamina.bed` file:
+
+```{r, message=FALSE}
+bed.df %>%
+  mutate(cpg.size = end - start) %>%
+  ggplot(aes(x = log10(cpg.size), y = ..density..)) +
+  geom_histogram() +
+  geom_density(alpha = 0.2, fill = 'grey50') +
+  facet_wrap(~chrom)
+```
