@@ -1,0 +1,72 @@
+---
+title: "Rmarkdown demo"
+author: "Jay Hesselberth"
+date: "2015-03-02"
+output: html_document
+# runtime: shiny
+---
+
+# Summary
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Common libraries
+```{r, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+## Loading data
+```{r}
+# assumes workshop repo is in $HOME/devel
+setwd("~/devel/workshop/content/misc/data")
+
+# load bed data
+bed.df <- read.delim('lamina.bed', header=TRUE)
+# fixup chrom name
+names(bed.df)[1] <- 'chrom'
+
+# load expr data
+expr.df <- read.delim('expr-geno-covs.txt', header=TRUE)
+```
+
+## Summarizing data
+First, we can dynamically generate some simple statistics. For example, there are `r length(unique(bed.df$chrom))` chromosomes in the BED file we loaded.
+
+You can also generate view of the data with:
+
+```{r}
+summary(bed.df)
+
+table(expr.df$condition)
+
+# part of the `knitr` package
+kable(head(expr.df))
+```
+
+## Plots
+
+Let's have a look at the distribution of CpG sizes on each chromosome in the `lamina.bed` file:
+
+```{r, message=FALSE}
+bed.df %>%
+  mutate(cpg.size = end - start) %>%
+  ggplot(aes(x = log10(cpg.size), y = ..density..)) +
+  geom_histogram() +
+  geom_density(alpha = 0.2, fill = 'grey50') +
+  facet_wrap(~chrom)
+```
+
+Can also use the new ggvis for this, but doesn't support faceting yet. Also Rmarkdown doesn't support emoji :(((.
+
+```{r, message=FALSE, warning=FALSE}
+library(ggvis)
+bed.df %>%
+  mutate(cpg.size = end - start) %>%
+  ggvis(~factor(chrom), ~log10(cpg.size)) %>% 
+  layer_boxplots() %>%
+  add_axis("x", title='', properties = axis_props(labels = list(angle = -90)))
+```
+
