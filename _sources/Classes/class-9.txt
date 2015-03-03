@@ -123,9 +123,9 @@ ggplot:
            geom_histogram() +
            scale_x_log10()
 
-Exercise
-========
-Adjust this:
+Exercises
+---------
+#. Adjust this:
 
 .. code-block:: r
 
@@ -133,15 +133,12 @@ Adjust this:
            geom_histogram() +
            scale_x_log10()
 
-#. to color by genotype
+- to color by genotype
 
-#. and to split plots (facet_wrap) by condition (case/control)
+- and to split plots (facet_wrap) by condition (case/control)
 
-#. to color by age > 60 vs. <= 60 (use row selection stuff from start of class to
-   make a new column named, e.g. `is_old`)
-
-Exercises
----------
+- to color by age > 60 vs. <= 60 (use row selection stuff from start of class to
+  make a new column named, e.g. `is_old`)
 
 #. Figure out how to move overlapping points so categorical data is
    viewable (hint: look at geom_jitter() or the `position` argument to
@@ -151,8 +148,15 @@ Exercises
    regions on each chromosome in the BED file with dplyr.  Plot the result as
    a bar plot with ggplot2.
 
-#. Work through the ``dplyr`` vignette.
-   http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+Practice
+--------
+Practice ``dplyr`` and ``tidyr`` with ``swirl``:
+
+.. code-block:: r
+
+   > library(swirl)
+   > install_from_swirl("Getting_and_Cleaning_Data")
+   > swirl()
 
 .. raw:: pdf
 

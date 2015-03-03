@@ -49,7 +49,10 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
-    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" /> 
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Problem Sets" href="../../Problem_Sets.html" />
+    <link rel="next" title="Problem Set : KEYS" href="../Problem_Set_Keys.html" />
+    <link rel="prev" title="Problem Set 4" href="../problem_set_4/problem_set_4.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -101,11 +104,23 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>  <slide class="level-2">
     <hgroup>
+      <h2>Overview<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>For the following problems, generate a Rmarkdown document in PDF format
+that explains the workflow and generates the appropriate plots.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
       <h2>Problem 1<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#problem-1" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (<strong>30
-points</strong>). You can use Python to filter the data prior to analysis.</p>
+      <p>Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (<strong>25
+points</strong>).</p>
 <ol class="arabic">
 <li><p class="first">Load the peaks BED file and find the 10 factors that have the largest
 range in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or <tt class="docutils literal"><span class="pre">geom_violin()</span></tt>
@@ -131,43 +146,18 @@ peak (e.g. use bedtools to find these).</p>
       <h2>Problem 2<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#problem-2" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Make up your own question that uses ggplot2 and BEDTools to analyze ENCODE
-data (<strong>20 points</strong>).</p>
-<p>This description should include:</p>
-<ol class="arabic simple">
-<li>a biological question motivating the analysis</li>
-<li>how you will address the question</li>
-</ol>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-3">
-    <hgroup>
-      <h3>Example<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#example" title="View HTML">§</a></h3>
-    </hgroup>
-    <article class="">
-      <p>I will examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
+      <p>Use ggplot2 and BEDTools to analyze the following ENCODE data (<strong>25 points</strong>).</p>
+<p>Examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
 marks are enriched in high confidence CTCF-mediated chromatin loops:</p>
 <div class="highlight-python"><div class="highlight"><pre>----CTCF-----------------------------------------------CTCF----
-     |
+     |                                                  |
      -------------------loop region----------------------
          H3K4me3 peak?                 H3K4me3 peak?
 </pre></div>
 </div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-3">
-    <hgroup>
-      <h3>Workflow<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#workflow" title="View HTML">§</a></h3>
-    </hgroup>
-    <article class="">
-      <ol class="arabic simple">
-<li>download ENCODE ChIA-PET/CTCF and histone ChIP data for K562 cell line</li>
+<ol class="arabic simple">
+<li>Download ENCODE ChIA-PET/CTCF and histone ChIP data for the K562 cell
+line.</li>
 <li>Determine which histone marks are present in the regions defined by
 CTCF Chia-PET boundaries (as a control, determine which are outside)
 use <tt class="docutils literal"><span class="pre">bedtools</span> <span class="pre">intersect</span></tt> and other bedtools</li>

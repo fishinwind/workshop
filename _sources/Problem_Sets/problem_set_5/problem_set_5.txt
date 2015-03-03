@@ -9,11 +9,16 @@ Problem Set 5
 
 :Due date: |pset5-due| 
 
+Overview
+========
+For the following problems, generate a Rmarkdown document in PDF format
+that explains the workflow and generates the appropriate plots.
+
 Problem 1
 =========
 
-Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (**30
-points**). You can use Python to filter the data prior to analysis. 
+Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (**25
+points**). 
 
 #. Load the peaks BED file and find the 10 factors that have the largest
    range in peak width. Inspect a ``geom_boxplot()`` or ``geom_violin()``
@@ -33,29 +38,18 @@ points**). You can use Python to filter the data prior to analysis.
 Problem 2
 =========
 
-Make up your own question that uses ggplot2 and BEDTools to analyze ENCODE
-data (**20 points**).
+Use ggplot2 and BEDTools to analyze the following ENCODE data (**25 points**).
 
-This description should include:
-
-#. a biological question motivating the analysis
-#. how you will address the question
-
-Example
--------
-
-I will examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
+Examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
 marks are enriched in high confidence CTCF-mediated chromatin loops::
 
     ----CTCF-----------------------------------------------CTCF----
-         |                                                  
+         |                                                  |
          -------------------loop region----------------------
              H3K4me3 peak?                 H3K4me3 peak?
 
-Workflow
---------
-
-#. download ENCODE ChIA-PET/CTCF and histone ChIP data for K562 cell line
+#. Download ENCODE ChIA-PET/CTCF and histone ChIP data for the K562 cell
+   line.
 
 #. Determine which histone marks are present in the regions defined by
    CTCF Chia-PET boundaries (as a control, determine which are outside)
@@ -63,7 +57,6 @@ Workflow
 
 #. Generate summary statistics for which histone marks are enriched in
    CTCF loops. use ``dplyr`` and ``ggplot2`` for this.
-
 
 Problem Set Submission
 ======================

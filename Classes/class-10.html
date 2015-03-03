@@ -31,7 +31,7 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
-    <link rel="next" title="Problem Sets" href="../Problem_Sets.html" />
+    <link rel="next" title="Class 11 : R : Simple statistics and ggplot2" href="class-11.html" />
     <link rel="prev" title="Class 9 : R : Manipulation &amp; Plotting" href="class-9.html" /> 
 
 <!-- Google Analytics tracking code -->
@@ -118,14 +118,12 @@
 <li><a class="reference internal" href="#data-frames">data.frames</a><ul>
 <li><a class="reference internal" href="#extracting-from-data-frames">Extracting From data.frames</a></li>
 <li><a class="reference internal" href="#named-rows-in-data-frames">Named rows in data.frames</a></li>
+<li><a class="reference internal" href="#boolean-operations-on-columns">Boolean Operations on Columns</a></li>
+<li><a class="reference internal" href="#excercises-for-data-frames">Excercises for data.frames</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#boolean-operations-on-columns">Boolean Operations on Columns</a></li>
-<li><a class="reference internal" href="#excercises">Excercises</a></li>
-<li><a class="reference internal" href="#introduction-to-tidyr">Introduction to tidyr</a><ul>
-<li><a class="reference internal" href="#wide-format-or-unstacked">Wide format (or <cite>unstacked</cite>)</a></li>
-<li><a class="reference internal" href="#long-format-or-stacked">Long format (or <cite>stacked</cite>)</a></li>
-<li><a class="reference internal" href="#why-is-tidyr-useful">Why is <tt class="docutils literal"><span class="pre">tidyr</span></tt> useful?</a></li>
+<li><a class="reference internal" href="#rmarkdown">Rmarkdown</a><ul>
+<li><a class="reference internal" href="#github">Github</a></li>
 </ul>
 </li>
 </ul>
@@ -142,16 +140,16 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 26 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Mar 3 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 24, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 03, 2015</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#goals" title="Slides">§</a></h2>
 <ol class="arabic simple">
-<li>Understand data.frames in more detail</li>
+<li>Look at data.frames in more detail</li>
 <li>Practice manipulating data.frames</li>
 <li>more dplyr and ggplot</li>
 </ol>
@@ -160,27 +158,41 @@
 <h2>data.frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#data-frames" title="Slides">§</a></h2>
 <p>Read in a data.frame, view the first few lines and
 extract a single column</p>
-<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>covs<span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>covs<span class="o">$</span>genotype<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span class="c1"># assumes workshop repo is in $HOME/devel</span>
+<span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;~/devel/workshop/content/misc/data&quot;</span><span class="p">)</span>
+
+<span class="c1"># load expr data</span>
+expr.df <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="kp">head</span><span class="p">(</span>expr.df<span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>expr.df<span class="o">$</span>genotype<span class="p">)</span>
 
 <span class="c1"># or</span>
-<span class="kp">head</span><span class="p">(</span>covs<span class="p">[,</span><span class="s">&quot;genotype&quot;</span><span class="p">])</span>
+<span class="kp">head</span><span class="p">(</span>expr.df<span class="p">[,</span><span class="s">&quot;genotype&quot;</span><span class="p">])</span>
+
+<span class="c1"># using dplyr</span>
+expr.df <span class="o">%&gt;%</span> select<span class="p">(</span>genotype<span class="p">)</span> <span class="o">%&gt;%</span> <span class="kp">head</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>To extract multiple selected columns:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="kp">head</span><span class="p">(</span>covs<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
+<div class="highlight-r"><div class="highlight"><pre><span class="kp">head</span><span class="p">(</span>expr.df<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
+
+<span class="c1"># using dplyr</span>
+expr.df <span class="o">%&gt;%</span> select<span class="p">(</span>genotype<span class="p">,</span> <span class="kp">expression</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="kp">head</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="section" id="extracting-from-data-frames">
 <h3>Extracting From data.frames<a class="headerlink" href="#extracting-from-data-frames" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#extracting-from-data-frames" title="Slides">§</a></h3>
 <p>The order is rows, columns. By having nothing before the comma:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="kp">head</span><span class="p">(</span>covs<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
+<div class="highlight-r"><div class="highlight"><pre><span class="kp">head</span><span class="p">(</span>expr.df<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>We extract all rows. We can manually extract the first 5 rows and our 2 columns
 as:</p>
-<div class="highlight-r"><div class="highlight"><pre>covs<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)]</span>
+<div class="highlight-r"><div class="highlight"><pre>expr.df<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)]</span>
+
+<span class="c1"># using dplyr</span>
+expr.df <span class="o">%&gt;%</span> select<span class="p">(</span>genotype<span class="p">,</span> <span class="kp">expression</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="kp">head</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -188,31 +200,28 @@ as:</p>
 <h3>Named rows in data.frames<a class="headerlink" href="#named-rows-in-data-frames" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#named-rows-in-data-frames" title="Slides">§</a></h3>
 <p>In <cite>expr-geno-covs.txt</cite>, there is a sample column, we may wish to use
 that as the row id:</p>
-<div class="highlight-r"><div class="highlight"><pre>covs <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">,</span> row.names<span class="o">=</span><span class="s">&#39;sample_id&#39;</span><span class="p">)</span>
-<span class="kp">head</span><span class="p">(</span>covs<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre>expr.df <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-expr.df.txt&#39;</span><span class="p">,</span> row.names<span class="o">=</span><span class="s">&#39;sample_id&#39;</span><span class="p">)</span>
+<span class="kp">head</span><span class="p">(</span>expr.df<span class="p">)</span>
 
-covs<span class="p">[</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;sample_1&#39;</span><span class="p">,</span> <span class="s">&#39;sample_14&#39;</span><span class="p">),]</span>
+expr.df<span class="p">[</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;sample1&#39;</span><span class="p">,</span> <span class="s">&#39;sample14&#39;</span><span class="p">),]</span>
+
+<span class="c1"># or with row numbers:</span>
+covs<span class="p">[</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">),]</span>
 </pre></div>
-</div>
-<p>We can still extract them with numbers:</p>
-<blockquote>
-<div>covs[c(1, 4),]</div></blockquote>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Be careful with data.frames where the row.names are
-from an integer column</p>
-</div>
 </div>
 </div>
 <div class="section" id="boolean-operations-on-columns">
-<h2>Boolean Operations on Columns<a class="headerlink" href="#boolean-operations-on-columns" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#boolean-operations-on-columns" title="Slides">§</a></h2>
-<div class="highlight-r"><div class="highlight"><pre>is_old <span class="o">=</span> covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span>
+<h3>Boolean Operations on Columns<a class="headerlink" href="#boolean-operations-on-columns" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#boolean-operations-on-columns" title="Slides">§</a></h3>
+<div class="highlight-r"><div class="highlight"><pre>is_old <span class="o">&lt;-</span> covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span>
 </pre></div>
 </div>
 <p>now <cite>is_old</cite> is a list of TRUE / FALSE values. We can extract only those &gt; 65 as:</p>
-<div class="highlight-r"><div class="highlight"><pre>old <span class="o">=</span> covs<span class="p">[</span>is_old<span class="p">,]</span>
+<div class="highlight-r"><div class="highlight"><pre>old <span class="o">&lt;-</span> covs<span class="p">[</span>is_old<span class="p">,]</span>
 <span class="c1"># same as:</span>
-old <span class="o">=</span> covs<span class="p">[</span>covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span><span class="p">,]</span>
+old <span class="o">&lt;-</span> covs<span class="p">[</span>covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span><span class="p">,]</span>
+
+<span class="c1"># using dplyr</span>
+is_old <span class="o">&lt;-</span> covs <span class="o">%&gt;%</span> filter<span class="p">(</span>age <span class="o">&gt;</span> <span class="m">65</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We can combine selections with &#8216;&amp;&#8217; for and and &#8216;|&#8217; for or</p>
@@ -229,124 +238,27 @@ hets  <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p"
 </pre></div>
 </div>
 </div>
-<div class="section" id="excercises">
-<h2>Excercises<a class="headerlink" href="#excercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#excercises" title="Slides">§</a></h2>
+<div class="section" id="excercises-for-data-frames">
+<h3>Excercises for data.frames<a class="headerlink" href="#excercises-for-data-frames" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#excercises-for-data-frames" title="Slides">§</a></h3>
 <p>Remember for combining expressions, you can create a variable for each, <cite>is_AA</cite>,
-<cite>is_CC</cite> and then combine after.</p>
+<cite>is_CC</cite> and then combine after. <strong>Do these using both dplyr and &#8220;old&#8221; R</strong>.</p>
 <ol class="arabic simple">
 <li>How many people have genotype &#8216;CC&#8217;</li>
 <li>How many people have genotype &#8216;CC&#8217; or &#8216;AA&#8217;?</li>
 <li>How many people have genotype of &#8216;CC&#8217; or &#8216;AA&#8217; and are under 65 years old.</li>
-<li>How many males have genotype of &#8216;CC&#8217; or &#8216;AA&#8217; and are under 65 years old.</li>
+<li>How many <em>females</em> have genotype of &#8216;CC&#8217; or &#8216;AA&#8217; and are under 65 years old.</li>
 </ol>
 </div>
-<div class="section" id="introduction-to-tidyr">
-<h2>Introduction to tidyr<a class="headerlink" href="#introduction-to-tidyr" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#introduction-to-tidyr" title="Slides">§</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">tidyr</span></tt> package provides two important functions called
-<tt class="docutils literal"><span class="pre">gather()</span></tt> and <tt class="docutils literal"><span class="pre">separate()</span></tt>.</p>
-<p>These functions allow you to manipulate the shape of data frames. One
-common operation is to convert data tables from <cite>wide</cite> format to <cite>long</cite>
-format and back.</p>
-<p>There are useful examples in the article describing the reshape package
-<a class="footnote-reference" href="#id2" id="id1">[1]</a>. Check out the <tt class="docutils literal"><span class="pre">french</span> <span class="pre">fries</span></tt> case study.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.jstatsoft.org/v21/i12/paper">http://www.jstatsoft.org/v21/i12/paper</a></td></tr>
-</tbody>
-</table>
-<div class="section" id="wide-format-or-unstacked">
-<h3>Wide format (or <cite>unstacked</cite>)<a class="headerlink" href="#wide-format-or-unstacked" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#wide-format-or-unstacked" title="Slides">§</a></h3>
-<p>Values for each variable are in a separate column.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Person</th>
-<th class="head">Age</th>
-<th class="head">Weight</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Bob</td>
-<td>32</td>
-<td>128</td>
-</tr>
-<tr class="row-odd"><td>Alice</td>
-<td>24</td>
-<td>86</td>
-</tr>
-<tr class="row-even"><td>Steve</td>
-<td>64</td>
-<td>95</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div class="section" id="long-format-or-stacked">
-<h3>Long format (or <cite>stacked</cite>)<a class="headerlink" href="#long-format-or-stacked" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#long-format-or-stacked" title="Slides">§</a></h3>
-<p>One column contains the variables, one column contains the values.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Person</th>
-<th class="head">Variable</th>
-<th class="head">Value</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Bob</td>
-<td>Age</td>
-<td>32</td>
-</tr>
-<tr class="row-odd"><td>Bob</td>
-<td>Weight</td>
-<td>128</td>
-</tr>
-<tr class="row-even"><td>Alice</td>
-<td>Age</td>
-<td>24</td>
-</tr>
-<tr class="row-odd"><td>Alice</td>
-<td>Weight</td>
-<td>86</td>
-</tr>
-<tr class="row-even"><td>Steve</td>
-<td>Age</td>
-<td>64</td>
-</tr>
-<tr class="row-odd"><td>Steve</td>
-<td>Weight</td>
-<td>95</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="why-is-tidyr-useful">
-<h3>Why is <tt class="docutils literal"><span class="pre">tidyr</span></tt> useful?<a class="headerlink" href="#why-is-tidyr-useful" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#why-is-tidyr-useful" title="Slides">§</a></h3>
-<p><tt class="docutils literal"><span class="pre">ggplot2</span></tt> expects data in <cite>long</cite> format, where individual points are
-categorized.</p>
-<p><strong>Question:</strong> Look at the <tt class="docutils literal"><span class="pre">summary</span></tt> data.frame. Is it in <tt class="docutils literal"><span class="pre">wide</span></tt> or
-<tt class="docutils literal"><span class="pre">long</span></tt> format?</p>
-<p>The data.frame from dplyr is in <tt class="docutils literal"><span class="pre">wide</span></tt> format.</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>tidyr<span class="p">)</span>
-<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
-
-<span class="c1"># covert to long format</span>
-<span class="o">&gt;</span> long.summary <span class="o">&lt;-</span> gather<span class="p">(</span><span class="kp">summary</span><span class="p">,</span> chrom<span class="p">)</span>
-
-<span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>long.summary<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>chrom<span class="p">,</span> y<span class="o">=</span>value<span class="p">,</span> fill<span class="o">=</span>variable<span class="p">))</span>
-<span class="o">&gt;</span> gp <span class="o">&lt;-</span> gp <span class="o">+</span> geom_bar<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">,</span> position<span class="o">=</span><span class="s">&#39;dodge&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span> gp
-</pre></div>
-</div>
+<div class="section" id="rmarkdown">
+<h2>Rmarkdown<a class="headerlink" href="#rmarkdown" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#rmarkdown" title="Slides">§</a></h2>
+<p>We&#8217;ll go over a Rmarkdown, a simple markup language that can be used
+within RStudio to generate nice looking documents combining plots and
+text.</p>
+<div class="section" id="github">
+<h3>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-10.html#github" title="Slides">§</a></h3>
+<p>Some may also find it useful to link their RStudio projects with Github
+accounts.</p>
 </div>
 </div>
 </div>
@@ -371,7 +283,7 @@ categorized.</p>
     </p>
     <p>
         &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
-      Last updated on Feb 24, 2015.<br/>
+      Last updated on Mar 03, 2015.<br/>
     </p>
   </div>
 </footer>
