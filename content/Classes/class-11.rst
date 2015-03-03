@@ -1,7 +1,12 @@
 
-*******************************************
-Class 13 : R : Data Manipulation & Plotting
-*******************************************
+.. include:: /_static/substitutions.txt
+
+********************************************
+Class 11 : R : Simple statistics and ggplot2 
+********************************************
+
+:Class date: |c11-date|
+:Last updated: |today|
 
 Goals
 =====
@@ -61,9 +66,9 @@ Use ``geom_boxplot()`` with the ``group`` aesthetic:
 .. code-block:: r
 
     # ``round_any()`` is provided by ``plyr``
-    > library(plyr)
-    > gp <- ggplot(covs, aes(x = age, y = expression, 
-                   group = round_any(age, 2)))
+    > gp <- ggplot(covs, 
+                   aes(x = age, y = expression, 
+                   group = plyr::round_any(age, 2)))
 
     > gp + geom_boxplot()
 
