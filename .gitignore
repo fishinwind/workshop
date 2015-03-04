@@ -6,3 +6,4 @@ _test
 *.swo
 .RData
 .Rhistory
+.Rproj.user
