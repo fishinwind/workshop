@@ -17,25 +17,43 @@ Goals
 Statistics in R
 ===============
 
-R provides a number of builtin statistics:
+R provides a number of builtin statistics. Let's go over some using expr-geno-covs.txt. First, let's load the dataframe.
 
-- ``t.test()``
-- ``fisher.test()``
-- ``wilcox.test()``
-- ``ks.set()``
+.. codeblock:: r
+> df <- read.table(file = "expr-geno-covs.txt", sep = "\t", header = TRUE)
 
-Each of these functions takes 2 vectors on input, and return a result
-object:
+Student t-test
+--------------
 
-.. code-block:: r
+Student t-test is used to determine if two sets of values are significantly different. We assume data has a normal distribution and is continuous.
+- R function is ``t.test()``
 
-    > this <- rnorm(100)
-    > that <- rnorm(100)
-    > result <- t.test(this, that)
+.. codeblock:: r
+> exp_male <- df$expression[df$gender == "Male"]
+> exp_female <- df$expression[df$gender == "Female"]
+> ttest <- t.test(exp_male, exp_female)
+> pVal <- ttest$p.value
 
-    > result$p.value
+Fisher's Exact Test
+-------------------
 
-Excercises
+Contigency tables are matrices that describe the frequency of variables. They can be used to determine if a variable occurs at a higher frequency compared to another variable. Fisher's Exact Test is used to determine the statistical significance.
+
+From our data, let's see if there is difference in frequency of former smokers between males and females.
+
+.. codeblock:: r
+
+# generate contingency table
+> mf <- length(which((df$gender == "Male" & df$smoking == "former") == TRUE))
+> mNf <- length(which((df$gender == "Male" & df$smoking != "former") == TRUE))
+> cf <- length(which((df$gender == "Female" & df$smoking == "former") == TRUE))
+> cNf <- length(which((df$gender == "Female" & df$smoking != "former") == TRUE))
+> con <- matrix(c(mf,mNf,cf,cNf), nrow = 2, ncol = 2, byrow = FALSE)
+> print(con)
+> fisherTest <- fisher.test(con)
+> pVal <- fisherTest$p.value
+
+Exercises
 ----------
 
 #. Use ``t.test()`` determine whether there are significant expression
