@@ -107,19 +107,26 @@ peaks.df %>%
   group_by(name) %>%
   mutate(peak.width = end - start) %>%
   filter(cume_dist(peak.width) < 0.1) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
   head(10) %>%
   kable()
 ```
 
 Find TFs that tend to have neighboring peaks using `lead()` or `lag()`. The `order_by` argument specifies the variable to order the rows by (default is `row_number`:
+
 ```{r}
 peaks.df %>%
+  group_by(name) %>%
   filter(name == lead(name, order_by = start)) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
   head(10) %>%
   kable()
 ``` 
 
-Cumulative density of peak widths for each factor. You may have to zoom the plot to see this in detail ...
+Cumulative density of peak widths for each factor.
+
 ```{r fig.width = 8, fig.height = 10}
 peaks.df %>%
   arrange(name, start) %>%
@@ -127,3 +134,7 @@ peaks.df %>%
   mutate(peak.width = end - start) %>%
   ggplot(aes(log10(peak.width))) + stat_ecdf() + facet_wrap(~name)
 ```
+
+### Questions
+
+- How would you modify the above code chunks to figure out what proportion of peaks these represent?
