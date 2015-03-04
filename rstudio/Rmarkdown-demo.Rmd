@@ -31,7 +31,7 @@ names(bed.df)[1] <- 'chrom'
 expr.df <- read.delim('expr-geno-covs.txt', header=TRUE)
 
 # load peaks data
-peaks.df <- read.delim('/vol1/opt/data/encode/peaks.chr22.bed.gz', 
+peaks.df <- read.delim('peaks.chr22.bed.gz', 
                        col.names = c('chrom','start','end','name'))
 ```
 
@@ -59,7 +59,7 @@ bed.df %>%
   ggplot(aes(x = log10(cpg.size), y = ..density..)) +
   geom_histogram() +
   geom_density(alpha = 0.2, fill = 'grey50') +
-  facet_wrap(~chrom)
+  facet_wrap(~chrom, scales = 'free_y')
 ```
 
 Can also use the new ggvis for this, but doesn't support faceting yet. Also Rmarkdown doesn't support emoji :(((. `ggvis` also breaks PDF output (HTML only).
@@ -78,8 +78,6 @@ bed.df %>%
 ```{r}
 # first few enntries of each transcription factor
 peaks.df %>% group_by(name) %>% slice(1:2)
-
-
 ```
 
 ## Fancier manipluation
@@ -90,22 +88,42 @@ Windowing functions return n values for n inputs and enable more expressive anal
 
 <http://cran.rstudio.com/web/packages/dplyr/vignettes/window-functions.html>
 
-For each factor, find its largest peak using `min_rank()`:
+For each factor, find its largest peaks using `min_rank()`:
 
 ```{r}
 peaks.df %>%
   group_by(name) %>%
   mutate(peak.width = end - start) %>%
-  filter(min_rank(desc(peak.width))) %>%
+  filter(min_rank(desc(peak.width)) == 1) %>%
   arrange(desc(peak.width)) %>%
-  slice(1:10) %>%
+  head(10) %>%
   kable()
 ```
 
-Find TFs that tend to have neighboring peaks using `lead()` or `lag()`:
+For each factor, find the peaks that make up the top 10% of their bases covered:
+
 ```{r}
 peaks.df %>%
-  arrange(start) %>%
-  filter(name == lead(name)) %>%
-```  
+  group_by(name) %>%
+  mutate(peak.width = end - start) %>%
+  filter(cume_dist(peak.width) < 0.1) %>%
+  head(10) %>%
+  kable()
+```
 
+Find TFs that tend to have neighboring peaks using `lead()` or `lag()`. The `order_by` argument specifies the variable to order the rows by (default is `row_number`:
+```{r}
+peaks.df %>%
+  filter(name == lead(name, order_by = start)) %>%
+  head(10) %>%
+  kable()
+``` 
+
+Cumulative density of peak widths for each factor. You may have to zoom the plot to see this in detail ...
+```{r fig.width = 8, fig.height = 10}
+peaks.df %>%
+  arrange(name, start) %>%
+  group_by(name) %>%
+  mutate(peak.width = end - start) %>%
+  ggplot(aes(log10(peak.width))) + stat_ecdf() + facet_wrap(~name)
+```
