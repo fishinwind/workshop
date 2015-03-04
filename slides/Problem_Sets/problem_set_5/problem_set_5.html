@@ -107,8 +107,8 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Overview<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#overview" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>For the following problems, generate a Rmarkdown document in PDF format
-that explains the workflow and generates the appropriate plots.</p>
+      <p>For the following problems, generate a Rmarkdown document that explains
+the workflow and generates the appropriate plots.</p>
 
 
 
@@ -119,13 +119,13 @@ that explains the workflow and generates the appropriate plots.</p>
       <h2>Problem 1<a class="headerlink" href="../../../Problem_Sets/problem_set_5/problem_set_5.html#problem-1" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Use bedtools, dplyr and ggplot2 to analyze some ENCODE data (<strong>25
+      <p>Use BEDTools, dplyr and ggplot2 to analyze some ENCODE data (<strong>25
 points</strong>).</p>
 <ol class="arabic">
-<li><p class="first">Load the peaks BED file and find the 10 factors that have the largest
-range in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or <tt class="docutils literal"><span class="pre">geom_violin()</span></tt>
-to support your answer (also add individual points to the plot with
-<tt class="docutils literal"><span class="pre">geom_jitter()</span></tt>).</p>
+<li><p class="first">Load the peaks BED file (<cite>peaks.chr22.bed.gz</cite>) and find the 10 factors
+that have the largest range in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or
+<tt class="docutils literal"><span class="pre">geom_violin()</span></tt> to support your answer (also add individual points to
+the plot with <tt class="docutils literal"><span class="pre">geom_jitter()</span></tt>).</p>
 <p>You should calcuate a <cite>min.width</cite> and <cite>max.width</cite> for each transcription
 factor in the BED file. Then the <cite>range</cite> is the difference between the
 <cite>max.width</cite> and <cite>min.width</cite>.</p>
@@ -133,7 +133,7 @@ factor in the BED file. Then the <cite>range</cite> is the difference between th
 and then <tt class="docutils literal"><span class="pre">mutate()</span></tt> the summary to add a <cite>range</cite> column.</p>
 </li>
 <li><p class="first">Repeat the above, but only examine peaks do not overlap with any other
-peak (e.g. use bedtools to find these).</p>
+peak (hint: use the <tt class="docutils literal"><span class="pre">-c</span></tt> argument to <tt class="docutils literal"><span class="pre">bedtools</span> <span class="pre">intersect</span></tt> to find these).</p>
 </li>
 </ol>
 
