@@ -171,7 +171,7 @@ What assumptions can we make from the diagnostics?
 What do you suggest we do to fix it? 
 - don't look ahead it's cheating >:(
 
-	.. nextslide::
+.. nextslide::
 	    :increment:
 
 Let's Normalize
