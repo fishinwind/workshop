@@ -1,0 +1,98 @@
+---
+title: "R Exercises for MOLB 7621"
+author: "Jay Hesselberth"
+date: "March 5, 2015"
+output: html_document
+---
+
+# Exercises
+
+```{r, message=FALSE, echo=FALSE}
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+```{r, echo=FALSE}
+# assumes workshop repo is in $HOME/devel
+setwd("~/devel/workshop/content/Miscellaneous/data")
+
+# load bed data
+bed.df <- read.delim('lamina.bed', header=TRUE)
+# fixup chrom name
+names(bed.df)[1] <- 'chrom'
+
+# load expr data
+expr.df <- read.delim('expr-geno-covs.txt', header=TRUE)
+
+# load peaks data
+peaks.df <- read.delim('peaks.chr22.bed.gz', 
+                       col.names = c('chrom','start','end','name'))
+```
+
+```{r}
+head(expr.df) %>% kable()
+```
+## Class 09
+
+Adjust the following code in the next blocks:
+
+```
+expr.df %>%
+  ggplot(aes(x=expression)) +
+       geom_histogram() +
+       scale_x_log10()
+```
+
+Color by genotype
+
+```{r, message=FALSE}
+expr.df %>%
+  ggplot(aes(x = expression, fill = genotype)) +
+       geom_histogram() +
+       scale_x_log10()
+```
+
+Facet by case / control
+
+```{r, message=FALSE}
+expr.df %>%
+  ggplot(aes(x = expression, fill = genotype)) +
+      geom_histogram() +
+      scale_x_log10() +
+      facet_grid(~condition)
+```
+
+Color by age (>60 and <= 60)
+
+```{r, message=FALSE}
+# get young / old and bind together
+young.df <- expr.df %>%
+  filter(age > 60) %>%
+  mutate(status = 'old')
+old.df <- expr.df %>%
+  filter(age <= 60) %>%
+  mutate(status = 'young')
+
+combined <- rbind(young.df, old.df)
+
+combined %>%
+  ggplot(aes(x = expression, fill = status)) +
+    geom_histogram() +
+    scale_x_log10() + 
+    ggtitle('Old people > 60')
+```
+
+Calculate the mean length of regions on each chromosome in the BED file.
+
+```{r}
+# Note use of `reorder` to order the bars by size
+bed.df %>%
+  group_by(chrom) %>%
+  mutate(region.len = end - start) %>%
+  summarize(mean.region.len = mean(region.len)) %>%
+  arrange(desc(mean.region.len)) %>%
+  ggplot(aes(x = reorder(chrom, mean.region.len), y = mean.region.len)) +
+    geom_bar(stat='identity') + 
+    theme(axis.text.x = element_text(angle = 90,hjust = 1,vjust = 0.5))
+```  

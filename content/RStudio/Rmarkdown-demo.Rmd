@@ -24,7 +24,7 @@ library(knitr)
 ## Loading data
 ```{r}
 # assumes workshop repo is in $HOME/devel
-setwd("~/devel/workshop/content/misc/data")
+setwd("~/devel/workshop/content/Miscellaneous/data")
 
 # load bed data
 bed.df <- read.delim('lamina.bed', header=TRUE)
