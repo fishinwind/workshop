@@ -46,10 +46,11 @@ Contents
 ~~~~~~~~
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    Syllabus
    Classes
    Problem_Sets
+   Exercises
    Miscellaneous
 

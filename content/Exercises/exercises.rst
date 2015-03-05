@@ -23,17 +23,13 @@ UNIX exercises
 #. Print out the 10 states (1st column, contains spaces) with the highest
    income (3rd column) from `states.tab`.
 
-.. container:: toggle
+.. code-block:: bash
 
-    .. container:: header
+    $ wc -l lamina.bed # lines
 
-    .. code-block:: bash
+    $ wc -c lamina.bed # characters
 
-        $ wc -l lamina.bed # lines
-
-        $ wc -c lamina.bed # characters
-
-        $ sort -t'\t' -k3nr states.tab | head -n 10
+    $ sort -t'\t' -k3nr states.tab | head -n 10
 
 .. _awk-exercises:
 
@@ -44,6 +40,14 @@ AWK exercises
 
 R exercises
 ===========
+
+R exercises in Rmarkdown format (and rendered HTML) are here:
+
+- Rmarkdown Example :download:`[Rmd] </RStudio/Rmarkdown_example.Rmd>`
+  :download:`[HTML] </RStudio/Rmarkdown_example.html>`
+
+- Rmarkdown Excercises :download:`[Rmd] </RStudio/Exercises.Rmd>`
+  :download:`[HTML] </RStudio/Exercises.html>`
 
 .. _python-exercises:
 

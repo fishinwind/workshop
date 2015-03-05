@@ -41,7 +41,7 @@ clean:
 	rm -rf $(BUILDDIR)/*
 	cd RStudio && $(MAKE) clean
 
-html:
+html: rmarkdown
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
@@ -69,7 +69,7 @@ latex:
 rmarkdown:
 	cd RStudio && $(MAKE) clean && $(MAKE) all
 
-all: html slides pdf rmarkdown
+all: rmarkdown html slides pdf 
 
 publish: all 
 	ghp-import -n -p ./_build/html
