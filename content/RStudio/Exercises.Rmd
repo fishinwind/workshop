@@ -3,9 +3,6 @@ title: "R Exercises for MOLB 7621"
 author: "Jay Hesselberth"
 date: "March 5, 2015"
 output:
-  pdf_document:
-    highlight: zenburn
-    toc: yes
   html_document:
     theme: united
     toc: yes
