@@ -7,7 +7,9 @@
  Problem Sets
 **************
 
-Problem Sets for the Genome Analysis Workshop class (MOLB 7621):
+:Last updated: |today|
+
+Problem Sets for the Genome Analysis Workshop (MOLB 7621):
 
 .. toctree::
    :titlesonly:
