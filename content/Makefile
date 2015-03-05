@@ -39,6 +39,7 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
+	cd RStudio && $(MAKE) clean
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
@@ -65,7 +66,10 @@ latex:
 	@echo "Run \`make all-pdf' or \`make all-ps' in that directory to" \
           "run these through (pdf)latex."
 
-all: html slides pdf
+rmarkdown:
+	cd RStudio && $(MAKE) clean && $(MAKE) all
+
+all: html slides pdf rmarkdown
 
 publish: all 
 	ghp-import -n -p ./_build/html
