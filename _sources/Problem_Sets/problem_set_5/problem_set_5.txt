@@ -52,8 +52,8 @@ marks are enriched in high confidence CTCF-mediated chromatin loops::
 #. Download ENCODE ChIA-PET/CTCF and histone ChIP data for the K562 cell
    line.
 
-#. Determine which histone marks are present in the regions defined by
-   CTCF Chia-PET boundaries (as a control, determine which are outside)
+#. Determine how the histone marks H3K4me3 and H3K27ac are distributed
+   inside and outside of the  regions defined by CTCF Chia-PET boundaries 
    use ``bedtools intersect`` and other bedtools
 
 #. Generate summary statistics for which histone marks are enriched in
