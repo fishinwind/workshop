@@ -162,8 +162,9 @@ modulo, enumerate, fastq
 ========================
 
 .. ipython::
+    :okexcept:
 
-    In [1]: for i, line in enumerate(open('misc/data/SP1.fq')):
+    In [1]: for i, line in enumerate(open('data/SP1.fq')):
        ...:     print(i, i % 4, line.strip())
        ...:     if i > 8: break
        ...:     
