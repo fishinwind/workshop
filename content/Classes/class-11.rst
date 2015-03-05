@@ -1,8 +1,7 @@
-
-.. include:: /_static/substitutions.txt
+nclude:: /_static/substitutions.txt
 
 ********************************************
-Class 11 : R : Simple statistics and ggplot2 by Charlotte 
+Class 11 : R : Simple statistics and ggplot2
 ********************************************
 
 :Class date: |c11-date|
@@ -17,32 +16,127 @@ Goals
 Statistics in R
 ===============
 
-R provides a number of builtin statistics:
+R provides a number of builtin statistics. Let's go over some using expr-geno-covs.txt. First, load the dataframe.
 
-- ``t.test()``
-- ``fisher.test()``
-- ``wilcox.test()``
-- ``ks.set()``
+.. codeblock:: r
+    > df <- read.table(file = "expr-geno-covs.txt", sep = "\t", header = TRUE)
 
-Each of these functions takes 2 vectors on input, and return a result
-object:
+.. nextslide::
+    :increment:
 
-.. code-block:: r
+Definitions of Statistical Terms
+--------------------------------
 
-    > this <- rnorm(100)
-    > that <- rnorm(100)
-    > result <- t.test(this, that)
+Discrete vs. Continuous
+- Discrete: counts, categorial
+- Continuous: integers
 
-    > result$p.value
+Normal Distribution
+- Bell-shaped curve
 
-Excercises
-----------
+.. nextslide::
+    :increment:
+
+Student t-test
+--------------
+
+Student t-test is used to determine if two sets of values are significantly different.
+- Assumptions are data has a normal distribution and is continuous.
+
+.. codeblock:: r
+    > exp_male <- df$expression[df$gender == "Male"]
+    > exp_female <- df$expression[df$gender == "Female"]
+    > ttest <- t.test(exp_male, exp_female)
+    > pVal <- ttest$p.value
+
+.. nextslide::
+    :increment:
+
+Fisher's Exact Test
+-------------------
+
+Contingency tables are matrices that describe the frequency of variables. 
+- Determine if variable "a" occurs at a higher frequency compared to variable "b".
+- Fisher's Exact Test is used to determine the statistical significance.
+
+From our data, let's see if there is difference in frequency of former smokers between males and females.
+
+.. codeblock:: r
+
+<<<<<<< HEAD
+	# generate contingency table
+	> mf <- length(which((df$gender == "Male" & df$smoking == "former") == TRUE))
+	> mNf <- length(which((df$gender == "Male" & df$smoking != "former") == TRUE))
+	> cf <- length(which((df$gender == "Female" & df$smoking == "former") == TRUE))
+	> cNf <- length(which((df$gender == "Female" & df$smoking != "former") == TRUE))
+	> con <- matrix(c(mf,mNf,cf,cNf), nrow = 2, ncol = 2, byrow = FALSE)
+	
+	# perform Fisher's exact test on contingency table
+	> fisherTest <- fisher.test(con)
+	> pVal <- fisherTest$p.value
+=======
+    # generate contingency table
+    > mf <- length(which((df$gender == "Male" & df$smoking == "former") == TRUE))
+    > mNf <- length(which((df$gender == "Male" & df$smoking != "former") == TRUE))
+    > cf <- length(which((df$gender == "Female" & df$smoking == "former") == TRUE))
+    > cNf <- length(which((df$gender == "Female" & df$smoking != "former") == TRUE))
+    > con <- matrix(c(mf,mNf,cf,cNf), nrow = 2, ncol = 2, byrow = FALSE)
+	
+    # perform Fisher's exact test on contingency table
+    > fisherTest <- fisher.test(con)
+    > pVal <- fisherTest$p.value
+>>>>>>> 0f4ed7a067216d9425733f0e43ca753979b108c6
+
+.. nextslide::
+    :increment:
+
+Wilcoxon's Test
+---------------
+
+This test is used on two groups of data where the samples are somehow related. Unfortunately, there is no example in df so we will have to use other data. 
+- Use ``immer``; describes the yield of barley of 30 different locations in two different years.
+
+.. codeblock:: r
+
+    > wilcTest <- wilcoxon.test(immer$Y1,immer$Y2)
+    > wilcTest$p.value
+
+.. nextslide::
+    :increment:
+
+Kolmogorov-Smirnov
+------------------
+
+This test determines if two distributions of data are similar.
+- Data does not have to have a normal distribution.
+- Data can be used continuous or discrete (count data).
+
+.. codeblock:: r
+
+    > ksTest <- ks.test(exp_male, exp_female
+    > ksTest$p.value
+
+.. nextslide::
+    :increment:
+
+Plot the distribution!
+----------------------
+
+Does the distribution make sense with our results??
+
+.. codeblock:: r
+
+   > gp <- ggplot(df, aes(x = expression, fill = gender))
+   > gp + geom_bar()
+
+.. nextslide::
+    :increment:
+
+Exercises
+---------
 
 #. Use ``t.test()`` determine whether there are significant expression
-   differences between in `expr-geno-covs.txt`:
-
-- conditions
-- gender
+   differences between in `expr-geno-covs.txt` using conditions instead of gender.
 
 ggplot manipulations
 ====================
@@ -64,13 +158,8 @@ continuous data. How can you examine the relationships between these?
 Use ``geom_boxplot()`` with the ``group`` aesthetic:
 
 .. code-block:: r
-
-    # ``round_any()`` is provided by ``plyr``
-    > gp <- ggplot(covs, 
-                   aes(x = age, y = expression, 
-                   group = plyr::round_any(age, 2)))
-
-    > gp + geom_boxplot()
+> gp <- ggplot(df, aes(x = age, y = expression)
+> gp + geom_boxplot()
 
 .. nextslide::
     :increment:
@@ -87,6 +176,9 @@ overall relationship:
     # fit and plot a straight line
     > gp + stat_smooth(method='lm')
 
+.. nextslide::
+    :increment:
+
 R Model Syntax
 ==============
 
@@ -94,24 +186,57 @@ You can also fit and examine a linear model:
 
 .. code-block:: r
 
-    > model <- lm(expression ~ genotype + condition + gender , data = covs)
+    > model <- lm(expression ~ genotype + condition + gender, data = df)
     > summary(model)
 
     # look at diagnostic plots
     > plot(model)
 
-..  XXX is this model plottable?
-..    # use ggplot to plot the data
-..    > gp + geom_point()
-..    > gp + geom_abline(intercept = coef(model)[1], 
-..                       slope = coef(model)[2])
+What assumptions can we make from the diagnostics?
+What do you suggest we do to fix it? 
+- don't look ahead it's cheating >:(
+
+<<<<<<< HEAD
+	.. nextslide::
+=======
+.. nextslide::
+>>>>>>> 0f4ed7a067216d9425733f0e43ca753979b108c6
+	    :increment:
+
+Let's Normalize
+---------------
+
+If we normalize the data, the diagnostics might fit.
+- Log that data.
+
+But wait, there are 0 values - get values that do not exist. What on earth do we do??!
+- Filter out values.
+- After normalizing, replace again with 0.
+
+.. code-block:: r
+	# example if we filter out DNE values
+	> df2 <- df
+	> df2$expression <- log2(df2$expression)
+	> filterOut <- which(is.infinite(df2$expression))
+	> df2 <- df2[-filterOut,]
+	> model <- lm(expression ~ genotype + condition + gender , data = df2)
+	> plot(model)
+
+How would you replace values with 0?
+
+- MAJOR NOTE: you don't need to know this stuff for the homework, I'm just having fun.
+- Also! knowing some of these tricks may make your life easier with your own work.
+
+.. nextslide::
+    :increment:
 
 Exercises
 ---------
 
 #. Does adding age to the existing model (expression ~ genotype + condition +
-   gender) change the signficance of the other variables? 
+   gender) change the significance of the other variables?
 
 #. How does removing condition from the model affect the significance of
    genotype and vice-versa?
+
 
