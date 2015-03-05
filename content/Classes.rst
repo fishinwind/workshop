@@ -5,15 +5,15 @@ Class list
 .. toctree::
    :titlesonly:
 
-   Classes/class-1
-   Classes/class-2
-   Classes/class-3
-   Classes/class-4
-   Classes/class-5
-   Classes/class-6
-   Classes/class-7
-   Classes/class-8
-   Classes/class-9
+   Classes/class-01
+   Classes/class-02
+   Classes/class-03
+   Classes/class-04
+   Classes/class-05
+   Classes/class-06
+   Classes/class-07
+   Classes/class-08
+   Classes/class-09
    Classes/class-10
    Classes/class-11
 

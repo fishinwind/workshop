@@ -1,8 +1,12 @@
+
+.. include:: /_static/substitutions.txt
+
 *************************
-Class 19 : Applied Python 
+Class 18 : Applied Python 
 *************************
 
-:Class date: Th Mar 26  
+:Class date: |c18-date|
+:Last updated: |today|
 
 Final Project
 =============
@@ -157,11 +161,11 @@ We skip some error checking steps here for simplicity
         # now lab_info has the sequene and the lab keys and values.
 
         if is_first_line: # print a header once only.
-            print "\t".join(lab_info.keys())
+            print("\t".join(lab_info.keys()))
             is_first_line = False
 
         # this will print out the data for each record.
-        print "\t".join(lab_info.values())
+        print("\t".join(lab_info.values()))
 
 Script: Run
 ===========

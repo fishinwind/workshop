@@ -4,6 +4,6 @@ _test
 *.html
 *.swp
 *.swo
-.Rproj.user
-.Rhistory
 .RData
+.Rhistory
+.Rproj.user
