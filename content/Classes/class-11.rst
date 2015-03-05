@@ -20,7 +20,7 @@ Statistics in R
 R provides a number of builtin statistics. Let's go over some using expr-geno-covs.txt. First, load the dataframe.
 
 .. codeblock:: r
-	> df <- read.table(file = "expr-geno-covs.txt", sep = "\t", header = TRUE)
+    > df <- read.table(file = "expr-geno-covs.txt", sep = "\t", header = TRUE)
 
 .. nextslide::
     :increment:
@@ -32,10 +32,10 @@ Student t-test is used to determine if two sets of values are significantly diff
 - Assumptions are data has a normal distribution and is continuous.
 
 .. codeblock:: r
-	> exp_male <- df$expression[df$gender == "Male"]
-	> exp_female <- df$expression[df$gender == "Female"]
-	> ttest <- t.test(exp_male, exp_female)
-	> pVal <- ttest$p.value
+    > exp_male <- df$expression[df$gender == "Male"]
+    > exp_female <- df$expression[df$gender == "Female"]
+    > ttest <- t.test(exp_male, exp_female)
+    > pVal <- ttest$p.value
 
 .. nextslide::
     :increment:
@@ -51,16 +51,16 @@ From our data, let's see if there is difference in frequency of former smokers b
 
 .. codeblock:: r
 
-	# generate contingency table
-	> mf <- length(which((df$gender == "Male" & df$smoking == "former") == TRUE))
-	> mNf <- length(which((df$gender == "Male" & df$smoking != "former") == TRUE))
-	> cf <- length(which((df$gender == "Female" & df$smoking == "former") == TRUE))
-	> cNf <- length(which((df$gender == "Female" & df$smoking != "former") == TRUE))
-	> con <- matrix(c(mf,mNf,cf,cNf), nrow = 2, ncol = 2, byrow = FALSE)
+    # generate contingency table
+    > mf <- length(which((df$gender == "Male" & df$smoking == "former") == TRUE))
+    > mNf <- length(which((df$gender == "Male" & df$smoking != "former") == TRUE))
+    > cf <- length(which((df$gender == "Female" & df$smoking == "former") == TRUE))
+    > cNf <- length(which((df$gender == "Female" & df$smoking != "former") == TRUE))
+    > con <- matrix(c(mf,mNf,cf,cNf), nrow = 2, ncol = 2, byrow = FALSE)
 	
-	# perform Fisher's exact test on contingency table
-	> fisherTest <- fisher.test(con)
-	> pVal <- fisherTest$p.value
+    # perform Fisher's exact test on contingency table
+    > fisherTest <- fisher.test(con)
+    > pVal <- fisherTest$p.value
 
 .. nextslide::
     :increment:
@@ -73,8 +73,8 @@ This test is used on two groups of data where the samples are somehow related. U
 
 .. codeblock:: r
 
-	> wilcTest <- wilcoxon.test(immer$Y1,immer$Y2)
-	> wilcTest$p.value
+    > wilcTest <- wilcoxon.test(immer$Y1,immer$Y2)
+    > wilcTest$p.value
 
 .. nextslide::
     :increment:
@@ -88,8 +88,8 @@ This test determines if two distributions of data are similar.
 
 .. codeblock:: r
 
-	> ksTest <- ks.test(exp_male, exp_female)
-	> ksTest$p.value
+    > ksTest <- ks.test(exp_male, exp_female
+    > ksTest$p.value
 
 .. nextslide::
     :increment:
@@ -101,8 +101,8 @@ Does the distribution make sense with our results??
 
 .. codeblock:: r
 
-	> gp <- ggplot(df, aes(x = expression, fill = gender))
-	> gp + geom_bar()
+   > gp <- ggplot(df, aes(x = expression, fill = gender))
+   > gp + geom_bar()
 
 .. nextslide::
     :increment:
