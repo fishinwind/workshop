@@ -39,7 +39,8 @@ points**).
 Problem 2
 =========
 
-Use ggplot2 and BEDTools to analyze the following ENCODE data (**25 points**).
+Use ggplot2 and BEDTools to analyze the following ENCODE data (**25
+points**). **Only look at data on chr22 for the following problem**.
 
 Examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
 marks are enriched in high confidence CTCF-mediated chromatin loops::
