@@ -1,0 +1,735 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 2 : The command-line &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 3 : The command-line (part 2)" href="class-03.html" />
+    <link rel="prev" title="Class 1 : Class Introduction" href="class-01.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 2 : The command-line<a class="headerlink" href="../../Classes/class-02.html#class-2-the-command-line" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Jan 29 Thurs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Things to fix from last class<a class="headerlink" href="../../Classes/class-02.html#things-to-fix-from-last-class" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Do this on tesla:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cp ~jhessel/.vimrc ~
+</pre></div>
+</div>
+<p>This will give line numbers (and a bunch of other stuff) when you run
+<tt class="docutils literal"><span class="pre">vim</span></tt>.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-02.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>The <tt class="docutils literal"><span class="pre">bash</span></tt> shell</li>
+<li>continue learning to navigate within the terminal</li>
+<li>understand the linux philosophy (small tools that do one thing well)</li>
+<li>understand how to apply some common linux utilities to files</li>
+<li><tt class="docutils literal"><span class="pre">vim</span></tt> to edit files</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Unix Philosophy<a class="headerlink" href="../../Classes/class-02.html#unix-philosophy" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The Unix philosophy <a class="footnote-reference" href="#id2" id="id1">[1]</a> Works well for bioinformatics:</p>
+<ul class="simple">
+<li>Make each program do one thing well.</li>
+<li>Make every program a filter.</li>
+<li>Choose portability over efficiency.</li>
+<li>Store data in flat text files.</li>
+<li>Small is beautiful.</li>
+<li>Use software leverage to your advantage.</li>
+<li>Use shell scripts to increase leverage and portability.</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Unix_philosophy">http://en.wikipedia.org/wiki/Unix_philosophy</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Navigating In the Terminal<a class="headerlink" href="../../Classes/class-02.html#navigating-in-the-terminal" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>When you start the terminal, you will be in your home directory.</p>
+<p>In Linux home is represented as <tt class="docutils literal"><span class="pre">~</span></tt> and also as <tt class="docutils literal"><span class="pre">$HOME</span></tt>.</p>
+<p>We will often show commands preceded with a '$' as you see in your
+terminal.</p>
+<p>Try this in the terminal:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">pwd</span>
+</pre></div>
+</div>
+<p>pwd stands for &quot;print working directory&quot;</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Navigating In the Terminal (2)<a class="headerlink" href="../../Classes/class-02.html#id3" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Change to another directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /tmp/
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Navigating In the Terminal (3)<a class="headerlink" href="../../Classes/class-02.html#id4" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>See what's in that directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls
+</pre></div>
+</div>
+<p>Show more information:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls -lh
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">-lh</span></tt> part are flags for the <tt class="docutils literal"><span class="pre">ls</span></tt> command.</p>
+<p>These can also be separated like:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls -l -h
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Getting Help In The Terminal<a class="headerlink" href="../../Classes/class-02.html#getting-help-in-the-terminal" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>How can you find out the arguments that <tt class="docutils literal"><span class="pre">ls</span></tt> accepts (or expects):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>man ls
+</pre></div>
+</div>
+<p>and use spacebar to go through the pages. <tt class="docutils literal"><span class="pre">man</span></tt> is short for &quot;manual&quot; and
+can be used on most of the commands that we will learn.</p>
+<p>In other linux software, it is common to get help by using:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>&lt;program&gt; -h
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>&lt;program&gt; --help
+</pre></div>
+</div>
+<p>Which of these works for <tt class="docutils literal"><span class="pre">ls</span></tt>?</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Getting Help In The Terminal (2)<a class="headerlink" href="../../Classes/class-02.html#id5" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you see an error message, read it carefully.  It may seem cryptic,
+but it is designed to inform you what went wrong.</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Getting Help : Exercises<a class="headerlink" href="../../Classes/class-02.html#getting-help-exercises" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>use <tt class="docutils literal"><span class="pre">man</span></tt> to find out how to list files so that the most
+recently modified files are listed last.</li>
+</ul>
+<p>(This is common when you're working on something and only
+care about the most recently modified files)</p>
+<ul class="simple">
+<li>use google to find the same thing. how else can you
+sort the output of <tt class="docutils literal"><span class="pre">ls</span></tt>?</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Getting Help Outside The Terminal<a class="headerlink" href="../../Classes/class-02.html#getting-help-outside-the-terminal" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><em>Use google</em>. Useful sites include:</p>
+<ul class="simple">
+<li>stackexchange.com</li>
+<li>biostars.org</li>
+<li>seqanswers.com</li>
+</ul>
+<p>In many cases, if you receive and error, you can copy-paste it into google
+and find some info.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Other Commands In The Terminal<a class="headerlink" href="../../Classes/class-02.html#other-commands-in-the-terminal" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use the <tt class="docutils literal"><span class="pre">man</span></tt> command to determine what <tt class="docutils literal"><span class="pre">head</span></tt> does.</p>
+<p>Use <tt class="docutils literal"><span class="pre">head</span></tt> on the file /vol1/opt/data/lamina.bed</p>
+<p>Use <tt class="docutils literal"><span class="pre">tail</span></tt> to see the end of the file.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Questions<a class="headerlink" href="../../Classes/class-02.html#questions" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>By default, head and tail show 10 lines. How can you see 13 lines?</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Other Commands In The Terminal (Answers)<a class="headerlink" href="../../Classes/class-02.html#other-commands-in-the-terminal-answers" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>man head
+<span class="nv">$ </span>head /vol1/opt/data/lamina.bed
+<span class="nv">$ </span>tail /vol1/opt/data/lamina.bed
+<span class="nv">$ </span>head -n <span class="m">13</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Word Counts (wc)<a class="headerlink" href="../../Classes/class-02.html#word-counts-wc" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Exercise:</p>
+<ul class="simple">
+<li>use <strong>wc</strong> to determine how many <strong>lines</strong> are in /vol1/opt/data/lamina.bed</li>
+<li>use <strong>wc</strong> to determine how many <strong>words</strong> are in /vol1/opt/data/lamina.bed</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Less (is More)<a class="headerlink" href="../../Classes/class-02.html#less-is-more" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>To view a large file, use less:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">less</span> <span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">lamina</span><span class="o">.</span><span class="n">bed</span>
+</pre></div>
+</div>
+<p>You can forward-search in the file using &quot;/&quot;</p>
+<p>You can backward-search in the file using &quot;?&quot;</p>
+<p>You can see info about the file (including number of lines) using &quot;ctrl+g&quot;</p>
+<p>You can exit <strong>less</strong> using &quot;q&quot;</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Terminal History<a class="headerlink" href="../../Classes/class-02.html#terminal-history" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Press the up arrow in the terminal.</p>
+<p>Up and down arrows will allow you to scroll through your previous commands.</p>
+<p>This is useful when running similar commands or when remembering what you have
+done previously.</p>
+<p>You can type the start of a command and then up-arrow and it will cycle
+through commands that start with that prefix.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Tab-Completion<a class="headerlink" href="../../Classes/class-02.html#tab-completion" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <tt class="docutils literal"><span class="pre">bash</span></tt> shell has several built-in utilities for expediting typing.</p>
+<p>Type the following where [TAB] means the Tab key on the keyboard:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /opt/bio-w<span class="o">[</span>TAB<span class="o">]</span>
+</pre></div>
+</div>
+<p>Then hit tab. And:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls /opt/bio-w<span class="o">[</span>TAB<span class="o">]</span>
+</pre></div>
+</div>
+<p>This will work for any file path and for any programs:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>hea<span class="o">[</span>TAB<span class="o">]</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Tab-Completion (2)<a class="headerlink" href="../../Classes/class-02.html#id6" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>What happens if you do:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>he<span class="o">[</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>heaaa<span class="o">[</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Directory Shortcuts<a class="headerlink" href="../../Classes/class-02.html#directory-shortcuts" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We have already used the <tt class="docutils literal"><span class="pre">cd</span></tt> command to change directories. And we have
+used the <tt class="docutils literal"><span class="pre">~</span></tt> shortcut for home.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~
+<span class="nv">$ </span>ls ~
+</pre></div>
+</div>
+<p>We can also move to or see what's in the parent directory with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls ..
+<span class="nv">$ </span><span class="nb">cd</span> ..
+</pre></div>
+</div>
+<p>Or 3 directories up with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls ../../..
+<span class="nv">$ </span><span class="nb">cd</span> ../../..
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Directory Shortcuts (2)<a class="headerlink" href="../../Classes/class-02.html#id7" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>To explicitly see the current directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls ./
+</pre></div>
+</div>
+<p>We can go 2 directories up with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ../../
+</pre></div>
+</div>
+<p>Here, we can remember that &quot;.&quot; is the current directory and .. is one directory up.
+What does this do:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls ./*
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Directory Shortcuts (3)<a class="headerlink" href="../../Classes/class-02.html#id8" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>you can go to the last directory with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> -
+</pre></div>
+</div>
+<p>and switch back and forth by using that repeatedly.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Make and remove directories<a class="headerlink" href="../../Classes/class-02.html#make-and-remove-directories" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir ~/tmp <span class="c"># OK</span>
+
+<span class="nv">$ </span>mkdir ~/tmp/asdf/asdf <span class="c"># ERROR</span>
+
+<span class="nv">$ </span>mkdir -p ~/tmp/asdf/asdf <span class="c"># OK</span>
+</pre></div>
+</div>
+<p>What does <tt class="docutils literal"><span class="pre">-p</span></tt> do?</p>
+<p>Remove directories:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rm ~/tmp/asdf <span class="c"># ERROR</span>
+
+<span class="nv">$ </span>rm -r ~/tmp/asdf/asdf <span class="c"># OK</span>
+</pre></div>
+</div>
+<p>What does the -r flag do?</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be careful with <cite>rm -r</cite> and <cite>rm -rf</cite>. You can accidentially remove
+entire directories that you didn't intend to.</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Moving and copying files<a class="headerlink" href="../../Classes/class-02.html#moving-and-copying-files" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>mv [source] [dest]:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>touch /tmp/asdf
+<span class="nv">$ </span>mv /tmp/asdf ~
+<span class="nv">$ </span>ls -lhtr ~/
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Moving and copying files (2)<a class="headerlink" href="../../Classes/class-02.html#id9" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>In-class excercise:</p>
+<ol class="arabic simple">
+<li>make a directory called <tt class="docutils literal"><span class="pre">/tmp/moveable</span></tt></li>
+<li>move that directory to ~</li>
+<li>copy that directory to <tt class="docutils literal"><span class="pre">/tmp/subdir/</span></tt></li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>echo<a class="headerlink" href="../../Classes/class-02.html#echo" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><tt class="docutils literal"><span class="pre">echo</span></tt> means &quot;print&quot;:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;hello world&quot;</span>
+</pre></div>
+</div>
+<p>and you can use it to see <strong>bash</strong> variables:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$HOME</span>
+
+<span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$HISTFILE</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Variables<a class="headerlink" href="../../Classes/class-02.html#variables" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We will start covering programming in the next classes, but variables are a
+key component of programming.</p>
+<p>You can do:</p>
+<div class="highlight-python"><div class="highlight"><pre># define a variable called &quot;important&quot;
+$ important=/vol1/opt/data/lamina.bed
+
+# &quot;dereference&quot; (refer to) the variable with a dollah-bill sign
+$ ls -lh $important
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>sudo<a class="headerlink" href="../../Classes/class-02.html#sudo" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><tt class="docutils literal"><span class="pre">sudo</span></tt> lets you run commands as root (the super-user). You won't be able
+to do this on tesla, but you should be able to run <tt class="docutils literal"><span class="pre">sudo</span></tt> on the virtual
+machine.</p>
+<img alt="http://imgs.xkcd.com/comics/sandwich.png" src="http://imgs.xkcd.com/comics/sandwich.png" />
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>apt-get install cowsay
+<span class="nv">$ </span>sudo apt-get install cowsay
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>other commands<a class="headerlink" href="../../Classes/class-02.html#other-commands" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>excercise:</p>
+<p>use <tt class="docutils literal"><span class="pre">man</span></tt> to determine the function of:</p>
+<ul class="simple">
+<li>wget</li>
+<li>uniq</li>
+</ul>
+<p>How many records are present for each chromosome in
+/vol1/opt/data/lamina.bed (assume it is sorted by chromosome)?</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Scripts<a class="headerlink" href="../../Classes/class-02.html#scripts" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A script is simply a series of commands that you save in a file. You will
+need to write scripts to complete the homework.</p>
+<p>Put this text:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls /vol1/opt/
+</pre></div>
+</div>
+<p>Into the file <em>`run.sh`</em> by opening <tt class="docutils literal"><span class="pre">vim</span></tt> pasting that text then saving
+the file.</p>
+<p>You can then run it as:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bash run.sh
+</pre></div>
+</div>
+<p>And you should see the same output as if you ran <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">/vol1/opt</span></tt> directly.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Scripts (2)<a class="headerlink" href="../../Classes/class-02.html#id10" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Scripts will be more useful when you have a series of commands you want to
+run in series.</p>
+<p>For example, a pipeline where you:</p>
+<ol class="arabic simple">
+<li>run quality control on some ChIP-seq reads</li>
+<li>align reads to a reference genome</li>
+<li>find peaks (binding sites)</li>
+<li>annotate the binding sites.</li>
+</ol>
+<p>a script will provide a record of what you have done.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Scripts : Commenting<a class="headerlink" href="../../Classes/class-02.html#scripts-commenting" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>For the homework, it if helpful to us if  you comment your scripts.</p>
+<p>Comments are not read by the shell, but they tell us (and you) what
+you were trying to do. You can comment your code using the &quot;#&quot; symbol.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># list all files in the /tmp/ directory ordered so that most recently</span>
+<span class="c"># changed appear last</span>
+<span class="nv">$ </span>ls -lhtr /tmp/
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Pipes<a class="headerlink" href="../../Classes/class-02.html#pipes" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Since linux is made of small utilities, we often want to chain them
+together. We will cover this in detail next class, but the idea
+is that each program takes data, modifies it, and sends it to the next.</p>
+<p>We can see lines 5-10 of a file with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>head /vol1/opt/data/lamina.bed <span class="p">|</span> tail -n 5
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

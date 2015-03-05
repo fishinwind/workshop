@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
@@ -114,7 +115,15 @@
       
   <div class="section" id="problem-sets">
 <span id="id1"></span><h1>Problem Sets<a class="headerlink" href="#problem-sets" title="Permalink to this headline">¶</a><a class="headerlink" href="slides/Problem_Sets.html#problem-sets" title="Slides">§</a></h1>
-<p>Problem Sets for the Genome Analysis Workshop class (MOLB 7621):</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+</tr>
+</tbody>
+</table>
+<p>Problem Sets for the Genome Analysis Workshop (MOLB 7621):</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Problem_Sets/problem_set_1/problem_set_1.html">Problem Set 1</a><ul class="simple">
@@ -180,24 +189,16 @@ the submission.</p>
       
   </div>
 </div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-        <br/>
-        
-<div id="sourcelink">
-  <a href="_sources/Problem_Sets.txt"
-     rel="nofollow">Source</a>
-</div>
-      
-    </p>
-    <p>
-        &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
-      Last updated on Mar 04, 2015.<br/>
-    </p>
-  </div>
-</footer>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
   </body>
 </html>

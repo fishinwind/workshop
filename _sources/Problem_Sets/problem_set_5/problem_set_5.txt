@@ -42,23 +42,18 @@ Problem 2
 Use ggplot2 and BEDTools to analyze the following ENCODE data (**25
 points**). **Only look at data on chr22 for the following problem**.
 
-Examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
-marks are enriched in high confidence CTCF-mediated chromatin loops::
+Examine ENCODE CTCF and histone ChIP-seq data to determine what histone
+marks are enriched near CTCF binding sites. 
 
-    ----CTCF-----------------------------------------------CTCF----
-         |                                                  |
-         -------------------loop region----------------------
-             H3K4me3 peak?                 H3K4me3 peak?
+#. Download ENCODE CTCF and histone (H3K4me3 and H3K27ac) ChIP data for
+   the K562 cell line.
 
-#. Download ENCODE ChIA-PET/CTCF and histone ChIP data for the K562 cell
-   line.
+#. Determine how histone marks are distributed around CTCF binding sites.
+   This is very similar to the problem you did last week, i.e. use ``bedtools
+   intersect`` and other bedtools
 
-#. Determine how the histone marks H3K4me3 and H3K27ac are distributed
-   inside and outside of the  regions defined by CTCF Chia-PET boundaries 
-   use ``bedtools intersect`` and other bedtools
-
-#. Generate summary statistics for which histone marks are enriched in
-   CTCF loops. use ``dplyr`` and ``ggplot2`` for this.
+#. Generate summary statistics (e.g., how many histone peaks are near CTCF
+   peaks, etc) using ``dplyr`` and ``ggplot2``.
 
 Problem Set Submission
 ======================

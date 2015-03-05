@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
@@ -165,22 +166,16 @@ peak (hint: use the <tt class="docutils literal"><span class="pre">-c</span></tt
 <h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a><a class="headerlink" href="../../slides/Problem_Sets/problem_set_5/problem_set_5.html#problem-2" title="Slides">§</a></h2>
 <p>Use ggplot2 and BEDTools to analyze the following ENCODE data (<strong>25
 points</strong>). <strong>Only look at data on chr22 for the following problem</strong>.</p>
-<p>Examine ENCODE ChIA-PET and ChIP-seq data to determine what histone
-marks are enriched in high confidence CTCF-mediated chromatin loops:</p>
-<div class="highlight-python"><div class="highlight"><pre>----CTCF-----------------------------------------------CTCF----
-     |                                                  |
-     -------------------loop region----------------------
-         H3K4me3 peak?                 H3K4me3 peak?
-</pre></div>
-</div>
+<p>Examine ENCODE CTCF and histone ChIP-seq data to determine what histone
+marks are enriched near CTCF binding sites.</p>
 <ol class="arabic simple">
-<li>Download ENCODE ChIA-PET/CTCF and histone ChIP data for the K562 cell
-line.</li>
-<li>Determine how the histone marks H3K4me3 and H3K27ac are distributed
-inside and outside of the  regions defined by CTCF Chia-PET boundaries
-use <tt class="docutils literal"><span class="pre">bedtools</span> <span class="pre">intersect</span></tt> and other bedtools</li>
-<li>Generate summary statistics for which histone marks are enriched in
-CTCF loops. use <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">ggplot2</span></tt> for this.</li>
+<li>Download ENCODE CTCF and histone (H3K4me3 and H3K27ac) ChIP data for
+the K562 cell line.</li>
+<li>Determine how histone marks are distributed around CTCF binding sites.
+This is very similar to the problem you did last week, i.e. use <tt class="docutils literal"><span class="pre">bedtools</span>
+<span class="pre">intersect</span></tt> and other bedtools</li>
+<li>Generate summary statistics (e.g., how many histone peaks are near CTCF
+peaks, etc) using <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">ggplot2</span></tt>.</li>
 </ol>
 </div>
 <div class="section" id="problem-set-submission">
@@ -195,24 +190,16 @@ CTCF loops. use <tt class="docutils literal"><span class="pre">dplyr</span></tt>
       
   </div>
 </div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-        <br/>
-        
-<div id="sourcelink">
-  <a href="../../_sources/Problem_Sets/problem_set_5/problem_set_5.txt"
-     rel="nofollow">Source</a>
-</div>
-      
-    </p>
-    <p>
-        &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
-      Last updated on Mar 04, 2015.<br/>
-    </p>
-  </div>
-</footer>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
   </body>
 </html>

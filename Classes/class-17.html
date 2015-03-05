@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 17 : Python Concepts &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 17 : Python Concepts</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#looping-review">Looping Review</a></li>
+<li><a class="reference internal" href="#in-class-exercise">In Class Exercise</a></li>
+<li><a class="reference internal" href="#in-class-exercise-code">In Class Exercise Code</a></li>
+<li><a class="reference internal" href="#counters">Counters</a></li>
+<li><a class="reference internal" href="#looping-reading-multiple-lines-at-a-time">Looping: Reading Multiple Lines at a Time</a></li>
+<li><a class="reference internal" href="#id1">In Class Exercise</a></li>
+<li><a class="reference internal" href="#intermediate-concepts-streaming">Intermediate Concepts: Streaming</a></li>
+<li><a class="reference internal" href="#intermediate-streaming">Intermediate : Streaming</a></li>
+<li><a class="reference internal" href="#streaming-with-yield">Streaming with yield</a></li>
+<li><a class="reference internal" href="#id2">In Class Exercise</a></li>
+<li><a class="reference internal" href="#in-class-exercise-answer">In Class Exercise (Answer)</a></li>
+<li><a class="reference internal" href="#goal">Goal</a></li>
+<li><a class="reference internal" href="#toolshed">toolshed</a></li>
+<li><a class="reference internal" href="#python-debugging">Python Debugging</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-17-python-concepts">
+<h1>Class 17 : Python Concepts<a class="headerlink" href="#class-17-python-concepts" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#class-17-python-concepts" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 2 Thurs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Review Python concepts</li>
+</ol>
+</div>
+<div class="section" id="looping-review">
+<h2>Looping Review<a class="headerlink" href="#looping-review" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#looping-review" title="Slides">§</a></h2>
+<p>Before we move on to more advanced topics, let&#8217;s do some exercises
+reviewing how loops work. First, use wget to download
+<a class="reference external" href="http://www.cs.uni.edu/~schafer/1140/assignments/pa11/hamlet.txt">hamlet.txt</a>.</p>
+</div>
+<div class="section" id="in-class-exercise">
+<h2>In Class Exercise<a class="headerlink" href="#in-class-exercise" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#in-class-exercise" title="Slides">§</a></h2>
+<p>From hamlet.txt:</p>
+<ol class="arabic simple">
+<li>Print the first word of each line.</li>
+<li>Print only lines that are not indented.</li>
+<li>Count the number of times that the word &#8220;therefore&#8221; appears.</li>
+</ol>
+<p>(hint: the <a class="reference external" href="http://docs.python.org/3/reference/simple_stmts.html#continue" title="(in Python v3.4)"><em>The continue statement</em></a> statement will skip to the next loop
+iteration, and is usually found in an if statement)</p>
+</div>
+<div class="section" id="in-class-exercise-code">
+<h2>In Class Exercise Code<a class="headerlink" href="#in-class-exercise-code" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#in-class-exercise-code" title="Slides">§</a></h2>
+<p>Print the first word of each line.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hamlet.txt&#39;</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Print only lines that are not indented.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hamlet.txt&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&#39; &#39;</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Count the number of times that the word &#8220;therefore&#8221; appears.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hamlet.txt&#39;</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="s">&#39;therefore&#39;</span><span class="p">:</span>
+            <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="counters">
+<h2>Counters<a class="headerlink" href="#counters" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#counters" title="Slides">§</a></h2>
+<p><a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.Counter" title="(in Python v3.4)"><tt class="xref py py-class docutils literal"><span class="pre">Counter</span></tt></a> objects are a type of Python dict in
+which the values are counts of the keys. Counter objects have several
+methods to query the counts, like
+<a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.Counter.most_common" title="(in Python v3.4)"><tt class="xref py py-meth docutils literal"><span class="pre">most_common()</span></tt></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hamlet.txt&#39;</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="n">word_counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>There is more than one way to do this. It&#8217;s usually a good idea to look at the
+Python documentation to see if there&#8217;s a method that does what you&#8217;re trying to do.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hamlet.txt&#39;</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">word_counts</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="looping-reading-multiple-lines-at-a-time">
+<h2>Looping: Reading Multiple Lines at a Time<a class="headerlink" href="#looping-reading-multiple-lines-at-a-time" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#looping-reading-multiple-lines-at-a-time" title="Slides">§</a></h2>
+<p>There are lots of biological data files that have information spread over
+multiple lines. For example, a FASTA file is used to store sequences. Each
+record has a line with &#8216;&gt;&#8217; and some information (like a name) followed by
+another line of sequence data. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt;Sequence name
+AGCATCGTAGCTAGTCGTACGTAGCTATCGATCGTAGCTA
+</pre></div>
+</div>
+<p><strong>Download the sample FASTA file:</strong> <a class="reference internal" href="../Miscellaneous/data.html#fasta-file"><em>FASTA format</em></a></p>
+</div>
+<div class="section" id="id1">
+<h2>In Class Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#id1" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Open sample.fa and make a dictionary with four items corresponding to
+the sequences from the file</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">records</span>  <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;sample.fa&#39;</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;&gt;</span><span class="se">\n\r</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">seq</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">records</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">seq</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">records</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="intermediate-concepts-streaming">
+<h2>Intermediate Concepts: Streaming<a class="headerlink" href="#intermediate-concepts-streaming" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#intermediate-concepts-streaming" title="Slides">§</a></h2>
+<p>One of the reasons why python is so useful is that faciliates
+<strong>iteration</strong> over a file without reading the entire dataset into computer
+memory.</p>
+<p>This is similar to streaming data in the Linux tools we&#8217;ve discussed.
+For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre>zless /vol1/opt/data/t_R1.fastq.gz <span class="p">|</span> wc -l
+</pre></div>
+</div>
+<p>never holds the file in memory, it just streams the data.</p>
+<p>We can do this in python.</p>
+</div>
+<div class="section" id="intermediate-streaming">
+<h2>Intermediate : Streaming<a class="headerlink" href="#intermediate-streaming" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#intermediate-streaming" title="Slides">§</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">DO NOT DO THIS!! It reads everything into memory.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">gzip</span>
+<span class="n">fastq_filename</span> <span class="o">=</span> <span class="s">&#39;/vol1/opt/data/t_R1.fastq.gz&#39;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fastq_filename</span><span class="p">))</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">DO THIS</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">gzip</span>
+<span class="n">fastq_filename</span> <span class="o">=</span> <span class="s">&#39;/vol1/opt/data/t_R1.fastq.gz&#39;</span>
+
+<span class="n">lines</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fastq_filename</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c"># or:</span>
+
+<span class="n">lines</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fastq_filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="streaming-with-yield">
+<h2>Streaming with yield<a class="headerlink" href="#streaming-with-yield" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#streaming-with-yield" title="Slides">§</a></h2>
+<p>Make a bed reader that returns a useful dict:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">bed_generator</span><span class="p">(</span><span class="n">bedfilename</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">bedfilename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;#&#39;</span><span class="p">):</span> <span class="k">continue</span>
+        <span class="n">chrom</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="nb">dict</span><span class="p">(</span><span class="n">chrom</span><span class="o">=</span><span class="n">chrom</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then use it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">bedfilename</span> <span class="o">=</span> <span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span>
+<span class="k">for</span> <span class="n">bed</span> <span class="ow">in</span> <span class="n">bed_generator</span><span class="p">(</span><span class="n">bedfilename</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">bed</span><span class="p">)</span> <span class="c"># bed is a useful, usable thing. with numeric start and end.</span>
+</pre></div>
+</div>
+<p>Note that only ever have 1 (**) line in memory at a time.</p>
+</div>
+<div class="section" id="id2">
+<h2>In Class Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#id2" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Modify the <cite>bed_generator</cite> code from the previous slide so that it
+turns value into a <a class="reference external" href="http://docs.python.org/3/library/functions.html#float" title="(in Python v3.4)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a> before yielding</li>
+<li>In the code that calls bed_generator, print out the value</li>
+<li>In the code that calls bed_generator, append value to a list.</li>
+</ol>
+</div>
+<div class="section" id="in-class-exercise-answer">
+<h2>In Class Exercise (Answer)<a class="headerlink" href="#in-class-exercise-answer" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#in-class-exercise-answer" title="Slides">§</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">bed_generator</span><span class="p">(</span><span class="n">bed_file</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">bed_file</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;#&#39;</span><span class="p">):</span> <span class="k">continue</span>
+
+        <span class="n">chrom</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="p">{</span><span class="s">&#39;chrom&#39;</span><span class="p">:</span> <span class="n">chrom</span><span class="p">,</span> <span class="s">&#39;start&#39;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span> <span class="s">&#39;end&#39;</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+               <span class="s">&#39;value&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">))}</span>
+
+<span class="n">vals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">bed</span> <span class="ow">in</span> <span class="n">bed_generator</span><span class="p">(</span><span class="n">bedfilename</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">bed</span><span class="p">[</span><span class="s">&#39;value&#39;</span><span class="p">])</span>
+    <span class="n">vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bed</span><span class="p">[</span><span class="s">&#39;value&#39;</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">vals</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">vals</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="goal">
+<h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#goal" title="Slides">§</a></h2>
+<p>Take the basic concepts we&#8217;ve learned and do something useful.</p>
+</div>
+<div class="section" id="toolshed">
+<h2>toolshed<a class="headerlink" href="#toolshed" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#toolshed" title="Slides">§</a></h2>
+<p><a class="reference external" href="https://pypi.python.org/pypi/toolshed">toolshed</a> is a python module
+that simplifies common file/text-processing tasks.  For example, it
+assumes the first line of a file is the header and gives a python
+dictionary for each line keyed by the header.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python -c <span class="s2">&quot;import toolshed&quot;</span>
+
+<span class="c"># If you see an error get help to install toolshed:</span>
+<span class="nv">$ </span>pip install toolshed
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">toolshed</span> <span class="kn">import</span> <span class="n">reader</span>
+
+<span class="n">bedfilename</span> <span class="o">=</span> <span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span>
+
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">(</span><span class="n">bedfilename</span><span class="p">):</span>
+    <span class="c"># the first line in lamina.bed is: &#39;#chrom  start  end  value&#39;</span>
+    <span class="c"># reader uses these names as keys in a dict</span>
+
+    <span class="k">if</span> <span class="n">region</span><span class="p">[</span><span class="s">&#39;chrom&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;chr12&quot;</span><span class="p">:</span> <span class="k">continue</span>
+    <span class="k">if</span> <span class="nb">float</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="s">&#39;value&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.90</span><span class="p">:</span> <span class="k">continue</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="s">&#39;chrom&#39;</span><span class="p">],</span> <span class="n">region</span><span class="p">[</span><span class="s">&#39;start&#39;</span><span class="p">],</span> <span class="n">region</span><span class="p">[</span><span class="s">&#39;end&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The toolshed reader function can also take gzipped files, files
+over http, bash commands, and (some) xls files.</p>
+<p>It can also accept a python class, that, for example
+converts start and end to int&#8217;s.</p>
+<p>Mostly we will use it as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">toolshed</span> <span class="kn">import</span> <span class="n">reader</span>
+
+<span class="n">bedfilename</span> <span class="o">=</span> <span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span>
+
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">(</span><span class="n">bedfilename</span><span class="p">):</span>
+    <span class="c"># do something with region</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="s">&#39;chrom&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-debugging">
+<h2>Python Debugging<a class="headerlink" href="#python-debugging" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-17.html#python-debugging" title="Slides">§</a></h2>
+<p>Many people are struggling with simple debugging issues. Stratgies:</p>
+<p>Use <a class="reference external" href="http://docs.python.org/3/library/functions.html#print" title="(in Python v3.4)"><tt class="xref py py-func docutils literal"><span class="pre">print()</span></tt></a> copiously. For example, Print out a nested
+data structure as it is being created</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">nested</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">chrom</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="n">bedfile</span><span class="p">):</span>
+
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+    <span class="n">nested</span><span class="p">[</span><span class="n">chrom</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+
+<span class="hll">    <span class="k">print</span><span class="p">(</span><span class="n">nested</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Use the Python Debugger: <a class="reference external" href="http://docs.python.org/3/library/pdb.html#module-pdb" title="(in Python v3.4)"><tt class="xref py py-mod docutils literal"><span class="pre">pdb</span></tt></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="hll"><span class="kn">import</span> <span class="nn">pdb</span>
+</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="o">...</span>
+<span class="hll">    <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</span>
+<span class="c"># keys:</span>
+<span class="c"># c(ontinue) : move through the current context (i.e. loop)</span>
+<span class="c"># &lt;ctrl&gt;-c   : exit the debugger</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">idx</span>
+<span class="mi">0</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">c</span>
+<span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">idx</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>

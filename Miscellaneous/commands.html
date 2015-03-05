@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reference: list of commands &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Miscellaneous" href="../Miscellaneous.html" />
+    <link rel="next" title="Credits" href="credits.html" />
+    <link rel="prev" title="Miscellaneous" href="../Miscellaneous.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#general-information">General Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#pdf-content">PDF Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#instructor-information">Instructor Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#schedule">Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#location">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#course-description">Course Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#canvas">Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#assessment">Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Syllabus.html#specific-dates-material-to-be-covered">Specific Dates / Material to be Covered</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-01.html">Class 1 : Class Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-02.html">Class 2 : The command-line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-03.html">Class 3 : The command-line (part 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-04.html">Class 4 : grep and awk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-05.html">Class 5 : BEDTools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-05.html#chromatin-immunoprecipitation-overview">Chromatin Immunoprecipitation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-06.html">Class 6 : Genomic Data Vignette: ChIP-seq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-07.html">Class 7 : BEDTools vignette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-08.html">Class 8 : R : Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-09.html">Class 9 : R : Manipulation &amp; Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-10.html">Class 10 : R : DataFrames &amp; Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Classes/class-11.html">Class 11 : R : Simple statistics and ggplot2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_Sets/problem_set_1/problem_set_1.html">Problem Set 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_Sets/problem_set_2/problem_set_2.html">Problem Set 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_Sets/problem_set_3/problem_set_3.html">Problem Set 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_Sets/problem_set_4/problem_set_4.html">Problem Set 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_Sets/problem_set_5/problem_set_5.html">Problem Set 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_Sets/Problem_Set_Keys.html">Problem Set : KEYS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_Sets.html#problem-set-keys">Problem Set Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_Sets.html#problem-set-submission">Problem Set Submission</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Exercises/exercises.html">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Reference: list of commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data.html">Sample Data files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="starting.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips.html">Programming Tips &amp; Tricks</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Reference: list of commands</a><ul>
+<li><a class="reference internal" href="#cd">cd</a></li>
+<li><a class="reference internal" href="#cp">cp</a></li>
+<li><a class="reference internal" href="#ctrl-c">ctrl+c</a></li>
+<li><a class="reference internal" href="#cut">cut</a></li>
+<li><a class="reference internal" href="#echo">echo</a></li>
+<li><a class="reference internal" href="#head">head</a></li>
+<li><a class="reference internal" href="#grep">grep</a></li>
+<li><a class="reference internal" href="#less">less</a></li>
+<li><a class="reference internal" href="#ls">ls</a></li>
+<li><a class="reference internal" href="#man">man</a></li>
+<li><a class="reference internal" href="#mkdir">mkdir</a></li>
+<li><a class="reference internal" href="#mv">mv</a></li>
+<li><a class="reference internal" href="#rm">rm</a></li>
+<li><a class="reference internal" href="#sort">sort</a></li>
+<li><a class="reference internal" href="#tail">tail</a></li>
+<li><a class="reference internal" href="#tar">tar</a></li>
+<li><a class="reference internal" href="#uniq">uniq</a></li>
+<li><a class="reference internal" href="#wget">wget</a></li>
+<li><a class="reference internal" href="#zless">zless</a></li>
+<li><a class="reference internal" href="#redirection-and">Redirection (&gt;&gt; and &gt;)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="reference-list-of-commands">
+<h1>Reference: list of commands<a class="headerlink" href="#reference-list-of-commands" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#reference-list-of-commands" title="Slides">§</a></h1>
+<div class="section" id="cd">
+<h2>cd<a class="headerlink" href="#cd" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#cd" title="Slides">§</a></h2>
+<p>change directories:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /tmp/
+<span class="nv">$ </span><span class="nb">cd</span> ~ <span class="c"># chage to home directory</span>
+<span class="nv">$ </span><span class="nb">cd</span> /vol1/opt/
+<span class="nv">$ </span><span class="nb">cd</span> - <span class="c"># change to previous directory</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cp">
+<h2>cp<a class="headerlink" href="#cp" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#cp" title="Slides">§</a></h2>
+<p>copy files and directories:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>touch /tmp/asdf
+<span class="nv">$ </span>cp /tmp/asdf ~ <span class="c"># copy to home</span>
+</pre></div>
+</div>
+<p>must use -r for directories:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir /tmp/adir
+<span class="nv">$ </span>cp -r /tmp/adir ~/
+</pre></div>
+</div>
+</div>
+<div class="section" id="ctrl-c">
+<h2>ctrl+c<a class="headerlink" href="#ctrl-c" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#ctrl-c" title="Slides">§</a></h2>
+<p>interrupt a running process:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>head
+&lt;ctrl+c&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="cut">
+<h2>cut<a class="headerlink" href="#cut" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#cut" title="Slides">§</a></h2>
+<p>extract columns from a file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cut -f 1-3 /vol1/opt/data/lamina.bed
+<span class="nv">$ </span>cut -f 1,3 /vol1/opt/data/lamina.bed
+<span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed
+
+<span class="c"># use comma as delimiter instead of default tab</span>
+<span class="nv">$ </span>cut -f 1-3 -d, /path/to/some.csv
+
+<span class="c"># keep all columns after the 1st:</span>
+<span class="nv">$ </span>cut -f 2- /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+</div>
+<div class="section" id="echo">
+<h2>echo<a class="headerlink" href="#echo" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#echo" title="Slides">§</a></h2>
+<p>print some text:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;hello world&quot;</span> <span class="p">|</span> cowsay
+</pre></div>
+</div>
+</div>
+<div class="section" id="head">
+<h2>head<a class="headerlink" href="#head" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#head" title="Slides">§</a></h2>
+<p>show the start of a file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>head /vol1/opt/data/lamina.bed
+
+<span class="c"># show the first 4 lines</span>
+<span class="nv">$ </span>head -n <span class="m">4</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+</div>
+<div class="section" id="grep">
+<h2>grep<a class="headerlink" href="#grep" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#grep" title="Slides">§</a></h2>
+<p>To find any instance of <em>chr5</em> in the lamina.bed file</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># grep [pattern] [filename]</span>
+<span class="nv">$ </span>grep chr5 /vol1/opt/data/lamina.bed <span class="p">|</span> head
+</pre></div>
+</div>
+<p>To find all lines that start with a number sign:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># The caret (^) matches the beginning of the line</span>
+<span class="c"># FYI dollar sign ($) matches the end</span>
+<span class="nv">$ </span>grep <span class="s1">&#39;^#&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>To find any line that <em>does not</em> start with &#8220;chr&#8221;:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -v flag inverts the match (grep &quot;not&quot; [pattern])</span>
+<span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>Find exact matches that are split on words with the <tt class="docutils literal"><span class="pre">-w</span></tt> flag:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+</pre></div>
+</div>
+</div>
+<div class="section" id="less">
+<h2>less<a class="headerlink" href="#less" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#less" title="Slides">§</a></h2>
+<p>page through a file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>less /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>use &#8220;/&#8221;, &#8221;?&#8221; to search forward, backard. &#8216;q&#8217; to exit.</p>
+<p>use &#8216;[space]&#8217; to go page by page.</p>
+</div>
+<div class="section" id="ls">
+<h2>ls<a class="headerlink" href="#ls" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#ls" title="Slides">§</a></h2>
+<p>list files and directories:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls /tmp/
+
+<span class="c"># show current directory</span>
+<span class="nv">$ </span>ls
+
+<span class="c"># show current directory (2)</span>
+<span class="nv">$ </span>ls .
+
+<span class="c"># list files with most recently modified last</span>
+<span class="nv">$ </span>ls -lhtr
+
+<span class="c"># list files in temp ordered by modification date</span>
+<span class="nv">$ </span>ls -lhtr /tmp/
+</pre></div>
+</div>
+</div>
+<div class="section" id="man">
+<h2>man<a class="headerlink" href="#man" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#man" title="Slides">§</a></h2>
+<p>show the manual entry for a command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>man head
+</pre></div>
+</div>
+</div>
+<div class="section" id="mkdir">
+<h2>mkdir<a class="headerlink" href="#mkdir" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#mkdir" title="Slides">§</a></h2>
+<p>make a directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir /tmp/aa
+</pre></div>
+</div>
+<p>make sub-directories, too:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir -p /tmp/aaa/bbb/
+</pre></div>
+</div>
+</div>
+<div class="section" id="mv">
+<h2>mv<a class="headerlink" href="#mv" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#mv" title="Slides">§</a></h2>
+<p>move a file or directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>touch /tmp/aa
+<span class="nv">$ </span>mv /tmp/aa /tmp/bb
+</pre></div>
+</div>
+</div>
+<div class="section" id="rm">
+<h2>rm<a class="headerlink" href="#rm" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#rm" title="Slides">§</a></h2>
+<p>remove a file or directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>touch /tmp/asdf
+<span class="nv">$ </span>rm /tmp/asdf
+
+<span class="c"># use -r to remove directory</span>
+<span class="nv">$ </span>mkdir /tmp/asdf
+<span class="nv">$ </span>rm -r /tmp/asdf
+</pre></div>
+</div>
+</div>
+<div class="section" id="sort">
+<h2>sort<a class="headerlink" href="#sort" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#sort" title="Slides">§</a></h2>
+<p>sort a file by selected columns:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -k1n /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>sort a BED file by chromosome (1st column) as character and then by start
+(2nd column) as number:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -k1,1 -k2,2n /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>sort by 4th column as a general number, including scientific notation
+showing largest numbers first:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -k4,4rg /vol1/opt/data/lamina.bed <span class="p">|</span> head
+</pre></div>
+</div>
+<p>use literal tab (&#8216;\t&#8217;) as the delimiter (default is whitespace):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -t<span class="s1">$&#39;\t&#39;</span> -k4,4rg /vol1/opt/data/lamina.bed <span class="p">|</span> head
+</pre></div>
+</div>
+<p>Sometimes we want to get uniq entries with sort -u:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> sort -u
+</pre></div>
+</div>
+<p>will print out the uniq chromsomes represent in the BED file.</p>
+</div>
+<div class="section" id="tail">
+<h2>tail<a class="headerlink" href="#tail" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#tail" title="Slides">§</a></h2>
+<p>show the end of a file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>tail /vol1/opt/data/lamina.bed
+<span class="c"># show the last 4 lines</span>
+<span class="nv">$ </span>tail -n <span class="m">4</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+</div>
+<div class="section" id="tar">
+<h2>tar<a class="headerlink" href="#tar" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#tar" title="Slides">§</a></h2>
+<p>create or untar a .tar.gz file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># -c create -z compress (.gz) -v verbose -f the name</span>
+<span class="nv">$ </span>tar -czvf some.tar.gz /tmp/*
+
+<span class="c"># -x untar</span>
+<span class="nv">$ </span>tar -zxvf some.tar.gz
+</pre></div>
+</div>
+</div>
+<div class="section" id="uniq">
+<h2>uniq<a class="headerlink" href="#uniq" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#uniq" title="Slides">§</a></h2>
+<p>show or count unique or non-unique entries in a file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># count number of times each chromosome appears.</span>
+<span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -c
+
+<span class="c"># get non unique entries</span>
+<span class="nv">$ </span>cut -f <span class="m">2</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -d
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last"><tt class="docutils literal"><span class="pre">uniq</span></tt> assumes that the file is <tt class="docutils literal"><span class="pre">sort</span></tt>-ed first! To test this, run
+<tt class="docutils literal"><span class="pre">uniq</span></tt> on an unsorted file. What happens?</p>
+</div>
+</div>
+<div class="section" id="wget">
+<h2>wget<a class="headerlink" href="#wget" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#wget" title="Slides">§</a></h2>
+<p>get a file from the web:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wget http://ucd-bioworkshop.github.io/_downloads/states.tab
+</pre></div>
+</div>
+</div>
+<div class="section" id="zless">
+<h2>zless<a class="headerlink" href="#zless" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#zless" title="Slides">§</a></h2>
+<p>like less, but for compressed files:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>zless /vol1/opt/data/t_R1.fastq.gz
+</pre></div>
+</div>
+</div>
+<div class="section" id="redirection-and">
+<h2>Redirection (&gt;&gt; and &gt;)<a class="headerlink" href="#redirection-and" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/commands.html#redirection-and" title="Slides">§</a></h2>
+<p>send output to a file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># start a new file</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span> &gt; file.txt
+
+<span class="c"># overwite that file</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;hello!&quot;</span> &gt; file.txt
+
+<span class="c"># append to the file</span>
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;world&quot;</span> &gt;&gt; file.txt
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>

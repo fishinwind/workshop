@@ -8,4 +8,4 @@ General content not tied to specific classes.
    :titlesonly:
    :glob: 
 
-   misc/*
+   Miscellaneous/*

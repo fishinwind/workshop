@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 9 : R : Manipulation &amp; Plotting &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 10 : R : DataFrames &amp; Plotting" href="class-10.html" />
+    <link rel="prev" title="Class 8 : R : Getting Started" href="class-08.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 9 : R : Manipulation &amp; Plotting</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#dplyr">dplyr</a><ul>
+<li><a class="reference internal" href="#dplyr-example">dplyr example</a></li>
+<li><a class="reference internal" href="#exercises-with-dplyr">Exercises with dplyr</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#combining-with-ggplot">Combining with ggplot</a></li>
+<li><a class="reference internal" href="#ggplot-histograms">ggplot histograms</a><ul>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#practice">Practice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-9-r-manipulation-plotting">
+<h1>Class 9 : R : Manipulation &amp; Plotting<a class="headerlink" href="#class-9-r-manipulation-plotting" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#class-9-r-manipulation-plotting" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 24 Tues</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Begin to manipulate data with and <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">tidyr</span></tt></li>
+</ol>
+</div>
+<div class="section" id="dplyr">
+<h2>dplyr<a class="headerlink" href="#dplyr" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#dplyr" title="Slides">§</a></h2>
+<p><tt class="docutils literal"><span class="pre">dplyr</span></tt> provides several methods:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">summarise()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">filter()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">select()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">mutate()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">arrange()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">group_by()</span></tt></li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">dplyr</span></tt> also provides an operator called <tt class="docutils literal"><span class="pre">%&gt;%</span></tt> that allows you to
+string manipulations together.</p>
+<p>By combining these functions together, you can quickly and easily
+manipulate data.frames and generate useful data summaries.</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> summary <span class="o">&lt;-</span> df <span class="o">%&gt;%</span> select<span class="p">()</span> <span class="o">%&gt;%</span> group_by<span class="p">()</span> <span class="o">%&gt;%</span> summarize<span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="dplyr-example">
+<h3>dplyr example<a class="headerlink" href="#dplyr-example" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#dplyr-example" title="Slides">§</a></h3>
+<div class="highlight-r"><div class="highlight"><pre>dfx <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># calculate some simple stats with dplyr</span>
+grouped <span class="o">&lt;-</span> group_by<span class="p">(</span>dfx<span class="p">,</span> condition<span class="p">,</span> genotype<span class="p">)</span>
+summarize<span class="p">(</span>grouped<span class="p">,</span> count <span class="o">=</span> n<span class="p">(),</span> mean.age <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>age<span class="p">))</span>
+
+<span class="c1"># even better</span>
+dfx <span class="o">%&gt;%</span>
+    group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> <span class="o">%&gt;%</span>
+    summarize<span class="p">(</span>count <span class="o">=</span> n<span class="p">(),</span> mean.age <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>age<span class="p">))</span>
+</pre></div>
+</div>
+<p>Summarize transcription factor binding site peaks in:</p>
+<div class="highlight-python"><div class="highlight"><pre># columns 1-4 from merged peak calls
+/vol1/opt/data/encode/peaks.bed.gz
+</pre></div>
+</div>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<span class="o">&gt;</span> colnames <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> bedfilename <span class="o">=</span> <span class="s">&#39;peaks.bed.gz&#39;</span>
+
+<span class="c1"># use ``gzfile`` to load gzipped data</span>
+<span class="o">&gt;</span> peaks <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="kp">gzfile</span><span class="p">(</span>bedfilename<span class="p">),</span> col.names<span class="o">=</span><span class="kp">colnames</span><span class="p">)</span>
+
+<span class="o">&gt;</span> peaks <span class="o">%&gt;%</span>
+    group_by<span class="p">(</span>name<span class="p">)</span> <span class="o">%&gt;%</span>
+    mutate<span class="p">(</span>peak.width <span class="o">=</span> end <span class="o">-</span> start<span class="p">)</span> <span class="o">%&gt;%</span>
+    filter<span class="p">(</span>peak.width <span class="o">&gt;</span> <span class="m">500</span> <span class="p">)</span> <span class="o">%&gt;%</span>
+    summarize<span class="p">(</span>count <span class="o">=</span> n<span class="p">(),</span> mean.width <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>peak.width<span class="p">))</span> <span class="o">%&gt;%</span>
+    arrange<span class="p">(</span>desc<span class="p">(</span>count<span class="p">))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">n()</span></tt> is a special function for counting observations</li>
+<li>assign the summary to a new data.frame</li>
+</ul>
+</div>
+<div class="section" id="exercises-with-dplyr">
+<h3>Exercises with dplyr<a class="headerlink" href="#exercises-with-dplyr" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#exercises-with-dplyr" title="Slides">§</a></h3>
+<ol class="arabic simple">
+<li>Use <tt class="docutils literal"><span class="pre">dplyr</span></tt> to calculate the mean age of smokers grouped by gender
+and smoking status. Plot the result.</li>
+<li>Make a plot of age by expression faceted by genotype. Fit a linear
+model through these curves (use geom_smooth) on the plot.</li>
+<li>Load the peaks BED file and find the 10 factors that have the largest range
+in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or <tt class="docutils literal"><span class="pre">geom_violin()</span></tt> to support
+your answer (also add individual points to the plot with <tt class="docutils literal"><span class="pre">geom_jitter()</span></tt>).</li>
+</ol>
+</div>
+</div>
+<div class="section" id="combining-with-ggplot">
+<h2>Combining with ggplot<a class="headerlink" href="#combining-with-ggplot" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#combining-with-ggplot" title="Slides">§</a></h2>
+<p>We had mean expression by condition and genotype as:</p>
+<div class="highlight-r"><div class="highlight"><pre>dfx <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
+    <span class="o">%&gt;%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span> \
+</pre></div>
+</div>
+<p>We can add to that expression (after typing &#8216;library(ggplot2)&#8217;)</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">%&gt;%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">)</span> \
+    <span class="o">+</span> geom_histogram<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>how can we change the color of all the bars to &#8216;red&#8217;? [Hint, it&#8217;s not
+<strong>color</strong> =&#8217;red&#8217;]</p>
+</div>
+<div class="section" id="ggplot-histograms">
+<h2>ggplot histograms<a class="headerlink" href="#ggplot-histograms" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#ggplot-histograms" title="Slides">§</a></h2>
+<p>Since <cite>expr-geno-covs.txt</cite> is already in long format, we can use it directly in
+ggplot:</p>
+<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+       geom_histogram<span class="p">()</span> <span class="o">+</span>
+       scale_x_log10<span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#exercises" title="Slides">§</a></h3>
+<ol class="arabic simple">
+<li>Adjust this:</li>
+</ol>
+<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+       geom_histogram<span class="p">()</span> <span class="o">+</span>
+       scale_x_log10<span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>to color by genotype</li>
+<li>and to split plots (facet_wrap) by condition (case/control)</li>
+<li>to color by age &gt; 60 vs. &lt;= 60 (use row selection stuff from start of class to
+make a new column named, e.g. <cite>is_old</cite>)</li>
+</ul>
+<ol class="arabic simple">
+<li>Figure out how to move overlapping points so categorical data is
+viewable (hint: look at geom_jitter() or the <cite>position</cite> argument to
+geom_point())</li>
+<li>Load a BED file (e.g. <tt class="docutils literal"><span class="pre">lamina.bed</span></tt>) and calculate the mean length of
+regions on each chromosome in the BED file with dplyr.  Plot the result as
+a bar plot with ggplot2.</li>
+</ol>
+</div>
+<div class="section" id="practice">
+<h3>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#practice" title="Slides">§</a></h3>
+<p>Practice <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">tidyr</span></tt> with <tt class="docutils literal"><span class="pre">swirl</span></tt>:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>swirl<span class="p">)</span>
+<span class="o">&gt;</span> install_from_swirl<span class="p">(</span><span class="s">&quot;Getting_and_Cleaning_Data&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> swirl<span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>

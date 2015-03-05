@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
@@ -167,7 +168,7 @@ Aurora CO 80045</td>
 <tr class="field-odd field"><th class="field-name">Copyright:</th><td class="field-body">2014,2015 Jay R. Hesselberth
 All Rights Reserved.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 04, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -447,24 +448,16 @@ session, weekly problem sets, as well as a final project.</p>
       
   </div>
 </div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-        <br/>
-        
-<div id="sourcelink">
-  <a href="_sources/Syllabus.txt"
-     rel="nofollow">Source</a>
-</div>
-      
-    </p>
-    <p>
-        &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
-      Last updated on Mar 04, 2015.<br/>
-    </p>
-  </div>
-</footer>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
   </body>
 </html>

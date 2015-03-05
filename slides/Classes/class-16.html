@@ -1,0 +1,395 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 16 : Python : Basics &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 16 : Python : Basics<a class="headerlink" href="../../Classes/class-16.html#class-16-python-basics" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Mar 31 Tues</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-16.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Finish concepts from Monday (list slices)</li>
+<li>New concepts: equality, undefined, functions</li>
+<li>Importing and debugging</li>
+<li>Exercises</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Review of list concepts<a class="headerlink" href="../../Classes/class-16.html#review-of-list-concepts" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We covered slicing of lists; i.e. retrieving list parts:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">nums</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="go"># try this again with implicit start and end</span>
+<span class="gp">In [2]: </span><span class="n">nums</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="gp">In [3]: </span><span class="nb">reversed</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+
+<span class="go"># two ways to examine the contents of the iterator,</span>
+<span class="go"># same principle for sorted()</span>
+<span class="gp">In [4]: </span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">nums</span><span class="p">)]</span>
+
+<span class="gp">In [5]: </span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
+
+<span class="go"># skip reversed()</span>
+<span class="gp">In [6]: </span><span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="go"># edit a file directly from ipython</span>
+<span class="gp">In [7]: </span><span class="n">edit</span> <span class="n">filename</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Sets<a class="headerlink" href="../../Classes/class-16.html#sets" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>A <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.4)"><tt class="xref py py-class docutils literal"><span class="pre">set</span></tt></a> is another type in python that lets you store a non-redundant
+list of items. They support logical operations:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="n">skiiers</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s">&#39;Tom&#39;</span><span class="p">,</span><span class="s">&#39;Harry&#39;</span><span class="p">,</span><span class="s">&#39;Gurf&#39;</span><span class="p">])</span>
+
+<span class="gp">In [9]: </span><span class="n">snowboarders</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s">&#39;Lucy&#39;</span><span class="p">,</span><span class="s">&#39;Brian&#39;</span><span class="p">,</span><span class="s">&#39;Gurf&#39;</span><span class="p">])</span>
+
+<span class="go"># intersection</span>
+<span class="gp">In [10]: </span><span class="n">skiiers</span> <span class="o">&amp;</span> <span class="n">snowboarders</span>
+<span class="gh">Out[10]: </span><span class="go">{&#39;Gurf&#39;}</span>
+
+<span class="go"># union</span>
+<span class="gp">In [11]: </span><span class="n">skiiers</span> <span class="o">|</span> <span class="n">snowboarders</span>
+<span class="gh">Out[11]: </span><span class="go">{&#39;Brian&#39;, &#39;Gurf&#39;, &#39;Harry&#39;, &#39;Lucy&#39;, &#39;Tom&#39;}</span>
+
+<span class="go"># difference</span>
+<span class="gp">In [12]: </span><span class="n">skiiers</span> <span class="o">-</span> <span class="n">snowboarders</span>
+<span class="gh">Out[12]: </span><span class="go">{&#39;Harry&#39;, &#39;Tom&#39;}</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Equality and Logic<a class="headerlink" href="../../Classes/class-16.html#equality-and-logic" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use <tt class="docutils literal"><span class="pre">if</span></tt>:<tt class="docutils literal"><span class="pre">elif</span></tt>:<tt class="docutils literal"><span class="pre">else</span></tt> statements to test conditions and act on the
+result. The <tt class="docutils literal"><span class="pre">==</span></tt> and <tt class="docutils literal"><span class="pre">!=</span></tt> operators test for equality and inequality, and
+work on many object comparisons.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># animal colors</span>
+<span class="gp">In [13]: </span><span class="n">cat</span> <span class="o">=</span> <span class="s">&#39;white&#39;</span>
+
+<span class="gp">In [14]: </span><span class="n">dog</span> <span class="o">=</span> <span class="s">&#39;black&#39;</span>
+
+<span class="gp">In [15]: </span><span class="k">if</span> <span class="n">cat</span> <span class="o">==</span> <span class="n">dog</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;same color&quot;</span><span class="p">)</span>
+<span class="gp">   ....: </span><span class="k">elif</span> <span class="n">cat</span> <span class="o">!=</span> <span class="n">dog</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;different color&quot;</span><span class="p">)</span>
+<span class="gp">   ....: </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;not going to happen&quot;</span><span class="p">)</span>
+<span class="gp">   ....: </span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Undefined values in Python<a class="headerlink" href="../../Classes/class-16.html#undefined-values-in-python" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [16]: </span><span class="n">this</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="gp">In [17]: </span><span class="nb">bool</span><span class="p">(</span><span class="n">this</span><span class="p">)</span>
+
+<span class="gp">In [18]: </span><span class="ow">not</span> <span class="n">this</span>
+
+<span class="go"># the following if statements are equivalent:</span>
+<span class="gp">In [19]: </span><span class="k">if</span> <span class="n">this</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [20]: </span><span class="k">if</span> <span class="ow">not</span> <span class="n">this</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<span class="gp">   ....: </span>
+
+<span class="go"># set the following and test with ``not this``</span>
+<span class="gp">In [21]: </span><span class="n">this</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="gp">In [22]: </span><span class="n">this</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Defining functions<a class="headerlink" href="../../Classes/class-16.html#defining-functions" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>You can define functions that encapsulate work flows</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [23]: </span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">numlist</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">   ....: </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numlist</span><span class="p">:</span>
+<span class="gp">   ....: </span>        <span class="n">sq</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
+<span class="gp">   ....: </span>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sq</span><span class="p">)</span>
+<span class="gp">   ....: </span>        <span class="k">return</span> <span class="n">result</span>
+<span class="gp">   ....: </span>
+
+<span class="go"># or replace loop with: return [i*i for i in numlist]</span>
+<span class="gp">In [24]: </span><span class="n">square</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Importing modules<a class="headerlink" href="../../Classes/class-16.html#importing-modules" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>There are a number of modules with objects and functions in the standard
+library, and there are a also a huge number of Python modules on the web
+(check github).</p>
+<p>To be able to access the contents of a module, you need to import it into
+your <cite>namespace</cite>:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [25]: </span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="gp">In [26]: </span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gh">Out[26]: </span><span class="go">3.0</span>
+
+<span class="gp">In [27]: </span><span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Useful python modules<a class="headerlink" href="../../Classes/class-16.html#useful-python-modules" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>There are several modules in the standard library you will use all the
+time:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.python.org/3/library/sys.html#module-sys" title="(in Python v3.4)"><tt class="xref py py-mod docutils literal"><span class="pre">sys</span></tt></a>: <a class="reference external" href="http://docs.python.org/3/library/sys.html#sys.argv" title="(in Python v3.4)"><tt class="xref py py-obj docutils literal"><span class="pre">sys.argv</span></tt></a> has all the arguments from the command
+line</li>
+<li><a class="reference external" href="http://docs.python.org/3/library/collections.html#module-collections" title="(in Python v3.4)"><tt class="xref py py-mod docutils literal"><span class="pre">collections</span></tt></a>: espcially <a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.defaultdict" title="(in Python v3.4)"><tt class="xref py py-class docutils literal"><span class="pre">defaultdict</span></tt></a>
+and <a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.Counter" title="(in Python v3.4)"><tt class="xref py py-class docutils literal"><span class="pre">Counter</span></tt></a></li>
+<li><a class="reference external" href="http://docs.python.org/3/library/itertools.html#module-itertools" title="(in Python v3.4)"><tt class="xref py py-mod docutils literal"><span class="pre">itertools</span></tt></a>: tools for efficient aggregation and iteration</li>
+<li><a class="reference external" href="http://docs.python.org/3/library/argparse.html#module-argparse" title="(in Python v3.4)"><tt class="xref py py-mod docutils literal"><span class="pre">argparse</span></tt></a>: command line option parsing</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Debugging Python code<a class="headerlink" href="../../Classes/class-16.html#debugging-python-code" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <a class="reference external" href="http://docs.python.org/3/library/pdb.html#module-pdb" title="(in Python v3.4)"><tt class="xref py py-mod docutils literal"><span class="pre">pdb</span></tt></a> is the Python Debugger. You can use it to debug programs by
+dropping you into a shell that allows you to step through the program, line by
+line.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [28]: </span><span class="kn">import</span> <span class="nn">pdb</span>
+
+<span class="go"># this will drop you into a shell. find the value of ``i`` at the (Pdb)</span>
+<span class="go"># prompt</span>
+<span class="gp">In [29]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">50</span><span class="p">:</span>
+<span class="gp">   ....: </span>        <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<span class="gp">   ....: </span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>In Class Exercises<a class="headerlink" href="../../Classes/class-16.html#in-class-exercises" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Create a <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.4)"><tt class="xref py py-obj docutils literal"><span class="pre">list</span></tt></a> that contains multiple redundant entries.
+Covert the list to a <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.4)"><tt class="xref py py-class docutils literal"><span class="pre">set</span></tt></a> with set(list). What happened to
+the redundant entries?</li>
+<li>Open lamina.bed and print the start position of each entry</li>
+<li>Print the total coverage of entries in lamina.bed</li>
+<li>Convert each row in lamina.bed into a <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.4)"><tt class="xref py py-obj docutils literal"><span class="pre">list</span></tt></a>. Then, print
+each entry in the list.</li>
+<li>Find the average value of entries in lamina.bed (watch out for
+int / float type issues).</li>
+<li>Find the median value of entries in lamina.bed. Then find the mode.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Out of Class Exercises<a class="headerlink" href="../../Classes/class-16.html#out-of-class-exercises" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Use a python <a class="reference external" href="http://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.4)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> object to count the number of entries
+on each chromosome in lamina.bed.</li>
+<li>Do the same thing as the previous exercise, but using a
+<a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.Counter" title="(in Python v3.4)"><tt class="xref py py-class docutils literal"><span class="pre">Counter</span></tt></a> object. Then, use the Counter()
+methods to find out which chromosomes have the largest and smallest
+number of entries.</li>
+<li>Create a python script that takes a chromosome number, and finds all entries
+in lamina.bed that are on that chromosome.</li>
+<li>Modify the previous script to use <a class="reference external" href="http://docs.python.org/3/library/argparse.html#module-argparse" title="(in Python v3.4)"><tt class="xref py py-mod docutils literal"><span class="pre">argparse</span></tt></a>, so that it
+will find entries on every chromosome by default unless given an
+argument to look on a particular chromosome (advanced)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

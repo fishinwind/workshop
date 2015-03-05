@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 8 : R : Getting Started &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 9 : R : Manipulation &amp; Plotting" href="class-09.html" />
+    <link rel="prev" title="Class 7 : BEDTools vignette" href="class-07.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 8 : R : Getting Started</a><ul>
+<li><a class="reference internal" href="#setting-up-web-access-to-tesla">Setting up web access to tesla</a></li>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+<li><a class="reference internal" href="#rstudio">RStudio</a></li>
+<li><a class="reference internal" href="#loading-data-in-r">Loading data in R</a></li>
+<li><a class="reference internal" href="#dataframe">DataFrame</a></li>
+<li><a class="reference internal" href="#print">print</a></li>
+<li><a class="reference internal" href="#libraries">libraries</a></li>
+<li><a class="reference internal" href="#r-paths">R paths</a></li>
+<li><a class="reference internal" href="#writing-and-running-r-scripts-in-rstudio">Writing and running R scripts in RStudio</a></li>
+<li><a class="reference internal" href="#ggplot2">ggplot2</a></li>
+<li><a class="reference internal" href="#ggplot2-syntax">ggplot2 syntax</a></li>
+<li><a class="reference internal" href="#googling-with-ggplot2">googling with ggplot2</a></li>
+<li><a class="reference internal" href="#answer">answer</a></li>
+<li><a class="reference internal" href="#ggplot2-documentation">ggplot2 documentation</a></li>
+<li><a class="reference internal" href="#id1">DataFrame</a></li>
+<li><a class="reference internal" href="#histograms">Histograms</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-8-r-getting-started">
+<h1>Class 8 : R : Getting Started<a class="headerlink" href="#class-8-r-getting-started" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#class-8-r-getting-started" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 19 Thurs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="setting-up-web-access-to-tesla">
+<h2>Setting up web access to tesla<a class="headerlink" href="#setting-up-web-access-to-tesla" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#setting-up-web-access-to-tesla" title="Slides">§</a></h2>
+<p>You can access html and images via the web if you:</p>
+<ol class="arabic">
+<li><p class="first">Create a <cite>public_html</cite> directory in your $HOME:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ mkdir $HOME/public_html
+</pre></div>
+</div>
+</li>
+<li><p class="first">Copy content into the <cite>public_html</cite> directory.</p>
+</li>
+<li><p class="first">Make sure that permissions of your $HOME are accessible by all:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ chmod 755 $HOME
+</pre></div>
+</div>
+</li>
+<li><p class="first">Access tesla on campus, or via VPN at the URL:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://amc-tesla/~username
+
+http://amc-tesla.ucdenver.pvt/~username
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Startup RStudio</li>
+<li>Learn to navigate in RStudio</li>
+<li>load the ggplot2 library</li>
+<li>Learn to load external data</li>
+</ol>
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#data" title="Slides">§</a></h2>
+<p>The data file we will use is:</p>
+<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data/expr-geno-covs.txt
+</pre></div>
+</div>
+<p>Copy this to a working directory e.g. <tt class="docutils literal"><span class="pre">$HOME/class/class-8</span></tt></p>
+</div>
+<div class="section" id="rstudio">
+<h2>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#rstudio" title="Slides">§</a></h2>
+<p>RStudio is a useful interface for R, encapsulates the R prompt, data views
+and plotting in a single User Interface.</p>
+<p>Navigate to <a class="reference external" href="http://amc-sandbox.ucdenver.pvt/rstudio">http://amc-sandbox.ucdenver.pvt/rstudio</a> and enter your tesla
+credentials.</p>
+<p>Note you need to use VPN if you are off campus.</p>
+</div>
+<div class="section" id="loading-data-in-r">
+<h2>Loading data in R<a class="headerlink" href="#loading-data-in-r" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#loading-data-in-r" title="Slides">§</a></h2>
+<p>The main function for loading data is <tt class="docutils literal"><span class="pre">read.delim()</span></tt>:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="c1"># dfx is a data.frame. look at it with ``summary`` and ``head``</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;lamina.bed&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">is.data.frame</span><span class="p">(</span>dfx<span class="p">)</span>
+</pre></div>
+</div>
+<p>If the column names are specified in a header line (begins with <tt class="docutils literal"><span class="pre">#</span></tt>),
+then you can load them as the column names with:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="c1"># this uses the names in the comment line as header names</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;lamina.bed&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also specify headers explicitly with:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> bedfilename <span class="o">&lt;-</span> <span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span>
+<span class="o">&gt;</span> colnames <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">,</span><span class="s">&#39;score&#39;</span><span class="p">,</span><span class="s">&#39;strand&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span>bedfilename<span class="p">,</span> col.names<span class="o">=</span><span class="kp">colnames</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">df</span></tt> is short for <cite>data frame</cite>, the basic R data structure
+<tt class="docutils literal"><span class="pre">&lt;-</span></tt> is the R assignment operator, can also use <tt class="docutils literal"><span class="pre">=</span></tt></p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> df <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">summary</span><span class="p">(</span>df<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>df<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>df<span class="o">$</span><span class="kp">expression</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The most common ways to read in data in R are:</p>
+<div class="highlight-r"><div class="highlight"><pre>read.csv<span class="p">(</span><span class="s">&#39;file.csv&#39;</span><span class="p">)</span>
+read.delim<span class="p">(</span><span class="s">&#39;file.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These take common arguments. You can get help on a function in R
+with:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">?</span>read.delim
+<span class="o">?</span><span class="kp">head</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataframe">
+<h2>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#dataframe" title="Slides">§</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">read()</span></tt> functions load a <tt class="docutils literal"><span class="pre">data.frame</span></tt>. In a data.frame,
+everything is read into memory.</p>
+<ul class="simple">
+<li>R figures out the types of each column e.g. numeric/character/factor</li>
+<li>each column of the data.frame is accessed by <cite>$</cite>  e.g df$genotype</li>
+</ul>
+<p>Access the column data with the <tt class="docutils literal"><span class="pre">$</span></tt> character:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> dfx<span class="o">$</span>chrom
+</pre></div>
+</div>
+<p>And some functions allow you to refer to columns by name:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kp">subset</span><span class="p">(</span>dfx<span class="p">,</span> chrom <span class="o">==</span> <span class="s">&#39;chr1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There are several data sets that are built-in to R, including:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> mtcars   <span class="c1"># Motor Trend Cars Road Tests</span>
+<span class="o">&gt;</span> baseball <span class="c1"># in ``libarary(plyr)``</span>
+
+<span class="c1"># see all built-in data sets</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>help <span class="o">=</span> <span class="s">&quot;datasets&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="print">
+<h2>print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#print" title="Slides">§</a></h2>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kp">print</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="libraries">
+<h2>libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#libraries" title="Slides">§</a></h2>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="c1"># or</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span><span class="s">&#39;ggplot2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="r-paths">
+<h2>R paths<a class="headerlink" href="#r-paths" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#r-paths" title="Slides">§</a></h2>
+<p>get/set working directory</p>
+<div class="highlight-r"><div class="highlight"><pre>&gt; getwd()                    # print
+&gt; setwd(&#39;C:\whatever\path\&#39;) # on windows
+&gt; setwd(&#39;/vol1/opt/data/&#39;)   # on linux
+</pre></div>
+</div>
+</div>
+<div class="section" id="writing-and-running-r-scripts-in-rstudio">
+<h2>Writing and running R scripts in RStudio<a class="headerlink" href="#writing-and-running-r-scripts-in-rstudio" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#writing-and-running-r-scripts-in-rstudio" title="Slides">§</a></h2>
+<p>Open up a new R Script with <cite>File &#8211;&gt; New File &#8211;&gt; R Script</cite>. You should
+see a new editor window open in the top left.</p>
+<p>You can write a simple R script like:</p>
+<div class="highlight-r"><div class="highlight"><pre>plot<span class="p">(</span>rnorm<span class="p">(</span><span class="m">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>And then save the file as <cite>plot.R</cite>.</p>
+<p>You can then highlight all of the lines, or just select the <cite>plot</cite> line,
+and run that portion of the program by presseing the <cite>Run</cite> button in the
+window, or with <cite>&lt;Cmd&gt;-&lt;Return&gt;</cite> on Macs and <cite>&lt;Ctrl&gt;-&lt;Return&gt;</cite> on Windows.</p>
+</div>
+<div class="section" id="ggplot2">
+<h2>ggplot2<a class="headerlink" href="#ggplot2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#ggplot2" title="Slides">§</a></h2>
+<p>We will learn to use it to create plots like this</p>
+<img alt="../_images/ggplot-ex.png" src="../_images/ggplot-ex.png" />
+</div>
+<div class="section" id="ggplot2-syntax">
+<h2>ggplot2 syntax<a class="headerlink" href="#ggplot2-syntax" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#ggplot2-syntax" title="Slides">§</a></h2>
+<div class="highlight-r"><div class="highlight"><pre><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+
+ggplot<span class="p">(</span>dfx<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+    geom_point<span class="p">()</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">aes()</span></tt> stands for <strong>aesthetics</strong>, which specifies the the coordinates,
+colors, size, etc from these columns in the data.frame.</p>
+<div class="highlight-r"><div class="highlight"><pre>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">,</span> color<span class="o">=</span>gender<span class="p">)</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">geom_point()</span></tt> means plot these as points, could be <tt class="docutils literal"><span class="pre">geom_line()</span></tt> or
+a number of other <cite>geoms</cite>.</p>
+</div>
+<div class="section" id="googling-with-ggplot2">
+<h2>googling with ggplot2<a class="headerlink" href="#googling-with-ggplot2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#googling-with-ggplot2" title="Slides">§</a></h2>
+<p>Use google to find how to change the y-scale on this plot to log10</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+dfx <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+
+ggplot<span class="p">(</span>dfx<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+        geom_point<span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="answer">
+<h2>answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#answer" title="Slides">§</a></h2>
+<div class="highlight-r"><div class="highlight"><pre><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+
+ggplot<span class="p">(</span>dfx<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+        geom_point<span class="p">()</span> <span class="o">+</span>
+<span class="hll">        scale_y_log10<span class="p">()</span>
+</span></pre></div>
+</div>
+<p>You can find a lot of info for ggplot2 with some googling.</p>
+</div>
+<div class="section" id="ggplot2-documentation">
+<h2>ggplot2 documentation<a class="headerlink" href="#ggplot2-documentation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#ggplot2-documentation" title="Slides">§</a></h2>
+<p>The ggplot2 docs are very good: <a class="reference external" href="http://docs.ggplot2.org/current/">http://docs.ggplot2.org/current/</a></p>
+<p>Look at the <cite>geom_point()</cite> documentation and change the color
+of the plot above so that males and females are color&#8217;ed differently.</p>
+</div>
+<div class="section" id="id1">
+<h2>DataFrame<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#id1" title="Slides">§</a></h2>
+<p>In a data.frame, we read everything into memory</p>
+<ul class="simple">
+<li>R figures out if it is int/character/numeric</li>
+<li>each column of the data.frame is accessed by <cite>$</cite>  e.g df$genotype</li>
+</ul>
+</div>
+<div class="section" id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#histograms" title="Slides">§</a></h2>
+<p>One of the simplest things to do in R, without ggplot is to look at
+a histogram of your data:</p>
+<div class="highlight-r"><div class="highlight"><pre>hist<span class="p">(</span>dfx<span class="o">$</span><span class="kp">expression</span><span class="p">)</span>
+<span class="c1"># or</span>
+hist<span class="p">(</span><span class="kp">log</span><span class="p">(</span>dfx<span class="o">$</span><span class="kp">expression</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You can make these look a lot nicer with ggplot2.</p>
+<p><tt class="docutils literal"><span class="pre">hist()</span></tt> does not work with ggplot, you&#8217;ll have to use the
+ggplot2 machinery for that:</p>
+<div class="highlight-r"><div class="highlight"><pre>gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>dfx<span class="p">,</span> aex<span class="p">(</span>x<span class="o">=</span><span class="kp">log10</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
+gp <span class="o">+</span> geom_histgram<span class="p">()</span>
+</pre></div>
+</div>
+<p>Try to figure out how to overlay a density plot with <tt class="docutils literal"><span class="pre">geom_density()</span></tt>.</p>
+<p>You can also make effective separate visualizations with <tt class="docutils literal"><span class="pre">facet_grid()</span></tt>
+and <tt class="docutils literal"><span class="pre">facet_wrap()</span></tt>. You need to specify a formula to determine how to
+separate:</p>
+<div class="highlight-r"><div class="highlight"><pre>gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
+
+<span class="c1"># separate by gender</span>
+gp <span class="o">+</span> facet_grid<span class="p">(</span><span class="o">~</span> gender<span class="p">)</span>
+
+<span class="c1"># separate by gender and condition</span>
+gp <span class="o">+</span> facet_grid<span class="p">(</span>condition <span class="o">~</span> gender<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-08.html#exercises" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Make a histogram using ggplot and separate cases from controls by
+changing fill color and symbol type.</li>
+<li>Make a histogram using ggplot and separate cases from controls
+using <tt class="docutils literal"><span class="pre">facet_grid()</span></tt>, <tt class="docutils literal"><span class="pre">facet_wrap()</span></tt>.</li>
+</ol>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>

@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
@@ -30,7 +31,7 @@
     <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="index.html" />
-    <link rel="next" title="Class 1 : Class Introduction" href="Classes/class-1.html" />
+    <link rel="next" title="Class 1 : Class Introduction" href="Classes/class-01.html" />
     <link rel="prev" title="Syllabus" href="Syllabus.html" /> 
 
 <!-- Google Analytics tracking code -->
@@ -116,34 +117,34 @@
 <h1>Class list<a class="headerlink" href="#class-list" title="Permalink to this headline">¶</a><a class="headerlink" href="slides/Classes.html#class-list" title="Slides">§</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-1.html">Class 1 : Class Introduction</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-01.html">Class 1 : Class Introduction</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-2.html">Class 2 : The command-line</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-02.html">Class 2 : The command-line</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-3.html">Class 3 : The command-line (part 2)</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-03.html">Class 3 : The command-line (part 2)</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-4.html">Class 4 : grep and awk</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-04.html">Class 4 : grep and awk</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-5.html">Class 5 : BEDTools</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-05.html">Class 5 : BEDTools</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-5.html#chromatin-immunoprecipitation-overview">Chromatin Immunoprecipitation Overview</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-05.html#chromatin-immunoprecipitation-overview">Chromatin Immunoprecipitation Overview</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-6.html">Class 6 : Genomic Data Vignette: ChIP-seq</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-06.html">Class 6 : Genomic Data Vignette: ChIP-seq</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-7.html">Class 7 : BEDTools vignette</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-07.html">Class 7 : BEDTools vignette</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-8.html">Class 8 : R : Getting Started</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-08.html">Class 8 : R : Getting Started</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Classes/class-9.html">Class 9 : R : Manipulation &amp; Plotting</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="Classes/class-09.html">Class 9 : R : Manipulation &amp; Plotting</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Classes/class-10.html">Class 10 : R : DataFrames &amp; Plotting</a><ul class="simple">
@@ -161,24 +162,16 @@
       
   </div>
 </div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-        <br/>
-        
-<div id="sourcelink">
-  <a href="_sources/Classes.txt"
-     rel="nofollow">Source</a>
-</div>
-      
-    </p>
-    <p>
-        &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
-      Last updated on Mar 04, 2015.<br/>
-    </p>
-  </div>
-</footer>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
   </body>
 </html>

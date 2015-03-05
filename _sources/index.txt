@@ -1,8 +1,8 @@
 .. _main-page:
 
-***************************
- Genome Analysis Workshop 
-***************************
+****************************
+  Genome Analysis Workshop 
+****************************
 
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
 :Website: http://hesselberthlab.github.io/workshop
@@ -25,6 +25,7 @@ Announcements
 
 Course Description
 ~~~~~~~~~~~~~~~~~~
+
 **The Genome Analysis Workshop is a hands-on tutorial of skills needed
 to process large genomics data sets and visualize their results. The class
 is taught from the standpoint of a biologist with practical goals (e.g. to
@@ -39,10 +40,11 @@ sequencing data, aligning sequences to a reference genome, generating
 coverage plots and displaying them in the UCSC Genome Browser. We will
 cover specific analyses used in ENCODE project including ChIP-seq, DNase I
 footprinting, mRNA-seq and genome sequencing to identify single nucleotide
-and structural variants.
+variants.
 
 Contents
 ~~~~~~~~
+
 .. toctree::
    :maxdepth: 1
 

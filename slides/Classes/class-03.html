@@ -1,0 +1,447 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 3 : The command-line (part 2) &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 4 : grep and awk" href="class-04.html" />
+    <link rel="prev" title="Class 2 : The command-line" href="class-02.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 3 : The command-line (part 2)<a class="headerlink" href="../../Classes/class-03.html#class-3-the-command-line-part-2" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 3 Tues</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-03.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>learn additional linux utilities (cut, sort, uniq, less, wget)</li>
+<li>understand redirects (<tt class="docutils literal"><span class="pre">&gt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;</span></tt>) and how to combine tools with pipes (<tt class="docutils literal"><span class="pre">|</span></tt>)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>wget<a class="headerlink" href="../../Classes/class-03.html#wget" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>fetch a file from the web with <tt class="docutils literal"><span class="pre">wget</span></tt>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># N.B.: All common data will be on tesla in /vol1/opt/data</span>
+
+<span class="nv">$ </span><span class="nb">cd</span> <span class="c"># go $HOME</span>
+<span class="nv">$ </span>wget http://hesselberthlab.github.io/workshop/_downloads/states.tab
+<span class="nv">$ </span>wget http://hesselberthlab.github.io/workshop/_downloads/lamina.bed
+<span class="nv">$ </span>wget http://hesselberthlab.github.io/workshop/_downloads/t_R1.fastq.gz
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>cut<a class="headerlink" href="../../Classes/class-03.html#cut" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <tt class="docutils literal"><span class="pre">cut</span></tt> command allows you to extract certain columns of a file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># cut columns 1-4</span>
+<span class="nv">$ </span>cut -f 1,2,3,4
+
+<span class="c"># cut columns 1-4 and 7-10</span>
+<span class="nv">$ </span>cut -f 1-4,7-10 /vol1/opt/data/states.tab
+
+<span class="c"># cut first column 1</span>
+<span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed
+
+<span class="c"># output all columns after the 1st</span>
+<span class="nv">$ </span>cut -f 2- /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Sort<a class="headerlink" href="../../Classes/class-03.html#sort" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>You will often want to <tt class="docutils literal"><span class="pre">sort</span></tt> your data.</p>
+<p>Have a look at</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>man sort
+</pre></div>
+</div>
+<p>The main flag is <cite>-k</cite> to indicate which column to sort on.</p>
+<p>You will also sometimes use <cite>-u</cite> to get unique entries.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Sort Questions<a class="headerlink" href="../../Classes/class-03.html#sort-questions" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>How do you:</p>
+<ol class="arabic simple">
+<li>sort by a particular column? (-k 4)</li>
+<li>sort as a number (-k4n)</li>
+<li>sort as a general number (1e-3 &lt; 0.05) (-k4g)</li>
+<li>change the default delimiter (-t &quot;.&quot;)</li>
+<li>sort by 2 columns (-k1,1 -k2,2n)</li>
+<li>sort in reverse as a number (-k1rn)</li>
+<li>get unique entries (-u)</li>
+</ol>
+<p>If you know all these, you'll know 99% of what you'll use <tt class="docutils literal"><span class="pre">sort</span></tt> for.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Sort Example<a class="headerlink" href="../../Classes/class-03.html#sort-example" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>BED files have columns <cite>chrom</cite> [tab] <cite>start</cite> [tab] <cite>end</cite> [tab] ...</p>
+<p>Sort by chrom, then by start (a lot of tools will require this)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -k1,1 -k2,2n /vol1/opt/data/lamina.bed &gt; /tmp/sorted.bed
+</pre></div>
+</div>
+<p>This tells it to sort the chromosome [column 1] as a character and the
+start [column 2] as a number.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3">
+    <hgroup>
+      <h3>Question:<a class="headerlink" href="../../Classes/class-03.html#question" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <p>What happens if you omit the <cite>n</cite> ?</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Sort Example (part 2)<a class="headerlink" href="../../Classes/class-03.html#sort-example-part-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>What if we want to sort by Income <strong>descending</strong> in the 3rd column?</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -t<span class="s1">$&#39;\t&#39;</span> -k3,3rg /vol1/opt/data/states.tab &gt; /tmp/sorted.out
+<span class="nv">$ </span>head /tmp/sorted.out
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Sort Exercise<a class="headerlink" href="../../Classes/class-03.html#sort-exercise" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Print out the 10 states (1st column, contains spaces) with the highest
+income (3rd column) from states.tab using <tt class="docutils literal"><span class="pre">sort</span></tt> and piping to <tt class="docutils literal"><span class="pre">cut</span></tt>.</p>
+<p>Or, use <tt class="docutils literal"><span class="pre">cut</span></tt> and pipe to <tt class="docutils literal"><span class="pre">sort</span></tt> to do the same.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>uniq<a class="headerlink" href="../../Classes/class-03.html#uniq" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <tt class="docutils literal"><span class="pre">uniq</span></tt> command  allows you to get and count unique entries</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># remove duplicate lines</span>
+<span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq
+
+<span class="c"># show duplicate lines</span>
+<span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -d
+
+<span class="c"># count unique entries:</span>
+<span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -c
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p><cite>uniq</cite> assumes that file is sorted by the column of interest.</p>
+<p class="last">Use <cite>sort</cite> to sort the data before <cite>uniq</cite>-ing it.</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Redirection of output<a class="headerlink" href="../../Classes/class-03.html#redirection-of-output" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>To send the output of a command (or a file) to another file, use the <tt class="docutils literal"><span class="pre">&gt;</span></tt>
+operator:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -c &gt; output.txt
+<span class="nv">$ </span>head output.txt
+</pre></div>
+</div>
+<p>To <strong>append</strong> the output of a command (or a file) to another file, use
+the <tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt> operator:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;last line&quot;</span> &gt;&gt; output.txt
+<span class="nv">$ </span>tail output.txt
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Compressed Files<a class="headerlink" href="../../Classes/class-03.html#compressed-files" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The most common way to uncompress single files is <tt class="docutils literal"><span class="pre">gunzip</span></tt>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>gunzip /vol1/opt/data/t_R1.fastq.gz
+</pre></div>
+</div>
+<p>And re-zip the file with <tt class="docutils literal"><span class="pre">gzip</span></tt>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>gzip /vol1/opt/data/t_R1.fastq
+</pre></div>
+</div>
+<p>But if we just want to stream the uncompressed data without changing the
+file</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>zless /vol1/opt/data/t_R1.fastq.gz
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Pipes<a class="headerlink" href="../../Classes/class-03.html#pipes" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We probably want to do something with the file as we uncompress it</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>zless /vol1/opt/data/t_R1.fastq.gz <span class="p">|</span> head
+</pre></div>
+</div>
+<p>We already know the head command prints the first <tt class="docutils literal"><span class="pre">-n</span></tt> lines.</p>
+<p>Try piping the output to some other commands (tail|echo|cowsay).</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Application 1<a class="headerlink" href="../../Classes/class-03.html#application-1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use pipes (|) chained together to look see which transcription factor
+binding sites are the most common in a set of putative sites from ENCODE.</p>
+<ul class="simple">
+<li>data file available from http (wget)</li>
+<li>compressed BED format (zless)</li>
+<li>TF name in 4th column (cut)</li>
+<li>count frequency (uniq -c) after sorting (sort)</li>
+<li>sort resulting frequencies so most common are first (sort -rn)</li>
+<li>show top 10 (head)</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Application 2<a class="headerlink" href="../../Classes/class-03.html#application-2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Note that we are using the variable FILE for the long file name</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># BED format file of transcription factor binding sites</span>
+<span class="nv">FILE</span><span class="o">=</span>http://bit.ly/tfbs-x
+
+wget --quiet -O - <span class="nv">$FILE</span> <span class="se">\</span>
+    <span class="p">|</span> zless <span class="se">\</span>
+    <span class="p">|</span> head -n <span class="m">7000</span> <span class="se">\</span>
+    <span class="p">|</span> cut -f <span class="m">4</span> <span class="se">\</span>
+    <span class="p">|</span> sort <span class="se">\</span>
+    <span class="p">|</span> uniq -c <span class="se">\</span>
+    <span class="p">|</span> sort -k1,1rn <span class="se">\</span>
+    <span class="p">|</span> head -n 10
+</pre></div>
+</div>
+<p>Let's go through this line by line ...</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>In Class Exercises - Class 3<a class="headerlink" href="../../Classes/class-03.html#in-class-exercises-class-3" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>To learn about piping (|), use cowsay to:</li>
+</ol>
+<ol class="loweralpha simple">
+<li>show your current working directory</li>
+<li>show the number of lines in /vol1/opt/data/lamina.bed</li>
+<li>show the most recently modified file/dir in $HOME</li>
+</ol>
+<p>2. write a bash script that you can run to list only the 2 most
+recently modified files in a given directory (using what you've
+learned in this class)</p>
+<ol class="arabic simple" start="3">
+<li>make that script executable (use google to learn how to do this).</li>
+</ol>
+<p>4. With <tt class="docutils literal"><span class="pre">head</span></tt>, you can see the first line of a file with head -n1.
+How can you see all of a file <em>except</em> the first line. (use google)</p>
+<p>5. Without using your history, how few keystrokes can you use to run
+the following command (must work from any directory)?</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>How few keystrokes can you do 5. using your history?</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

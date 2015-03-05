@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 1 : Class Introduction &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 2 : The command-line" href="class-02.html" />
+    <link rel="prev" title="Class list" href="../Classes.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 1 : Class Introduction</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#class-overview">Class Overview</a></li>
+<li><a class="reference internal" href="#linux-installations">Linux installations</a></li>
+<li><a class="reference internal" href="#terminal-and-text-editors">Terminal and text editors</a></li>
+<li><a class="reference internal" href="#cluster-access">Cluster access</a></li>
+<li><a class="reference internal" href="#running-jobs-on-the-cluster">Running jobs on the cluster</a></li>
+<li><a class="reference internal" href="#shell-and-python-programming">Shell and Python Programming</a></li>
+<li><a class="reference internal" href="#first-quiz-reading">First Quiz : Reading</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-1-class-introduction">
+<h1>Class 1 : Class Introduction<a class="headerlink" href="#class-1-class-introduction" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#class-1-class-introduction" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Jan 27 Tues</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Class overview</li>
+<li>Get the VM running</li>
+<li>Overall goals for the Classes</li>
+</ol>
+</div>
+<div class="section" id="class-overview">
+<h2>Class Overview<a class="headerlink" href="#class-overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#class-overview" title="Slides">§</a></h2>
+<p>Each class is 2 hours. We intend to spend the first 60 min going
+through exercises that demonstrate how specific tools are useful in
+bioinformatics. During the remaining hour, we expect you to work through
+exercises, asking for help when you get stuck.</p>
+<p>We will record the first 60 minutes using Panopto Screen Capture, and
+these recordings will be available in Canvas. We have found that simply
+watching someone work in a terminal (move around, open up text editors,
+write and execute simple programs) can be a very effective way to get
+started with programming. Hopefully these movies will serve the same
+purpose.</p>
+<p>Each week, we will have 1 take home quiz, due the following Tuesday at 5
+PM.</p>
+</div>
+<div class="section" id="linux-installations">
+<h2>Linux installations<a class="headerlink" href="#linux-installations" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#linux-installations" title="Slides">§</a></h2>
+<p>The PCs in the library have Virtual Box installed with a minimal Linux
+installation. If you have your own PC laptop, you can install Virtual Box
+and any standard Linux distribution (Ubuntu or Mint). If you have a Mac
+laptop, you can do the same, or just use the native terminal.</p>
+<p>In any case, we will create logins on our compute cluster (amc-tesla) and
+all your work will be done through that.</p>
+</div>
+<div class="section" id="terminal-and-text-editors">
+<h2>Terminal and text editors<a class="headerlink" href="#terminal-and-text-editors" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#terminal-and-text-editors" title="Slides">§</a></h2>
+<p>When you open a Terminal, you also launch a shell process, typically a
+bash process. At the prompt, you can type things that bash understands,
+and it will do them. The shell has its own language, which you will learn
+over the course of the class. It also runs executable files that it can
+find on the PATH (i.e. the set of directories that contain exectuables).</p>
+<p>You can find what is on your PATH by typing:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>The PATH is one of several environment variables that are created when you
+login. You can see all of these with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>env
+</pre></div>
+</div>
+<p>One important program in the PATH is <cite>vim</cite>. You will use this program to
+keep notes and write small programs.</p>
+<p>You can run <tt class="docutils literal"><span class="pre">vim</span></tt> from the terminal prompt:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>vim filename.txt
+</pre></div>
+</div>
+<p>You should notice that the prompt will disappear and you will be in a
+<cite>vim</cite> session.</p>
+<p>Now press the <cite>i</cite> key to enter <cite>insert</cite> mode, and start typing. Press
+<cite>ESC</cite> to exit <cite>insert</cite> mode.</p>
+<p>To quit a vim session, you need to:</p>
+<ol class="arabic simple">
+<li>enter <cite>command mode</cite> with the colon key</li>
+<li>write the file</li>
+<li>quit the program</li>
+</ol>
+<p>This can be accomplished by typing:</p>
+<div class="highlight-python"><div class="highlight"><pre>:wq &lt;enter&gt;
+</pre></div>
+</div>
+<p>Practice using <cite>vim</cite> with this tutorial <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>OpenVim <a class="reference external" href="http://www.openvim.com/">http://www.openvim.com/</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cluster-access">
+<h2>Cluster access<a class="headerlink" href="#cluster-access" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#cluster-access" title="Slides">§</a></h2>
+<p>We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
+<span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
+
+...
+
+<span class="c"># once you are logged in, text your X11 connection with</span>
+<span class="nv">$ </span>xeyes
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-jobs-on-the-cluster">
+<h2>Running jobs on the cluster<a class="headerlink" href="#running-jobs-on-the-cluster" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#running-jobs-on-the-cluster" title="Slides">§</a></h2>
+<p>First you will grab a single CPU from the queueing system so that you can
+work without affecting the head node. We use <tt class="docutils literal"><span class="pre">qlogin</span></tt> for this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>jhessel@amc-tesla ~
+$ qlogin
+
+Job &lt;492536&gt; is submitted to queue &lt;interactive&gt;.
+&lt;&lt;ssh X11 forwarding job&gt;&gt;
+&lt;&lt;Waiting for dispatch ...&gt;&gt;
+&lt;&lt;Starting on compute00&gt;&gt;
+
+jhessel@compute00 ~
+$
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The host in the prompt changed from <tt class="docutils literal"><span class="pre">amc-tesla</span></tt> to <tt class="docutils literal"><span class="pre">compute00</span></tt>.</p>
+</div>
+<p>You can now execute long-running processes without worry of affecting the
+cluster. Type <tt class="docutils literal"><span class="pre">exit</span></tt> to return back to your head node login.</p>
+</div>
+<div class="section" id="shell-and-python-programming">
+<h2>Shell and Python Programming<a class="headerlink" href="#shell-and-python-programming" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#shell-and-python-programming" title="Slides">§</a></h2>
+<p>It is important that you learn a few new computer languages. Others have
+developed very good guides to teach you these languages, and we are going
+to use those in the class. We expect you to begin taking these classes
+immediately.</p>
+<p>You will spend a lot of time going through these online classes, both in
+scheduled class time, and outside of class time. Instead of focusing on
+teaching you these languages, we will focus on helping you get through all
+of the frustating problems that come up when you&#8217;re learning the languages.</p>
+<p>We will spend the first ~2 weeks learning shell <a class="footnote-reference" href="#id4" id="id3">[2]</a> and all the things
+you have access to within the shell.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>The Command Line Crash Course
+<a class="reference external" href="http://cli.learncodethehardway.org/book/">http://cli.learncodethehardway.org/book/</a></td></tr>
+</tbody>
+</table>
+<p>After learning the shell, we will begin learning R and several packages
+within R.</p>
+<p>Finally, we will begin learning Python <a class="footnote-reference" href="#id6" id="id5">[3]</a>. The Python language allows
+you to do more sophisticated things that would be possible in shell or R, but
+would be considerably more clunky.</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>Learn Python the Hard Way
+<a class="reference external" href="http://learnpythonthehardway.org/book/">http://learnpythonthehardway.org/book/</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="first-quiz-reading">
+<h2>First Quiz : Reading<a class="headerlink" href="#first-quiz-reading" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#first-quiz-reading" title="Slides">§</a></h2>
+<p>Computational biology projects inevitably accrue a lot of files. For the
+first quiz, you&#8217;ll need to read a paper <a class="footnote-reference" href="#id8" id="id7">[4]</a> and be able to put a set of
+files in the correct places. We require that you use this scheme for
+all of your projects in and out of the class.</p>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[4]</a></td><td>A Quick Guide to Organizing Computational Biology Projects (2009)
+PLoS Comput. Biol. William S. Noble
+<a class="reference external" href="http://dx.plos.org/10.1371/journal.pcbi.1000424">http://dx.plos.org/10.1371/journal.pcbi.1000424</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>
