@@ -6,9 +6,13 @@ output: html_document
 ---
 
 # Summary
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This is an R Markdown document. Markdown is a simple formatting syntax for
+authoring HTML, PDF, and MS Word documents. For more details on using R
+Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+When you click the **Knit** button a document will be generated that
+includes both content as well as the output of any embedded R code chunks
+within the document. You can embed an R code chunk like this:
 
 ## Common libraries
 ```{r, message=FALSE}
@@ -36,7 +40,9 @@ peaks.df <- read.delim('peaks.chr22.bed.gz',
 ```
 
 ## Summarizing data
-First, we can dynamically generate some simple statistics. For example, there are `r length(unique(bed.df$chrom))` chromosomes in the BED file we loaded.
+First, we can dynamically generate some simple statistics. For example,
+there are `r length(unique(bed.df$chrom))` chromosomes in the BED file we
+loaded.
 
 You can also generate view of the data with:
 
@@ -51,7 +57,8 @@ kable(head(expr.df))
 
 ## Plots
 
-Let's have a look at the distribution of CpG sizes on each chromosome in the `lamina.bed` file:
+Let's have a look at the distribution of CpG sizes on each chromosome in
+the `lamina.bed` file:
 
 ```{r, message=FALSE}
 bed.df %>%
@@ -62,7 +69,9 @@ bed.df %>%
   facet_wrap(~chrom, scales = 'free_y')
 ```
 
-Can also use the new ggvis for this, but doesn't support faceting yet. Also Rmarkdown doesn't support emoji :(((. `ggvis` also breaks PDF output (HTML only).
+Can also use the new ggvis for this, but doesn't support faceting yet.
+Also Rmarkdown doesn't support emoji :(((. `ggvis` also breaks PDF output
+(HTML only).
 
 ```{r, message=FALSE, warning=FALSE}
 library(ggvis)
@@ -82,9 +91,11 @@ peaks.df %>% group_by(name) %>% slice(1:2)
 
 ## Fancier manipluation
 
-Aggregation functions in dplyr return 1 value for each of n inputs, e.g. the mean of peak widths for each factor
+Aggregation functions in dplyr return 1 value for each of n inputs, e.g.
+the mean of peak widths for each factor
 
-Windowing functions return n values for n inputs and enable more expressive analysis.
+Windowing functions return n values for n inputs and enable more
+expressive analysis.
 
 <http://cran.rstudio.com/web/packages/dplyr/vignettes/window-functions.html>
 
@@ -100,7 +111,8 @@ peaks.df %>%
   kable()
 ```
 
-For each factor, find the peaks that make up the top 10% of their bases covered:
+For each factor, find the peaks that make up the top 10% of their bases
+covered:
 
 ```{r}
 peaks.df %>%
@@ -113,7 +125,9 @@ peaks.df %>%
   kable()
 ```
 
-Find TFs that tend to have neighboring peaks using `lead()` or `lag()`. The `order_by` argument specifies the variable to order the rows by (default is `row_number`:
+Find TFs that tend to have neighboring peaks using `lead()` or `lag()`.
+The `order_by` argument specifies the variable to order the rows by
+(default is `row_number`:
 
 ```{r}
 peaks.df %>%
@@ -137,4 +151,5 @@ peaks.df %>%
 
 ### Questions
 
-- How would you modify the above code chunks to figure out what proportion of peaks these represent?
+- How would you modify the above code chunks to figure out what proportion
+  of peaks these represent?
