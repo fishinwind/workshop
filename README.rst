@@ -37,6 +37,7 @@ Push content to the github.io website with:
 
 Organization
 ------------
+
 `content/` has all of the active content.
 
 `reorg/` is used for oragnizing and renaming files. It is outside of the
@@ -44,6 +45,36 @@ sphinx root and will not be used during build.
 
 Updating new dates
 ------------------
+
 Dates are stored in `_static/substituions.txt` and are referred to via
 sphinx substitutions in the content. Update these and the changes will
 propagate site-wide.
+
+Making changes to the material
+------------------------------
+
+Everybody in the `workshop` group in Github has read access, but cannot
+write directly to the `workshop` repo. Changes will be done via pull
+requests.
+
+Workflow
+~~~~~~~~
+
+- Fork the repository on the Github website
+
+- Clone the repo into your home directory
+
+- Create a new branch for your work::
+    
+    $ git branch new-class
+    $ git checkout new-class
+
+- Make changes, commit them to the new branch.
+
+- Push your changes on the new branch::
+
+    $ git push origin new-class
+
+- Initiate a pull request on the Github website.
+
+
