@@ -27,7 +27,7 @@ The Python documentation [#]_ is very helpful, with lots of examples. You
 should read it to become familiar with the language and refer to it when
 you get stuck.
 
-.. [#] Python 2.x docs http://docs.python.org/2/
+.. [#] Python 3.x docs http://docs.python.org/3/
 
 .. important::
 
@@ -45,7 +45,7 @@ type in python expressions and see the results immediately
 
 .. code-block:: bash
 
-    $ ipython
+    $ ipython3
 
 This command puts you in a shell that accepts python commands, much like
 the login terminal accepts ``bash`` commands.
@@ -57,7 +57,7 @@ Python depends on proper indentation of your code. This does not work:
 .. code-block:: python
 
     for i in (1, 2, 3):
-    print i
+    print(i)
 
 Instead you have to indent the ``print`` statement to nest it in the for
 loop:
@@ -65,7 +65,7 @@ loop:
 .. code-block:: python
 
     for i in (1, 2, 3):
-        print i
+        print(i)
 
 .. note::
 
@@ -105,7 +105,7 @@ them. For example, a string is iterable:
     In [1]: sentence = 'i LOVE programming'
 
     In [1]: for char in sentence:
-       ...:     print char
+       ...:     print(char)
 
 For Loops (range)
 =================
@@ -116,11 +116,11 @@ Automate repetitive tasks with a for loop:
 
     # Print "hello" 5 times:
     In [1]: for i in range(5):
-       ...:     print "hello"
+       ...:     print("hello")
 
     # now print the numbers
     In [1]: for i in range(5):
-       ...:     print i
+       ...:     print(i)
 
 where the :py:func:`range` function generates the numbers `0, 1, 2, 3, 4`.
 
@@ -234,7 +234,7 @@ position.
 
     # iterate over the list
     In [7]: for word in words:
-       ...:     print word.capitalize()
+       ...:     print(word.capitalize())
        ...:     
 
     # mix types in lists
@@ -289,7 +289,7 @@ Examples: :py:class:`~exceptions.ValueError`,
     In [12]: try:
        ....:     nums[100]
        ....: except IndexError:
-       ....:     print "error: not enough nums"
+       ....:     print("error: not enough nums")
        ....:     
 
 Reading data from a file
@@ -306,7 +306,7 @@ Now we'll read some data from a file and operate on each line:
        ...:     fields = line.strip().split('\t')
        ...:     start = fields[1]
        ...:     if start > 5000:
-       ...:         print fields 
+       ...:         print(fields)
     
 In Class Exercises
 ==================

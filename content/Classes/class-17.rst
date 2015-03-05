@@ -40,7 +40,7 @@ Print the first word of each line.
 
     for line in open('hamlet.txt'):
         words = line.strip().split(' ')
-        print words[0]
+        print(words[0])
 
 Print only lines that are not indented.
 
@@ -48,7 +48,7 @@ Print only lines that are not indented.
 
     for line in open('hamlet.txt'):
         if line[0] != ' ':
-            print line.strip()
+            print(line.strip())
 
 Count the number of times that the word "therefore" appears.
 
@@ -60,7 +60,7 @@ Count the number of times that the word "therefore" appears.
         for word in words:
             if word == 'therefore':
                 num += 1
-    print num
+    print(num)
 
 Counters
 ========
@@ -81,7 +81,7 @@ methods to query the counts, like
         for word in words:
             word_counts[word] += 1
 
-    print word_counts.most_common(5)
+    print(word_counts.most_common(5))
     
 There is more than one way to do this. It's usually a good idea to look at the
 Python documentation to see if there's a method that does what you're trying to do.
@@ -96,7 +96,7 @@ Python documentation to see if there's a method that does what you're trying to 
         words = line.strip().split(' ')
         word_counts.update(words)
 
-    print word_counts.most_common(5)
+    print(word_counts.most_common(5))
 
 Looping: Reading Multiple Lines at a Time
 =========================================
@@ -133,7 +133,7 @@ In Class Exercise
             count = 0
             records[name] = seq
 
-    print records.items()
+    print(records.items())
 
 
 Intermediate Concepts: Streaming
@@ -205,7 +205,7 @@ Then use it:
 
     bedfilename = '/vol1/opt/data/lamina.bed'
     for bed in bed_generator(bedfilename):
-        print bed # bed is a useful, usable thing. with numeric start and end.
+        print(bed) # bed is a useful, usable thing. with numeric start and end.
 
 Note that only ever have 1 (**) line in memory at a time.
 
@@ -235,11 +235,11 @@ In Class Exercise (Answer)
 
     vals = []
     for bed in bed_generator(bedfilename):
-        print bed['value']
+        print(bed['value'])
         vals.append(bed['value'])
 
-    print vals[:10]
-    print sum(vals)
+    print(vals[:10])
+    print(sum(vals))
 
 Goal
 ====
@@ -273,7 +273,7 @@ dictionary for each line keyed by the header.
 
         if region['chrom'] != "chr12": continue
         if float(region['value']) < 0.90: continue
-        print region['chrom'], region['start'], region['end']
+        print(region['chrom'], region['start'], region['end'])
 
 .. nextslide::
     :increment:
@@ -294,7 +294,7 @@ Mostly we will use it as:
 
     for region in reader(bedfilename):
         # do something with region
-        print region['chrom']
+        print(region['chrom'])
 
 Python Debugging
 ================
@@ -315,7 +315,7 @@ data structure as it is being created
         coords = (start, end)
         nested[chrom].append(coords)
 
-        print nested
+        print(nested)
 
 .. nextslide::
     :increment:
