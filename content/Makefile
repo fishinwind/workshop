@@ -30,6 +30,7 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo
+	@echo "  rmarkdown  to make Rmarkdown documents"
 	@echo "  pdf        to make standalone PDF"
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
@@ -41,7 +42,7 @@ clean:
 	rm -rf $(BUILDDIR)/*
 	cd RStudio && $(MAKE) clean
 
-html: rmarkdown
+html: 
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
