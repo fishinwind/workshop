@@ -1,22 +1,9 @@
 
 *********************************
-  Class 15 : ChIP-seq / DNase I
+    Class 8 : Genome Browser 
 *********************************
 
-:Class date: 2014 Mar 3 Monday
-
-Final Project
-=============
-
-We will have a final project that is worth 15% of your grade, due on April
-2.
-
-We want you to come up with a question you can address with the tools you
-learned in the class. You should incorporate ENCODE data into your
-analysis, and you can also integrate your own data.
-
-We will go over some analysis vignettes on Wed and Fri to illustrate
-example final projects.
+:Class date: T Feb 17 
 
 Goals
 =====
@@ -108,9 +95,4 @@ You can now write "tracklines" [#]_ to tell where UCSC to find your data::
 
 There are a large number of additional options you can use in tracklines
 to change their display.
-
-Problem Set Questions
-=====================
-
-Anybody have questions on the problem set?
 

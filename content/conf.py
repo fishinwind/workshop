@@ -36,51 +36,26 @@ extensions = [
     'sphinxcontrib.manpage',
     'sphinx.ext.intersphinx',
     'sphinx.ext.graphviz',
+    'sphinx.ext.extlinks',
     'IPython.sphinxext.ipython_directive',
     'IPython.sphinxext.ipython_console_highlighting',
     'hieroglyph',
     'rst2pdf.pdfbuilder'
 ]
 
-try:
-    import sphinx_bootstrap_theme
-    html_theme = 'bootstrap'
-    html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
-except ImportError:
-    import sys
-    sys.stderr.write("please install (pip) sphinx_bootstrap_theme\n")
-    html_theme = 'default'
+import sphinx_bootstrap_theme
+html_theme = 'bootstrap'
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
-try:
-    import hieroglyph
-except ImportError:
-    sys.stderr.write("please install (pip) hieroglyph\n")
-    sys.exit(1)
-try:
-    import IPython
-except ImportError:
-    sys.stderr.write("please install (pip) ipython \n")
-    sys.stderr.write("please install (easy_install) matplotlib\n")
-    sys.exit(1)
-
-try:
-    import sphinxcontrib.manpage
-except ImportError:
-    sys.stderr.write("please install (pip) sphinxcontrib-manpage\n")
-    sys.exit(1)
-try:
-    import rst2pdf
-except ImportError:
-    sys.stderr.write("please install (easy_install) rst2pdf\n")
-    sys.exit(1)
- 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
+  
+# ext.extlinks
+extlinks = {'pubmed':('http://www.ncbi.nlm.nih.gov/pubmed/%s', 'PubMed ID ')}
 
-   
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
@@ -89,7 +64,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Genome Analysis Workshop'
-copyright = u'2014, Jay Hesselberth'
+copyright = u'2013-2015, Jay Hesselberth'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -385,6 +360,8 @@ slide_theme = 'slides2'
 # slide_numbers = True
 # slide_link_html_to_slides = True
 slide_link_html_sections_to_slides = True
+# XXX
+slide_links_as_numbers = True
 slide_link_to_html = True
 slide_relative_path = "slides/"
 slide_html_relative_path = "../"

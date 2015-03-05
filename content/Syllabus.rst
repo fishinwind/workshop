@@ -1,4 +1,5 @@
 
+.. this file has the dates for classes and problem sets
 .. include:: /_static/substitutions.txt 
 
 ************
@@ -10,14 +11,16 @@ General Information
 
 :Title:         Genome Analysis Workshop
 :Course Number: MOLB 7621
-:Crosslistings: STBB 7621
+:Cross listings: STBB 7621
 :Semester:      Spring 2015
 :Homepage:      http://hesselberthlab.github.io/workshop 
 :Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
 :Address:       Department of Biochemistry and Molecular Genetics
+                RC1 South 10104
+                Aurora CO 80045
 :Copyright:     2014,2015 Jay R. Hesselberth
-:Copyright:     All Rights Reserved.
+                All Rights Reserved.
 :Last updated:  |today|
 
 PDF Content
@@ -84,7 +87,7 @@ Texts and Reading Materials
 
 
 #. **Required**: A Quick Guide to Organizing Computational Biology Projects
-   http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
+   :pubmed:`19649301` 
 
 #. **Required**: Command Line Crash Course
    http://cli.learncodethehardway.org/book/
@@ -133,6 +136,9 @@ Grading Criteria
 
 .. _syllabus-specific-dates:
 
+.. problem sets staring really piling up after ps3 in spring 2015. Maybe
+.. have a break after every 3.
+
 Specific Dates / Material to be Covered
 =======================================
 
@@ -145,112 +151,112 @@ Specific Dates / Material to be Covered
       - Topic
       - Problem Set
     * - Class 1
-      - T Jan 27
+      - |c1-date|
       - Introduction to VM, Linux and the shell
       - 
     * - Class 2 
-      - Th Jan 29
+      - |c2-date|
       - Linux / Utilities
       - **PS1 due** (|pset1-due|)
     * - Class 3 
-      - T Feb 3
+      - |c3-date|
       - Linux / Utilities
       - 
     * - Class 4 
-      - Th Feb 5
-      - Linux / Utilities
+      - |c4-date|
+      - grep and awk
       - **PS2 due** (|pset2-due|)
     * - Class 5 
-      - T Feb 10
-      - Cluster Usage / Review
+      - |c5-date|
+      - BEDTools
       - 
     * - Class 6 
-      - Th Feb 12
-      - Cluster Usage / Review
+      - |c6-date|
+      - Analysis vignette: ChIP-seq 
       - **PS3 due** (|pset3-due|)
     * - Class 7 
-      - T Feb 17
-      - Python
+      - |c7-date|
+      - BEDTools
       - 
     * - Class 8 
-      - Th Feb 19
-      - Python
+      - |c8-date|
+      - Genome Browser 
       - **PS4 due** (|pset4-due|)
     * - Class 9 
-      - T Feb 24
-      - Python 
+      - |c9-date| 
+      - R Data & Plotting
       - 
     * - Class 10 
-      - Th Feb 26
-      - Python 
-      - **PS5 due** (|pset5-due|)
+      - |c10-date| 
+      - R Data & Plotting
+      - ** No Problem Set ** 
     * - Class 11 
-      - T Mar 3
-      - Python 
+      - |c11-date| 
+      - R Data & Plotting
       - 
     * - Class 12
-      - Th Mar 5
-      - ENCODE Overview
-      - **PS6 due** (|pset6-due|)
+      - |c12-date| 
+      - R Data & Plotting
+      - **PS5 due** (|pset5-due|)
     * - Class 13 
-      - T Mar 10
-      - BEDtools  
+      - |c13-date| 
+      - R Data & Plotting
       - 
     * - Class 14 
-      - Th Mar 12
-      - ChIP-seq (coverage / peaks / motifs)
-      - **PS7 due** (|pset7-due|)
-    * -
-      - ** No Class Mar 16-20 (Campus Spring Break) **
-      -
+      - |c14-date| 
+      - R Data & Plotting
+      - **PS6 due** (|pset6-due|)
+    * - 
+      - ** No Class Mar 16-20 ** 
+      - ** Spring Break **
       - 
     * - Class 15 
-      - T Mar 24
-      - ChIP-seq / DNaseI-seq (UCSC)
+      - |c15-date| 
+      - Python
       - 
     * - Class 16
-      - Th Mar 26
-      - Genomic analysis vignettes 
+      - |c16-date| 
+      - Python
       - 
     * - Class 17 
-      - T Mar 31
-      - Genomic analysis vignettes 
+      - |c17-date| 
+      - Python
       - 
     * - Class 18
-      - Th Apr 2
-      - R data & plotting 
-      - **PS8 due** (|pset8-due|)
+      - |c18-date| 
+      - Python 
+      - **PS7 due** (|pset7-due|)
     * - Class 19
-      - T Apr 7
-      - R data & plotting 
+      - |c19-date| 
+      - Python 
       - 
     * - Class 20
-      - Th Apr 9
-      - R data & plotting 
-      - **PS9 due** (|pset9-due|)
+      - |c20-date| 
+      - Python
+      - **PS8 due** (|pset8-due|)
     * - Class 21
-      - T Apr 14
-      - R data & plotting 
+      - |c21-date| 
+      - mRNA-seq
       - 
     * - Class 22
-      - Th Apr 16
-      - R data & plotting 
-      - **PS10 due** (|pset10-due|)
+      - |c22-date| 
+      - mRNA-seq
+      - **PS9 due** (|pset9-due|)
     * - Class 23
-      - T Apr 21
-      - mRNA-seq (FPKM / diff exp)
+      - |c23-date|
+      - Exome analysis 
       - 
     * - Class 24
-      - Th Apr 23
-      - mRNA-seq (FPKM / diff exp)
-      - **PS11 due** (|pset11-due|)
+      - |c24-date|
+      - Exome analysis
+      - **PS10 due** (|pset10-due|)
     * - Class 25 
-      - T Apr 28
-      - Exome Alignment
+      - |c25-date|
+      - Final Projects 
       - 
     * - Class 26 
-      - Th Apr 30
-      - Exome Variant Calling
+      - |c26-date|
+      - Final Projects 
       - 
 
 .. raw:: pdf

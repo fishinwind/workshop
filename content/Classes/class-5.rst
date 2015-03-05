@@ -1,9 +1,12 @@
-***************************************
-  Week 3 : Working with genomic data 
-***************************************
 
-:Class date: Tues 10 Feb 2015
-:Class date: Thurs 12 Feb 2015
+.. include:: /_static/substitutions.txt
+
+*********************
+  Class 5 : BEDTools 
+*********************
+
+:Class date: |c5-date| 
+:Last updated: |today|
 
 Goals
 =====
@@ -13,84 +16,6 @@ Goals
 #. Learn about genomic data types and where to get data 
  
 #. Start to use ``bedtools`` to analyze genomic data
-
-grep
-====
-Use :linuxman:`grep(1)` to identify lines in a file that match a specified pattern.
-
-To find any instance of *chr5* in the lamina.bed file
-
-.. code-block:: bash
-
-    # grep [pattern] [filename]
-    $ grep chr5 /vol1/opt/data/lamina.bed | head
-
-To find all lines that start with a number sign:
-
-.. code-block:: bash
-
-    # The caret (^) matches the beginning of the line
-    # FYI dollar sign ($) matches the end
-    $ grep '^#' /vol1/opt/data/lamina.bed
-
-.. nextslide::
-    :increment:
-
-To find any line that *does not* start with "chr":
-
-.. code-block:: bash
-
-    # the -v flag inverts the match (grep "not" [pattern])
-    $ grep -v '^chr' /vol1/opt/data/lamina.bed
-
-Beware of using ``grep`` to find patterns that might be partial matches:
-
-.. code-block:: bash
-
-    # this will match chr1, chr10, chr11 etc.
-    $ grep chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
-
-You can find exact matches that are split on words with the ``-w`` flag:
-
-.. code-block:: bash
-
-    # this will only match chr1
-    $ grep -w chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
-
-.. nextslide::
-    :increment:
-
-Beware of using ``grep`` to search for numbers:
-
-.. code-block:: bash
-
-    # finds all strings that match `100`
-    $ grep 100 /vol1/opt/data/lamina.bed | head -n 20
-
-    # better, but doesn't look at numeric value
-    $ grep -w 100 /vol1/opt/data/lamina.bed | head -n 20
-
-.. tip::
-
-    If you're trying to find numeric values in a file, use ``awk``
-    instead::
-
-        $ awk '$2 == 500' /vol1/opt/data/lamina.bed
-
-Cluster access
-==============
-We have set up accounts for the class on our departmental cluster. We will
-set up your accounts at the end of class and reset your passwords:
-
-.. code-block:: bash
-
-    # the -X flag starts an X11 connection 
-    $ ssh -X username@amc-tesla.ucdenver.pvt
-
-    ...
-
-    # once you are logged in, text your X11 connection with
-    $ xeyes
 
 Cluster etiquette
 =================
@@ -131,32 +56,6 @@ Find how much space you have allocated:
 
 The queueing system
 ===================
-First you will grab a single CPU from the queueing system so that you can
-work without affecting the head node. We use ``qlogin`` for this:
-
-.. code-block:: bash
-
-    jhessel@amc-tesla ~
-    $ qlogin 
-
-    Job <492536> is submitted to queue <interactive>.
-    <<ssh X11 forwarding job>>
-    <<Waiting for dispatch ...>>
-    <<Starting on compute00>>
-
-    jhessel@compute00 ~
-    $ 
-
-.. note:: 
-
-    The host in the prompt changed from ``amc-tesla`` to ``compute00``.
-    
-You can now execute long-running processes without worry of affecting the
-cluster. Type ``exit`` to return back to your head node login.
-
-.. nextslide::
-    :increment: 
-
 The cluster uses a queueing system that will run jobs that you submit to
 it. You can write a small test script to see how the system works. First,
 write this into a run.sh file:
@@ -227,61 +126,22 @@ Other cluster-specific commands
     $ bqueues    # available queues
     $ lsload     # check load values for all hosts
 
-Questions
-=========
-
-#. Check the ``.err`` files from the run. What information do they
-   contain? What does this tell you about your starting sequences?
-
-#. Find out how you would modify the ``bowtie2`` command to write out the
-   unaligned reads into a new file. Re-run the analysis to report those
-   reads.
-
-#. Modify the ``awk`` command in the script to print out a valid BED4
-   format::
-    
-        chrom <tab> start <tab> end <tab> count
-    
-#. Find out how many unique UMI sequences are associted with each
-   chromosomal coordinate (note: not as easy).
-
-More exercises
-==============
-
-#. use ``grep`` to identify lines in lamina.bed where the second field
-   (start) begins with ``100``.
-
-#. use ``grep`` to identify lines in lamina.bed where the third field
-   (end) ends with 99 .
-
-#. use ``grep`` with its ``-w`` flag to count the number of 'chr1'
-   records in lamina.bed.
-
-#. use ``grep`` to count how many fastq records are in the
-   /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
-   '@' symbol)
-
-#. login to amc-tesla. use ``grep`` to count the number of fastq records
-   in /vol1/opt/data/SP1.fq.gz
-
-
 .. raw:: pdf
 
     PageBreak
 
-********************
-      BEDTools
-********************
+BEDTools
+========
 
 Goals
-=====
+-----
 
 #. Introduce the BEDTools suite of tools.
 #. Understand why using BEDTools is needed.
 #. Practice common operations on BED files with BEDTools.
 
 BEDTools Overview
-=================
+-----------------
 
 BEDTools will be one of the tools with the best return on investment. For
 example, to extract out **all genes that overlap a CpG island**:
@@ -296,7 +156,7 @@ common pattern in bedtools that the query file is specified after the
 ``-a`` flag and the *subject* file after the ``-b`` flag
 
 BEDTools Utility
-================
+----------------
 
 Finding all overlaps between a pair of BED files naively in python would look like:
 
@@ -328,7 +188,7 @@ dramatically.
   etc. (likely to be bugs if you do code in manually)
 
 BEDTools Commands
-=================
+-------------------------
 
 To see all available BEDTools commands, type
 
@@ -344,7 +204,7 @@ The most commonly used BEDtools are:
 + :ref:`map <bedtools:map>`
 
 BEDTools Documentation
-======================
+-------------------------
 
 The BEDTools documentation is quite good and ever improving.
 
@@ -358,7 +218,7 @@ The online HTML help is also good and includes pictures:
  https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html
 
 BEDTools intersect
-==================
+-------------------------
 Have a browser window open to :ref:`BEDTools intersect documentation <bedtools:intersect>`.
 It will likely be the BEDTools function that you use the most. It has a lot of
 options.
@@ -369,7 +229,7 @@ options.
 intervals in `-b`
 
 Example Files
-=============
+-------------------------
 
 .. code-block:: bash
 
@@ -392,7 +252,7 @@ For example, the *a.bed* region `chr1:100-200` overlaps::
 from *b.bed*
 
 intersect
-=========
+-------------------------
 
 intersect with default arguments means **extract chunks of `-a` that overlap
 regions in `-b`**
@@ -413,8 +273,7 @@ And the overlapping intervals from *b.bed*::
     chr1	100	110	b3	3	+
 
 intersect -wa
-=============
-
+-------------------------
 Often, we want the *entire interval from -a if it overlaps any interval in -b*
 
 .. code-block:: bash
@@ -426,8 +285,7 @@ Often, we want the *entire interval from -a if it overlaps any interval in -b*
 We can get that uniquely with (-u)
 
 intersect -wo
-=============
-
+-------------------------
 We can see which intervals in *-b* are associated with *-a*
 
 .. code-block:: bash
@@ -437,8 +295,7 @@ We can see which intervals in *-b* are associated with *-a*
     chr1  100  200  a2  2  -  chr1  100  110  b3  3  +  10
 
 intersect exercise
-==================
-
+-------------------------
 What happens if you reverse the arguments? E.g. instead of::
 
   -a a.bed -b b.bed
@@ -452,8 +309,7 @@ Try that with no extra flags, with -u, -wa, -wo.
 How does it compare to the original?
 
 intersect -c
-============
-
+-------------------------
 We can count overlaps for each interval in *-a* with those in *-b* with
 
 .. code-block:: bash
@@ -466,8 +322,7 @@ This is our original `a.bed` with an **additional column indicating number of
 overlaps** with `b.bed`
 
 intersect -v
-============
-
+-------------------------
 Extract intervals in `a.bed` that do not overlap any interval in `b.bed`
 
 .. code-block:: bash
@@ -484,29 +339,34 @@ Extract intervals in `b.bed` that do not overlap any interval in `a.bed`
     chr1	200	210	b4	4	+
 
 Intersect Summary
-=================
+-------------------------
++ fragments of `a` that overlap `b`: `intersect -a a.bed -b b.bed`
 
-+ fragments of `a` that overlap `b`:
-  `intersect -a a.bed -b b.bed`
-+ complete regions of `a` that overlap `b`:
-  `intersect -a a.bed -b b.bed -u`
-+ intervals of `b` as well as `a`:
-  `intersect -a a.bed -b b.bed -wo`
-+ number of times each `a` overlaps `b`:
-  `intersect -a a.bed -b b.bed -c`
-+ intervals of `a` that do not overlap `b`:
-  `intersect -a a.bed -b b.bed -v`
++ complete regions of `a` that overlap `b`: `intersect -a a.bed -b b.bed -u`
 
-Exercises (Or Other Tools)
-==========================
++ intervals of `b` as well as `a`: `intersect -a a.bed -b b.bed -wo`
 
-#. zless :download:`cpg.bed.gz <../misc/data/cpg.bed.gz>` and :download:`genes.hg19.bed.gz <../misc/data/genes.hg19.bed.gz>`
++ number of times each `a` overlaps `b`: `intersect -a a.bed -b b.bed -c`
+
++ intervals of `a` that do not overlap `b`: `intersect -a a.bed -b b.bed -v`
+
+Exercises
+-------------------------
+Use the `cpg.bed.gz` and `genes.hg19.bed.gz` files for the following
+exercises:
+
 #. Extract the CpG islands that touch any gene [**24611**]
+
 #. Extract CpG islands that do not touch any gene [**7012**]
+
 #. Extract (uniquely) all of each CpG Island that touches any gene [**21679**]
-#. Extract CpG's that are completely contained within a gene (look at the help
-   for a flag to indicate that you want the fraction of overlap to be 1 (for 100 %). [**10714**]
+
+#. Extract CpG's that are completely contained within a gene (look at the
+   help for a flag to indicate that you want the fraction of overlap to be 1
+   (for 100 %). [**10714**]
+
 #. Report genes that overlap any CpG island. [**16908**]
+
 #. Report genes that overlap more than 1 CpG Island (use -c and awk). [**3703**].
 
 .. note::
@@ -514,13 +374,13 @@ Exercises (Or Other Tools)
     as you are figuring these out, make sure to pipe the output to less or head
 
 Other Reading
-=============
+-------------------------
 
 + Check out the online `documentation <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_.
 + A `tutorial <http://quinlanlab.org/tutorials/cshl2013/bedtools.html>`_ by the author of BEDTools
 
 Intersect Bam
-=============
+-------------------------
 
 We have seen that `intersect <bedtools:intersect>` takes `-a` and `-b`
 arguments. It can also intersect against an alignment BAM file by using `-abam`
@@ -536,7 +396,7 @@ e.g:
         > on-target.bam
 
 Intersect Strand
-================
+-------------------------
 
 From the `help <https://bedtools.readthedocs.org/en/latest/content/tools/intersect.html>`_ ,
 one can see that intersect can consider strand. For example if both files have a
@@ -550,7 +410,7 @@ Will only consider as overlapping those intervals in `a.bed` that have the same
 strand as `b.bed`.
 
 Closest
-=======
+-------------------------
 
 with :ref:`intersect <bedtools:intersect>` we can only get overlapping
 intervals. :ref:`closest <bedtools:closest>` reports the nearest interval even
@@ -565,38 +425,8 @@ Example: report the nearest CpG to each gene as long as it is within 5KB.
         -b cpg.bed.gz -d \
         | awk '$NF <= 5000'
 
-Map
-===
-
-For each CpG print the sum of the values (4th column) of overlapping intervals from
-lamina.bed (and filter out those with no overlap using awk)
-
-.. code-block:: bash
-
-    $ bedtools map \
-        -a cpg.bed.gz \
-        -b /vol1/opt/data/lamina.bed \
-        -c 4 -o sum \
-        | awk '$5 != "."'
-
-Other *-o* perations include **min**, **max**, **mean**, **median**, **concat**
-
-Sorted
-======
-
-When you start dealing with larger data-files. Look at the `-sorted` flag.
-For example in :ref:`intersect <bedtools:intersect>`.
-
-+ Uses less memory
-+ Faster
-
-Takes advantage of sorted chromosome, positions in both files so it doesn't have
-to create an index.
-
-.. image:: http://bedtools.readthedocs.org/en/latest/_images/speed-comparo.png
-
 Genomecov
-=========
+------------
 
 Get coverage of intervals in BED by BAM 
 
@@ -744,4 +574,4 @@ Note: meme looks at both strands of a DNA sequence by default.
     $ bedtools getfasta -fi <ref.fa> -bed <peaks.bed> -fo peaks.fa
     $ meme -nmotifs 5 -minw 6 -maxw 20 -dna <peaks.fa>
 
-
+=======

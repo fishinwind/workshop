@@ -1,302 +1,164 @@
-*************************
-Class 9 : Python Concepts
-*************************
 
-:Class date: Friday 14 February 2014
+.. include:: /_static/substitutions.txt
 
-.. code-block:: bash
+**************************************
+Class 9 : R : Manipulation & Plotting
+**************************************
 
-    $ cowsay -f dragon-and-cow "Happy Valentine's Day"
+:Class date: |c9-date|
+:Last updated: |today|
 
 Goals
 =====
-#. Review Python concepts
 
-Looping Review
-==============
-Before we move on to more advanced topics, let's do some exercises 
-reviewing how loops work. First, use wget to download 
-`hamlet.txt <http://www.cs.uni.edu/~schafer/1140/assignments/pa11/hamlet.txt>`_. 
+#. Begin to manipulate data with and ``dplyr`` and ``tidyr``
 
-In Class Exercise
-=================
-From hamlet.txt: 
+dplyr
+=====
 
-#. Print the first word of each line.
+``dplyr`` provides several methods:
 
-#. Print only lines that are not indented. 
+- ``summarise()``
+- ``filter()``
+- ``select()``
+- ``mutate()``
+- ``arrange()``
+- ``group_by()``
 
-#. Count the number of times that the word "therefore" appears.
+``dplyr`` also provides an operator called ``%>%`` that allows you to
+string manipulations together.
 
-(hint: the :ref:`continue` statement will skip to the next loop
-iteration, and is usually found in an if statement)
+By combining these functions together, you can quickly and easily
+manipulate data.frames and generate useful data summaries.
 
-In Class Exercise Code
-======================
+.. code-block:: r
 
-Print the first word of each line.
+    > summary <- df %>% select() %>% group_by() %>% summarize()
 
-.. code-block:: python
+dplyr example 
+-------------
 
-    for line in open('hamlet.txt'):
-        words = line.strip().split(' ')
-        print words[0]
+.. code-block:: r
 
-Print only lines that are not indented.
+    dfx <- read.table('expr-geno-covs.txt', header=TRUE)
 
-.. code-block:: python
+    # calculate some simple stats with dplyr
+    grouped <- group_by(dfx, condition, genotype)
+    summarize(grouped, count = n(), mean.age = mean(age))
 
-    for line in open('hamlet.txt'):
-        if line[0] != ' ':
-            print line.strip()
-
-Count the number of times that the word "therefore" appears.
-
-.. code-block:: python
-
-    num = 0
-    for line in open('hamlet.txt'):
-        words = line.strip().split()
-        for word in words:
-            if word == 'therefore':
-                num += 1
-    print num
-
-Counters
-========
-:py:class:`~collections.Counter` objects are a type of Python dict in
-which the values are counts of the keys. Counter objects have several
-methods to query the counts, like
-:py:meth:`~collections.Counter.most_common()`. 
-
-.. code-block:: python
-
-    from collections import Counter
-
-    word_counts = Counter()
-
-    for line in open('hamlet.txt'):
-        words = line.strip().split(' ')
-
-        for word in words:
-            word_counts[word] += 1
-
-    print word_counts.most_common(5)
-    
-There is more than one way to do this. It's usually a good idea to look at the
-Python documentation to see if there's a method that does what you're trying to do.
-
-.. code-block:: python
-
-    from collections import Counter
-
-    word_counts = Counter()
-
-    for line in open('hamlet.txt'):
-        words = line.strip().split(' ')
-        word_counts.update(words)
-
-    print word_counts.most_common(5)
-
-Looping: Reading Multiple Lines at a Time
-=========================================
-There are lots of biological data files that have information spread over
-multiple lines. For example, a FASTA file is used to store sequences. Each
-record has a line with '>' and some information (like a name) followed by
-another line of sequence data. For example::
-
-    >Sequence name
-    AGCATCGTAGCTAGTCGTACGTAGCTATCGATCGTAGCTA
-
-**Download the sample FASTA file:** :ref:`fasta-file`
-
-In Class Exercise
-=================
-
-#. Open sample.fa and make a dictionary with four items corresponding to
-   the sequences from the file
-   
-.. code-block:: python
-
-    records  = dict()
-    count = 0
-    name = ""
-    seq = ""
-
-    for line in open('sample.fa'):
-
-        if (count == 0):
-            name = line.strip('>\n\r')
-            count = 1
-        else:
-            seq = line.strip()
-            count = 0
-            records[name] = seq
-
-    print records.items()
-
-
-Intermediate Concepts: Streaming
-================================
-One of the reasons why python is so useful is that faciliates
-**iteration** over a file without reading the entire dataset into computer
-memory.
-
-This is similar to streaming data in the Linux tools we've discussed.
-For example:
-
-.. code-block:: bash
-
-    zless /vol1/opt/data/t_R1.fastq.gz | wc -l
-
-never holds the file in memory, it just streams the data.
-
-We can do this in python.
-
-Intermediate : Streaming
-========================
-
-.. warning:: 
-
-    DO NOT DO THIS!! It reads everything into memory.
-
-.. code-block:: python
-
-    import gzip
-    fastq_filename = '/vol1/opt/data/t_R1.fastq.gz'
-
-    data = list(gzip.open(fastq_filename))
-    lines = len(data)
-
-.. important:: 
-
-    DO THIS
-
-.. code-block:: python
-
-    import gzip
-    fastq_filename = '/vol1/opt/data/t_R1.fastq.gz'
-
-    lines = 0
-    for line in gzip.open(fastq_filename):
-        lines += 1
-
-    # or:
-
-    lines = sum(1 for line in gzip.open(fastq_filename))
-
-Streaming with yield
-===================================
-
-Make a bed reader that returns a useful dict:
-
-.. code-block:: python
-
-    def bed_generator(bedfilename):
-        for line in open(bedfilename):
-            if line.startswith('#'): continue
-            chrom, start, end, value = line.split("\t")[:4]
-            start, end = int(start), int(end)
-            yield dict(chrom=chrom, start=start, end=end, value=value)
-
-Then use it:
-
-.. code-block:: python
-
-    bedfilename = '/vol1/opt/data/lamina.bed'
-    for bed in bed_generator(bedfilename):
-        print bed # bed is a useful, usable thing. with numeric start and end.
-
-Note that only ever have 1 (**) line in memory at a time.
-
-In Class Exercise
-=================
-
-#. Modify the `bed_generator` code from the previous slide so that it
-   turns value into a :py:obj:`float` before yielding
-#. In the code that calls bed_generator, print out the value
-#. In the code that calls bed_generator, append value to a list.
-
-In Class Exercise (Answer)
-==========================
-
-.. code-block:: python
-
-    def bed_generator(bed_file):
-
-        for line in open(bed_file):
-
-            if line.startswith('#'): continue
-
-            chrom, start, end, value = line.split("\t")[:4]
-            start, end = int(start), int(end)
-            yield {'chrom': chrom, 'start': start, 'end': end,
-                   'value': float(value))}
-
-    vals = []
-    for bed in bed_generator(bedfilename):
-        print bed['value']
-        vals.append(bed['value'])
-
-    print vals[:10]
-    print sum(vals)
-
-Goal
-====
-
-Take the basic concepts we've learned and do something useful.
-
-toolshed
-========
-
-`toolshed <https://pypi.python.org/pypi/toolshed>`_ is a python module
-that simplifies common file/text-processing tasks.  For example, it
-assumes the first line of a file is the header and gives a python
-dictionary for each line keyed by the header.
-
-.. code-block:: bash
-
-    $ python -c "import toolshed"
-
-    # If you see an error get help to install toolshed:
-    $ pip install toolshed
-
-.. code-block:: python
-
-    from toolshed import reader
-
-    bedfilename = '/vol1/opt/data/lamina.bed'
-
-    for region in reader(bedfilename):
-        # the first line in lamina.bed is: '#chrom  start  end  value'
-        # reader uses these names as keys in a dict
-
-        if region['chrom'] != "chr12": continue
-        if float(region['value']) < 0.90: continue
-        print region['chrom'], region['start'], region['end']
+    # even better
+    dfx %>% 
+        group_by(condition, genotype) %>%
+        summarize(count = n(), mean.age = mean(age))
 
 .. nextslide::
     :increment:
 
-The toolshed reader function can also take gzipped files, files
-over http, bash commands, and (some) xls files.
+Summarize transcription factor binding site peaks in::
+  
+    # columns 1-4 from merged peak calls
+    /vol1/opt/data/encode/peaks.bed.gz
 
-It can also accept a python class, that, for example
-converts start and end to int's.
+.. code-block:: r
 
-Mostly we will use it as:
+    > library(dplyr)
+    > colnames = c('chrom','start','end','name')
+    > bedfilename = 'peaks.bed.gz'
 
-.. code-block:: python
+    # use ``gzfile`` to load gzipped data
+    > peaks <- read.table(gzfile(bedfilename), col.names=colnames)
 
-    from toolshed import reader
+    > peaks %>% 
+        group_by(name) %>%
+        mutate(peak.width = end - start) %>%
+        filter(peak.width > 500 ) %>%
+        summarize(count = n(), mean.width = mean(peak.width)) %>%
+        arrange(desc(count))
 
-    bedfilename = '/vol1/opt/data/lamina.bed'
++ ``n()`` is a special function for counting observations
++ assign the summary to a new data.frame
 
-    for region in reader(bedfilename):
-        # do something with region
-        print region['chrom']
+Exercises with dplyr
+--------------------
 
+#. Use ``dplyr`` to calculate the mean age of smokers grouped by gender
+   and smoking status. Plot the result.
+
+#. Make a plot of age by expression faceted by genotype. Fit a linear
+   model through these curves (use geom_smooth) on the plot.
+
+#. Load the peaks BED file and find the 10 factors that have the largest range
+   in peak width. Inspect a ``geom_boxplot()`` or ``geom_violin()`` to support
+   your answer (also add individual points to the plot with ``geom_jitter()``).
+
+Combining with ggplot
+=====================
+
+We had mean expression by condition and genotype as:
+
+.. code-block:: r
+
+    dfx %>% group_by(condition, genotype) \
+        %>% summarize(count=n(), mean.expr=mean(expression)) \
+
+We can add to that expression (after typing 'library(ggplot2)')
+
+.. code-block:: r
+
+        %>% ggplot(aes(x=genotype, y=expression) \
+            + geom_histogram(stat='identity')
+
+how can we change the color of all the bars to 'red'? [Hint, it's not
+**color** ='red']
+
+ggplot histograms
+=================
+
+Since `expr-geno-covs.txt` is already in long format, we can use it directly in
+ggplot:
+
+.. code-block:: r
+
+    ggplot(covs, aes(x=expression)) + 
+           geom_histogram() +
+           scale_x_log10()
+
+Exercises
+---------
+#. Adjust this:
+
+.. code-block:: r
+
+    ggplot(covs, aes(x=expression)) + 
+           geom_histogram() +
+           scale_x_log10()
+
+- to color by genotype
+
+- and to split plots (facet_wrap) by condition (case/control)
+
+- to color by age > 60 vs. <= 60 (use row selection stuff from start of class to
+  make a new column named, e.g. `is_old`)
+
+#. Figure out how to move overlapping points so categorical data is
+   viewable (hint: look at geom_jitter() or the `position` argument to
+   geom_point()) 
+
+#. Load a BED file (e.g. ``lamina.bed``) and calculate the mean length of
+   regions on each chromosome in the BED file with dplyr.  Plot the result as
+   a bar plot with ggplot2.
+
+Practice
+--------
+Practice ``dplyr`` and ``tidyr`` with ``swirl``:
+
+.. code-block:: r
+
+   > library(swirl)
+   > install_from_swirl("Getting_and_Cleaning_Data")
+   > swirl()
 
 .. raw:: pdf
 
     PageBreak
+

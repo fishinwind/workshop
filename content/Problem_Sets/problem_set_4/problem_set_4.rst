@@ -1,104 +1,62 @@
+
+.. include:: /_static/substitutions.txt 
+
 .. _problem-set-4:
 
 *************
 Problem Set 4
 *************
 
-:Due date: 2014 Feb 25 at 9 PM MST
+:Due date: |pset4-due| 
 
 Overview
 --------
-For this quiz you will write programs in Python to analyze data. 
 
-.. note::
-
-    Continue to use the organization scheme that we learned about in
-    :ref:`problem-set-1`. Part of our evaluation
-    will include whether you are developing good organizational habits.
-
-Create a ``run.sh`` file that executes the commands for each problem and
-writes out each result in a dated directory.
-
-Use the provided :ref:`data-sets` for these problems.
+For this quiz you will use BEDTools and command line tools to make some
+simple summary files and will use ggplot2 to make some plots.
 
 Problem 1
 ---------
-Start with the code you wrote in :ref:`problem-set-3` to parse BED and
-FASTQ files. Convert the parsing logic to functions (**10 points**).
 
-Instead of reading records like this ... :
+#. Examine Pol II distribution in a 5 kb window around transcription
+   termination sites (TTSs) at a resolution of 50 bp?  Make a plot of the
+   result and save it as a PDF. (**15 points**)
 
-.. code-block:: python
+#. Pick one other factor you might expect to find at a TTS and analyze its
+   distribution. You can find bigWig files of ChIP-seq experiemnts done for a
+   variety of factors at UCSC [#]_ and the ENCODE [#]_ website. Make a plot of the
+   result and save it as a PDF. (**15 points**)
 
-    for line in file(bedfilename):
-        fields = line.strip()
+.. [#] ENCODE Project at UCSC Encyclopedia of DNA Elements at UCSC 
+       http://genome.ucsc.edu/ENCODE/
 
-... use this skeleton code to write a function that returns records from a
-file using :ref:`yield() <python:yield>`:
-
-.. code-block:: python
-   :linenos:
-
-    def parse_bed(bedfilename):
-        ''' parse records and return each record '''
-
-        # here, you need to write code to split the fields, assign them to
-        # `chrom`, `start`, `end`, and `value`
-        # be sure to coerce the values to ints and floats as needed
-        
-        result = {'chrom':chrom, 'start':start, 'end':end, 'value':value}
-        yield result
-
-    for record in parse_bed(bedfilename):
-        # use the records to:
-        #
-        # 1. calculate the distance between the start of the current record
-        # and the previous record. note you may need to define a variable
-        # outside of this loop.
-        #
-        # 2. calculate the bases covered by the intervals for each
-        # chromosome. note you may have to define a structure outside of
-        # this loop to keep track of that information.
+.. [#] Current ENCODE data
+       https://www.encodeproject.org/
 
 Problem 2
 ---------
-Modify the following skeleton code to create nested data structures built
-from records in a BED file, using the function you created above.
 
-Load a BED file and create a dict() of lists() of (start, end) tuples. Use
-:py:class:`~collections.defaultdict` to create this structure.  Find the
-largest and smallest starts for each chromosome using :py:func:`min` and
-:py:func:`max`. (**10 points**)
+1000 genomes BED file is at::
 
-.. code-block:: python
-   :linenos:
+    /vol1/opt/data/hg19/1000genomes/snp138.bed.gz
 
-    from collections import defaultdict
+- Examine the relationship between SNP density and gene structure. Use
+  1000Genomes SNP data in BED format, and assume that each
+  SNP in the file is the same in terms of quality (**20 points**).
 
-    # specify the bedfilename 
-    bedfilename = 'XXX'
-    struct = defaultdict(list)
+  - Calculate SNP density (SNPs per bp) for first exons of refGene
+    annotations. (hint: use the ``-n`` option of 
+    :ref:`bed12tobed6 <bedtools:bed12tobed6>`)
 
-    for record in parse_bed(bedfilename):
-       
-        chrom = record['chrom']
-        
-        # write additional code to get the start and end coordinates from
-        # the record
-        
-        # create a tuple of coords 
-        coords = (start, end)
+  - Do the same for the introns of each gene. (hint: use
+    :ref:`subtract <bedtools:subtract>` with BED files for genes and
+    exons) 
 
-        # add the coords to the growing list. replace `whichmeth` with the
-        # appropriate method call
-        struct[chrom].whichmeth(coords)
+  - Make a histogram of the results (use ``geom_hist()``).
 
-    for chrom in struct:
-        # 1. use max() and min() in this loop to determine biggest start
-        # values.
-        #
-        # 2. how do you change the max() and min() calls to look at the `end`
-        # value instead of the `start`? (RTM)
+  - Add text annotations to the plot with ``geom_text()`` and
+    ``ggtitle``. E.g. how many SNPs were examined? How many exon /
+    intron regions?
 
 Problem Set Submission
 ----------------------
@@ -108,3 +66,4 @@ Submit your problem set as a tar file to Canvas
 .. raw:: pdf
 
     PageBreak
+

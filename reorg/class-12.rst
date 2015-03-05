@@ -1,5 +1,5 @@
 ************************************
-Class 21 : R : DataFrames & Plotting
+Class 12 : R : DataFrames & Plotting
 ************************************
 
 Goals
@@ -129,22 +129,22 @@ dplyr review
 
 dplyr
 =====
-``dplyr`` also provides an operator called ``%.%`` that allows you to
+``dplyr`` also provides an operator called ``%>%`` that allows you to
 chain manipulations together.
 
 To get mean expression level by condition (case/control)
 
 .. code-block:: r
 
-    covs %.% group_by(condition) \
-         %.% summarize(count=n(), mean.expr=mean(expression))
+    covs %>% group_by(condition) \
+         %>% summarize(count=n(), mean.expr=mean(expression))
 
 Mean expression by condition and genotype
 
 .. code-block:: r
 
-    covs %.% group_by(condition, genotype) \
-         %.% summarize(count=n(), mean.expr=mean(expression))
+    covs %>% group_by(condition, genotype) \
+         %>% summarize(count=n(), mean.expr=mean(expression))
 
 
 Exercise
@@ -161,14 +161,14 @@ Above, we had mean expression by condition and genotype as:
 
 .. code-block:: r
 
-    covs %.% group_by(condition, genotype) \
-         %.% summarize(count=n(), mean.expr=mean(expression)) \
+    covs %>% group_by(condition, genotype) \
+         %>% summarize(count=n(), mean.expr=mean(expression)) \
 
 We can add to that expression (after typing 'library(ggplot2)')
 
 .. code-block:: r
 
-        %.% ggplot(aes(x=genotype, y=expression) \
+        %>% ggplot(aes(x=genotype, y=expression) \
             + geom_histogram(stat='identity')
 
 how can we change the color of all the bars to 'red'? [Hint, it's not

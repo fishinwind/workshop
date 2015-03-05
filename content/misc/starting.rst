@@ -11,28 +11,28 @@ Here are Erin Baschal's notes on Mike Campbell's solutions.
 
 How to fix internet/VPN issue in VirtualBox
 -------------------------------------------
-#. Open Network and Sharing Center
+Open Network and Sharing Center
 
-    #. Windows 8 - right click on network icon at bottom of screen
+Windows 8 - right click on network icon at bottom of screen
 
-#. Change adapter settings (on left)
+Change adapter settings (on left)
 
-#. Virtual Box Host Adapter (right click)
+Virtual Box Host Adapter (right click)
 
-#. Properties
+Properties
 
-    #. Uncheck TCP/IPv6
+Uncheck TCP/IPv6
 
-    #. Double click TCP/IPv4
+Double click TCP/IPv4
 
-    #. Use the following DNS server addresses::
+Use the following DNS server addresses:
 
-        140.226.189.35
-        132.194.70.65
+140.226.189.35
+132.194.70.65
 
-    #. Advanced, DNS tab
-        
-        #. Append these DNS suffixes::
+Advanced, DNS tab
 
-            ucdenver.pvt
+Append these DNS suffixes:
+
+ucdenver.pvt
 

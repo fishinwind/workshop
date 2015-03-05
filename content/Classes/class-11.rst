@@ -1,343 +1,210 @@
-************************
-Class 11 : Python Idioms
-************************
+
+.. include:: /_static/substitutions.txt
+
+********************************************
+Class 11 : R : Simple statistics and ggplot2 by Charlotte 
+********************************************
+
+:Class date: |c11-date|
+:Last updated: |today|
 
 Goals
 =====
 
-#. python tricks to write more concise code
-#. Laziness
-#. Data structures
+#. Simple statistics 
+#. ggplot2 manipulations
 
-Variable Names Vs. Builtins
-===========================
+Statistics in R
+===============
 
-you decide what to call a variable in a for loop or the name of
-a list or dictionary.
+R provides a number of builtin statistics. Let's go over some using expr-geno-covs.txt. First, load the dataframe.
 
-There are python keywords and builtin functions
-
-list of keywords:
-
-.. code-block:: python
-
-    >>> import keyword
-    >>> print " ".join(keyword.kwlist)
-    and as assert break class continue def del elif else except exec
-    finally for from global if import in is lambda not or pass print
-    raise return try while with yield
-
-list of builtin functions:
-
-    http://docs.python.org/2/library/functions.html
-
-(includes range, open, file, list, dict, etc)
-
-
-FASTQ parsing
-=============
-
-We have seen the problem of parsing a FASTQ file.
-How do we describe the format in English?
-
-   FASTQ records occur in groups of 4 in the order: name, seq, plus, qual
-
-We will learn some tools to simplify this.
-
-enumerate
-=========
-
-We have seen that we often want to know the index (or line number)
-that goes with an iterable. For example, if we know
-that we are on the first line, we can skip the header.
-
-We can know the index of an iterable with enumerate:
-
-.. code-block:: python
-
-    names = ('fred', 'sally', 'harry', 'jack', 'texan')
-
-    for index, name in enumerate(names):
-        print index, name
-
-    # To illustrate the freedom you have in choosing variable names
-    # the above is identical to
-    for really_bad_var_name, x42 in enumerate(names):
-        print really_bad_var_name, x42
+.. codeblock:: r
+	> df <- read.table(file = "expr-geno-covs.txt", sep = "\t", header = TRUE)
 
 .. nextslide::
     :increment:
 
-Try this in the ipython terminal:
+Student t-test
+--------------
 
-.. code-block:: python
+Student t-test is used to determine if two sets of values are significantly different.
+- Assumptions are data has a normal distribution and is continuous.
 
-    enumerate("abcdefg")
-
-Enumerate is lazy, meaning it won't consume an iterable until we ask it to
-
-.. code-block:: python
-
-    list(enumerate("abcdefg"))
-    # OR 
-    for i, letter in enumerate("abcdefg"):
-        print i, letter
-    # remember we have our choice of variable names. The above is identical to
-    for xx, hello in enumerate("abcdefg"):
-        print xx, hello
-
-Generally we name index variables as *i* and give the other variables names that
-make sense.
+.. codeblock:: r
+	> exp_male <- df$expression[df$gender == "Male"]
+	> exp_female <- df$expression[df$gender == "Female"]
+	> ttest <- t.test(exp_male, exp_female)
+	> pVal <- ttest$p.value
 
 .. nextslide::
     :increment:
 
-When we wrap any iterable in enumerate and we get a tuple of
-`index, thing`. Where `thing` was the element of the original list.
+Fisher's Exact Test
+-------------------
 
-We can skip the header in a file like this:
+Contingency tables are matrices that describe the frequency of variables.
+- Determine if variable "a" occurs at a higher frequency compared to variable "b".
+- Fisher's Exact Test is used to determine the statistical significance.
 
-.. code-block:: python
+From our data, let's see if there is difference in frequency of former smokers between males and females.
 
-    for i, line in enumerate(open('/vol1/opt/data/lamina.bed')):
-        # skip the header
-        if i == 0: continue
-        fields = line.rstrip().split("\t")
-        # or we can get the variables directly since
-        # we know there are 4 cols
-        chrom, start, end, val = line.rstrip().split("\t")
+.. codeblock:: r
 
+	# generate contingency table
+	> mf <- length(which((df$gender == "Male" & df$smoking == "former") == TRUE))
+	> mNf <- length(which((df$gender == "Male" & df$smoking != "former") == TRUE))
+	> cf <- length(which((df$gender == "Female" & df$smoking == "former") == TRUE))
+	> cNf <- length(which((df$gender == "Female" & df$smoking != "former") == TRUE))
+	> con <- matrix(c(mf,mNf,cf,cNf), nrow = 2, ncol = 2, byrow = FALSE)
+	> print(con)
 
-Using enumerate like this is safer than manually incrementing a variable
-as sometimes you will forget to increment or you will *continue* before
-incrementing.
+	> fisherTest <- fisher.test(con)
+	> pVal <- fisherTest$p.value
 
-modulo
-======
+.. nextslide::
+    :increment:
 
-Modulo is the remainder operation.
+Wilcoxon's Test
+---------------
 
-+ 12 modulo 4 is 0
-+ 13 modulo 4 is 1
+This test is used on two groups of data where the samples are somehow related. Unfortunately, there is no example in df so we will have to use other data. 
+- Use ``immer``; describes the yield of barley of 30 different locations in two different years.
 
-.. ipython::
+.. codeblock:: r
 
-    In [1]: 12 % 4
-    Out[1]: 0
+	> wilcTest <- wilcoxon.test(immer$Y1,immer$Y2)
+	> wilcTest$p.value
 
-    In [2]: 13 % 4
-    Out[2]: 1
+.. nextslide::
+    :increment:
 
-modulo and enumerate
+Kolmogorov-Smirnov
+------------------
+
+This test determines if two distributions of data are similar.
+- Data does not have to have a normal distribution.
+- Data can be continuous or discrete (count data).
+
+.. codeblock:: r
+
+	> ksTest <- ks.test(exp_male, exp_female)
+	> ksTest$p.value
+
+.. nextslide::
+    :increment:
+
+Plot the distribution!
+----------------------
+
+Does the distribution make sense with our results??
+
+.. codeblock:: r
+
+	> gp <- ggplot(df, aes(x = expression, fill = gender))
+	> gp + geom_bar()
+
+.. nextslide::
+    :increment:
+
+Exercises
+---------
+
+#. Use ``t.test()`` determine whether there are significant expression
+   differences between in `expr-geno-covs.txt` using conditions instead of gender.
+
+ggplot manipulations
 ====================
 
-.. ipython::
+Once you make a plot that you like, you can save it with:
 
-    In [1]: for i in range(12):
-       ...:     print i, i % 4
-       ...:     
-    0 0
-    1 1
-    2 2
-    3 3
-    4 0
-    5 1
-    6 2
-    7 3
-    8 0
-    9 1
-    10 2
-    11 3
+.. code-block:: r
 
-How does this relate to our FASTQ?
+   # ggsave uses the last plot by default and learns format from the file
+   # suffix
+   > ggsave('myplot.pdf')
 
-modulo, enumerate, fastq
-========================
+.. nextslide::
+    :increment:
 
-.. ipython::
+Often you will have observations of two variables that are both 
+continuous data. How can you examine the relationships between these?
 
-    In [1]: for i, line in enumerate(open('misc/data/SP1.fq')):
-       ...:     print i, i % 4, line.strip()
-       ...:     if i > 8: break
-       ...:     
-    0 0 @cluster_2:UMI_ATTCCG
-    1 1 TTTCCGGGGCACATAATCTTCAGCCGGGCGC
-    2 2 +
-    3 3 9C;=;=<9@4868>9:67AA<9>65<=>591
-    4 0 @cluster_8:UMI_CTTTGA
-    5 1 TATCCTTGCAATACTCTCCGAACGGGAGAGC
-    6 2 +
-    7 3 1/04.72,(003,-2-22+00-12./.-.4-
-    8 0 @cluster_12:UMI_GGTCAA
-    9 1 GCAGTTTAAGATCATTTTATTGAAGAGCAAG
+Use ``geom_boxplot()`` with the ``group`` aesthetic:
+
+.. code-block:: r
+
+    > gp <- ggplot(covs,  aes(x = age, y = expression))
+    > gp + geom_boxplot()
+
+.. nextslide::
+    :increment:
+
+Or you can plot the data and fit a curve or linear model to examine the
+overall relationship:
+
+.. code-block:: r
+
+    # plot a smoothed, possibly curvy, line 
+    > gp + geom_point() + geom_smooth()
 
 
-modulo, enumerate, fastq: parse
-===============================
+    # fit and plot a straight line
+    > gp + stat_smooth(method='lm')
 
-Parse a fastq!!
+R Model Syntax
+==============
 
-.. code-block:: python
+You can also fit and examine a linear model:
 
-    for i, line in enumerate(open('/vol1/opt/data/SP1.fq')):
-        if i % 4 == 0:
-            name = line
-        elif i % 4 == 1:
-            seq = line
-        elif i % 4 == 3:
-            qual = line
-            # here have name, seq, qual from a single record
+.. code-block:: r
 
-note how this fairly closely matches our english explanation of the fastq
-format.
+    > model <- lm(expression ~ genotype + condition + gender , data = df
+    > summary(model)
 
-zip
-===
+    # look at diagnostic plots
+    > plot(model)
 
-zip is another python function. It merges items from multiple lists:
+What assumptions can we make from the diagnostics?
+What do you suggest we do to fix it? 
+- don't look ahead it's cheating >:(
 
-.. ipython:: 
+.. nextslide::
+    :increment:
 
-    In [2]: a = range(5)
+Let's Normalize
+---------------
 
-    In [3]: b = "abcde"
+If we normalize the data, the diagnostics might fit.
+- Log that data.
 
-    In [4]: zip(a, b)
-    Out[4]: [(0, 'a'), (1, 'b'), (2, 'c'), (3, 'd'), (4, 'e')]
+But wait, there are 0 values - if we do a log-transformation, we will get values that do not exist. What on earth do we do??!
+- Filter out values.
+- After normalizing, replace again with 0.
 
-    In [5]: c = [dict(), [], None, "hello", "world"]
+.. code-block:: r
+	# example if we filter out DNE values
+	> df2 <- df
+	> df2$expression <- log2(df2$expression)
+	> filterOut <- which(is.infinite(df2$expression))
+	> df2 <- df2[-filterOut,]
+	> model <- lm(expression ~ genotype + condition + gender , data = df2)
+	> plot(model)
 
-    In [6]: zip(a, b, c)
-    Out[6]: [(0, 'a', {}),
-     (1, 'b', []),
-     (2, 'c', None),
-     (3, 'd', 'hello'),
-     (4, 'e', 'world')]
+How would you replace values with 0?
 
-    
-izip
-====
+- MAJOR NOTE: you don't need to know this stuff for the homework, I'm just having fun.
+- Also! knowing some of these tricks may make your life easier with your own work.
 
- izip is a lazy version of zip. It doesn't consume or return elements until you
- ask for them.
+.. nextslide::
+    :increment:
 
-.. ipython::
+Exercises
+---------
 
-    In [1]: from itertools import izip
+#. Does adding age to the existing model (expression ~ genotype + condition +
+   gender) change the signficance of the other variables? 
 
-    In [2]: seq = "TTTCCGGGGCACATAATCTTCAGCCGGGCGC"
+#. How does removing condition from the model affect the significance of
+   genotype and vice-versa?
 
-    In [3]: qual = "9C;=;=<9@4868>9:67AA<9>65<=>591"
-
-    In [4]: izip(seq, qual)
-    Out[4]: <itertools.izip at 0x2419368>
-
-    In [5]: for base, base_qual in izip(seq, qual):
-       ...:     print base, base_qual
-    T 9
-    T C
-    T ;
-    C =
-    ...
-
-
-izip laziness
-=============
-
-Laziness is important, if for example we are zipping over a file. If we use
-**zip** it will consume the entire file immediately and read it into memory.
-**izip** will only consume the file as we request the zipped items.
-
-Note that in the previous slide, we associated each base with it's base-quality.
-That's useful...
-
-list comprehensions
-===================
-
-In one problem you had to sum the ord()'s of the quality line.
-The common way to do that was this:
-
-.. code-block:: python
-
-    qual_sum = 0
-    for q in qual:
-        qual_sum += ord(q)
-
-Once could get the quals instead as:
-
-.. code-block:: python
-
-    integer_quals = [ord(q) for q in qual]
-
-So the sum can be shortened to:
-
-.. code-block:: python
-
-    qual_sum = sum(ord(q) for q in qual)
-
-Why use functions?
-==================
-Functions are useful for encapsulating reusable chunks of code. For
-exmaple, you don't want to write messy code for parsing a fastq file every
-time you need to parse a fastq file. Instead, you define a function:
-
-.. code-block:: python
-    
-    def parse_fastq(filename):
-        # parse records
-   
-Once that is defined, you can put it in a file in your PYTHONPATH called
-``mytools.py`` and use it:
-
-.. code-block:: python
-
-    # look ma! no messy parsing code!
-    from mytools import parse_fastq
-
-    for record in parse_fastq(filename):
-        # use the record
- 
-in-class exercise
-=================
-calculate mean base-quality by base.
-
-zip quality with sequence. append quality for each base in a dict of lists
-
-.. code-block:: python
-
-    # append all quality scores for A base to quals_by_base['A'] list.
-    quals_by_base = {'A': [], 'C': [], 'T': [], 'G': []}
-    for i, line in enumerate(open('/vol1/opt/data/SP1.fq')):
-        if i % 4 == 0:
-            name = line
-        elif i % 4 == 1:
-            seq = line
-        elif i % 4 == 3:
-            qual = line
-            # update quals_by_base here since we have seq and qual
-            # use zip/izip
-            ...
-    # outside the loop calculate the avg base quality:
-    for base, integer_quals in quals_by_base.items():
-        mean_quals = XXX_FIX_ME_XXX # remember to float()
-        print base, mean_quals
-
-exercises
-=========
-
-+ do previous exercise without a list. instead storing running sum and count of
-  quals and using that at the end.
-+ look at xrange, the lazy version of range
-+ how can you implement your own version of enumerate using izip and xrange?
-+ clean up some of your homeworks using the simpler fastq parsing.
-+ look at the itertools module (http://docs.python.org/2/library/itertools.html)
-
-Resources
-=========
-
-+ idiomatic python: http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html
-+ itertools: http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html
-
-.. raw:: pdf
-
-    PageBreak

@@ -8,7 +8,7 @@
 # $ git push origin :gh-pages
 
 # You can set these variables from the command line.
-SPHINXOPTS    = -j 4
+SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build

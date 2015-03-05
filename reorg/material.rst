@@ -5,13 +5,6 @@
 
 :Class date: 2014 Mar 7 Friday
 
-Log in to amc-tesla and do this::
-
-    cd ~
-    cp /vol1/opt/data/class-17.tar.gz .
-    tar xzvf class-17.tar.gz
-    cd class-17
-
 Goals
 =====
 
@@ -42,8 +35,8 @@ iterable:
             print feature.chrom, feature.start, feature.end
 
 
-Bashing
-=======
+Bash scripts
+============
 
 Some times you will have long bash scripts and you will misspell variables
 
@@ -62,8 +55,8 @@ But, if you add:
 To the **top of the script**, then accessing an undefined variable will
 raise an error.
 
-Bashing (2)
-===========
+.. nextslide::
+    :increment:
 
 In a long bash script, you may have a series of commands:
 
@@ -82,8 +75,8 @@ script**
 
 **YOU SHOULD ALWAYS ADD THIS TO YOUR BASH SCRIPTS**
 
-Bashing (3)
-===========
+.. nextslide::
+    :increment:
 
 Sometimes some of you were getting confused about what you were doing after all
 of the variables. You can force `bash` to echo the expanded commands it is
@@ -93,7 +86,7 @@ running (including setting variable names) with
 
     set -x
 
-Bashing Summary
+Bash Summary
 ===============
 
 Do this at the top of every script:
@@ -104,7 +97,6 @@ Do this at the top of every script:
    set -x # this can sometimes be removed
 
 Pipefail gives more useful error messages when piping (|) commands.
-
 
 FASTQ
 =====

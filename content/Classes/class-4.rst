@@ -1,14 +1,102 @@
-***************
- Class 4 : awk
-***************
 
-:Class date: Thurs 5 Feb 2015
+.. include:: /_static/substitutions.txt
+
+************************
+ Class 4 : grep and awk
+************************
+
+:Class date: |c4-date|
+:Last updated: |today|
 
 Goals
 =====
 #. Review
+
 #. remember BED format (chr, start, end)
-#. learn awk basics to filter and manipulate text
+
+#. learn grep and awk basics to filter and manipulate text
+
+grep
+====
+Use :linuxman:`grep(1)` to identify lines in a file that match a specified pattern.
+
+To find any instance of *chr5* in the lamina.bed file
+
+.. code-block:: bash
+
+    # grep [pattern] [filename]
+    $ grep chr5 /vol1/opt/data/lamina.bed | head
+
+To find all lines that start with a number sign:
+
+.. code-block:: bash
+
+    # The caret (^) matches the beginning of the line
+    # FYI dollar sign ($) matches the end
+    $ grep '^#' /vol1/opt/data/lamina.bed
+
+.. nextslide::
+    :increment:
+
+To find any line that *does not* start with "chr":
+
+.. code-block:: bash
+
+    # the -v flag inverts the match (grep "not" [pattern])
+    $ grep -v '^chr' /vol1/opt/data/lamina.bed
+
+Beware of using ``grep`` to find patterns that might be partial matches:
+
+.. code-block:: bash
+
+    # this will match chr1, chr10, chr11 etc.
+    $ grep chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
+
+You can find exact matches that are split on words with the ``-w`` flag:
+
+.. code-block:: bash
+
+    # this will only match chr1
+    $ grep -w chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
+
+.. nextslide::
+    :increment:
+
+Beware of using ``grep`` to search for numbers:
+
+.. code-block:: bash
+
+    # finds all strings that match `100`
+    $ grep 100 /vol1/opt/data/lamina.bed | head -n 20
+
+    # better, but doesn't look at numeric value
+    $ grep -w 100 /vol1/opt/data/lamina.bed | head -n 20
+
+.. tip::
+
+    If you're trying to find numeric values in a file, use ``awk``
+    instead::
+
+        $ awk '$2 == 500' /vol1/opt/data/lamina.bed
+
+Exercises
+=========
+
+#. use ``grep`` to identify lines in lamina.bed where the second field
+   (start) begins with ``100``.
+
+#. use ``grep`` to identify lines in lamina.bed where the third field
+   (end) ends with 99 .
+
+#. use ``grep`` with its ``-w`` flag to count the number of 'chr1'
+   records in lamina.bed.
+
+#. use ``grep`` to count how many fastq records are in the
+   /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
+   '@' symbol)
+
+#. use ``grep`` to count the number of fastq records in
+   /vol1/opt/data/SP1.fq.gz
 
 awk
 ===
@@ -24,17 +112,20 @@ Named after authors **A** ho, **W** einberger & **K** ernighan
 
 basic principles
 ================
-
 #. awk operates on each line of a text file
+
 #. in an awk program, $1 is an alias for the 1st column, $2 for the 2nd, etc. 
+
 #. awk can filter lines by a pattern
 
 awk program structure
 =====================
 
-+ **BEGIN** runs before the program starts
-+ **END** runs after the program runs through all lines in the file
-+ **PATTERN** and **ACTIONS** check and execute on each line.
+- **BEGIN** runs before the program starts
+
+- **END** runs after the program runs through all lines in the file
+
+- **PATTERN** and **ACTIONS** check and execute on each line.
 
 .. code-block:: bash
 
@@ -55,7 +146,7 @@ Same with **END**:
 
    awk 'END { print 12 * 13 }'
    # then type ctrl+d so it knows it's not getting more input.
- 
+
 filtering
 =========
 A simple and powerful use of awk is lines that match a pattern or meet set
@@ -99,8 +190,11 @@ in-class exercise
 we will do the first of these together.
 
 #. how many regions (lines) in lamina.bed have a start less than 1,234,567 on any chromosome?
+
 #. how many regions in lamina.bed have a start less than 1,234,567 on chromosome 8?
+
 #. how many regions (lines) in lamina.bed have a start between 50,000 and 951,000
+
 #. how many regions in lamina.bed overlap the interval **chr12:5,000,000-6,000,000** ?
 
 .. important::
@@ -119,12 +213,12 @@ print total bases covered on chromosome 13:
 
 .. important::
     
- #. the entire awk program must be wrapped in quotes. Nearly always best to use
-    single quotes (') on the outside.
- #. *coverage* is a variable that stores values; we don't use
-    a $ to access it like we do in bash or like we do for the $1,
-    $2, ... columns
+    1. the entire awk program must be wrapped in quotes. Nearly always best to use
+        single quotes (') on the outside.
 
+    2. *coverage* is a variable that stores values; we don't use
+        a $ to access it like we do in bash or like we do for the $1,
+        $2, ... columns
 
 in-class exercise
 =================
@@ -160,10 +254,13 @@ remember we can simply filter to the lines > 5000 with:
 awk special variables
 =====================
 #. we know *$1*, *$2*, ... for the column numbers
+
 #. NR is a special variable that holds the line number
+
 #. NF is a special variable that holds the number of fields in the line
+
 #. FS and OFS are the (F)ield and (O)output (F)ield (S)eparators
-   --meaning the delimiters (default is any space character)
+   i.e. the delimiters (default is any space character)
 
 using awk to count lines with NR
 ================================
@@ -213,18 +310,11 @@ You can do a lot more with awk, here are several resources:
 
 In Class Exercises - Class 4
 ============================
-we will do the first 2. of these together
+we will do the first 2 of these together.
 
-1. use NR to print each line of `lamina.bed` *preceded* by it's line number
+#. use NR to print each line of `lamina.bed` *preceded* by it's line number
 
-a. do the above, but only for regions on chromosome 12
-
-2. use NF to see how many columns are in each row of `states.tab`
-
-a. use sort and uniq -c to see uniq column counts.
-b. why are there 2 numbers?
-c. can you adjust the file separator so that awk thinks all rows have
-   the same number of columns?
+#. use NF to see how many columns are in each row of `states.tab`
 
 review
 ======
@@ -241,8 +331,8 @@ review
 + NR is line number; NF is number of fields;
 + BEGIN {} filter { action } END { }
 
-In Class Exercises - Class 4 (2)
-================================
+Exercises
+=========
 
 #. are there any regions in `lamina.bed` with start > end?
 
@@ -252,9 +342,8 @@ In Class Exercises - Class 4 (2)
 
 #. print out only the header and the entry for colorado in `states.tab`
 
-#. what is the (single-number) sum of all the incomes for `states.tab` with illiteracy rate:
-a. less than 0.1?
-b. greater than 2?
+#. what is the (single-number) sum of all the incomes for `states.tab`
+   with illiteracy rate less than 0.1? greater than 2?
 
 #. use NR to filter out the header from `lamina.bed` (hint: what is NR for the header?)
 

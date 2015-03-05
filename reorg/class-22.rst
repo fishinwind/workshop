@@ -1,6 +1,6 @@
 
 *********************
-Class 24 : RNA-Seq II
+Class 22 : RNA-Seq
 *********************
 
 Goals
