@@ -45,7 +45,11 @@ points**). **Only look at data on chr22 for the following problem**.
 Examine ENCODE CTCF and histone ChIP-seq data to determine what histone
 marks are enriched near CTCF binding sites. 
 
-#. Download ENCODE CTCF and histone (H3K4me3 and H3K27ac) ChIP data for
+ENCODE CTCF peak calls from K562 are in::
+
+    /vol1/opt/data/wgEncodeUwTfbsK562CtcfStdPkRep1.narrowPeak.gz
+
+#. Download ENCODE histone (H3K4me3 and H3K27ac) ChIP data for
    the K562 cell line.
 
 #. Determine how histone marks are distributed around CTCF binding sites.
