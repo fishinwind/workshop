@@ -2,7 +2,10 @@
 title: "Rmarkdown demo"
 author: "Jay Hesselberth"
 date: '2015-03-02'
-output: html_document
+output:
+  html_document:
+    theme: united
+    toc: yes
 ---
 
 # Summary

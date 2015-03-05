@@ -48,7 +48,7 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" />
     <link rel="up" title="Problem Sets" href="../../Problem_Sets.html" />
@@ -162,14 +162,14 @@ result and save it as a PDF. (<strong>15 points</strong>)</li>
 1000Genomes SNP data in BED format, and assume that each
 SNP in the file is the same in terms of quality (<strong>20 points</strong>).<ul>
 <li>Calculate SNP density (SNPs per bp) for first exons of refGene
-annotations. (hint: use the <code class="docutils literal"><span class="pre">-n</span></code> option of
+annotations. (hint: use the <tt class="docutils literal"><span class="pre">-n</span></tt> option of
 <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/bed12tobed6.html#bed12tobed6" title="(in bedtools v2.22.1)"><em class="xref std std-ref">bed12tobed6</em></a>)</li>
 <li>Do the same for the introns of each gene. (hint: use
 <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/subtract.html#subtract" title="(in bedtools v2.22.1)"><em class="xref std std-ref">subtract</em></a> with BED files for genes and
 exons)</li>
-<li>Make a histogram of the results (use <code class="docutils literal"><span class="pre">geom_hist()</span></code>).</li>
-<li>Add text annotations to the plot with <code class="docutils literal"><span class="pre">geom_text()</span></code> and
-<code class="docutils literal"><span class="pre">ggtitle</span></code>. E.g. how many SNPs were examined? How many exon /
+<li>Make a histogram of the results (use <tt class="docutils literal"><span class="pre">geom_hist()</span></tt>).</li>
+<li>Add text annotations to the plot with <tt class="docutils literal"><span class="pre">geom_text()</span></tt> and
+<tt class="docutils literal"><span class="pre">ggtitle</span></tt>. E.g. how many SNPs were examined? How many exon /
 intron regions?</li>
 </ul>
 </li>
