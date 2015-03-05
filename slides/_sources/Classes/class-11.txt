@@ -2,7 +2,7 @@
 .. include:: /_static/substitutions.txt
 
 ********************************************
-Class 11 : R : Simple statistics and ggplot2 by Charlotte 
+Class 11 : R : Simple statistics and ggplot2 
 ********************************************
 
 :Class date: |c11-date|

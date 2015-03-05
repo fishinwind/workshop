@@ -40,23 +40,22 @@ Problem 2
 
     /vol1/opt/data/hg19/1000genomes/snp138.bed.gz
 
-- Examine the relationship between SNP density and gene structure. Use
-  1000Genomes SNP data in BED format, and assume that each
-  SNP in the file is the same in terms of quality (**20 points**).
+#. Examine the relationship between SNP density and gene structure. Use
+   1000Genomes SNP data in BED format, and assume that each
+   SNP in the file is the same in terms of quality (**20 points**).
 
-  - Calculate SNP density (SNPs per bp) for first exons of refGene
-    annotations. (hint: use the ``-n`` option of 
-    :ref:`bed12tobed6 <bedtools:bed12tobed6>`)
+    #. Calculate SNP density (SNPs per bp) for first exons of refGene
+       annotations. (hint: use the ``-n`` option of 
+       :ref:`bed12tobed6 <bedtools:bed12tobed6>`)
 
-  - Do the same for the introns of each gene. (hint: use
-    :ref:`subtract <bedtools:subtract>` with BED files for genes and
-    exons) 
+    #. Do the same for the introns of each gene. (hint: use
+       :ref:`subtract <bedtools:subtract>` with BED files for genes and
+       exons) 
 
-  - Make a histogram of the results (use ``geom_hist()``).
-
-  - Add text annotations to the plot with ``geom_text()`` and
-    ``ggtitle``. E.g. how many SNPs were examined? How many exon /
-    intron regions?
+    #. Make a histogram of the results (use ``geom_hist()``).
+    #. Add text annotations to the plot with ``geom_text()`` and
+       ``ggtitle``. E.g. how many SNPs were examined? How many exon /
+       intron regions?
 
 Problem Set Submission
 ----------------------
