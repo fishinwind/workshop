@@ -1,0 +1,241 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 24 : RNA-Seq II &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 24 : RNA-Seq II<a class="headerlink" href="../../Classes/class-24.html#class-24-rna-seq-ii" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-24.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Check Alignments</li>
+<li>Sort Alignments</li>
+<li>Count reads</li>
+<li>Differential Expression</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Alignment QC<a class="headerlink" href="../../Classes/class-24.html#alignment-qc" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Since it was a long-running job, we should check the logs:</p>
+<div class="highlight-bash"><div class="highlight"><pre>ls -lhtr logs/ <span class="p">|</span> tail -n 4
+</pre></div>
+</div>
+<p>And <em>less one of the .err</em> logs. The end should look something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>[2014-03-28 16:38:53] Run complete: 01:26:06 elapsed
++ exit
+</pre></div>
+</div>
+<p>The <cite>.out</cite> file should contain the text &quot;Successfully completed.&quot;</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Tophat Alignment Metrics<a class="headerlink" href="../../Classes/class-24.html#tophat-alignment-metrics" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Remember we had 4 samples. We can check the alignment metrics
+from all of them:</p>
+<div class="highlight-python"><div class="highlight"><pre>less results/CNTRL_002_CGATGT_L002.tophat2/align_summary.txt
+</pre></div>
+</div>
+<p>We can also see the % of paired reads:</p>
+<div class="highlight-python"><div class="highlight"><pre>grep &quot;concordant&quot; results/*/align_summary.txt
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Samtools<a class="headerlink" href="../../Classes/class-24.html#samtools" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The alignment files are in results/*/accepted_hits.bam we can
+count the number of paired reads</p>
+<div class="highlight-bash"><div class="highlight"><pre>samtools view -cf2 results/CNTRL_002_CGATGT_L002.tophat2/accepted_hits.bam
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Samtools Sort<a class="headerlink" href="../../Classes/class-24.html#samtools-sort" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>With paired-end reads, we should sort the alignments by name so
+that reads from the same pair are adjacent in the BAM.</p>
+<div class="highlight-bash"><div class="highlight"><pre>samtools sort -n some.bam some.sort
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>FastQC<a class="headerlink" href="../../Classes/class-24.html#fastqc" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We can run fastqc on the alignments. <em>see run.sh</em></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Count Reads<a class="headerlink" href="../../Classes/class-24.html#count-reads" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>subread/featureCounts:</p>
+<ul class="simple">
+<li>uses same GTF as tophat to counts number of reads per gene</li>
+<li>we will adjust resulting file format with python script</li>
+<li>send to DESeq for differential expression</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Differential Expression<a class="headerlink" href="../../Classes/class-24.html#differential-expression" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>From <cite>featureCounts</cite> we get a matrix of differential expression. We can
+send this to DESeq2 for differential expression.</p>
+<p>See <cite>run.sh</cite></p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

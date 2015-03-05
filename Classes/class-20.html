@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 20 : R : Manipulation &amp; Plotting &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 20 : R : Manipulation &amp; Plotting</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#rstudio-practice">RStudio practice</a></li>
+<li><a class="reference internal" href="#reshape2-review">reshape2 review</a></li>
+<li><a class="reference internal" href="#dplyr">dplyr</a></li>
+<li><a class="reference internal" href="#dplyr-example">dplyr example</a></li>
+<li><a class="reference internal" href="#id1">dplyr example</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-20-r-manipulation-plotting">
+<h1>Class 20 : R : Manipulation &amp; Plotting<a class="headerlink" href="#class-20-r-manipulation-plotting" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#class-20-r-manipulation-plotting" title="Slides">§</a></h1>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Learn to keep a running script in RStudio to save your work.</li>
+<li>more reshape and dplyr</li>
+<li>Exercises</li>
+</ol>
+</div>
+<div class="section" id="rstudio-practice">
+<h2>RStudio practice<a class="headerlink" href="#rstudio-practice" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#rstudio-practice" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>open a new R script with File -&gt; New -&gt; R script</li>
+<li>As you run interactive analyses, paste the commands that work into the
+script.</li>
+</ol>
+</div>
+<div class="section" id="reshape2-review">
+<h2>reshape2 review<a class="headerlink" href="#reshape2-review" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#reshape2-review" title="Slides">§</a></h2>
+<p>There are two functions in the reshape2 package: <tt class="docutils literal"><span class="pre">melt()</span></tt> and
+<tt class="docutils literal"><span class="pre">dcast()</span></tt>. The <tt class="docutils literal"><span class="pre">d</span></tt> means it returns a data.frame.</p>
+<p><tt class="docutils literal"><span class="pre">dcast()</span></tt> takes a data.frame, a forumula and an optional function</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>reshape2<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<span class="o">&gt;</span> mycars <span class="o">&lt;-</span> mutate<span class="p">(</span>mtcars<span class="p">,</span> car.name <span class="o">=</span> <span class="kp">rownames</span><span class="p">(</span>mtcars<span class="p">))</span>
+<span class="o">&gt;</span> mycarsm <span class="o">&lt;-</span> melt<span class="p">(</span>mycars<span class="p">,</span> id<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;car.name&#39;</span><span class="p">,</span><span class="s">&#39;gear&#39;</span><span class="p">))</span>
+<span class="c1"># examine mycarsm. is it wide or long?</span>
+<span class="o">&gt;</span> dcast<span class="p">(</span>mycarsm<span class="p">,</span> gear <span class="o">~</span> variable<span class="p">,</span> <span class="kp">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dplyr">
+<h2>dplyr<a class="headerlink" href="#dplyr" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#dplyr" title="Slides">§</a></h2>
+<p><tt class="docutils literal"><span class="pre">dplyr</span></tt> provides these simple methods:</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">summarise()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">filter()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">select()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">mutate()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">arrange()</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">group_by()</span></tt></li>
+</ol>
+<p><tt class="docutils literal"><span class="pre">dplyr</span></tt> also provides an operator called <tt class="docutils literal"><span class="pre">%&gt;%</span></tt> that allows you to
+string manipulations together:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> summary <span class="o">&lt;-</span> df <span class="o">%&gt;%</span> select<span class="p">()</span> <span class="o">%&gt;%</span> group_by<span class="p">()</span> <span class="o">%&gt;%</span> summarize<span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dplyr-example">
+<h2>dplyr example<a class="headerlink" href="#dplyr-example" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#dplyr-example" title="Slides">§</a></h2>
+<div class="highlight-r"><div class="highlight"><pre>dfx <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;misc/data/expr-geno-covs.txt&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># calculate some simple stats with dplyr</span>
+grouped <span class="o">&lt;-</span> group_by<span class="p">(</span>dfx<span class="p">,</span> condition<span class="p">,</span> genotype<span class="p">)</span>
+summarize<span class="p">(</span>grouped<span class="p">,</span> count <span class="o">=</span> n<span class="p">(),</span> mean.age <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>age<span class="p">))</span>
+
+<span class="c1"># even better</span>
+dfx <span class="o">%&gt;%</span>
+    group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> <span class="o">%&gt;%</span>
+    summarize<span class="p">(</span>count <span class="o">=</span> n<span class="p">(),</span> mean.age <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>age<span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>dplyr example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#id1" title="Slides">§</a></h2>
+<p>Fetch the peaks.bed.gz file &lt;<a class="reference external" href="http://amc-sandbox.ucdenver.edu/~jhessel/outbox/2014/peaks.bed.gz">http://amc-sandbox.ucdenver.edu/~jhessel/outbox/2014/peaks.bed.gz</a>&gt;</p>
+<p>Summarize transcription factor binding site peaks:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> colnames <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> bedfilename <span class="o">=</span> <span class="s">&#39;peaks.bed.gz&#39;</span>
+<span class="c1"># use ``gzfile`` to load gzipped data</span>
+<span class="o">&gt;</span> peaks <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="kp">gzfile</span><span class="p">(</span>bedfilename<span class="p">),</span> col.names<span class="o">=</span><span class="kp">colnames</span><span class="p">)</span>
+
+<span class="o">&gt;</span> peaks <span class="o">%.%</span>
+    group_by<span class="p">(</span>name<span class="p">)</span> <span class="o">%.%</span>
+    mutate<span class="p">(</span>peak.width <span class="o">=</span> end <span class="o">-</span> start<span class="p">)</span> <span class="o">%.%</span>
+    filter<span class="p">(</span>peak.width <span class="o">&gt;</span> <span class="m">500</span> <span class="p">)</span> <span class="o">%.%</span>
+    summarize<span class="p">(</span>count <span class="o">=</span> n<span class="p">(),</span> mean.width <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>peak.width<span class="p">))</span> <span class="o">%.%</span>
+    arrange<span class="p">(</span>desc<span class="p">(</span>count<span class="p">))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">n()</span></tt> is a special function for counting observations</li>
+<li>assign the whole thing to a new data.frame</li>
+</ul>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#exercises" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Melt the <cite>expr-geno-covs.txt</cite> data table. Recast it with <tt class="docutils literal"><span class="pre">dcast()</span></tt>
+and calculate the mean for each variable conditioned on gender. Plot
+the result.</li>
+<li>Use <tt class="docutils literal"><span class="pre">dplyr</span></tt> to calculate the mean age of smokers grouped by gender
+and smoking status. Plot the result.</li>
+<li>Make a plot of age by expression faceted by genotype. Fit a linear
+model through these curves (use geom_smooth) on the plot.</li>
+<li>Load the peaks BED file and find the 10 factors that have the largest range
+in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or <tt class="docutils literal"><span class="pre">geom_violin()</span></tt> to support
+your answer (also add individual points to the plot with <tt class="docutils literal"><span class="pre">geom_jitter()</span></tt>).</li>
+</ol>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/Classes/class-20.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Jay Hesselberth.<br/>
+      Last updated on Feb 13, 2015.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

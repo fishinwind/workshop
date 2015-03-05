@@ -136,6 +136,9 @@ Grading Criteria
 
 .. _syllabus-specific-dates:
 
+.. problem sets staring really piling up after ps3 in spring 2015. Maybe
+.. have a break after every 3.
+
 Specific Dates / Material to be Covered
 =======================================
 
@@ -186,7 +189,7 @@ Specific Dates / Material to be Covered
     * - Class 10 
       - |c10-date| 
       - R Data & Plotting
-      - **PS5 due** (|pset5-due|)
+      - ** No Problem Set ** 
     * - Class 11 
       - |c11-date| 
       - R Data & Plotting
@@ -194,7 +197,7 @@ Specific Dates / Material to be Covered
     * - Class 12
       - |c12-date| 
       - R Data & Plotting
-      - **PS6 due** (|pset6-due|)
+      - **PS5 due** (|pset5-due|)
     * - Class 13 
       - |c13-date| 
       - R Data & Plotting
@@ -202,7 +205,7 @@ Specific Dates / Material to be Covered
     * - Class 14 
       - |c14-date| 
       - R Data & Plotting
-      - **PS7 due** (|pset7-due|)
+      - **PS6 due** (|pset6-due|)
     * - 
       - ** No Class Mar 16-20 ** 
       - ** Spring Break **
@@ -222,7 +225,7 @@ Specific Dates / Material to be Covered
     * - Class 18
       - |c18-date| 
       - Python 
-      - **PS8 due** (|pset8-due|)
+      - **PS7 due** (|pset7-due|)
     * - Class 19
       - |c19-date| 
       - Python 
@@ -230,7 +233,7 @@ Specific Dates / Material to be Covered
     * - Class 20
       - |c20-date| 
       - Python
-      - **PS9 due** (|pset9-due|)
+      - **PS8 due** (|pset8-due|)
     * - Class 21
       - |c21-date| 
       - mRNA-seq
@@ -238,7 +241,7 @@ Specific Dates / Material to be Covered
     * - Class 22
       - |c22-date| 
       - mRNA-seq
-      - **PS10 due** (|pset10-due|)
+      - **PS9 due** (|pset9-due|)
     * - Class 23
       - |c23-date|
       - Exome analysis 
@@ -246,7 +249,7 @@ Specific Dates / Material to be Covered
     * - Class 24
       - |c24-date|
       - Exome analysis
-      - **PS11 due** (|pset11-due|)
+      - **PS10 due** (|pset10-due|)
     * - Class 25 
       - |c25-date|
       - Final Projects 

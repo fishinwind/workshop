@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 6 : Working in a cluster environment (part 2) &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 6 : Working in a cluster environment (part 2)</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#note">Note</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#exercise">Exercise</a></li>
+<li><a class="reference internal" href="#questions">Questions</a></li>
+<li><a class="reference internal" href="#more-exercises">More exercises</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-6-working-in-a-cluster-environment-part-2">
+<h1>Class 6 : Working in a cluster environment (part 2)<a class="headerlink" href="#class-6-working-in-a-cluster-environment-part-2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-6-reorg.html#class-6-working-in-a-cluster-environment-part-2" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Friday 7 February 2014</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-6-reorg.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Leverage cluster resources to solve bioinformatic problems</li>
+<li>Exercises! (<tt class="docutils literal"><span class="pre">grep</span></tt> review)</li>
+<li>Practice typing for a bit.</li>
+<li>Learn to switch between terminal windows with &lt;Alt&gt;-&lt;Tab&gt;</li>
+</ol>
+</div>
+<div class="section" id="note">
+<h2>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-6-reorg.html#note" title="Slides">§</a></h2>
+<p>We would like to quickly move toward having your homework be executable.
+In other words, we should be able to:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bash run.homework-1.sh
+</pre></div>
+</div>
+<p>and have it execute all of the questions, writing results into files into
+the right places as necessary. Getting into this habit lets you save
+everything you did, and also re-run things when you need to make changes.</p>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-6-reorg.html#overview" title="Slides">§</a></h2>
+<p>We will go over a common scenario in bioinformatics where you can
+leverage cluster resources to process many files simultaneously with
+identical workflows.</p>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-6-reorg.html#exercise" title="Slides">§</a></h2>
+<p>Sequencing experiments typically generate raw sequencing data from many
+different experimental conditions (i.e. treatments, controls, cell types,
+time points, etc.) However, the initial steps of processing sequencing
+data use common steps to process the data into an interpretable form. A
+typical workflow for assessing sequencing data might begin with:</p>
+<ol class="arabic simple">
+<li>Align reads to a reference genome</li>
+<li>Calculate coverage from the alignment</li>
+</ol>
+<p>Login to amc-tesla.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
+<span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
+</pre></div>
+</div>
+<p>We have 4 different FASTQ files from a sequencing experiment. They
+are located in:</p>
+<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Type this out. Do not copy / paste.</p>
+</div>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /usr/bin/env bash</span>
+
+<span class="c">#BSUB -J workflow[1-4]                                                                                                              </span>
+<span class="c">#BSUB -e %J.%I.err                                                                                                                  </span>
+<span class="c">#BSUB -o %J.%I.out                                                                                                                  </span>
+<span class="c">#BSUB -R &quot;select[mem&gt;4] rusage[mem=4]&quot;</span>
+
+<span class="c"># this section defines the sample names and grabs the appropriate                                                                   </span>
+<span class="c"># sample name for the current process</span>
+<span class="nv">SAMPLENAMES</span><span class="o">=(</span>SP1 SP2 SP3 SP4<span class="o">)</span>                                                                                                       
+
+<span class="c"># $LSB_JOBINDEX is set at runtime for the current process; in this                                                                  </span>
+<span class="c"># case you asked for 4 jobs, so it be a value between 1 and 4                                                                       </span>
+<span class="nv">sample</span><span class="o">=</span><span class="si">${</span><span class="nv">SAMPLENAMES</span><span class="p">[</span><span class="k">$((</span><span class="nv">$LSB_JOBINDEX</span> <span class="o">-</span> <span class="m">1</span><span class="k">))</span><span class="p">]</span><span class="si">}</span>                                                                                       
+
+<span class="c"># set up file names                                                                                                                 </span>
+<span class="nv">data</span><span class="o">=</span>/vol1/opt/data
+<span class="nv">bwtindex</span><span class="o">=</span>/vol1/opt/data/hg19
+<span class="nv">fastq</span><span class="o">=</span><span class="nv">$data</span>/<span class="nv">$sample</span>.fq.gz
+<span class="nv">align</span><span class="o">=</span><span class="nv">$sample</span>.sam
+<span class="nv">coverage</span><span class="o">=</span><span class="nv">$sample</span>.coverage.gz
+
+<span class="c"># run the workflow </span>
+bowtie2 -x <span class="nv">$bwtindex</span> -U <span class="nv">$fastq</span> &gt; <span class="nv">$align</span>
+
+<span class="c"># now generate counts of each position that was aligned to; fields 3                                                                </span>
+<span class="c"># and 4 of the .sam file are chrom and pos.</span>
+grep -v <span class="s1">&#39;^@&#39;</span> <span class="nv">$align</span> <span class="se">\</span>
+    <span class="p">|</span> cut -f3,4 <span class="se">\</span>
+    <span class="p">|</span> sort <span class="se">\</span>
+    <span class="p">|</span> uniq -c <span class="se">\</span>
+    <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $2,$3,$1}&#39;</span> <span class="se">\</span>
+    <span class="p">|</span> gzip -c &gt; <span class="nv">$coverage</span>
+</pre></div>
+</td></tr></table></div>
+<p>Run the above script and check its status immediately:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bsub &lt; run.sh
+<span class="nv">$ </span>bjobs
+</pre></div>
+</div>
+<p>You should see 4 running jobs, each with its own index i.e. workflow[1],
+workflow[2] etc.</p>
+<p>These will run for a bit. After they are done, you will see several new
+files, corresponding to the output of the same analysis applied to all the
+different samples.</p>
+</div>
+<div class="section" id="questions">
+<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-6-reorg.html#questions" title="Slides">§</a></h2>
+<ol class="arabic">
+<li><p class="first">Check the <tt class="docutils literal"><span class="pre">.err</span></tt> files from the run. What information do they
+contain? What does this tell you about your starting sequences?</p>
+</li>
+<li><p class="first">Find out how you would modify the <tt class="docutils literal"><span class="pre">bowtie2</span></tt> command to write out the
+unaligned reads into a new file. Re-run the analysis to report those
+reads.</p>
+</li>
+<li><p class="first">Modify the <tt class="docutils literal"><span class="pre">awk</span></tt> command in the script to print out a valid BED4
+format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">chrom</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">start</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">end</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">count</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Find out how many unique UMI sequences are associted with each
+chromosomal coordinate (note: not as easy).</p>
+</li>
+</ol>
+</div>
+<div class="section" id="more-exercises">
+<h2>More exercises<a class="headerlink" href="#more-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-6-reorg.html#more-exercises" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to identify lines in lamina.bed where the second field
+(start) begins with <tt class="docutils literal"><span class="pre">100</span></tt>.</li>
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to identify lines in lamina.bed where the third field
+(end) ends with 99 .</li>
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> with its <tt class="docutils literal"><span class="pre">-w</span></tt> flag to count the number of &#8216;chr1&#8217;
+records in lamina.bed.</li>
+<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to count how many fastq records are in the
+/vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
+&#8216;&#64;&#8217; symbol)</li>
+<li>login to amc-tesla. use <tt class="docutils literal"><span class="pre">grep</span></tt> to count the number of fastq records
+in /vol1/opt/data/SP1.fq.gz</li>
+</ol>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/Classes/class-6-reorg.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Jay Hesselberth.<br/>
+      Last updated on Feb 13, 2015.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

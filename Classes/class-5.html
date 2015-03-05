@@ -143,6 +143,19 @@
 <li><a class="reference internal" href="#genomecov">Genomecov</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#encode">ENCODE</a></li>
+<li><a class="reference internal" href="#encode-project-cell-lines">ENCODE Project Cell Lines</a></li>
+<li><a class="reference internal" href="#experiments">Experiments</a></li>
+<li><a class="reference internal" href="#common-file-formats">Common File Formats</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#how-to-access-encode-data">How to Access ENCODE Data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#chromatin-immunoprecipitation-overview">Chromatin Immunoprecipitation Overview</a><ul>
+<li><a class="reference internal" href="#chip-seq-analysis-workflow">ChIP-seq analysis workflow</a></li>
+<li><a class="reference internal" href="#chip-seq-data">ChIP-seq data</a></li>
+<li><a class="reference internal" href="#peak-calling">Peak calling</a></li>
+<li><a class="reference internal" href="#identify-sequence-motifs-in-enriched-regions">Identify sequence motifs in enriched regions</a></li>
 </ul>
 </li>
 </ul>
@@ -175,17 +188,6 @@
 <h2>Cluster etiquette<a class="headerlink" href="#cluster-etiquette" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#cluster-etiquette" title="Slides">§</a></h2>
 <p>There are some specific rules you need to know when you&#8217;re operating in a
 cluster environment.</p>
-<p class="graphviz">
-<img src="../_images/graphviz-23b92947c32d4cd35df4fce8fa40a0148601675d.png" alt="digraph cluster {
-    &quot;YOU&quot; [shape=box];
-    &quot;amc-tesla&quot; [shape=box];
-    &quot;filesystem&quot; [shape=box];
-    &quot;compute nodes&quot; [shape=box];
-    &quot;YOU&quot; -&gt; &quot;amc-tesla&quot;;
-    &quot;amc-tesla&quot; -&gt; &quot;filesystem&quot;;
-    &quot;amc-tesla&quot; -&gt; &quot;compute nodes&quot;;
-}" />
-</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last"><strong>DO NOT</strong> run jobs on the head node (amc-tesla). The head node is the
@@ -522,6 +524,143 @@ if it&#8217;s not overlapping.</p>
 <img alt="https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png" src="https://bedtools.readthedocs.org/en/latest/_images/genomecov-glyph.png" />
 <p>Usually want the last option <cite>-bg -split</cite></p>
 </div>
+</div>
+<div class="section" id="encode">
+<h2>ENCODE<a class="headerlink" href="#encode" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#encode" title="Slides">§</a></h2>
+<p>The Human Genome Project was finished, giving us a list of human genes and their
+locations. Unfortunately, we still had no idea how they were regulated. If only
+there was an <a class="reference external" href="http://www.sciencemag.org.hsl-ezproxy.ucdenver.edu/content/306/5696/636.full">ENCyclopedia Of Dna Elements</a>…</p>
+<p>Advantages: massive amounts of information on key cell lines, reproducible
+experiments, public data access, technology development.</p>
+</div>
+<div class="section" id="encode-project-cell-lines">
+<h2>ENCODE Project Cell Lines<a class="headerlink" href="#encode-project-cell-lines" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#encode-project-cell-lines" title="Slides">§</a></h2>
+<p>Tier 1: GM12878 (EBV-transformed lymphoblast), K562 (CML lymphoblast), H1-hESC</p>
+<p>Tier 2: HeLa-S3 (cervical cancer), HepG2 (liver carcinoma), HUVEC (umbilical vein)</p>
+<p>Tier 2.5: SKNSH (neuroblastoma), IMR90 (lung fibroblast), A549 (lung carcinoma),
+MCF7 (breast carcinoma), LHCN (myoblast), CD14+, CD20+</p>
+<p><a class="reference external" href="http://genome.ucsc.edu/ENCODE/cellTypes.html">link</a> (this page also has very useful
+links to cell culture protocols)</p>
+</div>
+<div class="section" id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#experiments" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>ChIP-seq: Histone marks, transcription factors</li>
+<li>Chromatin structure: DNaseI-seq, FAIRE, 5C/Hi-C</li>
+<li>RNA expression: mRNA-seq, GENCODE gene predictions</li>
+<li>Data Integration: Segway / ChromHMM integration of functional data</li>
+</ol>
+</div>
+<div class="section" id="common-file-formats">
+<h2>Common File Formats<a class="headerlink" href="#common-file-formats" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#common-file-formats" title="Slides">§</a></h2>
+<ul class="simple">
+<li>FASTQ: Raw sequencing data. <cite>[link] &lt;http://maq.sourceforge.net/fastq.shtml&gt;</cite></li>
+<li>SAM/BAM: Aligned sequence data <cite>[link] &lt;http://samtools.github.io/hts-specs/SAMv1.pdf&gt;</cite></li>
+<li>Bed/bigBed: List of genomic regions <cite>[link] &lt;http://genome.ucsc.edu/FAQ/FAQformat.html#format1&gt;</cite></li>
+<li>Bedgraph/Wig/bigWig: Continuous signal <cite>[link] &lt;http://genome.ucsc.edu/goldenPath/help/bedgraph.html&gt;</cite></li>
+</ul>
+<p>Many other formats are described on this <a class="reference external" href="http://genome.ucsc.edu/FAQ/FAQformat.html">page</a></p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#references" title="Slides">§</a></h2>
+<p>Completion of the entire project, and a ton of papers:
+<a class="reference external" href="http://www.nature.com/nature/journal/v489/n7414/index.html">Nature</a>,
+<a class="reference external" href="http://genome.cshlp.org/content/22/9.toc">Genome Research</a>,
+<a class="reference external" href="http://genomebiology.com/content/13/9">Genome Biology</a>,</p>
+</div>
+<div class="section" id="how-to-access-encode-data">
+<h2>How to Access ENCODE Data<a class="headerlink" href="#how-to-access-encode-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#how-to-access-encode-data" title="Slides">§</a></h2>
+<p>The <a class="reference external" href="https://www.encodeproject.org/">ENCODE project page</a> is the portal
+to all of the ENCODE data.</p>
+</div>
+</div>
+<div class="section" id="chromatin-immunoprecipitation-overview">
+<h1>Chromatin Immunoprecipitation Overview<a class="headerlink" href="#chromatin-immunoprecipitation-overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#chromatin-immunoprecipitation-overview" title="Slides">§</a></h1>
+<p>Chromatin Immunoprecipitation is used to determine where a protein of
+interest binds on a chromatin template <a class="reference internal" href="class-6.html#park-chipseq" id="id2">[Park_Chipseq]</a>.</p>
+<table class="docutils citation" frame="void" id="park-chipseq" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[Park_Chipseq]</a></td><td><a class="reference external" href="http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html">http://www.nature.com/nrg/journal/v10/n10/full/nrg2641.html</a></td></tr>
+</tbody>
+</table>
+<img alt="../_images/chip-workflow.png" src="../_images/chip-workflow.png" />
+<img alt="../_images/chip-data.png" src="../_images/chip-data.png" />
+<div class="section" id="chip-seq-analysis-workflow">
+<h2>ChIP-seq analysis workflow<a class="headerlink" href="#chip-seq-analysis-workflow" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#chip-seq-analysis-workflow" title="Slides">§</a></h2>
+<p>A general workflow for visualizing ChIP-seq data (and many other types of
+data) is:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operation</th>
+<th class="head">File formats</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Align reads to reference genome</td>
+<td><tt class="docutils literal"><span class="pre">FASTQ</span> <span class="pre">~~&gt;</span> <span class="pre">BAM</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Generate coverage plots</td>
+<td><tt class="docutils literal"><span class="pre">BAM</span> <span class="pre">~~&gt;</span> <span class="pre">bedGraph</span></tt></td>
+</tr>
+<tr class="row-even"><td>Call peaks</td>
+<td><tt class="docutils literal"><span class="pre">BAM</span> <span class="pre">~~&gt;</span> <span class="pre">BED</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Make binary files for UCSC display</td>
+<td><tt class="docutils literal"><span class="pre">bedGraph</span> <span class="pre">~~&gt;</span> <span class="pre">bigWig</span></tt>, <tt class="docutils literal"><span class="pre">BED</span> <span class="pre">~~&gt;</span> <span class="pre">bigBed</span></tt></td>
+</tr>
+<tr class="row-even"><td>Identify motifs</td>
+<td><tt class="docutils literal"><span class="pre">BED</span> <span class="pre">~~&gt;</span> <span class="pre">FASTA</span> <span class="pre">~~&gt;</span> <span class="pre">TXT</span> <span class="pre">/</span> <span class="pre">HTML</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="chip-seq-data">
+<h2>ChIP-seq data<a class="headerlink" href="#chip-seq-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#chip-seq-data" title="Slides">§</a></h2>
+<p>Look at some human ChIP-seq data <a class="footnote-reference" href="#id4" id="id3">[1]</a>.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>Genome Browser Session
+<a class="reference external" href="http://goo.gl/WfJxcM">http://goo.gl/WfJxcM</a></td></tr>
+</tbody>
+</table>
+<p>(We&#8217;ll talk more in depth about ChIP-Seq workflows in the future,
+but for now, just a brief introdcution to a few commands you can use to
+work on ChIP-Seq data (and pset3)).</p>
+</div>
+<div class="section" id="peak-calling">
+<h2>Peak calling<a class="headerlink" href="#peak-calling" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#peak-calling" title="Slides">§</a></h2>
+<p>There are several available software packages for identifying regions
+enriched in your IP experiment (i.e. peaks). We will use macs2 here.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># minimal macs2 command</span>
+<span class="nv">$ </span>macs2 callpeak --treatment &lt;aln.bam&gt; --name &lt;exp.name&gt; <span class="o">[</span>options<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="identify-sequence-motifs-in-enriched-regions">
+<h2>Identify sequence motifs in enriched regions<a class="headerlink" href="#identify-sequence-motifs-in-enriched-regions" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5.html#identify-sequence-motifs-in-enriched-regions" title="Slides">§</a></h2>
+<p>You can use meme <a class="footnote-reference" href="#id6" id="id5">[2]</a> to identify over-represented motifs in groups of
+sequences (e.g. sequences covered by ChIP peaks).</p>
+<p>Use the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/getfasta.html#getfasta" title="(in bedtools v2.22.1)"><em class="xref std std-ref">bedtools getfasta</em></a> command to fetch
+fasta sequences.</p>
+<p>Note: meme looks at both strands of a DNA sequence by default.</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td>MEME
+<a class="reference external" href="http://meme.nbcr.net/meme/">http://meme.nbcr.net/meme/</a></td></tr>
+</tbody>
+</table>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools getfasta -fi &lt;ref.fa&gt; -bed &lt;peaks.bed&gt; -fo peaks.fa
+<span class="nv">$ </span>meme -nmotifs <span class="m">5</span> -minw <span class="m">6</span> -maxw <span class="m">20</span> -dna &lt;peaks.fa&gt;
+</pre></div>
+</div>
+<hr class="docutils" />
 </div>
 </div>
 

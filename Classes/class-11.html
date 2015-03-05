@@ -116,12 +116,18 @@
 <li><a class="reference internal" href="#">Class 11 : R : Simple statistics and ggplot2</a><ul>
 <li><a class="reference internal" href="#goals">Goals</a></li>
 <li><a class="reference internal" href="#statistics-in-r">Statistics in R</a><ul>
-<li><a class="reference internal" href="#excercises">Excercises</a></li>
+<li><a class="reference internal" href="#student-t-test">Student t-test</a></li>
+<li><a class="reference internal" href="#fisher-s-exact-test">Fisher&#8217;s Exact Test</a></li>
+<li><a class="reference internal" href="#wilcoxon-s-test">Wilcoxon&#8217;s Test</a></li>
+<li><a class="reference internal" href="#kolmogorov-smirnov">Kolmogorov-Smirnov</a></li>
+<li><a class="reference internal" href="#plot-the-distribution">Plot the distribution!</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ggplot-manipulations">ggplot manipulations</a></li>
 <li><a class="reference internal" href="#r-model-syntax">R Model Syntax</a><ul>
-<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#let-s-normalize">Let&#8217;s Normalize</a></li>
+<li><a class="reference internal" href="#id1">Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -153,32 +159,40 @@
 </div>
 <div class="section" id="statistics-in-r">
 <h2>Statistics in R<a class="headerlink" href="#statistics-in-r" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#statistics-in-r" title="Slides">§</a></h2>
-<p>R provides a number of builtin statistics:</p>
-<ul class="simple">
-<li><tt class="docutils literal"><span class="pre">t.test()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">fisher.test()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">wilcox.test()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">ks.set()</span></tt></li>
-</ul>
-<p>Each of these functions takes 2 vectors on input, and return a result
-object:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> this <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">100</span><span class="p">)</span>
-<span class="o">&gt;</span> that <span class="o">&lt;-</span> rnorm<span class="p">(</span><span class="m">100</span><span class="p">)</span>
-<span class="o">&gt;</span> result <span class="o">&lt;-</span> t.test<span class="p">(</span>this<span class="p">,</span> that<span class="p">)</span>
-
-<span class="o">&gt;</span> result<span class="o">$</span>p.value
-</pre></div>
+<p>R provides a number of builtin statistics. Let&#8217;s go over some using expr-geno-covs.txt. First, load the dataframe.</p>
+<div class="section" id="student-t-test">
+<h3>Student t-test<a class="headerlink" href="#student-t-test" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#student-t-test" title="Slides">§</a></h3>
+<p>Student t-test is used to determine if two sets of values are significantly different.
+- Assumptions are data has a normal distribution and is continuous.</p>
 </div>
-<div class="section" id="excercises">
-<h3>Excercises<a class="headerlink" href="#excercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#excercises" title="Slides">§</a></h3>
+<div class="section" id="fisher-s-exact-test">
+<h3>Fisher&#8217;s Exact Test<a class="headerlink" href="#fisher-s-exact-test" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#fisher-s-exact-test" title="Slides">§</a></h3>
+<p>Contingency tables are matrices that describe the frequency of variables.
+- Determine if variable &#8220;a&#8221; occurs at a higher frequency compared to variable &#8220;b&#8221;.
+- Fisher&#8217;s Exact Test is used to determine the statistical significance.</p>
+<p>From our data, let&#8217;s see if there is difference in frequency of former smokers between males and females.</p>
+</div>
+<div class="section" id="wilcoxon-s-test">
+<h3>Wilcoxon&#8217;s Test<a class="headerlink" href="#wilcoxon-s-test" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#wilcoxon-s-test" title="Slides">§</a></h3>
+<p>This test is used on two groups of data where the samples are somehow related. Unfortunately, there is no example in df so we will have to use other data.
+- Use <tt class="docutils literal"><span class="pre">immer</span></tt>; describes the yield of barley of 30 different locations in two different years.</p>
+</div>
+<div class="section" id="kolmogorov-smirnov">
+<h3>Kolmogorov-Smirnov<a class="headerlink" href="#kolmogorov-smirnov" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#kolmogorov-smirnov" title="Slides">§</a></h3>
+<p>This test determines if two distributions of data are similar.
+- Data does not have to have a normal distribution.
+- Data can be used continuous or discrete (count data).</p>
+</div>
+<div class="section" id="plot-the-distribution">
+<h3>Plot the distribution!<a class="headerlink" href="#plot-the-distribution" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#plot-the-distribution" title="Slides">§</a></h3>
+<p>Does the distribution make sense with our results??</p>
+</div>
+<div class="section" id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#exercises" title="Slides">§</a></h3>
 <ol class="arabic simple">
 <li>Use <tt class="docutils literal"><span class="pre">t.test()</span></tt> determine whether there are significant expression
-differences between in <cite>expr-geno-covs.txt</cite>:</li>
+differences between in <cite>expr-geno-covs.txt</cite> using conditions instead of gender.</li>
 </ol>
-<ul class="simple">
-<li>conditions</li>
-<li>gender</li>
-</ul>
 </div>
 </div>
 <div class="section" id="ggplot-manipulations">
@@ -192,14 +206,11 @@ differences between in <cite>expr-geno-covs.txt</cite>:</li>
 <p>Often you will have observations of two variables that are both
 continuous data. How can you examine the relationships between these?</p>
 <p>Use <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> with the <tt class="docutils literal"><span class="pre">group</span></tt> aesthetic:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="c1"># ``round_any()`` is provided by ``plyr``</span>
-<span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>covs<span class="p">,</span>
-               aes<span class="p">(</span>x <span class="o">=</span> age<span class="p">,</span> y <span class="o">=</span> <span class="kp">expression</span><span class="p">,</span>
-               group <span class="o">=</span> plyr<span class="o">::</span>round_any<span class="p">(</span>age<span class="p">,</span> <span class="m">2</span><span class="p">)))</span>
-
-<span class="o">&gt;</span> gp <span class="o">+</span> geom_boxplot<span class="p">()</span>
+<div class="highlight-r"><div class="highlight"><pre>
 </pre></div>
 </div>
+<p>&gt; gp &lt;- ggplot(df, aes(x = age, y = expression)
+&gt; gp + geom_boxplot()</p>
 <p>Or you can plot the data and fit a curve or linear model to examine the
 overall relationship:</p>
 <div class="highlight-r"><div class="highlight"><pre><span class="c1"># plot a smoothed, possibly curvy, line</span>
@@ -214,18 +225,34 @@ overall relationship:</p>
 <div class="section" id="r-model-syntax">
 <h2>R Model Syntax<a class="headerlink" href="#r-model-syntax" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#r-model-syntax" title="Slides">§</a></h2>
 <p>You can also fit and examine a linear model:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> model <span class="o">&lt;-</span> lm<span class="p">(</span>expression <span class="o">~</span> genotype <span class="o">+</span> condition <span class="o">+</span> gender <span class="p">,</span> data <span class="o">=</span> covs<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> model <span class="o">&lt;-</span> lm<span class="p">(</span>expression <span class="o">~</span> genotype <span class="o">+</span> condition <span class="o">+</span> gender<span class="p">,</span> data <span class="o">=</span> df<span class="p">)</span>
 <span class="o">&gt;</span> <span class="kp">summary</span><span class="p">(</span>model<span class="p">)</span>
 
 <span class="c1"># look at diagnostic plots</span>
 <span class="o">&gt;</span> plot<span class="p">(</span>model<span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="exercises">
-<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#exercises" title="Slides">§</a></h3>
+<p>What assumptions can we make from the diagnostics?
+What do you suggest we do to fix it?
+- don&#8217;t look ahead it&#8217;s cheating &gt;:(</p>
+<div class="section" id="let-s-normalize">
+<h3>Let&#8217;s Normalize<a class="headerlink" href="#let-s-normalize" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#let-s-normalize" title="Slides">§</a></h3>
+<p>If we normalize the data, the diagnostics might fit.
+- Log that data.</p>
+<p>But wait, there are 0 values - get values that do not exist. What on earth do we do??!
+- Filter out values.
+- After normalizing, replace again with 0.</p>
+<p>How would you replace values with 0?</p>
+<ul class="simple">
+<li>MAJOR NOTE: you don&#8217;t need to know this stuff for the homework, I&#8217;m just having fun.</li>
+<li>Also! knowing some of these tricks may make your life easier with your own work.</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#id1" title="Slides">§</a></h3>
 <ol class="arabic simple">
 <li>Does adding age to the existing model (expression ~ genotype + condition +
-gender) change the signficance of the other variables?</li>
+gender) change the significance of the other variables?</li>
 <li>How does removing condition from the model affect the significance of
 genotype and vice-versa?</li>
 </ol>

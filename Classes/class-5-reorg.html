@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 5 : Working in a cluster environment &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 5 : Working in a cluster environment</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#grep">grep</a></li>
+<li><a class="reference internal" href="#cluster-access">Cluster access</a></li>
+<li><a class="reference internal" href="#cluster-etiquette">Cluster etiquette</a></li>
+<li><a class="reference internal" href="#example-commands-on-the-cluster">Example commands on the cluster</a></li>
+<li><a class="reference internal" href="#the-queueing-system">The queueing system</a></li>
+<li><a class="reference internal" href="#the-queueing-system-2">The queueing system (2)</a></li>
+<li><a class="reference internal" href="#the-queueing-system-3">The queueing system (3)</a></li>
+<li><a class="reference internal" href="#the-queueing-system-4">The queueing system (4)</a></li>
+<li><a class="reference internal" href="#killing-jobs">Killing jobs</a></li>
+<li><a class="reference internal" href="#other-cluster-specific-commands">Other cluster-specific commands</a></li>
+<li><a class="reference internal" href="#in-class-exercises">In Class Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-5-working-in-a-cluster-environment">
+<h1>Class 5 : Working in a cluster environment<a class="headerlink" href="#class-5-working-in-a-cluster-environment" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#class-5-working-in-a-cluster-environment" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">Wednesday 5 February 2014</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Grep overview</li>
+<li>Login to cluster</li>
+<li>Learn about cluster-specific commands</li>
+<li>Queueing system basics</li>
+</ol>
+</div>
+<div class="section" id="grep">
+<h2>grep<a class="headerlink" href="#grep" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#grep" title="Slides">§</a></h2>
+<p>Use <a class="reference external" href="http://linux.die.net/man/1/grep">grep(1)</a> to identify lines in a file that match a specified pattern.</p>
+<p>To find any instance of <em>chr5</em> in the lamina.bed file</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># grep [pattern] [filename]</span>
+<span class="nv">$ </span>grep chr5 /vol1/opt/data/lamina.bed <span class="p">|</span> head
+</pre></div>
+</div>
+<p>To find all lines that start with a number sign:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># The caret (^) matches the beginning of the line</span>
+<span class="c"># FYI dollar sign ($) matches the end</span>
+<span class="nv">$ </span>grep <span class="s1">&#39;^#&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>To find any line that <em>does not</em> start with &#8220;chr&#8221;:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -v flag inverts the match (grep &quot;not&quot; [pattern])</span>
+<span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+<p>Beware of using <tt class="docutils literal"><span class="pre">grep</span></tt> to find patterns that might be partial matches:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will match chr1, chr10, chr11 etc.</span>
+<span class="nv">$ </span>grep chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+</pre></div>
+</div>
+<p>You can find exact matches that are split on words with the <tt class="docutils literal"><span class="pre">-w</span></tt> flag:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will only match chr1</span>
+<span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+</pre></div>
+</div>
+<p>Beware of using <tt class="docutils literal"><span class="pre">grep</span></tt> to search for numbers:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># finds all strings that match `100`</span>
+<span class="nv">$ </span>grep <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
+
+<span class="c"># better, but doesn&#39;t look at numeric value</span>
+<span class="nv">$ </span>grep -w <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>If you&#8217;re trying to find numeric values in a file, use <tt class="docutils literal"><span class="pre">awk</span></tt>
+instead:</p>
+<div class="last highlight-python"><div class="highlight"><pre>$ awk &#39;$2 == 500&#39; /vol1/opt/data/lamina.bed
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="cluster-access">
+<h2>Cluster access<a class="headerlink" href="#cluster-access" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#cluster-access" title="Slides">§</a></h2>
+<p>We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
+<span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
+
+...
+
+<span class="c"># once you are logged in, text your X11 connection with</span>
+<span class="nv">$ </span>xeyes
+</pre></div>
+</div>
+</div>
+<div class="section" id="cluster-etiquette">
+<h2>Cluster etiquette<a class="headerlink" href="#cluster-etiquette" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#cluster-etiquette" title="Slides">§</a></h2>
+<p>There are some specific rules you need to know when you&#8217;re operating in a
+cluster environment.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last"><strong>DO NOT</strong> run jobs on the head node (amc-tesla). The head node is the
+brains of the cluster and it can easily be overextended. Use <tt class="docutils literal"><span class="pre">qlogin</span></tt>
+instead.</p>
+</div>
+</div>
+<div class="section" id="example-commands-on-the-cluster">
+<h2>Example commands on the cluster<a class="headerlink" href="#example-commands-on-the-cluster" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#example-commands-on-the-cluster" title="Slides">§</a></h2>
+<p>Find the size of the file system:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>df -h
+</pre></div>
+</div>
+<p>Find how much space you have allocated:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>quota -h
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-queueing-system">
+<h2>The queueing system<a class="headerlink" href="#the-queueing-system" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#the-queueing-system" title="Slides">§</a></h2>
+<p>First you will grab a single CPU from the queueing system so that you can
+work without affecting the head node. We use <tt class="docutils literal"><span class="pre">qlogin</span></tt> for this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>jhessel@amc-tesla ~
+$ qlogin
+
+Job &lt;492536&gt; is submitted to queue &lt;interactive&gt;.
+&lt;&lt;ssh X11 forwarding job&gt;&gt;
+&lt;&lt;Waiting for dispatch ...&gt;&gt;
+&lt;&lt;Starting on compute00&gt;&gt;
+
+jhessel@compute00 ~
+$
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The host in the prompt changed from <tt class="docutils literal"><span class="pre">amc-tesla</span></tt> to <tt class="docutils literal"><span class="pre">compute00</span></tt>.</p>
+</div>
+<p>You can now execute long-running processes without worry of affecting the
+cluster. Type <tt class="docutils literal"><span class="pre">exit</span></tt> to return back to your head node login.</p>
+</div>
+<div class="section" id="the-queueing-system-2">
+<h2>The queueing system (2)<a class="headerlink" href="#the-queueing-system-2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#the-queueing-system-2" title="Slides">§</a></h2>
+<p>The cluster uses a queueing system that will run jobs that you submit to
+it. You can write a small test script to see how the system works. First,
+write this into a run.sh file:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+
+<span class="c">#BSUB -J sleeper</span>
+<span class="c">#BSUB -e %J.err</span>
+<span class="c">#BSUB -o %J.out</span>
+
+sleep 20
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-queueing-system-3">
+<h2>The queueing system (3)<a class="headerlink" href="#the-queueing-system-3" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#the-queueing-system-3" title="Slides">§</a></h2>
+<p>The <tt class="docutils literal"><span class="pre">#BSUB</span></tt> lines are comments, but are read by the <tt class="docutils literal"><span class="pre">bsub</span></tt> program to
+identify features associated with your job.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">-J</span></tt> sets the job&#8217;s name</li>
+<li><tt class="docutils literal"><span class="pre">%J</span></tt> is a unique job ID that is set when you run the job.</li>
+<li><tt class="docutils literal"><span class="pre">-e</span></tt> and <tt class="docutils literal"><span class="pre">-o</span></tt> set the filenames for stderr and stdout from the job</li>
+</ul>
+</div>
+<div class="section" id="the-queueing-system-4">
+<h2>The queueing system (4)<a class="headerlink" href="#the-queueing-system-4" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#the-queueing-system-4" title="Slides">§</a></h2>
+<p>Now you can submit the script to the queuing system. As soon as you submit
+it, you can check on its progress:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bsub &lt; run.sh
+<span class="nv">$ </span>bjobs
+</pre></div>
+</div>
+<p>After the job finishes, you should see two new files that end
+<cite>.out</cite> and <cite>.err</cite>; these stdout and stderr from the running job.
+Look at the contents of those files so you know what is in
+each one.</p>
+</div>
+<div class="section" id="killing-jobs">
+<h2>Killing jobs<a class="headerlink" href="#killing-jobs" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#killing-jobs" title="Slides">§</a></h2>
+<p>Sometimes you need to kill your jobs. You can kill specific jobs using
+their job ID numbers, obtained from checking <tt class="docutils literal"><span class="pre">bjobs</span></tt>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bkill &lt;jobid&gt;
+</pre></div>
+</div>
+<p>You can also kill <strong>all</strong> of your jobs at once:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bkill 0
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><tt class="docutils literal"><span class="pre">bkill</span> <span class="pre">0</span></tt> is dangerous – it will wipe out all of your jobs. If
+you have long-running jobs that you forgot about, you will kill them
+too if you are not careful!</p>
+</div>
+</div>
+<div class="section" id="other-cluster-specific-commands">
+<h2>Other cluster-specific commands<a class="headerlink" href="#other-cluster-specific-commands" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#other-cluster-specific-commands" title="Slides">§</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bhosts     <span class="c"># hosts in the cluster</span>
+<span class="nv">$ </span>man bhosts <span class="c"># bsub man page</span>
+<span class="nv">$ </span>bqueues    <span class="c"># available queues</span>
+<span class="nv">$ </span>lsload     <span class="c"># check load values for all hosts</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-class-exercises">
+<h2>In Class Exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-5-reorg.html#in-class-exercises" title="Slides">§</a></h2>
+<p>We&#8217;re going to take a break this class so that you can catch up on your
+exercises. Please spend some time going back through the exercises from
+classes 1-4.</p>
+<ul class="simple">
+<li><a class="reference internal" href="class-3.html#class-3-exercises"><em>In Class Exercises - Class 3</em></a></li>
+<li><a class="reference internal" href="class-4.html#class-4-exercises"><em>In Class Exercises - Class 4</em></a></li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/Classes/class-5-reorg.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Jay Hesselberth.<br/>
+      Last updated on Feb 13, 2015.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
