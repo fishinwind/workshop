@@ -1,5 +1,4 @@
-
-.. include:: /_static/substitutions.txt
+nclude:: /_static/substitutions.txt
 
 ********************************************
 Class 11 : R : Simple statistics and ggplot2
@@ -21,6 +20,19 @@ R provides a number of builtin statistics. Let's go over some using expr-geno-co
 
 .. codeblock:: r
     > df <- read.table(file = "expr-geno-covs.txt", sep = "\t", header = TRUE)
+
+.. nextslide::
+    :increment:
+
+Definitions of Statistical Terms
+--------------------------------
+
+Discrete vs. Continuous
+- Discrete: counts, categorial
+- Continuous: integers
+
+Normal Distribution
+- Bell-shaped curve
 
 .. nextslide::
     :increment:
@@ -51,6 +63,18 @@ From our data, let's see if there is difference in frequency of former smokers b
 
 .. codeblock:: r
 
+<<<<<<< HEAD
+	# generate contingency table
+	> mf <- length(which((df$gender == "Male" & df$smoking == "former") == TRUE))
+	> mNf <- length(which((df$gender == "Male" & df$smoking != "former") == TRUE))
+	> cf <- length(which((df$gender == "Female" & df$smoking == "former") == TRUE))
+	> cNf <- length(which((df$gender == "Female" & df$smoking != "former") == TRUE))
+	> con <- matrix(c(mf,mNf,cf,cNf), nrow = 2, ncol = 2, byrow = FALSE)
+	
+	# perform Fisher's exact test on contingency table
+	> fisherTest <- fisher.test(con)
+	> pVal <- fisherTest$p.value
+=======
     # generate contingency table
     > mf <- length(which((df$gender == "Male" & df$smoking == "former") == TRUE))
     > mNf <- length(which((df$gender == "Male" & df$smoking != "former") == TRUE))
@@ -61,6 +85,7 @@ From our data, let's see if there is difference in frequency of former smokers b
     # perform Fisher's exact test on contingency table
     > fisherTest <- fisher.test(con)
     > pVal <- fisherTest$p.value
+>>>>>>> 0f4ed7a067216d9425733f0e43ca753979b108c6
 
 .. nextslide::
     :increment:
@@ -171,7 +196,11 @@ What assumptions can we make from the diagnostics?
 What do you suggest we do to fix it? 
 - don't look ahead it's cheating >:(
 
+<<<<<<< HEAD
+	.. nextslide::
+=======
 .. nextslide::
+>>>>>>> 0f4ed7a067216d9425733f0e43ca753979b108c6
 	    :increment:
 
 Let's Normalize
@@ -209,4 +238,5 @@ Exercises
 
 #. How does removing condition from the model affect the significance of
    genotype and vice-versa?
+
 
