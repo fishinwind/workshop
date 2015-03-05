@@ -1,5 +1,4 @@
-# these examples rely on the R/qtl package, www.rqtl.org
-# install R/qtl package, within R, by typing install.packages("qtl")
+# Makefile for Rmarkdown files
 
 all: Rmarkdown_example.html Exercises.html 
 
