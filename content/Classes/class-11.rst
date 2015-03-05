@@ -2,7 +2,7 @@
 .. include:: /_static/substitutions.txt
 
 ********************************************
-Class 11 : R : Simple statistics and ggplot2 by Charlotte 
+Class 11 : R : Simple statistics and ggplot2
 ********************************************
 
 :Class date: |c11-date|
@@ -43,7 +43,7 @@ Student t-test is used to determine if two sets of values are significantly diff
 Fisher's Exact Test
 -------------------
 
-Contingency tables are matrices that describe the frequency of variables.
+Contingency tables are matrices that describe the frequency of variables. 
 - Determine if variable "a" occurs at a higher frequency compared to variable "b".
 - Fisher's Exact Test is used to determine the statistical significance.
 
@@ -57,8 +57,8 @@ From our data, let's see if there is difference in frequency of former smokers b
 	> cf <- length(which((df$gender == "Female" & df$smoking == "former") == TRUE))
 	> cNf <- length(which((df$gender == "Female" & df$smoking != "former") == TRUE))
 	> con <- matrix(c(mf,mNf,cf,cNf), nrow = 2, ncol = 2, byrow = FALSE)
-	> print(con)
-
+	
+	# perform Fisher's exact test on contingency table
 	> fisherTest <- fisher.test(con)
 	> pVal <- fisherTest$p.value
 
@@ -84,7 +84,7 @@ Kolmogorov-Smirnov
 
 This test determines if two distributions of data are similar.
 - Data does not have to have a normal distribution.
-- Data can be continuous or discrete (count data).
+- Data can be used continuous or discrete (count data).
 
 .. codeblock:: r
 
@@ -133,9 +133,8 @@ continuous data. How can you examine the relationships between these?
 Use ``geom_boxplot()`` with the ``group`` aesthetic:
 
 .. code-block:: r
-
-    > gp <- ggplot(covs,  aes(x = age, y = expression))
-    > gp + geom_boxplot()
+> gp <- ggplot(df, aes(x = age, y = expression)
+> gp + geom_boxplot()
 
 .. nextslide::
     :increment:
@@ -152,6 +151,9 @@ overall relationship:
     # fit and plot a straight line
     > gp + stat_smooth(method='lm')
 
+.. nextslide::
+    :increment:
+
 R Model Syntax
 ==============
 
@@ -159,7 +161,7 @@ You can also fit and examine a linear model:
 
 .. code-block:: r
 
-    > model <- lm(expression ~ genotype + condition + gender , data = df
+    > model <- lm(expression ~ genotype + condition + gender, data = df)
     > summary(model)
 
     # look at diagnostic plots
@@ -169,8 +171,8 @@ What assumptions can we make from the diagnostics?
 What do you suggest we do to fix it? 
 - don't look ahead it's cheating >:(
 
-.. nextslide::
-    :increment:
+	.. nextslide::
+	    :increment:
 
 Let's Normalize
 ---------------
@@ -178,7 +180,7 @@ Let's Normalize
 If we normalize the data, the diagnostics might fit.
 - Log that data.
 
-But wait, there are 0 values - if we do a log-transformation, we will get values that do not exist. What on earth do we do??!
+But wait, there are 0 values - get values that do not exist. What on earth do we do??!
 - Filter out values.
 - After normalizing, replace again with 0.
 
@@ -203,7 +205,7 @@ Exercises
 ---------
 
 #. Does adding age to the existing model (expression ~ genotype + condition +
-   gender) change the signficance of the other variables? 
+   gender) change the significance of the other variables?
 
 #. How does removing condition from the model affect the significance of
    genotype and vice-versa?
