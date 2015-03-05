@@ -60,11 +60,11 @@ Data Files
 
 Download these files into "/vol1/opt/data/"
 
-**laboratory info:** :download:`sample-lab-info.tsv <../misc/data/sample-lab-info.tsv>`
+**laboratory info:** :download:`sample-lab-info.tsv </Miscellaneous/data/sample-lab-info.tsv>`
 
-**sequence info:** :download:`sample-seq-info.csv <../misc/data/sample-seq-info.csv>`
+**sequence info:** :download:`sample-seq-info.csv </Miscellaneous/data/sample-seq-info.csv>`
 
-**merging script:** :download:`sample-merge.py <../../src/sample-merge.py>`
+**merging script:** :download:`sample-merge.py </Code/sample-merge.py>`
 
 Once downloaded, look at the structure of the data files with `less`
 
