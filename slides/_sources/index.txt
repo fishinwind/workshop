@@ -51,5 +51,6 @@ Contents
    Syllabus
    Classes
    Problem_Sets
+   Exercises
    Miscellaneous
 

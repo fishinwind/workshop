@@ -25,12 +25,15 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Exercises" href="../Exercises.html" />
+    <link rel="next" title="Miscellaneous" href="../Miscellaneous.html" />
+    <link rel="prev" title="Exercises" href="../Exercises.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -47,7 +50,7 @@
 
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -77,10 +80,11 @@
      href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
 </ul>
 </ul>
@@ -138,12 +142,11 @@
 <div class="section" id="unix-exercises">
 <span id="id2"></span><h2>UNIX exercises<a class="headerlink" href="#unix-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#unix-exercises" title="Slides">§</a></h2>
 <ol class="arabic simple">
-<li>Use <tt class="docutils literal"><span class="pre">wc</span></tt> to determine how many <em>lines</em> are in <cite>lamina.bed</cite>.</li>
-<li>Use <tt class="docutils literal"><span class="pre">wc</span></tt> to determine how many <em>characters</em> are in <cite>lamina.bed</cite>.</li>
+<li>Use <code class="docutils literal"><span class="pre">wc</span></code> to determine how many <em>lines</em> are in <cite>lamina.bed</cite>.</li>
+<li>Use <code class="docutils literal"><span class="pre">wc</span></code> to determine how many <em>characters</em> are in <cite>lamina.bed</cite>.</li>
 <li>Print out the 10 states (1st column, contains spaces) with the highest
 income (3rd column) from <cite>states.tab</cite>.</li>
 </ol>
-<div class="toggle container">
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wc -l lamina.bed <span class="c"># lines</span>
 
 <span class="nv">$ </span>wc -c lamina.bed <span class="c"># characters</span>
@@ -152,12 +155,18 @@ income (3rd column) from <cite>states.tab</cite>.</li>
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="awk-exercises">
 <span id="id3"></span><h2>AWK exercises<a class="headerlink" href="#awk-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#awk-exercises" title="Slides">§</a></h2>
 </div>
 <div class="section" id="r-exercises">
 <span id="id4"></span><h2>R exercises<a class="headerlink" href="#r-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#r-exercises" title="Slides">§</a></h2>
+<p>R exercises in Rmarkdown format (and rendered HTML) are here:</p>
+<ul class="simple">
+<li>Rmarkdown Example <a class="reference download internal" href="../_downloads/Rmarkdown_example.Rmd"><code class="xref download docutils literal"><span class="pre">[Rmd]</span></code></a>
+<a class="reference download internal" href="../_downloads/Rmarkdown_example.html"><code class="xref download docutils literal"><span class="pre">[HTML]</span></code></a></li>
+<li>Rmarkdown Excercises <a class="reference download internal" href="../_downloads/Exercises.Rmd"><code class="xref download docutils literal"><span class="pre">[Rmd]</span></code></a>
+<a class="reference download internal" href="../_downloads/Exercises.html"><code class="xref download docutils literal"><span class="pre">[HTML]</span></code></a></li>
+</ul>
 </div>
 <div class="section" id="python-excercises">
 <span id="python-exercises"></span><h2>Python excercises<a class="headerlink" href="#python-excercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#python-excercises" title="Slides">§</a></h2>

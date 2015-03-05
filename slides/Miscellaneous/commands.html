@@ -48,7 +48,7 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Miscellaneous" href="../Miscellaneous.html" />
@@ -221,7 +221,7 @@ URL: https://code.google.com/p/io-2012-slides
 <span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
-<p>Find exact matches that are split on words with the <tt class="docutils literal"><span class="pre">-w</span></tt> flag:</p>
+<p>Find exact matches that are split on words with the <code class="docutils literal"><span class="pre">-w</span></code> flag:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
 </pre></div>
 </div>
@@ -420,8 +420,8 @@ showing largest numbers first:</p>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last"><tt class="docutils literal"><span class="pre">uniq</span></tt> assumes that the file is <tt class="docutils literal"><span class="pre">sort</span></tt>-ed first! To test this, run
-<tt class="docutils literal"><span class="pre">uniq</span></tt> on an unsorted file. What happens?</p>
+<p class="last"><code class="docutils literal"><span class="pre">uniq</span></code> assumes that the file is <code class="docutils literal"><span class="pre">sort</span></code>-ed first! To test this, run
+<code class="docutils literal"><span class="pre">uniq</span></code> on an unsorted file. What happens?</p>
 </div>
 
 

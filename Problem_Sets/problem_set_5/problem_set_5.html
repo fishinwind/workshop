@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
@@ -50,7 +50,7 @@
 
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../Syllabus.html">Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Classes.html">Class list</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Miscellaneous.html">Miscellaneous</a></li>
 </ul>
 </ul>
@@ -148,17 +149,17 @@ the workflow and generates the appropriate plots.</p>
 points</strong>).</p>
 <ol class="arabic">
 <li><p class="first">Load the peaks BED file (<cite>peaks.chr22.bed.gz</cite>) and find the 10 factors
-that have the largest range in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or
-<tt class="docutils literal"><span class="pre">geom_violin()</span></tt> to support your answer (also add individual points to
-the plot with <tt class="docutils literal"><span class="pre">geom_jitter()</span></tt>).</p>
+that have the largest range in peak width. Inspect a <code class="docutils literal"><span class="pre">geom_boxplot()</span></code> or
+<code class="docutils literal"><span class="pre">geom_violin()</span></code> to support your answer (also add individual points to
+the plot with <code class="docutils literal"><span class="pre">geom_jitter()</span></code>).</p>
 <p>You should calcuate a <cite>min.width</cite> and <cite>max.width</cite> for each transcription
 factor in the BED file. Then the <cite>range</cite> is the difference between the
 <cite>max.width</cite> and <cite>min.width</cite>.</p>
-<p>Hint: you can <tt class="docutils literal"><span class="pre">summarize()</span></tt> to calculate the min.width and max.width,
-and then <tt class="docutils literal"><span class="pre">mutate()</span></tt> the summary to add a <cite>range</cite> column.</p>
+<p>Hint: you can <code class="docutils literal"><span class="pre">summarize()</span></code> to calculate the min.width and max.width,
+and then <code class="docutils literal"><span class="pre">mutate()</span></code> the summary to add a <cite>range</cite> column.</p>
 </li>
 <li><p class="first">Repeat the above, but only examine peaks do not overlap with any other
-peak (hint: use the <tt class="docutils literal"><span class="pre">-c</span></tt> argument to <tt class="docutils literal"><span class="pre">bedtools</span> <span class="pre">intersect</span></tt> to find these).</p>
+peak (hint: use the <code class="docutils literal"><span class="pre">-c</span></code> argument to <code class="docutils literal"><span class="pre">bedtools</span> <span class="pre">intersect</span></code> to find these).</p>
 </li>
 </ol>
 </div>
@@ -172,10 +173,10 @@ marks are enriched near CTCF binding sites.</p>
 <li>Download ENCODE CTCF and histone (H3K4me3 and H3K27ac) ChIP data for
 the K562 cell line.</li>
 <li>Determine how histone marks are distributed around CTCF binding sites.
-This is very similar to the problem you did last week, i.e. use <tt class="docutils literal"><span class="pre">bedtools</span>
-<span class="pre">intersect</span></tt> and other bedtools</li>
+This is very similar to the problem you did last week, i.e. use <code class="docutils literal"><span class="pre">bedtools</span>
+<span class="pre">intersect</span></code> and other bedtools</li>
 <li>Generate summary statistics (e.g., how many histone peaks are near CTCF
-peaks, etc) using <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">ggplot2</span></tt>.</li>
+peaks, etc) using <code class="docutils literal"><span class="pre">dplyr</span></code> and <code class="docutils literal"><span class="pre">ggplot2</span></code>.</li>
 </ol>
 </div>
 <div class="section" id="problem-set-submission">

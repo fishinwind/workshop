@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
@@ -47,7 +47,7 @@
 
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -81,6 +81,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
 </ul>
 </ul>
@@ -336,7 +337,7 @@ ask for them.</div></blockquote>
 <span class="gp">In [12]: </span><span class="n">qual</span> <span class="o">=</span> <span class="s">&quot;9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591&quot;</span>
 
 <span class="gp">In [13]: </span><span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x110bc7e18&gt;</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x106b1edd0&gt;</span>
 
 <span class="gp">In [14]: </span><span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span><span class="p">)</span>
@@ -411,7 +412,7 @@ time you need to parse a fastq file. Instead, you define a function:</p>
 </pre></div>
 </div>
 <p>Once that is defined, you can put it in a file in your PYTHONPATH called
-<tt class="docutils literal"><span class="pre">mytools.py</span></tt> and use it:</p>
+<code class="docutils literal"><span class="pre">mytools.py</span></code> and use it:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># look ma! no messy parsing code!</span>
 <span class="kn">from</span> <span class="nn">mytools</span> <span class="kn">import</span> <span class="n">parse_fastq</span>
 

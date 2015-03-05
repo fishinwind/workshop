@@ -48,7 +48,7 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
@@ -212,7 +212,7 @@ expr-geno-covs.txt. First, load the dataframe.</p>
 related. Unfortunately, there is no example in df so we will have to use
 other data.</p>
 <ul class="simple">
-<li>Use <tt class="docutils literal"><span class="pre">immer</span></tt>; describes the yield of barley of 30 different locations
+<li>Use <code class="docutils literal"><span class="pre">immer</span></code>; describes the yield of barley of 30 different locations
 in two different years.</li>
 </ul>
 <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> wilcTest <span class="o">&lt;-</span> wilcoxon.test<span class="p">(</span>immer<span class="o">$</span>Y1<span class="p">,</span>immer<span class="o">$</span>Y2<span class="p">)</span>
@@ -264,7 +264,7 @@ in two different years.</li>
     </hgroup>
     <article class="">
       <ol class="arabic simple">
-<li>Use <tt class="docutils literal"><span class="pre">t.test()</span></tt> determine whether there are significant expression
+<li>Use <code class="docutils literal"><span class="pre">t.test()</span></code> determine whether there are significant expression
 differences between in <cite>expr-geno-covs.txt</cite> using conditions instead of gender.</li>
 </ol>
 
@@ -295,7 +295,7 @@ differences between in <cite>expr-geno-covs.txt</cite> using conditions instead 
     <article class="">
       <p>Often you will have observations of two variables that are both
 continuous data. How can you examine the relationships between these?</p>
-<p>Use <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> with the <tt class="docutils literal"><span class="pre">group</span></tt> aesthetic:</p>
+<p>Use <code class="docutils literal"><span class="pre">geom_boxplot()</span></code> with the <code class="docutils literal"><span class="pre">group</span></code> aesthetic:</p>
 <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> age<span class="p">,</span> y <span class="o">=</span> <span class="kp">expression</span><span class="p">)</span>
 <span class="o">&gt;</span> gp <span class="o">+</span> geom_boxplot<span class="p">()</span>
 </pre></div>

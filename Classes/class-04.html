@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
@@ -50,7 +50,7 @@
 
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -84,6 +84,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
 </ul>
 </ul>
@@ -183,17 +184,17 @@
 <span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
-<p>Beware of using <tt class="docutils literal"><span class="pre">grep</span></tt> to find patterns that might be partial matches:</p>
+<p>Beware of using <code class="docutils literal"><span class="pre">grep</span></code> to find patterns that might be partial matches:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will match chr1, chr10, chr11 etc.</span>
 <span class="nv">$ </span>grep chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
 </pre></div>
 </div>
-<p>You can find exact matches that are split on words with the <tt class="docutils literal"><span class="pre">-w</span></tt> flag:</p>
+<p>You can find exact matches that are split on words with the <code class="docutils literal"><span class="pre">-w</span></code> flag:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will only match chr1</span>
 <span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
 </pre></div>
 </div>
-<p>Beware of using <tt class="docutils literal"><span class="pre">grep</span></tt> to search for numbers:</p>
+<p>Beware of using <code class="docutils literal"><span class="pre">grep</span></code> to search for numbers:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># finds all strings that match `100`</span>
 <span class="nv">$ </span>grep <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
 
@@ -203,7 +204,7 @@
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p>If you&#8217;re trying to find numeric values in a file, use <tt class="docutils literal"><span class="pre">awk</span></tt>
+<p>If you&#8217;re trying to find numeric values in a file, use <code class="docutils literal"><span class="pre">awk</span></code>
 instead:</p>
 <div class="last highlight-python"><div class="highlight"><pre>$ awk &#39;$2 == 500&#39; /vol1/opt/data/lamina.bed
 </pre></div>
@@ -213,23 +214,23 @@ instead:</p>
 <div class="section" id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-04.html#exercises" title="Slides">§</a></h2>
 <ol class="arabic simple">
-<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to identify lines in lamina.bed where the second field
-(start) begins with <tt class="docutils literal"><span class="pre">100</span></tt>.</li>
-<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to identify lines in lamina.bed where the third field
+<li>use <code class="docutils literal"><span class="pre">grep</span></code> to identify lines in lamina.bed where the second field
+(start) begins with <code class="docutils literal"><span class="pre">100</span></code>.</li>
+<li>use <code class="docutils literal"><span class="pre">grep</span></code> to identify lines in lamina.bed where the third field
 (end) ends with 99 .</li>
-<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> with its <tt class="docutils literal"><span class="pre">-w</span></tt> flag to count the number of &#8216;chr1&#8217;
+<li>use <code class="docutils literal"><span class="pre">grep</span></code> with its <code class="docutils literal"><span class="pre">-w</span></code> flag to count the number of &#8216;chr1&#8217;
 records in lamina.bed.</li>
-<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to count how many fastq records are in the
+<li>use <code class="docutils literal"><span class="pre">grep</span></code> to count how many fastq records are in the
 /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
 &#8216;&#64;&#8217; symbol)</li>
-<li>use <tt class="docutils literal"><span class="pre">grep</span></tt> to count the number of fastq records in
+<li>use <code class="docutils literal"><span class="pre">grep</span></code> to count the number of fastq records in
 /vol1/opt/data/SP1.fq.gz</li>
 </ol>
 </div>
 <div class="section" id="awk">
 <h2>awk<a class="headerlink" href="#awk" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-04.html#awk" title="Slides">§</a></h2>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/AWK">http://en.wikipedia.org/wiki/AWK</a></p>
-<p><tt class="docutils literal"><span class="pre">AWK</span></tt> is an interpreted <strong>programming language</strong> designed for text
+<p><code class="docutils literal"><span class="pre">AWK</span></code> is an interpreted <strong>programming language</strong> designed for text
 processing and typically used as a data extraction and reporting tool. It
 is a standard feature of most Unix-like operating systems.</p>
 <p>Named after authors <strong>A</strong> ho, <strong>W</strong> einberger &amp; <strong>K</strong> ernighan</p>
@@ -280,10 +281,10 @@ first column is chr12:</p>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p><tt class="docutils literal"><span class="pre">=</span></tt> and <tt class="docutils literal"><span class="pre">==</span></tt> are not the same thing, and are frequently mixed up.</p>
-<p class="last"><tt class="docutils literal"><span class="pre">=</span></tt> is the assignment operator
-<tt class="docutils literal"><span class="pre">==</span></tt> tests for equality
-<tt class="docutils literal"><span class="pre">!=</span></tt> tests for inequality.</p>
+<p><code class="docutils literal"><span class="pre">=</span></code> and <code class="docutils literal"><span class="pre">==</span></code> are not the same thing, and are frequently mixed up.</p>
+<p class="last"><code class="docutils literal"><span class="pre">=</span></code> is the assignment operator
+<code class="docutils literal"><span class="pre">==</span></code> tests for equality
+<code class="docutils literal"><span class="pre">!=</span></code> tests for inequality.</p>
 </div>
 </div>
 <div class="section" id="program-structure">
@@ -351,7 +352,7 @@ $2, ... columns</p>
 </div>
 <div class="section" id="awk-continued">
 <h2>awk continued<a class="headerlink" href="#awk-continued" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-04.html#awk-continued" title="Slides">§</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">$0</span></tt> variable contains the entire line.</p>
+<p>The <code class="docutils literal"><span class="pre">$0</span></code> variable contains the entire line.</p>
 <p>multiple patterns</p>
 <div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;$3 &gt;= 5000 { print $0&quot;\tGREATER&quot; }</span>
 <span class="s1">     $3  &lt; 5000   { print $0&quot;\tLESS&quot; }&#39;</span> <span class="se">\</span>
