@@ -1,0 +1,85 @@
+---
+title: "Data manipulation"
+author: "Jay Hesselberth"
+date: "March 6, 2015"
+output: html_document
+---
+
+```{r, echo=FALSE}
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+# Data sets
+There are a huge number of datasest you can play around with.
+
+```
+devtools::install_github("hadley/babynames")
+```
+
+```{r}
+library(babynames)
+babynames <- tbl_df(babynames)
+babynames %>% head(10) %>% kable()
+```
+
+# Useful packages
+
+## stringr
+
+Here's how to get first letters ...
+
+```{r}
+library(stringr)
+babynames %>%
+  mutate(first.letter = str_sub(name, start = 1, end = 1)) %>%
+  head() %>% kable()
+```
+
+Now make a plot of first letter usage ...
+
+```{r}
+babynames %>%
+  mutate(first.letter = str_sub(name, start = 1, end = 1)) %>%
+  group_by(sex, year, first.letter) %>%
+  summarize(count = sum(n)) %>%
+  ggplot(aes(x = year, y = log10(count), color = sex)) +
+  geom_line() +
+  facet_wrap(~ first.letter)
+```
+
+### Questions
+- What is the spike in male `Q` names around 1915?
+
+We'll clean up an ugly table to convert it to `tidy` format.
+
+```{r}
+library(tidyr)
+
+letters.spread <-
+  babynames %>%
+    mutate(first.letter = str_sub(name, start = 1, end = 1)) %>%
+    select(sex, year, first.letter, n) %>%
+    group_by(year, first.letter) %>%
+    summarize(count = sum(n)) %>% 
+    spread(first.letter, count, fill = 0)
+
+letters.gather <- 
+  letters.spread %>%
+    gather(sex, year)
+```
+
+### Questions
+- What are the most and least correlated first letters through the years? Use `cor()` and the `corrplot` package.
+
+```{r}
+library(corrplot)
+M <- cor(letters.spread)
+
+corrplot(M, method = 'circle')
+```
+
+## tidyr
+## dplyr 
+
+We'll go over two-table verbs in dplyr, which allow you to join tables based on common values.
