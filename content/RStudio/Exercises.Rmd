@@ -10,13 +10,11 @@ output:
 
 # Exercises
 
-```{r, message=FALSE, echo=FALSE}
+```{r, message=FALSE}
 library(dplyr)
 library(ggplot2)
 library(knitr)
-```
 
-```{r, echo=FALSE}
 # assumes workshop repo is in $HOME/devel
 setwd("~/devel/workshop/content/Miscellaneous/data")
 
@@ -71,17 +69,10 @@ Color by age (>60 and <= 60)
 
 ```{r, message=FALSE}
 # get young / old and bind together
-young.df <- expr.df %>%
-  filter(age > 60) %>%
-  mutate(status = 'old')
-old.df <- expr.df %>%
-  filter(age <= 60) %>%
-  mutate(status = 'young')
+expr.df$is_old <- expr.df$age > 60
 
-combined <- rbind(young.df, old.df)
-
-combined %>%
-  ggplot(aes(x = expression, fill = status)) +
+expr.df %>%
+  ggplot(aes(x = expression, fill = is_old)) +
     geom_histogram() +
     scale_x_log10() + 
     ggtitle('Old people > 60')
