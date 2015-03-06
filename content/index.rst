@@ -6,6 +6,7 @@
 
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
 :Website: http://hesselberthlab.github.io/workshop
+:Source: http://github.com/hesselberthlab/workshop
 :Next offered: Spring 2015
 :Course Number: MOLB 7621 
 :Crosslistings: STBB 7621
@@ -50,7 +51,7 @@ Contents
 
    Syllabus
    Classes
-   Problem_Sets
    Exercises
+   Problem_Sets
    Miscellaneous
 
