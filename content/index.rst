@@ -27,9 +27,9 @@ Announcements
 Course Description
 ~~~~~~~~~~~~~~~~~~
 
-**The Genome Analysis Workshop is a hands-on tutorial of skills needed
-to process large genomics data sets and visualize their results. The class
-is taught from the standpoint of a biologist with practical goals (e.g. to
+**The Genome Analysis Workshop is a hands-on tutorial of skills needed to
+process large genomics data sets and visualize their results. The class is
+taught from the standpoint of a biologist with practical goals (e.g., to
 interpret the results of a sequencing-based experiment and gain
 biologically meaningful insight).**
 
