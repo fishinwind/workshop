@@ -49,7 +49,10 @@ babynames %>%
 ```
 
 ### Questions
+
 - What is the spike in male `Q` names around 1915?
+
+## tidyr
 
 We'll clean up an ugly table to convert it to `tidy` format.
 
@@ -64,7 +67,7 @@ letters.spread <-
     summarize(count = sum(n)) %>% 
     spread(first.letter, count, fill = 0)
 
-letters.gather <- 
+letters.tidy <- 
   letters.spread %>%
     gather(sex, year)
 ```
@@ -79,7 +82,26 @@ M <- cor(letters.spread)
 corrplot(M, method = 'circle')
 ```
 
-## tidyr
 ## dplyr 
+
+Get the top two male and female names for each year ... use `slice()`
+
+```{r}
+babynames %>%
+  select(year, name, sex, n) %>%
+  group_by(year, sex) %>%
+  arrange(desc(n)) %>%
+  slice(1:2)
+```
+
+Figure out when names changed the most ...
+
+```{r}
+# not quite working the way i intended ...
+babynames %>%
+  select(year, name, n) %>%
+  arrange(name, n) %>%
+  mutate(name_delta = name != lead(name))
+```
 
 We'll go over two-table verbs in dplyr, which allow you to join tables based on common values.
