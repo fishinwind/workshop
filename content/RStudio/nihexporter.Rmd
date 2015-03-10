@@ -1,0 +1,81 @@
+---
+title: "nihexporter analysis"
+author: "Jay Hesselberth"
+date: "March 9, 2015"
+output: html_document
+---
+
+# Overview
+
+For the next two classes, we will use a new R data package that I developed called [nihexporter](https://github.com/jayhesselberth/nihexporter). The package provides NIH funding data from 2000-2014 in formats that make analysis with `dplyr` and `ggplot2` very easy.
+
+I plan to write and submit a short paper on the `nihexporter` package, and I'd like all of you to help me. I propose that we all use the package to perform analyses for the next several weeks, culminating in a useful series of analyses. At that point we can submit the paper to [bioRxiv](http://biorxiv.org/) or [*Bioinformatics*](http://bioinformatics.oxfordjournals.org/) (I can get this paid for, I think).
+
+## Contributing
+
+You are all welcome to contribute (we'll talk about *what* to contribute later). But to make this as painless as possible (for me), I require that you generate and edit content using RStudio linked to your github account. The package is small enough that you can also install it on a local machine, and do your analyses there.
+
+**As long as you submit content this way, you will get authorship on the paper.** If you send me content by email, it doesn't count.
+
+### Workflow
+
+#> The TA's will go through all of this so they will know how to help you!
+
+1. Create an account at github.com and enter those credentials in RStudio (Tools -> Global Options -> Git/SVN).
+
+2. Login into your github.com account, and fork the [nihexporter](https://github.com/jayhesselberth/nihexporter) repository on the github.com website. This creates a copy of the repository in your account.
+
+3. Create a new project in RStudio by importing the github repository (File -> New Project -> Version Control -> Git).
+
+  - Enter the value of the `HTTPS clone URL` button, which should look like: https://github.com/<username>/nihexporter.git
+
+  - You will see a new project button at the top right of RStudio called `nihexporter`.
+  
+  - In the `Git` panel in the lower right, you will see a button that says `master`. Click that and change it to `manuscript`. All of your changes will be saved to this branch
+
+5. Create new content in the `contrib/` directory. Name your analysis `lastname-analysis.Rmd`. When you are happy with tht content, click `Commit`, click on the button next to the file to stage it, enter a commit message and press `Commit`, then `push` the content. You can keep editing and commiting new content this way until you are done.
+
+6. When you are done with the content, commit your final copy and submit a pull request via the github website.
+
+## Questions to ponder
+
+* What are the institutes with the best record of funding impact (i.e., publications / dollar)?
+
+* Find out how to link Pubmed IDs to the number of times they have been cited, then measure impact as publication / dollar scaled by times.cited. You'll need to go the extra mile and develop a way to query pubmed (or identify this data via e.g., Google Scholar)
+
+* Do statistics. Identify  
+
+## Analysis
+
+```{r load.libs, message = FALSE, warning = FALSE}
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(nihexporter)
+```
+
+### Identifying grant types
+
+#### Single and multiple PI grants
+
+Here is how to find out how man PIs are on each grant ...
+
+```{r pis.per.grant, message = FALSE}
+project.pi.counts <- project.pis %>%
+  group_by(project.num) %>%
+  summarize(pi.count = n())
+project.pi.counts
+
+single.pi.projects <- project.pi.counts %>%
+  filter(pi.count == 1)    
+single.pi.projects
+  
+multiple.pi.projects <- project.pi.counts %>%
+  filter(pi.count > 1)
+multiple.pi.projects
+```
+
+Now you can use the `project.num` field of the `single.pi.grants` and `multiple.pi.grants` tables to cross-reference with other tables via `left_join()` in `dplyr`.
+
+```{r single.pi.project}
+```
