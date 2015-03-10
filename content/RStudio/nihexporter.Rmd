@@ -109,12 +109,16 @@ You are all welcome to contribute to a manuscript. But to make this as painless 
 
 3. Create a new project in RStudio by importing the github repository (File -> New Project -> Version Control -> Git).
 
-  - Enter the value of the `HTTPS clone URL` button, which should look like: https://github.com/<username>/nihexporter.git
+  - Enter the value of the `HTTPS clone URL` button, which should look like: "https://github.com/<username>/nihexporter.git". This may take a minute or two.
 
   - You will see a new project button at the top right of RStudio called `nihexporter`.
   
-  - In the `Git` panel in the lower right, you will see a button that says `master`. Click that and change it to `manuscript`. All of your changes will now be (and *should* be) saved to this branch.
+  - Now you need to log in through the terminal to tesla and `cd` to the directory where you checkout out the repository and run this command:
+  
+    $ git checkout manuscript
+  
+  - Now go back to RStudio, and in the `Git` panel in the lower right, you will see a button that says `manuscript`. All of your changes will now be (and *should* be) saved to this branch.
 
-5. Create new content in the `contrib/` directory. Name your analysis `lastname-analysis.Rmd`. When you are happy with tht content, click `Commit`, click on the button next to the file to stage it, enter a commit message and press `Commit`, then `push` the content. You can keep editing and commiting new content this way until you are done.
+5. Create new content in the `manuscript/contrib/` directory. Name your analysis `lastname-analysis.Rmd`. When you are happy with tht content, click `Commit`, click on the button next to the file to stage it, enter a commit message and press `Commit`, then `push` the content. You can keep editing and commiting new content this way until you are done.
 
 6. When you are done with the content, commit your final copy and submit a pull request via the github website.
