@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
@@ -50,7 +50,7 @@
 
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -144,7 +144,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 12 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 06, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 11, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -232,19 +232,19 @@ data) is:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Align reads to reference genome</td>
-<td><tt class="docutils literal"><span class="pre">FASTQ</span> <span class="pre">~~&gt;</span> <span class="pre">BAM</span></tt></td>
+<td><code class="docutils literal"><span class="pre">FASTQ</span> <span class="pre">~~&gt;</span> <span class="pre">BAM</span></code></td>
 </tr>
 <tr class="row-odd"><td>Generate coverage plots</td>
-<td><tt class="docutils literal"><span class="pre">BAM</span> <span class="pre">~~&gt;</span> <span class="pre">bedGraph</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BAM</span> <span class="pre">~~&gt;</span> <span class="pre">bedGraph</span></code></td>
 </tr>
 <tr class="row-even"><td>Call peaks</td>
-<td><tt class="docutils literal"><span class="pre">BAM</span> <span class="pre">~~&gt;</span> <span class="pre">BED</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BAM</span> <span class="pre">~~&gt;</span> <span class="pre">BED</span></code></td>
 </tr>
 <tr class="row-odd"><td>Make binary files for UCSC display</td>
-<td><tt class="docutils literal"><span class="pre">bedGraph</span> <span class="pre">~~&gt;</span> <span class="pre">bigWig</span></tt>, <tt class="docutils literal"><span class="pre">BED</span> <span class="pre">~~&gt;</span> <span class="pre">bigBed</span></tt></td>
+<td><code class="docutils literal"><span class="pre">bedGraph</span> <span class="pre">~~&gt;</span> <span class="pre">bigWig</span></code>, <code class="docutils literal"><span class="pre">BED</span> <span class="pre">~~&gt;</span> <span class="pre">bigBed</span></code></td>
 </tr>
 <tr class="row-even"><td>Identify motifs</td>
-<td><tt class="docutils literal"><span class="pre">BED</span> <span class="pre">~~&gt;</span> <span class="pre">FASTA</span> <span class="pre">~~&gt;</span> <span class="pre">TXT</span> <span class="pre">/</span> <span class="pre">HTML</span></tt></td>
+<td><code class="docutils literal"><span class="pre">BED</span> <span class="pre">~~&gt;</span> <span class="pre">FASTA</span> <span class="pre">~~&gt;</span> <span class="pre">TXT</span> <span class="pre">/</span> <span class="pre">HTML</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -276,7 +276,7 @@ enriched in your IP experiment (i.e. peaks). We will use macs2 here.</p>
 <h2>Identify sequence motifs in enriched regions<a class="headerlink" href="#identify-sequence-motifs-in-enriched-regions" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-06.html#identify-sequence-motifs-in-enriched-regions" title="Slides">§</a></h2>
 <p>You can use meme <a class="footnote-reference" href="#id5" id="id4">[2]</a> to identify over-represented motifs in groups of
 sequences (e.g. sequences covered by ChIP peaks).</p>
-<p>Use the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/getfasta.html#getfasta" title="(in bedtools v2.22.1)"><em class="xref std std-ref">bedtools getfasta</em></a> command to fetch
+<p>Use the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/getfasta.html#getfasta" title="(in bedtools v2.22.1)"><span class="xref std std-ref">bedtools getfasta</span></a> command to fetch
 fasta sequences.</p>
 <p>Note: meme looks at both strands of a DNA sequence by default.</p>
 <table class="docutils footnote" frame="void" id="id5" rules="none">

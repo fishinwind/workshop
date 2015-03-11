@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
@@ -50,7 +50,7 @@
 
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -161,7 +161,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 10 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 06, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 11, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -170,7 +170,7 @@
 <ol class="arabic simple">
 <li>Learn to run scripts on the cluster via the queuing system</li>
 <li>Learn about genomic data types and where to get data</li>
-<li>Start to use <tt class="docutils literal"><span class="pre">bedtools</span></tt> to analyze genomic data</li>
+<li>Start to use <code class="docutils literal"><span class="pre">bedtools</span></code> to analyze genomic data</li>
 </ol>
 </div>
 <div class="section" id="cluster-etiquette">
@@ -191,7 +191,7 @@ cluster environment.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last"><strong>DO NOT</strong> run jobs on the head node (amc-tesla). The head node is the
-brains of the cluster and it can easily be overextended. Use <tt class="docutils literal"><span class="pre">qlogin</span></tt>
+brains of the cluster and it can easily be overextended. Use <code class="docutils literal"><span class="pre">qlogin</span></code>
 instead.</p>
 </div>
 </div>
@@ -220,12 +220,12 @@ write this into a run.sh file:</p>
 sleep 20
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">#BSUB</span></tt> lines are comments, but are read by the <tt class="docutils literal"><span class="pre">bsub</span></tt> program to
+<p>The <code class="docutils literal"><span class="pre">#BSUB</span></code> lines are comments, but are read by the <code class="docutils literal"><span class="pre">bsub</span></code> program to
 identify features associated with your job.</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">-J</span></tt> sets the job&#8217;s name</li>
-<li><tt class="docutils literal"><span class="pre">%J</span></tt> is a unique job ID that is set when you run the job.</li>
-<li><tt class="docutils literal"><span class="pre">-e</span></tt> and <tt class="docutils literal"><span class="pre">-o</span></tt> set the filenames for stderr and stdout from the job</li>
+<li><code class="docutils literal"><span class="pre">-J</span></code> sets the job&#8217;s name</li>
+<li><code class="docutils literal"><span class="pre">%J</span></code> is a unique job ID that is set when you run the job.</li>
+<li><code class="docutils literal"><span class="pre">-e</span></code> and <code class="docutils literal"><span class="pre">-o</span></code> set the filenames for stderr and stdout from the job</li>
 </ul>
 <p>Now you can submit the script to the queuing system. As soon as you submit
 it, you can check on its progress:</p>
@@ -241,7 +241,7 @@ each one.</p>
 <div class="section" id="killing-jobs">
 <h2>Killing jobs<a class="headerlink" href="#killing-jobs" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#killing-jobs" title="Slides">§</a></h2>
 <p>Sometimes you need to kill your jobs. You can kill specific jobs using
-their job ID numbers, obtained from checking <tt class="docutils literal"><span class="pre">bjobs</span></tt>:</p>
+their job ID numbers, obtained from checking <code class="docutils literal"><span class="pre">bjobs</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bkill &lt;jobid&gt;
 </pre></div>
 </div>
@@ -251,7 +251,7 @@ their job ID numbers, obtained from checking <tt class="docutils literal"><span 
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last"><tt class="docutils literal"><span class="pre">bkill</span> <span class="pre">0</span></tt> is dangerous – it will wipe out all of your jobs. If
+<p class="last"><code class="docutils literal"><span class="pre">bkill</span> <span class="pre">0</span></code> is dangerous – it will wipe out all of your jobs. If
 you have long-running jobs that you forgot about, you will kill them
 too if you are not careful!</p>
 </div>
@@ -283,9 +283,9 @@ example, to extract out <strong>all genes that overlap a CpG island</strong>:</p
                                  &gt; genes-in-islands.bed
 </pre></div>
 </div>
-<p><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a> is a bedtools tool. It follows a
+<p><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><span class="xref std std-ref">intersect</span></a> is a bedtools tool. It follows a
 common pattern in bedtools that the query file is specified after the
-<tt class="docutils literal"><span class="pre">-a</span></tt> flag and the <em>subject</em> file after the <tt class="docutils literal"><span class="pre">-b</span></tt> flag</p>
+<code class="docutils literal"><span class="pre">-a</span></code> flag and the <em>subject</em> file after the <code class="docutils literal"><span class="pre">-b</span></code> flag</p>
 </div>
 <div class="section" id="bedtools-utility">
 <h3>BEDTools Utility<a class="headerlink" href="#bedtools-utility" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#bedtools-utility" title="Slides">§</a></h3>
@@ -321,16 +321,16 @@ etc. (likely to be bugs if you do code in manually)</li>
 </div>
 <p>The most commonly used BEDtools are:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/genomecov.html#genomecov" title="(in bedtools v2.22.1)"><em class="xref std std-ref">genomecov</em></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.1)"><em class="xref std std-ref">closest</em></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.22.1)"><em class="xref std std-ref">map</em></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><span class="xref std std-ref">intersect</span></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/genomecov.html#genomecov" title="(in bedtools v2.22.1)"><span class="xref std std-ref">genomecov</span></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.1)"><span class="xref std std-ref">closest</span></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.22.1)"><span class="xref std std-ref">map</span></a></li>
 </ul>
 </div>
 <div class="section" id="bedtools-documentation">
 <h3>BEDTools Documentation<a class="headerlink" href="#bedtools-documentation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#bedtools-documentation" title="Slides">§</a></h3>
 <p>The BEDTools documentation is quite good and ever improving.</p>
-<p>See the documentation for <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a> with:</p>
+<p>See the documentation for <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><span class="xref std std-ref">intersect</span></a> with:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect
 </pre></div>
 </div>
@@ -341,7 +341,7 @@ etc. (likely to be bugs if you do code in manually)</li>
 </div>
 <div class="section" id="bedtools-intersect">
 <h3>BEDTools intersect<a class="headerlink" href="#bedtools-intersect" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#bedtools-intersect" title="Slides">§</a></h3>
-<p>Have a browser window open to <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">BEDTools intersect documentation</em></a>.
+<p>Have a browser window open to <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><span class="xref std std-ref">BEDTools intersect documentation</span></a>.
 It will likely be the BEDTools function that you use the most. It has a lot of
 options.</p>
 <img alt="http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png" src="http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png" />
@@ -507,8 +507,8 @@ strand as <cite>b.bed</cite>.</p>
 </div>
 <div class="section" id="closest">
 <h3>Closest<a class="headerlink" href="#closest" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#closest" title="Slides">§</a></h3>
-<p>with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><em class="xref std std-ref">intersect</em></a> we can only get overlapping
-intervals. <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.1)"><em class="xref std std-ref">closest</em></a> reports the nearest interval even
+<p>with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.22.1)"><span class="xref std std-ref">intersect</span></a> we can only get overlapping
+intervals. <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.22.1)"><span class="xref std std-ref">closest</span></a> reports the nearest interval even
 if it&#8217;s not overlapping.</p>
 <p>Example: report the nearest CpG to each gene as long as it is within 5KB.</p>
 <div class="highlight-bash"><div class="highlight"><pre>bedtools closest <span class="se">\</span>

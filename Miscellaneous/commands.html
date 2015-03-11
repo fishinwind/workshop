@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
@@ -50,7 +50,7 @@
 
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -83,8 +83,8 @@
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
 </ul>
 </ul>
@@ -227,7 +227,7 @@
 <span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
-<p>Find exact matches that are split on words with the <tt class="docutils literal"><span class="pre">-w</span></tt> flag:</p>
+<p>Find exact matches that are split on words with the <code class="docutils literal"><span class="pre">-w</span></code> flag:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
 </pre></div>
 </div>
@@ -356,8 +356,8 @@ showing largest numbers first:</p>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last"><tt class="docutils literal"><span class="pre">uniq</span></tt> assumes that the file is <tt class="docutils literal"><span class="pre">sort</span></tt>-ed first! To test this, run
-<tt class="docutils literal"><span class="pre">uniq</span></tt> on an unsorted file. What happens?</p>
+<p class="last"><code class="docutils literal"><span class="pre">uniq</span></code> assumes that the file is <code class="docutils literal"><span class="pre">sort</span></code>-ed first! To test this, run
+<code class="docutils literal"><span class="pre">uniq</span></code> on an unsorted file. What happens?</p>
 </div>
 </div>
 <div class="section" id="wget">

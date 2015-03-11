@@ -48,7 +48,7 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
@@ -96,7 +96,7 @@ URL: https://code.google.com/p/io-2012-slides
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 24 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 06, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 11, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -111,7 +111,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <ol class="arabic simple">
-<li>Begin to manipulate data with and <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">tidyr</span></tt></li>
+<li>Begin to manipulate data with and <code class="docutils literal"><span class="pre">dplyr</span></code> and <code class="docutils literal"><span class="pre">tidyr</span></code></li>
 </ol>
 
 
@@ -123,16 +123,16 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>dplyr<a class="headerlink" href="../../Classes/class-09.html#dplyr" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p><tt class="docutils literal"><span class="pre">dplyr</span></tt> provides several methods:</p>
+      <p><code class="docutils literal"><span class="pre">dplyr</span></code> provides several methods:</p>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">summarise()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">filter()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">select()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">mutate()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">arrange()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">group_by()</span></tt></li>
+<li><code class="docutils literal"><span class="pre">summarise()</span></code></li>
+<li><code class="docutils literal"><span class="pre">filter()</span></code></li>
+<li><code class="docutils literal"><span class="pre">select()</span></code></li>
+<li><code class="docutils literal"><span class="pre">mutate()</span></code></li>
+<li><code class="docutils literal"><span class="pre">arrange()</span></code></li>
+<li><code class="docutils literal"><span class="pre">group_by()</span></code></li>
 </ul>
-<p><tt class="docutils literal"><span class="pre">dplyr</span></tt> also provides an operator called <tt class="docutils literal"><span class="pre">%&gt;%</span></tt> that allows you to
+<p><code class="docutils literal"><span class="pre">dplyr</span></code> also provides an operator called <code class="docutils literal"><span class="pre">%&gt;%</span></code> that allows you to
 string manipulations together.</p>
 <p>By combining these functions together, you can quickly and easily
 manipulate data.frames and generate useful data summaries.</p>
@@ -192,7 +192,7 @@ dfx <span class="o">%&gt;%</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><tt class="docutils literal"><span class="pre">n()</span></tt> is a special function for counting observations</li>
+<li><code class="docutils literal"><span class="pre">n()</span></code> is a special function for counting observations</li>
 <li>assign the summary to a new data.frame</li>
 </ul>
 
@@ -206,13 +206,13 @@ dfx <span class="o">%&gt;%</span>
     </hgroup>
     <article class="">
       <ol class="arabic simple">
-<li>Use <tt class="docutils literal"><span class="pre">dplyr</span></tt> to calculate the mean age of smokers grouped by gender
+<li>Use <code class="docutils literal"><span class="pre">dplyr</span></code> to calculate the mean age of smokers grouped by gender
 and smoking status. Plot the result.</li>
 <li>Make a plot of age by expression faceted by genotype. Fit a linear
 model through these curves (use geom_smooth) on the plot.</li>
 <li>Load the peaks BED file and find the 10 factors that have the largest range
-in peak width. Inspect a <tt class="docutils literal"><span class="pre">geom_boxplot()</span></tt> or <tt class="docutils literal"><span class="pre">geom_violin()</span></tt> to support
-your answer (also add individual points to the plot with <tt class="docutils literal"><span class="pre">geom_jitter()</span></tt>).</li>
+in peak width. Inspect a <code class="docutils literal"><span class="pre">geom_boxplot()</span></code> or <code class="docutils literal"><span class="pre">geom_violin()</span></code> to support
+your answer (also add individual points to the plot with <code class="docutils literal"><span class="pre">geom_jitter()</span></code>).</li>
 </ol>
 
 
@@ -281,7 +281,7 @@ make a new column named, e.g. <cite>is_old</cite>)</li>
 <li>Figure out how to move overlapping points so categorical data is
 viewable (hint: look at geom_jitter() or the <cite>position</cite> argument to
 geom_point())</li>
-<li>Load a BED file (e.g. <tt class="docutils literal"><span class="pre">lamina.bed</span></tt>) and calculate the mean length of
+<li>Load a BED file (e.g. <code class="docutils literal"><span class="pre">lamina.bed</span></code>) and calculate the mean length of
 regions on each chromosome in the BED file with dplyr.  Plot the result as
 a bar plot with ggplot2.</li>
 </ol>
@@ -295,7 +295,7 @@ a bar plot with ggplot2.</li>
       <h3>Practice<a class="headerlink" href="../../Classes/class-09.html#practice" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <p>Practice <tt class="docutils literal"><span class="pre">dplyr</span></tt> and <tt class="docutils literal"><span class="pre">tidyr</span></tt> with <tt class="docutils literal"><span class="pre">swirl</span></tt>:</p>
+      <p>Practice <code class="docutils literal"><span class="pre">dplyr</span></code> and <code class="docutils literal"><span class="pre">tidyr</span></code> with <code class="docutils literal"><span class="pre">swirl</span></code>:</p>
 <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>swirl<span class="p">)</span>
 <span class="o">&gt;</span> install_from_swirl<span class="p">(</span><span class="s">&quot;Getting_and_Cleaning_Data&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> swirl<span class="p">()</span>

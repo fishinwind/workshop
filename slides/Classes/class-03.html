@@ -48,7 +48,7 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
@@ -96,7 +96,7 @@ URL: https://code.google.com/p/io-2012-slides
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 3 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 05, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 11, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -112,7 +112,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <ol class="arabic simple">
 <li>learn additional linux utilities (cut, sort, uniq, less, wget)</li>
-<li>understand redirects (<tt class="docutils literal"><span class="pre">&gt;</span></tt>, <tt class="docutils literal"><span class="pre">&lt;</span></tt>) and how to combine tools with pipes (<tt class="docutils literal"><span class="pre">|</span></tt>)</li>
+<li>understand redirects (<code class="docutils literal"><span class="pre">&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;</span></code>) and how to combine tools with pipes (<code class="docutils literal"><span class="pre">|</span></code>)</li>
 </ol>
 
 
@@ -124,7 +124,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>wget<a class="headerlink" href="../../Classes/class-03.html#wget" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>fetch a file from the web with <tt class="docutils literal"><span class="pre">wget</span></tt>:</p>
+      <p>fetch a file from the web with <code class="docutils literal"><span class="pre">wget</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># N.B.: All common data will be on tesla in /vol1/opt/data</span>
 
 <span class="nv">$ </span><span class="nb">cd</span> <span class="c"># go $HOME</span>
@@ -143,7 +143,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>cut<a class="headerlink" href="../../Classes/class-03.html#cut" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>The <tt class="docutils literal"><span class="pre">cut</span></tt> command allows you to extract certain columns of a file:</p>
+      <p>The <code class="docutils literal"><span class="pre">cut</span></code> command allows you to extract certain columns of a file:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># cut columns 1-4</span>
 <span class="nv">$ </span>cut -f 1,2,3,4
 
@@ -167,7 +167,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Sort<a class="headerlink" href="../../Classes/class-03.html#sort" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>You will often want to <tt class="docutils literal"><span class="pre">sort</span></tt> your data.</p>
+      <p>You will often want to <code class="docutils literal"><span class="pre">sort</span></code> your data.</p>
 <p>Have a look at</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>man sort
 </pre></div>
@@ -194,7 +194,7 @@ URL: https://code.google.com/p/io-2012-slides
 <li>sort in reverse as a number (-k1rn)</li>
 <li>get unique entries (-u)</li>
 </ol>
-<p>If you know all these, you'll know 99% of what you'll use <tt class="docutils literal"><span class="pre">sort</span></tt> for.</p>
+<p>If you know all these, you'll know 99% of what you'll use <code class="docutils literal"><span class="pre">sort</span></code> for.</p>
 
 
 
@@ -249,8 +249,8 @@ start [column 2] as a number.</p>
     </hgroup>
     <article class="">
       <p>Print out the 10 states (1st column, contains spaces) with the highest
-income (3rd column) from states.tab using <tt class="docutils literal"><span class="pre">sort</span></tt> and piping to <tt class="docutils literal"><span class="pre">cut</span></tt>.</p>
-<p>Or, use <tt class="docutils literal"><span class="pre">cut</span></tt> and pipe to <tt class="docutils literal"><span class="pre">sort</span></tt> to do the same.</p>
+income (3rd column) from states.tab using <code class="docutils literal"><span class="pre">sort</span></code> and piping to <code class="docutils literal"><span class="pre">cut</span></code>.</p>
+<p>Or, use <code class="docutils literal"><span class="pre">cut</span></code> and pipe to <code class="docutils literal"><span class="pre">sort</span></code> to do the same.</p>
 
 
 
@@ -261,7 +261,7 @@ income (3rd column) from states.tab using <tt class="docutils literal"><span cla
       <h2>uniq<a class="headerlink" href="../../Classes/class-03.html#uniq" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>The <tt class="docutils literal"><span class="pre">uniq</span></tt> command  allows you to get and count unique entries</p>
+      <p>The <code class="docutils literal"><span class="pre">uniq</span></code> command  allows you to get and count unique entries</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># remove duplicate lines</span>
 <span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq
 
@@ -287,14 +287,14 @@ income (3rd column) from states.tab using <tt class="docutils literal"><span cla
       <h2>Redirection of output<a class="headerlink" href="../../Classes/class-03.html#redirection-of-output" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>To send the output of a command (or a file) to another file, use the <tt class="docutils literal"><span class="pre">&gt;</span></tt>
+      <p>To send the output of a command (or a file) to another file, use the <code class="docutils literal"><span class="pre">&gt;</span></code>
 operator:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -c &gt; output.txt
 <span class="nv">$ </span>head output.txt
 </pre></div>
 </div>
 <p>To <strong>append</strong> the output of a command (or a file) to another file, use
-the <tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt> operator:</p>
+the <code class="docutils literal"><span class="pre">&gt;&gt;</span></code> operator:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;last line&quot;</span> &gt;&gt; output.txt
 <span class="nv">$ </span>tail output.txt
 </pre></div>
@@ -309,11 +309,11 @@ the <tt class="docutils literal"><span class="pre">&gt;&gt;</span></tt> operator
       <h2>Compressed Files<a class="headerlink" href="../../Classes/class-03.html#compressed-files" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>The most common way to uncompress single files is <tt class="docutils literal"><span class="pre">gunzip</span></tt>:</p>
+      <p>The most common way to uncompress single files is <code class="docutils literal"><span class="pre">gunzip</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>gunzip /vol1/opt/data/t_R1.fastq.gz
 </pre></div>
 </div>
-<p>And re-zip the file with <tt class="docutils literal"><span class="pre">gzip</span></tt>:</p>
+<p>And re-zip the file with <code class="docutils literal"><span class="pre">gzip</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>gzip /vol1/opt/data/t_R1.fastq
 </pre></div>
 </div>
@@ -336,7 +336,7 @@ file</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>zless /vol1/opt/data/t_R1.fastq.gz <span class="p">|</span> head
 </pre></div>
 </div>
-<p>We already know the head command prints the first <tt class="docutils literal"><span class="pre">-n</span></tt> lines.</p>
+<p>We already know the head command prints the first <code class="docutils literal"><span class="pre">-n</span></code> lines.</p>
 <p>Try piping the output to some other commands (tail|echo|cowsay).</p>
 
 
@@ -407,7 +407,7 @@ learned in this class)</p>
 <ol class="arabic simple" start="3">
 <li>make that script executable (use google to learn how to do this).</li>
 </ol>
-<p>4. With <tt class="docutils literal"><span class="pre">head</span></tt>, you can see the first line of a file with head -n1.
+<p>4. With <code class="docutils literal"><span class="pre">head</span></code>, you can see the first line of a file with head -n1.
 How can you see all of a file <em>except</em> the first line. (use google)</p>
 <p>5. Without using your history, how few keystrokes can you use to run
 the following command (must work from any directory)?</p>

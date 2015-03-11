@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
@@ -50,7 +50,7 @@
 
 
   </head>
-  <body>
+  <body role="document">
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -156,7 +156,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Jan 29 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 06, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 11, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -167,16 +167,16 @@
 </pre></div>
 </div>
 <p>This will give line numbers (and a bunch of other stuff) when you run
-<tt class="docutils literal"><span class="pre">vim</span></tt>.</p>
+<code class="docutils literal"><span class="pre">vim</span></code>.</p>
 </div>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#goals" title="Slides">§</a></h2>
 <ol class="arabic simple">
-<li>The <tt class="docutils literal"><span class="pre">bash</span></tt> shell</li>
+<li>The <code class="docutils literal"><span class="pre">bash</span></code> shell</li>
 <li>continue learning to navigate within the terminal</li>
 <li>understand the linux philosophy (small tools that do one thing well)</li>
 <li>understand how to apply some common linux utilities to files</li>
-<li><tt class="docutils literal"><span class="pre">vim</span></tt> to edit files</li>
+<li><code class="docutils literal"><span class="pre">vim</span></code> to edit files</li>
 </ol>
 </div>
 <div class="section" id="unix-philosophy">
@@ -201,7 +201,7 @@
 <div class="section" id="navigating-in-the-terminal">
 <h2>Navigating In the Terminal<a class="headerlink" href="#navigating-in-the-terminal" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#navigating-in-the-terminal" title="Slides">§</a></h2>
 <p>When you start the terminal, you will be in your home directory.</p>
-<p>In Linux home is represented as <tt class="docutils literal"><span class="pre">~</span></tt> and also as <tt class="docutils literal"><span class="pre">$HOME</span></tt>.</p>
+<p>In Linux home is represented as <code class="docutils literal"><span class="pre">~</span></code> and also as <code class="docutils literal"><span class="pre">$HOME</span></code>.</p>
 <p>We will often show commands preceded with a &#8216;$&#8217; as you see in your
 terminal.</p>
 <p>Try this in the terminal:</p>
@@ -221,7 +221,7 @@ terminal.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls -lh
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">-lh</span></tt> part are flags for the <tt class="docutils literal"><span class="pre">ls</span></tt> command.</p>
+<p>The <code class="docutils literal"><span class="pre">-lh</span></code> part are flags for the <code class="docutils literal"><span class="pre">ls</span></code> command.</p>
 <p>These can also be separated like:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls -l -h
 </pre></div>
@@ -229,11 +229,11 @@ terminal.</p>
 </div>
 <div class="section" id="getting-help-in-the-terminal">
 <h2>Getting Help In The Terminal<a class="headerlink" href="#getting-help-in-the-terminal" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#getting-help-in-the-terminal" title="Slides">§</a></h2>
-<p>How can you find out the arguments that <tt class="docutils literal"><span class="pre">ls</span></tt> accepts (or expects):</p>
+<p>How can you find out the arguments that <code class="docutils literal"><span class="pre">ls</span></code> accepts (or expects):</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>man ls
 </pre></div>
 </div>
-<p>and use spacebar to go through the pages. <tt class="docutils literal"><span class="pre">man</span></tt> is short for &#8220;manual&#8221; and
+<p>and use spacebar to go through the pages. <code class="docutils literal"><span class="pre">man</span></code> is short for &#8220;manual&#8221; and
 can be used on most of the commands that we will learn.</p>
 <p>In other linux software, it is common to get help by using:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>&lt;program&gt; -h
@@ -243,7 +243,7 @@ can be used on most of the commands that we will learn.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>&lt;program&gt; --help
 </pre></div>
 </div>
-<p>Which of these works for <tt class="docutils literal"><span class="pre">ls</span></tt>?</p>
+<p>Which of these works for <code class="docutils literal"><span class="pre">ls</span></code>?</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you see an error message, read it carefully.  It may seem cryptic,
@@ -253,14 +253,14 @@ but it is designed to inform you what went wrong.</p>
 <div class="section" id="getting-help-exercises">
 <h2>Getting Help : Exercises<a class="headerlink" href="#getting-help-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#getting-help-exercises" title="Slides">§</a></h2>
 <ul class="simple">
-<li>use <tt class="docutils literal"><span class="pre">man</span></tt> to find out how to list files so that the most
+<li>use <code class="docutils literal"><span class="pre">man</span></code> to find out how to list files so that the most
 recently modified files are listed last.</li>
 </ul>
 <p>(This is common when you&#8217;re working on something and only
 care about the most recently modified files)</p>
 <ul class="simple">
 <li>use google to find the same thing. how else can you
-sort the output of <tt class="docutils literal"><span class="pre">ls</span></tt>?</li>
+sort the output of <code class="docutils literal"><span class="pre">ls</span></code>?</li>
 </ul>
 </div>
 <div class="section" id="getting-help-outside-the-terminal">
@@ -276,9 +276,9 @@ and find some info.</p>
 </div>
 <div class="section" id="other-commands-in-the-terminal">
 <h2>Other Commands In The Terminal<a class="headerlink" href="#other-commands-in-the-terminal" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#other-commands-in-the-terminal" title="Slides">§</a></h2>
-<p>Use the <tt class="docutils literal"><span class="pre">man</span></tt> command to determine what <tt class="docutils literal"><span class="pre">head</span></tt> does.</p>
-<p>Use <tt class="docutils literal"><span class="pre">head</span></tt> on the file /vol1/opt/data/lamina.bed</p>
-<p>Use <tt class="docutils literal"><span class="pre">tail</span></tt> to see the end of the file.</p>
+<p>Use the <code class="docutils literal"><span class="pre">man</span></code> command to determine what <code class="docutils literal"><span class="pre">head</span></code> does.</p>
+<p>Use <code class="docutils literal"><span class="pre">head</span></code> on the file /vol1/opt/data/lamina.bed</p>
+<p>Use <code class="docutils literal"><span class="pre">tail</span></code> to see the end of the file.</p>
 </div>
 <div class="section" id="questions">
 <h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#questions" title="Slides">§</a></h2>
@@ -325,7 +325,7 @@ through commands that start with that prefix.</p>
 </div>
 <div class="section" id="tab-completion">
 <h2>Tab-Completion<a class="headerlink" href="#tab-completion" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#tab-completion" title="Slides">§</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">bash</span></tt> shell has several built-in utilities for expediting typing.</p>
+<p>The <code class="docutils literal"><span class="pre">bash</span></code> shell has several built-in utilities for expediting typing.</p>
 <p>Type the following where [TAB] means the Tab key on the keyboard:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /opt/bio-w<span class="o">[</span>TAB<span class="o">]</span>
 </pre></div>
@@ -349,8 +349,8 @@ through commands that start with that prefix.</p>
 </div>
 <div class="section" id="directory-shortcuts">
 <h2>Directory Shortcuts<a class="headerlink" href="#directory-shortcuts" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#directory-shortcuts" title="Slides">§</a></h2>
-<p>We have already used the <tt class="docutils literal"><span class="pre">cd</span></tt> command to change directories. And we have
-used the <tt class="docutils literal"><span class="pre">~</span></tt> shortcut for home.</p>
+<p>We have already used the <code class="docutils literal"><span class="pre">cd</span></code> command to change directories. And we have
+used the <code class="docutils literal"><span class="pre">~</span></code> shortcut for home.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~
 <span class="nv">$ </span>ls ~
 </pre></div>
@@ -393,7 +393,7 @@ What does this do:</p>
 <span class="nv">$ </span>mkdir -p ~/tmp/asdf/asdf <span class="c"># OK</span>
 </pre></div>
 </div>
-<p>What does <tt class="docutils literal"><span class="pre">-p</span></tt> do?</p>
+<p>What does <code class="docutils literal"><span class="pre">-p</span></code> do?</p>
 <p>Remove directories:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rm ~/tmp/asdf <span class="c"># ERROR</span>
 
@@ -417,14 +417,14 @@ entire directories that you didn&#8217;t intend to.</p>
 </div>
 <p>In-class excercise:</p>
 <ol class="arabic simple">
-<li>make a directory called <tt class="docutils literal"><span class="pre">/tmp/moveable</span></tt></li>
+<li>make a directory called <code class="docutils literal"><span class="pre">/tmp/moveable</span></code></li>
 <li>move that directory to ~</li>
-<li>copy that directory to <tt class="docutils literal"><span class="pre">/tmp/subdir/</span></tt></li>
+<li>copy that directory to <code class="docutils literal"><span class="pre">/tmp/subdir/</span></code></li>
 </ol>
 </div>
 <div class="section" id="echo">
 <h2>echo<a class="headerlink" href="#echo" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#echo" title="Slides">§</a></h2>
-<p><tt class="docutils literal"><span class="pre">echo</span></tt> means &#8220;print&#8221;:</p>
+<p><code class="docutils literal"><span class="pre">echo</span></code> means &#8220;print&#8221;:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;hello world&quot;</span>
 </pre></div>
 </div>
@@ -450,8 +450,8 @@ $ ls -lh $important
 </div>
 <div class="section" id="sudo">
 <h2>sudo<a class="headerlink" href="#sudo" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#sudo" title="Slides">§</a></h2>
-<p><tt class="docutils literal"><span class="pre">sudo</span></tt> lets you run commands as root (the super-user). You won&#8217;t be able
-to do this on tesla, but you should be able to run <tt class="docutils literal"><span class="pre">sudo</span></tt> on the virtual
+<p><code class="docutils literal"><span class="pre">sudo</span></code> lets you run commands as root (the super-user). You won&#8217;t be able
+to do this on tesla, but you should be able to run <code class="docutils literal"><span class="pre">sudo</span></code> on the virtual
 machine.</p>
 <img alt="http://imgs.xkcd.com/comics/sandwich.png" src="http://imgs.xkcd.com/comics/sandwich.png" />
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>apt-get install cowsay
@@ -462,7 +462,7 @@ machine.</p>
 <div class="section" id="other-commands">
 <h2>other commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#other-commands" title="Slides">§</a></h2>
 <p>excercise:</p>
-<p>use <tt class="docutils literal"><span class="pre">man</span></tt> to determine the function of:</p>
+<p>use <code class="docutils literal"><span class="pre">man</span></code> to determine the function of:</p>
 <ul class="simple">
 <li>wget</li>
 <li>uniq</li>
@@ -478,13 +478,13 @@ need to write scripts to complete the homework.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls /vol1/opt/
 </pre></div>
 </div>
-<p>Into the file <em>`run.sh`</em> by opening <tt class="docutils literal"><span class="pre">vim</span></tt> pasting that text then saving
+<p>Into the file <em>`run.sh`</em> by opening <code class="docutils literal"><span class="pre">vim</span></code> pasting that text then saving
 the file.</p>
 <p>You can then run it as:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bash run.sh
 </pre></div>
 </div>
-<p>And you should see the same output as if you ran <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">/vol1/opt</span></tt> directly.</p>
+<p>And you should see the same output as if you ran <code class="docutils literal"><span class="pre">ls</span> <span class="pre">/vol1/opt</span></code> directly.</p>
 <p>Scripts will be more useful when you have a series of commands you want to
 run in series.</p>
 <p>For example, a pipeline where you:</p>

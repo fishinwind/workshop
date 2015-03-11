@@ -48,7 +48,7 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
@@ -96,7 +96,7 @@ URL: https://code.google.com/p/io-2012-slides
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 19 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 06, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 11, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -162,7 +162,7 @@ http://amc-tesla.ucdenver.pvt/~username
 <div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data/expr-geno-covs.txt
 </pre></div>
 </div>
-<p>Copy this to a working directory e.g. <tt class="docutils literal"><span class="pre">$HOME/class/class-8</span></tt></p>
+<p>Copy this to a working directory e.g. <code class="docutils literal"><span class="pre">$HOME/class/class-8</span></code></p>
 
 
 
@@ -188,13 +188,13 @@ credentials.</p>
       <h2>Loading data in R<a class="headerlink" href="../../Classes/class-08.html#loading-data-in-r" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>The main function for loading data is <tt class="docutils literal"><span class="pre">read.delim()</span></tt>:</p>
+      <p>The main function for loading data is <code class="docutils literal"><span class="pre">read.delim()</span></code>:</p>
 <div class="highlight-r"><div class="highlight"><pre><span class="c1"># dfx is a data.frame. look at it with ``summary`` and ``head``</span>
 <span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;lamina.bed&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="kp">is.data.frame</span><span class="p">(</span>dfx<span class="p">)</span>
 </pre></div>
 </div>
-<p>If the column names are specified in a header line (begins with <tt class="docutils literal"><span class="pre">#</span></tt>),
+<p>If the column names are specified in a header line (begins with <code class="docutils literal"><span class="pre">#</span></code>),
 then you can load them as the column names with:</p>
 <div class="highlight-r"><div class="highlight"><pre><span class="c1"># this uses the names in the comment line as header names</span>
 <span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;lamina.bed&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
@@ -216,8 +216,8 @@ then you can load them as the column names with:</p>
       <h2>Loading data in R (2)<a class="headerlink" href="../../Classes/class-08.html#id2" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p><tt class="docutils literal"><span class="pre">df</span></tt> is short for <cite>data frame</cite>, the basic R data structure
-<tt class="docutils literal"><span class="pre">&lt;-</span></tt> is the R assignment operator, can also use <tt class="docutils literal"><span class="pre">=</span></tt></p>
+      <p><code class="docutils literal"><span class="pre">df</span></code> is short for <cite>data frame</cite>, the basic R data structure
+<code class="docutils literal"><span class="pre">&lt;-</span></code> is the R assignment operator, can also use <code class="docutils literal"><span class="pre">=</span></code></p>
 <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> df <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="kp">summary</span><span class="p">(</span>df<span class="p">)</span>
 <span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>df<span class="p">)</span>
@@ -255,13 +255,13 @@ with:</p>
       <h2>DataFrame<a class="headerlink" href="../../Classes/class-08.html#dataframe" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>The <tt class="docutils literal"><span class="pre">read()</span></tt> functions load a <tt class="docutils literal"><span class="pre">data.frame</span></tt>. In a data.frame,
+      <p>The <code class="docutils literal"><span class="pre">read()</span></code> functions load a <code class="docutils literal"><span class="pre">data.frame</span></code>. In a data.frame,
 everything is read into memory.</p>
 <ul class="simple">
 <li>R figures out the types of each column e.g. numeric/character/factor</li>
 <li>each column of the data.frame is accessed by <cite>$</cite>  e.g df$genotype</li>
 </ul>
-<p>Access the column data with the <tt class="docutils literal"><span class="pre">$</span></tt> character:</p>
+<p>Access the column data with the <code class="docutils literal"><span class="pre">$</span></code> character:</p>
 <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> dfx<span class="o">$</span>chrom
 </pre></div>
 </div>
@@ -390,12 +390,12 @@ ggplot<span class="p">(</span>dfx<span class="p">,</span> aes<span class="p">(</
       <h2>ggplot2 syntax (2)<a class="headerlink" href="../../Classes/class-08.html#id5" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p><tt class="docutils literal"><span class="pre">aes()</span></tt> stands for <strong>aesthetics</strong>, which specifies the the coordinates,
+      <p><code class="docutils literal"><span class="pre">aes()</span></code> stands for <strong>aesthetics</strong>, which specifies the the coordinates,
 colors, size, etc from these columns in the data.frame.</p>
 <div class="highlight-r"><div class="highlight"><pre>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">,</span> color<span class="o">=</span>gender<span class="p">)</span>
 </pre></div>
 </div>
-<p><tt class="docutils literal"><span class="pre">geom_point()</span></tt> means plot these as points, could be <tt class="docutils literal"><span class="pre">geom_line()</span></tt> or
+<p><code class="docutils literal"><span class="pre">geom_point()</span></code> means plot these as points, could be <code class="docutils literal"><span class="pre">geom_line()</span></code> or
 a number of other <cite>geoms</cite>.</p>
 
 
@@ -480,7 +480,7 @@ hist<span class="p">(</span><span class="kp">log</span><span class="p">(</span>d
 </pre></div>
 </div>
 <p>You can make these look a lot nicer with ggplot2.</p>
-<p><tt class="docutils literal"><span class="pre">hist()</span></tt> does not work with ggplot, you'll have to use the
+<p><code class="docutils literal"><span class="pre">hist()</span></code> does not work with ggplot, you'll have to use the
 ggplot2 machinery for that:</p>
 
 
@@ -496,7 +496,7 @@ ggplot2 machinery for that:</p>
 gp <span class="o">+</span> geom_histgram<span class="p">()</span>
 </pre></div>
 </div>
-<p>Try to figure out how to overlay a density plot with <tt class="docutils literal"><span class="pre">geom_density()</span></tt>.</p>
+<p>Try to figure out how to overlay a density plot with <code class="docutils literal"><span class="pre">geom_density()</span></code>.</p>
 
 
 
@@ -507,8 +507,8 @@ gp <span class="o">+</span> geom_histgram<span class="p">()</span>
       <h2>Histograms (3)<a class="headerlink" href="../../Classes/class-08.html#id7" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>You can also make effective separate visualizations with <tt class="docutils literal"><span class="pre">facet_grid()</span></tt>
-and <tt class="docutils literal"><span class="pre">facet_wrap()</span></tt>. You need to specify a formula to determine how to
+      <p>You can also make effective separate visualizations with <code class="docutils literal"><span class="pre">facet_grid()</span></code>
+and <code class="docutils literal"><span class="pre">facet_wrap()</span></code>. You need to specify a formula to determine how to
 separate:</p>
 <div class="highlight-r"><div class="highlight"><pre>gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
 
@@ -533,7 +533,7 @@ gp <span class="o">+</span> facet_grid<span class="p">(</span>condition <span cl
 <li>Make a histogram using ggplot and separate cases from controls by
 changing fill color and symbol type.</li>
 <li>Make a histogram using ggplot and separate cases from controls
-using <tt class="docutils literal"><span class="pre">facet_grid()</span></tt>, <tt class="docutils literal"><span class="pre">facet_wrap()</span></tt>.</li>
+using <code class="docutils literal"><span class="pre">facet_grid()</span></code>, <code class="docutils literal"><span class="pre">facet_wrap()</span></code>.</li>
 </ol>
 
 

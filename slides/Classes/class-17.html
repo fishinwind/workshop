@@ -48,7 +48,7 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
 
@@ -93,7 +93,7 @@ URL: https://code.google.com/p/io-2012-slides
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 2 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 06, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 11, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -139,7 +139,7 @@ reviewing how loops work. First, use wget to download
 <li>Print only lines that are not indented.</li>
 <li>Count the number of times that the word &quot;therefore&quot; appears.</li>
 </ol>
-<p>(hint: the <a class="reference external" href="http://docs.python.org/3/reference/simple_stmts.html#continue" title="(in Python v3.4)"><em>The continue statement</em></a> statement will skip to the next loop
+<p>(hint: the <a class="reference external" href="http://docs.python.org/3/reference/simple_stmts.html#continue" title="(in Python v3.4)"><span>The continue statement</span></a> statement will skip to the next loop
 iteration, and is usually found in an if statement)</p>
 
 
@@ -183,10 +183,10 @@ iteration, and is usually found in an if statement)</p>
       <h2>Counters<a class="headerlink" href="../../Classes/class-17.html#counters" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p><a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.Counter" title="(in Python v3.4)"><tt class="xref py py-class docutils literal"><span class="pre">Counter</span></tt></a> objects are a type of Python dict in
+      <p><a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.Counter" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">Counter</span></code></a> objects are a type of Python dict in
 which the values are counts of the keys. Counter objects have several
 methods to query the counts, like
-<a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.Counter.most_common" title="(in Python v3.4)"><tt class="xref py py-meth docutils literal"><span class="pre">most_common()</span></tt></a>.</p>
+<a class="reference external" href="http://docs.python.org/3/library/collections.html#collections.Counter.most_common" title="(in Python v3.4)"><code class="xref py py-meth docutils literal"><span class="pre">most_common()</span></code></a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
 <span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -231,7 +231,7 @@ another line of sequence data. For example:</p>
 AGCATCGTAGCTAGTCGTACGTAGCTATCGATCGTAGCTA
 </pre></div>
 </div>
-<p><strong>Download the sample FASTA file:</strong> <a class="reference internal" href="../Miscellaneous/data.html#fasta-file"><em>FASTA format</em></a></p>
+<p><strong>Download the sample FASTA file:</strong> <a class="reference internal" href="../Miscellaneous/data.html#fasta-file"><span>FASTA format</span></a></p>
 
 
 
@@ -359,7 +359,7 @@ For example:</p>
     <article class="">
       <ol class="arabic simple">
 <li>Modify the <cite>bed_generator</cite> code from the previous slide so that it
-turns value into a <a class="reference external" href="http://docs.python.org/3/library/functions.html#float" title="(in Python v3.4)"><tt class="xref py py-obj docutils literal"><span class="pre">float</span></tt></a> before yielding</li>
+turns value into a <a class="reference external" href="http://docs.python.org/3/library/functions.html#float" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a> before yielding</li>
 <li>In the code that calls bed_generator, print out the value</li>
 <li>In the code that calls bed_generator, append value to a list.</li>
 </ol>
@@ -472,7 +472,7 @@ converts start and end to int's.</p>
     </hgroup>
     <article class="">
       <p>Many people are struggling with simple debugging issues. Stratgies:</p>
-<p>Use <a class="reference external" href="http://docs.python.org/3/library/functions.html#print" title="(in Python v3.4)"><tt class="xref py py-func docutils literal"><span class="pre">print()</span></tt></a> copiously. For example, Print out a nested
+<p>Use <a class="reference external" href="http://docs.python.org/3/library/functions.html#print" title="(in Python v3.4)"><code class="xref py py-func docutils literal"><span class="pre">print()</span></code></a> copiously. For example, Print out a nested
 data structure as it is being created</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
@@ -496,7 +496,7 @@ data structure as it is being created</p>
       <h2>Python Debugging (2)<a class="headerlink" href="../../Classes/class-17.html#id5" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Use the Python Debugger: <a class="reference external" href="http://docs.python.org/3/library/pdb.html#module-pdb" title="(in Python v3.4)"><tt class="xref py py-mod docutils literal"><span class="pre">pdb</span></tt></a>.</p>
+      <p>Use the Python Debugger: <a class="reference external" href="http://docs.python.org/3/library/pdb.html#module-pdb" title="(in Python v3.4)"><code class="xref py py-mod docutils literal"><span class="pre">pdb</span></code></a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="hll"><span class="kn">import</span> <span class="nn">pdb</span>
 </span>
 <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
