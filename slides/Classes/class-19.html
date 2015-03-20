@@ -82,7 +82,7 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 
   
-    <slide class="level-1">
+    <slide class="level-1" id="class-19-python-idioms">
     <hgroup>
       <h1>Class 19 : Python Idioms<a class="headerlink" href="../../Classes/class-19.html#class-19-python-idioms" title="View HTML">§</a></h1>
     </hgroup>
@@ -93,7 +93,7 @@ URL: https://code.google.com/p/io-2012-slides
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 9 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 11, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 20, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -102,7 +102,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="goals">
     <hgroup>
       <h2>Goals<a class="headerlink" href="../../Classes/class-19.html#goals" title="View HTML">§</a></h2>
     </hgroup>
@@ -117,7 +117,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="variable-names-vs-builtins">
     <hgroup>
       <h2>Variable Names Vs. Builtins<a class="headerlink" href="../../Classes/class-19.html#variable-names-vs-builtins" title="View HTML">§</a></h2>
     </hgroup>
@@ -143,7 +143,7 @@ a list or dictionary.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="fastq-parsing">
     <hgroup>
       <h2>FASTQ parsing<a class="headerlink" href="../../Classes/class-19.html#fastq-parsing" title="View HTML">§</a></h2>
     </hgroup>
@@ -158,7 +158,7 @@ FASTQ records occur in groups of 4 in the order: name, seq, plus, qual</q>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="enumerate">
     <hgroup>
       <h2>enumerate<a class="headerlink" href="../../Classes/class-19.html#enumerate" title="View HTML">§</a></h2>
     </hgroup>
@@ -183,7 +183,7 @@ that we are on the first line, we can skip the header.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="id1">
     <hgroup>
       <h2>enumerate (2)<a class="headerlink" href="../../Classes/class-19.html#id1" title="View HTML">§</a></h2>
     </hgroup>
@@ -209,7 +209,7 @@ make sense.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="id2">
     <hgroup>
       <h2>enumerate (3)<a class="headerlink" href="../../Classes/class-19.html#id2" title="View HTML">§</a></h2>
     </hgroup>
@@ -234,7 +234,7 @@ incrementing.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="modulo">
     <hgroup>
       <h2>modulo<a class="headerlink" href="../../Classes/class-19.html#modulo" title="View HTML">§</a></h2>
     </hgroup>
@@ -256,7 +256,7 @@ incrementing.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="modulo-and-enumerate">
     <hgroup>
       <h2>modulo and enumerate<a class="headerlink" href="../../Classes/class-19.html#modulo-and-enumerate" title="View HTML">§</a></h2>
     </hgroup>
@@ -284,7 +284,7 @@ incrementing.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="modulo-enumerate-fastq">
     <hgroup>
       <h2>modulo, enumerate, fastq<a class="headerlink" href="../../Classes/class-19.html#modulo-enumerate-fastq" title="View HTML">§</a></h2>
     </hgroup>
@@ -309,7 +309,7 @@ incrementing.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="modulo-enumerate-fastq-parse">
     <hgroup>
       <h2>modulo, enumerate, fastq: parse<a class="headerlink" href="../../Classes/class-19.html#modulo-enumerate-fastq-parse" title="View HTML">§</a></h2>
     </hgroup>
@@ -332,7 +332,7 @@ format.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="zip">
     <hgroup>
       <h2>zip<a class="headerlink" href="../../Classes/class-19.html#zip" title="View HTML">§</a></h2>
     </hgroup>
@@ -361,7 +361,7 @@ format.</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="izip">
     <hgroup>
       <h2>izip<a class="headerlink" href="../../Classes/class-19.html#izip" title="View HTML">§</a></h2>
     </hgroup>
@@ -376,7 +376,7 @@ ask for them.</q>
 <span class="gp">In [12]: </span><span class="n">qual</span> <span class="o">=</span> <span class="s">&quot;9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591&quot;</span>
 
 <span class="gp">In [13]: </span><span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x10e3b2d40&gt;</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x10a562f38&gt;</span>
 
 <span class="gp">In [14]: </span><span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span><span class="p">)</span>
@@ -419,7 +419,7 @@ ask for them.</q>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="izip-laziness">
     <hgroup>
       <h2>izip laziness<a class="headerlink" href="../../Classes/class-19.html#izip-laziness" title="View HTML">§</a></h2>
     </hgroup>
@@ -434,7 +434,7 @@ That's useful...</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="list-comprehensions">
     <hgroup>
       <h2>list comprehensions<a class="headerlink" href="../../Classes/class-19.html#list-comprehensions" title="View HTML">§</a></h2>
     </hgroup>
@@ -459,7 +459,7 @@ The common way to do that was this:</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="why-use-functions">
     <hgroup>
       <h2>Why use functions?<a class="headerlink" href="../../Classes/class-19.html#why-use-functions" title="View HTML">§</a></h2>
     </hgroup>
@@ -485,7 +485,7 @@ time you need to parse a fastq file. Instead, you define a function:</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="in-class-exercise">
     <hgroup>
       <h2>in-class exercise<a class="headerlink" href="../../Classes/class-19.html#in-class-exercise" title="View HTML">§</a></h2>
     </hgroup>
@@ -515,7 +515,7 @@ time you need to parse a fastq file. Instead, you define a function:</p>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="exercises">
     <hgroup>
       <h2>exercises<a class="headerlink" href="../../Classes/class-19.html#exercises" title="View HTML">§</a></h2>
     </hgroup>
@@ -533,7 +533,7 @@ quals and using that at the end.</li>
 
 
     </article>
-  </slide>  <slide class="level-2">
+  </slide>  <slide class="level-2" id="resources">
     <hgroup>
       <h2>Resources<a class="headerlink" href="../../Classes/class-19.html#resources" title="View HTML">§</a></h2>
     </hgroup>
