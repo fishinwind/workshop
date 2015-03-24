@@ -45,7 +45,7 @@ type in python expressions and see the results immediately
 
 .. code-block:: bash
 
-    $ ipython3
+    $ ipython
 
 This command puts you in a shell that accepts python commands, much like
 the login terminal accepts ``bash`` commands.
