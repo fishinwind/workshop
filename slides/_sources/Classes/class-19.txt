@@ -28,7 +28,7 @@ list of keywords:
 .. code-block:: python
 
     >>> import keyword
-    >>> print(" ".join(keyword.kwlist))
+    >>> print " ".join(keyword.kwlist) 
 
     and as assert break class continue def del elif else except exec
     finally for from global if import in is lambda not or pass print
@@ -65,12 +65,12 @@ We can know the index of an iterable with enumerate:
     names = ('fred', 'sally', 'harry', 'jack', 'texan')
 
     for index, name in enumerate(names):
-        print(index, name)
+        print index, name 
 
     # To illustrate the freedom you have in choosing variable names
     # the above is identical to
     for really_bad_var_name, x42 in enumerate(names):
-        print(really_bad_var_name, x42)
+        print really_bad_var_name, x42 
 
 .. nextslide::
     :increment:
@@ -88,10 +88,10 @@ Enumerate is lazy, meaning it won't consume an iterable until we ask it to
     list(enumerate("abcdefg"))
     # OR 
     for i, letter in enumerate("abcdefg"):
-        print(i, letter)
+        print i, letter 
     # remember we have our choice of variable names. The above is identical to
     for xx, hello in enumerate("abcdefg"):
-        print(xx, hello)
+        print xx, hello 
 
 Generally we name index variables as *i* and give the other variables names that
 make sense.
@@ -141,7 +141,7 @@ modulo and enumerate
 .. ipython::
 
     In [1]: for i in range(12):
-       ...:     print(i, i % 4)
+       ...:     print i, i % 4 
        ...:     
     0 0
     1 1
@@ -165,7 +165,7 @@ modulo, enumerate, fastq
     :okexcept:
 
     In [1]: for i, line in enumerate(open('data/SP1.fq')):
-       ...:     print(i, i % 4, line.strip())
+       ...:     print i, i % 4, line.strip() 
        ...:     if i > 8: break
        ...:     
     0 0 @cluster_2:UMI_ATTCCG
@@ -241,7 +241,7 @@ izip
     Out[4]: <itertools.izip at 0x2419368>
 
     In [5]: for base, base_qual in izip(seq, qual):
-       ...:     print(base, base_qual)
+       ...:     print base, base_qual 
     T 9
     T C
     T ;
@@ -328,7 +328,7 @@ zip quality with sequence. append quality for each base in a dict of lists
     # outside the loop calculate the avg base quality:
     for base, integer_quals in quals_by_base.items():
         mean_quals = XXX_FIX_ME_XXX # remember to float()
-        print(base, mean_quals)
+        print base, mean_quals 
 
 exercises
 =========

@@ -76,11 +76,11 @@ work on many object comparisons.
     In [4]: dog = 'black'
 
     In [5]: if cat == dog: 
-       ...:     print("same color")
+       ...:     print "same color" 
        ...: elif cat != dog:
-       ...:     print("different color")
+       ...:     print "different color" 
        ...: else:
-       ...:     print("not going to happen")
+       ...:     print "not going to happen" 
        ...:     
 
 Undefined values in Python 
@@ -96,11 +96,11 @@ Undefined values in Python
 
     # the following if statements are equivalent:
     In [6]: if this is None:
-       ...:     print('foo')
+       ...:     print 'foo' 
        ...:     
 
     In [5]: if not this:
-       ...:     print('foo')
+       ...:     print 'foo' 
        ...:     
 
     # set the following and test with ``not this``

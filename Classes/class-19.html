@@ -30,7 +30,10 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Exercises" href="../Exercises.html" />
+    <link rel="prev" title="Class 18 : Applied Python" href="class-18.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -77,9 +80,9 @@
      href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
@@ -143,9 +146,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 9 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 7 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 20, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 24, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -164,7 +167,7 @@ a list or dictionary.</p>
 <p>There are python keywords and builtin functions</p>
 <p>list of keywords:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">keyword</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
 
 <span class="go">and as assert break class continue def del elif else except exec</span>
 <span class="go">finally for from global if import in is lambda not or pass print</span>
@@ -193,12 +196,12 @@ that we are on the first line, we can skip the header.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;fred&#39;</span><span class="p">,</span> <span class="s">&#39;sally&#39;</span><span class="p">,</span> <span class="s">&#39;harry&#39;</span><span class="p">,</span> <span class="s">&#39;jack&#39;</span><span class="p">,</span> <span class="s">&#39;texan&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span>
 
 <span class="c"># To illustrate the freedom you have in choosing variable names</span>
 <span class="c"># the above is identical to</span>
 <span class="k">for</span> <span class="n">really_bad_var_name</span><span class="p">,</span> <span class="n">x42</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">really_bad_var_name</span><span class="p">,</span> <span class="n">x42</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">really_bad_var_name</span><span class="p">,</span> <span class="n">x42</span>
 </pre></div>
 </div>
 <p>Try this in the ipython terminal:</p>
@@ -209,10 +212,10 @@ that we are on the first line, we can skip the header.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">))</span>
 <span class="c"># OR</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span>
 <span class="c"># remember we have our choice of variable names. The above is identical to</span>
 <span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">hello</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">hello</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">xx</span><span class="p">,</span> <span class="n">hello</span>
 </pre></div>
 </div>
 <p>Generally we name index variables as <em>i</em> and give the other variables names that
@@ -251,20 +254,20 @@ incrementing.</p>
 <div class="section" id="modulo-and-enumerate">
 <h2>modulo and enumerate<a class="headerlink" href="#modulo-and-enumerate" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-19.html#modulo-and-enumerate" title="Slides">§</a></h2>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span>
 <span class="gp">   ...: </span>
-<span class="go">(0, 0)</span>
-<span class="go">(1, 1)</span>
-<span class="go">(2, 2)</span>
-<span class="go">(3, 3)</span>
-<span class="go">(4, 0)</span>
-<span class="go">(5, 1)</span>
-<span class="go">(6, 2)</span>
-<span class="go">(7, 3)</span>
-<span class="go">(8, 0)</span>
-<span class="go">(9, 1)</span>
-<span class="go">(10, 2)</span>
-<span class="go">(11, 3)</span>
+<span class="go">0 0</span>
+<span class="go">1 1</span>
+<span class="go">2 2</span>
+<span class="go">3 3</span>
+<span class="go">4 0</span>
+<span class="go">5 1</span>
+<span class="go">6 2</span>
+<span class="go">7 3</span>
+<span class="go">8 0</span>
+<span class="go">9 1</span>
+<span class="go">10 2</span>
+<span class="go">11 3</span>
 </pre></div>
 </div>
 <p>How does this relate to our FASTQ?</p>
@@ -272,14 +275,14 @@ incrementing.</p>
 <div class="section" id="modulo-enumerate-fastq">
 <h2>modulo, enumerate, fastq<a class="headerlink" href="#modulo-enumerate-fastq" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-19.html#modulo-enumerate-fastq" title="Slides">§</a></h2>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;data/SP1.fq&#39;</span><span class="p">)):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 <span class="gp">   ...: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> <span class="k">break</span>
 <span class="gp">   ...: </span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IOError</span><span class="g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-4-32ea06613bee&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="nn">&lt;ipython-input-4-e4f85ee90db9&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;data/SP1.fq&#39;</span><span class="p">)):</span>
-<span class="g-Whitespace">      </span><span class="mi">2</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="g-Whitespace">      </span><span class="mi">2</span>     <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 <span class="g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> <span class="k">break</span>
 <span class="g-Whitespace">      </span><span class="mi">4</span> 
 
@@ -337,42 +340,42 @@ ask for them.</div></blockquote>
 <span class="gp">In [12]: </span><span class="n">qual</span> <span class="o">=</span> <span class="s">&quot;9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591&quot;</span>
 
 <span class="gp">In [13]: </span><span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x1115a3680&gt;</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x10d613b00&gt;</span>
 
 <span class="gp">In [14]: </span><span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span>
 <span class="gp">   ....: </span>
-<span class="go">(&#39;T&#39;, &#39;9&#39;)</span>
-<span class="go">(&#39;T&#39;, &#39;C&#39;)</span>
-<span class="go">(&#39;T&#39;, &#39;;&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;=&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;;&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;=&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;&lt;&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;9&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;@&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;4&#39;)</span>
-<span class="go">(&#39;A&#39;, &#39;8&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;6&#39;)</span>
-<span class="go">(&#39;A&#39;, &#39;8&#39;)</span>
-<span class="go">(&#39;T&#39;, &#39;&gt;&#39;)</span>
-<span class="go">(&#39;A&#39;, &#39;9&#39;)</span>
-<span class="go">(&#39;A&#39;, &#39;:&#39;)</span>
-<span class="go">(&#39;T&#39;, &#39;6&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;7&#39;)</span>
-<span class="go">(&#39;T&#39;, &#39;A&#39;)</span>
-<span class="go">(&#39;T&#39;, &#39;A&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;&lt;&#39;)</span>
-<span class="go">(&#39;A&#39;, &#39;9&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;&gt;&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;6&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;5&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;&lt;&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;=&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;&gt;&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;5&#39;)</span>
-<span class="go">(&#39;G&#39;, &#39;9&#39;)</span>
-<span class="go">(&#39;C&#39;, &#39;1&#39;)</span>
+<span class="go">T 9</span>
+<span class="go">T C</span>
+<span class="go">T ;</span>
+<span class="go">C =</span>
+<span class="go">C ;</span>
+<span class="go">G =</span>
+<span class="go">G &lt;</span>
+<span class="go">G 9</span>
+<span class="go">G @</span>
+<span class="go">C 4</span>
+<span class="go">A 8</span>
+<span class="go">C 6</span>
+<span class="go">A 8</span>
+<span class="go">T &gt;</span>
+<span class="go">A 9</span>
+<span class="go">A :</span>
+<span class="go">T 6</span>
+<span class="go">C 7</span>
+<span class="go">T A</span>
+<span class="go">T A</span>
+<span class="go">C &lt;</span>
+<span class="go">A 9</span>
+<span class="go">G &gt;</span>
+<span class="go">C 6</span>
+<span class="go">C 5</span>
+<span class="go">G &lt;</span>
+<span class="go">G =</span>
+<span class="go">G &gt;</span>
+<span class="go">C 5</span>
+<span class="go">G 9</span>
+<span class="go">C 1</span>
 </pre></div>
 </div>
 </div>
@@ -440,7 +443,7 @@ time you need to parse a fastq file. Instead, you define a function:</p>
 <span class="c"># outside the loop calculate the avg base quality:</span>
 <span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">integer_quals</span> <span class="ow">in</span> <span class="n">quals_by_base</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">mean_quals</span> <span class="o">=</span> <span class="n">XXX_FIX_ME_XXX</span> <span class="c"># remember to float()</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">mean_quals</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">base</span><span class="p">,</span> <span class="n">mean_quals</span>
 </pre></div>
 </div>
 </div>

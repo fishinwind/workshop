@@ -30,7 +30,10 @@
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 16 : Python : Basics" href="class-16.html" />
+    <link rel="prev" title="Class 11 : R : Simple statistics and ggplot2" href="class-11.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -77,9 +80,9 @@
      href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
@@ -143,9 +146,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Mar 26 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Mar 24 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 20, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 24, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -200,13 +203,13 @@ the login terminal accepts <code class="docutils literal"><span class="pre">bash
 <h2>Python indentation<a class="headerlink" href="#python-indentation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-15.html#python-indentation" title="Slides">§</a></h2>
 <p>Python depends on proper indentation of your code. This does not work:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">i</span>
 </pre></div>
 </div>
 <p>Instead you have to indent the <code class="docutils literal"><span class="pre">print</span></code> statement to nest it in the for
 loop:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">i</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -237,7 +240,7 @@ them. For example, a string is iterable:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">sentence</span> <span class="o">=</span> <span class="s">&#39;i LOVE programming&#39;</span>
 
 <span class="gp">In [3]: </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">char</span>
 <span class="gp">   ...: </span>
 </pre></div>
 </div>
@@ -247,12 +250,12 @@ them. For example, a string is iterable:</p>
 <p>Automate repetitive tasks with a for loop:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="go"># Print &quot;hello&quot; 5 times:</span>
 <span class="gp">In [4]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="gp">   ...: </span>    <span class="k">print</span> <span class="s">&quot;hello&quot;</span>
 <span class="gp">   ...: </span>
 
 <span class="go"># now print the numbers</span>
 <span class="gp">In [5]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span>
 <span class="gp">   ...: </span>
 </pre></div>
 </div>
@@ -353,7 +356,7 @@ position.</p>
 
 <span class="go"># iterate over the list</span>
 <span class="gp">In [28]: </span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">word</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
 <span class="gp">   ....: </span>
 
 <span class="go"># mix types in lists</span>
@@ -405,7 +408,7 @@ Examples: <code class="xref py py-class docutils literal"><span class="pre">Valu
 <span class="gp">In [42]: </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">   ....: </span>    <span class="n">nums</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
 <span class="gp">   ....: </span><span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;error: not enough nums&quot;</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&quot;error: not enough nums&quot;</span>
 <span class="gp">   ....: </span>
 </pre></div>
 </div>
@@ -420,7 +423,7 @@ Examples: <code class="xref py py-class docutils literal"><span class="pre">Valu
 <span class="gp">   ....: </span>    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">)</span>
 <span class="gp">   ....: </span>    <span class="n">start</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">5000</span><span class="p">:</span>
-<span class="gp">   ....: </span>        <span class="k">print</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+<span class="gp">   ....: </span>        <span class="k">print</span> <span class="n">fields</span>
 <span class="gp">   ....: </span>
 </pre></div>
 </div>

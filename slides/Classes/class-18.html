@@ -50,7 +50,10 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
-    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 19 : Python Idioms" href="class-19.html" />
+    <link rel="prev" title="Class 17 : Python Concepts" href="class-17.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -91,9 +94,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 7 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 2 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 20, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 24, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -299,11 +302,11 @@ dictionaries containing the information for each sample.</p>
     <span class="c"># now lab_info has the sequene and the lab keys and values.</span>
 
     <span class="k">if</span> <span class="n">is_first_line</span><span class="p">:</span> <span class="c"># print a header once only.</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lab_info</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="k">print</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lab_info</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="n">is_first_line</span> <span class="o">=</span> <span class="bp">False</span>
 
     <span class="c"># this will print out the data for each record.</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lab_info</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+    <span class="k">print</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lab_info</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 </pre></div>
 </div>
 
