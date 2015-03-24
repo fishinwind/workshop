@@ -16,19 +16,19 @@
 .. |c11-date| replace:: 2015 Mar 5 Thurs
 .. |c12-date| replace:: 2015 Mar 10 Tues
 .. |c13-date| replace:: 2015 Mar 12 Thurs
-.. |c14-date| replace:: 2015 Mar 24 Tues
-.. |c15-date| replace:: 2015 Mar 26 Thurs
-.. |c16-date| replace:: 2015 Mar 31 Tues
-.. |c17-date| replace:: 2015 Apr 2 Thurs
-.. |c18-date| replace:: 2015 Apr 7 Tues
-.. |c19-date| replace:: 2015 Apr 9 Thurs
-.. |c20-date| replace:: 2015 Apr 14 Tues
-.. |c21-date| replace:: 2015 Apr 16 Thurs
-.. |c22-date| replace:: 2015 Apr 21 Tues
-.. |c23-date| replace:: 2015 Apr 23 Thurs
-.. |c24-date| replace:: 2015 Apr 28 Tues
-.. |c25-date| replace:: 2015 Apr 30 Thurs
-.. |c26-date| replace:: 2015 May 5 Tues
+.. |c15-date| replace:: 2015 Mar 24 Tues
+.. |c16-date| replace:: 2015 Mar 26 Thurs
+.. |c17-date| replace:: 2015 Mar 31 Tues
+.. |c18-date| replace:: 2015 Apr 2 Thurs
+.. |c19-date| replace:: 2015 Apr 7 Tues
+.. |c20-date| replace:: 2015 Apr 9 Thurs
+.. |c21-date| replace:: 2015 Apr 14 Tues
+.. |c22-date| replace:: 2015 Apr 16 Thurs
+.. |c23-date| replace:: 2015 Apr 21 Tues
+.. |c24-date| replace:: 2015 Apr 23 Thurs
+.. |c25-date| replace:: 2015 Apr 28 Tues
+.. |c26-date| replace:: 2015 Apr 30 Thurs
+.. |c27-date| replace:: 2015 May 5 Tues
 
 .. Problem set due dates
 .. |pset1-due| replace:: 2015 Feb 2 5:00 PM

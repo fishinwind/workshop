@@ -374,7 +374,7 @@ slide_html_relative_path = "../"
 
 # -- Intersphinx --------------------------------------------------
 # for python doc refs
-intersphinx_mapping = {'python': ('http://docs.python.org/3', None),
+intersphinx_mapping = {'python': ('http://docs.python.org/2', None),
                        'bedtools': ('http://bedtools.readthedocs.org/en/latest/', None)}
 
 # -- Options for PDF output --------------------------------------------------
