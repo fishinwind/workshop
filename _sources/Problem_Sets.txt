@@ -21,6 +21,7 @@ Problem Sets for the Genome Analysis Workshop (MOLB 7621):
    Problem_Sets/problem_set_4/problem_set_4
    Problem_Sets/problem_set_5/problem_set_5
    Problem_Sets/problem_set_6/problem_set_6
+   Problem_Sets/problem_set_7/problem_set_7
    Problem_Sets/Problem_Set_Keys
 
 Problem Set Keys

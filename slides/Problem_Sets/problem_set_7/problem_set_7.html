@@ -1,0 +1,217 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Problem Set 7 &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../../_static/js/slides"
+            src="../../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" />
+    <link rel="up" title="Problem Sets" href="../../Problem_Sets.html" />
+    <link rel="next" title="Problem Set : KEYS" href="../Problem_Set_Keys.html" />
+    <link rel="prev" title="Problem Set 6" href="../problem_set_6/problem_set_6.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1" id="problem-set-7">
+    <hgroup>
+      <h1>Problem Set 7<a class="headerlink" href="../../../Problem_Sets/problem_set_7/problem_set_7.html#problem-set-7" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Due date:</th><td class="field-body">2015 Apr 6 5:00 PM</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="overview">
+    <hgroup>
+      <h2>Overview<a class="headerlink" href="../../../Problem_Sets/problem_set_7/problem_set_7.html#overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>For this quiz you will write programs in Python to analyze data.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="problem-1-bed-files">
+    <hgroup>
+      <h2>Problem 1 (BED files)<a class="headerlink" href="../../../Problem_Sets/problem_set_7/problem_set_7.html#problem-1-bed-files" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use Python to perform a similar tasks as Problem Set 2, where you used
+<code class="docutils literal"><span class="pre">awk</span></code>. Write a Python program to read the lamina.bed file and report the
+following:</p>
+<ul>
+<li><p class="first">What is the region with the largest start position (2nd column) <strong>for
+each</strong> chromosome in <cite>lamina.bed</cite>? (<strong>5 points</strong>)</p>
+</li>
+<li><p class="first">What is the region with the largest end position on chrY in
+lamina.bed? (<strong>5 points</strong>) Report as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">chrom</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">start</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">end</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">value</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">region_length</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Download the bed file here: <a class="reference internal" href="../../Miscellaneous/data.html#bed-file"><span>BED format</span></a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">See end of this page for the solution to question 1.</p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="problem-2-fastq-files">
+    <hgroup>
+      <h2>Problem 2 (FASTQ files)<a class="headerlink" href="../../../Problem_Sets/problem_set_7/problem_set_7.html#problem-2-fastq-files" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use Python to read a file in FASTQ format. FASTQ records are comprised of
+4 sections; in this case each section will be on a unique line:</p>
+<div class="highlight-python"><div class="highlight"><pre>@cluster_2:UMI_ATTCCG             # record name
+TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
++                                 # empty line; starts with &#39;+&#39;
+9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591   # phred-scaled quality scores
+</pre></div>
+</div>
+<p>Download the fastq file here: <a class="reference internal" href="../../Miscellaneous/data.html#fastq-file"><span>FASTQ format</span></a></p>
+<p>Write a Python program to parse the FASTQ records and report the
+following:</p>
+<ul class="simple">
+<li>Which of the first 10 sequence records has the largest number of 'C'
+residues in the sequence? Report its record name (<strong>5 points</strong>).</li>
+<li>For each of the first 10 records, Covert each character in the
+quality score to a number, and sum the numbers. Use <a class="reference external" href="http://docs.python.org/2/library/functions.html#ord" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">ord()</span></code></a>
+to convert characters to numbers (<strong>5 points</strong>).</li>
+<li>Use the Python <a class="reference external" href="http://docs.python.org/2/library/collections.html#collections.Counter" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">Counter</span></code></a> to count unique
+sequences in the Fastq file. Report the top ten most abundant
+sequences in the Fastq file (<strong>5 points</strong>).</li>
+<li>Report the revese complement of each of the first 10 sequences (<strong>5
+points</strong>)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The reverse complement of <code class="docutils literal"><span class="pre">5'-AGCTCGTA-3''</span></code> is <code class="docutils literal"><span class="pre">5'-TACGAGCT-3'</span></code></p>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="problem-set-submission">
+    <hgroup>
+      <h2>Problem Set Submission<a class="headerlink" href="../../../Problem_Sets/problem_set_7/problem_set_7.html#problem-set-submission" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Submit your problem set as a tar file to Canvas
+(<a class="reference internal" href="../../Problem_Sets.html#problem-set-submission"><span>Problem Set Submission</span></a>).</p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
