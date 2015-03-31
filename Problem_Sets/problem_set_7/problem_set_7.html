@@ -149,10 +149,10 @@
 following:</p>
 <ul>
 <li><p class="first">What is the region with the largest start position (2nd column) <strong>for
-each</strong> chromosome in <cite>lamina.bed</cite>? (<strong>5 points</strong>)</p>
+each</strong> chromosome in <cite>lamina.bed</cite>? (<strong>10 points</strong>)</p>
 </li>
 <li><p class="first">What is the region with the largest end position on chrY in
-lamina.bed? (<strong>5 points</strong>) Report as:</p>
+lamina.bed? (<strong>10 points</strong>) Report as:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">chrom</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">start</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">end</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">value</span> <span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span> <span class="n">region_length</span>
 </pre></div>
 </div>
@@ -179,15 +179,13 @@ TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
 following:</p>
 <ul class="simple">
 <li>Which of the first 10 sequence records has the largest number of &#8216;C&#8217;
-residues in the sequence? Report its record name (<strong>5 points</strong>).</li>
+residues in the sequence? Report its record name (<strong>10 points</strong>).</li>
 <li>For each of the first 10 records, Covert each character in the
 quality score to a number, and sum the numbers. Use <a class="reference external" href="http://docs.python.org/2/library/functions.html#ord" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">ord()</span></code></a>
-to convert characters to numbers (<strong>5 points</strong>).</li>
-<li>Use the Python <a class="reference external" href="http://docs.python.org/2/library/collections.html#collections.Counter" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">Counter</span></code></a> to count unique
-sequences in the Fastq file. Report the top ten most abundant
-sequences in the Fastq file (<strong>5 points</strong>).</li>
-<li>Report the revese complement of each of the first 10 sequences (<strong>5
-points</strong>)</li>
+to convert characters to numbers (<strong>10 points</strong>).</li>
+<li>Report the revese complement of each of the first 10 sequences (<strong>10
+points</strong>). You will have to define a <code class="docutils literal"><span class="pre">reverse_complement()</span></code>, or find
+one from another package.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
