@@ -19,10 +19,10 @@ Use Python to perform a similar tasks as Problem Set 2, where you used
 following:
 
 - What is the region with the largest start position (2nd column) **for
-  each** chromosome in `lamina.bed`? (**5 points**)
+  each** chromosome in `lamina.bed`? (**10 points**)
 
 - What is the region with the largest end position on chrY in
-  lamina.bed? (**5 points**) Report as::
+  lamina.bed? (**10 points**) Report as::
 
    chrom <tab> start <tab> end <tab> value <tab> region_length
 
@@ -49,18 +49,15 @@ Write a Python program to parse the FASTQ records and report the
 following:
 
 - Which of the first 10 sequence records has the largest number of 'C'
-  residues in the sequence? Report its record name (**5 points**).
+  residues in the sequence? Report its record name (**10 points**).
     
 - For each of the first 10 records, Covert each character in the
   quality score to a number, and sum the numbers. Use :py:func:`ord`
-  to convert characters to numbers (**5 points**).
+  to convert characters to numbers (**10 points**).
 
-- Use the Python :py:class:`~collections.Counter` to count unique
-  sequences in the Fastq file. Report the top ten most abundant
-  sequences in the Fastq file (**5 points**).
-
-- Report the revese complement of each of the first 10 sequences (**5
-  points**)
+- Report the revese complement of each of the first 10 sequences (**10
+  points**). You will have to define a ``reverse_complement()``, or find
+  one from another package.
 
 .. note::
 
