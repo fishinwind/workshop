@@ -10,7 +10,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 <html>
 <head>
-  <title>Class 19 : Python Idioms &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <title>Class 18 : Applied Python &mdash; Genome Analysis Workshop 0.2 documentation</title>
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -19,6 +19,11 @@ URL: https://code.google.com/p/io-2012-slides
   <!--This one seems to work all the time, but really small on ipad-->
   <!--<meta name="viewport" content="initial-scale=0.4">-->
   <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
   
   <link rel="stylesheet" media="all"
         href="../_static/theme/css/default.css">
@@ -53,7 +58,7 @@ URL: https://code.google.com/p/io-2012-slides
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Exercises" href="../Exercises.html" />
-    <link rel="prev" title="Class 18 : Applied Python" href="class-18.html" /> 
+    <link rel="prev" title="Class 19 : Python Idioms" href="class-18.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -74,32 +79,39 @@ URL: https://code.google.com/p/io-2012-slides
 
 <slides class="layout-widescreen">
 
-    <slide class="title-slide segue nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
-    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
-    <hgroup class="auto-fadein">
-      <h1 data-config-title><!-- populated from slide_config.json --></h1>
-      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
-      <p data-config-presenter><!-- populated from slide_config.json --></p>
-    </hgroup>
-  </slide>
+  
 
   
-    <slide class="level-1" id="class-19-python-idioms">
+    <slide class="title-slide segue nobackground level-1" id="class-18-applied-python">
     <hgroup>
-      <h1>Class 19 : Python Idioms<a class="headerlink" href="../../Classes/class-19.html#class-19-python-idioms" title="View HTML">§</a></h1>
+      <h1>Class 18 : Applied Python<a class="headerlink" href="../../Classes/class-19.html#class-18-applied-python" title="View HTML">§</a></h1>
     </hgroup>
     <article class="">
       <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 7 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 2 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">March 31, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 01, 2015</td>
 </tr>
 </tbody>
 </table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="final-project">
+    <hgroup>
+      <h2>Final Project<a class="headerlink" href="../../Classes/class-19.html#final-project" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We will have a final project that is worth 15% of your grade, due the week
+of May 10.</p>
+<p>We want you to come up with a question you can address with the tools you
+learned in the class. You should incorporate ENCODE data into your
+analysis, and you can also integrate your own data.</p>
 
 
 
@@ -110,440 +122,9 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Goals<a class="headerlink" href="../../Classes/class-19.html#goals" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <ol class="arabic simple">
-<li>python tricks to write more concise code</li>
-<li>Laziness</li>
-<li>Data structures</li>
-</ol>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="variable-names-vs-builtins">
-    <hgroup>
-      <h2>Variable Names Vs. Builtins<a class="headerlink" href="../../Classes/class-19.html#variable-names-vs-builtins" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>you decide what to call a variable in a for loop or the name of
-a list or dictionary.</p>
-<p>There are python keywords and builtin functions</p>
-<p>list of keywords:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">keyword</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>
-
-<span class="go">and as assert break class continue def del elif else except exec</span>
-<span class="go">finally for from global if import in is lambda not or pass print</span>
-<span class="go">raise return try while with yield</span>
-</pre></div>
-</div>
-<p>list of builtin functions:</p>
-<q>
-<a class="reference external" href="http://docs.python.org/3/library/functions.html">http://docs.python.org/3/library/functions.html</a></q>
-<p>(includes range, open, file, list, dict, etc)</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="fastq-parsing">
-    <hgroup>
-      <h2>FASTQ parsing<a class="headerlink" href="../../Classes/class-19.html#fastq-parsing" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>We have seen the problem of parsing a FASTQ file.
-How do we describe the format in English?</p>
-<q>
-FASTQ records occur in groups of 4 in the order: name, seq, plus, qual</q>
-<p>We will learn some tools to simplify this.</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="enumerate">
-    <hgroup>
-      <h2>enumerate<a class="headerlink" href="../../Classes/class-19.html#enumerate" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>We have seen that we often want to know the index (or line number)
-that goes with an iterable. For example, if we know
-that we are on the first line, we can skip the header.</p>
-<p>We can know the index of an iterable with enumerate:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;fred&#39;</span><span class="p">,</span> <span class="s">&#39;sally&#39;</span><span class="p">,</span> <span class="s">&#39;harry&#39;</span><span class="p">,</span> <span class="s">&#39;jack&#39;</span><span class="p">,</span> <span class="s">&#39;texan&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span>
-
-<span class="c"># To illustrate the freedom you have in choosing variable names</span>
-<span class="c"># the above is identical to</span>
-<span class="k">for</span> <span class="n">really_bad_var_name</span><span class="p">,</span> <span class="n">x42</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">really_bad_var_name</span><span class="p">,</span> <span class="n">x42</span>
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="id1">
-    <hgroup>
-      <h2>enumerate (2)<a class="headerlink" href="../../Classes/class-19.html#id1" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Try this in the ipython terminal:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Enumerate is lazy, meaning it won't consume an iterable until we ask it to</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">))</span>
-<span class="c"># OR</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span>
-<span class="c"># remember we have our choice of variable names. The above is identical to</span>
-<span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">hello</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">xx</span><span class="p">,</span> <span class="n">hello</span>
-</pre></div>
-</div>
-<p>Generally we name index variables as <em>i</em> and give the other variables names that
-make sense.</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="id2">
-    <hgroup>
-      <h2>enumerate (3)<a class="headerlink" href="../../Classes/class-19.html#id2" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>When we wrap any iterable in enumerate and we get a tuple of
-<cite>index, thing</cite>. Where <cite>thing</cite> was the element of the original list.</p>
-<p>We can skip the header in a file like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span><span class="p">)):</span>
-    <span class="c"># skip the header</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">)</span>
-    <span class="c"># or we can get the variables directly since</span>
-    <span class="c"># we know there are 4 cols</span>
-    <span class="n">chrom</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Using enumerate like this is safer than manually incrementing a variable
-as sometimes you will forget to increment or you will <em>continue</em> before
-incrementing.</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="modulo">
-    <hgroup>
-      <h2>modulo<a class="headerlink" href="../../Classes/class-19.html#modulo" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Modulo is the remainder operation.</p>
-<ul class="simple">
-<li>12 modulo 4 is 0</li>
-<li>13 modulo 4 is 1</li>
-</ul>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="mi">12</span> <span class="o">%</span> <span class="mi">4</span>
-<span class="gh">Out[1]: </span><span class="go">0</span>
-
-<span class="gp">In [2]: </span><span class="mi">13</span> <span class="o">%</span> <span class="mi">4</span>
-<span class="gh">Out[2]: </span><span class="go">1</span>
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="modulo-and-enumerate">
-    <hgroup>
-      <h2>modulo and enumerate<a class="headerlink" href="../../Classes/class-19.html#modulo-and-enumerate" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span>
-<span class="gp">   ...: </span>
-<span class="go">0 0</span>
-<span class="go">1 1</span>
-<span class="go">2 2</span>
-<span class="go">3 3</span>
-<span class="go">4 0</span>
-<span class="go">5 1</span>
-<span class="go">6 2</span>
-<span class="go">7 3</span>
-<span class="go">8 0</span>
-<span class="go">9 1</span>
-<span class="go">10 2</span>
-<span class="go">11 3</span>
-</pre></div>
-</div>
-<p>How does this relate to our FASTQ?</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="modulo-enumerate-fastq">
-    <hgroup>
-      <h2>modulo, enumerate, fastq<a class="headerlink" href="../../Classes/class-19.html#modulo-enumerate-fastq" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;data/SP1.fq&#39;</span><span class="p">)):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="gp">   ...: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> <span class="k">break</span>
-<span class="gp">   ...: </span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IOError</span><span class="g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-4-e4f85ee90db9&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;data/SP1.fq&#39;</span><span class="p">)):</span>
-<span class="g-Whitespace">      </span><span class="mi">2</span>     <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> <span class="k">break</span>
-<span class="g-Whitespace">      </span><span class="mi">4</span> 
-
-<span class="ne">IOError</span>: [Errno 2] No such file or directory: &#39;data/SP1.fq&#39;
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="modulo-enumerate-fastq-parse">
-    <hgroup>
-      <h2>modulo, enumerate, fastq: parse<a class="headerlink" href="../../Classes/class-19.html#modulo-enumerate-fastq-parse" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Parse a fastq!!</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/vol1/opt/data/SP1.fq&#39;</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">line</span>
-    <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">seq</span> <span class="o">=</span> <span class="n">line</span>
-    <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="n">qual</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="c"># here have name, seq, qual from a single record</span>
-</pre></div>
-</div>
-<p>note how this fairly closely matches our english explanation of the fastq
-format.</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="zip">
-    <hgroup>
-      <h2>zip<a class="headerlink" href="../../Classes/class-19.html#zip" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>zip is another python function. It merges items from multiple lists:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="gp">In [6]: </span><span class="n">b</span> <span class="o">=</span> <span class="s">&quot;abcde&quot;</span>
-
-<span class="gp">In [7]: </span><span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="gh">Out[7]: </span><span class="go">[(0, &#39;a&#39;), (1, &#39;b&#39;), (2, &#39;c&#39;), (3, &#39;d&#39;), (4, &#39;e&#39;)]</span>
-
-<span class="gp">In [8]: </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(),</span> <span class="p">[],</span> <span class="bp">None</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">]</span>
-
-<span class="gp">In [9]: </span><span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-<span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">[(0, &#39;a&#39;, {}),</span>
-<span class="go"> (1, &#39;b&#39;, []),</span>
-<span class="go"> (2, &#39;c&#39;, None),</span>
-<span class="go"> (3, &#39;d&#39;, &#39;hello&#39;),</span>
-<span class="go"> (4, &#39;e&#39;, &#39;world&#39;)]</span>
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="izip">
-    <hgroup>
-      <h2>izip<a class="headerlink" href="../../Classes/class-19.html#izip" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <q>
-izip is a lazy version of zip. It doesn't consume or return elements until you
-ask for them.</q>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">izip</span>
-
-<span class="gp">In [11]: </span><span class="n">seq</span> <span class="o">=</span> <span class="s">&quot;TTTCCGGGGCACATAATCTTCAGCCGGGCGC&quot;</span>
-
-<span class="gp">In [12]: </span><span class="n">qual</span> <span class="o">=</span> <span class="s">&quot;9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591&quot;</span>
-
-<span class="gp">In [13]: </span><span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x10dd28290&gt;</span>
-
-<span class="gp">In [14]: </span><span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span>
-<span class="gp">   ....: </span>
-<span class="go">T 9</span>
-<span class="go">T C</span>
-<span class="go">T ;</span>
-<span class="go">C =</span>
-<span class="go">C ;</span>
-<span class="go">G =</span>
-<span class="go">G &lt;</span>
-<span class="go">G 9</span>
-<span class="go">G @</span>
-<span class="go">C 4</span>
-<span class="go">A 8</span>
-<span class="go">C 6</span>
-<span class="go">A 8</span>
-<span class="go">T &gt;</span>
-<span class="go">A 9</span>
-<span class="go">A :</span>
-<span class="go">T 6</span>
-<span class="go">C 7</span>
-<span class="go">T A</span>
-<span class="go">T A</span>
-<span class="go">C &lt;</span>
-<span class="go">A 9</span>
-<span class="go">G &gt;</span>
-<span class="go">C 6</span>
-<span class="go">C 5</span>
-<span class="go">G &lt;</span>
-<span class="go">G =</span>
-<span class="go">G &gt;</span>
-<span class="go">C 5</span>
-<span class="go">G 9</span>
-<span class="go">C 1</span>
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="izip-laziness">
-    <hgroup>
-      <h2>izip laziness<a class="headerlink" href="../../Classes/class-19.html#izip-laziness" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Laziness is important, if for example we are zipping over a file. If we use
-<strong>zip</strong> it will consume the entire file immediately and read it into memory.
-<strong>izip</strong> will only consume the file as we request the zipped items.</p>
-<p>Note that in the previous slide, we associated each base with it's base-quality.
-That's useful...</p>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="list-comprehensions">
-    <hgroup>
-      <h2>list comprehensions<a class="headerlink" href="../../Classes/class-19.html#list-comprehensions" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>In one problem you had to sum the ord()'s of the quality line.
-The common way to do that was this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">qual_sum</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qual</span><span class="p">:</span>
-    <span class="n">qual_sum</span> <span class="o">+=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Once could get the quals instead as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">integer_quals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qual</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>So the sum can be shortened to:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">qual_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qual</span><span class="p">)</span>
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="why-use-functions">
-    <hgroup>
-      <h2>Why use functions?<a class="headerlink" href="../../Classes/class-19.html#why-use-functions" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>Functions are useful for encapsulating reusable chunks of code. For
-exmaple, you don't want to write messy code for parsing a fastq file every
-time you need to parse a fastq file. Instead, you define a function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parse_fastq</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="c"># parse records</span>
-</pre></div>
-</div>
-<p>Once that is defined, you can put it in a file in your PYTHONPATH called
-<code class="docutils literal"><span class="pre">mytools.py</span></code> and use it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># look ma! no messy parsing code!</span>
-<span class="kn">from</span> <span class="nn">mytools</span> <span class="kn">import</span> <span class="n">parse_fastq</span>
-
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">parse_fastq</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="c"># use the record</span>
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="in-class-exercise">
-    <hgroup>
-      <h2>in-class exercise<a class="headerlink" href="../../Classes/class-19.html#in-class-exercise" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>calculate mean base-quality by base.</p>
-<p>zip quality with sequence. append quality for each base in a dict of lists</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># append all quality scores for A base to quals_by_base[&#39;A&#39;] list.</span>
-<span class="n">quals_by_base</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;A&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;T&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;G&#39;</span><span class="p">:</span> <span class="p">[]}</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/vol1/opt/data/SP1.fq&#39;</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">line</span>
-    <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">seq</span> <span class="o">=</span> <span class="n">line</span>
-    <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="n">qual</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="c"># update quals_by_base here since we have seq and qual</span>
-        <span class="c"># use zip/izip</span>
-        <span class="o">...</span>
-<span class="c"># outside the loop calculate the avg base quality:</span>
-<span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">integer_quals</span> <span class="ow">in</span> <span class="n">quals_by_base</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">mean_quals</span> <span class="o">=</span> <span class="n">XXX_FIX_ME_XXX</span> <span class="c"># remember to float()</span>
-    <span class="k">print</span> <span class="n">base</span><span class="p">,</span> <span class="n">mean_quals</span>
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="exercises">
-    <hgroup>
-      <h2>exercises<a class="headerlink" href="../../Classes/class-19.html#exercises" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
       <ul class="simple">
-<li>do previous exercise without a list. instead storing running sum and count of
-quals and using that at the end.</li>
-<li>look at xrange, the lazy version of range</li>
-<li>how can you implement your own version of enumerate using izip and xrange?</li>
-<li>clean up some of your homeworks using the simpler fastq parsing.</li>
-<li>look at the itertools module (<a class="reference external" href="http://docs.python.org/2/library/itertools.html">http://docs.python.org/2/library/itertools.html</a>)</li>
-</ul>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="resources">
-    <hgroup>
-      <h2>Resources<a class="headerlink" href="../../Classes/class-19.html#resources" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <ul class="simple">
-<li>idiomatic python: <a class="reference external" href="http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html">http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html</a></li>
-<li>itertools: <a class="reference external" href="http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html">http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html</a></li>
+<li>Few more Python concepts</li>
+<li>Go over Problem Set 7</li>
 </ul>
 
 
@@ -554,7 +135,6 @@ quals and using that at the end.</li>
 
 
     <slide class="thank-you-slide segue nobackground">
-    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
       <h2>&lt;Thank You!&gt;</h2>
     </article>

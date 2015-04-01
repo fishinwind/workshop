@@ -1,207 +1,365 @@
 
 .. include:: /_static/substitutions.txt
 
-*************************
-Class 18 : Applied Python 
-*************************
+************************
+Class 19 : Python Idioms
+************************
 
-:Class date: |c18-date|
+:Class date: |c19-date|
 :Last updated: |today|
-
-Final Project
-=============
-
-We will have a final project that is worth 15% of your grade, due on April
-2.
-
-We want you to come up with a question you can address with the tools you
-learned in the class. You should incorporate ENCODE data into your
-analysis, and you can also integrate your own data.
-
-We will go over some analysis vignettes on Wed and Fri to illustrate
-example final projects.
 
 Goals
 =====
 
-#. homework review
-#. example application
+#. Few more Python concepts 
+#. FASTQ parsing 
 
-Homework Review
-===============
+Python Debugging
+================
+Use :py:func:`print` copiously. For example, Print out a nested
+data structure as it is being created
 
-+ Everyone is having trouble with :ref:`problem-set-3`.
+.. code-block:: python
+    :emphasize-lines: 10
 
-+ Trouble integrating simple python constructs (dicts, lists, strings) and
-  logic (if blocks, for loops) to perform some tasks.
+    from collections import defaultdict
 
-+ Specific questions about homework?
+    nested = defaultdict(list)
 
-+ Questions 1, 2.
+    for chrom, start, end in parse_bed(bedfile):
 
-+ `toolshed module <https://pypi.python.org/pypi/toolshed>`_.
+        coords = (start, end)
+        nested[chrom].append(coords)
 
-Application Impetus
-===================
+        print nested 
 
-It is helpful to read python code that solves a common problem to
-better understand how to use data-structures.
+.. nextslide::
+    :increment:
 
-A python script that combines data from two files:
+Use the Python Debugger: :py:mod:`pdb`.
 
-#. laboratory information on immune cell measurements.
-#. information on a sequencing run for a subset of those samples.
+.. code-block:: python
+    :emphasize-lines: 1,5
 
-This is real data (shuffled to protect innocent mice) and a real python script
-(data from Ken Eyring and Ted Shade)
+    import pdb
 
-Data Files
-==========
+    for idx in range(100):
+        ...
+        pdb.set_trace()
 
-Download these files into "/vol1/opt/data/"
+    # keys:
+    # c(ontinue) : move through the current context (i.e. loop)
+    # <ctrl>-c   : exit the debugger
+    (Pdb) idx
+    0
+    (Pdb) c
+    (Pdb) idx
+    1
 
-**laboratory info:** :download:`sample-lab-info.tsv </Miscellaneous/data/sample-lab-info.tsv>`
+FASTQ parsing
+=============
 
-**sequence info:** :download:`sample-seq-info.csv </Miscellaneous/data/sample-seq-info.csv>`
+We have seen the problem of parsing a FASTQ file.
+How do we describe the format in English?
 
-**merging script:** :download:`sample-merge.py </Code/sample-merge.py>`
+   FASTQ records occur in groups of 4 in the order: name, seq, plus, qual
 
-Once downloaded, look at the structure of the data files with `less`
+We will learn some tools to simplify this.
 
-We will spend this class *deriving*/*understanding* `sample-merge.py`
+enumerate
+=========
 
-Set Up The Problem
-==================
+We have seen that we often want to know the index (or line number)
+that goes with an iterable. For example, if we know
+that we are on the first line, we can skip the header.
 
-+ goal: merge the information from the 2 files.
+We can know the index of an iterable with enumerate:
 
-+ we will add info from sample-seq-info.csv to sample-lab-info.tsv
+.. code-block:: python
 
-+ sample-seq-info.csv contains a super-set of the samples in
-  sample-lab-info.csv
+    names = ('fred', 'sally', 'harry', 'jack', 'texan')
 
-+ we will match samples by the `Sample` column in sample-lab-info.tsv to
-  the `Sample ID` column in sample-seq-info.csv
+    for index, name in enumerate(names):
+        print index, name 
 
-  * we will store rows from sample-seq-info.csv in a dictionary keyed by
-    `Sample ID`
+    # To illustrate the freedom you have in choosing variable names
+    # the above is identical to
+    for really_bad_var_name, x42 in enumerate(names):
+        print really_bad_var_name, x42 
 
-+ since we are **adding** to sample-lab-info.tsv, we don't need to filter
-  out as we read from sample-seq-info.csv
+.. nextslide::
+    :increment:
 
-Understand The Problem
-======================
+Try this in the ipython terminal:
 
-This is important!!
+.. code-block:: python
 
-Any questions on file formats or our strategy?
+    enumerate("abcdefg")
 
-Decide on Coding Strategy
-=========================
+Enumerate is lazy, meaning it won't consume an iterable until we ask it to
 
-#. read from `sample-seq-info.csv` into a dictionary with
-   keys of `Sample ID` and values (dicts) with the data for that sample. We
-   This dictionary is **seq_infos**. (skip header while fields[0] != "Lane")
+.. code-block:: python
 
-#. loop (stream) over `sample-lab-info.tsv` to get **lab_info**
-   for each sample
+    list(enumerate("abcdefg"))
+    # OR 
+    for i, letter in enumerate("abcdefg"):
+        print i, letter 
+    # remember we have our choice of variable names. The above is identical to
+    for xx, hello in enumerate("abcdefg"):
+        print xx, hello 
 
-#. Find matching *sequence-info* for each row by using the `Sample` column as a
-   key into **seq_infos**
+Generally we name index variables as *i* and give the other variables names that
+make sense.
 
-#. The corresponding value of seq_infos[sample] will be all of the laboratory
-   information for that sample.
+.. nextslide::
+    :increment:
 
-#. Add the *seq_info* for the current sample to the *lab_info* using: 
-   `lab_info.update(seq_info)`
+When we wrap any iterable in enumerate and we get a tuple of
+`index, thing`. Where `thing` was the element of the original list.
 
-#. print out the **lab_info** with newly added **seq_info**
+We can skip the header in a file like this:
 
-Script
+.. code-block:: python
+
+    for i, line in enumerate(open('/vol1/opt/data/lamina.bed')):
+        # skip the header
+        if i == 0: continue
+        fields = line.rstrip().split("\t")
+        # or we can get the variables directly since
+        # we know there are 4 cols
+        chrom, start, end, val = line.rstrip().split("\t")
+
+
+Using enumerate like this is safer than manually incrementing a variable
+as sometimes you will forget to increment or you will *continue* before
+incrementing.
+
+modulo
 ======
 
-coming slides will go over the script block-by-block before viewing / 
-running / modifying the entire script.
+Modulo is the remainder operation.
 
-Script: Read seq info into dictionary
-=====================================
++ 12 modulo 4 is 0
++ 13 modulo 4 is 1
+
+.. ipython::
+
+    In [1]: 12 % 4
+    Out[1]: 0
+
+    In [2]: 13 % 4
+    Out[2]: 1
+
+modulo and enumerate
+====================
+
+.. ipython::
+
+    In [1]: for i in range(12):
+       ...:     print i, i % 4 
+       ...:     
+    0 0
+    1 1
+    2 2
+    3 3
+    4 0
+    5 1
+    6 2
+    7 3
+    8 0
+    9 1
+    10 2
+    11 3
+
+How does this relate to our FASTQ?
+
+modulo, enumerate, fastq
+========================
+
+.. ipython::
+    :okexcept:
+
+    In [1]: for i, line in enumerate(open('data/SP1.fq')):
+       ...:     print i, i % 4, line.strip() 
+       ...:     if i > 8: break
+       ...:     
+    0 0 @cluster_2:UMI_ATTCCG
+    1 1 TTTCCGGGGCACATAATCTTCAGCCGGGCGC
+    2 2 +
+    3 3 9C;=;=<9@4868>9:67AA<9>65<=>591
+    4 0 @cluster_8:UMI_CTTTGA
+    5 1 TATCCTTGCAATACTCTCCGAACGGGAGAGC
+    6 2 +
+    7 3 1/04.72,(003,-2-22+00-12./.-.4-
+    8 0 @cluster_12:UMI_GGTCAA
+    9 1 GCAGTTTAAGATCATTTTATTGAAGAGCAAG
+
+
+modulo, enumerate, fastq: parse
+===============================
+
+Parse a fastq!!
 
 .. code-block:: python
 
-    # store data for all samples here, keys of sample-id, values of info
-    seq_infos = {}
+    for i, line in enumerate(open('/vol1/opt/data/SP1.fq')):
+        if i % 4 == 0:
+            name = line
+        elif i % 4 == 1:
+            seq = line
+        elif i % 4 == 3:
+            qual = line
+            # here have name, seq, qual from a single record
 
-    # loop over each sample in seq_info
-    for si in reader(seq_file, sep=",",
-                     skip_while=is_extra_lines):
-        sample_id = si['Sample ID']
-        seq_infos[sample_id] = si
+note how this fairly closely matches our english explanation of the fastq
+format.
 
-Now we have a dictionary with keys of sample ids and values of 
-dictionaries containing the information for each sample.
+zip
+===
 
-We will use this as a lookup-table so that, given a sample_id from the
-**lab_info** we can find the associated **seq_info**
-
-Script: Iterate over lab-info and add seq-info
-==============================================
-
-We skip some error checking steps here for simplicity
-
-.. code-block:: python
-
-    is_first_line = True
-
-    for lab_info in reader(lab_file):
-        sample_id = lab_info['Sample']
-
-        # we will add more logic here in the real script.
-        seq_info = seq_infos[sample_id]
-        lab_info.update(seq_info)
-        # now lab_info has the sequene and the lab keys and values.
-
-        if is_first_line: # print a header once only.
-            print "\t".join(lab_info.keys()) 
-            is_first_line = False
-
-        # this will print out the data for each record.
-        print "\t".join(lab_info.values()) 
-
-Script: Run
-===========
-
-Let's run the script and see what comes out
-
-.. code-block:: bash
-
-    $ python example-merge.py > merged.tsv
-
-look at merged info with `less` and verify that it has columns from
-sample-lab-info.csv and sample-seq-info.csv
-
-
-Script: Gedit
-=============
-
-Now let's open the script in gedit and go through it line-by-line!!
-
-Script: Debug
-=============
-
-We can run the script from **ipython** as
+zip is another python function. It merges items from multiple lists:
 
 .. ipython:: 
 
-    In [1]: %run sample-merge.py
+    In [2]: a = range(5)
 
-Open a gedit window and add some print statements to the script, followed by
-"1/0" so that the script will stop and you can see what was printed. Save, then
-run from ipython window.
+    In [3]: b = "abcde"
 
-This is a quick way to follow the flow of a script. As you understand each part,
-move the print statement and the 1/0 further on in the script.
+    In [4]: zip(a, b)
+    Out[4]: [(0, 'a'), (1, 'b'), (2, 'c'), (3, 'd'), (4, 'e')]
+
+    In [5]: c = [dict(), [], None, "hello", "world"]
+
+    In [6]: zip(a, b, c)
+    Out[6]: [(0, 'a', {}),
+     (1, 'b', []),
+     (2, 'c', None),
+     (3, 'd', 'hello'),
+     (4, 'e', 'world')]
+
+    
+izip
+====
+
+ izip is a lazy version of zip. It doesn't consume or return elements until you
+ ask for them.
+
+.. ipython::
+
+    In [1]: from itertools import izip
+
+    In [2]: seq = "TTTCCGGGGCACATAATCTTCAGCCGGGCGC"
+
+    In [3]: qual = "9C;=;=<9@4868>9:67AA<9>65<=>591"
+
+    In [4]: izip(seq, qual)
+    Out[4]: <itertools.izip at 0x2419368>
+
+    In [5]: for base, base_qual in izip(seq, qual):
+       ...:     print base, base_qual 
+    T 9
+    T C
+    T ;
+    C =
+    ...
+
+
+izip laziness
+=============
+
+Laziness is important, if for example we are zipping over a file. If we use
+**zip** it will consume the entire file immediately and read it into memory.
+**izip** will only consume the file as we request the zipped items.
+
+Note that in the previous slide, we associated each base with it's base-quality.
+That's useful...
+
+list comprehensions
+===================
+
+In one problem you had to sum the ord()'s of the quality line.
+The common way to do that was this:
+
+.. code-block:: python
+
+    qual_sum = 0
+    for q in qual:
+        qual_sum += ord(q)
+
+Once could get the quals instead as:
+
+.. code-block:: python
+
+    integer_quals = [ord(q) for q in qual]
+
+So the sum can be shortened to:
+
+.. code-block:: python
+
+    qual_sum = sum(ord(q) for q in qual)
+
+Why use functions?
+==================
+Functions are useful for encapsulating reusable chunks of code. For
+exmaple, you don't want to write messy code for parsing a fastq file every
+time you need to parse a fastq file. Instead, you define a function:
+
+.. code-block:: python
+    
+    def parse_fastq(filename):
+        # parse records
+   
+Once that is defined, you can put it in a file in your PYTHONPATH called
+``mytools.py`` and use it:
+
+.. code-block:: python
+
+    # look ma! no messy parsing code!
+    from mytools import parse_fastq
+
+    for record in parse_fastq(filename):
+        # use the record
  
-Spend the rest of class breaking, fixing and understanding this script.
+in-class exercise
+=================
+calculate mean base-quality by base.
+
+zip quality with sequence. append quality for each base in a dict of lists
+
+.. code-block:: python
+
+    # append all quality scores for A base to quals_by_base['A'] list.
+    quals_by_base = {'A': [], 'C': [], 'T': [], 'G': []}
+    for i, line in enumerate(open('/vol1/opt/data/SP1.fq')):
+        if i % 4 == 0:
+            name = line
+        elif i % 4 == 1:
+            seq = line
+        elif i % 4 == 3:
+            qual = line
+            # update quals_by_base here since we have seq and qual
+            # use zip/izip
+            ...
+    # outside the loop calculate the avg base quality:
+    for base, integer_quals in quals_by_base.items():
+        mean_quals = XXX_FIX_ME_XXX # remember to float()
+        print base, mean_quals 
+
+exercises
+=========
+
++ do previous exercise without a list. instead storing running sum and count of
+  quals and using that at the end.
++ look at xrange, the lazy version of range
++ how can you implement your own version of enumerate using izip and xrange?
++ clean up some of your homeworks using the simpler fastq parsing.
++ look at the itertools module (http://docs.python.org/2/library/itertools.html)
+
+Resources
+=========
+
++ idiomatic python: http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html
++ itertools: http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html
 
 .. raw:: pdf
 
