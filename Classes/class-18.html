@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Class 19 : Python Idioms &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 18 : Python Idioms &mdash; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -32,7 +32,7 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
-    <link rel="next" title="Class 18 : Applied Python" href="class-19.html" />
+    <link rel="next" title="Exercises" href="../Exercises.html" />
     <link rel="prev" title="Class 17 : Python Concepts" href="class-17.html" /> 
 
 <!-- Google Analytics tracking code -->
@@ -115,7 +115,8 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Class 19 : Python Idioms</a><ul>
+<li><a class="reference internal" href="#">Class 18 : Python Idioms</a><ul>
+<li><a class="reference internal" href="#final-project">Final Project</a></li>
 <li><a class="reference internal" href="#goals">Goals</a></li>
 <li><a class="reference internal" href="#python-debugging">Python Debugging</a></li>
 <li><a class="reference internal" href="#fastq-parsing">FASTQ parsing</a></li>
@@ -140,18 +141,26 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="class-19-python-idioms">
-<h1>Class 19 : Python Idioms<a class="headerlink" href="#class-19-python-idioms" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#class-19-python-idioms" title="Slides">§</a></h1>
+  <div class="section" id="class-18-python-idioms">
+<h1>Class 18 : Python Idioms<a class="headerlink" href="#class-18-python-idioms" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#class-18-python-idioms" title="Slides">§</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 7 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 2 Thurs</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 01, 2015</td>
 </tr>
 </tbody>
 </table>
+<div class="section" id="final-project">
+<h2>Final Project<a class="headerlink" href="#final-project" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#final-project" title="Slides">§</a></h2>
+<p>We will have a final project that is worth 15% of your grade, due the week
+of May 10.</p>
+<p>We want you to come up with a question you can address with the tools you
+learned in the class. You should incorporate ENCODE data into your
+analysis, and you can also integrate your own data.</p>
+</div>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#goals" title="Slides">§</a></h2>
 <ol class="arabic simple">
@@ -354,7 +363,7 @@ ask for them.</div></blockquote>
 <span class="gp">In [12]: </span><span class="n">qual</span> <span class="o">=</span> <span class="s">&quot;9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591&quot;</span>
 
 <span class="gp">In [13]: </span><span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x110120710&gt;</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x1119bb560&gt;</span>
 
 <span class="gp">In [14]: </span><span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span>

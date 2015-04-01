@@ -20,5 +20,4 @@ Class list
    Classes/class-16
    Classes/class-17
    Classes/class-18
-   Classes/class-19
 
