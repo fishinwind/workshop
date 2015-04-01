@@ -206,8 +206,13 @@ data structure as it is being created</p>
 <h2>FASTQ parsing<a class="headerlink" href="#fastq-parsing" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#fastq-parsing" title="Slides">§</a></h2>
 <p>We have seen the problem of parsing a FASTQ file.
 How do we describe the format in English?</p>
-<blockquote>
-<div>FASTQ records occur in groups of 4 in the order: name, seq, plus, qual</div></blockquote>
+<p>Each FASTQ record is a group of 4 lines in this order:</p>
+<ol class="arabic simple">
+<li>name</li>
+<li>seq</li>
+<li>plus</li>
+<li>qual</li>
+</ol>
 <p>We will learn some tools to simplify this.</p>
 </div>
 <div class="section" id="enumerate">
@@ -220,11 +225,6 @@ that we are on the first line, we can skip the header.</p>
 
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span>
-
-<span class="c"># To illustrate the freedom you have in choosing variable names</span>
-<span class="c"># the above is identical to</span>
-<span class="k">for</span> <span class="n">really_bad_var_name</span><span class="p">,</span> <span class="n">x42</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">really_bad_var_name</span><span class="p">,</span> <span class="n">x42</span>
 </pre></div>
 </div>
 <p>Try this in the ipython terminal:</p>
@@ -236,9 +236,6 @@ that we are on the first line, we can skip the header.</p>
 <span class="c"># OR</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span>
-<span class="c"># remember we have our choice of variable names. The above is identical to</span>
-<span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">hello</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">xx</span><span class="p">,</span> <span class="n">hello</span>
 </pre></div>
 </div>
 <p>Generally we name index variables as <em>i</em> and give the other variables names that
@@ -249,6 +246,7 @@ make sense.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span><span class="p">)):</span>
     <span class="c"># skip the header</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
+
     <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">)</span>
     <span class="c"># or we can get the variables directly since</span>
     <span class="c"># we know there are 4 cols</span>
@@ -363,7 +361,7 @@ ask for them.</div></blockquote>
 <span class="gp">In [12]: </span><span class="n">qual</span> <span class="o">=</span> <span class="s">&quot;9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591&quot;</span>
 
 <span class="gp">In [13]: </span><span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x1119bb560&gt;</span>
+<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x10824b170&gt;</span>
 
 <span class="gp">In [14]: </span><span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span>
