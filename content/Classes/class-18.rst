@@ -73,7 +73,12 @@ FASTQ parsing
 We have seen the problem of parsing a FASTQ file.
 How do we describe the format in English?
 
-   FASTQ records occur in groups of 4 in the order: name, seq, plus, qual
+Each FASTQ record is a group of 4 lines in this order:
+
+1. name
+2. seq
+3. plus
+4. qual
 
 We will learn some tools to simplify this.
 
@@ -93,11 +98,6 @@ We can know the index of an iterable with enumerate:
     for index, name in enumerate(names):
         print index, name 
 
-    # To illustrate the freedom you have in choosing variable names
-    # the above is identical to
-    for really_bad_var_name, x42 in enumerate(names):
-        print really_bad_var_name, x42 
-
 .. nextslide::
     :increment:
 
@@ -115,9 +115,6 @@ Enumerate is lazy, meaning it won't consume an iterable until we ask it to
     # OR 
     for i, letter in enumerate("abcdefg"):
         print i, letter 
-    # remember we have our choice of variable names. The above is identical to
-    for xx, hello in enumerate("abcdefg"):
-        print xx, hello 
 
 Generally we name index variables as *i* and give the other variables names that
 make sense.
@@ -135,11 +132,11 @@ We can skip the header in a file like this:
     for i, line in enumerate(open('/vol1/opt/data/lamina.bed')):
         # skip the header
         if i == 0: continue
+
         fields = line.rstrip().split("\t")
         # or we can get the variables directly since
         # we know there are 4 cols
         chrom, start, end, val = line.rstrip().split("\t")
-
 
 Using enumerate like this is safer than manually incrementing a variable
 as sometimes you will forget to increment or you will *continue* before
@@ -361,15 +358,20 @@ exercises
 
 + do previous exercise without a list. instead storing running sum and count of
   quals and using that at the end.
+
 + look at xrange, the lazy version of range
+
 + how can you implement your own version of enumerate using izip and xrange?
+
 + clean up some of your homeworks using the simpler fastq parsing.
+
 + look at the itertools module (http://docs.python.org/2/library/itertools.html)
 
 Resources
 =========
 
 + idiomatic python: http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html
+
 + itertools: http://naiquevin.github.io/a-look-at-some-of-pythons-useful-itertools.html
 
 .. raw:: pdf

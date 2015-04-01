@@ -69,7 +69,7 @@ library(nihexporter)
 Here is how to find out how many PIs are on each grant ...
 
 ```{r pis.per.grant, message = FALSE}
-project.pi.counts <- project.pis %>%
+project.pi.counts <- project_pis %>%
   group_by(project.num) %>%
   summarize(pi.count = n())
 project.pi.counts
