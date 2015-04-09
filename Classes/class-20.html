@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Exercises &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 20 : Python Workout &mdash; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -31,9 +31,9 @@
     <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
-    <link rel="up" title="Exercises" href="../Exercises.html" />
-    <link rel="next" title="Problem Sets" href="../Problem_Sets.html" />
-    <link rel="prev" title="Exercises" href="../Exercises.html" /> 
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Exercises" href="../Exercises.html" />
+    <link rel="prev" title="Class 18 : Python Idioms" href="class-18.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -82,8 +82,8 @@
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
 </ul>
@@ -115,11 +115,13 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Exercises</a><ul>
-<li><a class="reference internal" href="#unix-exercises">UNIX exercises</a></li>
-<li><a class="reference internal" href="#awk-exercises">AWK exercises</a></li>
-<li><a class="reference internal" href="#r-exercises">R exercises</a></li>
-<li><a class="reference internal" href="#python-excercises">Python excercises</a></li>
+<li><a class="reference internal" href="#">Class 20 : Python Workout</a><ul>
+<li><a class="reference internal" href="#announcements">Announcements</a></li>
+<li><a class="reference internal" href="#final-project-exmaple">Final Project Exmaple</a></li>
+<li><a class="reference internal" href="#in-class-exercises">In-class exercises</a><ul>
+<li><a class="reference internal" href="#bam-file">BAM file</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -128,48 +130,56 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="exercises">
-<span id="id1"></span><h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#exercises" title="Slides">§</a></h1>
+  <div class="section" id="class-20-python-workout">
+<h1>Class 20 : Python Workout<a class="headerlink" href="#class-20-python-workout" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#class-20-python-workout" title="Slides">§</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">April 09, 2015</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 9 Thurs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 09, 2015</td>
 </tr>
 </tbody>
 </table>
-<p>Exercises for the Genome Analysis Workshop (MOLB 7621).</p>
-<div class="section" id="unix-exercises">
-<span id="id2"></span><h2>UNIX exercises<a class="headerlink" href="#unix-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#unix-exercises" title="Slides">§</a></h2>
+<div class="section" id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#announcements" title="Slides">§</a></h2>
+<p><strong>No problem set this week.</strong> There will be 1 more, due Mon April 20.</p>
+<p><strong>Keep practicing Python.</strong> At this point, it&#8217;s use-it-or-lose-it.</p>
+</div>
+<div class="section" id="final-project-exmaple">
+<h2>Final Project Exmaple<a class="headerlink" href="#final-project-exmaple" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#final-project-exmaple" title="Slides">§</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Hypothesis:</th><td class="field-body">Cell-type-specific DNase I hypersensitive sites are less
+evolutionarily conserved than constitutive hypersensitve sites</td>
+</tr>
+</tbody>
+</table>
 <ol class="arabic simple">
-<li>Use <code class="docutils literal"><span class="pre">wc</span></code> to determine how many <em>lines</em> are in <cite>lamina.bed</cite>.</li>
-<li>Use <code class="docutils literal"><span class="pre">wc</span></code> to determine how many <em>characters</em> are in <cite>lamina.bed</cite>.</li>
-<li>Print out the 10 states (1st column, contains spaces) with the highest
-income (3rd column) from <cite>states.tab</cite>.</li>
+<li>Determine the similarity of DNase I hypersensitivity across all
+mapped human cell types.</li>
+<li>Calculate mean conservation scores for the matrix of cell types.</li>
+<li>Correlate patterns of DHS sensititvity and conservation.</li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wc -l lamina.bed <span class="c"># lines</span>
-
-<span class="nv">$ </span>wc -c lamina.bed <span class="c"># characters</span>
-
-<span class="nv">$ </span>sort -t<span class="s1">&#39;\t&#39;</span> -k3nr states.tab <span class="p">|</span> head -n 10
-</pre></div>
 </div>
+<div class="section" id="in-class-exercises">
+<h2>In-class exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#in-class-exercises" title="Slides">§</a></h2>
+<div class="section" id="bam-file">
+<h3>BAM file<a class="headerlink" href="#bam-file" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-20.html#bam-file" title="Slides">§</a></h3>
+<ol class="arabic simple">
+<li>Write a Python program using the <a class="reference external" href="http://pysam.readthedocs.org/en/latest/">pysam</a> module to parse this BAM
+file: <code class="docutils literal"><span class="pre">/vol1/opt/data/bams/2_8-bis.bam</span></code>.<ol class="loweralpha">
+<li>Report the number of reads that map to each chromosome</li>
+<li>Identify sequences that map to more than 1 location (i.e.,
+&#8220;multiply-mapping&#8221; reads). Report the sequence with the largest number
+of different locations.</li>
+</ol>
+</li>
+</ol>
 </div>
-<div class="section" id="awk-exercises">
-<span id="id3"></span><h2>AWK exercises<a class="headerlink" href="#awk-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#awk-exercises" title="Slides">§</a></h2>
-</div>
-<div class="section" id="r-exercises">
-<span id="id4"></span><h2>R exercises<a class="headerlink" href="#r-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#r-exercises" title="Slides">§</a></h2>
-<p>R exercises in Rmarkdown format (and rendered HTML) are here:</p>
-<ul class="simple">
-<li>Rmarkdown Example <a class="reference download internal" href="../_downloads/Rmarkdown_example.Rmd"><code class="xref download docutils literal"><span class="pre">[Rmd]</span></code></a>
-<a class="reference download internal" href="../_downloads/Rmarkdown_example.html"><code class="xref download docutils literal"><span class="pre">[HTML]</span></code></a></li>
-<li>Rmarkdown Excercises <a class="reference download internal" href="../_downloads/Exercises.Rmd"><code class="xref download docutils literal"><span class="pre">[Rmd]</span></code></a>
-<a class="reference download internal" href="../_downloads/Exercises.html"><code class="xref download docutils literal"><span class="pre">[HTML]</span></code></a></li>
-</ul>
-</div>
-<div class="section" id="python-excercises">
-<span id="python-exercises"></span><h2>Python excercises<a class="headerlink" href="#python-excercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/exercises.html#python-excercises" title="Slides">§</a></h2>
 </div>
 </div>
 
