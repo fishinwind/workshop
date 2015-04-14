@@ -27,7 +27,7 @@ chromosomes. The function should look something like:
         # ignore specified chroms here
         ...
 
-        yield(fields)
+        yield fields
 
     # ignore chr1 in this code
     for region in parse_bed(filename, ...):
@@ -43,6 +43,20 @@ chromosomes. The function should look something like:
    a. Largest region on each (**5 points**)
    b. Mean region size on each using ``numpy`` (**5 points**).
 
+Problem 2 (data structures)
+---------------------------
+
+Load data from ``lamina.bed`` using your new ``parse_bed()`` function
+iunto the following data structures (**15 points**):
+
+1. ``defaultdict(list)`` with counts of region sizes on each chromosome. 
+
+2. ``defaultdict(set)`` with counts of region sizes on each chromosome. 
+
+What is the key difference between the two structures?
+
+Use these two structures to identify unique region sizes and regions sizes
+that are observed more than once (**10 points**).
 
 Problem Set Submission
 ----------------------
