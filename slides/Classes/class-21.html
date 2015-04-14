@@ -1,0 +1,426 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 21 : RNA-Seq &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 22 : RNA-Seq" href="class-22.html" />
+    <link rel="prev" title="Class 20 : Python Workout" href="class-20.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  
+
+  
+    <slide class="title-slide segue nobackground level-1" id="class-21-rna-seq">
+    <hgroup>
+      <h1>Class 21 : RNA-Seq<a class="headerlink" href="../../Classes/class-21.html#class-21-rna-seq" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 14 Tues</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 14, 2015</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="goals">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-21.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>RNA-Seq overview</li>
+<li>QC and align</li>
+<li>Calc differential exp.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="rna-seq">
+    <hgroup>
+      <h2>RNA-Seq<a class="headerlink" href="../../Classes/class-21.html#rna-seq" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>We use RNA-Seq primarily to measure gene expression</li>
+<li>Can also find alternative splicing and fusion transcripts</li>
+<li>Possible to call variants (SNPs) on RNA-Seq data</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="library-prep">
+    <hgroup>
+      <h2>Library Prep<a class="headerlink" href="../../Classes/class-21.html#library-prep" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Libraries were prepared by a standard RNA-seq protocol including:</p>
+<ol class="arabic simple">
+<li>Oligo-dT purification of polyadenylated mRNA</li>
+<li>Reverse transcription with random nonamers</li>
+<li>Second strand sythesis to create double stranded DNA (dsDNA)</li>
+<li>Shearing of dsDNA to 300-600 bp</li>
+<li>End polishing, adaptor ligation, PCR with indexed primers</li>
+<li>Quantify libraries, Mix, sequence.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="example-data">
+    <hgroup>
+      <h2>Example Data<a class="headerlink" href="../../Classes/class-21.html#example-data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We will look at ~10 million 75 base paired-end reads from 4 RNA-seq
+libraries prepared from these <cite>C. elegans</cite> strains:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Strain</th>
+<th class="head">Treatment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>RtcB wild-type</td>
+<td>No treatment</td>
+</tr>
+<tr class="row-odd"><td>RtcB wild-type</td>
+<td>Tunicamycin (induces UPR)</td>
+</tr>
+<tr class="row-even"><td>RtcB mutant</td>
+<td>No treatment</td>
+</tr>
+<tr class="row-odd"><td>RtcB mutant</td>
+<td>Tunicamycin (induces UPR)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id4">
+    <hgroup>
+      <h2>Example Data (2)<a class="headerlink" href="../../Classes/class-21.html#id4" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>RtcB is an RNA ligase. RtcB wild-type and mutant strains were treated with
+tunicamycin, which inhibits protein glycosylation in the endoplasmic
+reticulum and triggers the &quot;unfolded protein reponse&quot;:</p>
+<div class="highlight-python"><div class="highlight"><pre>ER stress ~~&gt;
+    Ire1 multimerization ~~&gt;
+        Ire1 ribonuclease domain cuts
+        xbp-1 transcript to release intron ~~&gt;
+            RtcB ligates xbp-1 exons together ~~&gt;
+                Xbp-1 protein is made, which activates UPR-related genes
+                in the nucleus.
+</pre></div>
+</div>
+<p>The expectation is that RtcB mutants will be unable to ligate specific RNA
+substrates together, thus the mRNA library in the mutant might contain
+altered levels of RNA fragments relative to the wild-type. In particular,
+xbp-1 <a class="footnote-reference" href="#id2" id="id1">[1]</a> fragments should accumulate in the mutant.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.wormbase.org/species/c_elegans/gene/WBGene00006959?query=xbp-1#0-9e-3">http://www.wormbase.org/species/c_elegans/gene/WBGene00006959?query=xbp-1#0-9e-3</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="experimental-design">
+    <hgroup>
+      <h2>Experimental Design<a class="headerlink" href="../../Classes/class-21.html#experimental-design" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>Do not perform RNA-Seq on fewer than 6 samples (3 vs 3). Even in a pilot study.</p>
+<p class="last">The statistics work best with at least 3 biological replicates.</p>
+</div>
+<p>See: <a class="reference external" href="http://bioinformatics.oxfordjournals.org/content/30/3/301">http://bioinformatics.oxfordjournals.org/content/30/3/301</a></p>
+<p>Titled: <strong>RNA-seq differential expression studies: more sequence or more
+replication?</strong></p>
+<p>Answer: <strong>more replication</strong></p>
+<p>Your bioinformatician will thank you.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="analysis-plan">
+    <hgroup>
+      <h2>Analysis Plan<a class="headerlink" href="../../Classes/class-21.html#analysis-plan" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic">
+<li><p class="first">QC reads with Fastqc</p>
+</li>
+<li><p class="first">Trim reads by quality with sickle</p>
+</li>
+<li><p class="first">Re-check QC on trimmed reads</p>
+</li>
+<li><p class="first">Align reads with <code class="docutils literal"><span class="pre">tophat</span></code></p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>use a GTF to help it to find known transcripts</li>
+<li>also allow novel junctions</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">Use <code class="docutils literal"><span class="pre">cuffdiff</span></code> to identify differentially expressed transcripts</p>
+</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="alternative">
+    <hgroup>
+      <h3>Alternative<a class="headerlink" href="../../Classes/class-21.html#alternative" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple" start="5">
+<li>Count reads by gene with featureCounts (from subread)</li>
+<li>Differential Expression statistics with DESeq2</li>
+<li>Differential Transcript Use and fusion transcripts (if time)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="qc-reads">
+    <hgroup>
+      <h2>QC Reads<a class="headerlink" href="../../Classes/class-21.html#qc-reads" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We will use fastqc to check the quality of the reads and look for adapter
+contamination</p>
+<q>
+$ fastqc -o ~/public_html/fqc-$sample $data/${sample}_R2.fastq.gz</q>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="quality-trim-reads">
+    <hgroup>
+      <h2>Quality Trim Reads<a class="headerlink" href="../../Classes/class-21.html#quality-trim-reads" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We will trim low-quality bases from reads using sickle:
+<a class="reference external" href="https://github.com/najoshi/sickle">https://github.com/najoshi/sickle</a></p>
+<p>Lenient trimming has been shown to improve mapping rates in
+RNA-Seq. See, e.g. <a class="reference external" href="http://genomebio.org/is-trimming-is-beneficial-in-rna-seq/">http://genomebio.org/is-trimming-is-beneficial-in-rna-seq/</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="qc-quality-trimmed-reads">
+    <hgroup>
+      <h2>QC Quality Trimmed Reads<a class="headerlink" href="../../Classes/class-21.html#qc-quality-trimmed-reads" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Compare before/after. Makes most difference in bad datasets.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="align-with-tophat2">
+    <hgroup>
+      <h2>Align with Tophat2<a class="headerlink" href="../../Classes/class-21.html#align-with-tophat2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Note that there are Many splicing-aware RNA-Seq aligners:</p>
+<ul class="simple">
+<li>Tophat/Tophat2</li>
+<li>GSNAP</li>
+<li>STAR</li>
+<li>RUM</li>
+<li>MapSplice</li>
+<li>etc.</li>
+</ul>
+<p>We will use <code class="docutils literal"><span class="pre">tophat2</span></code>.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="spliced-alignment">
+    <hgroup>
+      <h2>Spliced Alignment<a class="headerlink" href="../../Classes/class-21.html#spliced-alignment" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>From tophat paper:</p>
+<img alt="http://bioinformatics.oxfordjournals.org/content/25/9/1105/F1.large.jpg" src="http://bioinformatics.oxfordjournals.org/content/25/9/1105/F1.large.jpg" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id3">
+    <hgroup>
+      <h2>Spliced Alignment<a class="headerlink" href="../../Classes/class-21.html#id3" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>From tophat2 paper:</p>
+<img alt="http://genomebiology.com/content/figures/gb-2013-14-4-r36-1-l.jpg" src="http://genomebiology.com/content/figures/gb-2013-14-4-r36-1-l.jpg" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="tophat2-invocation">
+    <hgroup>
+      <h2>Tophat2 Invocation<a class="headerlink" href="../../Classes/class-21.html#tophat2-invocation" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre>tophat2 -o <span class="nv">$out</span>/results/<span class="nv">$sample</span> <span class="nv">$reference</span> <span class="nv">$fq_1</span> <span class="nv">$fq2</span> <span class="se">\</span>
+    --fusion-search -p <span class="m">6</span> --transcriptome_index <span class="nv">$TINDEX</span> <span class="se">\</span>
+    --GTF <span class="nv">$ANNOTATION_GTF</span>
+</pre></div>
+</div>
+<p>Output will be in <code class="docutils literal"><span class="pre">accepted_hits.bam</span></code></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="just-do-it">
+    <hgroup>
+      <h2>Just Do It<a class="headerlink" href="../../Classes/class-21.html#just-do-it" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>On amc-tesla</p>
+<div class="highlight-bash"><div class="highlight"><pre>module load sickle
+module load fastqc
+module load tophat2
+
+Look in /vol1/opt/data/class-23 and /vol1/opt/data/class-23-data
+
+<span class="k">for</span> run scripts
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

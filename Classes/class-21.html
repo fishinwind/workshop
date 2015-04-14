@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 21 : RNA-Seq &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 22 : RNA-Seq" href="class-22.html" />
+    <link rel="prev" title="Class 20 : Python Workout" href="class-20.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 21 : RNA-Seq</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#rna-seq">RNA-Seq</a></li>
+<li><a class="reference internal" href="#library-prep">Library Prep</a></li>
+<li><a class="reference internal" href="#example-data">Example Data</a></li>
+<li><a class="reference internal" href="#experimental-design">Experimental Design</a></li>
+<li><a class="reference internal" href="#analysis-plan">Analysis Plan</a><ul>
+<li><a class="reference internal" href="#alternative">Alternative</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qc-reads">QC Reads</a></li>
+<li><a class="reference internal" href="#quality-trim-reads">Quality Trim Reads</a></li>
+<li><a class="reference internal" href="#qc-quality-trimmed-reads">QC Quality Trimmed Reads</a></li>
+<li><a class="reference internal" href="#align-with-tophat2">Align with Tophat2</a></li>
+<li><a class="reference internal" href="#spliced-alignment">Spliced Alignment</a></li>
+<li><a class="reference internal" href="#id3">Spliced Alignment</a></li>
+<li><a class="reference internal" href="#tophat2-invocation">Tophat2 Invocation</a></li>
+<li><a class="reference internal" href="#just-do-it">Just Do It</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-21-rna-seq">
+<h1>Class 21 : RNA-Seq<a class="headerlink" href="#class-21-rna-seq" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#class-21-rna-seq" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 14 Tues</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 14, 2015</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>RNA-Seq overview</li>
+<li>QC and align</li>
+<li>Calc differential exp.</li>
+</ol>
+</div>
+<div class="section" id="rna-seq">
+<h2>RNA-Seq<a class="headerlink" href="#rna-seq" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#rna-seq" title="Slides">§</a></h2>
+<ul class="simple">
+<li>We use RNA-Seq primarily to measure gene expression</li>
+<li>Can also find alternative splicing and fusion transcripts</li>
+<li>Possible to call variants (SNPs) on RNA-Seq data</li>
+</ul>
+</div>
+<div class="section" id="library-prep">
+<h2>Library Prep<a class="headerlink" href="#library-prep" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#library-prep" title="Slides">§</a></h2>
+<p>Libraries were prepared by a standard RNA-seq protocol including:</p>
+<ol class="arabic simple">
+<li>Oligo-dT purification of polyadenylated mRNA</li>
+<li>Reverse transcription with random nonamers</li>
+<li>Second strand sythesis to create double stranded DNA (dsDNA)</li>
+<li>Shearing of dsDNA to 300-600 bp</li>
+<li>End polishing, adaptor ligation, PCR with indexed primers</li>
+<li>Quantify libraries, Mix, sequence.</li>
+</ol>
+</div>
+<div class="section" id="example-data">
+<h2>Example Data<a class="headerlink" href="#example-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#example-data" title="Slides">§</a></h2>
+<p>We will look at ~10 million 75 base paired-end reads from 4 RNA-seq
+libraries prepared from these <cite>C. elegans</cite> strains:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Strain</th>
+<th class="head">Treatment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>RtcB wild-type</td>
+<td>No treatment</td>
+</tr>
+<tr class="row-odd"><td>RtcB wild-type</td>
+<td>Tunicamycin (induces UPR)</td>
+</tr>
+<tr class="row-even"><td>RtcB mutant</td>
+<td>No treatment</td>
+</tr>
+<tr class="row-odd"><td>RtcB mutant</td>
+<td>Tunicamycin (induces UPR)</td>
+</tr>
+</tbody>
+</table>
+<p>RtcB is an RNA ligase. RtcB wild-type and mutant strains were treated with
+tunicamycin, which inhibits protein glycosylation in the endoplasmic
+reticulum and triggers the &#8220;unfolded protein reponse&#8221;:</p>
+<div class="highlight-python"><div class="highlight"><pre>ER stress ~~&gt;
+    Ire1 multimerization ~~&gt;
+        Ire1 ribonuclease domain cuts
+        xbp-1 transcript to release intron ~~&gt;
+            RtcB ligates xbp-1 exons together ~~&gt;
+                Xbp-1 protein is made, which activates UPR-related genes
+                in the nucleus.
+</pre></div>
+</div>
+<p>The expectation is that RtcB mutants will be unable to ligate specific RNA
+substrates together, thus the mRNA library in the mutant might contain
+altered levels of RNA fragments relative to the wild-type. In particular,
+xbp-1 <a class="footnote-reference" href="#id2" id="id1">[1]</a> fragments should accumulate in the mutant.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.wormbase.org/species/c_elegans/gene/WBGene00006959?query=xbp-1#0-9e-3">http://www.wormbase.org/species/c_elegans/gene/WBGene00006959?query=xbp-1#0-9e-3</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="experimental-design">
+<h2>Experimental Design<a class="headerlink" href="#experimental-design" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#experimental-design" title="Slides">§</a></h2>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>Do not perform RNA-Seq on fewer than 6 samples (3 vs 3). Even in a pilot study.</p>
+<p class="last">The statistics work best with at least 3 biological replicates.</p>
+</div>
+<p>See: <a class="reference external" href="http://bioinformatics.oxfordjournals.org/content/30/3/301">http://bioinformatics.oxfordjournals.org/content/30/3/301</a></p>
+<p>Titled: <strong>RNA-seq differential expression studies: more sequence or more
+replication?</strong></p>
+<p>Answer: <strong>more replication</strong></p>
+<p>Your bioinformatician will thank you.</p>
+</div>
+<div class="section" id="analysis-plan">
+<h2>Analysis Plan<a class="headerlink" href="#analysis-plan" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#analysis-plan" title="Slides">§</a></h2>
+<ol class="arabic">
+<li><p class="first">QC reads with Fastqc</p>
+</li>
+<li><p class="first">Trim reads by quality with sickle</p>
+</li>
+<li><p class="first">Re-check QC on trimmed reads</p>
+</li>
+<li><p class="first">Align reads with <code class="docutils literal"><span class="pre">tophat</span></code></p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>use a GTF to help it to find known transcripts</li>
+<li>also allow novel junctions</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">Use <code class="docutils literal"><span class="pre">cuffdiff</span></code> to identify differentially expressed transcripts</p>
+</li>
+</ol>
+<div class="section" id="alternative">
+<h3>Alternative<a class="headerlink" href="#alternative" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#alternative" title="Slides">§</a></h3>
+<ol class="arabic simple" start="5">
+<li>Count reads by gene with featureCounts (from subread)</li>
+<li>Differential Expression statistics with DESeq2</li>
+<li>Differential Transcript Use and fusion transcripts (if time)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="qc-reads">
+<h2>QC Reads<a class="headerlink" href="#qc-reads" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#qc-reads" title="Slides">§</a></h2>
+<p>We will use fastqc to check the quality of the reads and look for adapter
+contamination</p>
+<blockquote>
+<div>$ fastqc -o ~/public_html/fqc-$sample $data/${sample}_R2.fastq.gz</div></blockquote>
+</div>
+<div class="section" id="quality-trim-reads">
+<h2>Quality Trim Reads<a class="headerlink" href="#quality-trim-reads" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#quality-trim-reads" title="Slides">§</a></h2>
+<p>We will trim low-quality bases from reads using sickle:
+<a class="reference external" href="https://github.com/najoshi/sickle">https://github.com/najoshi/sickle</a></p>
+<p>Lenient trimming has been shown to improve mapping rates in
+RNA-Seq. See, e.g. <a class="reference external" href="http://genomebio.org/is-trimming-is-beneficial-in-rna-seq/">http://genomebio.org/is-trimming-is-beneficial-in-rna-seq/</a></p>
+</div>
+<div class="section" id="qc-quality-trimmed-reads">
+<h2>QC Quality Trimmed Reads<a class="headerlink" href="#qc-quality-trimmed-reads" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#qc-quality-trimmed-reads" title="Slides">§</a></h2>
+<p>Compare before/after. Makes most difference in bad datasets.</p>
+</div>
+<div class="section" id="align-with-tophat2">
+<h2>Align with Tophat2<a class="headerlink" href="#align-with-tophat2" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#align-with-tophat2" title="Slides">§</a></h2>
+<p>Note that there are Many splicing-aware RNA-Seq aligners:</p>
+<ul class="simple">
+<li>Tophat/Tophat2</li>
+<li>GSNAP</li>
+<li>STAR</li>
+<li>RUM</li>
+<li>MapSplice</li>
+<li>etc.</li>
+</ul>
+<p>We will use <code class="docutils literal"><span class="pre">tophat2</span></code>.</p>
+</div>
+<div class="section" id="spliced-alignment">
+<h2>Spliced Alignment<a class="headerlink" href="#spliced-alignment" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#spliced-alignment" title="Slides">§</a></h2>
+<p>From tophat paper:</p>
+<img alt="http://bioinformatics.oxfordjournals.org/content/25/9/1105/F1.large.jpg" src="http://bioinformatics.oxfordjournals.org/content/25/9/1105/F1.large.jpg" />
+</div>
+<div class="section" id="id3">
+<h2>Spliced Alignment<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#id3" title="Slides">§</a></h2>
+<p>From tophat2 paper:</p>
+<img alt="http://genomebiology.com/content/figures/gb-2013-14-4-r36-1-l.jpg" src="http://genomebiology.com/content/figures/gb-2013-14-4-r36-1-l.jpg" />
+</div>
+<div class="section" id="tophat2-invocation">
+<h2>Tophat2 Invocation<a class="headerlink" href="#tophat2-invocation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#tophat2-invocation" title="Slides">§</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>tophat2 -o <span class="nv">$out</span>/results/<span class="nv">$sample</span> <span class="nv">$reference</span> <span class="nv">$fq_1</span> <span class="nv">$fq2</span> <span class="se">\</span>
+    --fusion-search -p <span class="m">6</span> --transcriptome_index <span class="nv">$TINDEX</span> <span class="se">\</span>
+    --GTF <span class="nv">$ANNOTATION_GTF</span>
+</pre></div>
+</div>
+<p>Output will be in <code class="docutils literal"><span class="pre">accepted_hits.bam</span></code></p>
+</div>
+<div class="section" id="just-do-it">
+<h2>Just Do It<a class="headerlink" href="#just-do-it" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#just-do-it" title="Slides">§</a></h2>
+<p>On amc-tesla</p>
+<div class="highlight-bash"><div class="highlight"><pre>module load sickle
+module load fastqc
+module load tophat2
+
+Look in /vol1/opt/data/class-23 and /vol1/opt/data/class-23-data
+
+<span class="k">for</span> run scripts
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>
