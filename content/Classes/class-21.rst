@@ -1,21 +1,24 @@
+.. include:: /_static/substitutions.txt
 
 ********************
 Class 21 : RNA-Seq 
 ********************
 
+:Class date: |c21-date|
+:Last updated: |today|
+
 Goals
 =====
 
-#. Why RNA-Seq
-#. QC.
-#. Align Reads
+#. RNA-Seq overview
+#. QC and align
+#. Calc differential exp.
 
 RNA-Seq
 =======
 
 + We use RNA-Seq primarily to measure gene expression
-+ We can also find transcript use (transcript-switching/alternative-splicing)
-+ Fusion Transcripts
++ Can also find alternative splicing and fusion transcripts
 + Possible to call variants (SNPs) on RNA-Seq data
 
 Library Prep
@@ -77,9 +80,9 @@ Experimental Design
 
 .. important::
    
-   Please do not do RNA-Seq on fewer than 6 samples (3 vs 3).
+   Do not perform RNA-Seq on fewer than 6 samples (3 vs 3). Even in a pilot study.
 
-   Even in a pilot study.
+   The statistics work best with at least 3 biological replicates.
 
 See: http://bioinformatics.oxfordjournals.org/content/30/3/301
 
@@ -93,18 +96,21 @@ Your bioinformatician will thank you.
 Analysis Plan
 =============
 
-#. QC reads with Fastqc
-#. Trim reads by quality with sickle
-#. Re-check QC on trimmed reads
-#. Align reads with Tophat
+1. QC reads with Fastqc
+2. Trim reads by quality with sickle
+3. Re-check QC on trimmed reads
+4. Align reads with ``tophat``
 
-#. give a GTF to help it to find known transcripts
-#. also allow novel junctions
-#. fusion transcripts
+    a. use a GTF to help it to find known transcripts
+    b. also allow novel junctions
 
-#. Count reads by gene with featureCounts (from subread)
-#. Differential Expression statistics with DESeq2
-#. Differential Transcript Use and fusion transcripts (if time)
+5. Use ``cuffdiff`` to identify differentially expressed transcripts
+
+Alternative
+-----------
+5. Count reads by gene with featureCounts (from subread)
+6. Differential Expression statistics with DESeq2
+7. Differential Transcript Use and fusion transcripts (if time)
 
 QC Reads
 ========
@@ -131,7 +137,7 @@ Compare before/after. Makes most difference in bad datasets.
 Align with Tophat2
 ==================
 
-Many RNA-Seq (splice-aware) aligners:
+Note that there are Many splicing-aware RNA-Seq aligners:
 
 + Tophat/Tophat2
 + GSNAP
@@ -140,21 +146,7 @@ Many RNA-Seq (splice-aware) aligners:
 + MapSplice
 + etc.
 
-We will use tophat2.
-
-IGenomes
-=========
-
-If you work with a model organism, you can get bowtie (tophat2) genome
-indexes and feature annotation in normalized format from Illumina.
-
-http://tophat.cbcb.umd.edu/igenomes.shtml
-
-We will use the *C. elegans* data downloaded to `amc-tesla:~brentp/data/ce/`
-
-+ Using this will save you a lot of trouble
-+ Tophat2 uses known transcripts and attempts to align to those as well as to
-  novel transcripts
+We will use ``tophat2``.
 
 Spliced Alignment
 =================
@@ -179,7 +171,7 @@ Tophat2 Invocation
         --fusion-search -p 6 --transcriptome_index $TINDEX \
         --GTF $ANNOTATION_GTF
 
-Output will be in accepted_hits.bam
+Output will be in ``accepted_hits.bam``
 
 Just Do It
 ==========
@@ -188,11 +180,11 @@ On amc-tesla
 
 .. code-block:: bash
 
-    mkdir -p ~/class-23/src/
-    cp ~brentp/class-23/run.sh ~/class-23/
-    cp ~brentp/class-23/src/clean-counts.py ~/class-23/src/
-    cd ~/class-23/src/
     module load sickle
-    module load subread
-    module load bowtie2
+    module load fastqc 
+    module load tophat2
+
+    Look in /vol1/opt/data/class-23 and /vol1/opt/data/class-23-data
+
+    for run scripts
 

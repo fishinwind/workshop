@@ -1,7 +1,12 @@
 
+.. include:: /_static/substitutions.txt
+
 *********************
 Class 22 : RNA-Seq
 *********************
+
+:Class date: |c22-date|
+:Last updated: |today|
 
 Goals
 =====
