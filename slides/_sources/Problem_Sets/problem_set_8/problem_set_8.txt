@@ -35,8 +35,6 @@ chromosomes. The function should look something like:
 
 1. Document your function using the Google [Style]_ (**10 points**).
 
-.. [Style] http://sphinxcontrib-napoleon.readthedocs.org/en/latest/index.html
-
 2. Parse the ``lamina.bed`` file, find the following for each of the
    odd-numbered and even-numbered chromosomes:
 
@@ -57,6 +55,8 @@ What is the key difference between the two structures?
 
 Use these two structures to identify unique region sizes and regions sizes
 that are observed more than once (**10 points**).
+
+.. [Style] http://sphinxcontrib-napoleon.readthedocs.org/en/latest/index.html
 
 Problem Set Submission
 ----------------------
