@@ -23,6 +23,8 @@ Class list
    Classes/class-20
    Classes/class-21
    Classes/class-22
+   Classes/class-23
+   Classes/class-24
 
 
 

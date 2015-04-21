@@ -1,0 +1,375 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 24 : Exome-Seq - Variants &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Exercises" href="../Exercises.html" />
+    <link rel="prev" title="Class 23 : Exome-Seq - Alignment" href="class-23.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  
+
+  
+    <slide class="title-slide segue nobackground level-1" id="class-24-exome-seq-variants">
+    <hgroup>
+      <h1>Class 24 : Exome-Seq - Variants<a class="headerlink" href="../../Classes/class-24.html#class-24-exome-seq-variants" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 23 Thurs</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 21, 2015</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="goals">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-24.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>BAM format</li>
+<li>VCF format</li>
+<li>Filter VCF</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="bams">
+    <hgroup>
+      <h2>BAMs<a class="headerlink" href="../../Classes/class-24.html#bams" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>BAMs are the alignment format. Here is one where we've marked
+duplicates.</p>
+<div class="highlight-bash"><div class="highlight"><pre>samtools view -h /vol1/opt/data/exomes/results/ll-7.dedup.bam <span class="p">|</span> less
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="variant-call-format-vcf">
+    <hgroup>
+      <h2>Variant Call Format (VCF)<a class="headerlink" href="../../Classes/class-24.html#variant-call-format-vcf" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><a class="reference external" href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41</a></p>
+<p>Our VCFs contain the 8 samples in columns 10+. They are split by chromosome.</p>
+<p>We want to filter our VCF according to our study design.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="project-design">
+    <hgroup>
+      <h2>Project Design<a class="headerlink" href="../../Classes/class-24.html#project-design" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <img alt="../_images/phenotype.png" src="../_images/phenotype.png" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="snpeff-snpsift">
+    <hgroup>
+      <h2>SNPEff/SNPSift<a class="headerlink" href="../../Classes/class-24.html#snpeff-snpsift" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>find <strong>Eff</strong> ect of variant (missense/nonsense/etc)</li>
+<li>filter variants by presence in DBSNP</li>
+<li>filter variants by genotype across samples</li>
+<li>filter variants by <em>lots of stuff</em></li>
+</ul>
+<p><a class="reference external" href="http://snpeff.sourceforge.net/SnpEff_manual.html">http://snpeff.sourceforge.net/SnpEff_manual.html</a></p>
+<p>Remember we annotated with DBSNP and by effect.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="java">
+    <hgroup>
+      <h2>Java<a class="headerlink" href="../../Classes/class-24.html#java" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre>module load java/1.7
+qlogin
+java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="filters">
+    <hgroup>
+      <h2>Filters<a class="headerlink" href="../../Classes/class-24.html#filters" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Get variants with quality score greater than 40:</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>cat  ~brentp/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
+java -Xmx4G -jar ~brentp/opt/snpEff/SnpSift.jar <span class="se">\</span>
+ filter  <span class="s2">&quot;((QUAL &gt;= 40))&quot;</span> <span class="p">|</span> less
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="filters-ii">
+    <hgroup>
+      <h2>Filters II<a class="headerlink" href="../../Classes/class-24.html#filters-ii" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>To (kinda) match the study design. Get variants with:</p>
+<ul class="simple">
+<li>quality score greater than 40</li>
+<li>with 5 hets and 3 reference</li>
+<li>high/moderate impact</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>cat  /vol1/opt/data/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
+java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar <span class="se">\</span>
+ filter  <span class="s2">&quot;(</span>
+<span class="s2"> (QUAL &gt;= 40) &amp;</span>
+<span class="s2"> (countHet() = 5 &amp; countRef() = 3) &amp;</span>
+<span class="s2"> ((EFF[*].IMPACT = &#39;HIGH&#39;) | (EFF[*].IMPACT = &#39;MODERATE&#39;))</span>
+<span class="s2"> ) &quot;</span> <span class="p">|</span> less
+</pre></div>
+</div>
+<p>NOTE extra parens around impact of <cite>HIGH</cite> or <cite>MODERATE</cite></p>
+<p>How many variants does that give us?</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="filters-iii">
+    <hgroup>
+      <h2>Filters III<a class="headerlink" href="../../Classes/class-24.html#filters-iii" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Many more filtering options here:
+<a class="reference external" href="http://snpeff.sourceforge.net/SnpSift.html">http://snpeff.sourceforge.net/SnpSift.html</a></p>
+<p>For example: check if the first sample's genotype is a variant
+and the 2nd samples is reference</p>
+<q>
+&quot;isVariant(GEN[0]) &amp; isRef(GEN[1])&quot;</q>
+<p><em>use this to extract variants that match our exact criteria</em></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="filters-applied">
+    <hgroup>
+      <h2>Filters Applied<a class="headerlink" href="../../Classes/class-24.html#filters-applied" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Look at the header in a VCF:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>grep -m <span class="m">1</span> <span class="s2">&quot;#CHROM&quot;</span> ~brentp/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf
+<span class="c">#CHROM  POS ID  REF ALT QUAL    FILTER  INFO    FORMAT  ll-1    ll-3    ll-5</span>
+ll-7    lll-1   lll-10  lll-2   lll-9
+</pre></div>
+</div>
+<p>Match that sample order with the pedigree image to get a filter like:</p>
+<div class="highlight-python"><div class="highlight"><pre>isVariant(GEN[0]) &amp; isVariant(GEN[3]) \
+    &amp; isVariant(GEN[4]) ...
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="filtered">
+    <hgroup>
+      <h2>Filtered<a class="headerlink" href="../../Classes/class-24.html#filtered" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre>cat  /vol1/opt/data/exomes/results/vcfs/chr*.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
+java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar <span class="se">\</span>
+    filter  <span class="se">\</span>
+    <span class="s2">&quot;((QUAL &gt;= 40) &amp; isVariant(GEN[0]) &amp; isVariant(GEN[3]) \</span>
+<span class="s2">    &amp; isVariant(GEN[4]) &amp; isVariant(GEN[7]) &amp; isVariant(GEN[5]) \</span>
+<span class="s2">    &amp; isRef(GEN[1]) &amp; isRef(GEN[2]) &amp; isRef(GEN[6]) \</span>
+<span class="s2">    &amp; (DP &gt;= 40) \</span>
+<span class="s2">    &amp; (( na FILTER) | (FILTER = &#39;PASS&#39;)) \</span>
+<span class="s2">    &amp; ((EFF[*].IMPACT = &#39;HIGH&#39;) | (EFF[*].IMPACT = &#39;MODERATE&#39;))</span>
+<span class="s2">        )&quot;</span>
+</pre></div>
+</div>
+<p>Since we are likely interested in novel variants, we can then filter
+to exclude things with an <cite>rs</cite> number.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="viewing-on-ucsc">
+    <hgroup>
+      <h2>Viewing on UCSC<a class="headerlink" href="../../Classes/class-24.html#viewing-on-ucsc" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <q>
+<a class="reference external" href="http://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr12%3A12022530-12022539&amp;hg.customText=http://amc-sandbox.ucdenver.edu/~brentp/exome-region/info.bed">http://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr12%3A12022530-12022539&amp;hg.customText=http://amc-sandbox.ucdenver.edu/~brentp/exome-region/info.bed</a></q>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="viewing-in-igv">
+    <hgroup>
+      <h2>Viewing in IGV<a class="headerlink" href="../../Classes/class-24.html#viewing-in-igv" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <img alt="../_images/igv_snapshot.png" src="../_images/igv_snapshot.png" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="viewing-with-samtools-tview">
+    <hgroup>
+      <h2>Viewing with samtools tview<a class="headerlink" href="../../Classes/class-24.html#viewing-with-samtools-tview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-bash"><div class="highlight"><pre>samtools tview -p chr12:12022535 <span class="se">\</span>
+    /vol1/opt/data/exomes/results/ll-1.dedup.bam <span class="se">\</span>
+    /vol3/home/jhessel/ref/genomes/hg19/hg19.fa
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="extracting-parts-of-the-alignment">
+    <hgroup>
+      <h2>Extracting parts of the alignment<a class="headerlink" href="../../Classes/class-24.html#extracting-parts-of-the-alignment" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>When you only want to look at part of the alignment. No need to transfer
+20GB of <cite>BAM</cite> files to your laptop</p>
+<div class="highlight-bash"><div class="highlight"><pre>samtools view -h results/<span class="nv">$sample</span>.dedup.bam 12:12022035-12023035 <span class="se">\</span>
+        &gt; save.<span class="nv">$sample</span>.bam
+</pre></div>
+</div>
+<p>will save on the portion that we are interested in.</p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

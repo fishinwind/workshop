@@ -225,349 +225,340 @@ bed.df %&gt;%
   ggvis(~factor(chrom), ~log10(cpg.size)) %&gt;% 
   layer_boxplots() %&gt;%
   add_axis(&quot;x&quot;, title='', properties = axis_props(labels = list(angle = -90)))</code></pre>
-<p><div id="plot_id762731126-container" class="ggvis-output-container">
-<div id="plot_id762731126" class="ggvis-output"></div>
+<p><div id="plot_id170390474-container" class="ggvis-output-container">
+<div id="plot_id170390474" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id762731126_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id762731126" data-renderer="svg">SVG</a>
+<a id="plot_id170390474_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id170390474" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id762731126_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id762731126" data-renderer="canvas">Canvas</a>
+<a id="plot_id170390474_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id170390474" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id762731126_download" class="ggvis-download" data-plot-id="plot_id762731126">Download</a>
+<a id="plot_id170390474_download" class="ggvis-download" data-plot-id="plot_id170390474">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id762731126_spec = {
-    "data": [
-        {
-            "name": ".0/group_by1/boxplot2_flat",
-            "format": {
-                "type": "csv",
-                "parse": {
-                    "min_": "number",
-                    "max_": "number",
-                    "lower_": "number",
-                    "upper_": "number",
-                    "median_": "number"
-                }
-            },
-            "values": "\"min_\",\"max_\",\"factor(chrom)\",\"lower_\",\"upper_\",\"median_\"\n4.98765286056874,6.69210746093681,\"chr1\",5.43411840927449,6.03127916664897,5.73816037447979\n4.94550797513519,6.7255620151648,\"chr10\",5.42023187294526,5.95816370209165,5.63756614488488\n4.92812945791686,6.76012855662166,\"chr11\",5.32191518010831,6.00267522372981,5.80600486372284\n4.99185932920565,6.79830694042256,\"chr12\",5.52102687961567,6.09286129402866,5.73682421111299\n4.95196373363948,6.72348432303228,\"chr13\",5.40052968412328,5.99767409111348,5.69031521338911\n4.96231723615144,6.58280716546487,\"chr14\",5.40483459153482,5.98589581913747,5.72741273889827\n4.93943438218627,6.37234502595281,\"chr15\",5.35530090560287,5.92973974287804,5.74199525300088\n4.89059425488789,6.66488424804836,\"chr16\",5.41133850184867,6.03397793147534,5.8343100494104\n5.17550021656023,6.093398568873,\"chr17\",5.48892543831958,5.88158338875083,5.68508799414004\n4.92823193661714,6.50262837839649,\"chr18\",5.54848965740053,6.09387259140924,5.73460623347192\n4.9464817410138,6.11815886838032,\"chr19\",5.32557755965018,5.70642997035463,5.50442702858566\n4.95211408490699,6.68233599756819,\"chr2\",5.39921284476754,6.11164411081901,5.7882805138412\n4.95309735885943,6.5882284433533,\"chr20\",5.25362544995246,6.02935145566994,5.63220615890957\n4.99850345144039,6.42484522620652,\"chr21\",5.24349861004797,5.79184493831359,5.41623192363829\n5.55147927526569,6.37478700932519,\"chr22\",5.75892449600213,6.09664343305882,5.98247295216358\n4.94477374929353,6.5059514616409,\"chr3\",5.45051590803073,5.9947047504433,5.72383338924455\n4.95360024402521,6.65934887105673,\"chr4\",5.61517625667293,6.17613520388458,5.89099195104212\n4.94137724770762,6.92252663325754,\"chr5\",5.42247657368707,6.05041881393758,5.76493193908297\n4.99584132587985,6.88054544696314,\"chr6\",5.52192131662083,6.07039290875446,5.81894208665561\n4.97833575745743,6.82354895269296,\"chr7\",5.38955401850513,6.075771664267,5.68064061977233\n5.04005220190221,6.6630200286198,\"chr8\",5.49553878742176,6.10398492415273,5.88604209858432\n4.93400327534291,6.71843458809274,\"chr9\",5.37189804533606,5.93933590004517,5.66121850996974\n4.97698238674307,7.01322420679856,\"chrX\",5.58764197956383,6.23874010319393,5.87391786512239\n5.45778655333404,6.71754177634738,\"chrY\",6.0102639053086,6.62660999798516,6.60172165274249"
-        },
-        {
-            "name": ".0/group_by1/boxplot2",
-            "source": ".0/group_by1/boxplot2_flat",
-            "transform": [
-                {
-                    "type": "treefacet",
-                    "keys": [
-                        "data.factor(chrom)"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": ".0/group_by1/boxplot2/boxplot_outliers3_flat",
-            "format": {
-                "type": "csv",
-                "parse": {
-                    "value_": "number"
-                }
-            },
-            "values": "\"value_\",\"factor(chrom)\"\n7.33413692233954,\"chr1\"\n7.13814603963581,\"chr16\"\n6.61454774247285,\"chr17\"\n6.94456365065062,\"chr19\"\n7.05881072093594,\"chr3\"\n7.51077043631401,\"chr9\""
-        },
-        {
-            "name": ".0/group_by1/boxplot2/boxplot_outliers3",
-            "source": ".0/group_by1/boxplot2/boxplot_outliers3_flat",
-            "transform": [
-                {
-                    "type": "treefacet",
-                    "keys": [
-                        "data.factor(chrom)"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "scale/x",
-            "format": {
-                "type": "csv",
-                "parse": {
-
-                }
-            },
-            "values": "\"domain\"\n\"chr1\"\n\"chr10\"\n\"chr11\"\n\"chr12\"\n\"chr13\"\n\"chr14\"\n\"chr15\"\n\"chr16\"\n\"chr17\"\n\"chr18\"\n\"chr19\"\n\"chr2\"\n\"chr20\"\n\"chr21\"\n\"chr22\"\n\"chr3\"\n\"chr4\"\n\"chr5\"\n\"chr6\"\n\"chr7\"\n\"chr8\"\n\"chr9\"\n\"chrX\"\n\"chrY\""
-        },
-        {
-            "name": "scale/xcenter",
-            "format": {
-                "type": "csv",
-                "parse": {
-
-                }
-            },
-            "values": "\"domain\"\n\"chr1\"\n\"chr10\"\n\"chr11\"\n\"chr12\"\n\"chr13\"\n\"chr14\"\n\"chr15\"\n\"chr16\"\n\"chr17\"\n\"chr18\"\n\"chr19\"\n\"chr2\"\n\"chr20\"\n\"chr21\"\n\"chr22\"\n\"chr3\"\n\"chr4\"\n\"chr5\"\n\"chr6\"\n\"chr7\"\n\"chr8\"\n\"chr9\"\n\"chrX\"\n\"chrY\""
-        },
-        {
-            "name": "scale/y",
-            "format": {
-                "type": "csv",
-                "parse": {
-                    "domain": "number"
-                }
-            },
-            "values": "\"domain\"\n4.75958544581659\n7.64177924538531"
+var plot_id170390474_spec = {
+  "data": [
+    {
+      "name": ".0/group_by1/boxplot2_flat",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "min_": "number",
+          "max_": "number",
+          "lower_": "number",
+          "upper_": "number",
+          "median_": "number"
         }
-    ],
-    "scales": [
-        {
-            "padding": 0.1,
-            "type": "ordinal",
-            "domain": {
-                "data": "scale/x",
-                "field": "data.domain"
-            },
-            "name": "x",
-            "points": false,
-            "sort": false,
-            "range": "width"
-        },
-        {
-            "points": true,
-            "padding": 1.1,
-            "name": "xcenter",
-            "type": "ordinal",
-            "domain": {
-                "data": "scale/xcenter",
-                "field": "data.domain"
-            },
-            "sort": false,
-            "range": "width"
-        },
-        {
-            "name": "y",
-            "domain": {
-                "data": "scale/y",
-                "field": "data.domain"
-            },
-            "zero": false,
-            "nice": false,
-            "clamp": false,
-            "range": "height"
-        }
-    ],
-    "marks": [
-        {
-            "type": "group",
-            "from": {
-                "data": ".0/group_by1/boxplot2"
-            },
-            "marks": [
-                {
-                    "type": "rect",
-                    "properties": {
-                        "update": {
-                            "stroke": {
-                                "value": "#000000"
-                            },
-                            "fill": {
-                                "value": "white"
-                            },
-                            "y": {
-                                "scale": "y",
-                                "field": "data.min_"
-                            },
-                            "y2": {
-                                "scale": "y",
-                                "field": "data.max_"
-                            },
-                            "x": {
-                                "scale": "xcenter",
-                                "field": "data.factor(chrom)"
-                            },
-                            "width": {
-                                "value": 0.5
-                            }
-                        },
-                        "ggvis": {
-                            "data": {
-                                "value": ".0/group_by1/boxplot2"
-                            }
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "type": "group",
-            "from": {
-                "data": ".0/group_by1/boxplot2"
-            },
-            "marks": [
-                {
-                    "type": "rect",
-                    "properties": {
-                        "update": {
-                            "stroke": {
-                                "value": "#000000"
-                            },
-                            "fill": {
-                                "value": "white"
-                            },
-                            "x": {
-                                "scale": "x",
-                                "field": "data.factor(chrom)"
-                            },
-                            "y": {
-                                "scale": "y",
-                                "field": "data.lower_"
-                            },
-                            "y2": {
-                                "scale": "y",
-                                "field": "data.upper_"
-                            },
-                            "width": {
-                                "scale": "x",
-                                "band": true
-                            }
-                        },
-                        "ggvis": {
-                            "data": {
-                                "value": ".0/group_by1/boxplot2"
-                            }
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "type": "group",
-            "from": {
-                "data": ".0/group_by1/boxplot2"
-            },
-            "marks": [
-                {
-                    "type": "rect",
-                    "properties": {
-                        "update": {
-                            "stroke": {
-                                "value": "#000000"
-                            },
-                            "fill": {
-                                "value": "white"
-                            },
-                            "x": {
-                                "scale": "x",
-                                "field": "data.factor(chrom)"
-                            },
-                            "y": {
-                                "scale": "y",
-                                "field": "data.median_"
-                            },
-                            "width": {
-                                "scale": "x",
-                                "band": true
-                            },
-                            "height": {
-                                "value": 1
-                            }
-                        },
-                        "ggvis": {
-                            "data": {
-                                "value": ".0/group_by1/boxplot2"
-                            }
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "type": "group",
-            "from": {
-                "data": ".0/group_by1/boxplot2/boxplot_outliers3"
-            },
-            "marks": [
-                {
-                    "type": "symbol",
-                    "properties": {
-                        "update": {
-                            "size": {
-                                "value": 50
-                            },
-                            "fill": {
-                                "value": "black"
-                            },
-                            "y": {
-                                "scale": "y",
-                                "field": "data.value_"
-                            },
-                            "x": {
-                                "scale": "xcenter",
-                                "field": "data.factor(chrom)"
-                            }
-                        },
-                        "ggvis": {
-                            "data": {
-                                "value": ".0/group_by1/boxplot2/boxplot_outliers3"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    ],
-    "legends": [
-
-    ],
-    "axes": [
-        {
-            "type": "x",
-            "scale": "x",
-            "orient": "bottom",
-            "title": "",
-            "layer": "back",
-            "grid": true,
-            "properties": {
-                "labels": {
-                    "angle": {
-                        "value": -90
-                    }
-                }
-            }
-        },
-        {
-            "type": "y",
-            "scale": "y",
-            "orient": "left",
-            "layer": "back",
-            "grid": true,
-            "title": "log10(cpg.size)"
-        }
-    ],
-    "padding": null,
-    "ggvis_opts": {
-        "keep_aspect": false,
-        "resizable": true,
-        "padding": {
-
-        },
-        "duration": 250,
-        "renderer": "svg",
-        "hover_duration": 0,
-        "width": 672,
-        "height": 480
+      },
+      "values": "\"min_\",\"max_\",\"factor(chrom)\",\"lower_\",\"upper_\",\"median_\"\n4.98765286056874,6.69210746093681,\"chr1\",5.43411840927449,6.03127916664897,5.73816037447979\n4.94550797513519,6.7255620151648,\"chr10\",5.42023187294526,5.95816370209165,5.63756614488488\n4.92812945791686,6.76012855662166,\"chr11\",5.32191518010831,6.00267522372981,5.80600486372284\n4.99185932920565,6.79830694042256,\"chr12\",5.52102687961567,6.09286129402866,5.73682421111299\n4.95196373363948,6.72348432303228,\"chr13\",5.40052968412328,5.99767409111348,5.69031521338911\n4.96231723615144,6.58280716546487,\"chr14\",5.40483459153482,5.98589581913747,5.72741273889827\n4.93943438218627,6.37234502595281,\"chr15\",5.35530090560287,5.92973974287804,5.74199525300088\n4.89059425488789,6.66488424804836,\"chr16\",5.41133850184867,6.03397793147534,5.8343100494104\n5.17550021656023,6.093398568873,\"chr17\",5.48892543831958,5.88158338875083,5.68508799414004\n4.92823193661714,6.50262837839649,\"chr18\",5.54848965740053,6.09387259140924,5.73460623347192\n4.9464817410138,6.11815886838032,\"chr19\",5.32557755965018,5.70642997035463,5.50442702858566\n4.95211408490699,6.68233599756819,\"chr2\",5.39921284476754,6.11164411081901,5.7882805138412\n4.95309735885943,6.5882284433533,\"chr20\",5.25362544995246,6.02935145566994,5.63220615890957\n4.99850345144039,6.42484522620652,\"chr21\",5.24349861004797,5.79184493831359,5.41623192363829\n5.55147927526569,6.37478700932519,\"chr22\",5.75892449600213,6.09664343305882,5.98247295216358\n4.94477374929353,6.5059514616409,\"chr3\",5.45051590803073,5.9947047504433,5.72383338924455\n4.95360024402521,6.65934887105673,\"chr4\",5.61517625667293,6.17613520388458,5.89099195104212\n4.94137724770762,6.92252663325754,\"chr5\",5.42247657368707,6.05041881393758,5.76493193908297\n4.99584132587985,6.88054544696314,\"chr6\",5.52192131662083,6.07039290875446,5.81894208665561\n4.97833575745743,6.82354895269296,\"chr7\",5.38955401850513,6.075771664267,5.68064061977233\n5.04005220190221,6.6630200286198,\"chr8\",5.49553878742176,6.10398492415273,5.88604209858432\n4.93400327534291,6.71843458809274,\"chr9\",5.37189804533606,5.93933590004517,5.66121850996974\n4.97698238674307,7.01322420679856,\"chrX\",5.58764197956383,6.23874010319393,5.87391786512239\n5.45778655333404,6.71754177634738,\"chrY\",6.0102639053086,6.62660999798516,6.60172165274249"
     },
-    "handlers": null
-}
-;
-ggvis.getPlot("plot_id762731126").parseSpec(plot_id762731126_spec);
+    {
+      "name": ".0/group_by1/boxplot2",
+      "source": ".0/group_by1/boxplot2_flat",
+      "transform": [
+        {
+          "type": "treefacet",
+          "keys": [
+            "data.factor(chrom)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": ".0/group_by1/boxplot2/boxplot_outliers3_flat",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "value_": "number"
+        }
+      },
+      "values": "\"value_\",\"factor(chrom)\"\n7.33413692233954,\"chr1\"\n7.13814603963581,\"chr16\"\n6.61454774247285,\"chr17\"\n6.94456365065062,\"chr19\"\n7.05881072093594,\"chr3\"\n7.51077043631401,\"chr9\""
+    },
+    {
+      "name": ".0/group_by1/boxplot2/boxplot_outliers3",
+      "source": ".0/group_by1/boxplot2/boxplot_outliers3_flat",
+      "transform": [
+        {
+          "type": "treefacet",
+          "keys": [
+            "data.factor(chrom)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scale/x",
+      "format": {
+        "type": "csv",
+        "parse": {}
+      },
+      "values": "\"domain\"\n\"chr1\"\n\"chr10\"\n\"chr11\"\n\"chr12\"\n\"chr13\"\n\"chr14\"\n\"chr15\"\n\"chr16\"\n\"chr17\"\n\"chr18\"\n\"chr19\"\n\"chr2\"\n\"chr20\"\n\"chr21\"\n\"chr22\"\n\"chr3\"\n\"chr4\"\n\"chr5\"\n\"chr6\"\n\"chr7\"\n\"chr8\"\n\"chr9\"\n\"chrX\"\n\"chrY\""
+    },
+    {
+      "name": "scale/xcenter",
+      "format": {
+        "type": "csv",
+        "parse": {}
+      },
+      "values": "\"domain\"\n\"chr1\"\n\"chr10\"\n\"chr11\"\n\"chr12\"\n\"chr13\"\n\"chr14\"\n\"chr15\"\n\"chr16\"\n\"chr17\"\n\"chr18\"\n\"chr19\"\n\"chr2\"\n\"chr20\"\n\"chr21\"\n\"chr22\"\n\"chr3\"\n\"chr4\"\n\"chr5\"\n\"chr6\"\n\"chr7\"\n\"chr8\"\n\"chr9\"\n\"chrX\"\n\"chrY\""
+    },
+    {
+      "name": "scale/y",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "domain": "number"
+        }
+      },
+      "values": "\"domain\"\n4.75958544581659\n7.64177924538531"
+    }
+  ],
+  "scales": [
+    {
+      "padding": 0.1,
+      "type": "ordinal",
+      "domain": {
+        "data": "scale/x",
+        "field": "data.domain"
+      },
+      "name": "x",
+      "points": false,
+      "sort": false,
+      "range": "width"
+    },
+    {
+      "points": true,
+      "padding": 1.1,
+      "name": "xcenter",
+      "type": "ordinal",
+      "domain": {
+        "data": "scale/xcenter",
+        "field": "data.domain"
+      },
+      "sort": false,
+      "range": "width"
+    },
+    {
+      "name": "y",
+      "domain": {
+        "data": "scale/y",
+        "field": "data.domain"
+      },
+      "zero": false,
+      "nice": false,
+      "clamp": false,
+      "range": "height"
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {
+        "data": ".0/group_by1/boxplot2"
+      },
+      "marks": [
+        {
+          "type": "rect",
+          "properties": {
+            "update": {
+              "stroke": {
+                "value": "#000000"
+              },
+              "fill": {
+                "value": "white"
+              },
+              "y": {
+                "scale": "y",
+                "field": "data.min_"
+              },
+              "y2": {
+                "scale": "y",
+                "field": "data.max_"
+              },
+              "x": {
+                "scale": "xcenter",
+                "field": "data.factor(chrom)"
+              },
+              "width": {
+                "value": 0.5
+              }
+            },
+            "ggvis": {
+              "data": {
+                "value": ".0/group_by1/boxplot2"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "from": {
+        "data": ".0/group_by1/boxplot2"
+      },
+      "marks": [
+        {
+          "type": "rect",
+          "properties": {
+            "update": {
+              "stroke": {
+                "value": "#000000"
+              },
+              "fill": {
+                "value": "white"
+              },
+              "x": {
+                "scale": "x",
+                "field": "data.factor(chrom)"
+              },
+              "y": {
+                "scale": "y",
+                "field": "data.lower_"
+              },
+              "y2": {
+                "scale": "y",
+                "field": "data.upper_"
+              },
+              "width": {
+                "scale": "x",
+                "band": true
+              }
+            },
+            "ggvis": {
+              "data": {
+                "value": ".0/group_by1/boxplot2"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "from": {
+        "data": ".0/group_by1/boxplot2"
+      },
+      "marks": [
+        {
+          "type": "rect",
+          "properties": {
+            "update": {
+              "stroke": {
+                "value": "#000000"
+              },
+              "fill": {
+                "value": "white"
+              },
+              "x": {
+                "scale": "x",
+                "field": "data.factor(chrom)"
+              },
+              "y": {
+                "scale": "y",
+                "field": "data.median_"
+              },
+              "width": {
+                "scale": "x",
+                "band": true
+              },
+              "height": {
+                "value": 1
+              }
+            },
+            "ggvis": {
+              "data": {
+                "value": ".0/group_by1/boxplot2"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "from": {
+        "data": ".0/group_by1/boxplot2/boxplot_outliers3"
+      },
+      "marks": [
+        {
+          "type": "symbol",
+          "properties": {
+            "update": {
+              "size": {
+                "value": 50
+              },
+              "fill": {
+                "value": "black"
+              },
+              "y": {
+                "scale": "y",
+                "field": "data.value_"
+              },
+              "x": {
+                "scale": "xcenter",
+                "field": "data.factor(chrom)"
+              }
+            },
+            "ggvis": {
+              "data": {
+                "value": ".0/group_by1/boxplot2/boxplot_outliers3"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [],
+  "axes": [
+    {
+      "type": "x",
+      "scale": "x",
+      "orient": "bottom",
+      "title": "",
+      "layer": "back",
+      "grid": true,
+      "properties": {
+        "labels": {
+          "angle": {
+            "value": -90
+          }
+        }
+      }
+    },
+    {
+      "type": "y",
+      "scale": "y",
+      "orient": "left",
+      "layer": "back",
+      "grid": true,
+      "title": "log10(cpg.size)"
+    }
+  ],
+  "padding": null,
+  "ggvis_opts": {
+    "keep_aspect": false,
+    "resizable": true,
+    "padding": {},
+    "duration": 250,
+    "renderer": "svg",
+    "hover_duration": 0,
+    "width": 672,
+    "height": 480
+  },
+  "handlers": null
+};
+ggvis.getPlot("plot_id170390474").parseSpec(plot_id170390474_spec);
 </script></p>
 </div>
 <div id="data-mainuplation" class="section level2">

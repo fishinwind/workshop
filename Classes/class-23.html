@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class 23 : Exome-Seq - Alignment &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 24 : Exome-Seq - Variants" href="class-24.html" />
+    <link rel="prev" title="Class 22 : RNA-Seq" href="class-22.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Class 23 : Exome-Seq - Alignment</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#exome-sequencing">Exome Sequencing</a></li>
+<li><a class="reference internal" href="#project-design">Project Design</a></li>
+<li><a class="reference internal" href="#project-design-ii">Project Design II</a></li>
+<li><a class="reference internal" href="#analysis">Analysis</a></li>
+<li><a class="reference internal" href="#alignment">Alignment</a></li>
+<li><a class="reference internal" href="#bwa-mem">BWA mem</a></li>
+<li><a class="reference internal" href="#mark-duplicates">Mark Duplicates</a></li>
+<li><a class="reference internal" href="#read-groups">Read Groups</a></li>
+<li><a class="reference internal" href="#variant-calling">Variant Calling</a></li>
+<li><a class="reference internal" href="#variant-calling-software">Variant Calling Software</a></li>
+<li><a class="reference internal" href="#freebayes">Freebayes</a></li>
+<li><a class="reference internal" href="#vcf-format">VCF Format</a></li>
+<li><a class="reference internal" href="#pipeline">Pipeline</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="class-23-exome-seq-alignment">
+<h1>Class 23 : Exome-Seq - Alignment<a class="headerlink" href="#class-23-exome-seq-alignment" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#class-23-exome-seq-alignment" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 21 Tues</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 21, 2015</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#goals" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Not kill Tesla</li>
+<li>Exome Sequencing</li>
+<li>Alignment</li>
+<li>QC Alignments</li>
+</ol>
+</div>
+<div class="section" id="exome-sequencing">
+<h2>Exome Sequencing<a class="headerlink" href="#exome-sequencing" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#exome-sequencing" title="Slides">§</a></h2>
+<ul class="simple">
+<li>captures coding regions of genome</li>
+<li>deeper coverage and more samples at same cost</li>
+<li>goal is to call variants (SNPs/deletions/insertions)</li>
+<li>higher concentration of interesting variants
+relative to non-coding genome</li>
+</ul>
+</div>
+<div class="section" id="project-design">
+<h2>Project Design<a class="headerlink" href="#project-design" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#project-design" title="Slides">§</a></h2>
+<img alt="../_images/phenotype.png" src="../_images/phenotype.png" />
+</div>
+<div class="section" id="project-design-ii">
+<h2>Project Design II<a class="headerlink" href="#project-design-ii" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#project-design-ii" title="Slides">§</a></h2>
+<p>8 sequenced samples from single family</p>
+<ul class="simple">
+<li>paired-end 100 base reads</li>
+<li>5 affected</li>
+<li>3 unaffected</li>
+</ul>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#analysis" title="Slides">§</a></h2>
+<ul class="simple">
+<li>How likely are we to find something?</li>
+<li>Naive probability that 5 individuals have a variant and 3 do not (without
+considering pedigree)?</li>
+<li>What if we find 1 million SNPs total?</li>
+<li>How can we filter?</li>
+</ul>
+</div>
+<div class="section" id="alignment">
+<h2>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#alignment" title="Slides">§</a></h2>
+<ul class="simple">
+<li>bwa mem to align the reads.</li>
+<li>bwa mem very good aligner for long reads</li>
+</ul>
+<p><a class="reference external" href="http://arxiv.org/pdf/1303.3997v2.pdf">http://arxiv.org/pdf/1303.3997v2.pdf</a></p>
+</div>
+<div class="section" id="bwa-mem">
+<h2>BWA mem<a class="headerlink" href="#bwa-mem" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#bwa-mem" title="Slides">§</a></h2>
+<img alt="../_images/bwa-mem-roc.png" src="../_images/bwa-mem-roc.png" />
+</div>
+<div class="section" id="mark-duplicates">
+<h2>Mark Duplicates<a class="headerlink" href="#mark-duplicates" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#mark-duplicates" title="Slides">§</a></h2>
+<p>Marking/removing duplicates is to remove the influence of PCR duplication on
+variant calling.</p>
+<ul class="simple">
+<li>Marking/Removing duplicates makes sense unless you have extremely deep coverage,
+especially on paired-end reads.</li>
+<li>Uses position of both reads of a pair to determine duplication&#8211;if many pairs
+have the same start and sequence, all but 1 pair is marked as a duplicate.</li>
+<li>Recommended by the variant caller that we will use.</li>
+<li>To mark or not to mark? <a class="reference external" href="http://seqanswers.com/forums/showthread.php?t=6854">http://seqanswers.com/forums/showthread.php?t=6854</a></li>
+</ul>
+</div>
+<div class="section" id="read-groups">
+<h2>Read Groups<a class="headerlink" href="#read-groups" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#read-groups" title="Slides">§</a></h2>
+<p>Your alignments should have read-groups.</p>
+<p>These tell downstream tools what library and sample your data came from</p>
+<p>Used for calling duplicates (repeats must be from same library)</p>
+<p>With read-groups, can have multiple samples in a single BAM.</p>
+</div>
+<div class="section" id="variant-calling">
+<h2>Variant Calling<a class="headerlink" href="#variant-calling" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#variant-calling" title="Slides">§</a></h2>
+<p>At each site in the genome, given:</p>
+<ul class="simple">
+<li>base calls</li>
+<li>base qualities</li>
+<li>mapping qualities</li>
+<li>surrounding sequence</li>
+<li>position in read</li>
+<li>strand bias</li>
+<li>all of the above for other samples</li>
+</ul>
+<p>What is the genotype of each sample and the confidence in that genotype?</p>
+</div>
+<div class="section" id="variant-calling-software">
+<h2>Variant Calling Software<a class="headerlink" href="#variant-calling-software" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#variant-calling-software" title="Slides">§</a></h2>
+<p>The most commonly used software for variant calling is GATK:
+Genome Analysis Toolkit</p>
+<p>It has a number of steps including base recalibration, indel realignment,
+etc.</p>
+<p>We will use <cite>freebayes</cite> which has been shown to perform as well/better
+(and it is much easier to use): <a class="reference external" href="https://github.com/ekg/freebayes">https://github.com/ekg/freebayes</a></p>
+<p><a class="reference external" href="http://bcbio.wordpress.com/2013/10/21/updated-comparison-of-variant-detection-methods-ensemble-freebayes-and-minimal-bam-preparation-pipelines/">http://bcbio.wordpress.com/2013/10/21/updated-comparison-of-variant-detection-methods-ensemble-freebayes-and-minimal-bam-preparation-pipelines/</a></p>
+</div>
+<div class="section" id="freebayes">
+<h2>Freebayes<a class="headerlink" href="#freebayes" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#freebayes" title="Slides">§</a></h2>
+<p><a class="reference external" href="https://github.com/ekg/freebayes">https://github.com/ekg/freebayes</a></p>
+<p><em>FreeBayes is haplotype-based, in the sense that it calls variants based on the
+literal sequences of reads aligned to a particular target, not their precise
+alignment.</em></p>
+<p><em>FreeBayes uses short-read alignments (BAM files) for any number of individuals
+from a population and a reference genome to determine the most-likely combination
+of genotypes for the population at each position in the reference. It reports
+positions which it finds putatively polymorphic in variant call file (VCF) format.</em></p>
+</div>
+<div class="section" id="vcf-format">
+<h2>VCF Format<a class="headerlink" href="#vcf-format" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#vcf-format" title="Slides">§</a></h2>
+<p>File format for SNP/indel calls:
+<a class="reference external" href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41</a></p>
+<div class="highlight-python"><div class="highlight"><pre>CHROM      1
+POS        2345544
+ID         rs1234..
+REF        C
+ALT        TA
+QUAL       55.2
+FILTER     PASS
+INFO       NS=3;DP=14;AF=0.5;DB
+FORMAT     GT:GQ:DP:HQ
+sample_1   0|0:48:1:51,51
+...
+sample_n
+</pre></div>
+</div>
+<p>&#8221;:&#8221; delimited chunks from samples match the format in <cite>FORMAT</cite></p>
+</div>
+<div class="section" id="pipeline">
+<h2>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-23.html#pipeline" title="Slides">§</a></h2>
+<p>Walk through .sh scripts on <em>amc-tesla</em></p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>
