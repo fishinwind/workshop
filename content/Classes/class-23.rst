@@ -1,7 +1,12 @@
 
+.. include:: /_static/substitutions.txt
+
 ********************************
 Class 23 : Exome-Seq - Alignment
 ********************************
+
+:Class date: |c23-date|
+:Last updated: |today|
 
 Goals
 =====

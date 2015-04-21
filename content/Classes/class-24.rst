@@ -1,71 +1,19 @@
 
+.. include:: /_static/substitutions.txt
+
 *******************************
 Class 24 : Exome-Seq - Variants
 *******************************
 
+:Class date: |c24-date|
+:Last updated: |today|
+
 Goals
 =====
 
-#. Review cluster usage
 #. BAM format
 #. VCF format
 #. Filter VCF
-
-LSF Job Arrays
-==============
-
-Run a command (`bwa mem`) on 8 samples
-
-.. code-block:: bash
-
-    #BSUB -J align[1-8]
-    
-    samples=(ll-1 ll-3 ll-5 ll-7 lll-10 
-             lll-1 lll-2 lll-9)
-    sample=${samples[$(($LSB_JOBINDEX - 1))]}
-
-    R1=$FQDIR/${sample}_R1_001.fastq.gz
-    R2=$FQDIR/${sample}_R2_001.fastq.gz
-
-    bwa mem hg19.fa $R1 $R2 > $sample.sam
-
-LSF Job Arrays II
-=================
-
-Same pipeline on different data (16 samples)
-
-.. code-block:: bash
-
-    #BSUB -J align[1-16]
-
-    samples=(1_Y_Spleen_10_28_ATCACG 2_Y_10_31_CGATGT 3_Y2_11_25_TTAGGC
-    4_M_Spleen_10_28_TGACCA .. [16 total samples] ..)
-    
-    sample=${samples[$(($LSB_JOBINDEX - 1))]}
-
-    R1=$FQDIR/${sample}_L008_R1_001.fastq.gz
-    R2=$FQDIR/${sample}_L008_R2_001.fastq.gz
-
-    bwa mem mm10.fa $R1 $R2 > $sample.sam
-
-Exercise
-========
-
-use a job array to submit a script 10 times where
-each on echos it's number in the array::
-
-    hello from 1
-    hello from 2
-    ...
-    hello from 10
-
-specify `#BSUB -e hello.%I.%J.err` and `#BSUB -o hello.%I.%J.out`
-
-usually good to debug with a single job::
-
-    #BSUB -J hello[1]
-
-then expand to number of jobs once that works.
 
 BAMs
 ====
@@ -75,7 +23,7 @@ duplicates.
 
 .. code-block:: bash
 
-    samtools view -h ~brentp/exomes/results/ll-7.dedup.bam | less
+    samtools view -h /vol1/opt/data/exomes/results/ll-7.dedup.bam | less
 
 Variant Call Format (VCF)
 =========================
@@ -110,7 +58,7 @@ Java
 
     module load java/1.7
     qlogin
-    java -Xmx4G -jar ~brentp/opt/snpEff/SnpSift.jar
+    java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar
 
 Filters
 =======
@@ -134,8 +82,8 @@ To (kinda) match the study design. Get variants with:
 
 .. code-block:: bash
 
-    cat  ~brentp/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf | \
-    java -Xmx4G -jar ~brentp/opt/snpEff/SnpSift.jar \
+    cat  /vol1/opt/data/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf | \
+    java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar \
      filter  "(
      (QUAL >= 40) &
      (countHet() = 5 & countRef() = 3) &
@@ -176,15 +124,13 @@ Match that sample order with the pedigree image to get a filter like::
     isVariant(GEN[0]) & isVariant(GEN[3]) \
         & isVariant(GEN[4]) ...
 
-
-
 Filtered
 ========
 
 .. code-block:: bash
 
-    cat  ~brentp/exomes/results/vcfs/chr*.snpeff.dbsnp.vcf | \
-    java -Xmx4G -jar ~brentp/opt/snpEff/SnpSift.jar \
+    cat  /vol1/opt/data/exomes/results/vcfs/chr*.snpeff.dbsnp.vcf | \
+    java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar \
         filter  \
         "((QUAL >= 40) & isVariant(GEN[0]) & isVariant(GEN[3]) \
         & isVariant(GEN[4]) & isVariant(GEN[7]) & isVariant(GEN[5]) \
@@ -212,11 +158,9 @@ Viewing with samtools tview
 
 .. code-block:: bash
 
-    #module load samtools/0.1.19
-
-    samtools tview -p 12:12022535 \
-        ~brentp/exomes/results/ll-1.dedup.bam \
-        ~brentp/data/Homo_sapiens/Ensembl/GRCh37/Sequence/BWAIndex/genome.fa
+    samtools tview -p chr12:12022535 \
+        /vol1/opt/data/exomes/results/ll-1.dedup.bam \
+        /vol3/home/jhessel/ref/genomes/hg19/hg19.fa
 
 Extracting parts of the alignment
 =================================
@@ -227,6 +171,6 @@ When you only want to look at part of the alignment. No need to transfer
 .. code-block:: bash
 
     samtools view -h results/$sample.dedup.bam 12:12022035-12023035 \
-            > ~/cpy/save.$sample.bam
+            > save.$sample.bam
 
 will save on the portion that we are interested in.
