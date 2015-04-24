@@ -22,3 +22,6 @@ java -Xmx4G -jar snpEff/SnpSift.jar \
     )" \
     > final.snps.vcf
 
+# now filter on field 3: all but 2 of these snps should have rs SNP IDs
+# (i.e., they are common, but they happen to segregate in the pedigree in
+# the same way the causal variant does).
