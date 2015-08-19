@@ -8,9 +8,9 @@ Genome Analysis Workshop
 :Website: http://hesselberthlab.github.io/workshop
 :Course Name: Genome Analysis Workshop 
 :Course Number: MOLB 7621
-:Next offered: Spring 2015
+:Next offered: Spring 2016
 :Credit Hours: 3
-:Schedule: Tues & Thurs 1-3 PM (20 Jan - 30 Apr)
+:Schedule: Tues & Thurs 1-3 PM (26 Jan - 30 Apr)
 
 Announcements
 ~~~~~~~~~~~~~
