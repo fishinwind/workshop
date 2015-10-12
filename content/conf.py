@@ -37,8 +37,8 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.graphviz',
     'sphinx.ext.extlinks',
-    'IPython.sphinxext.ipython_directive',
-    'IPython.sphinxext.ipython_console_highlighting',
+#    'IPython.sphinxext.ipython_directive',
+#    'IPython.sphinxext.ipython_console_highlighting',
     'hieroglyph',
     'rst2pdf.pdfbuilder'
 ]
@@ -144,9 +144,9 @@ html_theme_options = {
     #    (name, "http://example.com", True) # arbitrary absolute url
     # Note the "1" or "True" value above as the third argument to indicate
     # an arbitrary url.
-    'navbar_links': [
-        ("Hesselberth lab", "http://hesselberthlab.github.io", True),
-    ],
+    #'navbar_links': [
+    #    ("Hesselberth lab", "http://hesselberthlab.github.io", True),
+    #],
 
     # Render the next and previous page links in navbar. (Default: true)
     'navbar_sidebarrel': False,
