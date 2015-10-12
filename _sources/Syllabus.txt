@@ -11,8 +11,8 @@ General Information
 
 :Title:         Genome Analysis Workshop
 :Course Number: MOLB 7621
-:Cross listings: STBB 7621
-:Semester:      Spring 2015
+:Cross listings: STBB 7621, MICB 7621
+:Semester:      Spring 2016
 :Homepage:      http://hesselberthlab.github.io/workshop 
 :Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
@@ -42,21 +42,20 @@ Instructor Information
       - Email
     * - Jay Hesselberth             
       - jay.hesselberth@gmail.com
-    * - Sally Peach 
-      - sally.peach@gmail.com 
-    * - Charlotte Siska 
-      - charlotte.siska@ucdenver.edu 
-    * - Kyle Smith 
-      - kyle.s.smith@ucdenver.edu
+    * - Ryan Sheridan
+      - ryan.sheridan@ucdenver.edu
 
 Schedule
 ========
-Tue & Thurs, 1:00 - 3:00 PM. TA office hours until 3:30 PM
+- Lecture: Tue & Thurs, 1:00 - 3:00 PM.
+
+- TA office hours: until 3:30 PM after lectures and on Fridays at 1 PM.
+
 :ref:`See specific dates. <syllabus-specific-dates>`
 
 Location
 ========
-Health Sciences Library, Computer Teaching Lab 2
+RC1 South 10th floor conference room.
 
 Course Description
 ==================
@@ -207,7 +206,7 @@ Specific Dates / Material to be Covered
       - R Data & Plotting
       - **PS6 due** (|pset6-due|)
     * - 
-      - ** No Class Mar 16-20 ** 
+      - ** No Class Mar 21-25 ** 
       - ** Spring Break **
       - 
     * - Class 15 

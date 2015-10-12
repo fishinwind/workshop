@@ -2,28 +2,25 @@
 .. include:: /_static/substitutions.txt
 
 *************************
-Class 18 : Applied Python 
+Class 19 : Applied Python 
 *************************
 
-:Class date: |c18-date|
+:Class date: |c19-date|
 :Last updated: |today|
 
-Final Project
-=============
+Pybedtools
+==========
 
-We will have a final project that is worth 15% of your grade, due the week
-of May 10.
+The pybedtools documentation is very good: https://pythonhosted.org/pybedtools/
 
-We want you to come up with a question you can address with the tools you
-learned in the class. You should incorporate ENCODE data into your
-analysis, and you can also integrate your own data.
+Citable from: http://www.ncbi.nlm.nih.gov/pubmed/21949271
 
-Goals
-=====
+.. code-block:: python
 
-+ Few more Python concepts
+    for region in BedTool('my.bed'):
+        if region.strand == "+":
+            print region.chrom, region.start, region.end
 
-+ Go over Problem Set 7
 
 .. raw:: pdf
 

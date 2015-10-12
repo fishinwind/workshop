@@ -5,15 +5,18 @@
 ****************************
 
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
-:Website: http://hesselberthlab.github.io/workshop
-:Source: http://github.com/hesselberthlab/workshop
-:Next offered: Spring 2015
+:Website: http://molb7621.github.io/workshop
+:Source: http://github.com/molb7621/workshop
+:Next offered: Spring 2016
 :Course Number: MOLB 7621 
-:Crosslistings: STBB 7621
+:Cross-listings: STBB 7621, MICB 7621, HMGP 7621
 :Last updated:  |today|
 
 Announcements
 ~~~~~~~~~~~~~
+
+* **New**: you will need your own laptop for the class. And IDEALLY it is
+  a Mac or Linux machine. You can run Linux under VirtualBox on Windows.
 
 * **Class size is limited to 20. We anticipate being full, so register
   early.**

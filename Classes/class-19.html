@@ -5,12 +5,12 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Class 18 : Applied Python &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 19 : Applied Python &mdash; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
 
@@ -112,9 +112,8 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Class 18 : Applied Python</a><ul>
-<li><a class="reference internal" href="#final-project">Final Project</a></li>
-<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#">Class 19 : Applied Python</a><ul>
+<li><a class="reference internal" href="#pybedtools">Pybedtools</a></li>
 </ul>
 </li>
 </ul>
@@ -123,32 +122,27 @@
       </div>
     <div class="col-md-9">
       
-  <div class="section" id="class-18-applied-python">
-<h1>Class 18 : Applied Python<a class="headerlink" href="#class-18-applied-python" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-19.html#class-18-applied-python" title="Slides">§</a></h1>
+  <div class="section" id="class-19-applied-python">
+<h1>Class 19 : Applied Python<a class="headerlink" href="#class-19-applied-python" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-19.html#class-19-applied-python" title="Slides">§</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 2 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Apr 2 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 14, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">October 12, 2015</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="final-project">
-<h2>Final Project<a class="headerlink" href="#final-project" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-19.html#final-project" title="Slides">§</a></h2>
-<p>We will have a final project that is worth 15% of your grade, due the week
-of May 10.</p>
-<p>We want you to come up with a question you can address with the tools you
-learned in the class. You should incorporate ENCODE data into your
-analysis, and you can also integrate your own data.</p>
+<div class="section" id="pybedtools">
+<h2>Pybedtools<a class="headerlink" href="#pybedtools" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-19.html#pybedtools" title="Slides">§</a></h2>
+<p>The pybedtools documentation is very good: <a class="reference external" href="https://pythonhosted.org/pybedtools/">https://pythonhosted.org/pybedtools/</a></p>
+<p>Citable from: <a class="reference external" href="http://www.ncbi.nlm.nih.gov/pubmed/21949271">http://www.ncbi.nlm.nih.gov/pubmed/21949271</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">BedTool</span><span class="p">(</span><span class="s">&#39;my.bed&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">region</span><span class="o">.</span><span class="n">strand</span> <span class="o">==</span> <span class="s">&quot;+&quot;</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">region</span><span class="o">.</span><span class="n">chrom</span><span class="p">,</span> <span class="n">region</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">region</span><span class="o">.</span><span class="n">end</span>
+</pre></div>
 </div>
-<div class="section" id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-19.html#goals" title="Slides">§</a></h2>
-<ul class="simple">
-<li>Few more Python concepts</li>
-<li>Go over Problem Set 7</li>
-</ul>
 </div>
 </div>
 

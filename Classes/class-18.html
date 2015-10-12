@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
@@ -147,9 +147,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Apr 2 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Mar 31 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 21, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">October 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -264,52 +264,13 @@ incrementing.</p>
 <li>12 modulo 4 is 0</li>
 <li>13 modulo 4 is 1</li>
 </ul>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="mi">12</span> <span class="o">%</span> <span class="mi">4</span>
-<span class="gh">Out[1]: </span><span class="go">0</span>
-
-<span class="gp">In [2]: </span><span class="mi">13</span> <span class="o">%</span> <span class="mi">4</span>
-<span class="gh">Out[2]: </span><span class="go">1</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="modulo-and-enumerate">
 <h2>modulo and enumerate<a class="headerlink" href="#modulo-and-enumerate" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#modulo-and-enumerate" title="Slides">§</a></h2>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span>
-<span class="gp">   ...: </span>
-<span class="go">0 0</span>
-<span class="go">1 1</span>
-<span class="go">2 2</span>
-<span class="go">3 3</span>
-<span class="go">4 0</span>
-<span class="go">5 1</span>
-<span class="go">6 2</span>
-<span class="go">7 3</span>
-<span class="go">8 0</span>
-<span class="go">9 1</span>
-<span class="go">10 2</span>
-<span class="go">11 3</span>
-</pre></div>
-</div>
 <p>How does this relate to our FASTQ?</p>
 </div>
 <div class="section" id="modulo-enumerate-fastq">
 <h2>modulo, enumerate, fastq<a class="headerlink" href="#modulo-enumerate-fastq" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#modulo-enumerate-fastq" title="Slides">§</a></h2>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [4]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;data/SP1.fq&#39;</span><span class="p">)):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="gp">   ...: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> <span class="k">break</span>
-<span class="gp">   ...: </span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IOError</span><span class="g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-4-e4f85ee90db9&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;data/SP1.fq&#39;</span><span class="p">)):</span>
-<span class="g-Whitespace">      </span><span class="mi">2</span>     <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span> <span class="k">break</span>
-<span class="g-Whitespace">      </span><span class="mi">4</span> 
-
-<span class="ne">IOError</span>: [Errno 2] No such file or directory: &#39;data/SP1.fq&#39;
-</pre></div>
-</div>
 </div>
 <div class="section" id="modulo-enumerate-fastq-parse">
 <h2>modulo, enumerate, fastq: parse<a class="headerlink" href="#modulo-enumerate-fastq-parse" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#modulo-enumerate-fastq-parse" title="Slides">§</a></h2>
@@ -330,75 +291,12 @@ format.</p>
 <div class="section" id="zip">
 <h2>zip<a class="headerlink" href="#zip" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#zip" title="Slides">§</a></h2>
 <p>zip is another python function. It merges items from multiple lists:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="gp">In [6]: </span><span class="n">b</span> <span class="o">=</span> <span class="s">&quot;abcde&quot;</span>
-
-<span class="gp">In [7]: </span><span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="gh">Out[7]: </span><span class="go">[(0, &#39;a&#39;), (1, &#39;b&#39;), (2, &#39;c&#39;), (3, &#39;d&#39;), (4, &#39;e&#39;)]</span>
-
-<span class="gp">In [8]: </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(),</span> <span class="p">[],</span> <span class="bp">None</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">]</span>
-
-<span class="gp">In [9]: </span><span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-<span class="gh">Out[9]: </span><span class="go"></span>
-<span class="go">[(0, &#39;a&#39;, {}),</span>
-<span class="go"> (1, &#39;b&#39;, []),</span>
-<span class="go"> (2, &#39;c&#39;, None),</span>
-<span class="go"> (3, &#39;d&#39;, &#39;hello&#39;),</span>
-<span class="go"> (4, &#39;e&#39;, &#39;world&#39;)]</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="izip">
 <h2>izip<a class="headerlink" href="#izip" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#izip" title="Slides">§</a></h2>
 <blockquote>
 <div>izip is a lazy version of zip. It doesn&#8217;t consume or return elements until you
 ask for them.</div></blockquote>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">izip</span>
-
-<span class="gp">In [11]: </span><span class="n">seq</span> <span class="o">=</span> <span class="s">&quot;TTTCCGGGGCACATAATCTTCAGCCGGGCGC&quot;</span>
-
-<span class="gp">In [12]: </span><span class="n">qual</span> <span class="o">=</span> <span class="s">&quot;9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591&quot;</span>
-
-<span class="gp">In [13]: </span><span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">&lt;itertools.izip at 0x10d4b8290&gt;</span>
-
-<span class="gp">In [14]: </span><span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span> <span class="ow">in</span> <span class="n">izip</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qual</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">base</span><span class="p">,</span> <span class="n">base_qual</span>
-<span class="gp">   ....: </span>
-<span class="go">T 9</span>
-<span class="go">T C</span>
-<span class="go">T ;</span>
-<span class="go">C =</span>
-<span class="go">C ;</span>
-<span class="go">G =</span>
-<span class="go">G &lt;</span>
-<span class="go">G 9</span>
-<span class="go">G @</span>
-<span class="go">C 4</span>
-<span class="go">A 8</span>
-<span class="go">C 6</span>
-<span class="go">A 8</span>
-<span class="go">T &gt;</span>
-<span class="go">A 9</span>
-<span class="go">A :</span>
-<span class="go">T 6</span>
-<span class="go">C 7</span>
-<span class="go">T A</span>
-<span class="go">T A</span>
-<span class="go">C &lt;</span>
-<span class="go">A 9</span>
-<span class="go">G &gt;</span>
-<span class="go">C 6</span>
-<span class="go">C 5</span>
-<span class="go">G &lt;</span>
-<span class="go">G =</span>
-<span class="go">G &gt;</span>
-<span class="go">C 5</span>
-<span class="go">G 9</span>
-<span class="go">C 1</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="izip-laziness">
 <h2>izip laziness<a class="headerlink" href="#izip-laziness" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-18.html#izip-laziness" title="Slides">§</a></h2>

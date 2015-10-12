@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
@@ -159,9 +159,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 10 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Feb 9 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 21, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">October 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -283,7 +283,7 @@ example, to extract out <strong>all genes that overlap a CpG island</strong>:</p
                                  &gt; genes-in-islands.bed
 </pre></div>
 </div>
-<p><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.23.0)"><span class="xref std std-ref">intersect</span></a> is a bedtools tool. It follows a
+<p><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.25.0)"><span class="xref std std-ref">intersect</span></a> is a bedtools tool. It follows a
 common pattern in bedtools that the query file is specified after the
 <code class="docutils literal"><span class="pre">-a</span></code> flag and the <em>subject</em> file after the <code class="docutils literal"><span class="pre">-b</span></code> flag</p>
 </div>
@@ -321,16 +321,16 @@ etc. (likely to be bugs if you do code in manually)</li>
 </div>
 <p>The most commonly used BEDtools are:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.23.0)"><span class="xref std std-ref">intersect</span></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/genomecov.html#genomecov" title="(in bedtools v2.23.0)"><span class="xref std std-ref">genomecov</span></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.23.0)"><span class="xref std std-ref">closest</span></a></li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.23.0)"><span class="xref std std-ref">map</span></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.25.0)"><span class="xref std std-ref">intersect</span></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/genomecov.html#genomecov" title="(in bedtools v2.25.0)"><span class="xref std std-ref">genomecov</span></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.25.0)"><span class="xref std std-ref">closest</span></a></li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.25.0)"><span class="xref std std-ref">map</span></a></li>
 </ul>
 </div>
 <div class="section" id="bedtools-documentation">
 <h3>BEDTools Documentation<a class="headerlink" href="#bedtools-documentation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#bedtools-documentation" title="Slides">§</a></h3>
 <p>The BEDTools documentation is quite good and ever improving.</p>
-<p>See the documentation for <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.23.0)"><span class="xref std std-ref">intersect</span></a> with:</p>
+<p>See the documentation for <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.25.0)"><span class="xref std std-ref">intersect</span></a> with:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools intersect
 </pre></div>
 </div>
@@ -341,7 +341,7 @@ etc. (likely to be bugs if you do code in manually)</li>
 </div>
 <div class="section" id="bedtools-intersect">
 <h3>BEDTools intersect<a class="headerlink" href="#bedtools-intersect" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#bedtools-intersect" title="Slides">§</a></h3>
-<p>Have a browser window open to <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.23.0)"><span class="xref std std-ref">BEDTools intersect documentation</span></a>.
+<p>Have a browser window open to <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.25.0)"><span class="xref std std-ref">BEDTools intersect documentation</span></a>.
 It will likely be the BEDTools function that you use the most. It has a lot of
 options.</p>
 <img alt="http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png" src="http://bedtools.readthedocs.org/en/latest/_images/intersect-glyph.png" />
@@ -507,8 +507,8 @@ strand as <cite>b.bed</cite>.</p>
 </div>
 <div class="section" id="closest">
 <h3>Closest<a class="headerlink" href="#closest" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#closest" title="Slides">§</a></h3>
-<p>with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.23.0)"><span class="xref std std-ref">intersect</span></a> we can only get overlapping
-intervals. <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.23.0)"><span class="xref std std-ref">closest</span></a> reports the nearest interval even
+<p>with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/intersect.html#intersect" title="(in bedtools v2.25.0)"><span class="xref std std-ref">intersect</span></a> we can only get overlapping
+intervals. <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/closest.html#closest" title="(in bedtools v2.25.0)"><span class="xref std std-ref">closest</span></a> reports the nearest interval even
 if it&#8217;s not overlapping.</p>
 <p>Example: report the nearest CpG to each gene as long as it is within 5KB.</p>
 <div class="highlight-bash"><div class="highlight"><pre>bedtools closest <span class="se">\</span>

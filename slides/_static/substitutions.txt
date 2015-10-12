@@ -3,41 +3,48 @@
 .. these values. THEN make sure to reserve the library teaching lab ASAP
 .. after that, as there have been several conflicts with the room
 .. reservation.
-.. |c1-date| replace:: 2015 Jan 27 Tues
-.. |c2-date| replace:: 2015 Jan 29 Thurs
-.. |c3-date| replace:: 2015 Feb 3 Tues
-.. |c4-date| replace:: 2015 Feb 5 Thurs
-.. |c5-date| replace:: 2015 Feb 10 Tues
-.. |c6-date| replace:: 2015 Feb 12 Thurs
-.. |c7-date| replace:: 2015 Feb 17 Tues
-.. |c8-date| replace:: 2015 Feb 19 Thurs
-.. |c9-date| replace:: 2015 Feb 24 Tues
-.. |c10-date| replace:: 2015 Mar 3 Tues
-.. |c11-date| replace:: 2015 Mar 5 Thurs
-.. |c12-date| replace:: 2015 Mar 10 Tues
-.. |c13-date| replace:: 2015 Mar 12 Thurs
-.. |c15-date| replace:: 2015 Mar 24 Tues
-.. |c16-date| replace:: 2015 Mar 26 Thurs
-.. |c17-date| replace:: 2015 Mar 31 Tues
-.. |c18-date| replace:: 2015 Apr 2 Thurs
-.. |c19-date| replace:: 2015 Apr 7 Tues
-.. |c20-date| replace:: 2015 Apr 9 Thurs
-.. |c21-date| replace:: 2015 Apr 14 Tues
-.. |c22-date| replace:: 2015 Apr 16 Thurs
-.. |c23-date| replace:: 2015 Apr 21 Tues
-.. |c24-date| replace:: 2015 Apr 23 Thurs
-.. |c25-date| replace:: 2015 Apr 28 Tues
-.. |c26-date| replace:: 2015 Apr 30 Thurs
-.. |c27-date| replace:: 2015 May 5 Tues
+..
+.. 2015-2016 academic calendar: `http://www.ucdenver.edu/student-services/resources/registrar/Documents/AcademicCalendars/amc/GraduateSchool/AcademicCalendar-GradSchool-2015-2016.pdf`
+
+.. |c1-date| replace:: 2016 Jan 26 Tues
+.. |c2-date| replace:: 2016 Jan 28 Thurs
+.. |c3-date| replace:: 2016 Feb 2 Tues
+.. |c4-date| replace:: 2016 Feb 4 Thurs
+.. |c5-date| replace:: 2016 Feb 9 Tues
+.. |c6-date| replace:: 2016 Feb 11 Thurs
+.. |c7-date| replace:: 2016 Feb 16 Tues
+.. |c8-date| replace:: 2016 Feb 18 Thurs
+.. |c9-date| replace:: 2016 Feb 23 Tues
+.. |c10-date| replace:: 2016 Feb 25 Thurs
+.. |c11-date| replace:: 2016 Mar 1 Tues
+.. |c12-date| replace:: 2016 Mar 3 Thurs
+.. |c13-date| replace:: 2016 Mar 5 Thurs
+.. |c14-date| replace:: 2016 Mar 10 Tues
+.. |c15-date| replace:: 2016 Mar 12 Thurs
+.. |c16-date| replace:: 2016 Mar 24 Tues
+.. |c17-date| replace:: 2016 Mar 26 Thurs
+.. |c18-date| replace:: 2016 Mar 31 Tues
+.. |c19-date| replace:: 2016 Apr 2 Thurs
+.. |c20-date| replace:: 2016 Apr 7 Tues
+.. |c21-date| replace:: 2016 Apr 9 Thurs
+.. |c22-date| replace:: 2016 Apr 14 Tues
+.. |c23-date| replace:: 2016 Apr 16 Thurs
+.. |c24-date| replace:: 2016 Apr 21 Tues
+.. |c25-date| replace:: 2016 Apr 23 Thurs
+.. |c26-date| replace:: 2016 Apr 28 Tues
+.. |c27-date| replace:: 2016 Apr 30 Thurs
+.. |c28-date| replace:: 2016 May 5 Tues
 
 .. Problem set due dates
-.. |pset1-due| replace:: 2015 Feb 2 5:00 PM
-.. |pset2-due| replace:: 2015 Feb 9 5:00 PM
-.. |pset3-due| replace:: 2015 Feb 16 5:00 PM
-.. |pset4-due| replace:: 2015 Feb 23 5:00 PM
-.. |pset5-due| replace:: 2015 Mar 9 5:00 PM
-.. |pset6-due| replace:: 2015 Mar 23 5:00 PM 
-.. |pset7-due| replace:: 2015 Apr 6 5:00 PM
-.. |pset8-due| replace:: 2015 Apr 21 5:00 PM
+.. |pset1-due| replace:: 2016 Feb 2 5:00 PM MDT
+.. |pset2-due| replace:: 2016 Feb 9 5:00 PM MDT
+.. |pset3-due| replace:: 2016 Feb 16 5:00 PM MDT
+.. |pset4-due| replace:: 2016 Feb 23 5:00 PM MDT
+.. |pset5-due| replace:: 2016 Mar 9 5:00 PM MDT
+.. |pset6-due| replace:: 2016 Mar 23 5:00 PM MDT
+.. |pset7-due| replace:: 2016 Apr 6 5:00 PM MDT
+.. |pset8-due| replace:: 2016 Apr 21 5:00 PM MDT
+.. |pset9-due| replace:: TBD
+.. |pset10-due| replace:: TBD
 
 .. vim: set syntax=rst:

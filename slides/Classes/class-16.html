@@ -91,9 +91,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Mar 26 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Mar 24 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 14, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">October 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -124,26 +124,6 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>We covered slicing of lists; i.e. retrieving list parts:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">nums</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-
-<span class="go"># try this again with implicit start and end</span>
-<span class="gp">In [2]: </span><span class="n">nums</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
-
-<span class="gp">In [3]: </span><span class="nb">reversed</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-
-<span class="go"># two ways to examine the contents of the iterator,</span>
-<span class="go"># same principle for sorted()</span>
-<span class="gp">In [4]: </span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">nums</span><span class="p">)]</span>
-
-<span class="gp">In [5]: </span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
-
-<span class="go"># skip reversed()</span>
-<span class="gp">In [6]: </span><span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="go"># edit a file directly from ipython</span>
-<span class="gp">In [7]: </span><span class="n">edit</span> <span class="n">filename</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
 
 
 
@@ -156,23 +136,6 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <p>A <a class="reference external" href="http://docs.python.org/2/library/stdtypes.html#set" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">set</span></code></a> is another type in python that lets you store a non-redundant
 list of items. They support logical operations:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="n">skiiers</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s">&#39;Tom&#39;</span><span class="p">,</span><span class="s">&#39;Harry&#39;</span><span class="p">,</span><span class="s">&#39;Gurf&#39;</span><span class="p">])</span>
-
-<span class="gp">In [9]: </span><span class="n">snowboarders</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s">&#39;Lucy&#39;</span><span class="p">,</span><span class="s">&#39;Brian&#39;</span><span class="p">,</span><span class="s">&#39;Gurf&#39;</span><span class="p">])</span>
-
-<span class="go"># intersection</span>
-<span class="gp">In [10]: </span><span class="n">skiiers</span> <span class="o">&amp;</span> <span class="n">snowboarders</span>
-<span class="gh">Out[10]: </span><span class="go">{&#39;Gurf&#39;}</span>
-
-<span class="go"># union</span>
-<span class="gp">In [11]: </span><span class="n">skiiers</span> <span class="o">|</span> <span class="n">snowboarders</span>
-<span class="gh">Out[11]: </span><span class="go">{&#39;Brian&#39;, &#39;Gurf&#39;, &#39;Harry&#39;, &#39;Lucy&#39;, &#39;Tom&#39;}</span>
-
-<span class="go"># difference</span>
-<span class="gp">In [12]: </span><span class="n">skiiers</span> <span class="o">-</span> <span class="n">snowboarders</span>
-<span class="gh">Out[12]: </span><span class="go">{&#39;Harry&#39;, &#39;Tom&#39;}</span>
-</pre></div>
-</div>
 
 
 
@@ -186,20 +149,6 @@ list of items. They support logical operations:</p>
       <p>Use <code class="docutils literal"><span class="pre">if</span></code>:<code class="docutils literal"><span class="pre">elif</span></code>:<code class="docutils literal"><span class="pre">else</span></code> statements to test conditions and act on the
 result. The <code class="docutils literal"><span class="pre">==</span></code> and <code class="docutils literal"><span class="pre">!=</span></code> operators test for equality and inequality, and
 work on many object comparisons.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># animal colors</span>
-<span class="gp">In [13]: </span><span class="n">cat</span> <span class="o">=</span> <span class="s">&#39;white&#39;</span>
-
-<span class="gp">In [14]: </span><span class="n">dog</span> <span class="o">=</span> <span class="s">&#39;black&#39;</span>
-
-<span class="gp">In [15]: </span><span class="k">if</span> <span class="n">cat</span> <span class="o">==</span> <span class="n">dog</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&quot;same color&quot;</span>
-<span class="gp">   ....: </span><span class="k">elif</span> <span class="n">cat</span> <span class="o">!=</span> <span class="n">dog</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&quot;different color&quot;</span>
-<span class="gp">   ....: </span><span class="k">else</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&quot;not going to happen&quot;</span>
-<span class="gp">   ....: </span>
-</pre></div>
-</div>
 
 
 
@@ -210,28 +159,7 @@ work on many object comparisons.</p>
       <h2>Undefined values in Python<a class="headerlink" href="../../Classes/class-16.html#undefined-values-in-python" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [16]: </span><span class="n">this</span> <span class="o">=</span> <span class="bp">None</span>
-
-<span class="gp">In [17]: </span><span class="nb">bool</span><span class="p">(</span><span class="n">this</span><span class="p">)</span>
-
-<span class="gp">In [18]: </span><span class="ow">not</span> <span class="n">this</span>
-
-<span class="go"># the following if statements are equivalent:</span>
-<span class="gp">In [19]: </span><span class="k">if</span> <span class="n">this</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&#39;foo&#39;</span>
-<span class="gp">   ....: </span>
-
-<span class="gp">In [20]: </span><span class="k">if</span> <span class="ow">not</span> <span class="n">this</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&#39;foo&#39;</span>
-<span class="gp">   ....: </span>
-
-<span class="go"># set the following and test with ``not this``</span>
-<span class="gp">In [21]: </span><span class="n">this</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="gp">In [22]: </span><span class="n">this</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-</pre></div>
-</div>
-
+      
 
 
 
@@ -242,18 +170,6 @@ work on many object comparisons.</p>
     </hgroup>
     <article class="">
       <p>You can define functions that encapsulate work flows</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [23]: </span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">numlist</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">   ....: </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numlist</span><span class="p">:</span>
-<span class="gp">   ....: </span>        <span class="n">sq</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
-<span class="gp">   ....: </span>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sq</span><span class="p">)</span>
-<span class="gp">   ....: </span>        <span class="k">return</span> <span class="n">result</span>
-<span class="gp">   ....: </span>
-
-<span class="go"># or replace loop with: return [i*i for i in numlist]</span>
-<span class="gp">In [24]: </span><span class="n">square</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-</pre></div>
-</div>
 
 
 
@@ -269,14 +185,6 @@ library, and there are a also a huge number of Python modules on the web
 (check github).</p>
 <p>To be able to access the contents of a module, you need to import it into
 your <cite>namespace</cite>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [25]: </span><span class="kn">import</span> <span class="nn">math</span>
-
-<span class="gp">In [26]: </span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-<span class="gh">Out[26]: </span><span class="go">3.0</span>
-
-<span class="gp">In [27]: </span><span class="kn">import</span> <span class="nn">sys</span>
-</pre></div>
-</div>
 
 
 
@@ -310,16 +218,6 @@ and <a class="reference external" href="http://docs.python.org/2/library/collect
       <p>The <a class="reference external" href="http://docs.python.org/2/library/pdb.html#module-pdb" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">pdb</span></code></a> is the Python Debugger. You can use it to debug programs by
 dropping you into a shell that allows you to step through the program, line by
 line.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [28]: </span><span class="kn">import</span> <span class="nn">pdb</span>
-
-<span class="go"># this will drop you into a shell. find the value of ``i`` at the (Pdb)</span>
-<span class="go"># prompt</span>
-<span class="gp">In [29]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">50</span><span class="p">:</span>
-<span class="gp">   ....: </span>        <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
-<span class="gp">   ....: </span>
-</pre></div>
-</div>
 
 
 

@@ -91,9 +91,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Mar 24 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Mar 12 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 21, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">October 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -208,9 +208,6 @@ check the <cite>Insert spaces instead of tabs</cite> box.</p>
 </pre></div>
 </div>
 <p>At the <code class="docutils literal"><span class="pre">ipython</span></code> prompt, you can also use:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="nb">str</span><span class="o">?</span>
-</pre></div>
-</div>
 <p>In these slides, links will take you to the python docs: <a class="reference external" href="http://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
 <p>Finally, ask Google (e.g. python string split).</p>
 
@@ -225,13 +222,6 @@ check the <cite>Insert spaces instead of tabs</cite> box.</p>
     <article class="">
       <p>Many things in python are <strong>iterable</strong>, meaning we can write loops over
 them. For example, a string is iterable:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">sentence</span> <span class="o">=</span> <span class="s">&#39;i LOVE programming&#39;</span>
-
-<span class="gp">In [3]: </span><span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
-<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">char</span>
-<span class="gp">   ...: </span>
-</pre></div>
-</div>
 
 
 
@@ -243,17 +233,6 @@ them. For example, a string is iterable:</p>
     </hgroup>
     <article class="">
       <p>Automate repetitive tasks with a for loop:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># Print &quot;hello&quot; 5 times:</span>
-<span class="gp">In [4]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span> <span class="s">&quot;hello&quot;</span>
-<span class="gp">   ...: </span>
-
-<span class="go"># now print the numbers</span>
-<span class="gp">In [5]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span> <span class="n">i</span>
-<span class="gp">   ...: </span>
-</pre></div>
-</div>
 <p>where the <a class="reference external" href="http://docs.python.org/2/library/functions.html#range" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">range()</span></code></a> function generates the numbers <cite>0, 1, 2, 3, 4</cite>.</p>
 
 
@@ -284,17 +263,6 @@ them. For example, a string is iterable:</p>
     <article class="">
       <p>A <a class="reference external" href="http://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> is a collection of characters. You can make strings with
 single, double and triple quotes.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">phrase</span> <span class="o">=</span> <span class="s">&#39;this that other&#39;</span>
-
-<span class="gp">In [7]: </span><span class="n">phrase</span>
-
-<span class="go"># uppercase</span>
-<span class="gp">In [8]: </span><span class="n">phrase</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-
-<span class="go"># number of characters (including spaces) in phrase</span>
-<span class="gp">In [9]: </span><span class="nb">len</span><span class="p">(</span><span class="n">phrase</span><span class="p">)</span>
-</pre></div>
-</div>
 
 
 
@@ -307,23 +275,6 @@ single, double and triple quotes.</p>
     <article class="">
       <p>Python has integer numbers (<a class="reference external" href="http://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) and floating point numbers
 (<a class="reference external" href="http://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>). Math operations work within and across both types:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># set up some ints</span>
-<span class="gp">In [10]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="gp">In [11]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">100</span>
-
-<span class="gp">In [12]: </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="go"># add</span>
-<span class="gp">In [13]: </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-
-<span class="go"># subtract</span>
-<span class="gp">In [14]: </span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
-
-<span class="go"># x * y</span>
-<span class="gp">In [15]: </span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
-</pre></div>
-</div>
 
 
 
@@ -335,22 +286,6 @@ single, double and triple quotes.</p>
     </hgroup>
     <article class="">
       <p>For division you need to pay attention to <code class="docutils literal"><span class="pre">type</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># try to divide the ints ...</span>
-<span class="gp">In [16]: </span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
-
-<span class="go"># need float conversion!</span>
-<span class="gp">In [17]: </span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-
-<span class="go"># make floats directly and divide</span>
-<span class="gp">In [18]: </span><span class="n">x</span> <span class="o">=</span> <span class="mf">10.0</span>
-
-<span class="gp">In [19]: </span><span class="n">y</span> <span class="o">=</span> <span class="mf">100.0</span>
-
-<span class="gp">In [20]: </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="gp">In [21]: </span><span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
-</pre></div>
-</div>
 
 
 
@@ -366,18 +301,6 @@ directly using brackets (<code class="docutils literal"><span class="pre">[</spa
 objects.</p>
 <p>Lists are <em>subscriptable</em>, meaning that you can access items in a list by
 position.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># convert to list, str.split() defaults to space</span>
-<span class="gp">In [22]: </span><span class="n">words</span> <span class="o">=</span> <span class="n">phrase</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-
-<span class="go"># number of items in list</span>
-<span class="gp">In [23]: </span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-
-<span class="go"># two ways to add new words</span>
-<span class="gp">In [24]: </span><span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
-
-<span class="gp">In [25]: </span><span class="n">words</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s">&#39;bar&#39;</span><span class="p">,</span><span class="s">&#39;baz&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
 
 
 
@@ -388,25 +311,7 @@ position.</p>
       <h2>:increment::<a class="headerlink" href="../../Classes/class-15.html#id5" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <div class="highlight-ipython"><div class="highlight"><pre><span class="go"># first item only, zero-based</span>
-<span class="gp">In [26]: </span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="go"># first through third, start is implicit</span>
-<span class="gp">In [27]: </span><span class="n">words</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
-
-<span class="go"># iterate over the list</span>
-<span class="gp">In [28]: </span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="n">word</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
-<span class="gp">   ....: </span>
-
-<span class="go"># mix types in lists</span>
-<span class="gp">In [29]: </span><span class="n">words</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-
-<span class="go"># a &quot;list comprehension&quot;</span>
-<span class="gp">In [30]: </span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
-</pre></div>
-</div>
-
+      
 
 
 
@@ -417,26 +322,6 @@ position.</p>
     </hgroup>
     <article class="">
       <p>A <a class="reference external" href="http://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></a> contains key:value mappings.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="go"># set up new dicts with {}</span>
-<span class="gp">In [31]: </span><span class="n">produce</span>  <span class="o">=</span> <span class="p">{</span><span class="s">&#39;lettuce&#39;</span><span class="p">:</span><span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="s">&#39;apple&#39;</span><span class="p">:</span><span class="s">&#39;red&#39;</span><span class="p">,</span>
-<span class="gp">   ....: </span><span class="s">&#39;banana&#39;</span><span class="p">:</span><span class="s">&#39;yellow&#39;</span><span class="p">}</span>
-<span class="gp">   ....: </span>
-
-<span class="gp">In [32]: </span><span class="n">produce</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-
-<span class="gp">In [33]: </span><span class="n">produce</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-
-<span class="gp">In [34]: </span><span class="n">produce</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-
-<span class="go"># sorted by keys</span>
-<span class="gp">In [35]: </span><span class="nb">sorted</span><span class="p">(</span><span class="n">produce</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-
-<span class="go"># test for membership</span>
-<span class="gp">In [36]: </span><span class="s">&#39;apple&#39;</span> <span class="ow">in</span> <span class="n">produce</span>
-
-<span class="gp">In [37]: </span><span class="ow">not</span> <span class="s">&#39;orange&#39;</span> <span class="ow">in</span> <span class="n">produce</span>
-</pre></div>
-</div>
 
 
 
@@ -450,22 +335,6 @@ position.</p>
       <p>When you're learning to program in Python, you will see lots of errors.
 Examples: <a class="reference external" href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">ValueError</span></code></a>,
 <a class="reference external" href="http://docs.python.org/2/library/exceptions.html#exceptions.IndexError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">IndexError</span></code></a> and <a class="reference external" href="http://docs.python.org/2/library/exceptions.html#exceptions.KeyError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">KeyError</span></code></a></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [38]: </span><span class="nb">int</span><span class="p">(</span><span class="s">&#39;blah&#39;</span><span class="p">)</span>
-
-<span class="gp">In [39]: </span><span class="n">words</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
-
-<span class="gp">In [40]: </span><span class="n">parts</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;hip&#39;</span><span class="p">:</span><span class="s">&#39;thigh&#39;</span><span class="p">}</span>
-
-<span class="gp">In [41]: </span><span class="n">parts</span><span class="p">[</span><span class="s">&#39;nose&#39;</span><span class="p">]</span>
-
-<span class="go"># Catch errors, print useful debugging messages</span>
-<span class="gp">In [42]: </span><span class="k">try</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="n">nums</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>
-<span class="gp">   ....: </span><span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="k">print</span> <span class="s">&quot;error: not enough nums&quot;</span>
-<span class="gp">   ....: </span>
-</pre></div>
-</div>
 
 
 
@@ -477,17 +346,6 @@ Examples: <a class="reference external" href="http://docs.python.org/2/library/e
     </hgroup>
     <article class="">
       <p>Now we'll read some data from a file and operate on each line:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [43]: </span><span class="n">filename</span> <span class="o">=</span> <span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span>
-
-<span class="go"># What is the BUG in this block?</span>
-<span class="gp">In [44]: </span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\t</span><span class="s">&#39;</span><span class="p">)</span>
-<span class="gp">   ....: </span>    <span class="n">start</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="mi">5000</span><span class="p">:</span>
-<span class="gp">   ....: </span>        <span class="k">print</span> <span class="n">fields</span>
-<span class="gp">   ....: </span>
-</pre></div>
-</div>
 
 
 

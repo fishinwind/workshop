@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
@@ -141,9 +141,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 17 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Feb 16 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">April 14, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">October 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -166,10 +166,10 @@ transcription start sites).</p>
 <ol class="arabic simple">
 <li>Obtain genome annotations (we will use TSS)</li>
 <li>Obtain signals in bedGraph format (we will use Pol II ChIP-seq)</li>
-<li>Use <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.23.0)"><span class="xref std std-ref">slop</span></a> to create regions to examine [optional]</li>
-<li>Break the regions into windows with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/makewindows.html#makewindows" title="(in bedtools v2.23.0)"><span class="xref std std-ref">makewindows</span></a>.</li>
-<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.23.0)"><span class="xref std std-ref">map</span></a> data onto the windows.</li>
-<li>Calculate a summary statistic for each window with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/groupby.html#groupby" title="(in bedtools v2.23.0)"><span class="xref std std-ref">groupby</span></a>.</li>
+<li>Use <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.25.0)"><span class="xref std std-ref">slop</span></a> to create regions to examine [optional]</li>
+<li>Break the regions into windows with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/makewindows.html#makewindows" title="(in bedtools v2.25.0)"><span class="xref std std-ref">makewindows</span></a>.</li>
+<li><a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/map.html#map" title="(in bedtools v2.25.0)"><span class="xref std std-ref">map</span></a> data onto the windows.</li>
+<li>Calculate a summary statistic for each window with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/groupby.html#groupby" title="(in bedtools v2.25.0)"><span class="xref std std-ref">groupby</span></a>.</li>
 </ol>
 </div>
 <div class="section" id="annotations">
@@ -212,7 +212,7 @@ gzip &lt;bedgraph&gt;
 <h2>Slop<a class="headerlink" href="#slop" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-07.html#slop" title="Slides">§</a></h2>
 <p>Each of the TSS regions we made is 1 base in size. We need to make these
 bigger so that we can examine coverage within a larger region. Let&#8217;s make them
-2 kb with the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.23.0)"><span class="xref std std-ref">slop</span></a> command:</p>
+2 kb with the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.25.0)"><span class="xref std std-ref">slop</span></a> command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ chromsize</span><span class="o">=</span>/vol1/opt/data/hg19.chrom.sizes
 <span class="nv">$ slopbed</span><span class="o">=</span>tss.slop.2000.bed
 <span class="nv">$ </span>bedtools slop -b <span class="m">2000</span> -i <span class="nv">$tssbed</span> -g <span class="nv">$chromsize</span> &gt; <span class="nv">$slopbed</span>
@@ -260,7 +260,7 @@ windows labeled &#8220;1&#8221; are 2000 bases upstream of the original annotate
 </div>
 <div class="section" id="grouping-the-data">
 <h2>Grouping the data<a class="headerlink" href="#grouping-the-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-07.html#grouping-the-data" title="Slides">§</a></h2>
-<p>Now we can calculate summary statistics on the mapped data with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/groupby.html#groupby" title="(in bedtools v2.23.0)"><span class="xref std std-ref">groupby</span></a>:</p>
+<p>Now we can calculate summary statistics on the mapped data with <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/groupby.html#groupby" title="(in bedtools v2.25.0)"><span class="xref std std-ref">groupby</span></a>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># Note that the mapped data has to be sorted by window number</span>
 <span class="nv">$ </span>sort -t<span class="s1">$&#39;\t&#39;</span> -k5,5n <span class="nv">$signalmap</span> <span class="se">\</span>
     <span class="p">|</span> bedtools groupby <span class="se">\</span>
@@ -408,9 +408,9 @@ as Working Directory</cite>.</p>
 <li>Look at Pol II distribution near transcription termination sites
 (TTSs)? Write this program and run it. (easy)</li>
 <li>Analyze the distribution of H3K36me3 ChIP-seq signal relative to coding
-exons?  Download some H3K36me3 data and <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/bed12tobed6.html#bed12tobed6" title="(in bedtools v2.23.0)"><span class="xref std std-ref">bed12tobed6</span></a>.</li>
+exons?  Download some H3K36me3 data and <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/bed12tobed6.html#bed12tobed6" title="(in bedtools v2.25.0)"><span class="xref std std-ref">bed12tobed6</span></a>.</li>
 <li>Analyze the distribution of H3K36me3 ChIP-seq relative to introns?
-Use the <code class="docutils literal"><span class="pre">-n</span></code> option in <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/makewindows.html#makewindows" title="(in bedtools v2.23.0)"><span class="xref std std-ref">makewindows</span></a>.</li>
+Use the <code class="docutils literal"><span class="pre">-n</span></code> option in <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/makewindows.html#makewindows" title="(in bedtools v2.25.0)"><span class="xref std std-ref">makewindows</span></a>.</li>
 <li>Determine levels of evolutionary conservation surrounding different
 types of non-coding variants? (medium). Use dbSnp and phyloP scores.</li>
 </ol>
