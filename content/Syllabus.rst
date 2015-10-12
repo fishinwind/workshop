@@ -55,7 +55,7 @@ Schedule
 
 Location
 ========
-Health Sciences Library, Computer Teaching Lab 2
+RC1 South 10th floor conference room.
 
 Course Description
 ==================
