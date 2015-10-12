@@ -6,18 +6,18 @@
 ..
 .. 2015-2016 academic calendar: `http://www.ucdenver.edu/student-services/resources/registrar/Documents/AcademicCalendars/amc/GraduateSchool/AcademicCalendar-GradSchool-2015-2016.pdf`
 
-.. |c1-date| replace:: 2016 Jan 26 Tues - RES
-.. |c2-date| replace:: 2016 Jan 28 Thurs - RES 
-.. |c3-date| replace:: 2016 Feb 2 Tues - *NEED-contact Magle*
-.. |c4-date| replace:: 2016 Feb 4 Thurs - RES
-.. |c5-date| replace:: 2016 Feb 9 Tues - RES
-.. |c6-date| replace:: 2016 Feb 11 Thurs - RES
-.. |c7-date| replace:: 2016 Feb 16 Tues - RES
-.. |c8-date| replace:: 2016 Feb 18 Thurs - *NEED-contact Cadenas*
-.. |c9-date| replace:: 2016 Feb 23 Tues - RES
-.. |c10-date| replace:: 2016 Feb 25 Thurs - RES
-.. |c11-date| replace:: 2016 Mar 1 Tues - RES
-.. |c12-date| replace:: 2016 Mar 3 Thurs - RES
+.. |c1-date| replace:: 2016 Jan 26 Tues
+.. |c2-date| replace:: 2016 Jan 28 Thurs
+.. |c3-date| replace:: 2016 Feb 2 Tues
+.. |c4-date| replace:: 2016 Feb 4 Thurs
+.. |c5-date| replace:: 2016 Feb 9 Tues
+.. |c6-date| replace:: 2016 Feb 11 Thurs
+.. |c7-date| replace:: 2016 Feb 16 Tues
+.. |c8-date| replace:: 2016 Feb 18 Thurs
+.. |c9-date| replace:: 2016 Feb 23 Tues
+.. |c10-date| replace:: 2016 Feb 25 Thurs
+.. |c11-date| replace:: 2016 Mar 1 Tues
+.. |c12-date| replace:: 2016 Mar 3 Thurs
 .. |c13-date| replace:: 2016 Mar 5 Thurs
 .. |c14-date| replace:: 2016 Mar 10 Tues
 .. |c15-date| replace:: 2016 Mar 12 Thurs
@@ -44,5 +44,7 @@
 .. |pset6-due| replace:: 2016 Mar 23 5:00 PM MDT
 .. |pset7-due| replace:: 2016 Apr 6 5:00 PM MDT
 .. |pset8-due| replace:: 2016 Apr 21 5:00 PM MDT
+.. |pset9-due| replace:: TBD
+.. |pset10-due| replace:: TBD
 
 .. vim: set syntax=rst:
