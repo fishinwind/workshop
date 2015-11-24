@@ -8,7 +8,7 @@
 # $ git push origin :gh-pages
 
 # You can set these variables from the command line.
-SPHINXOPTS    = -j 4
+SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
@@ -30,6 +30,7 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo
+	@echo "  rmarkdown  to make Rmarkdown documents"
 	@echo "  pdf        to make standalone PDF"
 	@echo "  html       to make standalone HTML files"
 	@echo "  slides     to make standalone HTML5 slides"
@@ -39,8 +40,9 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
+	cd RStudio && $(MAKE) clean
 
-html:
+html: 
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
@@ -65,7 +67,10 @@ latex:
 	@echo "Run \`make all-pdf' or \`make all-ps' in that directory to" \
           "run these through (pdf)latex."
 
-all: html slides pdf
+rmarkdown:
+	cd RStudio && $(MAKE) clean && $(MAKE) all
+
+all: rmarkdown html slides
 
 publish: all 
 	ghp-import -n -p ./_build/html

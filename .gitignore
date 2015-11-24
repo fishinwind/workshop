@@ -2,5 +2,9 @@
 _build
 _test
 *.html
+*.pdf
 *.swp
 *.swo
+.RData
+.Rhistory
+.Rproj.user

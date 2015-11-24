@@ -1,0 +1,124 @@
+---
+title: "nihexporter analysis"
+author: "Jay Hesselberth"
+date: "March 9, 2015"
+output: html_document
+---
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library(dplyr)
+library(nihexporter)
+```
+# Overview
+
+For the next two classes, we will use a new R data package called [nihexporter](https://github.com/jayhesselberth/nihexporter). The package provides NIH funding data from 2000-2014 in formats that make analysis with `dplyr` and `ggplot2` very approachable.
+
+I plan to write and submit a short paper on the `nihexporter` package, and I'd like all of you to help me. I propose that we all use the package to perform analyses for the next several weeks, culminating in a useful series of analyses. At that point we can submit the paper to [bioRxiv](http://biorxiv.org/) or [*Bioinformatics*](http://bioinformatics.oxfordjournals.org/) (I can get this paid for, I think).
+
+Analysis of `nihexporter` will solidify your understaning of `dplyr` and `ggplot2`, and we will hopefully discover some new things. However, the techniques are portable to other scenarios where you have tables of data. For example, linking sample information (a `sample.info` table) in a project to specific data sets acquired (linking by `sample.id`). It also forces you to think about how to best organize the data you have, so that analysis is as easy as possible.
+
+## `nihexporter` overview
+
+The `nihexporter` package provides a minimal set of data from [NIH EXPORTER](http://exporter.nih.gov/default.aspx), which contains information on NIH biomedical research funding from 1985-2014 (and continues monthly in a given fiscal year).
+
+The package contains the following tables:
+
+* `projects`: provides data on funded projects by NIH.
+
+* `project.pis`: links project numbers (`project.num`) to PI ID (`pi.id`), which can used in NIH REPORTER searches
+
+* `project.orgs`: links DUNS numbers (`org.duns`) from `projects` table to information on specific organizations 
+
+* `publinks`: links Pubmed IDs (`pmid`) to project numbers (`project.num`)
+
+* `patents`: links project IDs (`project.num`) to `patent.id`
+
+Information about specific columns in the tables is [here](http://exporter.nih.gov/about.aspx).
+
+There are also a few helper variables that make exploratory analysis a bit easier:
+
+* `nih.institutes`: 27 NIH institutes in two-letter format 
+
+## Questions to ponder
+
+### Easy-ish 
+
+* What are the institutes with the best record of funding impact (i.e., publications / dollar, or patents / dollar)?
+
+* Which are more productive: single-pi or multiple-pi grants? Does this vary across institute, grant type (`activity`) or study-section?
+
+* Related: are there single-pi grants that are as productive as multiple-pi grants? Which grants are they?
+
+### More complicated
+
+* Model the relationship between total.cost and publication / patent number. How does the model change over time?
+
+* Find out how to link Pubmed IDs to the number of times they have been cited, then measure impact as publication / dollar scaled by times.cited. You'll need to go the extra mile and develop a way to query pubmed (or identify this data via e.g., Google Scholar)
+
+## Analysis
+
+```{r load.libs, message = FALSE, warning = FALSE}
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(nihexporter)
+```
+
+### Identifying grant types - single and multiple PI grants
+
+Here is how to find out how many PIs are on each grant ...
+
+```{r pis.per.grant, message = FALSE}
+project.pi.counts <- project_pis %>%
+  group_by(project.num) %>%
+  summarize(pi.count = n())
+project.pi.counts
+
+single.pi.projects <- project.pi.counts %>%
+  filter(pi.count == 1)    
+single.pi.projects
+  
+multiple.pi.projects <- project.pi.counts %>%
+  filter(pi.count > 1)
+multiple.pi.projects
+```
+
+Now you can use the `project.num` field of the `project.pi.counts` tables to cross-reference with other tables via `left_join()` in `dplyr`.
+
+### Exercise
+
+Determine which are more productive: single-pi or multiple-pi grants. 
+
+We already determined `project.pi.counts` above, so we just need to calculate productivity for each `project.num` and then categorize grants by their number of pis.
+
+### More exercises
+
+- Determine the numbers of grants of each type across fiscal years. Make two plots (e.g. with geom_boxplot()); on one of them color by activity and facet by institution, on the other do vice versa.
+
+## Contributing
+
+You are all welcome to contribute to a manuscript. But to make this as painless as possible (for me), I require that you generate and edit content using RStudio linked to your github account. The package is small enough that you can also install it on a local machine, do your analyses there, and sync them in github.
+
+**As long as you submit content this way, you will get authorship on the paper.** If you send me content by email, it doesn't count.
+
+### Workflow
+
+1. Create an account at github.com and enter those credentials in RStudio (Tools -> Global Options -> Git/SVN).
+
+2. Login into your github.com account, and fork the [nihexporter](https://github.com/jayhesselberth/nihexporter) repository on the github.com website. This creates a copy of the repository in your account.
+
+3. Create a new project in RStudio by importing the github repository (File -> New Project -> Version Control -> Git).
+
+  - Enter the value of the `HTTPS clone URL` button, which should look like: "https://github.com/<username>/nihexporter.git". This may take a minute or two.
+
+  - You will see a new project button at the top right of RStudio called `nihexporter`.
+  
+  - Now you need to log in through the terminal to tesla and `cd` to the directory where you checkout out the repository and run this command:
+  
+    $ git checkout manuscript
+  
+  - Now go back to RStudio, and in the `Git` panel in the lower right, you will see a button that says `manuscript`. All of your changes will now be (and *should* be) saved to this branch.
+
+5. Create new content in the `manuscript/contrib/` directory. Name your analysis `lastname-analysis.Rmd`. When you are happy with tht content, click `Commit`, click on the button next to the file to stage it, enter a commit message and press `Commit`, then `push` the content. You can keep editing and commiting new content this way until you are done.
+
+6. When you are done with the content, commit your final copy and submit a pull request via the github website.

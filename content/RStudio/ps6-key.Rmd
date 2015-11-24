@@ -1,0 +1,110 @@
+---
+title: "ps6 key"
+author: "Jay Hesselberth"
+date: "March 11, 2015"
+output: html_document
+---
+
+```{r load_libs, warning = FALSE, message = FALSE}
+require(dplyr)
+require(ggplot2)
+require(nihexporter)
+```
+
+Problem 6.1: Perform left_join() operations on all pairs of tables that have matching column names. Use select() to pull one column (in addition to the matching one) from each of the two tables, and print the first 5 rows of the combined table. 
+
+```{r problem 6_1}
+# projects -> project.orgs
+projects %>%
+  left_join(project.orgs) %>%
+  select(project.num, org.state) %>%
+  head(5) %>% kable()
+
+# projects -> publinks
+projects %>%
+  left_join(publinks) %>%
+  select(study.section, pmid) %>%
+  head(5) %>% kable()
+
+# projects -> publinks
+projects %>%
+  left_join(publinks) %>%
+  select(study.section, pmid) %>%
+  head(5) %>% kable()
+```
+
+Prolbem 6.2: Compare the costs of R01 and P01 grants over time (i.e. across fiscal years) for the GM and CA institutes. Plot the result using geom_boxplot() and facet_grid()
+
+```{r problem 6_2}
+grant.types <- c('R01','P01')
+institutes <- c('GM','CA','AI')
+
+grant_costs <- projects %>%
+  filter(activity %in% grant.types & institute %in% institutes) %>%
+  filter(suffix != '' & !is.na(total.cost)) %>%
+  filter(total.cost > 1e3) %>%
+  select(activity, institute, fiscal.year, total.cost)
+
+ggplot(grant_costs, aes(x = factor(fiscal.year),
+                        y = total.cost / 1e6,
+                        fill = activity)) +
+  geom_boxplot(outlier.shape = NA) +
+  facet_wrap(~ institute) +
+  scale_y_log10() +
+  scale_fill_brewer(palette='Set1') +
+  xlab('') + ylab('Total costs, millions, log-scale') +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) +
+  ggtitle('Comparison of P01 and R01 costs per fiscal year')
+```
+
+Extra credit: calculate supplement cost ratios
+
+```{r supplement_cost_ratio}
+base_costs <- projects %>%
+  filter(institute %in% nih.institutes) %>%
+  select(project.num, institute, fiscal.year, activity, suffix, total.cost) %>%
+  filter(suffix == '') %>% 
+  group_by(project.num, institute, fiscal.year, activity) %>%
+  summarize(base.cost = sum(total.cost))
+
+supp_costs <- projects %>%
+  filter(institute %in% nih.institutes) %>%
+  select(project.num, institute, fiscal.year, activity, suffix, total.cost) %>%
+  filter(grepl('^S', suffix)) %>% 
+  group_by(project.num, institute, fiscal.year, activity) %>%
+  summarize(supp.cost = sum(total.cost))
+
+activity.spec <- c('R01','R21','P01','P30','M01','P41','P50','U54')
+
+cost_ratio <- base_costs %>%
+  inner_join(supp_costs) %>%
+  filter(activity %in% activity.spec) %>%
+  group_by(project.num, institute, activity, fiscal.year) %>%
+  summarize(cost.ratio = supp.cost / base.cost)
+
+ggplot(cost_ratio, aes(x = factor(fiscal.year),
+                       y = cost.ratio,
+                       fill = activity)) +
+  geom_boxplot(outlier.shape = NA) +
+  facet_wrap(~ institute) +
+  scale_y_continuous(limits = c(0, 2)) +
+  scale_fill_brewer(palette='Set1') +
+  xlab('') + ylab('Supp / base ratio') +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5)) +
+  ggtitle('Comparison of base and supplemental costs per fiscal year')
+```
+
+Problem 6.3: Calculate “productivity” (i.e. number of publications per dollar of total.cost for R01 grants across study.section (10 points). Make a summary table of the result.
+
+```{r problem 6_3}
+```
+
+Problem 6.4: Identify grant supplements (i.e. suffix entries that start with “S”) that have the highest total cost over the shorted duration.
+
+```{r problem 6_4}
+```
+
+Problem 6.5 Use dplyr slice() to determine the highest producing grants (pubs / dollar) of any type from each institute.
+
+```{r problem 6_5}
+```

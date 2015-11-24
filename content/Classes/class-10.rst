@@ -6,11 +6,12 @@ Class 10 : R : DataFrames & Plotting
 ************************************
 
 :Class date: |c10-date|
+:Last updated: |today|
 
 Goals
 =====
 
-#. Understand data.frames in more detail
+#. Look at data.frames in more detail
 #. Practice manipulating data.frames
 #. more dplyr and ggplot
 
@@ -22,73 +23,82 @@ extract a single column
 
 .. code-block:: r
 
-    covs = read.delim('expr-geno-covs.txt')
-    head(covs)
-    head(covs$genotype)
+    # assumes workshop repo is in $HOME/devel
+    setwd("~/devel/workshop/content/misc/data")
+
+    # load expr data
+    expr.df <- read.delim('expr-geno-covs.txt', header=TRUE)
+
+    head(expr.df)
+    head(expr.df$genotype)
 
     # or
-    head(covs[,"genotype"])
+    head(expr.df[,"genotype"])
+
+    # using dplyr
+    expr.df %>% select(genotype) %>% head()
 
 To extract multiple selected columns:
 
 .. code-block:: r
 
-    head(covs[,c("genotype", "expression")])
+    head(expr.df[,c("genotype", "expression")])
 
+    # using dplyr
+    expr.df %>% select(genotype, expression) %>% head()
 
 Extracting From data.frames
-===========================
+---------------------------
 
 The order is rows, columns. By having nothing before the comma:
 
 .. code-block:: r
 
-    head(covs[,c("genotype", "expression")])
+    head(expr.df[,c("genotype", "expression")])
 
 We extract all rows. We can manually extract the first 5 rows and our 2 columns
 as:
 
 .. code-block:: r
 
-    covs[1:5, c("genotype", "expression")]
+    expr.df[1:5, c("genotype", "expression")]
+
+    # using dplyr
+    expr.df %>% select(genotype, expression) %>% head(5)
 
 Named rows in data.frames
-=========================
+-------------------------
 
 In `expr-geno-covs.txt`, there is a sample column, we may wish to use
 that as the row id:
 
 .. code-block:: r
 
-    covs = read.delim('expr-geno-covs.txt', row.names='sample_id')
-    head(covs)
+    expr.df = read.delim('expr-geno-expr.df.txt', row.names='sample_id')
+    head(expr.df)
 
-    covs[c('sample_1', 'sample_14'),]
+    expr.df[c('sample1', 'sample14'),]
 
-We can still extract them with numbers:
-
+    # or with row numbers:
     covs[c(1, 4),]
 
-.. warning::
-
-    Be careful with data.frames where the row.names are
-    from an integer column
-
-
-Boolean Operations on Colums
-============================
+Boolean Operations on Columns
+-----------------------------
 
 .. code-block:: r
     
-    is_old = covs$age > 65
+    is_old <- covs$age > 65
 
 now `is_old` is a list of TRUE / FALSE values. We can extract only those > 65 as:
 
 .. code-block:: r
 
-    old = covs[is_old,]
+    old <- covs[is_old,]
     # same as:
-    old = covs[covs$age > 65,]
+    old <- covs[covs$age > 65,]
+
+    # using dplyr
+    is_old <- covs %>% filter(age > 65)
 
 We can combine selections with '&' for and and '|' for or
 
@@ -109,102 +119,28 @@ We can combine selections with '&' for and and '|' for or
    genos <- c('AC', 'CA')
    hets  <- subset(covs, genotype %in% genos)
 
-Excercises
-==========
+Excercises for data.frames
+--------------------------
 
 Remember for combining expressions, you can create a variable for each, `is_AA`,
-`is_CC` and then combine after.
+`is_CC` and then combine after. **Do these using both dplyr and "old" R**.
 
 #. How many people have genotype 'CC'
+
 #. How many people have genotype 'CC' or 'AA'?
+
 #. How many people have genotype of 'CC' or 'AA' and are under 65 years old.
-#. How many males have genotype of 'CC' or 'AA' and are under 65 years old.
 
-dplyr review
-============
+#. How many *females* have genotype of 'CC' or 'AA' and are under 65 years old.
 
-``dplyr`` provides these simple methods:
+Rmarkdown
+=========
 
-#. ``summarise()``
-#. ``filter()``
-#. ``select()``
-#. ``mutate()``
-#. ``arrange()``
-#. ``group_by()``
+We'll go over a Rmarkdown, a simple markup language that can be used
+within RStudio to generate nice looking documents combining plots and
+text. 
 
-dplyr
-=====
-``dplyr`` also provides an operator called ``%>%`` that allows you to
-chain manipulations together.
-
-To get mean expression level by condition (case/control)
-
-.. code-block:: r
-
-    covs %>% group_by(condition) \
-         %>% summarize(count=n(), mean.expr=mean(expression))
-
-Mean expression by condition and genotype
-
-.. code-block:: r
-
-    covs %>% group_by(condition, genotype) \
-         %>% summarize(count=n(), mean.expr=mean(expression))
-
-
-Exercise
-========
-
-#. What are the mean ages by cases and controls?
-#. What are the mean ages by genotype?
-#. How can you order the output by ascending and descending mean expression?
-
-ggplot
-======
-
-Above, we had mean expression by condition and genotype as:
-
-.. code-block:: r
-
-    covs %>% group_by(condition, genotype) \
-         %>% summarize(count=n(), mean.expr=mean(expression)) \
-
-We can add to that expression (after typing 'library(ggplot2)')
-
-.. code-block:: r
-
-        %>% ggplot(aes(x=genotype, y=expression) \
-            + geom_histogram(stat='identity')
-
-how can we change the color of all the bars to 'red'? [Hint, it's not
-**color** ='red']
-
-ggplot histograms
-=================
-
-Since `expr-geno-covs.txt` is already in long format, we can use it directly in
-ggplot:
-
-.. code-block:: r
-
-    ggplot(covs, aes(x=expression)) + 
-           geom_histogram() +
-           scale_x_log10()
-
-Exercise
-========
-Adjust this:
-
-.. code-block:: r
-
-    ggplot(covs, aes(x=expression)) + 
-           geom_histogram() +
-           scale_x_log10()
-
-#. to color by genotype
-
-#. and to split plots (facet_wrap) by condition (case/control)
-
-#. to color by age > 60 vs. <= 60 (use row selection stuff from start of class to
-   make a new column named, e.g. `is_old`)
-
+Github
+------
+Some may also find it useful to link their RStudio projects with Github
+accounts.

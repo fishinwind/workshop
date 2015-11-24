@@ -11,8 +11,8 @@ General Information
 
 :Title:         Genome Analysis Workshop
 :Course Number: MOLB 7621
-:Cross listings: STBB 7621
-:Semester:      Spring 2015
+:Cross listings: STBB 7621, MICB 7621
+:Semester:      Spring 2016
 :Homepage:      http://hesselberthlab.github.io/workshop 
 :Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
@@ -42,21 +42,20 @@ Instructor Information
       - Email
     * - Jay Hesselberth             
       - jay.hesselberth@gmail.com
-    * - Sally Peach 
-      - sally.peach@gmail.com 
-    * - Charlotte Siska 
-      - charlotte.siska@ucdenver.edu 
-    * - Kyle Smith 
-      - kyle.s.smith@ucdenver.edu
+    * - Ryan Sheridan
+      - ryan.sheridan@ucdenver.edu
 
 Schedule
 ========
-Tue & Thurs, 1:00 - 3:00 PM. TA office hours until 3:30 PM
+- Lecture: Tue & Thurs, 1:00 - 3:00 PM.
+
+- TA office hours: until 3:30 PM after lectures and on Fridays at 1 PM.
+
 :ref:`See specific dates. <syllabus-specific-dates>`
 
 Location
 ========
-Health Sciences Library, Computer Teaching Lab 2
+RC1 South 10th floor conference room.
 
 Course Description
 ==================
@@ -87,7 +86,7 @@ Texts and Reading Materials
 
 
 #. **Required**: A Quick Guide to Organizing Computational Biology Projects
-   http://www.ploscompbiol.org/article/metrics/info%3Adoi%2F10.1371%2Fjournal.pcbi.1000424
+   :pubmed:`19649301` 
 
 #. **Required**: Command Line Crash Course
    http://cli.learncodethehardway.org/book/
@@ -135,6 +134,9 @@ Grading Criteria
 + 10% final project
 
 .. _syllabus-specific-dates:
+
+.. problem sets staring really piling up after ps3 in spring 2015. Maybe
+.. have a break after every 3.
 
 Specific Dates / Material to be Covered
 =======================================
@@ -186,7 +188,7 @@ Specific Dates / Material to be Covered
     * - Class 10 
       - |c10-date| 
       - R Data & Plotting
-      - **PS5 due** (|pset5-due|)
+      - ** No Problem Set ** 
     * - Class 11 
       - |c11-date| 
       - R Data & Plotting
@@ -194,7 +196,7 @@ Specific Dates / Material to be Covered
     * - Class 12
       - |c12-date| 
       - R Data & Plotting
-      - **PS6 due** (|pset6-due|)
+      - **PS5 due** (|pset5-due|)
     * - Class 13 
       - |c13-date| 
       - R Data & Plotting
@@ -202,9 +204,9 @@ Specific Dates / Material to be Covered
     * - Class 14 
       - |c14-date| 
       - R Data & Plotting
-      - **PS7 due** (|pset7-due|)
+      - **PS6 due** (|pset6-due|)
     * - 
-      - ** No Class Mar 16-20 ** 
+      - ** No Class Mar 21-25 ** 
       - ** Spring Break **
       - 
     * - Class 15 
@@ -222,7 +224,7 @@ Specific Dates / Material to be Covered
     * - Class 18
       - |c18-date| 
       - Python 
-      - **PS8 due** (|pset8-due|)
+      - **PS7 due** (|pset7-due|)
     * - Class 19
       - |c19-date| 
       - Python 
@@ -230,7 +232,7 @@ Specific Dates / Material to be Covered
     * - Class 20
       - |c20-date| 
       - Python
-      - **PS9 due** (|pset9-due|)
+      - **PS8 due** (|pset8-due|)
     * - Class 21
       - |c21-date| 
       - mRNA-seq
@@ -238,7 +240,7 @@ Specific Dates / Material to be Covered
     * - Class 22
       - |c22-date| 
       - mRNA-seq
-      - **PS10 due** (|pset10-due|)
+      - **PS9 due** (|pset9-due|)
     * - Class 23
       - |c23-date|
       - Exome analysis 
@@ -246,7 +248,7 @@ Specific Dates / Material to be Covered
     * - Class 24
       - |c24-date|
       - Exome analysis
-      - **PS11 due** (|pset11-due|)
+      - **PS10 due** (|pset10-due|)
     * - Class 25 
       - |c25-date|
       - Final Projects 

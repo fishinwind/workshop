@@ -36,51 +36,26 @@ extensions = [
     'sphinxcontrib.manpage',
     'sphinx.ext.intersphinx',
     'sphinx.ext.graphviz',
-    'IPython.sphinxext.ipython_directive',
-    'IPython.sphinxext.ipython_console_highlighting',
+    'sphinx.ext.extlinks',
+#    'IPython.sphinxext.ipython_directive',
+#    'IPython.sphinxext.ipython_console_highlighting',
     'hieroglyph',
     'rst2pdf.pdfbuilder'
 ]
 
-try:
-    import sphinx_bootstrap_theme
-    html_theme = 'bootstrap'
-    html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
-except ImportError:
-    import sys
-    sys.stderr.write("please install (pip) sphinx_bootstrap_theme\n")
-    html_theme = 'default'
+import sphinx_bootstrap_theme
+html_theme = 'bootstrap'
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
-try:
-    import hieroglyph
-except ImportError:
-    sys.stderr.write("please install (pip) hieroglyph\n")
-    sys.exit(1)
-try:
-    import IPython
-except ImportError:
-    sys.stderr.write("please install (pip) ipython \n")
-    sys.stderr.write("please install (easy_install) matplotlib\n")
-    sys.exit(1)
-
-try:
-    import sphinxcontrib.manpage
-except ImportError:
-    sys.stderr.write("please install (pip) sphinxcontrib-manpage\n")
-    sys.exit(1)
-try:
-    import rst2pdf
-except ImportError:
-    sys.stderr.write("please install (easy_install) rst2pdf\n")
-    sys.exit(1)
- 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
+  
+# ext.extlinks
+extlinks = {'pubmed':('http://www.ncbi.nlm.nih.gov/pubmed/%s', 'PubMed ID ')}
 
-   
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
@@ -169,9 +144,9 @@ html_theme_options = {
     #    (name, "http://example.com", True) # arbitrary absolute url
     # Note the "1" or "True" value above as the third argument to indicate
     # an arbitrary url.
-    'navbar_links': [
-        ("Hesselberth lab", "http://hesselberthlab.github.io", True),
-    ],
+    #'navbar_links': [
+    #    ("Hesselberth lab", "http://hesselberthlab.github.io", True),
+    #],
 
     # Render the next and previous page links in navbar. (Default: true)
     'navbar_sidebarrel': False,
@@ -385,6 +360,8 @@ slide_theme = 'slides2'
 # slide_numbers = True
 # slide_link_html_to_slides = True
 slide_link_html_sections_to_slides = True
+# XXX
+slide_links_as_numbers = True
 slide_link_to_html = True
 slide_relative_path = "slides/"
 slide_html_relative_path = "../"
@@ -397,7 +374,7 @@ slide_html_relative_path = "../"
 
 # -- Intersphinx --------------------------------------------------
 # for python doc refs
-intersphinx_mapping = {'python': ('http://docs.python.org/2.7', None),
+intersphinx_mapping = {'python': ('http://docs.python.org/2', None),
                        'bedtools': ('http://bedtools.readthedocs.org/en/latest/', None)}
 
 # -- Options for PDF output --------------------------------------------------

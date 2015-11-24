@@ -1,18 +1,22 @@
 .. _main-page:
 
-***************************
- Genome Analysis Workshop 
-***************************
+****************************
+  Genome Analysis Workshop 
+****************************
 
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
-:Website: http://hesselberthlab.github.io/workshop
-:Next offered: Spring 2015
+:Website: http://molb7621.github.io/workshop
+:Source: http://github.com/molb7621/workshop
+:Next offered: Spring 2016
 :Course Number: MOLB 7621 
-:Crosslistings: STBB 7621
+:Cross-listings: STBB 7621, MICB 7621, HMGP 7621
 :Last updated:  |today|
 
 Announcements
 ~~~~~~~~~~~~~
+
+* **New**: you will need your own laptop for the class. And IDEALLY it is
+  a Mac or Linux machine. You can run Linux under VirtualBox on Windows.
 
 * **Class size is limited to 20. We anticipate being full, so register
   early.**
@@ -25,9 +29,10 @@ Announcements
 
 Course Description
 ~~~~~~~~~~~~~~~~~~
-**The Genome Analysis Workshop is a hands-on tutorial of skills needed
-to process large genomics data sets and visualize their results. The class
-is taught from the standpoint of a biologist with practical goals (e.g. to
+
+**The Genome Analysis Workshop is a hands-on tutorial of skills needed to
+process large genomics data sets and visualize their results. The class is
+taught from the standpoint of a biologist with practical goals (e.g., to
 interpret the results of a sequencing-based experiment and gain
 biologically meaningful insight).**
 
@@ -39,15 +44,17 @@ sequencing data, aligning sequences to a reference genome, generating
 coverage plots and displaying them in the UCSC Genome Browser. We will
 cover specific analyses used in ENCODE project including ChIP-seq, DNase I
 footprinting, mRNA-seq and genome sequencing to identify single nucleotide
-and structural variants.
+variants.
 
 Contents
 ~~~~~~~~
+
 .. toctree::
    :maxdepth: 1
 
    Syllabus
    Classes
+   Exercises
    Problem_Sets
    Miscellaneous
 
