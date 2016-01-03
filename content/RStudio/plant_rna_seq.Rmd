@@ -1,0 +1,114 @@
+---
+title: "Plant RNA-seq"
+author: "Jay Hesselberth"
+date: "January 2, 2016"
+output: html_document
+---
+
+We will examine an time-course of mRNA expression in plants (*Arabidopsis*) that have been infected with viruses.
+
+XXX: describe general setup, cite URLs for reference.
+
+[1]: http://www.ncbi.nlm.nih.gov/pubmed/23175786
+[2]: http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE43163  
+[3]: http://bioinformatics.oxfordjournals.org/content/30/18/2598.full
+
+XXX: Table describing variables `A6`, `K1`, `B12`, `pps`.
+
+We will download a table from GEO containing counts of mRNA abundance as measured by the `XXX` package.
+
+```{r load_raw_data}
+library(readr)
+library(tidyr)
+library(dplyr)
+library(stringr)
+
+url <- 'http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE43163&format=file&file=GSE43163_CompleteCountTable_Bgh.txt.gz'
+
+# 2 info and blank lines at top, skip them
+raw_tab <- read_tsv(url, skip = 2)
+
+head(raw_tab)
+```
+
+But you'll notice that the counts table is *messy*, so our first charge is to make it `tidyr`. See how the plant, virus, hpi and replicate designations are column names? That makes for efficient data storage, but does not enable efficient data analysis.
+
+```{r tidy_raw}
+# fix NA for gene name
+names(raw_tab)[1] <- 'gene.name'
+
+cleaned_data <- raw_tab %>%
+  gather(key, count, -gene.name) %>%
+  separate(key, into = c('plant', 'virus', 'hpi', 'rep'), sep = '_', convert = TRUE) %>%
+  mutate(hpi = as.integer(str_replace(hpi, 'hpi', ''))) %>%
+  mutate(gene.name = as.factor(gene.name),
+         plant = as.factor(plant),
+         virus = as.factor(virus),
+         rep = as.factor(rep))
+
+cleaned_data
+```
+
+Let's look at the expression of a specific gene in the data set.
+
+```{r exp_example}
+library(ggplot2)
+select.gene <- 'bgh04079'
+
+# for x-axis of plots
+hpi.breaks <- unique(cleaned_data$hpi)
+
+cleaned_data %>%
+  filter(gene.name == select.gene) %>%
+  ggplot(aes(x=hpi, y=count, color=rep)) +
+    geom_point() + geom_smooth(method='lm', se = FALSE) +
+    facet_grid(plant ~ virus) + theme_bw() +
+    scale_x_continuous(breaks = hpi.breaks) +
+    ggtitle(select.gene)
+```
+
+We can see that the linear fits between replicates don't really match up. We'll see if we can learn some more with simple statistics.
+
+Now we'll do some simple statistics on the counts to get the mean and standard error for the replicates. Note that `rep` is not part of the `group_by` call, so the counts from each of the 3 replicates form the group.
+
+```{r count_stats}
+count_stats <- cleaned_data %>%
+  group_by(plant, virus, gene.name, hpi) %>%
+  summarize(count.mean = mean(count),
+            count.se = sqrt(var(count) / n()))
+```
+
+Let's replot those data and see how things change.
+
+```{r plot_stats}
+select.gene <- 'bgh04079'
+
+gene_stats <- count_stats %>%
+  filter(gene.name == select.gene)
+
+# from geom_errorbar webpage
+limits <- aes(ymax = count.mean + count.se, ymin = count.mean - count.se)
+  
+ggplot(gene_stats, aes(x=hpi, y=count.mean)) +
+  geom_point() + geom_errorbar(limits, width=0.2) +
+  geom_smooth(method='loess', se = FALSE) +
+  scale_x_continuous(breaks = hpi.breaks) +
+  facet_grid(plant ~ virus) + theme_bw() +
+  ggtitle(select.gene)
+```
+
+
+Now we do some modeling of gene expression. Because we have replicates, we can take advantage of the extended capabilities of the `lme4` package.
+
+```{r gene_lms}
+library(broom)
+linear_models <- cleaned_data %>%
+  group_by(gene.name, plant, virus, rep) %>%
+  do(tidy(lm(count ~ hpi, .)))
+
+intercept_terms <- linear_models %>%
+  ungroup() %>%
+  filter(term == '(Intercept)')   
+
+intercept_terms
+```
