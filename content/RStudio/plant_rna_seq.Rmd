@@ -5,50 +5,88 @@ date: "January 2, 2016"
 output: html_document
 ---
 
-We will examine an time-course of mRNA expression in plants (*Arabidopsis*) that have been infected with viruses.
+XXX: describe general setup
 
-XXX: describe general setup, cite URLs for reference.
+We will examine a [time-course of mRNA expression][1] of barley powdery mildew fungus in immunocompromised plants (*Arabidopsis*). The fungus Blumeria graminis f. sp. hordei (called *Bgh* from now on)
+
+Counts were generated using the [`maSigPro` software][3] and deposited in [NCBI GEO][2].
 
 [1]: http://www.ncbi.nlm.nih.gov/pubmed/23175786
 [2]: http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE43163  
 [3]: http://bioinformatics.oxfordjournals.org/content/30/18/2598.full
 
-XXX: Table describing variables `A6`, `K1`, `B12`, `pps`.
+Some important identifiers for the data set:
 
-We will download a table from GEO containing counts of mRNA abundance as measured by the `XXX` package.
+| Name | Description |
+| ---- | ----------- |
+| `A6` | *Bgh* isolate expressing other AVRA effectors |
+| `K1` | *Bgh* isolate expressing the cognate AVRA1 effector for MLA1|
+| `pps` | *Arabidopsis* plants |
+| `B12` | *Arabidopsis* plants expressing MLA1-HA|
 
-```{r load_raw_data}
+We will download tables from GEO containing counts of mRNA abundance from both the fungus and plant (separately) as measured by the `XXX` package.
+
+```{r load_raw_data, message = FALSE}
 library(readr)
 library(tidyr)
 library(dplyr)
 library(stringr)
 
-url <- 'http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE43163&format=file&file=GSE43163_CompleteCountTable_Bgh.txt.gz'
+# bgh data
+bgh_url <- 'http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE43163&format=file&file=GSE43163_CompleteCountTable_Bgh.txt.gz'
+# At data
+ath_url <- 'http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE39463&format=file&file=GSE39463_CompleteCountTable_At.txt.gz'
 
 # 2 info and blank lines at top, skip them
-raw_tab <- read_tsv(url, skip = 2)
-
-head(raw_tab)
-```
-
-But you'll notice that the counts table is *messy*, so our first charge is to make it `tidyr`. See how the plant, virus, hpi and replicate designations are column names? That makes for efficient data storage, but does not enable efficient data analysis.
-
-```{r tidy_raw}
+raw_tab_bgh <- read_tsv(bgh_url, skip = 2)
 # fix NA for gene name
-names(raw_tab)[1] <- 'gene.name'
+names(raw_tab_bgh)[1] <- 'gene.name'
 
-cleaned_data <- raw_tab %>%
-  gather(key, count, -gene.name) %>%
-  separate(key, into = c('plant', 'virus', 'hpi', 'rep'), sep = '_', convert = TRUE) %>%
-  mutate(hpi = as.integer(str_replace(hpi, 'hpi', ''))) %>%
-  mutate(gene.name = as.factor(gene.name),
-         plant = as.factor(plant),
-         virus = as.factor(virus),
-         rep = as.factor(rep))
+# columns headers for this file are malformed; there is no header for the gene.name. need to set them manually
+col.headers <- read_lines(ath_url, n_max = 1) 
+col.headers <- str_split(col.headers, '\t')[[1]]
+# add gene.name
+col.headers <- c('gene.name', col.headers)
 
-cleaned_data
+raw_tab_at <- read_tsv(ath_url, col_names = col.headers, skip = 1)
+
+head(raw_tab_bgh)
+head(raw_tab_at)
 ```
 
+But you'll notice that these counts tables are *messy*, so our first charge is to make it `tidyr`. See how the plant, virus, hpi and replicate designations are column names? That makes for efficient data storage, but does not enable efficient data analysis.
+
+```{r tidy_raw_data}
+
+clean_data <- function(raw_data, org, ...) {
+  cleaned_data <- raw_data %>%
+    gather(key, count, -gene.name) %>%
+    separate(key, into = c('plant', 'virus', 'hpi', 'rep'), sep = '_') %>%
+    mutate(hpi = as.integer(str_replace(hpi, 'hpi', ''))) %>%
+    mutate(org.name = as.factor(org),
+           gene.name = as.factor(gene.name),
+           plant = as.factor(plant),
+           virus = as.factor(virus),
+           rep = as.factor(rep))
+    
+  cleaned_data 
+}
+
+cleaned_data_bgh <- clean_data(raw_tab_bgh, org = 'bgh')
+cleaned_data_at <- clean_data(raw_tab_at, org = 'at')
+
+cleaned_data <- bind_rows(cleaned_data_bgh, cleaned_data_at) %>%
+  mutate(org.name = as.factor(org.name))
+```
+
+Let's look at some summary statistics of the combined table.
+
+```{r summary_table}
+cleaned_data %>%
+  group_by(org.name) %>%
+  summarize(n.genes = n(),
+            max.exp = max(count))
+```
 Let's look at the expression of a specific gene in the data set.
 
 ```{r exp_example}
@@ -73,14 +111,14 @@ Now we'll do some simple statistics on the counts to get the mean and standard e
 
 ```{r count_stats}
 count_stats <- cleaned_data %>%
-  group_by(plant, virus, gene.name, hpi) %>%
+  group_by(org.name, plant, virus, gene.name, hpi) %>%
   summarize(count.mean = mean(count),
             count.se = sqrt(var(count) / n()))
 ```
 
 Let's replot those data and see how things change.
 
-```{r plot_stats}
+```{r plot_stats, warning = FALSE}
 select.gene <- 'bgh04079'
 
 gene_stats <- count_stats %>%
@@ -100,7 +138,7 @@ ggplot(gene_stats, aes(x=hpi, y=count.mean)) +
 
 Now we do some modeling of gene expression. Because we have replicates, we can take advantage of the extended capabilities of the `lme4` package.
 
-```{r gene_lms}
+```{r gene_lms, eval = FALSE}
 library(broom)
 linear_models <- cleaned_data %>%
   group_by(gene.name, plant, virus, rep) %>%
