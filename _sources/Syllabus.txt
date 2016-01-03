@@ -44,6 +44,10 @@ Instructor Information
       - jay.hesselberth@gmail.com
     * - Ryan Sheridan
       - ryan.sheridan@ucdenver.edu
+    * - Jianbin Wang
+      - jianbin.wang@ucdenver.edu
+    * - Sandy Martin
+      - sandy.martin@ucdenver.edu
 
 Schedule
 ========
@@ -91,11 +95,11 @@ Texts and Reading Materials
 #. **Required**: Command Line Crash Course
    http://cli.learncodethehardway.org/book/
 
-#. **Required**: ggplot2: Elegant Graphics for Data Analysis
-   http://ggplot2.org/book/
-
 #. **Required**: Learn Python the Hard Way,
    http://learnpythonthehardway.org/book/
+
+#. **Suggested**: ggplot2: Elegant Graphics for Data Analysis
+   http://ggplot2.org/book/
 
 Course Objectives
 -----------------
@@ -106,10 +110,8 @@ Course Objectives
 + Learn to manipulate and visualize data with the R statistical
   computing environment.
 
-+ Learn workflows for ENCODE experiments including ChIP-seq, DNaseI
-  footprinting, mRNA-seq and variant detection.
-
-+ Learn to visualize data in the UCSC Genome Browser
++ Learn workflows for ENCODE experiments including ChIP-seq, mRNA-seq and
+  variant detection.
 
 Canvas 
 ======
@@ -151,7 +153,7 @@ Specific Dates / Material to be Covered
       - Problem Set
     * - Class 1
       - |c1-date|
-      - Introduction to VM, Linux and the shell
+     - Introduction to VM, Linux and the shell
       - 
     * - Class 2 
       - |c2-date|

@@ -10,7 +10,7 @@ URL: https://code.google.com/p/io-2012-slides
 
 <html>
 <head>
-  <title>Class 1 : Class Introduction &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <title>Class 1 : MOLB 7621 Introduction &mdash; Genome Analysis Workshop 0.2 documentation</title>
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -82,18 +82,18 @@ URL: https://code.google.com/p/io-2012-slides
   
 
   
-    <slide class="title-slide segue nobackground level-1" id="class-1-class-introduction">
+    <slide class="title-slide segue nobackground level-1" id="class-1-molb-7621-introduction">
     <hgroup>
-      <h1>Class 1 : Class Introduction<a class="headerlink" href="../../Classes/class-01.html#class-1-class-introduction" title="View HTML">§</a></h1>
+      <h1>Class 1 : MOLB 7621 Introduction<a class="headerlink" href="../../Classes/class-01.html#class-1-molb-7621-introduction" title="View HTML">§</a></h1>
     </hgroup>
     <article class="">
       <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Jan 26 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Jan 28 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">October 12, 2015</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">January 03, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -109,8 +109,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <ol class="arabic simple">
 <li>Class overview</li>
-<li>Get the VM running</li>
-<li>Overall goals for the Classes</li>
+<li>Problem Sets</li>
 </ol>
 
 
@@ -126,12 +125,11 @@ URL: https://code.google.com/p/io-2012-slides
 through exercises that demonstrate how specific tools are useful in
 bioinformatics. During the remaining hour, we expect you to work through
 exercises, asking for help when you get stuck.</p>
-<p>We will record the first 60 minutes using Panopto Screen Capture, and
-these recordings will be available in Canvas. We have found that simply
-watching someone work in a terminal (move around, open up text editors,
-write and execute simple programs) can be a very effective way to get
-started with programming. Hopefully these movies will serve the same
-purpose.</p>
+<p>We will record the classes using Panopto Screen Capture, and these
+recordings will be available in Canvas. We have found that simply watching
+someone work in a terminal (move around, open up text editors, write and
+execute simple programs) can be a very effective way to get started with
+programming.</p>
 <p>Each week, we will have 1 take home quiz, due the following Tuesday at 5
 PM.</p>
 
@@ -139,79 +137,101 @@ PM.</p>
 
 
     </article>
-  </slide>  <slide class="level-2" id="linux-installations">
+  </slide>  <slide class="level-2" id="computers">
     <hgroup>
-      <h2>Linux installations<a class="headerlink" href="../../Classes/class-01.html#linux-installations" title="View HTML">§</a></h2>
+      <h2>Computers<a class="headerlink" href="../../Classes/class-01.html#computers" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>The PCs in the library have Virtual Box installed with a minimal Linux
-installation. If you have your own PC laptop, you can install Virtual Box
-and any standard Linux distribution (Ubuntu or Mint). If you have a Mac
-laptop, you can do the same, or just use the native terminal.</p>
-<p>In any case, we will create logins on our compute cluster (amc-tesla) and
-all your work will be done through that.</p>
+      <p>You will need to bring a laptop to each class.</p>
 
 
 
 
     </article>
-  </slide>  <slide class="level-2" id="terminal-and-text-editors">
+  </slide>  <slide class="level-3" id="software">
     <hgroup>
-      <h2>Terminal and text editors<a class="headerlink" href="../../Classes/class-01.html#terminal-and-text-editors" title="View HTML">§</a></h2>
+      <h3>Software<a class="headerlink" href="../../Classes/class-01.html#software" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <p>When you open a Terminal, you also launch a shell process, typically a
-bash process. At the prompt, you can type things that bash understands,
-and it will do them. The shell has its own language, which you will learn
-over the course of the class. It also runs executable files that it can
-find on the PATH (i.e. the set of directories that contain exectuables).</p>
-<p>You can find what is on your PATH by typing:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$PATH</span>
-</pre></div>
-</div>
-<p>The PATH is one of several environment variables that are created when you
-login. You can see all of these with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>env
-</pre></div>
-</div>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="id9">
-    <hgroup>
-      <h2>Terminal and text editors (2)<a class="headerlink" href="../../Classes/class-01.html#id9" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>One important program in the PATH is <cite>vim</cite>. You will use this program to
-keep notes and write small programs.</p>
-<p>You can run <code class="docutils literal"><span class="pre">vim</span></code> from the terminal prompt:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>vim filename.txt
-</pre></div>
-</div>
-<p>You should notice that the prompt will disappear and you will be in a
-<cite>vim</cite> session.</p>
-<p>Now press the <cite>i</cite> key to enter <cite>insert</cite> mode, and start typing. Press
-<cite>ESC</cite> to exit <cite>insert</cite> mode.</p>
-<p>To quit a vim session, you need to:</p>
-<ol class="arabic simple">
-<li>enter <cite>command mode</cite> with the colon key</li>
-<li>write the file</li>
-<li>quit the program</li>
+      <ol class="arabic simple">
+<li>RStudio</li>
 </ol>
-<p>This can be accomplished by typing:</p>
-<div class="highlight-python"><div class="highlight"><pre>:wq &lt;enter&gt;
-</pre></div>
-</div>
-<p>Practice using <cite>vim</cite> with this tutorial <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>OpenVim <a class="reference external" href="http://www.openvim.com/">http://www.openvim.com/</a></td></tr>
-</tbody>
-</table>
 
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="mac-laptops">
+    <hgroup>
+      <h3>Mac laptops<a class="headerlink" href="../../Classes/class-01.html#mac-laptops" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Install Homebrew</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="pc-laptops">
+    <hgroup>
+      <h3>PC laptops<a class="headerlink" href="../../Classes/class-01.html#pc-laptops" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Install VirtualBox.</li>
+<li>Install a Linux distribution as a virtual machine (e.g., Ubuntu).</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="problem-sets">
+    <hgroup>
+      <h2>Problem Sets<a class="headerlink" href="../../Classes/class-01.html#problem-sets" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We will distribute all problem sets through github. The class has a Github
+organization here:</p>
+<p>XXX</p>
+<p>To gain access to the problem sets, You need to:</p>
+<ol class="arabic simple">
+<li>Sign up for an account on github.com</li>
+<li>Send me your login name.</li>
+</ol>
+<p>Once you are associated with the class github page, you should be able to
+see your first problem set, due on <a href="#id7"><span class="problematic" id="id8">|ps1-date|</span></a>.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="starting-a-new-problem-set">
+    <hgroup>
+      <h3>Starting a new problem set<a class="headerlink" href="../../Classes/class-01.html#starting-a-new-problem-set" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Fork the problem set to your github account.</li>
+</ol>
+<p>2. Make changes to the problem set and commit them. Continue making
+changes and committing until you have a final product.
+3. To submit your homework, submit a pull request to the main repository.</p>
+<p>Discussions can be filed as <cite>Issues</cite> on the Github page for each problem
+set.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="guidelines">
+    <hgroup>
+      <h3>Guidelines<a class="headerlink" href="../../Classes/class-01.html#guidelines" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      
 
 
 
@@ -221,7 +241,7 @@ keep notes and write small programs.</p>
       <h2>Cluster access<a class="headerlink" href="../../Classes/class-01.html#cluster-access" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>We have set up accounts for the class on our departmental cluster. We will
+      <p>We will set up accounts for the class on our departmental cluster. We will
 set up your accounts at the end of class and reset your passwords:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
 <span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
@@ -280,24 +300,24 @@ immediately.</p>
 scheduled class time, and outside of class time. Instead of focusing on
 teaching you these languages, we will focus on helping you get through all
 of the frustating problems that come up when you're learning the languages.</p>
-<p>We will spend the first ~2 weeks learning shell <a class="footnote-reference" href="#id4" id="id3">[2]</a> and all the things
+<p>We will spend the first ~2 weeks learning shell <a class="footnote-reference" href="#id2" id="id1">[1]</a> and all the things
 you have access to within the shell.</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>The Command Line Crash Course
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The Command Line Crash Course
 <a class="reference external" href="http://cli.learncodethehardway.org/book/">http://cli.learncodethehardway.org/book/</a></td></tr>
 </tbody>
 </table>
 <p>After learning the shell, we will begin learning R and several packages
 within R.</p>
-<p>Finally, we will begin learning Python <a class="footnote-reference" href="#id6" id="id5">[3]</a>. The Python language allows
+<p>Finally, we will begin learning Python <a class="footnote-reference" href="#id4" id="id3">[2]</a>. The Python language allows
 you to do more sophisticated things that would be possible in shell or R, but
 would be considerably more clunky.</p>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>Learn Python the Hard Way
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Learn Python the Hard Way
 <a class="reference external" href="http://learnpythonthehardway.org/book/">http://learnpythonthehardway.org/book/</a></td></tr>
 </tbody>
 </table>
@@ -312,13 +332,13 @@ would be considerably more clunky.</p>
     </hgroup>
     <article class="">
       <p>Computational biology projects inevitably accrue a lot of files. For the
-first quiz, you'll need to read a paper <a class="footnote-reference" href="#id8" id="id7">[4]</a> and be able to put a set of
+first quiz, you'll need to read a paper <a class="footnote-reference" href="#id6" id="id5">[3]</a> and be able to put a set of
 files in the correct places. We require that you use this scheme for
 all of your projects in and out of the class.</p>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[4]</a></td><td>A Quick Guide to Organizing Computational Biology Projects (2009)
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>A Quick Guide to Organizing Computational Biology Projects (2009)
 PLoS Comput. Biol. William S. Noble
 <a class="reference external" href="http://dx.plos.org/10.1371/journal.pcbi.1000424">http://dx.plos.org/10.1371/journal.pcbi.1000424</a></td></tr>
 </tbody>
