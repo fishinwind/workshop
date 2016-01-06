@@ -16,23 +16,20 @@
 .. |c8-date| replace:: 2016 Feb 23 Tues
 .. |c9-date| replace:: 2016 Feb 25 Thurs
 .. |c10-date| replace:: 2016 Mar 1 Tues
-.. |c11-date| replace:: 2016 Mar 3 Thurs
-.. |c12-date| replace:: 2016 Mar 5 Thurs
-.. |c13-date| replace:: 2016 Mar 10 Tues
-.. |c14-date| replace:: 2016 Mar 12 Thurs
-.. |c15-date| replace:: 2016 Mar 24 Tues
-.. |c16-date| replace:: 2016 Mar 26 Thurs
-.. |c17-date| replace:: 2016 Mar 31 Tues
-.. |c18-date| replace:: 2016 Apr 2 Thurs
-.. |c19-date| replace:: 2016 Apr 7 Tues
-.. |c20-date| replace:: 2016 Apr 9 Thurs
-.. |c21-date| replace:: 2016 Apr 14 Tues
-.. |c22-date| replace:: 2016 Apr 16 Thurs
-.. |c23-date| replace:: 2016 Apr 21 Tues
-.. |c24-date| replace:: 2016 Apr 23 Thurs
-.. |c25-date| replace:: 2016 Apr 28 Tues
-.. |c26-date| replace:: 2016 Apr 30 Thurs
-.. |c27-date| replace:: 2016 May 5 Tues
+.. |c11-date| replace:: 2016 Mar 8 Tues
+.. |c12-date| replace:: 2016 Mar 10 Thurs
+.. |c13-date| replace:: 2016 Mar 15 Tues
+.. |c14-date| replace:: 2016 Mar 17 Thurs
+.. |c15-date| replace:: 2016 Apr 5 Tues
+.. |c16-date| replace:: 2016 Apr 7 Thurs
+.. |c17-date| replace:: 2016 Apr 12 Tues
+.. |c18-date| replace:: 2016 Apr 14 Tues
+.. |c19-date| replace:: 2016 Apr 19 Tues
+.. |c20-date| replace:: 2016 Apr 21 Thurs
+.. |c21-date| replace:: 2016 Apr 26 Tues
+.. |c22-date| replace:: 2016 Apr 28 Thurs
+.. |c23-date| replace:: 2016 May 3 Tues
+.. |c24-date| replace:: 2016 May 5 Thurs
 
 .. Problem set due dates
 .. |pset1-due| replace:: 2016 Feb 9 5:00 PM MDT
