@@ -153,7 +153,7 @@ Specific Dates / Material to be Covered
       - Problem Set
     * - Class 1
       - |c1-date|
-     - Introduction to VM, Linux and the shell
+      - Introduction to VM, Linux and the shell
       - 
     * - Class 2 
       - |c2-date|
