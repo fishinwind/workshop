@@ -1,7 +1,7 @@
 .. include:: /_static/substitutions.txt
 
 *****************************************************
-             Class 1 : MOLB 7621 Introduction
+             Class 1 : Class Introduction
 *****************************************************
 
 :Class date: |c1-date| 
@@ -10,7 +10,8 @@
 Goals
 =====
 #. Class overview
-#. Problem Sets
+#. Get the VM running
+#. Overall goals for the Classes
 
 Class Overview
 ==============
@@ -19,63 +20,82 @@ through exercises that demonstrate how specific tools are useful in
 bioinformatics. During the remaining hour, we expect you to work through
 exercises, asking for help when you get stuck. 
 
-We will record the classes using Panopto Screen Capture, and these
-recordings will be available in Canvas. We have found that simply watching
-someone work in a terminal (move around, open up text editors, write and
-execute simple programs) can be a very effective way to get started with
-programming. 
+We will record the first 60 minutes using Panopto Screen Capture, and
+these recordings will be available in Canvas. We have found that simply
+watching someone work in a terminal (move around, open up text editors,
+write and execute simple programs) can be a very effective way to get
+started with programming. Hopefully these movies will serve the same
+purpose.
 
 Each week, we will have 1 take home quiz, due the following Tuesday at 5
 PM. 
 
-Computers
-=========
-You will need to bring a laptop to each class. 
+Linux installations
+===================
+The PCs in the library have Virtual Box installed with a minimal Linux
+installation. If you have your own PC laptop, you can install Virtual Box
+and any standard Linux distribution (Ubuntu or Mint). If you have a Mac
+laptop, you can do the same, or just use the native terminal.
 
-Software
---------
-1. RStudio
+In any case, we will create logins on our compute cluster (amc-tesla) and
+all your work will be done through that.
 
-Mac laptops
------------
-1. Install Homebrew
+Terminal and text editors
+=========================
+When you open a Terminal, you also launch a shell process, typically a
+bash process. At the prompt, you can type things that bash understands,
+and it will do them. The shell has its own language, which you will learn
+over the course of the class. It also runs executable files that it can
+find on the PATH (i.e. the set of directories that contain exectuables).
 
-PC laptops
-----------
-1. Install VirtualBox.
-2. Install a Linux distribution as a virtual machine (e.g., Ubuntu).
+You can find what is on your PATH by typing:
 
-Problem Sets
-============
-We will distribute all problem sets through github. The class has a Github
-organization here:
+.. code-block:: bash
 
-XXX
+   $ echo $PATH
 
-To gain access to the problem sets, You need to:
+The PATH is one of several environment variables that are created when you
+login. You can see all of these with:
 
-1. Sign up for an account on github.com
-2. Send me your login name.
+.. code-block:: bash
 
-Once you are associated with the class github page, you should be able to
-see your first problem set, due on |ps1-date|.
+   $ env
 
-Starting a new problem set
---------------------------
-1. Fork the problem set to your github account.
-2. Make changes to the problem set and commit them. Continue making
-changes and committing until you have a final product.
-3. To submit your homework, submit a pull request to the main repository.
+.. nextslide::
+    :increment:
 
-Discussions can be filed as `Issues` on the Github page for each problem
-set.
+One important program in the PATH is `vim`. You will use this program to
+keep notes and write small programs. 
 
-Guidelines
-----------
+You can run ``vim`` from the terminal prompt:
+
+.. code-block:: bash
+
+    $ vim filename.txt
+
+You should notice that the prompt will disappear and you will be in a
+`vim` session.
+
+Now press the `i` key to enter `insert` mode, and start typing. Press
+`ESC` to exit `insert` mode.
+
+To quit a vim session, you need to:
+
+#. enter `command mode` with the colon key
+#. write the file
+#. quit the program
+
+This can be accomplished by typing::
+
+    :wq <enter>
+
+Practice using `vim` with this tutorial [#]_.
+
+.. [#] OpenVim http://www.openvim.com/ 
 
 Cluster access
 ==============
-We will set up accounts for the class on our departmental cluster. We will
+We have set up accounts for the class on our departmental cluster. We will
 set up your accounts at the end of class and reset your passwords:
 
 .. code-block:: bash

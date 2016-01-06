@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sample Data files &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Miscellaneous" href="../Miscellaneous.html" />
+    <link rel="next" title="Getting Started" href="starting.html" />
+    <link rel="prev" title="Credits" href="credits.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Sample Data files</a><ul>
+<li><a class="reference internal" href="#bed-format">BED format</a></li>
+<li><a class="reference internal" href="#fasta-format">FASTA format</a></li>
+<li><a class="reference internal" href="#fastq-format">FASTQ format</a></li>
+<li><a class="reference internal" href="#encode-data">ENCODE data</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="sample-data-files">
+<span id="data-sets"></span><h1>Sample Data files<a class="headerlink" href="#sample-data-files" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/data.html#sample-data-files" title="Slides">§</a></h1>
+<p>We will use several example data files throughout the class.</p>
+<div class="section" id="bed-format">
+<span id="bed-file"></span><h2>BED format<a class="headerlink" href="#bed-format" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/data.html#bed-format" title="Slides">§</a></h2>
+<p>Data in BED format contains region information (e.g. single nucleotides or
+megbase regions) in a simple format <a class="footnote-reference" href="#id2" id="id1">[1]</a>:</p>
+<p><strong>Download a sample BED file:</strong> <a class="reference download internal" href="../_downloads/lamina.bed"><tt class="xref download docutils literal"><span class="pre">lamina.bed</span></tt></a></p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>BED documentation
+<a class="reference external" href="http://genome.ucsc.edu/FAQ/FAQformat.html#format1">http://genome.ucsc.edu/FAQ/FAQformat.html#format1</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fasta-format">
+<span id="fasta-file"></span><h2>FASTA format<a class="headerlink" href="#fasta-format" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/data.html#fasta-format" title="Slides">§</a></h2>
+<p>FASTA format just contains DNA sequence data; no quality scores:</p>
+<div class="highlight-python"><div class="highlight"><pre>&gt;cluster_2:UMI_ATTCCG             # record name; starts with &#39;&gt;&#39;
+TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
+</pre></div>
+</div>
+<p><strong>Download a sample FASTA file:</strong> <a class="reference download internal" href="../_downloads/sample.fa"><tt class="xref download docutils literal"><span class="pre">sample.fa</span></tt></a></p>
+</div>
+<div class="section" id="fastq-format">
+<span id="fastq-file"></span><h2>FASTQ format<a class="headerlink" href="#fastq-format" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/data.html#fastq-format" title="Slides">§</a></h2>
+<p>FASTQ format contains DNA sequence data with quality scores:</p>
+<div class="highlight-python"><div class="highlight"><pre>@cluster_2:UMI_ATTCCG             # record name; starts with &#39;@&#39;
+TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
++                                 # empty line; starts with &#39;+&#39;
+9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591   # phred-scaled quality scores
+</pre></div>
+</div>
+<p><strong>Download a sample FASTQ file:</strong> <a class="reference download internal" href="../_downloads/SP1.fq"><tt class="xref download docutils literal"><span class="pre">SP1.fq</span></tt></a></p>
+</div>
+<div class="section" id="encode-data">
+<span id="id3"></span><h2>ENCODE data<a class="headerlink" href="#encode-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/data.html#encode-data" title="Slides">§</a></h2>
+<p>All encode data are available at
+<a class="reference external" href="https://genome.ucsc.edu/ENCODE/downloads.html">https://genome.ucsc.edu/ENCODE/downloads.html</a></p>
+<p>For Problem Set 3, you will need these files on the amc-tesla cluster,
+available in:</p>
+<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Experiment</th>
+<th class="head">Target</th>
+<th class="head">Cell line</th>
+<th class="head">Replicate</th>
+<th class="head">File Type</th>
+<th class="head">File name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ChIP-seq</td>
+<td>Histone H3 Lysine 4 trimethyl (H3K4me3)</td>
+<td>Hela-S3</td>
+<td>1</td>
+<td>FASTQ</td>
+<td>wgEncodeBroadHistoneHelas3H3k4me3StdRawDataRep1.fastq.gz</td>
+</tr>
+<tr class="row-odd"><td>ChIP-seq</td>
+<td>CTCF</td>
+<td>Hela-S3</td>
+<td>1</td>
+<td>narrowPeak</td>
+<td>wgEncodeUwTfbsHelas3CtcfStdPkRep1.narrowPeak.gz</td>
+</tr>
+<tr class="row-even"><td>Merged TFBS ChIP-seq</td>
+<td>all</td>
+<td>all</td>
+<td>n/a</td>
+<td>BED</td>
+<td>wgEncodeRegTfbsClusteredV3.bed.gz</td>
+</tr>
+<tr class="row-odd"><td>Merged DNase I hypersensitive sites</td>
+<td>all</td>
+<td>all</td>
+<td>n/a</td>
+<td>BED</td>
+<td>wgEncodeRegDnaseClusteredV2.bed.gz</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/misc/data.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
+      Last updated on Feb 16, 2015.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

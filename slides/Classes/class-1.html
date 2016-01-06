@@ -1,0 +1,353 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 1 : Class Introduction &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 2 : The command-line" href="class-2.html" />
+    <link rel="prev" title="Class list" href="../Classes.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 1 : Class Introduction<a class="headerlink" href="../../Classes/class-1.html#class-1-class-introduction" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Jan 27 Tues</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-1.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Class overview</li>
+<li>Get the VM running</li>
+<li>Overall goals for the Classes</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Class Overview<a class="headerlink" href="../../Classes/class-1.html#class-overview" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Each class is 2 hours. We intend to spend the first 60 min going
+through exercises that demonstrate how specific tools are useful in
+bioinformatics. During the remaining hour, we expect you to work through
+exercises, asking for help when you get stuck.</p>
+<p>We will record the first 60 minutes using Panopto Screen Capture, and
+these recordings will be available in Canvas. We have found that simply
+watching someone work in a terminal (move around, open up text editors,
+write and execute simple programs) can be a very effective way to get
+started with programming. Hopefully these movies will serve the same
+purpose.</p>
+<p>Each week, we will have 1 take home quiz, due the following Tuesday at 5
+PM.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Linux installations<a class="headerlink" href="../../Classes/class-1.html#linux-installations" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The PCs in the library have Virtual Box installed with a minimal Linux
+installation. If you have your own PC laptop, you can install Virtual Box
+and any standard Linux distribution (Ubuntu or Mint). If you have a Mac
+laptop, you can do the same, or just use the native terminal.</p>
+<p>In any case, we will create logins on our compute cluster (amc-tesla) and
+all your work will be done through that.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Terminal and text editors<a class="headerlink" href="../../Classes/class-1.html#terminal-and-text-editors" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>When you open a Terminal, you also launch a shell process, typically a
+bash process. At the prompt, you can type things that bash understands,
+and it will do them. The shell has its own language, which you will learn
+over the course of the class. It also runs executable files that it can
+find on the PATH (i.e. the set of directories that contain exectuables).</p>
+<p>You can find what is on your PATH by typing:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>The PATH is one of several environment variables that are created when you
+login. You can see all of these with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>env
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Terminal and text editors (2)<a class="headerlink" href="../../Classes/class-1.html#id9" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>One important program in the PATH is <cite>vim</cite>. You will use this program to
+keep notes and write small programs.</p>
+<p>You can run <tt class="docutils literal"><span class="pre">vim</span></tt> from the terminal prompt:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>vim filename.txt
+</pre></div>
+</div>
+<p>You should notice that the prompt will disappear and you will be in a
+<cite>vim</cite> session.</p>
+<p>Now press the <cite>i</cite> key to enter <cite>insert</cite> mode, and start typing. Press
+<cite>ESC</cite> to exit <cite>insert</cite> mode.</p>
+<p>To quit a vim session, you need to:</p>
+<ol class="arabic simple">
+<li>enter <cite>command mode</cite> with the colon key</li>
+<li>write the file</li>
+<li>quit the program</li>
+</ol>
+<p>This can be accomplished by typing:</p>
+<div class="highlight-python"><div class="highlight"><pre>:wq &lt;enter&gt;
+</pre></div>
+</div>
+<p>Practice using <cite>vim</cite> with this tutorial <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>OpenVim <a class="reference external" href="http://www.openvim.com/">http://www.openvim.com/</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Cluster access<a class="headerlink" href="../../Classes/class-1.html#cluster-access" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We have set up accounts for the class on our departmental cluster. We will
+set up your accounts at the end of class and reset your passwords:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
+<span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
+
+...
+
+<span class="c"># once you are logged in, text your X11 connection with</span>
+<span class="nv">$ </span>xeyes
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Running jobs on the cluster<a class="headerlink" href="../../Classes/class-1.html#running-jobs-on-the-cluster" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>First you will grab a single CPU from the queueing system so that you can
+work without affecting the head node. We use <tt class="docutils literal"><span class="pre">qlogin</span></tt> for this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>jhessel@amc-tesla ~
+$ qlogin
+
+Job &lt;492536&gt; is submitted to queue &lt;interactive&gt;.
+&lt;&lt;ssh X11 forwarding job&gt;&gt;
+&lt;&lt;Waiting for dispatch ...&gt;&gt;
+&lt;&lt;Starting on compute00&gt;&gt;
+
+jhessel@compute00 ~
+$
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The host in the prompt changed from <tt class="docutils literal"><span class="pre">amc-tesla</span></tt> to <tt class="docutils literal"><span class="pre">compute00</span></tt>.</p>
+</div>
+<p>You can now execute long-running processes without worry of affecting the
+cluster. Type <tt class="docutils literal"><span class="pre">exit</span></tt> to return back to your head node login.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Shell and Python Programming<a class="headerlink" href="../../Classes/class-1.html#shell-and-python-programming" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>It is important that you learn a few new computer languages. Others have
+developed very good guides to teach you these languages, and we are going
+to use those in the class. We expect you to begin taking these classes
+immediately.</p>
+<p>You will spend a lot of time going through these online classes, both in
+scheduled class time, and outside of class time. Instead of focusing on
+teaching you these languages, we will focus on helping you get through all
+of the frustating problems that come up when you're learning the languages.</p>
+<p>We will spend the first ~2 weeks learning shell <a class="footnote-reference" href="#id4" id="id3">[2]</a> and all the things
+you have access to within the shell.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>The Command Line Crash Course
+<a class="reference external" href="http://cli.learncodethehardway.org/book/">http://cli.learncodethehardway.org/book/</a></td></tr>
+</tbody>
+</table>
+<p>After learning the shell, we will begin learning R and several packages
+within R.</p>
+<p>Finally, we will begin learning Python <a class="footnote-reference" href="#id6" id="id5">[3]</a>. The Python language allows
+you to do more sophisticated things that would be possible in shell or R, but
+would be considerably more clunky.</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>Learn Python the Hard Way
+<a class="reference external" href="http://learnpythonthehardway.org/book/">http://learnpythonthehardway.org/book/</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>First Quiz : Reading<a class="headerlink" href="../../Classes/class-1.html#first-quiz-reading" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Computational biology projects inevitably accrue a lot of files. For the
+first quiz, you'll need to read a paper <a class="footnote-reference" href="#id8" id="id7">[4]</a> and be able to put a set of
+files in the correct places. We require that you use this scheme for
+all of your projects in and out of the class.</p>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[4]</a></td><td>A Quick Guide to Organizing Computational Biology Projects (2009)
+PLoS Comput. Biol. William S. Noble
+<a class="reference external" href="http://dx.plos.org/10.1371/journal.pcbi.1000424">http://dx.plos.org/10.1371/journal.pcbi.1000424</a></td></tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 8 : R : Getting Started &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Class 9 : R : Manipulation &amp; Plotting" href="class-9.html" />
+    <link rel="prev" title="Class 7 : BEDTools vignette" href="class-7.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  
+    <slide class="level-1">
+    <hgroup>
+      <h1>Class 8 : R : Getting Started<a class="headerlink" href="../../Classes/class-8.html#class-8-r-getting-started" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2015 Feb 19 Thurs</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Setting up web access to tesla<a class="headerlink" href="../../Classes/class-8.html#setting-up-web-access-to-tesla" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>You can access html and images via the web if you:</p>
+<ol class="arabic">
+<li><p class="first">Create a <cite>public_html</cite> directory in your $HOME:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ mkdir $HOME/public_html
+</pre></div>
+</div>
+</li>
+<li><p class="first">Copy content into the <cite>public_html</cite> directory.</p>
+</li>
+<li><p class="first">Make sure that permissions of your $HOME are accessible by all:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ chmod 755 $HOME
+</pre></div>
+</div>
+</li>
+<li><p class="first">Access tesla on campus, or via VPN at the URL:</p>
+<div class="highlight-python"><div class="highlight"><pre>http://amc-tesla/~username
+
+http://amc-tesla.ucdenver.pvt/~username
+</pre></div>
+</div>
+</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/class-8.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Startup RStudio</li>
+<li>Learn to navigate in RStudio</li>
+<li>load the ggplot2 library</li>
+<li>Learn to load external data</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Data<a class="headerlink" href="../../Classes/class-8.html#data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The data file we will use is:</p>
+<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data/expr-geno-covs.txt
+</pre></div>
+</div>
+<p>Copy this to a working directory e.g. <tt class="docutils literal"><span class="pre">$HOME/class/class-8</span></tt></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>RStudio<a class="headerlink" href="../../Classes/class-8.html#rstudio" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>RStudio is a useful interface for R, encapsulates the R prompt, data views
+and plotting in a single User Interface.</p>
+<p>Navigate to <a class="reference external" href="http://amc-sandbox.ucdenver.pvt/rstudio">http://amc-sandbox.ucdenver.pvt/rstudio</a> and enter your tesla
+credentials.</p>
+<p>Note you need to use VPN if you are off campus.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Loading data in R<a class="headerlink" href="../../Classes/class-8.html#loading-data-in-r" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The main function for loading data is <tt class="docutils literal"><span class="pre">read.delim()</span></tt>:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="c1"># dfx is a data.frame. look at it with ``summary`` and ``head``</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;lamina.bed&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">is.data.frame</span><span class="p">(</span>dfx<span class="p">)</span>
+</pre></div>
+</div>
+<p>If the column names are specified in a header line (begins with <tt class="docutils literal"><span class="pre">#</span></tt>),
+then you can load them as the column names with:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="c1"># this uses the names in the comment line as header names</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;lamina.bed&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also specify headers explicitly with:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> bedfilename <span class="o">&lt;-</span> <span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span>
+<span class="o">&gt;</span> colnames <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">,</span><span class="s">&#39;score&#39;</span><span class="p">,</span><span class="s">&#39;strand&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span>bedfilename<span class="p">,</span> col.names<span class="o">=</span><span class="kp">colnames</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Loading data in R (2)<a class="headerlink" href="../../Classes/class-8.html#id2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><tt class="docutils literal"><span class="pre">df</span></tt> is short for <cite>data frame</cite>, the basic R data structure
+<tt class="docutils literal"><span class="pre">&lt;-</span></tt> is the R assignment operator, can also use <tt class="docutils literal"><span class="pre">=</span></tt></p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> df <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">summary</span><span class="p">(</span>df<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>df<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kp">head</span><span class="p">(</span>df<span class="o">$</span><span class="kp">expression</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Loading data in R (3)<a class="headerlink" href="../../Classes/class-8.html#id3" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The most common ways to read in data in R are:</p>
+<div class="highlight-r"><div class="highlight"><pre>read.csv<span class="p">(</span><span class="s">&#39;file.csv&#39;</span><span class="p">)</span>
+read.delim<span class="p">(</span><span class="s">&#39;file.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These take common arguments. You can get help on a function in R
+with:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">?</span>read.delim
+<span class="o">?</span><span class="kp">head</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>DataFrame<a class="headerlink" href="../../Classes/class-8.html#dataframe" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <tt class="docutils literal"><span class="pre">read()</span></tt> functions load a <tt class="docutils literal"><span class="pre">data.frame</span></tt>. In a data.frame,
+everything is read into memory.</p>
+<ul class="simple">
+<li>R figures out the types of each column e.g. numeric/character/factor</li>
+<li>each column of the data.frame is accessed by <cite>$</cite>  e.g df$genotype</li>
+</ul>
+<p>Access the column data with the <tt class="docutils literal"><span class="pre">$</span></tt> character:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> dfx<span class="o">$</span>chrom
+</pre></div>
+</div>
+<p>And some functions allow you to refer to columns by name:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kp">subset</span><span class="p">(</span>dfx<span class="p">,</span> chrom <span class="o">==</span> <span class="s">&#39;chr1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>DataFrame (2)<a class="headerlink" href="../../Classes/class-8.html#id4" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>There are several data sets that are built-in to R, including:</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> mtcars   <span class="c1"># Motor Trend Cars Road Tests</span>
+<span class="o">&gt;</span> baseball <span class="c1"># in ``libarary(plyr)``</span>
+
+<span class="c1"># see all built-in data sets</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>help <span class="o">=</span> <span class="s">&quot;datasets&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>print<a class="headerlink" href="../../Classes/class-8.html#print" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kp">print</span><span class="p">(</span><span class="s">&quot;hello world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>libraries<a class="headerlink" href="../../Classes/class-8.html#libraries" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="c1"># or</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span><span class="s">&#39;ggplot2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>R paths<a class="headerlink" href="../../Classes/class-8.html#r-paths" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>get/set working directory</p>
+<div class="highlight-r"><div class="highlight"><pre>&gt; getwd()                    # print
+&gt; setwd(&#39;C:\whatever\path\&#39;) # on windows
+&gt; setwd(&#39;/vol1/opt/data/&#39;)   # on linux
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Writing and running R scripts in RStudio<a class="headerlink" href="../../Classes/class-8.html#writing-and-running-r-scripts-in-rstudio" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Open up a new R Script with <cite>File --&gt; New File --&gt; R Script</cite>. You should
+see a new editor window open in the top left.</p>
+<p>You can write a simple R script like:</p>
+<div class="highlight-r"><div class="highlight"><pre>plot<span class="p">(</span>rnorm<span class="p">(</span><span class="m">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>And then save the file as <cite>plot.R</cite>.</p>
+<p>You can then highlight all of the lines, or just select the <cite>plot</cite> line,
+and run that portion of the program by presseing the <cite>Run</cite> button in the
+window, or with <cite>&lt;Cmd&gt;-&lt;Return&gt;</cite> on Macs and <cite>&lt;Ctrl&gt;-&lt;Return&gt;</cite> on Windows.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ggplot2<a class="headerlink" href="../../Classes/class-8.html#ggplot2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>We will learn to use it to create plots like this</p>
+<img alt="../_images/ggplot-ex.png" src="../_images/ggplot-ex.png" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ggplot2 syntax<a class="headerlink" href="../../Classes/class-8.html#ggplot2-syntax" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+
+ggplot<span class="p">(</span>dfx<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+    geom_point<span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ggplot2 syntax (2)<a class="headerlink" href="../../Classes/class-8.html#id5" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><tt class="docutils literal"><span class="pre">aes()</span></tt> stands for <strong>aesthetics</strong>, which specifies the the coordinates,
+colors, size, etc from these columns in the data.frame.</p>
+<div class="highlight-r"><div class="highlight"><pre>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">,</span> color<span class="o">=</span>gender<span class="p">)</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">geom_point()</span></tt> means plot these as points, could be <tt class="docutils literal"><span class="pre">geom_line()</span></tt> or
+a number of other <cite>geoms</cite>.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>googling with ggplot2<a class="headerlink" href="../../Classes/class-8.html#googling-with-ggplot2" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Use google to find how to change the y-scale on this plot to log10</p>
+<div class="highlight-r"><div class="highlight"><pre><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+dfx <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+
+ggplot<span class="p">(</span>dfx<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+        geom_point<span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>answer<a class="headerlink" href="../../Classes/class-8.html#answer" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+dfx <span class="o">&lt;-</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+
+ggplot<span class="p">(</span>dfx<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+        geom_point<span class="p">()</span> <span class="o">+</span>
+<span class="hll">        scale_y_log10<span class="p">()</span>
+</span></pre></div>
+</div>
+<p>You can find a lot of info for ggplot2 with some googling.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>ggplot2 documentation<a class="headerlink" href="../../Classes/class-8.html#ggplot2-documentation" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The ggplot2 docs are very good: <a class="reference external" href="http://docs.ggplot2.org/current/">http://docs.ggplot2.org/current/</a></p>
+<p>Look at the <cite>geom_point()</cite> documentation and change the color
+of the plot above so that males and females are color'ed differently.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>DataFrame<a class="headerlink" href="../../Classes/class-8.html#id1" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>In a data.frame, we read everything into memory</p>
+<ul class="simple">
+<li>R figures out if it is int/character/numeric</li>
+<li>each column of the data.frame is accessed by <cite>$</cite>  e.g df$genotype</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Histograms<a class="headerlink" href="../../Classes/class-8.html#histograms" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>One of the simplest things to do in R, without ggplot is to look at
+a histogram of your data:</p>
+<div class="highlight-r"><div class="highlight"><pre>hist<span class="p">(</span>dfx<span class="o">$</span><span class="kp">expression</span><span class="p">)</span>
+<span class="c1"># or</span>
+hist<span class="p">(</span><span class="kp">log</span><span class="p">(</span>dfx<span class="o">$</span><span class="kp">expression</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You can make these look a lot nicer with ggplot2.</p>
+<p><tt class="docutils literal"><span class="pre">hist()</span></tt> does not work with ggplot, you'll have to use the
+ggplot2 machinery for that:</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Histograms (2)<a class="headerlink" href="../../Classes/class-8.html#id6" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre>gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>dfx<span class="p">,</span> aex<span class="p">(</span>x<span class="o">=</span><span class="kp">log10</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
+gp <span class="o">+</span> geom_histgram<span class="p">()</span>
+</pre></div>
+</div>
+<p>Try to figure out how to overlay a density plot with <tt class="docutils literal"><span class="pre">geom_density()</span></tt>.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Histograms (3)<a class="headerlink" href="../../Classes/class-8.html#id7" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>You can also make effective separate visualizations with <tt class="docutils literal"><span class="pre">facet_grid()</span></tt>
+and <tt class="docutils literal"><span class="pre">facet_wrap()</span></tt>. You need to specify a formula to determine how to
+separate:</p>
+<div class="highlight-r"><div class="highlight"><pre>gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
+
+<span class="c1"># separate by gender</span>
+gp <span class="o">+</span> facet_grid<span class="p">(</span><span class="o">~</span> gender<span class="p">)</span>
+
+<span class="c1"># separate by gender and condition</span>
+gp <span class="o">+</span> facet_grid<span class="p">(</span>condition <span class="o">~</span> gender<span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2">
+    <hgroup>
+      <h2>Exercises<a class="headerlink" href="../../Classes/class-8.html#exercises" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Make a histogram using ggplot and separate cases from controls by
+changing fill color and symbol type.</li>
+<li>Make a histogram using ggplot and separate cases from controls
+using <tt class="docutils literal"><span class="pre">facet_grid()</span></tt>, <tt class="docutils literal"><span class="pre">facet_wrap()</span></tt>.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

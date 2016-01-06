@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Programming Tips &amp; Tricks &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Miscellaneous" href="../Miscellaneous.html" />
+    <link rel="prev" title="Getting Started" href="starting.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://hesselberthlab.github.io">Hesselberth lab</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Programming Tips &amp; Tricks</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#learn-to-type">Learn to type</a><ul>
+<li><a class="reference internal" href="#learn-to-type-funny-characters">Learn to type funny characters</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#learn-hot-keys-for-window-management">Learn hot keys for window management</a></li>
+<li><a class="reference internal" href="#learn-to-use-a-terminal-text-editor">Learn to use a terminal text editor</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9">
+      
+  <div class="section" id="programming-tips-tricks">
+<h1>Programming Tips &amp; Tricks<a class="headerlink" href="#programming-tips-tricks" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/tips.html#programming-tips-tricks" title="Slides">§</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/tips.html#overview" title="Slides">§</a></h2>
+<p>Several things influence how effectively you learn to program, and how
+well you program once you have mastered the basic ideas. A major issue is
+your efficiency in actaully <em>using</em> a computer, and not programming <em>per
+se</em>.</p>
+<p>For example, the longer you spend searching for a particular key to type,
+or surfing around with your mouse, the less time you spend writing,
+running and debugging programs. Here are several pointers to help you
+become more efficient at using computers, independent of learning
+programming languages.</p>
+</div>
+<div class="section" id="learn-to-type">
+<h2>Learn to type<a class="headerlink" href="#learn-to-type" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/tips.html#learn-to-type" title="Slides">§</a></h2>
+<p>Hunting and pecking is inefficient, and prevents you from spending your
+valuable time efficiently. If you&#8217;re looking at your keyboard, you&#8217;re
+<em>not</em> looking at the screen, reading and debugging code. Once you have the
+typing basics down, you should be typing 40-50 words per minute, without
+ever looking at the keyboard.</p>
+<p>There are several good, modern tools <a class="footnote-reference" href="#id2" id="id1">[1]</a> to help you master touch-typing.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><ul class="first last simple">
+<li>Touch Typing Tutorial : <a class="reference external" href="http://www.typingweb.com/">http://www.typingweb.com/</a></li>
+<li>Typing IO : Language specific typing practice <a class="reference external" href="http://typing.io/">http://typing.io/</a></li>
+</ul>
+</td></tr>
+</tbody>
+</table>
+<div class="section" id="learn-to-type-funny-characters">
+<h3>Learn to type funny characters<a class="headerlink" href="#learn-to-type-funny-characters" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/tips.html#learn-to-type-funny-characters" title="Slides">§</a></h3>
+<p>In programming you use a variety of characters that you don&#8217;t always use
+typing other kinds of documents. Learn the locations of the following by
+heart:</p>
+<ul class="simple">
+<li>Number sign (for commenting): #</li>
+<li>Dollar sign (for variables): $</li>
+<li>Underscore (for variable naming): _</li>
+<li>Parentheses: ()</li>
+<li>Brackets: []</li>
+<li>Curly brackets: {}</li>
+<li>Tilde (i.e. the squiggle; for going $HOME): ~</li>
+<li>Math symbols (&#8220;+&#8221;, &#8220;-&#8221;, &#8220;*&#8221;, &#8220;/&#8221;, &#8220;=&#8221;)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="learn-hot-keys-for-window-management">
+<h2>Learn hot keys for window management<a class="headerlink" href="#learn-hot-keys-for-window-management" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/tips.html#learn-hot-keys-for-window-management" title="Slides">§</a></h2>
+<p><strong>The mouse is your enemy.</strong> Yes, it revolutionized the computer–human
+interaction. But the more time you spend using your mouse, the less time
+you spend with your hands on the keyboard and doing useful things.</p>
+<p>You can do most things with your keyboard. There are several hot keys you
+should learn that will maximize your productivity on the computer by
+minimizing your use of the mouse:</p>
+<ul class="simple">
+<li><strong>&lt;Alt&gt;-&lt;Tab&gt;</strong> : Flip through windows quickly and effortlessly
+without ever touching your mouse.</li>
+<li><strong>&lt;Ctrl&gt;-&lt;Page Up/Down&gt;</strong> : Switch between Terminal windows on Linux</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p><strong>Launch your most-used apps automatically during login.</strong></p>
+<p class="last">For example, automatically launch four terminal windows and a browser
+window, without having to click.</p>
+</div>
+</div>
+<div class="section" id="learn-to-use-a-terminal-text-editor">
+<h2>Learn to use a terminal text editor<a class="headerlink" href="#learn-to-use-a-terminal-text-editor" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/misc/tips.html#learn-to-use-a-terminal-text-editor" title="Slides">§</a></h2>
+<p>There are two types of nerds in this world:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">vim</span></tt> users</li>
+<li><tt class="docutils literal"><span class="pre">emacs</span></tt> users</li>
+</ul>
+<p>I&#8217;m a <tt class="docutils literal"><span class="pre">vim</span></tt>-user. I can&#8217;t even log out of an <tt class="docutils literal"><span class="pre">emacs</span></tt> session.</p>
+<p>Learning a terminal text editor like <tt class="docutils literal"><span class="pre">vim</span></tt> increases productivity
+substantially, because it allows you to:</p>
+<ul class="simple">
+<li>run the editor within an existing terminal, without opening a new
+window</li>
+<li>work on multiple documents simultaneously</li>
+<li>syntax highlight your code</li>
+<li>manipulate blocks of text quickly and efficiently</li>
+</ul>
+<p>You can run <tt class="docutils literal"><span class="pre">vim</span></tt> from the terminal prompt:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>vim filename.txt
+</pre></div>
+</div>
+<p>To quit a vim session, you need to:</p>
+<ol class="arabic simple">
+<li>enter <cite>command mode</cite> with the colon key</li>
+<li>write the file</li>
+<li>quit the program</li>
+</ol>
+<p>This can be accomplished by typing:</p>
+<div class="highlight-python"><div class="highlight"><pre>:wq &lt;enter&gt;
+</pre></div>
+</div>
+<p>In your copious spare time, and after you have mastered the basics of
+shell, Python and R programming, you should take a tutorial <a class="footnote-reference" href="#id4" id="id3">[2]</a> on using
+a terminal text editor.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>OpenVim <a class="reference external" href="http://www.openvim.com/">http://www.openvim.com/</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../_sources/misc/tips.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2013-2015, Jay Hesselberth.<br/>
+      Last updated on Feb 21, 2015.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
