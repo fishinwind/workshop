@@ -13,7 +13,7 @@ General Information
 :Course Number: MOLB 7621
 :Cross listings: STBB 7621, MICB 7621
 :Semester:      Spring 2016
-:Homepage:      http://hesselberthlab.github.io/workshop 
+:Homepage:      http://molb7621.github.io/workshop 
 :Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
 :Address:       Department of Biochemistry and Molecular Genetics
