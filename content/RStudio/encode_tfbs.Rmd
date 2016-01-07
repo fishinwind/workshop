@@ -1,0 +1,194 @@
+---
+title: "Analysis of ENCODE TFBS"
+author: "Jay Hesselberth"
+date: "December 31, 2015"
+output: html_document
+---
+
+```{r read_data}
+library(dplyr)
+library(readr)
+library(tidyr)
+library(stringr)
+
+url <- 'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredWithCellsV3.bed.gz'
+
+col_names <- c('chrom', 'start', 'end', 'tf.name', 'cell.id', 'cell.names')
+tfbs_data <- read_tsv(url, col_names = col_names) %>% tbl_df
+
+# filter on tier 1 cell lines
+tier1 <- c('K562', 'H1-hESC', 'GM12878')
+tfbs_tier1_data <- tfbs_data %>%
+  select(-cell.id) %>%
+  mutate(cell.names = str_split(cell.names, ',')) %>%
+  unnest(cell.names) %>% 
+  rename(cell.name = cell.names) %>%
+  filter(cell.name %in% tier1)
+
+peak_midpoints_raw <- tfbs_tier1_data %>%
+  mutate(peak.midpoint = as.integer(start + round((end - start) / 2))) %>%
+  select(-start, -end)
+
+# select groups with more than 100 observations
+peak_midpoints <- peak_midpoints_raw %>%
+  group_by(chrom, tf.name, cell.name) %>%
+  summarize(count = n()) %>%
+  filter(count > 100) %>%
+  inner_join(peak_midpoints_raw) %>%
+  select(-count) %>%
+  ungroup()
+```
+
+```{r tfbs_summary}
+```
+
+## Are TF binding sites randomly distributed on chromosomes? (Lag plots)
+
+```{r tfbs_lag}
+# http://www.r-bloggers.com/predictability-of-stock-returns-using-acf/
+peak_lags <- peak_midpoints %>%
+  group_by(chrom, tf.name, cell.name) %>%
+  arrange(peak.midpoint) %>%
+  mutate(midpoint.lag = peak.midpoint - lag(peak.midpoint)) %>%
+  select(-peak.midpoint) %>%
+  na.omit()
+
+peak_lags  
+```
+
+Let's look a little closer at the structure of the peak_lags.
+
+```{r plot_peak_lags}
+peak_lags %>%
+  ggplot(aes(midpoint.lag, color = cell.name)) +
+  geom_histogram() +
+  facet_wrap(~tf.name) + 
+  scale_y_log10() +
+  xlim(c(0,100000))
+```
+
+## Do any factors exhibit non-randomness?
+
+We can use the `randtests::runs.test()` to assess whether any of the midpoint distributions have significant levels of non-randomness.
+
+```{r runs_test}
+library(randtests)
+
+# this takes ~2 minutes to run
+runs_tests <- peak_lags %>%
+  group_by(chrom, tf.name, cell.name) %>%
+  do(tidy(runs.test(.$midpoint.lag)))
+
+runs_tests <- peak_lags %>%
+  group_by(chrom, tf.name, cell.name) %>%
+  filter(row_number() <= 500) %>%
+  do(tidy(shapiro.test(.$midpoint.lag)))
+```
+
+Now let's check the distribution of p-values in the runs tests.
+
+```{r runs_pvalues}
+runs_tests %>%
+  ggplot(aes(p.value)) +
+  geom_histogram(binwidth = .05)
+```
+
+# Now let's do some correction of those p-values, converting them to q-values.
+
+```{r runs_qvalues}
+library(qvalue)
+
+runs_tests <- runs_tests %>%
+  ungroup() %>%
+  mutate(q.value = qvalue(p.value)$qvalues)
+
+runs_tests %>%
+  group_by(cell.name, chrom) %>%
+  summarize(signif = sum(q.value < .01)) %>%
+  arrange(-signif)
+```
+
+```{r lag_acf}
+acf_conf <- function(x, conf.level = 0.95, ...) {
+  conf.int <- qnorm((1 + conf.level) / 2) / sqrt(x$n.used)
+  conf.int
+}
+
+lag_acfs <- peak_lags %>%
+  group_by(chrom, tf.name, cell.name) %>%
+  do(acf_result = acf(.$midpoint.lag, plot = FALSE))
+
+tidy_lag_acfs <- lag_acfs %>% tidy(acf_result)
+
+acf_confs <- lag_acfs %>%
+  mutate(conf.level.95 = acf_conf(acf_result),
+         conf.level.99 = acf_conf(acf_result, conf.level = 0.99)) %>%
+  ungroup()
+```
+
+## Are there combinations that are highly significant at all acfs?
+
+```{r}
+# set a threshold for the number that can be false
+# XXX could also be a proportion
+min.false <- 2
+min.obs <- 10
+
+tidy_lag_acfs %>% left_join(acf_confs) %>%
+  mutate(signif = (acf > 0 & acf > conf.level.95) | (acf < 0 & acf < -conf.level.95)) %>%
+  select(chrom, tf.name, cell.name, signif) %>%
+  summarize(num.obs = n(),
+            num.true = length(which(signif)),
+            num.false = num.obs - num.true) %>%
+  filter(num.obs > min.obs & num.false <= min.false) %>%
+  ungroup() %>%
+  select(chrom, tf.name, cell.name) %>%
+  unique()
+
+acfs_high_signif <- tidy_lag_acfs %>% left_join(acf_confs) %>%
+  filter(all((acf > 0 & acf > conf.level.95) | (acf < 0 & acf < -conf.level.95))) %>%
+  ungroup() %>%
+  select(chrom, tf.name, cell.name) %>%
+  unique()
+
+signif_data <- acfs_high_signif %>% left_join(tidy_lag_acfs) %>% left_join(acf_confs)
+
+ggplot(signif_data, aes(x = lag, y = acf)) + geom_bar(stat='identity', width = 0.3) +
+  facet_wrap(~tf.name + chrom + cell.name) + theme_bw() +
+  geom_hline(aes(yintercept = conf.level.95), data = signif_data, linetype = 'dashed', color = 'blue') + 
+  geom_hline(aes(yintercept = conf.level.99), data = signif_data, linetype = 'dashed', color = 'red') 
+```
+
+```{r}
+
+lag_plot <- function(data, facets, conf_levels = TRUE, conf_data, ...) {
+  
+  p <- ggplot(aes(x = lag, y = acf)) + 
+    facet_wrap(facets) + 
+    geom_bar(stat='identity', width = 0.3) +
+    theme_bw()
+  
+  if (conf.levels) {
+    if ("conf.level.95" %in% colnames(conf_data)) {
+      p <- p + geom_hline(aes(yintercept = conf.level.95),
+                       linetype = 'dashed',
+                       color = 'blue', data = conf_data) +
+      p <- p + geom_hline(aes(yintercept = -conf.level.95),
+                          linetype = 'dashed',
+                          color = 'blue', data = conf_data)
+    }
+    if ("conf.level.99" %in% colnames(conf_data)) {
+      p <- p + geom_hline(aes(yintercept = conf.level.99),
+                       linetype = 'dashed',
+                       color = 'red', data = conf_data) +
+      p <- p + geom_hline(aes(yintercept = -conf.level.99),
+                          linetype = 'dashed',
+                          color = 'red', data = conf_data)
+    }
+  }
+  return(p)
+} 
+```
+
+```{r tfbs_modeling}
+```

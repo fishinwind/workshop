@@ -7,6 +7,8 @@ output: slidy_presentation
 
 ## Tidying data sets
 
+Raw data must often be restructured to enable downstream analysis. A useful format to start with is "tidy" data.
+
 Tidy data has a few key principles:
 
   - Each variable forms a column
@@ -112,17 +114,45 @@ Think about the transformation that just happened.
 
 We're almost there. Now we need to `spread()` the `var` and `value` columns.
 
-```{r anscombe_spread}
+```{r anscombe_spread, warning = FALSE}
 anscombe_tidy <- anscombe_tidy %>%
   tidyr::spread(var, value)
 
 anscombe_tidy
 ```
 
+## Other `tidyr` verbs
+
+Sometimes you have incomplete sets of observations in a data set. The `complete()` verb addresses this issue by filling in missing values.
+
+```{r missing}
+library(dplyr)
+df <- tibble(
+  ~group, ~item_id, ~item_name, ~value1, ~value2,
+  1,      1,        'a',          1,       4,
+  2,      2,        'b',          2,       5,
+  1,      2,        'b',          3,       6)
+```
+
+## `tidyr::complete()` the full set
+
+```{r missing_cont}
+#. 1. expand *all* cominbations
+df %>% complete(group, item_id, item_name)
+```
+
+## `tidyr::complete()` sets of variables in the given data
+
+```{r missing_cont_2}
+#. 2. only expand sets that are observed in the given data
+df %>% complete(group, c(item_id, item_name))
+```
+
 ## Tidying practice
 
   - What happens if you retidy the `anscombe` set, but you leave out the `obs` column? 
-  - Tidy the the `XXX` data set. 
+  
+  - Practice tidying other R builtin data sets. Use `library(help = "datasets")` to see all of the builtin datasets. Try the `ability.cov` dataset, and try combining the `beaver1` and `beaver2` data sets.
 
 
 
