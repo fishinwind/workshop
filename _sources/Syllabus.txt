@@ -59,7 +59,7 @@ Schedule
 
 Location
 ========
-RC1 South 10th floor conference room.
+Ed 2 North (P28-CTL-2201AB)
 
 Course Description
 ==================
