@@ -1,11 +1,6 @@
----
-title: "Plant RNA-seq"
-author: "Jay Hesselberth"
-date: "January 2, 2016"
-output:
-  html_document:
-    keep_md: true
----
+# Plant RNA-seq
+Jay Hesselberth  
+January 2, 2016  
 
 XXX: describe general setup
 
@@ -28,7 +23,8 @@ Some important identifiers for the data set:
 
 We will download tables from GEO containing counts of mRNA abundance from both the fungus and plant (separately) as measured by the `XXX` package.
 
-```{r load_raw_data, message = FALSE}
+
+```r
 library(readr)
 library(tidyr)
 library(dplyr)
@@ -53,12 +49,73 @@ col.headers <- c('gene.name', col.headers)
 raw_tab_at <- read_tsv(ath_url, col_names = col.headers, skip = 1)
 
 head(raw_tab_bgh)
+```
+
+```
+## Source: local data frame [6 x 49]
+## 
+##             gene.name B12_A6_6hpi_1 B12_A6_6hpi_2 B12_A6_6hpi_3
+##                 (chr)         (int)         (int)         (int)
+## 1            bgh04079            13            15            13
+## 2            bgh01634            31            10            24
+## 3 bghG000012000001001           121           119           145
+## 4 bghG000012000002001             3             2             0
+## 5            bgh00757           253           191           207
+## 6            bgh01273            45            27            48
+## Variables not shown: B12_A6_12hpi_1 (int), B12_A6_12hpi_2 (int),
+##   B12_A6_12hpi_3 (int), B12_A6_18hpi_1 (int), B12_A6_18hpi_2 (int),
+##   B12_A6_18hpi_3 (int), B12_A6_24hpi_1 (int), B12_A6_24hpi_2 (int),
+##   B12_A6_24hpi_3 (int), B12_K1_6hpi_1 (int), B12_K1_6hpi_2 (int),
+##   B12_K1_6hpi_3 (int), B12_K1_12hpi_1 (int), B12_K1_12hpi_2 (int),
+##   B12_K1_12hpi_3 (int), B12_K1_18hpi_1 (int), B12_K1_18hpi_2 (int),
+##   B12_K1_18hpi_3 (int), B12_K1_24hpi_1 (int), B12_K1_24hpi_2 (int),
+##   B12_K1_24hpi_3 (int), pps_A6_6hpi_1 (int), pps_A6_6hpi_2 (int),
+##   pps_A6_6hpi_3 (int), pps_A6_12hpi_1 (int), pps_A6_12hpi_2 (int),
+##   pps_A6_12hpi_3 (int), pps_A6_18hpi_1 (int), pps_A6_18hpi_2 (int),
+##   pps_A6_18hpi_3 (int), pps_A6_24hpi_1 (int), pps_A6_24hpi_2 (int),
+##   pps_A6_24hpi_3 (int), pps_K1_6hpi_1 (int), pps_K1_6hpi_2 (int),
+##   pps_K1_6hpi_3 (int), pps_K1_12hpi_1 (int), pps_K1_12hpi_2 (int),
+##   pps_K1_12hpi_3 (int), pps_K1_18hpi_1 (int), pps_K1_18hpi_2 (int),
+##   pps_K1_18hpi_3 (int), pps_K1_24hpi_1 (int), pps_K1_24hpi_2 (int),
+##   pps_K1_24hpi_3 (int).
+```
+
+```r
 head(raw_tab_at)
+```
+
+```
+## Source: local data frame [6 x 49]
+## 
+##   gene.name B12_A6_6hpi_1 B12_A6_6hpi_2 B12_A6_6hpi_3 B12_A6_12hpi_1
+##       (chr)         (int)         (int)         (int)          (int)
+## 1 AT1G44110            99            51            41             36
+## 2 AT1G04050           116            52            55            157
+## 3 AT1G06830           181           130           105            538
+## 4 AT1G09720            32            34            12             54
+## 5 AT1G15230           286           208           216            169
+## 6 AT1G27170           546           384           362            271
+## Variables not shown: B12_A6_12hpi_2 (int), B12_A6_12hpi_3 (int),
+##   B12_A6_18hpi_1 (int), B12_A6_18hpi_2 (int), B12_A6_18hpi_3 (int),
+##   B12_A6_24hpi_1 (int), B12_A6_24hpi_2 (int), B12_A6_24hpi_3 (int),
+##   B12_K1_6hpi_1 (int), B12_K1_6hpi_2 (int), B12_K1_6hpi_3 (int),
+##   B12_K1_12hpi_1 (int), B12_K1_12hpi_2 (int), B12_K1_12hpi_3 (int),
+##   B12_K1_18hpi_1 (int), B12_K1_18hpi_2 (int), B12_K1_18hpi_3 (int),
+##   B12_K1_24hpi_1 (int), B12_K1_24hpi_2 (int), B12_K1_24hpi_3 (int),
+##   pps_A6_6hpi_1 (int), pps_A6_6hpi_2 (int), pps_A6_6hpi_3 (int),
+##   pps_A6_12hpi_1 (int), pps_A6_12hpi_2 (int), pps_A6_12hpi_3 (int),
+##   pps_A6_18hpi_1 (int), pps_A6_18hpi_2 (int), pps_A6_18hpi_3 (int),
+##   pps_A6_24hpi_1 (int), pps_A6_24hpi_2 (int), pps_A6_24hpi_3 (int),
+##   pps_K1_6hpi_1 (int), pps_K1_6hpi_2 (int), pps_K1_6hpi_3 (int),
+##   pps_K1_12hpi_1 (int), pps_K1_12hpi_2 (int), pps_K1_12hpi_3 (int),
+##   pps_K1_18hpi_1 (int), pps_K1_18hpi_2 (int), pps_K1_18hpi_3 (int),
+##   pps_K1_24hpi_1 (int), pps_K1_24hpi_2 (int), pps_K1_24hpi_3 (int).
 ```
 
 But you'll notice that these counts tables are *messy*, so our first charge is to make them `tidyr`. See how the plant, virus, hpi and replicate designations are column names? That makes for efficient data storage, but does not enable efficient data analysis.
 
-```{r tidy_raw_data}
+
+```r
 # because these tables have identical structure, can write a function that applies to both.
 clean_data <- function(raw_data, org, ...) {
   cleaned_data <- raw_data %>%
@@ -81,18 +138,37 @@ cleaned_data <- bind_rows(cleaned_data_bgh, cleaned_data_at) %>%
   mutate(org.name = as.factor(org.name))
 ```
 
+```
+## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
+```
+
+```
+## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
+```
+
 Let's look at some summary statistics of the combined table.
 
-```{r summary_table}
+
+```r
 cleaned_data %>%
   group_by(org.name) %>%
   summarize(n.genes = n(),
             max.exp = max(count))
 ```
 
+```
+## Source: local data frame [2 x 3]
+## 
+##   org.name n.genes max.exp
+##     (fctr)   (int)   (int)
+## 1       at 1568544 1931803
+## 2      bgh  310896    6838
+```
+
 Let's look at the expression of a specific gene in the data set.
 
-```{r exp_example}
+
+```r
 library(ggplot2)
 select.gene <- 'bgh04079'
 
@@ -108,11 +184,14 @@ cleaned_data %>%
     ggtitle(select.gene)
 ```
 
+![](plant_rna_seq_files/figure-html/exp_example-1.png) 
+
 We can see that the linear fits between replicates don't really match up. We'll see if we can learn some more with simple statistics.
 
 Now we'll do some simple statistics on the counts to get the mean and standard error for the replicates. Note that `rep` is not part of the `group_by` call, so the counts from each of the 3 replicates form the group.
 
-```{r count_stats}
+
+```r
 count_stats <- cleaned_data %>%
   group_by(org.name, plant, virus, gene.name, hpi) %>%
   summarize(count.mean = mean(count),
@@ -121,7 +200,8 @@ count_stats <- cleaned_data %>%
 
 Let's replot those data and see how things change.
 
-```{r plot_stats, warning = FALSE}
+
+```r
 select.gene <- 'bgh04079'
 
 gene_stats <- count_stats %>%
@@ -138,10 +218,13 @@ ggplot(gene_stats, aes(x=hpi, y=count.mean)) +
   ggtitle(select.gene)
 ```
 
+![](plant_rna_seq_files/figure-html/plot_stats-1.png) 
+
 
 Now we do some modeling of gene expression. Because we have replicates, we can take advantage of the extended capabilities of the `lme4` package.
 
-```{r gene_lms, eval = FALSE}
+
+```r
 library(broom)
 linear_models <- cleaned_data %>%
   group_by(gene.name, plant, virus, rep) %>%

@@ -126,8 +126,7 @@ anscombe_tidy
 Sometimes you have incomplete sets of observations in a data set. The `complete()` verb addresses this issue by filling in missing values.
 
 ```{r missing}
-library(dplyr)
-df <- tibble(
+df <- dplyr::tibble(
   ~group, ~item_id, ~item_name, ~value1, ~value2,
   1,      1,        'a',          1,       4,
   2,      2,        'b',          2,       5,
@@ -136,16 +135,16 @@ df <- tibble(
 
 ## `tidyr::complete()` the full set
 
-```{r missing_cont}
+```{r missing_cont, eval=FALSE}
 #. 1. expand *all* cominbations
-df %>% complete(group, item_id, item_name)
+df %>% tidyr::complete(group, item_id, item_name)
 ```
 
 ## `tidyr::complete()` sets of variables in the given data
 
-```{r missing_cont_2}
+```{r missing_cont_2, eval=FALSE}
 #. 2. only expand sets that are observed in the given data
-df %>% complete(group, c(item_id, item_name))
+df %>% tidyr::complete(group, c(item_id, item_name))
 ```
 
 ## Tidying practice
