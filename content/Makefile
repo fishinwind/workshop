@@ -70,7 +70,7 @@ latex:
 rmarkdown:
 	cd RStudio && $(MAKE) clean && $(MAKE) all
 
-all: rmarkdown html slides
+all: html slides
 
 publish: all 
 	ghp-import -n -p ./_build/html
