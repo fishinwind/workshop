@@ -10,7 +10,9 @@
 Goals
 =====
 #. Class overview
-#. Problem Sets
+#. Computers
+#. Software
+#. Grades (Attendance + Problem Sets + Final Project) 
 
 Class Overview
 ==============
@@ -32,10 +34,6 @@ Computers
 =========
 You will need to bring a laptop to each class. 
 
-Software
---------
-1. RStudio
-
 Mac laptops
 -----------
 1. Install Homebrew
@@ -45,12 +43,16 @@ PC laptops
 1. Install VirtualBox.
 2. Install a Linux distribution as a virtual machine (e.g., Ubuntu).
 
+Software
+========
+1. RStudio
+2. 
+
+
 Problem Sets
 ============
 We will distribute all problem sets through github. The class has a Github
-organization here:
-
-XXX
+organization here: 
 
 To gain access to the problem sets, You need to:
 
@@ -72,50 +74,6 @@ set.
 
 Guidelines
 ----------
-
-Cluster access
-==============
-We will set up accounts for the class on our departmental cluster. We will
-set up your accounts at the end of class and reset your passwords:
-
-.. code-block:: bash
-
-    # the -X flag starts an X11 connection 
-    $ ssh -X username@amc-tesla.ucdenver.pvt
-
-    ...
-
-    # once you are logged in, text your X11 connection with
-    $ xeyes
-
-Running jobs on the cluster
-===========================
-First you will grab a single CPU from the queueing system so that you can
-work without affecting the head node. We use ``qlogin`` for this:
-
-.. code-block:: bash
-
-    jhessel@amc-tesla ~
-    $ qlogin 
-
-    Job <492536> is submitted to queue <interactive>.
-    <<ssh X11 forwarding job>>
-    <<Waiting for dispatch ...>>
-    <<Starting on compute00>>
-
-    jhessel@compute00 ~
-    $ 
-
-.. note:: 
-
-    The host in the prompt changed from ``amc-tesla`` to ``compute00``.
-    
-You can now execute long-running processes without worry of affecting the
-cluster. Type ``exit`` to return back to your head node login.
-
-.. nextslide::
-    :increment: 
-
 
 Shell and Python Programming
 ============================
@@ -147,10 +105,10 @@ would be considerably more clunky.
 
 First Quiz : Reading
 ====================
-Computational biology projects inevitably accrue a lot of files. For the
-first quiz, you'll need to read a paper [#]_ and be able to put a set of
-files in the correct places. We require that you use this scheme for
-all of your projects in and out of the class.
+Computational biology projects inevitably accrue a lot of files.  This
+paper describes a scheme for organizing files that provides some
+suggestions on how to organize.  We suggest that you use this scheme (or a
+similar one) for all of your projects in and out of the class.
 
 .. [#] A Quick Guide to Organizing Computational Biology Projects (2009)
         PLoS Comput. Biol. William S. Noble

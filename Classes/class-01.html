@@ -117,18 +117,16 @@
 <li><a class="reference internal" href="#goals">Goals</a></li>
 <li><a class="reference internal" href="#class-overview">Class Overview</a></li>
 <li><a class="reference internal" href="#computers">Computers</a><ul>
-<li><a class="reference internal" href="#software">Software</a></li>
 <li><a class="reference internal" href="#mac-laptops">Mac laptops</a></li>
 <li><a class="reference internal" href="#pc-laptops">PC laptops</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#software">Software</a></li>
 <li><a class="reference internal" href="#problem-sets">Problem Sets</a><ul>
 <li><a class="reference internal" href="#starting-a-new-problem-set">Starting a new problem set</a></li>
 <li><a class="reference internal" href="#guidelines">Guidelines</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#cluster-access">Cluster access</a></li>
-<li><a class="reference internal" href="#running-jobs-on-the-cluster">Running jobs on the cluster</a></li>
 <li><a class="reference internal" href="#shell-and-python-programming">Shell and Python Programming</a></li>
 <li><a class="reference internal" href="#first-quiz-reading">First Quiz : Reading</a></li>
 </ul>
@@ -147,7 +145,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Jan 28 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">January 07, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">January 28, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +153,9 @@
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#goals" title="Slides">§</a></h2>
 <ol class="arabic simple">
 <li>Class overview</li>
-<li>Problem Sets</li>
+<li>Computers</li>
+<li>Software</li>
+<li>Grades (Attendance + Problem Sets + Final Project)</li>
 </ol>
 </div>
 <div class="section" id="class-overview">
@@ -175,12 +175,6 @@ PM.</p>
 <div class="section" id="computers">
 <h2>Computers<a class="headerlink" href="#computers" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#computers" title="Slides">§</a></h2>
 <p>You will need to bring a laptop to each class.</p>
-<div class="section" id="software">
-<h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#software" title="Slides">§</a></h3>
-<ol class="arabic simple">
-<li>RStudio</li>
-</ol>
-</div>
 <div class="section" id="mac-laptops">
 <h3>Mac laptops<a class="headerlink" href="#mac-laptops" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#mac-laptops" title="Slides">§</a></h3>
 <ol class="arabic simple">
@@ -195,18 +189,22 @@ PM.</p>
 </ol>
 </div>
 </div>
+<div class="section" id="software">
+<h2>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#software" title="Slides">§</a></h2>
+<p>1. RStudio
+2.</p>
+</div>
 <div class="section" id="problem-sets">
 <h2>Problem Sets<a class="headerlink" href="#problem-sets" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#problem-sets" title="Slides">§</a></h2>
 <p>We will distribute all problem sets through github. The class has a Github
 organization here:</p>
-<p>XXX</p>
 <p>To gain access to the problem sets, You need to:</p>
 <ol class="arabic simple">
 <li>Sign up for an account on github.com</li>
 <li>Send me your login name.</li>
 </ol>
 <p>Once you are associated with the class github page, you should be able to
-see your first problem set, due on <a href="#id7"><span class="problematic" id="id8">|ps1-date|</span></a>.</p>
+see your first problem set, due on <a href="#id6"><span class="problematic" id="id7">|ps1-date|</span></a>.</p>
 <div class="section" id="starting-a-new-problem-set">
 <h3>Starting a new problem set<a class="headerlink" href="#starting-a-new-problem-set" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#starting-a-new-problem-set" title="Slides">§</a></h3>
 <ol class="arabic simple">
@@ -221,43 +219,6 @@ set.</p>
 <div class="section" id="guidelines">
 <h3>Guidelines<a class="headerlink" href="#guidelines" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#guidelines" title="Slides">§</a></h3>
 </div>
-</div>
-<div class="section" id="cluster-access">
-<h2>Cluster access<a class="headerlink" href="#cluster-access" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#cluster-access" title="Slides">§</a></h2>
-<p>We will set up accounts for the class on our departmental cluster. We will
-set up your accounts at the end of class and reset your passwords:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -X flag starts an X11 connection</span>
-<span class="nv">$ </span>ssh -X username@amc-tesla.ucdenver.pvt
-
-...
-
-<span class="c"># once you are logged in, text your X11 connection with</span>
-<span class="nv">$ </span>xeyes
-</pre></div>
-</div>
-</div>
-<div class="section" id="running-jobs-on-the-cluster">
-<h2>Running jobs on the cluster<a class="headerlink" href="#running-jobs-on-the-cluster" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#running-jobs-on-the-cluster" title="Slides">§</a></h2>
-<p>First you will grab a single CPU from the queueing system so that you can
-work without affecting the head node. We use <code class="docutils literal"><span class="pre">qlogin</span></code> for this:</p>
-<div class="highlight-bash"><div class="highlight"><pre>jhessel@amc-tesla ~
-$ qlogin
-
-Job &lt;492536&gt; is submitted to queue &lt;interactive&gt;.
-&lt;&lt;ssh X11 forwarding job&gt;&gt;
-&lt;&lt;Waiting for dispatch ...&gt;&gt;
-&lt;&lt;Starting on compute00&gt;&gt;
-
-jhessel@compute00 ~
-$
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The host in the prompt changed from <code class="docutils literal"><span class="pre">amc-tesla</span></code> to <code class="docutils literal"><span class="pre">compute00</span></code>.</p>
-</div>
-<p>You can now execute long-running processes without worry of affecting the
-cluster. Type <code class="docutils literal"><span class="pre">exit</span></code> to return back to your head node login.</p>
 </div>
 <div class="section" id="shell-and-python-programming">
 <h2>Shell and Python Programming<a class="headerlink" href="#shell-and-python-programming" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#shell-and-python-programming" title="Slides">§</a></h2>
@@ -293,14 +254,14 @@ would be considerably more clunky.</p>
 </div>
 <div class="section" id="first-quiz-reading">
 <h2>First Quiz : Reading<a class="headerlink" href="#first-quiz-reading" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-01.html#first-quiz-reading" title="Slides">§</a></h2>
-<p>Computational biology projects inevitably accrue a lot of files. For the
-first quiz, you&#8217;ll need to read a paper <a class="footnote-reference" href="#id6" id="id5">[3]</a> and be able to put a set of
-files in the correct places. We require that you use this scheme for
-all of your projects in and out of the class.</p>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<p>Computational biology projects inevitably accrue a lot of files.  This
+paper describes a scheme for organizing files that provides some
+suggestions on how to organize.  We suggest that you use this scheme (or a
+similar one) for all of your projects in and out of the class.</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>A Quick Guide to Organizing Computational Biology Projects (2009)
+<tr><td class="label">[3]</td><td>A Quick Guide to Organizing Computational Biology Projects (2009)
 PLoS Comput. Biol. William S. Noble
 <a class="reference external" href="http://dx.plos.org/10.1371/journal.pcbi.1000424">http://dx.plos.org/10.1371/journal.pcbi.1000424</a></td></tr>
 </tbody>
