@@ -1,7 +1,7 @@
 .. include:: /_static/substitutions.txt
 
 *****************************************************
-             Class 1 : Class Introduction
+             Class 1 : MOLB 7621 Introduction
 *****************************************************
 
 :Class date: |c1-date| 
@@ -10,8 +10,9 @@
 Goals
 =====
 #. Class overview
-#. Get the VM running
-#. Overall goals for the Classes
+#. Computers
+#. Software
+#. Grades (Attendance + Problem Sets + Final Project) 
 
 Class Overview
 ==============
@@ -20,122 +21,59 @@ through exercises that demonstrate how specific tools are useful in
 bioinformatics. During the remaining hour, we expect you to work through
 exercises, asking for help when you get stuck. 
 
-We will record the first 60 minutes using Panopto Screen Capture, and
-these recordings will be available in Canvas. We have found that simply
-watching someone work in a terminal (move around, open up text editors,
-write and execute simple programs) can be a very effective way to get
-started with programming. Hopefully these movies will serve the same
-purpose.
+We will record the classes using Panopto Screen Capture, and these
+recordings will be available in Canvas. We have found that simply watching
+someone work in a terminal (move around, open up text editors, write and
+execute simple programs) can be a very effective way to get started with
+programming. 
 
 Each week, we will have 1 take home quiz, due the following Tuesday at 5
 PM. 
 
-Linux installations
-===================
-The PCs in the library have Virtual Box installed with a minimal Linux
-installation. If you have your own PC laptop, you can install Virtual Box
-and any standard Linux distribution (Ubuntu or Mint). If you have a Mac
-laptop, you can do the same, or just use the native terminal.
+Computers
+=========
+You will need to bring a laptop to each class. 
 
-In any case, we will create logins on our compute cluster (amc-tesla) and
-all your work will be done through that.
+Mac laptops
+-----------
+1. Install Homebrew
 
-Terminal and text editors
-=========================
-When you open a Terminal, you also launch a shell process, typically a
-bash process. At the prompt, you can type things that bash understands,
-and it will do them. The shell has its own language, which you will learn
-over the course of the class. It also runs executable files that it can
-find on the PATH (i.e. the set of directories that contain exectuables).
+PC laptops
+----------
+1. Install VirtualBox.
+2. Install a Linux distribution as a virtual machine (e.g., Ubuntu).
 
-You can find what is on your PATH by typing:
+Software
+========
+1. RStudio
+2. 
 
-.. code-block:: bash
 
-   $ echo $PATH
+Problem Sets
+============
+We will distribute all problem sets through github. The class has a Github
+organization here: 
 
-The PATH is one of several environment variables that are created when you
-login. You can see all of these with:
+To gain access to the problem sets, You need to:
 
-.. code-block:: bash
+1. Sign up for an account on github.com
+2. Send me your login name.
 
-   $ env
+Once you are associated with the class github page, you should be able to
+see your first problem set, due on |ps1-date|.
 
-.. nextslide::
-    :increment:
+Starting a new problem set
+--------------------------
+1. Fork the problem set to your github account.
+2. Make changes to the problem set and commit them. Continue making
+changes and committing until you have a final product.
+3. To submit your homework, submit a pull request to the main repository.
 
-One important program in the PATH is `vim`. You will use this program to
-keep notes and write small programs. 
+Discussions can be filed as `Issues` on the Github page for each problem
+set.
 
-You can run ``vim`` from the terminal prompt:
-
-.. code-block:: bash
-
-    $ vim filename.txt
-
-You should notice that the prompt will disappear and you will be in a
-`vim` session.
-
-Now press the `i` key to enter `insert` mode, and start typing. Press
-`ESC` to exit `insert` mode.
-
-To quit a vim session, you need to:
-
-#. enter `command mode` with the colon key
-#. write the file
-#. quit the program
-
-This can be accomplished by typing::
-
-    :wq <enter>
-
-Practice using `vim` with this tutorial [#]_.
-
-.. [#] OpenVim http://www.openvim.com/ 
-
-Cluster access
-==============
-We have set up accounts for the class on our departmental cluster. We will
-set up your accounts at the end of class and reset your passwords:
-
-.. code-block:: bash
-
-    # the -X flag starts an X11 connection 
-    $ ssh -X username@amc-tesla.ucdenver.pvt
-
-    ...
-
-    # once you are logged in, text your X11 connection with
-    $ xeyes
-
-Running jobs on the cluster
-===========================
-First you will grab a single CPU from the queueing system so that you can
-work without affecting the head node. We use ``qlogin`` for this:
-
-.. code-block:: bash
-
-    jhessel@amc-tesla ~
-    $ qlogin 
-
-    Job <492536> is submitted to queue <interactive>.
-    <<ssh X11 forwarding job>>
-    <<Waiting for dispatch ...>>
-    <<Starting on compute00>>
-
-    jhessel@compute00 ~
-    $ 
-
-.. note:: 
-
-    The host in the prompt changed from ``amc-tesla`` to ``compute00``.
-    
-You can now execute long-running processes without worry of affecting the
-cluster. Type ``exit`` to return back to your head node login.
-
-.. nextslide::
-    :increment: 
-
+Guidelines
+----------
 
 Shell and Python Programming
 ============================
@@ -167,10 +105,10 @@ would be considerably more clunky.
 
 First Quiz : Reading
 ====================
-Computational biology projects inevitably accrue a lot of files. For the
-first quiz, you'll need to read a paper [#]_ and be able to put a set of
-files in the correct places. We require that you use this scheme for
-all of your projects in and out of the class.
+Computational biology projects inevitably accrue a lot of files.  This
+paper describes a scheme for organizing files that provides some
+suggestions on how to organize.  We suggest that you use this scheme (or a
+similar one) for all of your projects in and out of the class.
 
 .. [#] A Quick Guide to Organizing Computational Biology Projects (2009)
         PLoS Comput. Biol. William S. Noble
