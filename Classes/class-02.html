@@ -114,7 +114,7 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Class 2 : The command-line</a><ul>
-<li><a class="reference internal" href="#things-to-fix-from-last-class">Things to fix from last class</a></li>
+<li><a class="reference internal" href="#updates-from-last-class">Updates from last class</a></li>
 <li><a class="reference internal" href="#goals">Goals</a></li>
 <li><a class="reference internal" href="#unix-philosophy">Unix Philosophy</a></li>
 <li><a class="reference internal" href="#navigating-in-the-terminal">Navigating In the Terminal</a></li>
@@ -154,18 +154,14 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Feb 2 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">January 28, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 01, 2016</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="things-to-fix-from-last-class">
-<h2>Things to fix from last class<a class="headerlink" href="#things-to-fix-from-last-class" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#things-to-fix-from-last-class" title="Slides">§</a></h2>
-<p>Do this on tesla:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ cp ~jhessel/.vimrc ~
-</pre></div>
-</div>
-<p>This will give line numbers (and a bunch of other stuff) when you run
-<code class="docutils literal"><span class="pre">vim</span></code>.</p>
+<div class="section" id="updates-from-last-class">
+<h2>Updates from last class<a class="headerlink" href="#updates-from-last-class" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#updates-from-last-class" title="Slides">§</a></h2>
+<p>#. Clone the <code class="docutils literal"><span class="pre">rc-files</span></code> and <code class="docutils literal"><span class="pre">data-sets</span></code> repositories from the github
+site. Move the dot files into your home directory.</p>
 </div>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#goals" title="Slides">§</a></h2>
@@ -275,7 +271,7 @@ and find some info.</p>
 <div class="section" id="other-commands-in-the-terminal">
 <h2>Other Commands In The Terminal<a class="headerlink" href="#other-commands-in-the-terminal" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-02.html#other-commands-in-the-terminal" title="Slides">§</a></h2>
 <p>Use the <code class="docutils literal"><span class="pre">man</span></code> command to determine what <code class="docutils literal"><span class="pre">head</span></code> does.</p>
-<p>Use <code class="docutils literal"><span class="pre">head</span></code> on the file /vol1/opt/data/lamina.bed</p>
+<p>Use <code class="docutils literal"><span class="pre">head</span></code> on the file <cite>lamina.bed</cite> file</p>
 <p>Use <code class="docutils literal"><span class="pre">tail</span></code> to see the end of the file.</p>
 </div>
 <div class="section" id="questions">
@@ -473,7 +469,7 @@ machine.</p>
 <p>A script is simply a series of commands that you save in a file. You will
 need to write scripts to complete the homework.</p>
 <p>Put this text:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls /vol1/opt/
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls <span class="nv">$HOME</span>
 </pre></div>
 </div>
 <p>Into the file <em>`run.sh`</em> by opening <code class="docutils literal"><span class="pre">vim</span></code> pasting that text then saving
@@ -482,7 +478,7 @@ the file.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bash run.sh
 </pre></div>
 </div>
-<p>And you should see the same output as if you ran <code class="docutils literal"><span class="pre">ls</span> <span class="pre">/vol1/opt</span></code> directly.</p>
+<p>And you should see the same output as if you ran <code class="docutils literal"><span class="pre">ls</span> <span class="pre">$HOME</span></code> directly.</p>
 <p>Scripts will be more useful when you have a series of commands you want to
 run in series.</p>
 <p>For example, a pipeline where you:</p>

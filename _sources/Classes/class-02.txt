@@ -8,15 +8,11 @@ Class 2 : The command-line
 :Class date: |c2-date| 
 :Last updated: |today|
 
-Things to fix from last class
-=============================
+Updates from last class
+=======================
 
-Do this on tesla::
-
-    $ cp ~jhessel/.vimrc ~
-
-This will give line numbers (and a bunch of other stuff) when you run
-``vim``.
+#. Clone the ``rc-files`` and ``data-sets`` repositories from the github
+site. Move the dot files into your home directory. 
 
 Goals
 =====
@@ -25,7 +21,6 @@ Goals
 #. understand the linux philosophy (small tools that do one thing well)
 #. understand how to apply some common linux utilities to files
 #. ``vim`` to edit files
-
 
 Unix Philosophy
 ===============
@@ -149,7 +144,7 @@ Other Commands In The Terminal
 ==============================
 Use the ``man`` command to determine what ``head`` does.
 
-Use ``head`` on the file /vol1/opt/data/lamina.bed
+Use ``head`` on the file `lamina.bed` file
 
 Use ``tail`` to see the end of the file.
 
@@ -407,7 +402,7 @@ Put this text:
 
 .. code-block:: bash
 
-    $ ls /vol1/opt/
+    $ ls $HOME
 
 Into the file *`run.sh`* by opening ``vim`` pasting that text then saving
 the file.
@@ -418,7 +413,7 @@ You can then run it as:
 
     $ bash run.sh
 
-And you should see the same output as if you ran ``ls /vol1/opt`` directly.
+And you should see the same output as if you ran ``ls $HOME`` directly.
 
 .. nextslide::
     :increment:
