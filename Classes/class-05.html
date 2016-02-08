@@ -115,11 +115,6 @@
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Class 5 : BEDTools</a><ul>
 <li><a class="reference internal" href="#goals">Goals</a></li>
-<li><a class="reference internal" href="#cluster-etiquette">Cluster etiquette</a></li>
-<li><a class="reference internal" href="#example-commands-on-the-cluster">Example commands on the cluster</a></li>
-<li><a class="reference internal" href="#the-queueing-system">The queueing system</a></li>
-<li><a class="reference internal" href="#killing-jobs">Killing jobs</a></li>
-<li><a class="reference internal" href="#other-cluster-specific-commands">Other cluster-specific commands</a></li>
 <li><a class="reference internal" href="#bedtools">BEDTools</a><ul>
 <li><a class="reference internal" href="#id1">Goals</a></li>
 <li><a class="reference internal" href="#bedtools-overview">BEDTools Overview</a></li>
@@ -159,109 +154,16 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Feb 11 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 01, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#goals" title="Slides">§</a></h2>
 <ol class="arabic simple">
-<li>Learn to run scripts on the cluster via the queuing system</li>
 <li>Learn about genomic data types and where to get data</li>
 <li>Start to use <code class="docutils literal"><span class="pre">bedtools</span></code> to analyze genomic data</li>
 </ol>
-</div>
-<div class="section" id="cluster-etiquette">
-<h2>Cluster etiquette<a class="headerlink" href="#cluster-etiquette" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#cluster-etiquette" title="Slides">§</a></h2>
-<p>There are some specific rules you need to know when you&#8217;re operating in a
-cluster environment.</p>
-<p class="graphviz">
-<img src="../_images/graphviz-23b92947c32d4cd35df4fce8fa40a0148601675d.png" alt="digraph cluster {
-    &quot;YOU&quot; [shape=box];
-    &quot;amc-tesla&quot; [shape=box];
-    &quot;filesystem&quot; [shape=box];
-    &quot;compute nodes&quot; [shape=box];
-    &quot;YOU&quot; -&gt; &quot;amc-tesla&quot;;
-    &quot;amc-tesla&quot; -&gt; &quot;filesystem&quot;;
-    &quot;amc-tesla&quot; -&gt; &quot;compute nodes&quot;;
-}" />
-</p>
-<div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last"><strong>DO NOT</strong> run jobs on the head node (amc-tesla). The head node is the
-brains of the cluster and it can easily be overextended. Use <code class="docutils literal"><span class="pre">qlogin</span></code>
-instead.</p>
-</div>
-</div>
-<div class="section" id="example-commands-on-the-cluster">
-<h2>Example commands on the cluster<a class="headerlink" href="#example-commands-on-the-cluster" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#example-commands-on-the-cluster" title="Slides">§</a></h2>
-<p>Find the size of the file system:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>df -h
-</pre></div>
-</div>
-<p>Find how much space you have allocated:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>quota -h
-</pre></div>
-</div>
-</div>
-<div class="section" id="the-queueing-system">
-<h2>The queueing system<a class="headerlink" href="#the-queueing-system" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#the-queueing-system" title="Slides">§</a></h2>
-<p>The cluster uses a queueing system that will run jobs that you submit to
-it. You can write a small test script to see how the system works. First,
-write this into a run.sh file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
-
-<span class="c">#BSUB -J sleeper</span>
-<span class="c">#BSUB -e %J.err</span>
-<span class="c">#BSUB -o %J.out</span>
-
-sleep 20
-</pre></div>
-</div>
-<p>The <code class="docutils literal"><span class="pre">#BSUB</span></code> lines are comments, but are read by the <code class="docutils literal"><span class="pre">bsub</span></code> program to
-identify features associated with your job.</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">-J</span></code> sets the job&#8217;s name</li>
-<li><code class="docutils literal"><span class="pre">%J</span></code> is a unique job ID that is set when you run the job.</li>
-<li><code class="docutils literal"><span class="pre">-e</span></code> and <code class="docutils literal"><span class="pre">-o</span></code> set the filenames for stderr and stdout from the job</li>
-</ul>
-<p>Now you can submit the script to the queuing system. As soon as you submit
-it, you can check on its progress:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bsub &lt; run.sh
-<span class="nv">$ </span>bjobs
-</pre></div>
-</div>
-<p>After the job finishes, you should see two new files that end
-<cite>.out</cite> and <cite>.err</cite>; these stdout and stderr from the running job.
-Look at the contents of those files so you know what is in
-each one.</p>
-</div>
-<div class="section" id="killing-jobs">
-<h2>Killing jobs<a class="headerlink" href="#killing-jobs" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#killing-jobs" title="Slides">§</a></h2>
-<p>Sometimes you need to kill your jobs. You can kill specific jobs using
-their job ID numbers, obtained from checking <code class="docutils literal"><span class="pre">bjobs</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bkill &lt;jobid&gt;
-</pre></div>
-</div>
-<p>You can also kill <strong>all</strong> of your jobs at once:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bkill 0
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><code class="docutils literal"><span class="pre">bkill</span> <span class="pre">0</span></code> is dangerous – it will wipe out all of your jobs. If
-you have long-running jobs that you forgot about, you will kill them
-too if you are not careful!</p>
-</div>
-</div>
-<div class="section" id="other-cluster-specific-commands">
-<h2>Other cluster-specific commands<a class="headerlink" href="#other-cluster-specific-commands" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#other-cluster-specific-commands" title="Slides">§</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bhosts     <span class="c"># hosts in the cluster</span>
-<span class="nv">$ </span>man bhosts <span class="c"># bsub man page</span>
-<span class="nv">$ </span>bqueues    <span class="c"># available queues</span>
-<span class="nv">$ </span>lsload     <span class="c"># check load values for all hosts</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="bedtools">
 <h2>BEDTools<a class="headerlink" href="#bedtools" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-05.html#bedtools" title="Slides">§</a></h2>
