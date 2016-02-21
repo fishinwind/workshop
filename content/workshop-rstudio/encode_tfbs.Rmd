@@ -10,6 +10,8 @@ library(dplyr)
 library(readr)
 library(tidyr)
 library(stringr)
+library(ggplot2)
+library(broom)
 
 url <- 'http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredWithCellsV3.bed.gz'
 
