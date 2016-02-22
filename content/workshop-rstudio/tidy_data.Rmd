@@ -153,5 +153,10 @@ df %>% tidyr::complete(group, c(item_id, item_name))
   
   - Practice tidying other R builtin data sets. Use `library(help = "datasets")` to see all of the builtin datasets. Try the `ability.cov` dataset, and try combining the `beaver1` and `beaver2` data sets.
 
+## Tidying resources
+
+- Paper on [Tidy Data][http://vita.had.co.nz/papers/tidy-data.pdf]
+- Blog on ["non-Tidy Data"][http://simplystatistics.org/2016/02/17/non-tidy-data/]
+- [Tidyr][]
 
 
