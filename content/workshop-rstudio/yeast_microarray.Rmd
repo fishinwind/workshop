@@ -1,0 +1,101 @@
+---
+title: "yeast microarray"
+author: "Jay Hesselberth"
+date: "February 25, 2016"
+output: html_document
+---
+
+```{r init}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+url <- "http://varianceexplained.org/files/Brauer2008_DataSet1.tds"
+
+nutrient_names <- c(G = "Glucose", L = "Leucine", P = "Phosphate",
+               S = "Sulfate", N = "Ammonia", U = "Uracil")
+
+cleaned_data <- read_delim(url, delim = "\t") %>%
+  separate(NAME, c("name", "BP", "MF", "systematic_name", "number"), sep = "\\|\\|") %>%
+  mutate_each(funs(trimws), name:systematic_name) %>%
+  select(-number, -GID, -YORF, -GWEIGHT) %>%
+  gather(sample, expression, G0.05:U0.3) %>%
+  separate(sample, c("nutrient", "rate"), sep = 1, convert = TRUE) %>%
+  mutate(nutrient = plyr::revalue(nutrient, nutrient_names)) %>%
+  filter(!is.na(expression), systematic_name != "")
+```
+
+```{r plot_1}
+cleaned_data %>%
+  filter(BP == "leucine biosynthesis") %>%
+  ggplot(aes(rate, expression, color = nutrient)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~name + systematic_name)
+```
+
+```{r plot_2}
+plot_expression_data <- function(expression_data) {
+  ggplot(expression_data, aes(rate, expression, color = nutrient)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    facet_wrap(~name + systematic_name, scales = "free_y")
+}
+
+cleaned_data %>%
+  filter(BP == "leucine biosynthesis") %>%
+  plot_expression_data()
+
+cleaned_data %>%
+  filter(BP == "cell wall organization and biogenesis") %>%
+  plot_expression_data()
+```
+
+```{r plot_3}
+LEU1_leucine <- cleaned_data %>%
+  filter(name == "LEU1", nutrient == "Leucine")
+
+ggplot(LEU1_leucine, aes(rate, expression)) +
+  geom_point()
+```
+
+```{r plot_4}
+mod <- lm(expression ~ rate, LEU1_leucine)
+summary(mod)
+```
+
+```{r plot_5}
+library(broom)
+tidy(mod)
+```
+
+```{r lms}
+linear_models <- cleaned_data %>%
+  group_by(name, systematic_name, nutrient) %>%
+  do(tidy(lm(expression ~ rate, .)))
+
+linear_models
+```
+
+```{r intercepts}
+intercept_terms <- linear_models %>%
+  ungroup() %>%
+  filter(term == "(Intercept)")
+
+intercept_terms
+```
+
+```{r center_intercepts}
+centered_intercepts <- intercept_terms %>%
+  group_by(systematic_name) %>%
+  mutate(centered_intercept = estimate - mean(estimate)) %>%
+  ungroup()
+
+top_intercept <- centered_intercepts %>%
+  top_n(20, centered_intercept)
+
+cleaned_data %>%
+  semi_join(top_intercept, by = "systematic_name") %>%
+  plot_expression_data()
+```

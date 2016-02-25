@@ -7,8 +7,6 @@ output:
     keep_md: true
 ---
 
-XXX: describe general setup
-
 We will examine a [time-course of mRNA expression][1] of barley powdery mildew fungus in immunocompromised plants (*Arabidopsis*). The fungus Blumeria graminis f. sp. hordei (called *Bgh* from now on)
 
 Counts were generated using the [`maSigPro` software][3] and deposited in [NCBI GEO][2].

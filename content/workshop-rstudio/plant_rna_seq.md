@@ -140,9 +140,7 @@ cleaned_data <- bind_rows(cleaned_data_bgh, cleaned_data_at) %>%
 
 ```
 ## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
-```
 
-```
 ## Warning in bind_rows_(x, .id): Unequal factor levels: coercing to character
 ```
 
@@ -184,7 +182,7 @@ cleaned_data %>%
     ggtitle(select.gene)
 ```
 
-![](plant_rna_seq_files/figure-html/exp_example-1.png) 
+![](plant_rna_seq_files/figure-html/exp_example-1.png)
 
 We can see that the linear fits between replicates don't really match up. We'll see if we can learn some more with simple statistics.
 
@@ -218,7 +216,7 @@ ggplot(gene_stats, aes(x=hpi, y=count.mean)) +
   ggtitle(select.gene)
 ```
 
-![](plant_rna_seq_files/figure-html/plot_stats-1.png) 
+![](plant_rna_seq_files/figure-html/plot_stats-1.png)
 
 
 Now we do some modeling of gene expression. Because we have replicates, we can take advantage of the extended capabilities of the `lme4` package.

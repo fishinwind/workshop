@@ -155,8 +155,7 @@ df %>% tidyr::complete(group, c(item_id, item_name))
 
 ## Tidying resources
 
-- Paper on [Tidy Data][http://vita.had.co.nz/papers/tidy-data.pdf]
-- Blog on ["non-Tidy Data"][http://simplystatistics.org/2016/02/17/non-tidy-data/]
-- [Tidyr][]
+- Paper on [Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf)
+- Blog on ["non-Tidy Data"](http://simplystatistics.org/2016/02/17/non-tidy-data/)
 
 
