@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Class 11 : R : Simple statistics and ggplot2 &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 11 : R : Simple statistics and ggplot2 &#8212; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,8 +28,10 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 15 : Python : Basics" href="class-15.html" />
@@ -145,9 +147,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Mar 8 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Feb 28 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -162,7 +164,7 @@
 <h2>Statistics in R<a class="headerlink" href="#statistics-in-r" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#statistics-in-r" title="Slides">§</a></h2>
 <p>R provides a number of builtin statistics. Let&#8217;s go over some using
 expr-geno-covs.txt. First, load the dataframe.</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> df <span class="o">&lt;-</span> read.table<span class="p">(</span>file <span class="o">=</span> <span class="s">&quot;expr-geno-covs.txt&quot;</span><span class="p">,</span> sep <span class="o">=</span> <span class="s">&quot;\t&quot;</span><span class="p">,</span> header <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> df <span class="o">&lt;-</span> read.table<span class="p">(</span>file <span class="o">=</span> <span class="s">&quot;expr-geno-covs.txt&quot;</span><span class="p">,</span> sep <span class="o">=</span> <span class="s">&quot;\t&quot;</span><span class="p">,</span> header <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="definitions-of-statistical-terms">
@@ -177,7 +179,7 @@ expr-geno-covs.txt. First, load the dataframe.</p>
 <h3>Student t-test<a class="headerlink" href="#student-t-test" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#student-t-test" title="Slides">§</a></h3>
 <p>Student t-test is used to determine if two sets of values are significantly different.
 - Assumptions are data has a normal distribution and is continuous.</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> exp_male <span class="o">&lt;-</span> df<span class="o">$</span><span class="kp">expression</span><span class="p">[</span>df<span class="o">$</span>gender <span class="o">==</span> <span class="s">&quot;Male&quot;</span><span class="p">]</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> exp_male <span class="o">&lt;-</span> df<span class="o">$</span><span class="kp">expression</span><span class="p">[</span>df<span class="o">$</span>gender <span class="o">==</span> <span class="s">&quot;Male&quot;</span><span class="p">]</span>
 <span class="o">&gt;</span> exp_female <span class="o">&lt;-</span> df<span class="o">$</span><span class="kp">expression</span><span class="p">[</span>df<span class="o">$</span>gender <span class="o">==</span> <span class="s">&quot;Female&quot;</span><span class="p">]</span>
 <span class="o">&gt;</span> ttest <span class="o">&lt;-</span> t.test<span class="p">(</span>exp_male<span class="p">,</span> exp_female<span class="p">)</span>
 <span class="o">&gt;</span> pVal <span class="o">&lt;-</span> ttest<span class="o">$</span>p.value
@@ -190,7 +192,7 @@ expr-geno-covs.txt. First, load the dataframe.</p>
 - Determine if variable &#8220;a&#8221; occurs at a higher frequency compared to variable &#8220;b&#8221;.
 - Fisher&#8217;s Exact Test is used to determine the statistical significance.</p>
 <p>From our data, let&#8217;s see if there is difference in frequency of former smokers between males and females.</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="c1"># generate contingency table</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># generate contingency table</span>
 <span class="o">&gt;</span> mf <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span><span class="kp">which</span><span class="p">((</span>df<span class="o">$</span>gender <span class="o">==</span> <span class="s">&quot;Male&quot;</span> <span class="o">&amp;</span> df<span class="o">$</span>smoking <span class="o">==</span> <span class="s">&quot;former&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span><span class="p">))</span>
 <span class="o">&gt;</span> mNf <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span><span class="kp">which</span><span class="p">((</span>df<span class="o">$</span>gender <span class="o">==</span> <span class="s">&quot;Male&quot;</span> <span class="o">&amp;</span> df<span class="o">$</span>smoking <span class="o">!=</span> <span class="s">&quot;former&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span><span class="p">))</span>
 <span class="o">&gt;</span> cf <span class="o">&lt;-</span> <span class="kp">length</span><span class="p">(</span><span class="kp">which</span><span class="p">((</span>df<span class="o">$</span>gender <span class="o">==</span> <span class="s">&quot;Female&quot;</span> <span class="o">&amp;</span> df<span class="o">$</span>smoking <span class="o">==</span> <span class="s">&quot;former&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">TRUE</span><span class="p">))</span>
@@ -212,7 +214,7 @@ other data.</p>
 <li>Use <code class="docutils literal"><span class="pre">immer</span></code>; describes the yield of barley of 30 different locations
 in two different years.</li>
 </ul>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> wilcTest <span class="o">&lt;-</span> wilcoxon.test<span class="p">(</span>immer<span class="o">$</span>Y1<span class="p">,</span>immer<span class="o">$</span>Y2<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> wilcTest <span class="o">&lt;-</span> wilcoxon.test<span class="p">(</span>immer<span class="o">$</span>Y1<span class="p">,</span>immer<span class="o">$</span>Y2<span class="p">)</span>
 <span class="o">&gt;</span> wilcTest<span class="o">$</span>p.value
 </pre></div>
 </div>
@@ -224,7 +226,7 @@ in two different years.</li>
 <li>Data does not have to have a normal distribution.</li>
 <li>Data can be used continuous or discrete (count data).</li>
 </ul>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> ksTest <span class="o">&lt;-</span> ks.test<span class="p">(</span>exp_male<span class="p">,</span> exp_female
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> ksTest <span class="o">&lt;-</span> ks.test<span class="p">(</span>exp_male<span class="p">,</span> exp_female
 <span class="o">&gt;</span> ksTest<span class="o">$</span>p.value
 </pre></div>
 </div>
@@ -232,7 +234,7 @@ in two different years.</li>
 <div class="section" id="plot-the-distribution">
 <h3>Plot the distribution!<a class="headerlink" href="#plot-the-distribution" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#plot-the-distribution" title="Slides">§</a></h3>
 <p>Does the distribution make sense with our results??</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">expression</span><span class="p">,</span> fill <span class="o">=</span> gender<span class="p">))</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="kp">expression</span><span class="p">,</span> fill <span class="o">=</span> gender<span class="p">))</span>
 <span class="o">&gt;</span> gp <span class="o">+</span> geom_bar<span class="p">()</span>
 </pre></div>
 </div>
@@ -248,7 +250,7 @@ differences between in <cite>expr-geno-covs.txt</cite> using conditions instead 
 <div class="section" id="ggplot-manipulations">
 <h2>ggplot manipulations<a class="headerlink" href="#ggplot-manipulations" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#ggplot-manipulations" title="Slides">§</a></h2>
 <p>Once you make a plot that you like, you can save it with:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="c1"># ggsave uses the last plot by default and learns format from the file</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># ggsave uses the last plot by default and learns format from the file</span>
 <span class="c1"># suffix</span>
 <span class="o">&gt;</span> ggsave<span class="p">(</span><span class="s">&#39;myplot.pdf&#39;</span><span class="p">)</span>
 </pre></div>
@@ -256,13 +258,13 @@ differences between in <cite>expr-geno-covs.txt</cite> using conditions instead 
 <p>Often you will have observations of two variables that are both
 continuous data. How can you examine the relationships between these?</p>
 <p>Use <code class="docutils literal"><span class="pre">geom_boxplot()</span></code> with the <code class="docutils literal"><span class="pre">group</span></code> aesthetic:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> age<span class="p">,</span> y <span class="o">=</span> <span class="kp">expression</span><span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> age<span class="p">,</span> y <span class="o">=</span> <span class="kp">expression</span><span class="p">)</span>
 <span class="o">&gt;</span> gp <span class="o">+</span> geom_boxplot<span class="p">()</span>
 </pre></div>
 </div>
 <p>Or you can plot the data and fit a curve or linear model to examine the
 overall relationship:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="c1"># plot a smoothed, possibly curvy, line</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># plot a smoothed, possibly curvy, line</span>
 <span class="o">&gt;</span> gp <span class="o">+</span> geom_point<span class="p">()</span> <span class="o">+</span> geom_smooth<span class="p">()</span>
 
 
@@ -274,7 +276,7 @@ overall relationship:</p>
 <div class="section" id="r-model-syntax">
 <h2>R Model Syntax<a class="headerlink" href="#r-model-syntax" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-11.html#r-model-syntax" title="Slides">§</a></h2>
 <p>You can also fit and examine a linear model:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> model <span class="o">&lt;-</span> lm<span class="p">(</span>expression <span class="o">~</span> genotype <span class="o">+</span> condition <span class="o">+</span> gender<span class="p">,</span> data <span class="o">=</span> df<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> model <span class="o">&lt;-</span> lm<span class="p">(</span>expression <span class="o">~</span> genotype <span class="o">+</span> condition <span class="o">+</span> gender<span class="p">,</span> data <span class="o">=</span> df<span class="p">)</span>
 <span class="o">&gt;</span> <span class="kp">summary</span><span class="p">(</span>model<span class="p">)</span>
 
 <span class="c1"># look at diagnostic plots</span>
@@ -297,7 +299,7 @@ overall relationship:</p>
 <li>Filter out values.</li>
 <li>After normalizing, replace again with 0.</li>
 </ul>
-<div class="highlight-r"><div class="highlight"><pre><span class="c1"># example if we filter out DNE values</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># example if we filter out DNE values</span>
 <span class="o">&gt;</span> df2 <span class="o">&lt;-</span> df
 <span class="o">&gt;</span> df2<span class="o">$</span>expression <span class="o">&lt;-</span> <span class="kp">log2</span><span class="p">(</span>df2<span class="o">$</span><span class="kp">expression</span><span class="p">)</span>
 <span class="o">&gt;</span> filterOut <span class="o">&lt;-</span> <span class="kp">which</span><span class="p">(</span><span class="kp">is.infinite</span><span class="p">(</span>df2<span class="o">$</span><span class="kp">expression</span><span class="p">))</span>

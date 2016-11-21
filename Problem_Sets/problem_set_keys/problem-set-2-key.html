@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Problem Set 2 : KEY &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Problem Set 2 : KEY &#8212; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,8 +28,10 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" /> 
 
 <!-- Google Analytics tracking code -->
@@ -228,18 +230,18 @@ file:</p>
 105
 106
 107
-108</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /usr/bin/env bash</span>
-<span class="c">#</span>
-<span class="c"># run script for quiz 2 key</span>
+108</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env bash</span>
+<span class="c1">#</span>
+<span class="c1"># run script for quiz 2 key</span>
 
-<span class="c"># these are bash flags the print out variables that get set when you</span>
-<span class="c"># run the script.</span>
-<span class="c"># set -o nounset -o pipefail -o errexit -x</span>
+<span class="c1"># these are bash flags the print out variables that get set when you</span>
+<span class="c1"># run the script.</span>
+<span class="c1"># set -o nounset -o pipefail -o errexit -x</span>
 
-<span class="c"># XXX: note: this will be person-dependent</span>
+<span class="c1"># XXX: note: this will be person-dependent</span>
 <span class="nv">project</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/devel/bio-workshop/workshop-problem-sets/problem-set-2&quot;</span>
 
-<span class="c"># fill in the date here</span>
+<span class="c1"># fill in the date here</span>
 <span class="nv">date</span><span class="o">=</span><span class="s2">&quot;2014-02-12&quot;</span>
 <span class="nv">data</span><span class="o">=</span><span class="nv">$project</span>/data/<span class="nv">$date</span>
 <span class="nv">datafile</span><span class="o">=</span><span class="nv">$data</span>/lamina.bed
@@ -247,26 +249,26 @@ file:</p>
 <span class="nv">results</span><span class="o">=</span><span class="nv">$project</span>/results/<span class="nv">$date</span>
 <span class="nv">resultsfile</span><span class="o">=</span><span class="nv">$results</span>/result.tab
 
-<span class="c"># if the results directory doesn&#39;t exist, make it</span>
+<span class="c1"># if the results directory doesn&#39;t exist, make it</span>
 <span class="k">if</span> <span class="o">[[</span> ! -d <span class="nv">$results</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
     mkdir -p <span class="nv">$results</span>
 <span class="k">fi</span>
 
-<span class="c"># Problem 1.1</span>
-<span class="c"># What is the region with the largest start position (2nd column) on any</span>
-<span class="c"># chromosome in lamina.bed? </span>
+<span class="c1"># Problem 1.1</span>
+<span class="c1"># What is the region with the largest start position (2nd column) on any</span>
+<span class="c1"># chromosome in lamina.bed? </span>
 
 <span class="nb">echo</span> <span class="s2">&quot;Answer 1.1&quot;</span> &gt; results.tab
 
 sort -k2,2nr <span class="nv">$datafile</span> <span class="se">\</span>
     <span class="p">|</span> head -n <span class="m">1</span> &gt;&gt; results.tab
 
-<span class="c"># blank line</span>
+<span class="c1"># blank line</span>
 <span class="nb">echo</span> &gt;&gt; results.tab
 
-<span class="c"># Problem 1.2</span>
-<span class="c"># What is the region with the largest end position on chrY in lamina.bed?</span>
-<span class="c"># Report this region in the format: chr12:1234-5678</span>
+<span class="c1"># Problem 1.2</span>
+<span class="c1"># What is the region with the largest end position on chrY in lamina.bed?</span>
+<span class="c1"># Report this region in the format: chr12:1234-5678</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;Answer 1.2&quot;</span> &gt;&gt; results.tab
 
@@ -278,8 +280,8 @@ awk <span class="s1">&#39;$1 == &quot;chrY&quot;&#39;</span> <span class="nv">$d
 
 <span class="nb">echo</span> &gt;&gt; results.tab
 
-<span class="c"># Problem 2.1</span>
-<span class="c"># What is the longest region (end - start) in lamina.bed?</span>
+<span class="c1"># Problem 2.1</span>
+<span class="c1"># What is the longest region (end - start) in lamina.bed?</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;Answer 2.1&quot;</span> &gt;&gt; results.tab
 
@@ -290,13 +292,13 @@ awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1, $2, $3, $4, $3-$
 
 <span class="nb">echo</span> &gt;&gt; results.tab
 
-<span class="c"># Problem 2.2</span>
-<span class="c"># What is the longest region (end - start) in lamina.bed with a value (4th</span>
-<span class="c"># column) greater than 0.9 on chr13. Report the header (1st line) in</span>
-<span class="c"># lamina.bed as well as the region</span>
+<span class="c1"># Problem 2.2</span>
+<span class="c1"># What is the longest region (end - start) in lamina.bed with a value (4th</span>
+<span class="c1"># column) greater than 0.9 on chr13. Report the header (1st line) in</span>
+<span class="c1"># lamina.bed as well as the region</span>
 <span class="nb">echo</span> <span class="s2">&quot;Answer 2.2&quot;</span> &gt;&gt; results.tab
 
-<span class="c"># print header line</span>
+<span class="c1"># print header line</span>
 head -n <span class="m">1</span> <span class="nv">$datafile</span> &gt;&gt; results.tab
 
 awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1, $2, $3, $4, $3-$2}&#39;</span> <span class="nv">$datafile</span> <span class="se">\</span>
@@ -307,11 +309,11 @@ awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1, $2, $3, $4, $3-$
 
 <span class="nb">echo</span> &gt;&gt; results.tab
 
-<span class="c"># Problem 3.1</span>
-<span class="c"># What are the regions that overlap this interval in lamina.bed:</span>
-<span class="c"># chr12:5,000,000-6,000,000? Report regions so that they are ordered by</span>
-<span class="c"># descending value (4th column), and the columns are separated by commas</span>
-<span class="c"># rather than tabs</span>
+<span class="c1"># Problem 3.1</span>
+<span class="c1"># What are the regions that overlap this interval in lamina.bed:</span>
+<span class="c1"># chr12:5,000,000-6,000,000? Report regions so that they are ordered by</span>
+<span class="c1"># descending value (4th column), and the columns are separated by commas</span>
+<span class="c1"># rather than tabs</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;Answer 3.1&quot;</span> &gt;&gt; results.tab
 
@@ -322,15 +324,15 @@ awk <span class="s1">&#39;$1 == &quot;chr12&quot; &amp;&amp; $2 &gt;= 5e6 &amp;&
 
 <span class="nb">echo</span> &gt;&gt; results.tab
 
-<span class="c"># Problem 3.2</span>
-<span class="c"># What is the average value (4th column) of those regions from lamina.bed</span>
-<span class="c"># that overlap the region (5 points): chr12:5,000,000-6,000,000?</span>
+<span class="c1"># Problem 3.2</span>
+<span class="c1"># What is the average value (4th column) of those regions from lamina.bed</span>
+<span class="c1"># that overlap the region (5 points): chr12:5,000,000-6,000,000?</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;Answer 3.2&quot;</span> &gt;&gt; results.tab
 
-<span class="c"># sum: total of all counts in lines</span>
-<span class="c"># NR: number of rows that have data</span>
-<span class="c"># i.e. sum / NR = average</span>
+<span class="c1"># sum: total of all counts in lines</span>
+<span class="c1"># NR: number of rows that have data</span>
+<span class="c1"># i.e. sum / NR = average</span>
 awk <span class="s1">&#39;$1 == &quot;chr12&quot; &amp;&amp; $2 &gt;= 5e6 &amp;&amp; $3 &lt;= 6e6&#39;</span> <span class="nv">$datafile</span> <span class="se">\</span>
     <span class="p">|</span> awk <span class="s1">&#39;{sum += $4} END {print sum / NR}&#39;</span> <span class="se">\</span>
     &gt;&gt; results.tab
@@ -339,7 +341,7 @@ awk <span class="s1">&#39;$1 == &quot;chr12&quot; &amp;&amp; $2 &gt;= 5e6 &amp;&
 </pre></div>
 </td></tr></table></div>
 <p>The output of this script looks like this:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -357,24 +359,24 @@ awk <span class="s1">&#39;$1 == &quot;chr12&quot; &amp;&amp; $2 &gt;= 5e6 &amp;&
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight"><pre>Answer 1.1
-chr1	245647839	247066405	0.948487326246934
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Answer</span> <span class="mf">1.1</span>
+<span class="n">chr1</span>	<span class="mi">245647839</span>	<span class="mi">247066405</span>	<span class="mf">0.948487326246934</span>
 
-Answer 1.2
-chrY:15475619-19472504
+<span class="n">Answer</span> <span class="mf">1.2</span>
+<span class="n">chrY</span><span class="p">:</span><span class="mi">15475619</span><span class="o">-</span><span class="mi">19472504</span>
 
-Answer 2.1
-chr9	38415459	70832281	0.888429752066116	32416822
+<span class="n">Answer</span> <span class="mf">2.1</span>
+<span class="n">chr9</span>	<span class="mi">38415459</span>	<span class="mi">70832281</span>	<span class="mf">0.888429752066116</span>	<span class="mi">32416822</span>
 
-Answer 2.2
-#chrom	start	end	value
-chr13	66889029	72179378	0.91458944281525	5290349
+<span class="n">Answer</span> <span class="mf">2.2</span>
+<span class="c1">#chrom	start	end	value</span>
+<span class="n">chr13</span>	<span class="mi">66889029</span>	<span class="mi">72179378</span>	<span class="mf">0.91458944281525</span>	<span class="mi">5290349</span>
 
-Answer 3.1
-chr12,5294045,5393088,0.923076923076923
+<span class="n">Answer</span> <span class="mf">3.1</span>
+<span class="n">chr12</span><span class="p">,</span><span class="mi">5294045</span><span class="p">,</span><span class="mi">5393088</span><span class="p">,</span><span class="mf">0.923076923076923</span>
 
-Answer 3.2
-0.923077
+<span class="n">Answer</span> <span class="mf">3.2</span>
+<span class="mf">0.923077</span>
 
 </pre></div>
 </td></tr></table></div>

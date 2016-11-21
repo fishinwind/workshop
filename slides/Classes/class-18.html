@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 20 : Python Workout" href="class-20.html" />
@@ -91,9 +93,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Apr 14 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Apr 4 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -136,9 +138,9 @@ analysis, and you can also integrate your own data.</p>
       <h2>Python Debugging<a class="headerlink" href="../../Classes/class-18.html#python-debugging" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Use <a class="reference external" href="http://docs.python.org/2/library/functions.html#print" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">print()</span></code></a> copiously. For example, Print out a nested
+      <p>Use <a class="reference external" href="https://docs.python.org/2/library/functions.html#print" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">print()</span></code></a> copiously. For example, Print out a nested
 data structure as it is being created</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 
 <span class="n">nested</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 
@@ -160,16 +162,16 @@ data structure as it is being created</p>
       <h2>Python Debugging (2)<a class="headerlink" href="../../Classes/class-18.html#id1" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Use the Python Debugger: <a class="reference external" href="http://docs.python.org/2/library/pdb.html#module-pdb" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">pdb</span></code></a>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="hll"><span class="kn">import</span> <span class="nn">pdb</span>
+      <p>Use the Python Debugger: <a class="reference external" href="https://docs.python.org/2/library/pdb.html#module-pdb" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">pdb</span></code></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">import</span> <span class="nn">pdb</span>
 </span>
 <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
     <span class="o">...</span>
 <span class="hll">    <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
 </span>
-<span class="c"># keys:</span>
-<span class="c"># c(ontinue) : move through the current context (i.e. loop)</span>
-<span class="c"># &lt;ctrl&gt;-c   : exit the debugger</span>
+<span class="c1"># keys:</span>
+<span class="c1"># c(ontinue) : move through the current context (i.e. loop)</span>
+<span class="c1"># &lt;ctrl&gt;-c   : exit the debugger</span>
 <span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">idx</span>
 <span class="mi">0</span>
 <span class="p">(</span><span class="n">Pdb</span><span class="p">)</span> <span class="n">c</span>
@@ -211,7 +213,7 @@ How do we describe the format in English?</p>
 that goes with an iterable. For example, if we know
 that we are on the first line, we can skip the header.</p>
 <p>We can know the index of an iterable with enumerate:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;fred&#39;</span><span class="p">,</span> <span class="s">&#39;sally&#39;</span><span class="p">,</span> <span class="s">&#39;harry&#39;</span><span class="p">,</span> <span class="s">&#39;jack&#39;</span><span class="p">,</span> <span class="s">&#39;texan&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="s1">&#39;sally&#39;</span><span class="p">,</span> <span class="s1">&#39;harry&#39;</span><span class="p">,</span> <span class="s1">&#39;jack&#39;</span><span class="p">,</span> <span class="s1">&#39;texan&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span>
@@ -228,13 +230,13 @@ that we are on the first line, we can skip the header.</p>
     </hgroup>
     <article class="">
       <p>Try this in the ipython terminal:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;abcdefg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Enumerate is lazy, meaning it won't consume an iterable until we ask it to</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">))</span>
-<span class="c"># OR</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s">&quot;abcdefg&quot;</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;abcdefg&quot;</span><span class="p">))</span>
+<span class="c1"># OR</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;abcdefg&quot;</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span>
 </pre></div>
 </div>
@@ -253,14 +255,14 @@ make sense.</p>
       <p>When we wrap any iterable in enumerate and we get a tuple of
 <cite>index, thing</cite>. Where <cite>thing</cite> was the element of the original list.</p>
 <p>We can skip the header in a file like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/vol1/opt/data/lamina.bed&#39;</span><span class="p">)):</span>
-    <span class="c"># skip the header</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/vol1/opt/data/lamina.bed&#39;</span><span class="p">)):</span>
+    <span class="c1"># skip the header</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">continue</span>
 
-    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">)</span>
-    <span class="c"># or we can get the variables directly since</span>
-    <span class="c"># we know there are 4 cols</span>
-    <span class="n">chrom</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># or we can get the variables directly since</span>
+    <span class="c1"># we know there are 4 cols</span>
+    <span class="n">chrom</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Using enumerate like this is safer than manually incrementing a variable
@@ -313,14 +315,14 @@ incrementing.</p>
     </hgroup>
     <article class="">
       <p>Parse a fastq!!</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/vol1/opt/data/SP1.fq&#39;</span><span class="p">)):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/vol1/opt/data/SP1.fq&#39;</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">line</span>
     <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">seq</span> <span class="o">=</span> <span class="n">line</span>
     <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">qual</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="c"># here have name, seq, qual from a single record</span>
+        <span class="c1"># here have name, seq, qual from a single record</span>
 </pre></div>
 </div>
 <p>note how this fairly closely matches our english explanation of the fastq
@@ -376,17 +378,17 @@ That's useful...</p>
     <article class="">
       <p>In one problem you had to sum the ord()'s of the quality line.
 The common way to do that was this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">qual_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">qual_sum</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qual</span><span class="p">:</span>
     <span class="n">qual_sum</span> <span class="o">+=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Once could get the quals instead as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">integer_quals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qual</span><span class="p">]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">integer_quals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qual</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>So the sum can be shortened to:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">qual_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qual</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">qual_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qual</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -402,17 +404,17 @@ The common way to do that was this:</p>
       <p>Functions are useful for encapsulating reusable chunks of code. For
 exmaple, you don't want to write messy code for parsing a fastq file every
 time you need to parse a fastq file. Instead, you define a function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parse_fastq</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="c"># parse records</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parse_fastq</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="c1"># parse records</span>
 </pre></div>
 </div>
 <p>Once that is defined, you can put it in a file in your PYTHONPATH called
 <code class="docutils literal"><span class="pre">mytools.py</span></code> and use it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># look ma! no messy parsing code!</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># look ma! no messy parsing code!</span>
 <span class="kn">from</span> <span class="nn">mytools</span> <span class="kn">import</span> <span class="n">parse_fastq</span>
 
 <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">parse_fastq</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="c"># use the record</span>
+    <span class="c1"># use the record</span>
 </pre></div>
 </div>
 
@@ -427,21 +429,21 @@ time you need to parse a fastq file. Instead, you define a function:</p>
     <article class="">
       <p>calculate mean base-quality by base.</p>
 <p>zip quality with sequence. append quality for each base in a dict of lists</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># append all quality scores for A base to quals_by_base[&#39;A&#39;] list.</span>
-<span class="n">quals_by_base</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;A&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;T&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;G&#39;</span><span class="p">:</span> <span class="p">[]}</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">&#39;/vol1/opt/data/SP1.fq&#39;</span><span class="p">)):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># append all quality scores for A base to quals_by_base[&#39;A&#39;] list.</span>
+<span class="n">quals_by_base</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;G&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/vol1/opt/data/SP1.fq&#39;</span><span class="p">)):</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">line</span>
     <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">seq</span> <span class="o">=</span> <span class="n">line</span>
     <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">qual</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="c"># update quals_by_base here since we have seq and qual</span>
-        <span class="c"># use zip/izip</span>
+        <span class="c1"># update quals_by_base here since we have seq and qual</span>
+        <span class="c1"># use zip/izip</span>
         <span class="o">...</span>
-<span class="c"># outside the loop calculate the avg base quality:</span>
+<span class="c1"># outside the loop calculate the avg base quality:</span>
 <span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">integer_quals</span> <span class="ow">in</span> <span class="n">quals_by_base</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">mean_quals</span> <span class="o">=</span> <span class="n">XXX_FIX_ME_XXX</span> <span class="c"># remember to float()</span>
+    <span class="n">mean_quals</span> <span class="o">=</span> <span class="n">XXX_FIX_ME_XXX</span> <span class="c1"># remember to float()</span>
     <span class="k">print</span> <span class="n">base</span><span class="p">,</span> <span class="n">mean_quals</span>
 </pre></div>
 </div>

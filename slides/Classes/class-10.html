@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 11 : R : Simple statistics and ggplot2" href="class-11.html" />
@@ -91,9 +93,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Mar 1 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Feb 23 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -124,7 +126,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <p>Read in a data.frame, view the first few lines and
 extract a single column</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="c1"># assumes workshop repo is in $HOME/devel</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># assumes workshop repo is in $HOME/devel</span>
 <span class="kp">setwd</span><span class="p">(</span><span class="s">&quot;~/devel/workshop/content/misc/data&quot;</span><span class="p">)</span>
 
 <span class="c1"># load expr data</span>
@@ -141,7 +143,7 @@ expr.df <span class="o">%&gt;%</span> select<span class="p">(</span>genotype<spa
 </pre></div>
 </div>
 <p>To extract multiple selected columns:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="kp">head</span><span class="p">(</span>expr.df<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="kp">head</span><span class="p">(</span>expr.df<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
 
 <span class="c1"># using dplyr</span>
 expr.df <span class="o">%&gt;%</span> select<span class="p">(</span>genotype<span class="p">,</span> <span class="kp">expression</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="kp">head</span><span class="p">()</span>
@@ -158,12 +160,12 @@ expr.df <span class="o">%&gt;%</span> select<span class="p">(</span>genotype<spa
     </hgroup>
     <article class="">
       <p>The order is rows, columns. By having nothing before the comma:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="kp">head</span><span class="p">(</span>expr.df<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="kp">head</span><span class="p">(</span>expr.df<span class="p">[,</span><span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>We extract all rows. We can manually extract the first 5 rows and our 2 columns
 as:</p>
-<div class="highlight-r"><div class="highlight"><pre>expr.df<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)]</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>expr.df<span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;genotype&quot;</span><span class="p">,</span> <span class="s">&quot;expression&quot;</span><span class="p">)]</span>
 
 <span class="c1"># using dplyr</span>
 expr.df <span class="o">%&gt;%</span> select<span class="p">(</span>genotype<span class="p">,</span> <span class="kp">expression</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="kp">head</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
@@ -181,7 +183,7 @@ expr.df <span class="o">%&gt;%</span> select<span class="p">(</span>genotype<spa
     <article class="">
       <p>In <cite>expr-geno-covs.txt</cite>, there is a sample column, we may wish to use
 that as the row id:</p>
-<div class="highlight-r"><div class="highlight"><pre>expr.df <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-expr.df.txt&#39;</span><span class="p">,</span> row.names<span class="o">=</span><span class="s">&#39;sample_id&#39;</span><span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>expr.df <span class="o">=</span> read.delim<span class="p">(</span><span class="s">&#39;expr-geno-expr.df.txt&#39;</span><span class="p">,</span> row.names<span class="o">=</span><span class="s">&#39;sample_id&#39;</span><span class="p">)</span>
 <span class="kp">head</span><span class="p">(</span>expr.df<span class="p">)</span>
 
 expr.df<span class="p">[</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;sample1&#39;</span><span class="p">,</span> <span class="s">&#39;sample14&#39;</span><span class="p">),]</span>
@@ -200,11 +202,11 @@ covs<span class="p">[</span><span class="kt">c</span><span class="p">(</span><sp
       <h3>Boolean Operations on Columns<a class="headerlink" href="../../Classes/class-10.html#boolean-operations-on-columns" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <div class="highlight-r"><div class="highlight"><pre>is_old <span class="o">&lt;-</span> covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span>
+      <div class="highlight-r"><div class="highlight"><pre><span></span>is_old <span class="o">&lt;-</span> covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span>
 </pre></div>
 </div>
 <p>now <cite>is_old</cite> is a list of TRUE / FALSE values. We can extract only those &gt; 65 as:</p>
-<div class="highlight-r"><div class="highlight"><pre>old <span class="o">&lt;-</span> covs<span class="p">[</span>is_old<span class="p">,]</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>old <span class="o">&lt;-</span> covs<span class="p">[</span>is_old<span class="p">,]</span>
 <span class="c1"># same as:</span>
 old <span class="o">&lt;-</span> covs<span class="p">[</span>covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span><span class="p">,]</span>
 
@@ -213,7 +215,7 @@ is_old <span class="o">&lt;-</span> covs <span class="o">%&gt;%</span> filter<sp
 </pre></div>
 </div>
 <p>We can combine selections with '&amp;' for and and '|' for or</p>
-<div class="highlight-r"><div class="highlight"><pre>old_with_disease <span class="o">=</span> <span class="p">(</span>covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>covs<span class="o">$</span>condition <span class="o">==</span> <span class="s">&quot;case&quot;</span><span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>old_with_disease <span class="o">=</span> <span class="p">(</span>covs<span class="o">$</span>age <span class="o">&gt;</span> <span class="m">65</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>covs<span class="o">$</span>condition <span class="o">==</span> <span class="s">&quot;case&quot;</span><span class="p">)</span>
 owd <span class="o">=</span> covs<span class="p">[</span>old_with_disease<span class="p">,]</span>
 </pre></div>
 </div>
@@ -227,7 +229,7 @@ owd <span class="o">=</span> covs<span class="p">[</span>old_with_disease<span c
       <h3>Boolean Operations on Columns (2)<a class="headerlink" href="../../Classes/class-10.html#id1" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <div class="highlight-r"><div class="highlight"><pre><span class="c1"># with subset</span>
+      <div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># with subset</span>
 old <span class="o">&lt;-</span> <span class="kp">subset</span><span class="p">(</span>covs<span class="p">,</span> age <span class="o">&gt;</span> <span class="m">65</span><span class="p">)</span>
 
 <span class="c1"># select on membership</span>

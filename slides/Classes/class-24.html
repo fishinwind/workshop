@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Exercises" href="../Exercises.html" />
@@ -91,9 +93,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 May 5 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Apr 27 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">January 07, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -124,7 +126,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <p>BAMs are the alignment format. Here is one where we've marked
 duplicates.</p>
-<div class="highlight-bash"><div class="highlight"><pre>samtools view -h /vol1/opt/data/exomes/results/ll-7.dedup.bam <span class="p">|</span> less
+<div class="highlight-bash"><div class="highlight"><pre><span></span>samtools view -h /vol1/opt/data/exomes/results/ll-7.dedup.bam <span class="p">|</span> less
 </pre></div>
 </div>
 
@@ -179,7 +181,7 @@ duplicates.</p>
       <h2>Java<a class="headerlink" href="../../Classes/class-24.html#java" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <div class="highlight-bash"><div class="highlight"><pre>module load java/1.7
+      <div class="highlight-bash"><div class="highlight"><pre><span></span>module load java/1.7
 qlogin
 java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar
 </pre></div>
@@ -197,7 +199,7 @@ java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar
       <ul class="simple">
 <li>Get variants with quality score greater than 40:</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre>cat  ~brentp/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cat  ~brentp/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
 java -Xmx4G -jar ~brentp/opt/snpEff/SnpSift.jar <span class="se">\</span>
  filter  <span class="s2">&quot;((QUAL &gt;= 40))&quot;</span> <span class="p">|</span> less
 </pre></div>
@@ -218,7 +220,7 @@ java -Xmx4G -jar ~brentp/opt/snpEff/SnpSift.jar <span class="se">\</span>
 <li>with 5 hets and 3 reference</li>
 <li>high/moderate impact</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre>cat  /vol1/opt/data/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cat  /vol1/opt/data/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
 java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar <span class="se">\</span>
  filter  <span class="s2">&quot;(</span>
 <span class="s2"> (QUAL &gt;= 40) &amp;</span>
@@ -257,14 +259,14 @@ and the 2nd samples is reference</p>
     </hgroup>
     <article class="">
       <p>Look at the header in a VCF:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>grep -m <span class="m">1</span> <span class="s2">&quot;#CHROM&quot;</span> ~brentp/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf
-<span class="c">#CHROM  POS ID  REF ALT QUAL    FILTER  INFO    FORMAT  ll-1    ll-3    ll-5</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grep -m <span class="m">1</span> <span class="s2">&quot;#CHROM&quot;</span> ~brentp/exomes/results/vcfs/chr18.snpeff.dbsnp.vcf
+<span class="c1">#CHROM  POS ID  REF ALT QUAL    FILTER  INFO    FORMAT  ll-1    ll-3    ll-5</span>
 ll-7    lll-1   lll-10  lll-2   lll-9
 </pre></div>
 </div>
 <p>Match that sample order with the pedigree image to get a filter like:</p>
-<div class="highlight-python"><div class="highlight"><pre>isVariant(GEN[0]) &amp; isVariant(GEN[3]) \
-    &amp; isVariant(GEN[4]) ...
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">isVariant</span><span class="p">(</span><span class="n">GEN</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">isVariant</span><span class="p">(</span><span class="n">GEN</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> \
+    <span class="o">&amp;</span> <span class="n">isVariant</span><span class="p">(</span><span class="n">GEN</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">...</span>
 </pre></div>
 </div>
 
@@ -277,7 +279,7 @@ ll-7    lll-1   lll-10  lll-2   lll-9
       <h2>Filtered<a class="headerlink" href="../../Classes/class-24.html#filtered" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <div class="highlight-bash"><div class="highlight"><pre>cat  /vol1/opt/data/exomes/results/vcfs/chr*.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
+      <div class="highlight-bash"><div class="highlight"><pre><span></span>cat  /vol1/opt/data/exomes/results/vcfs/chr*.snpeff.dbsnp.vcf <span class="p">|</span> <span class="se">\</span>
 java -Xmx4G -jar /vol1/opt/data/exomes/snpEff/SnpSift.jar <span class="se">\</span>
     filter  <span class="se">\</span>
     <span class="s2">&quot;((QUAL &gt;= 40) &amp; isVariant(GEN[0]) &amp; isVariant(GEN[3]) \</span>
@@ -324,7 +326,7 @@ to exclude things with an <cite>rs</cite> number.</p>
       <h2>Viewing with samtools tview<a class="headerlink" href="../../Classes/class-24.html#viewing-with-samtools-tview" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <div class="highlight-bash"><div class="highlight"><pre>samtools tview -p chr12:12022535 <span class="se">\</span>
+      <div class="highlight-bash"><div class="highlight"><pre><span></span>samtools tview -p chr12:12022535 <span class="se">\</span>
     /vol1/opt/data/exomes/results/ll-1.dedup.bam <span class="se">\</span>
     /vol3/home/jhessel/ref/genomes/hg19/hg19.fa
 </pre></div>
@@ -341,7 +343,7 @@ to exclude things with an <cite>rs</cite> number.</p>
     <article class="">
       <p>When you only want to look at part of the alignment. No need to transfer
 20GB of <cite>BAM</cite> files to your laptop</p>
-<div class="highlight-bash"><div class="highlight"><pre>samtools view -h results/<span class="nv">$sample</span>.dedup.bam 12:12022035-12023035 <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>samtools view -h results/<span class="nv">$sample</span>.dedup.bam 12:12022035-12023035 <span class="se">\</span>
         &gt; save.<span class="nv">$sample</span>.bam
 </pre></div>
 </div>

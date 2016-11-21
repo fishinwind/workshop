@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" /> 
 
 <!-- Google Analytics tracking code -->
@@ -116,15 +118,15 @@ URL: https://code.google.com/p/io-2012-slides
       <p>Write a Python function to parse records from a BED file. Then use the
 function to parse the BED file. Add an option to ignore specific
 chromosomes. The function should look something like:</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">parse_bed</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="p">[]):</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parse_bed</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">ignore</span><span class="o">=</span><span class="p">[]):</span>
     <span class="sd">&#39;&#39;&#39; Documentation &#39;&#39;&#39;</span>
     <span class="o">...</span>
-    <span class="c"># ignore specified chroms here</span>
+    <span class="c1"># ignore specified chroms here</span>
     <span class="o">...</span>
 
     <span class="k">yield</span> <span class="n">fields</span>
 
-<span class="c"># ignore chr1 in this code</span>
+<span class="c1"># ignore chr1 in this code</span>
 <span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">parse_bed</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
@@ -174,7 +176,7 @@ that are observed more than once (<strong>10 points</strong>).</p>
     </hgroup>
     <article class="">
       <p>Submit your problem set as a tar file to Canvas
-(<a class="reference internal" href="../../Problem_Sets.html#problem-set-submission"><span>Grading Rubric</span></a>).</p>
+(<a class="reference internal" href="../../Problem_Sets.html#problem-set-submission"><span class="std std-ref">Grading Rubric</span></a>).</p>
 
 
 

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sample Data files &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Sample Data files &#8212; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,8 +28,10 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Miscellaneous" href="../Miscellaneous.html" />
     <link rel="next" title="Getting Started" href="starting.html" />
@@ -133,7 +135,7 @@
 <span id="bed-file"></span><h2>BED format<a class="headerlink" href="#bed-format" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/data.html#bed-format" title="Slides">§</a></h2>
 <p>Data in BED format contains region information (e.g. single nucleotides or
 megbase regions) in a simple format <a class="footnote-reference" href="#id2" id="id1">[1]</a>:</p>
-<p><strong>Download a sample BED file:</strong> <a class="reference download internal" href="../_downloads/lamina.bed"><code class="xref download docutils literal"><span class="pre">lamina.bed</span></code></a></p>
+<p><strong>Download a sample BED file:</strong> <a class="reference download internal" href="../_downloads/lamina.bed" download=""><code class="xref download docutils literal"><span class="pre">lamina.bed</span></code></a></p>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -145,22 +147,22 @@ megbase regions) in a simple format <a class="footnote-reference" href="#id2" id
 <div class="section" id="fasta-format">
 <span id="fasta-file"></span><h2>FASTA format<a class="headerlink" href="#fasta-format" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/data.html#fasta-format" title="Slides">§</a></h2>
 <p>FASTA format just contains DNA sequence data; no quality scores:</p>
-<div class="highlight-python"><div class="highlight"><pre>&gt;cluster_2:UMI_ATTCCG             # record name; starts with &#39;&gt;&#39;
-TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">cluster_2</span><span class="p">:</span><span class="n">UMI_ATTCCG</span>             <span class="c1"># record name; starts with &#39;&gt;&#39;</span>
+<span class="n">TTTCCGGGGCACATAATCTTCAGCCGGGCGC</span>   <span class="c1"># DNA sequence</span>
 </pre></div>
 </div>
-<p><strong>Download a sample FASTA file:</strong> <a class="reference download internal" href="../_downloads/sample.fa"><code class="xref download docutils literal"><span class="pre">sample.fa</span></code></a></p>
+<p><strong>Download a sample FASTA file:</strong> <a class="reference download internal" href="../_downloads/sample.fa" download=""><code class="xref download docutils literal"><span class="pre">sample.fa</span></code></a></p>
 </div>
 <div class="section" id="fastq-format">
 <span id="fastq-file"></span><h2>FASTQ format<a class="headerlink" href="#fastq-format" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/data.html#fastq-format" title="Slides">§</a></h2>
 <p>FASTQ format contains DNA sequence data with quality scores:</p>
-<div class="highlight-python"><div class="highlight"><pre>@cluster_2:UMI_ATTCCG             # record name; starts with &#39;@&#39;
-TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
-+                                 # empty line; starts with &#39;+&#39;
-9C;=;=&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;=&gt;591   # phred-scaled quality scores
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@cluster_2</span><span class="p">:</span><span class="n">UMI_ATTCCG</span>             <span class="c1"># record name; starts with &#39;@&#39;</span>
+<span class="n">TTTCCGGGGCACATAATCTTCAGCCGGGCGC</span>   <span class="c1"># DNA sequence</span>
+<span class="o">+</span>                                 <span class="c1"># empty line; starts with &#39;+&#39;</span>
+<span class="mi">9</span><span class="n">C</span><span class="p">;</span><span class="o">=</span><span class="p">;</span><span class="o">=&lt;</span><span class="mi">9</span><span class="nd">@4868</span><span class="o">&gt;</span><span class="mi">9</span><span class="p">:</span><span class="mi">67</span><span class="n">AA</span><span class="o">&lt;</span><span class="mi">9</span><span class="o">&gt;</span><span class="mi">65</span><span class="o">&lt;=&gt;</span><span class="mi">591</span>   <span class="c1"># phred-scaled quality scores</span>
 </pre></div>
 </div>
-<p><strong>Download a sample FASTQ file:</strong> <a class="reference download internal" href="../_downloads/SP1.fq"><code class="xref download docutils literal"><span class="pre">SP1.fq</span></code></a></p>
+<p><strong>Download a sample FASTQ file:</strong> <a class="reference download internal" href="../_downloads/SP1.fq" download=""><code class="xref download docutils literal"><span class="pre">SP1.fq</span></code></a></p>
 </div>
 <div class="section" id="encode-data">
 <span id="id3"></span><h2>ENCODE data<a class="headerlink" href="#encode-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Miscellaneous/data.html#encode-data" title="Slides">§</a></h2>
@@ -168,7 +170,7 @@ TTTCCGGGGCACATAATCTTCAGCCGGGCGC   # DNA sequence
 <a class="reference external" href="https://genome.ucsc.edu/ENCODE/downloads.html">https://genome.ucsc.edu/ENCODE/downloads.html</a></p>
 <p>For Problem Set 3, you will need these files on the amc-tesla cluster,
 available in:</p>
-<div class="highlight-python"><div class="highlight"><pre>/vol1/opt/data
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">data</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">

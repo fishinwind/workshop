@@ -207,10 +207,6 @@ Specific Dates / Material to be Covered
       - |c14-date| 
       - R Data & Plotting
       - **PS6 due** (|pset6-due|)
-    * - 
-      - ** No Class Mar 21-25 ** 
-      - ** Spring Break **
-      - 
     * - Class 15 
       - |c15-date| 
       - Python
@@ -218,6 +214,10 @@ Specific Dates / Material to be Covered
     * - Class 16
       - |c16-date| 
       - Python
+      - 
+    * - 
+      - ** No Class Mar 20-24 ** 
+      - ** Spring Break **
       - 
     * - Class 17 
       - |c17-date| 

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Class 21 : RNA-Seq &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 21 : RNA-Seq &#8212; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,8 +28,10 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 22 : RNA-Seq" href="class-22.html" />
@@ -145,9 +147,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Apr 26 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Apr 13 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -211,13 +213,13 @@ libraries prepared from these <cite>C. elegans</cite> strains:</p>
 <p>RtcB is an RNA ligase. RtcB wild-type and mutant strains were treated with
 tunicamycin, which inhibits protein glycosylation in the endoplasmic
 reticulum and triggers the &#8220;unfolded protein reponse&#8221;:</p>
-<div class="highlight-python"><div class="highlight"><pre>ER stress ~~&gt;
-    Ire1 multimerization ~~&gt;
-        Ire1 ribonuclease domain cuts
-        xbp-1 transcript to release intron ~~&gt;
-            RtcB ligates xbp-1 exons together ~~&gt;
-                Xbp-1 protein is made, which activates UPR-related genes
-                in the nucleus.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ER</span> <span class="n">stress</span> <span class="o">~~&gt;</span>
+    <span class="n">Ire1</span> <span class="n">multimerization</span> <span class="o">~~&gt;</span>
+        <span class="n">Ire1</span> <span class="n">ribonuclease</span> <span class="n">domain</span> <span class="n">cuts</span>
+        <span class="n">xbp</span><span class="o">-</span><span class="mi">1</span> <span class="n">transcript</span> <span class="n">to</span> <span class="n">release</span> <span class="n">intron</span> <span class="o">~~&gt;</span>
+            <span class="n">RtcB</span> <span class="n">ligates</span> <span class="n">xbp</span><span class="o">-</span><span class="mi">1</span> <span class="n">exons</span> <span class="n">together</span> <span class="o">~~&gt;</span>
+                <span class="n">Xbp</span><span class="o">-</span><span class="mi">1</span> <span class="n">protein</span> <span class="ow">is</span> <span class="n">made</span><span class="p">,</span> <span class="n">which</span> <span class="n">activates</span> <span class="n">UPR</span><span class="o">-</span><span class="n">related</span> <span class="n">genes</span>
+                <span class="ow">in</span> <span class="n">the</span> <span class="n">nucleus</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>The expectation is that RtcB mutants will be unable to ligate specific RNA
@@ -316,7 +318,7 @@ RNA-Seq. See, e.g. <a class="reference external" href="http://genomebio.org/is-t
 </div>
 <div class="section" id="tophat2-invocation">
 <h2>Tophat2 Invocation<a class="headerlink" href="#tophat2-invocation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#tophat2-invocation" title="Slides">§</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>tophat2 -o <span class="nv">$out</span>/results/<span class="nv">$sample</span> <span class="nv">$reference</span> <span class="nv">$fq_1</span> <span class="nv">$fq2</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>tophat2 -o <span class="nv">$out</span>/results/<span class="nv">$sample</span> <span class="nv">$reference</span> <span class="nv">$fq_1</span> <span class="nv">$fq2</span> <span class="se">\</span>
     --fusion-search -p <span class="m">6</span> --transcriptome_index <span class="nv">$TINDEX</span> <span class="se">\</span>
     --GTF <span class="nv">$ANNOTATION_GTF</span>
 </pre></div>
@@ -326,7 +328,7 @@ RNA-Seq. See, e.g. <a class="reference external" href="http://genomebio.org/is-t
 <div class="section" id="just-do-it">
 <h2>Just Do It<a class="headerlink" href="#just-do-it" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-21.html#just-do-it" title="Slides">§</a></h2>
 <p>On amc-tesla</p>
-<div class="highlight-bash"><div class="highlight"><pre>module load sickle
+<div class="highlight-bash"><div class="highlight"><pre><span></span>module load sickle
 module load fastqc
 module load tophat2
 

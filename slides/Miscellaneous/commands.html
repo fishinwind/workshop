@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Miscellaneous" href="../Miscellaneous.html" />
     <link rel="next" title="Credits" href="credits.html" />
@@ -98,10 +100,10 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>change directories:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /tmp/
-<span class="nv">$ </span><span class="nb">cd</span> ~ <span class="c"># chage to home directory</span>
-<span class="nv">$ </span><span class="nb">cd</span> /vol1/opt/
-<span class="nv">$ </span><span class="nb">cd</span> - <span class="c"># change to previous directory</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /tmp/
+$ <span class="nb">cd</span> ~ <span class="c1"># chage to home directory</span>
+$ <span class="nb">cd</span> /vol1/opt/
+$ <span class="nb">cd</span> - <span class="c1"># change to previous directory</span>
 </pre></div>
 </div>
 
@@ -115,13 +117,13 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>copy files and directories:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>touch /tmp/asdf
-<span class="nv">$ </span>cp /tmp/asdf ~ <span class="c"># copy to home</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ touch /tmp/asdf
+$ cp /tmp/asdf ~ <span class="c1"># copy to home</span>
 </pre></div>
 </div>
 <p>must use -r for directories:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir /tmp/adir
-<span class="nv">$ </span>cp -r /tmp/adir ~/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir /tmp/adir
+$ cp -r /tmp/adir ~/
 </pre></div>
 </div>
 
@@ -135,7 +137,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>interrupt a running process:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>head
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ head
 &lt;ctrl+c&gt;
 </pre></div>
 </div>
@@ -150,15 +152,15 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>extract columns from a file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cut -f 1-3 /vol1/opt/data/lamina.bed
-<span class="nv">$ </span>cut -f 1,3 /vol1/opt/data/lamina.bed
-<span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cut -f 1-3 /vol1/opt/data/lamina.bed
+$ cut -f 1,3 /vol1/opt/data/lamina.bed
+$ cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed
 
-<span class="c"># use comma as delimiter instead of default tab</span>
-<span class="nv">$ </span>cut -f 1-3 -d, /path/to/some.csv
+<span class="c1"># use comma as delimiter instead of default tab</span>
+$ cut -f 1-3 -d, /path/to/some.csv
 
-<span class="c"># keep all columns after the 1st:</span>
-<span class="nv">$ </span>cut -f 2- /vol1/opt/data/lamina.bed
+<span class="c1"># keep all columns after the 1st:</span>
+$ cut -f 2- /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 
@@ -172,7 +174,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>print some text:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;hello world&quot;</span> <span class="p">|</span> cowsay
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;hello world&quot;</span> <span class="p">|</span> cowsay
 </pre></div>
 </div>
 
@@ -186,10 +188,10 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>show the start of a file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>head /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ head /vol1/opt/data/lamina.bed
 
-<span class="c"># show the first 4 lines</span>
-<span class="nv">$ </span>head -n <span class="m">4</span> /vol1/opt/data/lamina.bed
+<span class="c1"># show the first 4 lines</span>
+$ head -n <span class="m">4</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 
@@ -203,23 +205,23 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>To find any instance of <em>chr5</em> in the lamina.bed file</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># grep [pattern] [filename]</span>
-<span class="nv">$ </span>grep chr5 /vol1/opt/data/lamina.bed <span class="p">|</span> head
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># grep [pattern] [filename]</span>
+$ grep chr5 /vol1/opt/data/lamina.bed <span class="p">|</span> head
 </pre></div>
 </div>
 <p>To find all lines that start with a number sign:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># The caret (^) matches the beginning of the line</span>
-<span class="c"># FYI dollar sign ($) matches the end</span>
-<span class="nv">$ </span>grep <span class="s1">&#39;^#&#39;</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># The caret (^) matches the beginning of the line</span>
+<span class="c1"># FYI dollar sign ($) matches the end</span>
+$ grep <span class="s1">&#39;^#&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <p>To find any line that <em>does not</em> start with &quot;chr&quot;:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -v flag inverts the match (grep &quot;not&quot; [pattern])</span>
-<span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># the -v flag inverts the match (grep &quot;not&quot; [pattern])</span>
+$ grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <p>Find exact matches that are split on words with the <code class="docutils literal"><span class="pre">-w</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
 </pre></div>
 </div>
 
@@ -233,7 +235,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>page through a file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>less /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ less /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <p>use &quot;/&quot;, &quot;?&quot; to search forward, backard. 'q' to exit.</p>
@@ -249,19 +251,19 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>list files and directories:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ls /tmp/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ls /tmp/
 
-<span class="c"># show current directory</span>
-<span class="nv">$ </span>ls
+<span class="c1"># show current directory</span>
+$ ls
 
-<span class="c"># show current directory (2)</span>
-<span class="nv">$ </span>ls .
+<span class="c1"># show current directory (2)</span>
+$ ls .
 
-<span class="c"># list files with most recently modified last</span>
-<span class="nv">$ </span>ls -lhtr
+<span class="c1"># list files with most recently modified last</span>
+$ ls -lhtr
 
-<span class="c"># list files in temp ordered by modification date</span>
-<span class="nv">$ </span>ls -lhtr /tmp/
+<span class="c1"># list files in temp ordered by modification date</span>
+$ ls -lhtr /tmp/
 </pre></div>
 </div>
 
@@ -275,7 +277,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>show the manual entry for a command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>man head
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ man head
 </pre></div>
 </div>
 
@@ -289,11 +291,11 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>make a directory:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir /tmp/aa
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir /tmp/aa
 </pre></div>
 </div>
 <p>make sub-directories, too:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir -p /tmp/aaa/bbb/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mkdir -p /tmp/aaa/bbb/
 </pre></div>
 </div>
 
@@ -307,8 +309,8 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>move a file or directory:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>touch /tmp/aa
-<span class="nv">$ </span>mv /tmp/aa /tmp/bb
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ touch /tmp/aa
+$ mv /tmp/aa /tmp/bb
 </pre></div>
 </div>
 
@@ -322,12 +324,12 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>remove a file or directory:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>touch /tmp/asdf
-<span class="nv">$ </span>rm /tmp/asdf
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ touch /tmp/asdf
+$ rm /tmp/asdf
 
-<span class="c"># use -r to remove directory</span>
-<span class="nv">$ </span>mkdir /tmp/asdf
-<span class="nv">$ </span>rm -r /tmp/asdf
+<span class="c1"># use -r to remove directory</span>
+$ mkdir /tmp/asdf
+$ rm -r /tmp/asdf
 </pre></div>
 </div>
 
@@ -341,25 +343,25 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>sort a file by selected columns:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -k1n /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sort -k1n /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <p>sort a BED file by chromosome (1st column) as character and then by start
 (2nd column) as number:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -k1,1 -k2,2n /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sort -k1,1 -k2,2n /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <p>sort by 4th column as a general number, including scientific notation
 showing largest numbers first:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -k4,4rg /vol1/opt/data/lamina.bed <span class="p">|</span> head
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sort -k4,4rg /vol1/opt/data/lamina.bed <span class="p">|</span> head
 </pre></div>
 </div>
 <p>use literal tab ('\t') as the delimiter (default is whitespace):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sort -t<span class="s1">$&#39;\t&#39;</span> -k4,4rg /vol1/opt/data/lamina.bed <span class="p">|</span> head
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sort -t<span class="s1">$&#39;\t&#39;</span> -k4,4rg /vol1/opt/data/lamina.bed <span class="p">|</span> head
 </pre></div>
 </div>
 <p>Sometimes we want to get uniq entries with sort -u:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> sort -u
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> sort -u
 </pre></div>
 </div>
 <p>will print out the uniq chromsomes represent in the BED file.</p>
@@ -374,9 +376,9 @@ showing largest numbers first:</p>
     </hgroup>
     <article class="">
       <p>show the end of a file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>tail /vol1/opt/data/lamina.bed
-<span class="c"># show the last 4 lines</span>
-<span class="nv">$ </span>tail -n <span class="m">4</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ tail /vol1/opt/data/lamina.bed
+<span class="c1"># show the last 4 lines</span>
+$ tail -n <span class="m">4</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 
@@ -390,11 +392,11 @@ showing largest numbers first:</p>
     </hgroup>
     <article class="">
       <p>create or untar a .tar.gz file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># -c create -z compress (.gz) -v verbose -f the name</span>
-<span class="nv">$ </span>tar -czvf some.tar.gz /tmp/*
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># -c create -z compress (.gz) -v verbose -f the name</span>
+$ tar -czvf some.tar.gz /tmp/*
 
-<span class="c"># -x untar</span>
-<span class="nv">$ </span>tar -zxvf some.tar.gz
+<span class="c1"># -x untar</span>
+$ tar -zxvf some.tar.gz
 </pre></div>
 </div>
 
@@ -408,11 +410,11 @@ showing largest numbers first:</p>
     </hgroup>
     <article class="">
       <p>show or count unique or non-unique entries in a file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># count number of times each chromosome appears.</span>
-<span class="nv">$ </span>cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -c
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># count number of times each chromosome appears.</span>
+$ cut -f <span class="m">1</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -c
 
-<span class="c"># get non unique entries</span>
-<span class="nv">$ </span>cut -f <span class="m">2</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -d
+<span class="c1"># get non unique entries</span>
+$ cut -f <span class="m">2</span> /vol1/opt/data/lamina.bed <span class="p">|</span> uniq -d
 </pre></div>
 </div>
 <div class="admonition important">
@@ -431,7 +433,7 @@ showing largest numbers first:</p>
     </hgroup>
     <article class="">
       <p>get a file from the web:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wget http://ucd-bioworkshop.github.io/_downloads/states.tab
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget http://ucd-bioworkshop.github.io/_downloads/states.tab
 </pre></div>
 </div>
 
@@ -445,7 +447,7 @@ showing largest numbers first:</p>
     </hgroup>
     <article class="">
       <p>like less, but for compressed files:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>zless /vol1/opt/data/t_R1.fastq.gz
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ zless /vol1/opt/data/t_R1.fastq.gz
 </pre></div>
 </div>
 
@@ -459,14 +461,14 @@ showing largest numbers first:</p>
     </hgroup>
     <article class="">
       <p>send output to a file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># start a new file</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span> &gt; file.txt
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># start a new file</span>
+$ <span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span> &gt; file.txt
 
-<span class="c"># overwite that file</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;hello!&quot;</span> &gt; file.txt
+<span class="c1"># overwite that file</span>
+$ <span class="nb">echo</span> <span class="s2">&quot;hello!&quot;</span> &gt; file.txt
 
-<span class="c"># append to the file</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;world&quot;</span> &gt;&gt; file.txt
+<span class="c1"># append to the file</span>
+$ <span class="nb">echo</span> <span class="s2">&quot;world&quot;</span> &gt;&gt; file.txt
 </pre></div>
 </div>
 

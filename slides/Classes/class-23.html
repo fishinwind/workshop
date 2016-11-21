@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 24 : Exome-Seq - Variants" href="class-24.html" />
@@ -91,9 +93,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 May 3 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Apr 25 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">January 07, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -302,18 +304,18 @@ positions which it finds putatively polymorphic in variant call file (VCF) forma
     <article class="">
       <p>File format for SNP/indel calls:
 <a class="reference external" href="http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41">http://www.1000genomes.org/wiki/Analysis/Variant%20Call%20Format/vcf-variant-call-format-version-41</a></p>
-<div class="highlight-python"><div class="highlight"><pre>CHROM      1
-POS        2345544
-ID         rs1234..
-REF        C
-ALT        TA
-QUAL       55.2
-FILTER     PASS
-INFO       NS=3;DP=14;AF=0.5;DB
-FORMAT     GT:GQ:DP:HQ
-sample_1   0|0:48:1:51,51
-...
-sample_n
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CHROM</span>      <span class="mi">1</span>
+<span class="n">POS</span>        <span class="mi">2345544</span>
+<span class="n">ID</span>         <span class="n">rs1234</span><span class="o">..</span>
+<span class="n">REF</span>        <span class="n">C</span>
+<span class="n">ALT</span>        <span class="n">TA</span>
+<span class="n">QUAL</span>       <span class="mf">55.2</span>
+<span class="n">FILTER</span>     <span class="n">PASS</span>
+<span class="n">INFO</span>       <span class="n">NS</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span><span class="n">DP</span><span class="o">=</span><span class="mi">14</span><span class="p">;</span><span class="n">AF</span><span class="o">=</span><span class="mf">0.5</span><span class="p">;</span><span class="n">DB</span>
+<span class="n">FORMAT</span>     <span class="n">GT</span><span class="p">:</span><span class="n">GQ</span><span class="p">:</span><span class="n">DP</span><span class="p">:</span><span class="n">HQ</span>
+<span class="n">sample_1</span>   <span class="mi">0</span><span class="o">|</span><span class="mi">0</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">51</span><span class="p">,</span><span class="mi">51</span>
+<span class="o">...</span>
+<span class="n">sample_n</span>
 </pre></div>
 </div>
 <p>&quot;:&quot; delimited chunks from samples match the format in <cite>FORMAT</cite></p>

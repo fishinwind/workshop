@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 7 : BEDTools vignette" href="class-07.html" />
@@ -91,9 +93,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Feb 16 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Feb 9 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -304,8 +306,8 @@ work on ChIP-Seq data (and pset3)).</p>
     <article class="">
       <p>There are several available software packages for identifying regions
 enriched in your IP experiment (i.e. peaks). We will use macs2 here.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># minimal macs2 command</span>
-<span class="nv">$ </span>macs2 callpeak --treatment &lt;aln.bam&gt; --name &lt;exp.name&gt; <span class="o">[</span>options<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># minimal macs2 command</span>
+$ macs2 callpeak --treatment &lt;aln.bam&gt; --name &lt;exp.name&gt; <span class="o">[</span>options<span class="o">]</span>
 </pre></div>
 </div>
 
@@ -320,7 +322,7 @@ enriched in your IP experiment (i.e. peaks). We will use macs2 here.</p>
     <article class="">
       <p>You can use meme <a class="footnote-reference" href="#id5" id="id4">[2]</a> to identify over-represented motifs in groups of
 sequences (e.g. sequences covered by ChIP peaks).</p>
-<p>Use the <a class="reference external" href="http://bedtools.readthedocs.org/en/latest/content/tools/getfasta.html#getfasta" title="(in bedtools v2.25.0)"><span class="xref std std-ref">bedtools getfasta</span></a> command to fetch
+<p>Use the <a class="reference external" href="http://bedtools.readthedocs.io/en/latest/content/tools/getfasta.html#getfasta" title="(in bedtools v2.26.0)"><span class="xref std std-ref">bedtools getfasta</span></a> command to fetch
 fasta sequences.</p>
 <p>Note: meme looks at both strands of a DNA sequence by default.</p>
 <table class="docutils footnote" frame="void" id="id5" rules="none">
@@ -330,8 +332,8 @@ fasta sequences.</p>
 <a class="reference external" href="http://meme.nbcr.net/meme/">http://meme.nbcr.net/meme/</a></td></tr>
 </tbody>
 </table>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>bedtools getfasta -fi &lt;ref.fa&gt; -bed &lt;peaks.bed&gt; -fo peaks.fa
-<span class="nv">$ </span>meme -nmotifs <span class="m">5</span> -minw <span class="m">6</span> -maxw <span class="m">20</span> -dna &lt;peaks.fa&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ bedtools getfasta -fi &lt;ref.fa&gt; -bed &lt;peaks.bed&gt; -fo peaks.fa
+$ meme -nmotifs <span class="m">5</span> -minw <span class="m">6</span> -maxw <span class="m">20</span> -dna &lt;peaks.fa&gt;
 </pre></div>
 </div>
 

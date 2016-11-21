@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 16 : Python : Basics" href="class-16.html" />
@@ -91,9 +93,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Apr 5 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Mar 14 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -160,7 +162,7 @@ context of bioinformatic applications.</p>
     <article class="">
       <p>Ipython is an (I)nteractive python terminal that lets you
 type in python expressions and see the results immediately</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ipython
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ipython
 </pre></div>
 </div>
 <p>This command puts you in a shell that accepts python commands, much like
@@ -176,13 +178,13 @@ the login terminal accepts <code class="docutils literal"><span class="pre">bash
     </hgroup>
     <article class="">
       <p>Python depends on proper indentation of your code. This does not work:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
 <span class="k">print</span> <span class="n">i</span>
 </pre></div>
 </div>
 <p>Instead you have to indent the <code class="docutils literal"><span class="pre">print</span></code> statement to nest it in the for
 loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">i</span>
 </pre></div>
 </div>
@@ -203,12 +205,12 @@ check the <cite>Insert spaces instead of tabs</cite> box.</p>
     </hgroup>
     <article class="">
       <p>You can find more about any python type or function using <code class="docutils literal"><span class="pre">pydoc</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># learn about the python ``string`` type</span>
-<span class="nv">$ </span>pydoc str
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># learn about the python ``string`` type</span>
+$ pydoc str
 </pre></div>
 </div>
 <p>At the <code class="docutils literal"><span class="pre">ipython</span></code> prompt, you can also use:</p>
-<p>In these slides, links will take you to the python docs: <a class="reference external" href="http://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
+<p>In these slides, links will take you to the python docs: <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a></p>
 <p>Finally, ask Google (e.g. python string split).</p>
 
 
@@ -233,7 +235,7 @@ them. For example, a string is iterable:</p>
     </hgroup>
     <article class="">
       <p>Automate repetitive tasks with a for loop:</p>
-<p>where the <a class="reference external" href="http://docs.python.org/2/library/functions.html#range" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">range()</span></code></a> function generates the numbers <cite>0, 1, 2, 3, 4</cite>.</p>
+<p>where the <a class="reference external" href="https://docs.python.org/2/library/functions.html#range" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">range()</span></code></a> function generates the numbers <cite>0, 1, 2, 3, 4</cite>.</p>
 
 
 
@@ -246,10 +248,10 @@ them. For example, a string is iterable:</p>
     <article class="">
       <p>There are several core types in Python that you will use a lot.</p>
 <ul class="simple">
-<li><a class="reference external" href="http://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> is a collection of characters (words and sentences).</li>
-<li><a class="reference external" href="http://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a> and <a class="reference external" href="http://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a> are numbers.</li>
-<li><a class="reference external" href="http://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a> is a group of other objects.</li>
-<li><a class="reference external" href="http://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></a> contains key:value mappings.</li>
+<li><a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> is a collection of characters (words and sentences).</li>
+<li><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a> and <a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a> are numbers.</li>
+<li><a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a> is a group of other objects.</li>
+<li><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></a> contains key:value mappings.</li>
 </ul>
 
 
@@ -261,7 +263,7 @@ them. For example, a string is iterable:</p>
       <h2>Strings<a class="headerlink" href="../../Classes/class-15.html#strings" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>A <a class="reference external" href="http://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> is a collection of characters. You can make strings with
+      <p>A <a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a> is a collection of characters. You can make strings with
 single, double and triple quotes.</p>
 
 
@@ -273,8 +275,8 @@ single, double and triple quotes.</p>
       <h2>Numbers (Ints and math)<a class="headerlink" href="../../Classes/class-15.html#numbers-ints-and-math" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Python has integer numbers (<a class="reference external" href="http://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) and floating point numbers
-(<a class="reference external" href="http://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>). Math operations work within and across both types:</p>
+      <p>Python has integer numbers (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>) and floating point numbers
+(<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>). Math operations work within and across both types:</p>
 
 
 
@@ -296,7 +298,7 @@ single, double and triple quotes.</p>
       <h2>Lists<a class="headerlink" href="../../Classes/class-15.html#lists" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>A <a class="reference external" href="http://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a> is a collection of other objects. You create lists
+      <p>A <a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">list</span></code></a> is a collection of other objects. You create lists
 directly using brackets (<code class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></code>), or they can be created from other
 objects.</p>
 <p>Lists are <em>subscriptable</em>, meaning that you can access items in a list by
@@ -321,7 +323,7 @@ position.</p>
       <h2>Dictionaries (dicts)<a class="headerlink" href="../../Classes/class-15.html#dictionaries-dicts" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>A <a class="reference external" href="http://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></a> contains key:value mappings.</p>
+      <p>A <a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">dict</span></code></a> contains key:value mappings.</p>
 
 
 
@@ -333,8 +335,8 @@ position.</p>
     </hgroup>
     <article class="">
       <p>When you're learning to program in Python, you will see lots of errors.
-Examples: <a class="reference external" href="http://docs.python.org/2/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">ValueError</span></code></a>,
-<a class="reference external" href="http://docs.python.org/2/library/exceptions.html#exceptions.IndexError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">IndexError</span></code></a> and <a class="reference external" href="http://docs.python.org/2/library/exceptions.html#exceptions.KeyError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">KeyError</span></code></a></p>
+Examples: <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">ValueError</span></code></a>,
+<a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.IndexError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">IndexError</span></code></a> and <a class="reference external" href="https://docs.python.org/2/library/exceptions.html#exceptions.KeyError" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">KeyError</span></code></a></p>
 
 
 
@@ -357,12 +359,12 @@ Examples: <a class="reference external" href="http://docs.python.org/2/library/e
     </hgroup>
     <article class="">
       <ol class="arabic simple">
-<li>Use <a class="reference external" href="http://docs.python.org/2/library/functions.html#range" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">range()</span></code></a> to count from 0 to 100 <strong>by 10</strong>. How do you get
+<li>Use <a class="reference external" href="https://docs.python.org/2/library/functions.html#range" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">range()</span></code></a> to count from 0 to 100 <strong>by 10</strong>. How do you get
 100 in the result?</li>
 <li>Get <strong>every other</strong> value of <code class="docutils literal"><span class="pre">words</span></code> (hint: use a slice)</li>
-<li>Use <a class="reference external" href="http://docs.python.org/2/library/functions.html#enumerate" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">enumerate()</span></code></a> on a list (hint: convert the
+<li>Use <a class="reference external" href="https://docs.python.org/2/library/functions.html#enumerate" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">enumerate()</span></code></a> on a list (hint: convert the
 result with list(result))</li>
-<li>Use <a class="reference external" href="http://docs.python.org/2/library/functions.html#sorted" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">sorted()</span></code></a> and <a class="reference external" href="http://docs.python.org/2/library/functions.html#reversed" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">reversed()</span></code></a> on a list.</li>
+<li>Use <a class="reference external" href="https://docs.python.org/2/library/functions.html#sorted" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">sorted()</span></code></a> and <a class="reference external" href="https://docs.python.org/2/library/functions.html#reversed" title="(in Python v2.7)"><code class="xref py py-func docutils literal"><span class="pre">reversed()</span></code></a> on a list.</li>
 <li>Do type conversion on each of the fields in the lamina.bed file</li>
 </ol>
 

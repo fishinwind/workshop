@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" /> 
 
 <!-- Google Analytics tracking code -->
@@ -137,42 +139,42 @@ file:</p>
 49
 50
 51
-52</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /usr/bin/env bash</span>
-<span class="c">#</span>
-<span class="c"># run script for quiz 1</span>
+52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env bash</span>
+<span class="c1">#</span>
+<span class="c1"># run script for quiz 1</span>
 
-<span class="c"># these are bash flags the print out variables that get set when you</span>
-<span class="c"># run the script.</span>
+<span class="c1"># these are bash flags the print out variables that get set when you</span>
+<span class="c1"># run the script.</span>
 <span class="nb">set</span> -o nounset -o pipefail -o errexit -x
 
-<span class="c"># You will need to change the &#39;???&#39; strings below.</span>
-<span class="c">#</span>
-<span class="c"># define the project variable here. this should be the full path to</span>
-<span class="c"># your project directory, i.e. the directory at the top of the</span>
-<span class="c"># results/data/doc directories.</span>
+<span class="c1"># You will need to change the &#39;???&#39; strings below.</span>
+<span class="c1">#</span>
+<span class="c1"># define the project variable here. this should be the full path to</span>
+<span class="c1"># your project directory, i.e. the directory at the top of the</span>
+<span class="c1"># results/data/doc directories.</span>
 
 <span class="nv">project</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/problem-set-1&quot;</span>
 
-<span class="c"># fill in the date here</span>
+<span class="c1"># fill in the date here</span>
 <span class="nv">date</span><span class="o">=</span><span class="s2">&quot;2014-02-12&quot;</span>
 
-<span class="c"># these refer to the data file that you moved into place</span>
+<span class="c1"># these refer to the data file that you moved into place</span>
 <span class="nv">data</span><span class="o">=</span><span class="nv">$project</span>/data/<span class="nv">$date</span>
 <span class="nv">datafile</span><span class="o">=</span><span class="nv">$data</span>/states.tab
 
-<span class="c"># these refer to the place where you will write the results of the</span>
-<span class="c"># &quot;analysis&quot;</span>
+<span class="c1"># these refer to the place where you will write the results of the</span>
+<span class="c1"># &quot;analysis&quot;</span>
 <span class="nv">results</span><span class="o">=</span><span class="nv">$project</span>/results/<span class="nv">$date</span>
 <span class="nv">resultsfile</span><span class="o">=</span><span class="nv">$results</span>/result.tab
 
-<span class="c"># if the directory doesn&#39;t exist, make it</span>
+<span class="c1"># if the directory doesn&#39;t exist, make it</span>
 <span class="k">if</span> <span class="o">[[</span> ! -d <span class="nv">$results</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
     mkdir -p <span class="nv">$results</span>
 <span class="k">fi</span>
 
-<span class="c"># Note how we are using redirects here. The first &quot;&gt;&quot; writes a file,</span>
-<span class="c"># and overwrites existing data. The following &quot;&gt;&gt;&quot; append data to the</span>
-<span class="c"># existing file</span>
+<span class="c1"># Note how we are using redirects here. The first &quot;&gt;&quot; writes a file,</span>
+<span class="c1"># and overwrites existing data. The following &quot;&gt;&gt;&quot; append data to the</span>
+<span class="c1"># existing file</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;here is our starting data ...&quot;</span> &gt; <span class="nv">$resultsfile</span>
 cat <span class="nv">$datafile</span> &gt;&gt; <span class="nv">$resultsfile</span>
@@ -192,7 +194,7 @@ grep <span class="s1">&#39;Name&#39;</span> <span class="nv">$datafile</span> <s
 </pre></div>
 </td></tr></table></div>
 <p>The output directory structure should look similar to:</p>
-<div class="highlight-python"><div class="highlight"><pre>.
+<div class="highlight-default"><div class="highlight"><pre><span></span>.
 `-- problem-set-1
     |-- data
     |   `-- 2014-02-20
@@ -206,7 +208,7 @@ grep <span class="s1">&#39;Name&#39;</span> <span class="nv">$datafile</span> <s
 </pre></div>
 </div>
 <p>The output of this script looks like this:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
   2
   3
   4
@@ -323,123 +325,123 @@ grep <span class="s1">&#39;Name&#39;</span> <span class="nv">$datafile</span> <s
 115
 116
 117
-118</pre></div></td><td class="code"><div class="highlight"><pre>here is our starting data ...
-Name	&quot;Population&quot;	&quot;Income&quot;	&quot;Illiteracy&quot;	&quot;Life Exp&quot;	&quot;Murder&quot;	&quot;HS Grad&quot;	&quot;Frost&quot;	&quot;Area&quot;
-&quot;Alabama&quot;	3615	3624	2.1	69.05	15.1	41.3	20	50708
-&quot;Alaska&quot;	365	6315	1.5	69.31	11.3	66.7	152	566432
-&quot;Arizona&quot;	2212	4530	1.8	70.55	7.8	58.1	15	113417
-&quot;Arkansas&quot;	2110	3378	1.9	70.66	10.1	39.9	65	51945
-&quot;California&quot;	21198	5114	1.1	71.71	10.3	62.6	20	156361
-&quot;Colorado&quot;	2541	4884	0.7	72.06	6.8	63.9	166	103766
-&quot;Connecticut&quot;	3100	5348	1.1	72.48	3.1	56	139	4862
-&quot;Delaware&quot;	579	4809	0.9	70.06	6.2	54.6	103	1982
-&quot;Florida&quot;	8277	4815	1.3	70.66	10.7	52.6	11	54090
-&quot;Georgia&quot;	4931	4091	2	68.54	13.9	40.6	60	58073
-&quot;Hawaii&quot;	868	4963	1.9	73.6	6.2	61.9	0	6425
-&quot;Idaho&quot;	813	4119	0.6	71.87	5.3	59.5	126	82677
-&quot;Illinois&quot;	11197	5107	0.9	70.14	10.3	52.6	127	55748
-&quot;Indiana&quot;	5313	4458	0.7	70.88	7.1	52.9	122	36097
-&quot;Iowa&quot;	2861	4628	0.5	72.56	2.3	59	140	55941
-&quot;Kansas&quot;	2280	4669	0.6	72.58	4.5	59.9	114	81787
-&quot;Kentucky&quot;	3387	3712	1.6	70.1	10.6	38.5	95	39650
-&quot;Louisiana&quot;	3806	3545	2.8	68.76	13.2	42.2	12	44930
-&quot;Maine&quot;	1058	3694	0.7	70.39	2.7	54.7	161	30920
-&quot;Maryland&quot;	4122	5299	0.9	70.22	8.5	52.3	101	9891
-&quot;Massachusetts&quot;	5814	4755	1.1	71.83	3.3	58.5	103	7826
-&quot;Michigan&quot;	9111	4751	0.9	70.63	11.1	52.8	125	56817
-&quot;Minnesota&quot;	3921	4675	0.6	72.96	2.3	57.6	160	79289
-&quot;Mississippi&quot;	2341	3098	2.4	68.09	12.5	41	50	47296
-&quot;Missouri&quot;	4767	4254	0.8	70.69	9.3	48.8	108	68995
-&quot;Montana&quot;	746	4347	0.6	70.56	5	59.2	155	145587
-&quot;Nebraska&quot;	1544	4508	0.6	72.6	2.9	59.3	139	76483
-&quot;Nevada&quot;	590	5149	0.5	69.03	11.5	65.2	188	109889
-&quot;New_Hampshire&quot;	812	4281	0.7	71.23	3.3	57.6	174	9027
-&quot;New_Jersey&quot;	7333	5237	1.1	70.93	5.2	52.5	115	7521
-&quot;New_Mexico&quot;	1144	3601	2.2	70.32	9.7	55.2	120	121412
-&quot;New_York&quot;	18076	4903	1.4	70.55	10.9	52.7	82	47831
-&quot;North_Carolina&quot;	5441	3875	1.8	69.21	11.1	38.5	80	48798
-&quot;North_Dakota&quot;	637	5087	0.8	72.78	1.4	50.3	186	69273
-&quot;Ohio&quot;	10735	4561	0.8	70.82	7.4	53.2	124	40975
-&quot;Oklahoma&quot;	2715	3983	1.1	71.42	6.4	51.6	82	68782
-&quot;Oregon&quot;	2284	4660	0.6	72.13	4.2	60	44	96184
-&quot;Pennsylvania&quot;	11860	4449	1	70.43	6.1	50.2	126	44966
-&quot;Rhode_Island&quot;	931	4558	1.3	71.9	2.4	46.4	127	1049
-&quot;South_Carolina&quot;	2816	3635	2.3	67.96	11.6	37.8	65	30225
-&quot;South_Dakota&quot;	681	4167	0.5	72.08	1.7	53.3	172	75955
-&quot;Tennessee&quot;	4173	3821	1.7	70.11	11	41.8	70	41328
-&quot;Texas&quot;	12237	4188	2.2	70.9	12.2	47.4	35	262134
-&quot;Utah&quot;	1203	4022	0.6	72.9	4.5	67.3	137	82096
-&quot;Vermont&quot;	472	3907	0.6	71.64	5.5	57.1	168	9267
-&quot;Virginia&quot;	4981	4701	1.4	70.08	9.5	47.8	85	39780
-&quot;Washington&quot;	3559	4864	0.6	71.72	4.3	63.5	32	66570
-&quot;West_Virginia&quot;	1799	3617	1.4	69.48	6.7	41.6	100	24070
-&quot;Wisconsin&quot;	4589	4468	0.7	72.48	3	54.5	149	54464
-&quot;Wyoming&quot;	376	4566	0.6	70.29	6.9	62.9	173	97203
+118</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">here</span> <span class="ow">is</span> <span class="n">our</span> <span class="n">starting</span> <span class="n">data</span> <span class="o">...</span>
+<span class="n">Name</span>	<span class="s2">&quot;Population&quot;</span>	<span class="s2">&quot;Income&quot;</span>	<span class="s2">&quot;Illiteracy&quot;</span>	<span class="s2">&quot;Life Exp&quot;</span>	<span class="s2">&quot;Murder&quot;</span>	<span class="s2">&quot;HS Grad&quot;</span>	<span class="s2">&quot;Frost&quot;</span>	<span class="s2">&quot;Area&quot;</span>
+<span class="s2">&quot;Alabama&quot;</span>	<span class="mi">3615</span>	<span class="mi">3624</span>	<span class="mf">2.1</span>	<span class="mf">69.05</span>	<span class="mf">15.1</span>	<span class="mf">41.3</span>	<span class="mi">20</span>	<span class="mi">50708</span>
+<span class="s2">&quot;Alaska&quot;</span>	<span class="mi">365</span>	<span class="mi">6315</span>	<span class="mf">1.5</span>	<span class="mf">69.31</span>	<span class="mf">11.3</span>	<span class="mf">66.7</span>	<span class="mi">152</span>	<span class="mi">566432</span>
+<span class="s2">&quot;Arizona&quot;</span>	<span class="mi">2212</span>	<span class="mi">4530</span>	<span class="mf">1.8</span>	<span class="mf">70.55</span>	<span class="mf">7.8</span>	<span class="mf">58.1</span>	<span class="mi">15</span>	<span class="mi">113417</span>
+<span class="s2">&quot;Arkansas&quot;</span>	<span class="mi">2110</span>	<span class="mi">3378</span>	<span class="mf">1.9</span>	<span class="mf">70.66</span>	<span class="mf">10.1</span>	<span class="mf">39.9</span>	<span class="mi">65</span>	<span class="mi">51945</span>
+<span class="s2">&quot;California&quot;</span>	<span class="mi">21198</span>	<span class="mi">5114</span>	<span class="mf">1.1</span>	<span class="mf">71.71</span>	<span class="mf">10.3</span>	<span class="mf">62.6</span>	<span class="mi">20</span>	<span class="mi">156361</span>
+<span class="s2">&quot;Colorado&quot;</span>	<span class="mi">2541</span>	<span class="mi">4884</span>	<span class="mf">0.7</span>	<span class="mf">72.06</span>	<span class="mf">6.8</span>	<span class="mf">63.9</span>	<span class="mi">166</span>	<span class="mi">103766</span>
+<span class="s2">&quot;Connecticut&quot;</span>	<span class="mi">3100</span>	<span class="mi">5348</span>	<span class="mf">1.1</span>	<span class="mf">72.48</span>	<span class="mf">3.1</span>	<span class="mi">56</span>	<span class="mi">139</span>	<span class="mi">4862</span>
+<span class="s2">&quot;Delaware&quot;</span>	<span class="mi">579</span>	<span class="mi">4809</span>	<span class="mf">0.9</span>	<span class="mf">70.06</span>	<span class="mf">6.2</span>	<span class="mf">54.6</span>	<span class="mi">103</span>	<span class="mi">1982</span>
+<span class="s2">&quot;Florida&quot;</span>	<span class="mi">8277</span>	<span class="mi">4815</span>	<span class="mf">1.3</span>	<span class="mf">70.66</span>	<span class="mf">10.7</span>	<span class="mf">52.6</span>	<span class="mi">11</span>	<span class="mi">54090</span>
+<span class="s2">&quot;Georgia&quot;</span>	<span class="mi">4931</span>	<span class="mi">4091</span>	<span class="mi">2</span>	<span class="mf">68.54</span>	<span class="mf">13.9</span>	<span class="mf">40.6</span>	<span class="mi">60</span>	<span class="mi">58073</span>
+<span class="s2">&quot;Hawaii&quot;</span>	<span class="mi">868</span>	<span class="mi">4963</span>	<span class="mf">1.9</span>	<span class="mf">73.6</span>	<span class="mf">6.2</span>	<span class="mf">61.9</span>	<span class="mi">0</span>	<span class="mi">6425</span>
+<span class="s2">&quot;Idaho&quot;</span>	<span class="mi">813</span>	<span class="mi">4119</span>	<span class="mf">0.6</span>	<span class="mf">71.87</span>	<span class="mf">5.3</span>	<span class="mf">59.5</span>	<span class="mi">126</span>	<span class="mi">82677</span>
+<span class="s2">&quot;Illinois&quot;</span>	<span class="mi">11197</span>	<span class="mi">5107</span>	<span class="mf">0.9</span>	<span class="mf">70.14</span>	<span class="mf">10.3</span>	<span class="mf">52.6</span>	<span class="mi">127</span>	<span class="mi">55748</span>
+<span class="s2">&quot;Indiana&quot;</span>	<span class="mi">5313</span>	<span class="mi">4458</span>	<span class="mf">0.7</span>	<span class="mf">70.88</span>	<span class="mf">7.1</span>	<span class="mf">52.9</span>	<span class="mi">122</span>	<span class="mi">36097</span>
+<span class="s2">&quot;Iowa&quot;</span>	<span class="mi">2861</span>	<span class="mi">4628</span>	<span class="mf">0.5</span>	<span class="mf">72.56</span>	<span class="mf">2.3</span>	<span class="mi">59</span>	<span class="mi">140</span>	<span class="mi">55941</span>
+<span class="s2">&quot;Kansas&quot;</span>	<span class="mi">2280</span>	<span class="mi">4669</span>	<span class="mf">0.6</span>	<span class="mf">72.58</span>	<span class="mf">4.5</span>	<span class="mf">59.9</span>	<span class="mi">114</span>	<span class="mi">81787</span>
+<span class="s2">&quot;Kentucky&quot;</span>	<span class="mi">3387</span>	<span class="mi">3712</span>	<span class="mf">1.6</span>	<span class="mf">70.1</span>	<span class="mf">10.6</span>	<span class="mf">38.5</span>	<span class="mi">95</span>	<span class="mi">39650</span>
+<span class="s2">&quot;Louisiana&quot;</span>	<span class="mi">3806</span>	<span class="mi">3545</span>	<span class="mf">2.8</span>	<span class="mf">68.76</span>	<span class="mf">13.2</span>	<span class="mf">42.2</span>	<span class="mi">12</span>	<span class="mi">44930</span>
+<span class="s2">&quot;Maine&quot;</span>	<span class="mi">1058</span>	<span class="mi">3694</span>	<span class="mf">0.7</span>	<span class="mf">70.39</span>	<span class="mf">2.7</span>	<span class="mf">54.7</span>	<span class="mi">161</span>	<span class="mi">30920</span>
+<span class="s2">&quot;Maryland&quot;</span>	<span class="mi">4122</span>	<span class="mi">5299</span>	<span class="mf">0.9</span>	<span class="mf">70.22</span>	<span class="mf">8.5</span>	<span class="mf">52.3</span>	<span class="mi">101</span>	<span class="mi">9891</span>
+<span class="s2">&quot;Massachusetts&quot;</span>	<span class="mi">5814</span>	<span class="mi">4755</span>	<span class="mf">1.1</span>	<span class="mf">71.83</span>	<span class="mf">3.3</span>	<span class="mf">58.5</span>	<span class="mi">103</span>	<span class="mi">7826</span>
+<span class="s2">&quot;Michigan&quot;</span>	<span class="mi">9111</span>	<span class="mi">4751</span>	<span class="mf">0.9</span>	<span class="mf">70.63</span>	<span class="mf">11.1</span>	<span class="mf">52.8</span>	<span class="mi">125</span>	<span class="mi">56817</span>
+<span class="s2">&quot;Minnesota&quot;</span>	<span class="mi">3921</span>	<span class="mi">4675</span>	<span class="mf">0.6</span>	<span class="mf">72.96</span>	<span class="mf">2.3</span>	<span class="mf">57.6</span>	<span class="mi">160</span>	<span class="mi">79289</span>
+<span class="s2">&quot;Mississippi&quot;</span>	<span class="mi">2341</span>	<span class="mi">3098</span>	<span class="mf">2.4</span>	<span class="mf">68.09</span>	<span class="mf">12.5</span>	<span class="mi">41</span>	<span class="mi">50</span>	<span class="mi">47296</span>
+<span class="s2">&quot;Missouri&quot;</span>	<span class="mi">4767</span>	<span class="mi">4254</span>	<span class="mf">0.8</span>	<span class="mf">70.69</span>	<span class="mf">9.3</span>	<span class="mf">48.8</span>	<span class="mi">108</span>	<span class="mi">68995</span>
+<span class="s2">&quot;Montana&quot;</span>	<span class="mi">746</span>	<span class="mi">4347</span>	<span class="mf">0.6</span>	<span class="mf">70.56</span>	<span class="mi">5</span>	<span class="mf">59.2</span>	<span class="mi">155</span>	<span class="mi">145587</span>
+<span class="s2">&quot;Nebraska&quot;</span>	<span class="mi">1544</span>	<span class="mi">4508</span>	<span class="mf">0.6</span>	<span class="mf">72.6</span>	<span class="mf">2.9</span>	<span class="mf">59.3</span>	<span class="mi">139</span>	<span class="mi">76483</span>
+<span class="s2">&quot;Nevada&quot;</span>	<span class="mi">590</span>	<span class="mi">5149</span>	<span class="mf">0.5</span>	<span class="mf">69.03</span>	<span class="mf">11.5</span>	<span class="mf">65.2</span>	<span class="mi">188</span>	<span class="mi">109889</span>
+<span class="s2">&quot;New_Hampshire&quot;</span>	<span class="mi">812</span>	<span class="mi">4281</span>	<span class="mf">0.7</span>	<span class="mf">71.23</span>	<span class="mf">3.3</span>	<span class="mf">57.6</span>	<span class="mi">174</span>	<span class="mi">9027</span>
+<span class="s2">&quot;New_Jersey&quot;</span>	<span class="mi">7333</span>	<span class="mi">5237</span>	<span class="mf">1.1</span>	<span class="mf">70.93</span>	<span class="mf">5.2</span>	<span class="mf">52.5</span>	<span class="mi">115</span>	<span class="mi">7521</span>
+<span class="s2">&quot;New_Mexico&quot;</span>	<span class="mi">1144</span>	<span class="mi">3601</span>	<span class="mf">2.2</span>	<span class="mf">70.32</span>	<span class="mf">9.7</span>	<span class="mf">55.2</span>	<span class="mi">120</span>	<span class="mi">121412</span>
+<span class="s2">&quot;New_York&quot;</span>	<span class="mi">18076</span>	<span class="mi">4903</span>	<span class="mf">1.4</span>	<span class="mf">70.55</span>	<span class="mf">10.9</span>	<span class="mf">52.7</span>	<span class="mi">82</span>	<span class="mi">47831</span>
+<span class="s2">&quot;North_Carolina&quot;</span>	<span class="mi">5441</span>	<span class="mi">3875</span>	<span class="mf">1.8</span>	<span class="mf">69.21</span>	<span class="mf">11.1</span>	<span class="mf">38.5</span>	<span class="mi">80</span>	<span class="mi">48798</span>
+<span class="s2">&quot;North_Dakota&quot;</span>	<span class="mi">637</span>	<span class="mi">5087</span>	<span class="mf">0.8</span>	<span class="mf">72.78</span>	<span class="mf">1.4</span>	<span class="mf">50.3</span>	<span class="mi">186</span>	<span class="mi">69273</span>
+<span class="s2">&quot;Ohio&quot;</span>	<span class="mi">10735</span>	<span class="mi">4561</span>	<span class="mf">0.8</span>	<span class="mf">70.82</span>	<span class="mf">7.4</span>	<span class="mf">53.2</span>	<span class="mi">124</span>	<span class="mi">40975</span>
+<span class="s2">&quot;Oklahoma&quot;</span>	<span class="mi">2715</span>	<span class="mi">3983</span>	<span class="mf">1.1</span>	<span class="mf">71.42</span>	<span class="mf">6.4</span>	<span class="mf">51.6</span>	<span class="mi">82</span>	<span class="mi">68782</span>
+<span class="s2">&quot;Oregon&quot;</span>	<span class="mi">2284</span>	<span class="mi">4660</span>	<span class="mf">0.6</span>	<span class="mf">72.13</span>	<span class="mf">4.2</span>	<span class="mi">60</span>	<span class="mi">44</span>	<span class="mi">96184</span>
+<span class="s2">&quot;Pennsylvania&quot;</span>	<span class="mi">11860</span>	<span class="mi">4449</span>	<span class="mi">1</span>	<span class="mf">70.43</span>	<span class="mf">6.1</span>	<span class="mf">50.2</span>	<span class="mi">126</span>	<span class="mi">44966</span>
+<span class="s2">&quot;Rhode_Island&quot;</span>	<span class="mi">931</span>	<span class="mi">4558</span>	<span class="mf">1.3</span>	<span class="mf">71.9</span>	<span class="mf">2.4</span>	<span class="mf">46.4</span>	<span class="mi">127</span>	<span class="mi">1049</span>
+<span class="s2">&quot;South_Carolina&quot;</span>	<span class="mi">2816</span>	<span class="mi">3635</span>	<span class="mf">2.3</span>	<span class="mf">67.96</span>	<span class="mf">11.6</span>	<span class="mf">37.8</span>	<span class="mi">65</span>	<span class="mi">30225</span>
+<span class="s2">&quot;South_Dakota&quot;</span>	<span class="mi">681</span>	<span class="mi">4167</span>	<span class="mf">0.5</span>	<span class="mf">72.08</span>	<span class="mf">1.7</span>	<span class="mf">53.3</span>	<span class="mi">172</span>	<span class="mi">75955</span>
+<span class="s2">&quot;Tennessee&quot;</span>	<span class="mi">4173</span>	<span class="mi">3821</span>	<span class="mf">1.7</span>	<span class="mf">70.11</span>	<span class="mi">11</span>	<span class="mf">41.8</span>	<span class="mi">70</span>	<span class="mi">41328</span>
+<span class="s2">&quot;Texas&quot;</span>	<span class="mi">12237</span>	<span class="mi">4188</span>	<span class="mf">2.2</span>	<span class="mf">70.9</span>	<span class="mf">12.2</span>	<span class="mf">47.4</span>	<span class="mi">35</span>	<span class="mi">262134</span>
+<span class="s2">&quot;Utah&quot;</span>	<span class="mi">1203</span>	<span class="mi">4022</span>	<span class="mf">0.6</span>	<span class="mf">72.9</span>	<span class="mf">4.5</span>	<span class="mf">67.3</span>	<span class="mi">137</span>	<span class="mi">82096</span>
+<span class="s2">&quot;Vermont&quot;</span>	<span class="mi">472</span>	<span class="mi">3907</span>	<span class="mf">0.6</span>	<span class="mf">71.64</span>	<span class="mf">5.5</span>	<span class="mf">57.1</span>	<span class="mi">168</span>	<span class="mi">9267</span>
+<span class="s2">&quot;Virginia&quot;</span>	<span class="mi">4981</span>	<span class="mi">4701</span>	<span class="mf">1.4</span>	<span class="mf">70.08</span>	<span class="mf">9.5</span>	<span class="mf">47.8</span>	<span class="mi">85</span>	<span class="mi">39780</span>
+<span class="s2">&quot;Washington&quot;</span>	<span class="mi">3559</span>	<span class="mi">4864</span>	<span class="mf">0.6</span>	<span class="mf">71.72</span>	<span class="mf">4.3</span>	<span class="mf">63.5</span>	<span class="mi">32</span>	<span class="mi">66570</span>
+<span class="s2">&quot;West_Virginia&quot;</span>	<span class="mi">1799</span>	<span class="mi">3617</span>	<span class="mf">1.4</span>	<span class="mf">69.48</span>	<span class="mf">6.7</span>	<span class="mf">41.6</span>	<span class="mi">100</span>	<span class="mi">24070</span>
+<span class="s2">&quot;Wisconsin&quot;</span>	<span class="mi">4589</span>	<span class="mi">4468</span>	<span class="mf">0.7</span>	<span class="mf">72.48</span>	<span class="mi">3</span>	<span class="mf">54.5</span>	<span class="mi">149</span>	<span class="mi">54464</span>
+<span class="s2">&quot;Wyoming&quot;</span>	<span class="mi">376</span>	<span class="mi">4566</span>	<span class="mf">0.6</span>	<span class="mf">70.29</span>	<span class="mf">6.9</span>	<span class="mf">62.9</span>	<span class="mi">173</span>	<span class="mi">97203</span>
 
-here are the states sorted by population size ...
-Name	&quot;Population&quot;	&quot;Income&quot;	&quot;Illiteracy&quot;	&quot;Life Exp&quot;	&quot;Murder&quot;	&quot;HS Grad&quot;	&quot;Frost&quot;	&quot;Area&quot;
-&quot;Alaska&quot;	365	6315	1.5	69.31	11.3	66.7	152	566432
-&quot;Wyoming&quot;	376	4566	0.6	70.29	6.9	62.9	173	97203
-&quot;Vermont&quot;	472	3907	0.6	71.64	5.5	57.1	168	9267
-&quot;Delaware&quot;	579	4809	0.9	70.06	6.2	54.6	103	1982
-&quot;Nevada&quot;	590	5149	0.5	69.03	11.5	65.2	188	109889
-&quot;North_Dakota&quot;	637	5087	0.8	72.78	1.4	50.3	186	69273
-&quot;South_Dakota&quot;	681	4167	0.5	72.08	1.7	53.3	172	75955
-&quot;Montana&quot;	746	4347	0.6	70.56	5	59.2	155	145587
-&quot;New_Hampshire&quot;	812	4281	0.7	71.23	3.3	57.6	174	9027
-&quot;Idaho&quot;	813	4119	0.6	71.87	5.3	59.5	126	82677
-&quot;Hawaii&quot;	868	4963	1.9	73.6	6.2	61.9	0	6425
-&quot;Rhode_Island&quot;	931	4558	1.3	71.9	2.4	46.4	127	1049
-&quot;Maine&quot;	1058	3694	0.7	70.39	2.7	54.7	161	30920
-&quot;New_Mexico&quot;	1144	3601	2.2	70.32	9.7	55.2	120	121412
-&quot;Utah&quot;	1203	4022	0.6	72.9	4.5	67.3	137	82096
-&quot;Nebraska&quot;	1544	4508	0.6	72.6	2.9	59.3	139	76483
-&quot;West_Virginia&quot;	1799	3617	1.4	69.48	6.7	41.6	100	24070
-&quot;Arkansas&quot;	2110	3378	1.9	70.66	10.1	39.9	65	51945
-&quot;Arizona&quot;	2212	4530	1.8	70.55	7.8	58.1	15	113417
-&quot;Kansas&quot;	2280	4669	0.6	72.58	4.5	59.9	114	81787
-&quot;Oregon&quot;	2284	4660	0.6	72.13	4.2	60	44	96184
-&quot;Mississippi&quot;	2341	3098	2.4	68.09	12.5	41	50	47296
-&quot;Colorado&quot;	2541	4884	0.7	72.06	6.8	63.9	166	103766
-&quot;Oklahoma&quot;	2715	3983	1.1	71.42	6.4	51.6	82	68782
-&quot;South_Carolina&quot;	2816	3635	2.3	67.96	11.6	37.8	65	30225
-&quot;Iowa&quot;	2861	4628	0.5	72.56	2.3	59	140	55941
-&quot;Connecticut&quot;	3100	5348	1.1	72.48	3.1	56	139	4862
-&quot;Kentucky&quot;	3387	3712	1.6	70.1	10.6	38.5	95	39650
-&quot;Washington&quot;	3559	4864	0.6	71.72	4.3	63.5	32	66570
-&quot;Alabama&quot;	3615	3624	2.1	69.05	15.1	41.3	20	50708
-&quot;Louisiana&quot;	3806	3545	2.8	68.76	13.2	42.2	12	44930
-&quot;Minnesota&quot;	3921	4675	0.6	72.96	2.3	57.6	160	79289
-&quot;Maryland&quot;	4122	5299	0.9	70.22	8.5	52.3	101	9891
-&quot;Tennessee&quot;	4173	3821	1.7	70.11	11	41.8	70	41328
-&quot;Wisconsin&quot;	4589	4468	0.7	72.48	3	54.5	149	54464
-&quot;Missouri&quot;	4767	4254	0.8	70.69	9.3	48.8	108	68995
-&quot;Georgia&quot;	4931	4091	2	68.54	13.9	40.6	60	58073
-&quot;Virginia&quot;	4981	4701	1.4	70.08	9.5	47.8	85	39780
-&quot;Indiana&quot;	5313	4458	0.7	70.88	7.1	52.9	122	36097
-&quot;North_Carolina&quot;	5441	3875	1.8	69.21	11.1	38.5	80	48798
-&quot;Massachusetts&quot;	5814	4755	1.1	71.83	3.3	58.5	103	7826
-&quot;New_Jersey&quot;	7333	5237	1.1	70.93	5.2	52.5	115	7521
-&quot;Florida&quot;	8277	4815	1.3	70.66	10.7	52.6	11	54090
-&quot;Michigan&quot;	9111	4751	0.9	70.63	11.1	52.8	125	56817
-&quot;Ohio&quot;	10735	4561	0.8	70.82	7.4	53.2	124	40975
-&quot;Illinois&quot;	11197	5107	0.9	70.14	10.3	52.6	127	55748
-&quot;Pennsylvania&quot;	11860	4449	1	70.43	6.1	50.2	126	44966
-&quot;Texas&quot;	12237	4188	2.2	70.9	12.2	47.4	35	262134
-&quot;New_York&quot;	18076	4903	1.4	70.55	10.9	52.7	82	47831
-&quot;California&quot;	21198	5114	1.1	71.71	10.3	62.6	20	156361
+<span class="n">here</span> <span class="n">are</span> <span class="n">the</span> <span class="n">states</span> <span class="nb">sorted</span> <span class="n">by</span> <span class="n">population</span> <span class="n">size</span> <span class="o">...</span>
+<span class="n">Name</span>	<span class="s2">&quot;Population&quot;</span>	<span class="s2">&quot;Income&quot;</span>	<span class="s2">&quot;Illiteracy&quot;</span>	<span class="s2">&quot;Life Exp&quot;</span>	<span class="s2">&quot;Murder&quot;</span>	<span class="s2">&quot;HS Grad&quot;</span>	<span class="s2">&quot;Frost&quot;</span>	<span class="s2">&quot;Area&quot;</span>
+<span class="s2">&quot;Alaska&quot;</span>	<span class="mi">365</span>	<span class="mi">6315</span>	<span class="mf">1.5</span>	<span class="mf">69.31</span>	<span class="mf">11.3</span>	<span class="mf">66.7</span>	<span class="mi">152</span>	<span class="mi">566432</span>
+<span class="s2">&quot;Wyoming&quot;</span>	<span class="mi">376</span>	<span class="mi">4566</span>	<span class="mf">0.6</span>	<span class="mf">70.29</span>	<span class="mf">6.9</span>	<span class="mf">62.9</span>	<span class="mi">173</span>	<span class="mi">97203</span>
+<span class="s2">&quot;Vermont&quot;</span>	<span class="mi">472</span>	<span class="mi">3907</span>	<span class="mf">0.6</span>	<span class="mf">71.64</span>	<span class="mf">5.5</span>	<span class="mf">57.1</span>	<span class="mi">168</span>	<span class="mi">9267</span>
+<span class="s2">&quot;Delaware&quot;</span>	<span class="mi">579</span>	<span class="mi">4809</span>	<span class="mf">0.9</span>	<span class="mf">70.06</span>	<span class="mf">6.2</span>	<span class="mf">54.6</span>	<span class="mi">103</span>	<span class="mi">1982</span>
+<span class="s2">&quot;Nevada&quot;</span>	<span class="mi">590</span>	<span class="mi">5149</span>	<span class="mf">0.5</span>	<span class="mf">69.03</span>	<span class="mf">11.5</span>	<span class="mf">65.2</span>	<span class="mi">188</span>	<span class="mi">109889</span>
+<span class="s2">&quot;North_Dakota&quot;</span>	<span class="mi">637</span>	<span class="mi">5087</span>	<span class="mf">0.8</span>	<span class="mf">72.78</span>	<span class="mf">1.4</span>	<span class="mf">50.3</span>	<span class="mi">186</span>	<span class="mi">69273</span>
+<span class="s2">&quot;South_Dakota&quot;</span>	<span class="mi">681</span>	<span class="mi">4167</span>	<span class="mf">0.5</span>	<span class="mf">72.08</span>	<span class="mf">1.7</span>	<span class="mf">53.3</span>	<span class="mi">172</span>	<span class="mi">75955</span>
+<span class="s2">&quot;Montana&quot;</span>	<span class="mi">746</span>	<span class="mi">4347</span>	<span class="mf">0.6</span>	<span class="mf">70.56</span>	<span class="mi">5</span>	<span class="mf">59.2</span>	<span class="mi">155</span>	<span class="mi">145587</span>
+<span class="s2">&quot;New_Hampshire&quot;</span>	<span class="mi">812</span>	<span class="mi">4281</span>	<span class="mf">0.7</span>	<span class="mf">71.23</span>	<span class="mf">3.3</span>	<span class="mf">57.6</span>	<span class="mi">174</span>	<span class="mi">9027</span>
+<span class="s2">&quot;Idaho&quot;</span>	<span class="mi">813</span>	<span class="mi">4119</span>	<span class="mf">0.6</span>	<span class="mf">71.87</span>	<span class="mf">5.3</span>	<span class="mf">59.5</span>	<span class="mi">126</span>	<span class="mi">82677</span>
+<span class="s2">&quot;Hawaii&quot;</span>	<span class="mi">868</span>	<span class="mi">4963</span>	<span class="mf">1.9</span>	<span class="mf">73.6</span>	<span class="mf">6.2</span>	<span class="mf">61.9</span>	<span class="mi">0</span>	<span class="mi">6425</span>
+<span class="s2">&quot;Rhode_Island&quot;</span>	<span class="mi">931</span>	<span class="mi">4558</span>	<span class="mf">1.3</span>	<span class="mf">71.9</span>	<span class="mf">2.4</span>	<span class="mf">46.4</span>	<span class="mi">127</span>	<span class="mi">1049</span>
+<span class="s2">&quot;Maine&quot;</span>	<span class="mi">1058</span>	<span class="mi">3694</span>	<span class="mf">0.7</span>	<span class="mf">70.39</span>	<span class="mf">2.7</span>	<span class="mf">54.7</span>	<span class="mi">161</span>	<span class="mi">30920</span>
+<span class="s2">&quot;New_Mexico&quot;</span>	<span class="mi">1144</span>	<span class="mi">3601</span>	<span class="mf">2.2</span>	<span class="mf">70.32</span>	<span class="mf">9.7</span>	<span class="mf">55.2</span>	<span class="mi">120</span>	<span class="mi">121412</span>
+<span class="s2">&quot;Utah&quot;</span>	<span class="mi">1203</span>	<span class="mi">4022</span>	<span class="mf">0.6</span>	<span class="mf">72.9</span>	<span class="mf">4.5</span>	<span class="mf">67.3</span>	<span class="mi">137</span>	<span class="mi">82096</span>
+<span class="s2">&quot;Nebraska&quot;</span>	<span class="mi">1544</span>	<span class="mi">4508</span>	<span class="mf">0.6</span>	<span class="mf">72.6</span>	<span class="mf">2.9</span>	<span class="mf">59.3</span>	<span class="mi">139</span>	<span class="mi">76483</span>
+<span class="s2">&quot;West_Virginia&quot;</span>	<span class="mi">1799</span>	<span class="mi">3617</span>	<span class="mf">1.4</span>	<span class="mf">69.48</span>	<span class="mf">6.7</span>	<span class="mf">41.6</span>	<span class="mi">100</span>	<span class="mi">24070</span>
+<span class="s2">&quot;Arkansas&quot;</span>	<span class="mi">2110</span>	<span class="mi">3378</span>	<span class="mf">1.9</span>	<span class="mf">70.66</span>	<span class="mf">10.1</span>	<span class="mf">39.9</span>	<span class="mi">65</span>	<span class="mi">51945</span>
+<span class="s2">&quot;Arizona&quot;</span>	<span class="mi">2212</span>	<span class="mi">4530</span>	<span class="mf">1.8</span>	<span class="mf">70.55</span>	<span class="mf">7.8</span>	<span class="mf">58.1</span>	<span class="mi">15</span>	<span class="mi">113417</span>
+<span class="s2">&quot;Kansas&quot;</span>	<span class="mi">2280</span>	<span class="mi">4669</span>	<span class="mf">0.6</span>	<span class="mf">72.58</span>	<span class="mf">4.5</span>	<span class="mf">59.9</span>	<span class="mi">114</span>	<span class="mi">81787</span>
+<span class="s2">&quot;Oregon&quot;</span>	<span class="mi">2284</span>	<span class="mi">4660</span>	<span class="mf">0.6</span>	<span class="mf">72.13</span>	<span class="mf">4.2</span>	<span class="mi">60</span>	<span class="mi">44</span>	<span class="mi">96184</span>
+<span class="s2">&quot;Mississippi&quot;</span>	<span class="mi">2341</span>	<span class="mi">3098</span>	<span class="mf">2.4</span>	<span class="mf">68.09</span>	<span class="mf">12.5</span>	<span class="mi">41</span>	<span class="mi">50</span>	<span class="mi">47296</span>
+<span class="s2">&quot;Colorado&quot;</span>	<span class="mi">2541</span>	<span class="mi">4884</span>	<span class="mf">0.7</span>	<span class="mf">72.06</span>	<span class="mf">6.8</span>	<span class="mf">63.9</span>	<span class="mi">166</span>	<span class="mi">103766</span>
+<span class="s2">&quot;Oklahoma&quot;</span>	<span class="mi">2715</span>	<span class="mi">3983</span>	<span class="mf">1.1</span>	<span class="mf">71.42</span>	<span class="mf">6.4</span>	<span class="mf">51.6</span>	<span class="mi">82</span>	<span class="mi">68782</span>
+<span class="s2">&quot;South_Carolina&quot;</span>	<span class="mi">2816</span>	<span class="mi">3635</span>	<span class="mf">2.3</span>	<span class="mf">67.96</span>	<span class="mf">11.6</span>	<span class="mf">37.8</span>	<span class="mi">65</span>	<span class="mi">30225</span>
+<span class="s2">&quot;Iowa&quot;</span>	<span class="mi">2861</span>	<span class="mi">4628</span>	<span class="mf">0.5</span>	<span class="mf">72.56</span>	<span class="mf">2.3</span>	<span class="mi">59</span>	<span class="mi">140</span>	<span class="mi">55941</span>
+<span class="s2">&quot;Connecticut&quot;</span>	<span class="mi">3100</span>	<span class="mi">5348</span>	<span class="mf">1.1</span>	<span class="mf">72.48</span>	<span class="mf">3.1</span>	<span class="mi">56</span>	<span class="mi">139</span>	<span class="mi">4862</span>
+<span class="s2">&quot;Kentucky&quot;</span>	<span class="mi">3387</span>	<span class="mi">3712</span>	<span class="mf">1.6</span>	<span class="mf">70.1</span>	<span class="mf">10.6</span>	<span class="mf">38.5</span>	<span class="mi">95</span>	<span class="mi">39650</span>
+<span class="s2">&quot;Washington&quot;</span>	<span class="mi">3559</span>	<span class="mi">4864</span>	<span class="mf">0.6</span>	<span class="mf">71.72</span>	<span class="mf">4.3</span>	<span class="mf">63.5</span>	<span class="mi">32</span>	<span class="mi">66570</span>
+<span class="s2">&quot;Alabama&quot;</span>	<span class="mi">3615</span>	<span class="mi">3624</span>	<span class="mf">2.1</span>	<span class="mf">69.05</span>	<span class="mf">15.1</span>	<span class="mf">41.3</span>	<span class="mi">20</span>	<span class="mi">50708</span>
+<span class="s2">&quot;Louisiana&quot;</span>	<span class="mi">3806</span>	<span class="mi">3545</span>	<span class="mf">2.8</span>	<span class="mf">68.76</span>	<span class="mf">13.2</span>	<span class="mf">42.2</span>	<span class="mi">12</span>	<span class="mi">44930</span>
+<span class="s2">&quot;Minnesota&quot;</span>	<span class="mi">3921</span>	<span class="mi">4675</span>	<span class="mf">0.6</span>	<span class="mf">72.96</span>	<span class="mf">2.3</span>	<span class="mf">57.6</span>	<span class="mi">160</span>	<span class="mi">79289</span>
+<span class="s2">&quot;Maryland&quot;</span>	<span class="mi">4122</span>	<span class="mi">5299</span>	<span class="mf">0.9</span>	<span class="mf">70.22</span>	<span class="mf">8.5</span>	<span class="mf">52.3</span>	<span class="mi">101</span>	<span class="mi">9891</span>
+<span class="s2">&quot;Tennessee&quot;</span>	<span class="mi">4173</span>	<span class="mi">3821</span>	<span class="mf">1.7</span>	<span class="mf">70.11</span>	<span class="mi">11</span>	<span class="mf">41.8</span>	<span class="mi">70</span>	<span class="mi">41328</span>
+<span class="s2">&quot;Wisconsin&quot;</span>	<span class="mi">4589</span>	<span class="mi">4468</span>	<span class="mf">0.7</span>	<span class="mf">72.48</span>	<span class="mi">3</span>	<span class="mf">54.5</span>	<span class="mi">149</span>	<span class="mi">54464</span>
+<span class="s2">&quot;Missouri&quot;</span>	<span class="mi">4767</span>	<span class="mi">4254</span>	<span class="mf">0.8</span>	<span class="mf">70.69</span>	<span class="mf">9.3</span>	<span class="mf">48.8</span>	<span class="mi">108</span>	<span class="mi">68995</span>
+<span class="s2">&quot;Georgia&quot;</span>	<span class="mi">4931</span>	<span class="mi">4091</span>	<span class="mi">2</span>	<span class="mf">68.54</span>	<span class="mf">13.9</span>	<span class="mf">40.6</span>	<span class="mi">60</span>	<span class="mi">58073</span>
+<span class="s2">&quot;Virginia&quot;</span>	<span class="mi">4981</span>	<span class="mi">4701</span>	<span class="mf">1.4</span>	<span class="mf">70.08</span>	<span class="mf">9.5</span>	<span class="mf">47.8</span>	<span class="mi">85</span>	<span class="mi">39780</span>
+<span class="s2">&quot;Indiana&quot;</span>	<span class="mi">5313</span>	<span class="mi">4458</span>	<span class="mf">0.7</span>	<span class="mf">70.88</span>	<span class="mf">7.1</span>	<span class="mf">52.9</span>	<span class="mi">122</span>	<span class="mi">36097</span>
+<span class="s2">&quot;North_Carolina&quot;</span>	<span class="mi">5441</span>	<span class="mi">3875</span>	<span class="mf">1.8</span>	<span class="mf">69.21</span>	<span class="mf">11.1</span>	<span class="mf">38.5</span>	<span class="mi">80</span>	<span class="mi">48798</span>
+<span class="s2">&quot;Massachusetts&quot;</span>	<span class="mi">5814</span>	<span class="mi">4755</span>	<span class="mf">1.1</span>	<span class="mf">71.83</span>	<span class="mf">3.3</span>	<span class="mf">58.5</span>	<span class="mi">103</span>	<span class="mi">7826</span>
+<span class="s2">&quot;New_Jersey&quot;</span>	<span class="mi">7333</span>	<span class="mi">5237</span>	<span class="mf">1.1</span>	<span class="mf">70.93</span>	<span class="mf">5.2</span>	<span class="mf">52.5</span>	<span class="mi">115</span>	<span class="mi">7521</span>
+<span class="s2">&quot;Florida&quot;</span>	<span class="mi">8277</span>	<span class="mi">4815</span>	<span class="mf">1.3</span>	<span class="mf">70.66</span>	<span class="mf">10.7</span>	<span class="mf">52.6</span>	<span class="mi">11</span>	<span class="mi">54090</span>
+<span class="s2">&quot;Michigan&quot;</span>	<span class="mi">9111</span>	<span class="mi">4751</span>	<span class="mf">0.9</span>	<span class="mf">70.63</span>	<span class="mf">11.1</span>	<span class="mf">52.8</span>	<span class="mi">125</span>	<span class="mi">56817</span>
+<span class="s2">&quot;Ohio&quot;</span>	<span class="mi">10735</span>	<span class="mi">4561</span>	<span class="mf">0.8</span>	<span class="mf">70.82</span>	<span class="mf">7.4</span>	<span class="mf">53.2</span>	<span class="mi">124</span>	<span class="mi">40975</span>
+<span class="s2">&quot;Illinois&quot;</span>	<span class="mi">11197</span>	<span class="mi">5107</span>	<span class="mf">0.9</span>	<span class="mf">70.14</span>	<span class="mf">10.3</span>	<span class="mf">52.6</span>	<span class="mi">127</span>	<span class="mi">55748</span>
+<span class="s2">&quot;Pennsylvania&quot;</span>	<span class="mi">11860</span>	<span class="mi">4449</span>	<span class="mi">1</span>	<span class="mf">70.43</span>	<span class="mf">6.1</span>	<span class="mf">50.2</span>	<span class="mi">126</span>	<span class="mi">44966</span>
+<span class="s2">&quot;Texas&quot;</span>	<span class="mi">12237</span>	<span class="mi">4188</span>	<span class="mf">2.2</span>	<span class="mf">70.9</span>	<span class="mf">12.2</span>	<span class="mf">47.4</span>	<span class="mi">35</span>	<span class="mi">262134</span>
+<span class="s2">&quot;New_York&quot;</span>	<span class="mi">18076</span>	<span class="mi">4903</span>	<span class="mf">1.4</span>	<span class="mf">70.55</span>	<span class="mf">10.9</span>	<span class="mf">52.7</span>	<span class="mi">82</span>	<span class="mi">47831</span>
+<span class="s2">&quot;California&quot;</span>	<span class="mi">21198</span>	<span class="mi">5114</span>	<span class="mf">1.1</span>	<span class="mf">71.71</span>	<span class="mf">10.3</span>	<span class="mf">62.6</span>	<span class="mi">20</span>	<span class="mi">156361</span>
 
-here are the states with the highest number of murders ...
-&quot;Alabama&quot;	3615	3624	2.1	69.05	15.1	41.3	20	50708
-&quot;Georgia&quot;	4931	4091	2	68.54	13.9	40.6	60	58073
-&quot;Louisiana&quot;	3806	3545	2.8	68.76	13.2	42.2	12	44930
-&quot;Mississippi&quot;	2341	3098	2.4	68.09	12.5	41	50	47296
-&quot;Texas&quot;	12237	4188	2.2	70.9	12.2	47.4	35	262134
-&quot;South_Carolina&quot;	2816	3635	2.3	67.96	11.6	37.8	65	30225
-&quot;Nevada&quot;	590	5149	0.5	69.03	11.5	65.2	188	109889
-&quot;Alaska&quot;	365	6315	1.5	69.31	11.3	66.7	152	566432
-&quot;Michigan&quot;	9111	4751	0.9	70.63	11.1	52.8	125	56817
-&quot;North_Carolina&quot;	5441	3875	1.8	69.21	11.1	38.5	80	48798
+<span class="n">here</span> <span class="n">are</span> <span class="n">the</span> <span class="n">states</span> <span class="k">with</span> <span class="n">the</span> <span class="n">highest</span> <span class="n">number</span> <span class="n">of</span> <span class="n">murders</span> <span class="o">...</span>
+<span class="s2">&quot;Alabama&quot;</span>	<span class="mi">3615</span>	<span class="mi">3624</span>	<span class="mf">2.1</span>	<span class="mf">69.05</span>	<span class="mf">15.1</span>	<span class="mf">41.3</span>	<span class="mi">20</span>	<span class="mi">50708</span>
+<span class="s2">&quot;Georgia&quot;</span>	<span class="mi">4931</span>	<span class="mi">4091</span>	<span class="mi">2</span>	<span class="mf">68.54</span>	<span class="mf">13.9</span>	<span class="mf">40.6</span>	<span class="mi">60</span>	<span class="mi">58073</span>
+<span class="s2">&quot;Louisiana&quot;</span>	<span class="mi">3806</span>	<span class="mi">3545</span>	<span class="mf">2.8</span>	<span class="mf">68.76</span>	<span class="mf">13.2</span>	<span class="mf">42.2</span>	<span class="mi">12</span>	<span class="mi">44930</span>
+<span class="s2">&quot;Mississippi&quot;</span>	<span class="mi">2341</span>	<span class="mi">3098</span>	<span class="mf">2.4</span>	<span class="mf">68.09</span>	<span class="mf">12.5</span>	<span class="mi">41</span>	<span class="mi">50</span>	<span class="mi">47296</span>
+<span class="s2">&quot;Texas&quot;</span>	<span class="mi">12237</span>	<span class="mi">4188</span>	<span class="mf">2.2</span>	<span class="mf">70.9</span>	<span class="mf">12.2</span>	<span class="mf">47.4</span>	<span class="mi">35</span>	<span class="mi">262134</span>
+<span class="s2">&quot;South_Carolina&quot;</span>	<span class="mi">2816</span>	<span class="mi">3635</span>	<span class="mf">2.3</span>	<span class="mf">67.96</span>	<span class="mf">11.6</span>	<span class="mf">37.8</span>	<span class="mi">65</span>	<span class="mi">30225</span>
+<span class="s2">&quot;Nevada&quot;</span>	<span class="mi">590</span>	<span class="mi">5149</span>	<span class="mf">0.5</span>	<span class="mf">69.03</span>	<span class="mf">11.5</span>	<span class="mf">65.2</span>	<span class="mi">188</span>	<span class="mi">109889</span>
+<span class="s2">&quot;Alaska&quot;</span>	<span class="mi">365</span>	<span class="mi">6315</span>	<span class="mf">1.5</span>	<span class="mf">69.31</span>	<span class="mf">11.3</span>	<span class="mf">66.7</span>	<span class="mi">152</span>	<span class="mi">566432</span>
+<span class="s2">&quot;Michigan&quot;</span>	<span class="mi">9111</span>	<span class="mi">4751</span>	<span class="mf">0.9</span>	<span class="mf">70.63</span>	<span class="mf">11.1</span>	<span class="mf">52.8</span>	<span class="mi">125</span>	<span class="mi">56817</span>
+<span class="s2">&quot;North_Carolina&quot;</span>	<span class="mi">5441</span>	<span class="mi">3875</span>	<span class="mf">1.8</span>	<span class="mf">69.21</span>	<span class="mf">11.1</span>	<span class="mf">38.5</span>	<span class="mi">80</span>	<span class="mi">48798</span>
 
 </pre></div>
 </td></tr></table></div>

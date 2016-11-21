@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Class 9 : R : Manipulation &amp; Plotting &mdash; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 9 : R : Manipulation &amp; Plotting &#8212; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -28,8 +28,10 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 10 : R : DataFrames &amp; Plotting" href="class-10.html" />
@@ -140,9 +142,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Feb 25 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Feb 21 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -167,12 +169,12 @@
 string manipulations together.</p>
 <p>By combining these functions together, you can quickly and easily
 manipulate data.frames and generate useful data summaries.</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> summary <span class="o">&lt;-</span> df <span class="o">%&gt;%</span> select<span class="p">()</span> <span class="o">%&gt;%</span> group_by<span class="p">()</span> <span class="o">%&gt;%</span> summarize<span class="p">()</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> summary <span class="o">&lt;-</span> df <span class="o">%&gt;%</span> select<span class="p">()</span> <span class="o">%&gt;%</span> group_by<span class="p">()</span> <span class="o">%&gt;%</span> summarize<span class="p">()</span>
 </pre></div>
 </div>
 <div class="section" id="dplyr-example">
 <h3>dplyr example<a class="headerlink" href="#dplyr-example" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#dplyr-example" title="Slides">§</a></h3>
-<div class="highlight-r"><div class="highlight"><pre>dfx <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>dfx <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="c1"># calculate some simple stats with dplyr</span>
 grouped <span class="o">&lt;-</span> group_by<span class="p">(</span>dfx<span class="p">,</span> condition<span class="p">,</span> genotype<span class="p">)</span>
@@ -185,11 +187,11 @@ dfx <span class="o">%&gt;%</span>
 </pre></div>
 </div>
 <p>Summarize transcription factor binding site peaks in:</p>
-<div class="highlight-python"><div class="highlight"><pre># columns 1-4 from merged peak calls
-/vol1/opt/data/encode/peaks.bed.gz
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># columns 1-4 from merged peak calls</span>
+<span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">encode</span><span class="o">/</span><span class="n">peaks</span><span class="o">.</span><span class="n">bed</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
 <span class="o">&gt;</span> colnames <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> bedfilename <span class="o">=</span> <span class="s">&#39;peaks.bed.gz&#39;</span>
 
@@ -225,12 +227,12 @@ your answer (also add individual points to the plot with <code class="docutils l
 <div class="section" id="combining-with-ggplot">
 <h2>Combining with ggplot<a class="headerlink" href="#combining-with-ggplot" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#combining-with-ggplot" title="Slides">§</a></h2>
 <p>We had mean expression by condition and genotype as:</p>
-<div class="highlight-r"><div class="highlight"><pre>dfx <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
+<div class="highlight-r"><div class="highlight"><pre><span></span>dfx <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
     <span class="o">%&gt;%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span> \
 </pre></div>
 </div>
 <p>We can add to that expression (after typing &#8216;library(ggplot2)&#8217;)</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">%&gt;%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">)</span> \
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">%&gt;%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">)</span> \
     <span class="o">+</span> geom_histogram<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -241,7 +243,7 @@ your answer (also add individual points to the plot with <code class="docutils l
 <h2>ggplot histograms<a class="headerlink" href="#ggplot-histograms" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#ggplot-histograms" title="Slides">§</a></h2>
 <p>Since <cite>expr-geno-covs.txt</cite> is already in long format, we can use it directly in
 ggplot:</p>
-<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
        geom_histogram<span class="p">()</span> <span class="o">+</span>
        scale_x_log10<span class="p">()</span>
 </pre></div>
@@ -251,7 +253,7 @@ ggplot:</p>
 <ol class="arabic simple">
 <li>Adjust this:</li>
 </ol>
-<div class="highlight-r"><div class="highlight"><pre>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
        geom_histogram<span class="p">()</span> <span class="o">+</span>
        scale_x_log10<span class="p">()</span>
 </pre></div>
@@ -274,7 +276,7 @@ a bar plot with ggplot2.</li>
 <div class="section" id="practice">
 <h3>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#practice" title="Slides">§</a></h3>
 <p>Practice <code class="docutils literal"><span class="pre">dplyr</span></code> and <code class="docutils literal"><span class="pre">tidyr</span></code> with <code class="docutils literal"><span class="pre">swirl</span></code>:</p>
-<div class="highlight-r"><div class="highlight"><pre><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>swirl<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>swirl<span class="p">)</span>
 <span class="o">&gt;</span> install_from_swirl<span class="p">(</span><span class="s">&quot;Getting_and_Cleaning_Data&quot;</span><span class="p">)</span>
 <span class="o">&gt;</span> swirl<span class="p">()</span>
 </pre></div>

@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 5 : BEDTools" href="class-05.html" />
@@ -91,9 +93,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Feb 9 Tues</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Feb 2 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">February 08, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -124,14 +126,14 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <p>Use <a class="reference external" href="http://linux.die.net/man/1/grep">grep(1)</a> to identify lines in a file that match a specified pattern.</p>
 <p>To find any instance of <em>chr5</em> in the lamina.bed file</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># grep [pattern] [filename]</span>
-<span class="nv">$ </span>grep chr5 /vol1/opt/data/lamina.bed <span class="p">|</span> head
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># grep [pattern] [filename]</span>
+$ grep chr5 /vol1/opt/data/lamina.bed <span class="p">|</span> head
 </pre></div>
 </div>
 <p>To find all lines that start with a number sign:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># The caret (^) matches the beginning of the line</span>
-<span class="c"># FYI dollar sign ($) matches the end</span>
-<span class="nv">$ </span>grep <span class="s1">&#39;^#&#39;</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># The caret (^) matches the beginning of the line</span>
+<span class="c1"># FYI dollar sign ($) matches the end</span>
+$ grep <span class="s1">&#39;^#&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 
@@ -145,18 +147,18 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>To find any line that <em>does not</em> start with &quot;chr&quot;:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># the -v flag inverts the match (grep &quot;not&quot; [pattern])</span>
-<span class="nv">$ </span>grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># the -v flag inverts the match (grep &quot;not&quot; [pattern])</span>
+$ grep -v <span class="s1">&#39;^chr&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <p>Beware of using <code class="docutils literal"><span class="pre">grep</span></code> to find patterns that might be partial matches:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will match chr1, chr10, chr11 etc.</span>
-<span class="nv">$ </span>grep chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># this will match chr1, chr10, chr11 etc.</span>
+$ grep chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
 </pre></div>
 </div>
 <p>You can find exact matches that are split on words with the <code class="docutils literal"><span class="pre">-w</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># this will only match chr1</span>
-<span class="nv">$ </span>grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># this will only match chr1</span>
+$ grep -w chr1 /vol1/opt/data/lamina.bed <span class="p">|</span> cut -f1 <span class="p">|</span> uniq
 </pre></div>
 </div>
 
@@ -170,18 +172,18 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>Beware of using <code class="docutils literal"><span class="pre">grep</span></code> to search for numbers:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># finds all strings that match `100`</span>
-<span class="nv">$ </span>grep <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># finds all strings that match `100`</span>
+$ grep <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
 
-<span class="c"># better, but doesn&#39;t look at numeric value</span>
-<span class="nv">$ </span>grep -w <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
+<span class="c1"># better, but doesn&#39;t look at numeric value</span>
+$ grep -w <span class="m">100</span> /vol1/opt/data/lamina.bed <span class="p">|</span> head -n 20
 </pre></div>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p>If you're trying to find numeric values in a file, use <code class="docutils literal"><span class="pre">awk</span></code>
 instead:</p>
-<div class="last highlight-python"><div class="highlight"><pre>$ awk &#39;$2 == 500&#39; /vol1/opt/data/lamina.bed
+<div class="last highlight-default"><div class="highlight"><pre><span></span>$ awk &#39;$2 == 500&#39; /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 </div>
@@ -254,7 +256,7 @@ is a standard feature of most Unix-like operating systems.</p>
 <li><strong>END</strong> runs after the program runs through all lines in the file</li>
 <li><strong>PATTERN</strong> and <strong>ACTIONS</strong> check and execute on each line.</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;BEGIN {} (PATTERN) { ACTIONS } END {}&#39;</span> some.file.txt
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;BEGIN {} (PATTERN) { ACTIONS } END {}&#39;</span> some.file.txt
 </pre></div>
 </div>
 
@@ -268,12 +270,12 @@ is a standard feature of most Unix-like operating systems.</p>
     </hgroup>
     <article class="">
       <p>You can use <strong>BEGIN</strong> without a file. We just do one thing then exit:</p>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;BEGIN { print 12 * 12 }&#39;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;BEGIN { print 12 * 12 }&#39;</span>
 </pre></div>
 </div>
 <p>Same with <strong>END</strong>:</p>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;END { print 12 * 13 }&#39;</span>
-<span class="c"># then type ctrl+d so it knows it&#39;s not getting more input.</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;END { print 12 * 13 }&#39;</span>
+<span class="c1"># then type ctrl+d so it knows it&#39;s not getting more input.</span>
 </pre></div>
 </div>
 
@@ -289,11 +291,11 @@ is a standard feature of most Unix-like operating systems.</p>
       <p>A simple and powerful use of awk is lines that match a pattern or meet set
 of criteria. Here, we match (and implicitly print) only lines where the
 first column is chr12:</p>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr12&quot;)&#39;</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;($1 == &quot;chr12&quot;)&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <p>We can also filter on start position using '&amp;&amp;' which means 'and':</p>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr12&quot; &amp;&amp; $2 &lt; 9599990)&#39;</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;($1 == &quot;chr12&quot; &amp;&amp; $2 &lt; 9599990)&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <div class="admonition important">
@@ -313,7 +315,7 @@ first column is chr12:</p>
       <h2>program structure<a class="headerlink" href="../../Classes/class-04.html#program-structure" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr12&quot; &amp;&amp; $2 &lt; 9599990)&#39;</span> /vol1/opt/data/lamina.bed
+      <div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;($1 == &quot;chr12&quot; &amp;&amp; $2 &lt; 9599990)&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <div class="admonition important">
@@ -356,7 +358,7 @@ first column is chr12:</p>
     </hgroup>
     <article class="">
       <p>print total bases covered on chromosome 13:</p>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr13&quot;) { coverage = coverage + $3 - $2 }</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;($1 == &quot;chr13&quot;) { coverage = coverage + $3 - $2 }</span>
 <span class="s1">     END { print coverage }&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
@@ -389,7 +391,7 @@ $2, ... columns</p>
     </hgroup>
     <article class="">
       <p>below is how we find coverage for chr13.</p>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;($1 == &quot;chr13&quot;) { coverage += $3 - $2 }</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;($1 == &quot;chr13&quot;) { coverage += $3 - $2 }</span>
 <span class="s1">     END{ print coverage }&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
@@ -406,13 +408,13 @@ $2, ... columns</p>
     <article class="">
       <p>The <code class="docutils literal"><span class="pre">$0</span></code> variable contains the entire line.</p>
 <p>multiple patterns</p>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;$3 &gt;= 5000 { print $0&quot;\tGREATER&quot; }</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;$3 &gt;= 5000 { print $0&quot;\tGREATER&quot; }</span>
 <span class="s1">     $3  &lt; 5000   { print $0&quot;\tLESS&quot; }&#39;</span> <span class="se">\</span>
       /vol1/opt/data/states.tab
 </pre></div>
 </div>
 <p>remember we can simply filter to the lines &gt; 5000 with:</p>
-<div class="highlight-bash"><div class="highlight"><pre>awk <span class="s1">&#39;$3 &gt;= 5000&#39;</span> /vol1/opt/data/states.tab
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;$3 &gt;= 5000&#39;</span> /vol1/opt/data/states.tab
 </pre></div>
 </div>
 
@@ -442,9 +444,9 @@ i.e. the delimiters (default is any space character)</li>
       <h2>using awk to count lines with NR<a class="headerlink" href="../../Classes/class-04.html#using-awk-to-count-lines-with-nr" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>wc -l /vol1/opt/data/lamina.bed
+      <div class="highlight-bash"><div class="highlight"><pre><span></span>$ wc -l /vol1/opt/data/lamina.bed
 
-<span class="nv">$ </span>awk <span class="s1">&#39;END { print NR }&#39;</span> /vol1/opt/data/lamina.bed
+$ awk <span class="s1">&#39;END { print NR }&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 
@@ -459,7 +461,7 @@ i.e. the delimiters (default is any space character)</li>
     <article class="">
       <p>Let's convert lamina.bed to comma-delimited but only for chr12</p>
 <p>remember FS is the input separator and OFS is the output delimiter</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>awk <span class="s1">&#39;BEGIN{FS=&quot;\t&quot;; OFS=&quot;,&quot;}</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ awk <span class="s1">&#39;BEGIN{FS=&quot;\t&quot;; OFS=&quot;,&quot;}</span>
 <span class="s1">    ($1 == &quot;chr12&quot;){ print $1,$2,$3 }&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
@@ -475,7 +477,7 @@ i.e. the delimiters (default is any space character)</li>
     <article class="">
       <p>we won't cover these in detail, but you can match on <em>regular expressions</em>.</p>
 <p>The following finds lines containing chr2 (chr2, chr20, chr21) in the first column</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>awk <span class="s1">&#39;$1 ~ /chr2/&#39;</span> /vol1/opt/data/lamina.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ awk <span class="s1">&#39;$1 ~ /chr2/&#39;</span> /vol1/opt/data/lamina.bed
 </pre></div>
 </div>
 <p>Often we can get by without <em>regular expressions</em> but they are extremeley powerful
@@ -526,7 +528,7 @@ and available in nearly all programming languages.</p>
 <li>adjust sep with: OFS=&quot;t&quot;; FS=&quot;,&quot;</li>
 <li>$0 # entire line</li>
 </ul>
-<div class="highlight-awk"><div class="highlight"><pre><span class="nb">BEGIN</span> <span class="p">{}</span>
+<div class="highlight-awk"><div class="highlight"><pre><span></span><span class="nb">BEGIN</span> <span class="p">{}</span>
 <span class="p">(</span><span class="kr">match</span><span class="p">)</span> <span class="p">{</span> <span class="nx">coverage</span> <span class="o">+=</span> <span class="o">$</span><span class="mi">3</span> <span class="o">-</span> <span class="o">$</span><span class="mi">2</span> <span class="p">}</span>
 <span class="nb">END</span> <span class="p">{</span> <span class="kr">print</span> <span class="nx">coverage</span> <span class="p">}</span>
 </pre></div>

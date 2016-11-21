@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
     <link rel="up" title="Class list" href="../Classes.html" />
     <link rel="next" title="Class 23 : Exome-Seq - Alignment" href="class-23.html" />
@@ -91,9 +93,9 @@ URL: https://code.google.com/p/io-2012-slides
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2016 Apr 28 Thurs</td>
+<tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Apr 18 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">January 07, 2016</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Nov 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -124,12 +126,12 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>Since it was a long-running job, we should check the logs:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ls -lhtr logs/ <span class="p">|</span> tail -n 4
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ls -lhtr logs/ <span class="p">|</span> tail -n 4
 </pre></div>
 </div>
 <p>And <em>less one of the .err</em> logs. The end should look something like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>[2014-03-28 16:38:53] Run complete: 01:26:06 elapsed
-+ exit
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2014</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">16</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">53</span><span class="p">]</span> <span class="n">Run</span> <span class="n">complete</span><span class="p">:</span> <span class="mi">01</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">06</span> <span class="n">elapsed</span>
+<span class="o">+</span> <span class="n">exit</span>
 </pre></div>
 </div>
 <p>The <cite>.out</cite> file should contain the text &quot;Successfully completed.&quot;</p>
@@ -145,11 +147,11 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="">
       <p>Remember we had 4 samples. We can check the alignment metrics
 from all of them:</p>
-<div class="highlight-python"><div class="highlight"><pre>less results/CNTRL_002_CGATGT_L002.tophat2/align_summary.txt
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">less</span> <span class="n">results</span><span class="o">/</span><span class="n">CNTRL_002_CGATGT_L002</span><span class="o">.</span><span class="n">tophat2</span><span class="o">/</span><span class="n">align_summary</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>We can also see the % of paired reads:</p>
-<div class="highlight-python"><div class="highlight"><pre>grep &quot;concordant&quot; results/*/align_summary.txt
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="s2">&quot;concordant&quot;</span> <span class="n">results</span><span class="o">/*/</span><span class="n">align_summary</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 
@@ -164,7 +166,7 @@ from all of them:</p>
     <article class="">
       <p>The alignment files are in results/*/accepted_hits.bam we can
 count the number of paired reads</p>
-<div class="highlight-bash"><div class="highlight"><pre>samtools view -cf2 results/CNTRL_002_CGATGT_L002.tophat2/accepted_hits.bam
+<div class="highlight-bash"><div class="highlight"><pre><span></span>samtools view -cf2 results/CNTRL_002_CGATGT_L002.tophat2/accepted_hits.bam
 </pre></div>
 </div>
 
@@ -179,7 +181,7 @@ count the number of paired reads</p>
     <article class="">
       <p>With paired-end reads, we should sort the alignments by name so
 that reads from the same pair are adjacent in the BAM.</p>
-<div class="highlight-bash"><div class="highlight"><pre>samtools sort -n some.bam some.sort
+<div class="highlight-bash"><div class="highlight"><pre><span></span>samtools sort -n some.bam some.sort
 </pre></div>
 </div>
 

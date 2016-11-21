@@ -55,6 +55,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../../index.html" /> 
 
 <!-- Google Analytics tracking code -->
@@ -157,20 +159,20 @@ URL: https://code.google.com/p/io-2012-slides
 70
 71
 72
-73</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#! /usr/bin/env bash</span>
+73</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env bash</span>
 
-<span class="c">#BSUB -J ps5</span>
-<span class="c">#BSUB -o ps5.%J.out</span>
-<span class="c">#BSUB -e ps5.%J.err</span>
+<span class="c1">#BSUB -J ps5</span>
+<span class="c1">#BSUB -o ps5.%J.out</span>
+<span class="c1">#BSUB -e ps5.%J.err</span>
 
-<span class="c"># run script for Problem Set 5 key</span>
+<span class="c1"># run script for Problem Set 5 key</span>
 
 <span class="nb">set</span> -o nounset -o pipefail -o errexit -x
 
-<span class="c"># XXX this will be user-specific</span>
+<span class="c1"># XXX this will be user-specific</span>
 <span class="nv">project</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/devel/bio-workshop/_test/problem-set-keys/problem-set-5&quot;</span>
 
-<span class="c"># input files</span>
+<span class="c1"># input files</span>
 <span class="nv">data</span><span class="o">=</span><span class="s2">&quot;/vol1/opt/data&quot;</span>
 <span class="nv">fasta</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">/hg19.fa&quot;</span>
 <span class="nv">dnase_bed</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$data</span><span class="s2">/wgEncodeRegDnaseClusteredV2.bed.gz&quot;</span>
@@ -183,7 +185,7 @@ URL: https://code.google.com/p/io-2012-slides
     mkdir -p <span class="nv">$result</span>
 <span class="k">fi</span>
 
-<span class="c"># output files</span>
+<span class="c1"># output files</span>
 <span class="nv">ctcf_fasta</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$result</span><span class="s2">/ctcf.chr22.fa&quot;</span>
 <span class="nv">ctcf_chr22_bed</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$result</span><span class="s2">/ctcf.chr22.bed&quot;</span>
 <span class="nv">tfbs_no_dhs</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$result</span><span class="s2">/tfbs_no_dhs.bed&quot;</span>
@@ -194,7 +196,7 @@ URL: https://code.google.com/p/io-2012-slides
 <span class="nv">problem_1_motifs</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$result</span><span class="s2">/problem_1_motifs&quot;</span>
 <span class="nv">problem_2_motifs</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$result</span><span class="s2">/problem_2_motifs&quot;</span>
 
-<span class="c"># Problem 1.1, 1.2</span>
+<span class="c1"># Problem 1.1, 1.2</span>
 zcat <span class="nv">$ctcf_bed</span> <span class="p">|</span> awk <span class="s1">&#39;$1 == &quot;chr22&quot;&#39;</span> &gt; <span class="nv">$ctcf_chr22_bed</span>
 bedtools getfasta -fi <span class="nv">$fasta</span> -bed <span class="nv">$ctcf_chr22_bed</span> -fo <span class="nv">$ctcf_fasta</span>
 
@@ -203,26 +205,26 @@ bedtools getfasta -fi <span class="nv">$fasta</span> -bed <span class="nv">$ctcf
         -o <span class="nv">$problem_1_motifs</span> <span class="nv">$ctcf_fasta</span>
 <span class="k">fi</span>
 
-<span class="c"># Problem 2</span>
-<span class="c"># Identify transcription factor binding peaks that do not overlap with</span>
-<span class="c"># DNase I hypersensitive sites</span>
+<span class="c1"># Problem 2</span>
+<span class="c1"># Identify transcription factor binding peaks that do not overlap with</span>
+<span class="c1"># DNase I hypersensitive sites</span>
 
 bedtools intersect -a <span class="nv">$clustered_tfbs_bed</span> -b <span class="nv">$dnase_bed</span> -v -sorted <span class="se">\</span>
     &gt; <span class="nv">$tfbs_no_dhs</span>
 
-<span class="c"># What transcription factors are represented in these peaks?</span>
+<span class="c1"># What transcription factors are represented in these peaks?</span>
 cut -f4 <span class="nv">$tfbs_no_dhs</span> <span class="se">\</span>
     <span class="p">|</span> sort <span class="se">\</span>
     <span class="p">|</span> uniq -c <span class="se">\</span>
     <span class="p">|</span> sort -k1nr <span class="se">\</span>
     &gt; <span class="nv">$tfbs_no_dhs_summary</span>
 
-<span class="c"># identify DNase I hypersensitive sites that do not have corresponding</span>
-<span class="c"># transcription factor peak calls</span>
+<span class="c1"># identify DNase I hypersensitive sites that do not have corresponding</span>
+<span class="c1"># transcription factor peak calls</span>
 bedtools intersect -a <span class="nv">$dnase_bed</span> -b <span class="nv">$clustered_tfbs_bed</span> -v -sorted <span class="se">\</span>
     &gt; <span class="nv">$dhs_no_tfbs</span>
 
-<span class="c"># What motifs are enriched in this set of hypersensitive sites?</span>
+<span class="c1"># What motifs are enriched in this set of hypersensitive sites?</span>
 awk <span class="s1">&#39;$1 == &quot;chrY&quot; &amp;&amp; ($3 - $2 &gt; 8)&#39;</span> &lt; <span class="nv">$dhs_no_tfbs</span> &gt; <span class="nv">$dhs_no_tfbs_chr22</span>
 bedtools getfasta -fi <span class="nv">$fasta</span> -bed <span class="nv">$dhs_no_tfbs_chr22</span> -fo <span class="nv">$dhs_no_tfbs_fasta</span>
 
