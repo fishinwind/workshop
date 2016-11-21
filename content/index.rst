@@ -7,7 +7,7 @@
 :Instructor: Jay Hesselberth <jay.hesselberth@gmail.com>
 :Website: http://molb7621.github.io/workshop
 :Source: http://github.com/molb7621/workshop
-:Next offered: Spring 2016
+:Next offered: Spring 2017
 :Course Number: MOLB 7621 
 :Cross-listings: STBB 7621, MICB 7621, HMGP 7621
 :Last updated:  |today|
