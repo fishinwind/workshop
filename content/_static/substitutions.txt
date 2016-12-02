@@ -6,41 +6,41 @@
 ..
 .. 2016-2017 academic calendar: `http://www.ucdenver.edu/anschutz/studentresources/Registrar/Documents/AcademicCalendars/2016-2017/AcademicCalendar-GradSchool-2016-2017.pdf` 
 
-.. |c1-date| replace:: 2017 Jan 24 Tues
-.. |c2-date| replace:: 2017 Jan 26 Thurs
-.. |c3-date| replace:: 2017 Jan 31 Tues 
-.. |c4-date| replace:: 2017 Feb 2 Thurs
-.. |c5-date| replace:: 2017 Feb 7 Tues
-.. |c6-date| replace:: 2017 Feb 9 Thurs
-.. |c7-date| replace:: 2017 Feb 14 Tues
-.. |c8-date| replace:: 2017 Feb 16 Thurs
-.. |c9-date| replace:: 2017 Feb 21 Tues
-.. |c10-date| replace:: 2017 Feb 23 Thurs
-.. |c11-date| replace:: 2017 Feb 28 Tues
-.. |c12-date| replace:: 2017 Mar 2 Thurs
-.. |c13-date| replace:: 2017 Mar 7 Tues
-.. |c14-date| replace:: 2017 Mar 9 Thurs
-.. |c15-date| replace:: 2017 Mar 14 Tues
-.. |c16-date| replace:: 2017 Mar 16 Thurs
-.. |c17-date| replace:: 2017 Mar 30 Thurs
-.. |c18-date| replace:: 2017 Apr 4 Tues
-.. |c19-date| replace:: 2017 Apr 6 Thurs
-.. |c20-date| replace:: 2017 Apr 11 Tues
-.. |c21-date| replace:: 2017 Apr 13 Thurs
-.. |c22-date| replace:: 2017 Apr 18 Tues
-.. |c23-date| replace:: 2017 Apr 25 Tues
-.. |c24-date| replace:: 2017 Apr 27 Thurs
-.. |c25-date| replace:: 2017 May 2 Tues
-.. |c26-date| replace:: 2017 May 4 Thurs
+.. |c1-date| replace:: 2017 Jan 26 Thurs
+.. |c2-date| replace:: 2017 Jan 31 Tues 
+.. |c3-date| replace:: 2017 Feb 2 Thurs
+.. |c4-date| replace:: 2017 Feb 7 Tues
+.. |c5-date| replace:: 2017 Feb 9 Thurs
+.. |c6-date| replace:: 2017 Feb 14 Tues
+.. |c7-date| replace:: 2017 Feb 16 Thurs
+.. |c8-date| replace:: 2017 Feb 21 Tues
+.. |c9-date| replace:: 2017 Feb 23 Thurs
+.. |c10-date| replace:: 2017 Feb 28 Tues
+.. |c11-date| replace:: 2017 Mar 2 Thurs
+.. |c12-date| replace:: 2017 Mar 7 Tues
+.. |c13-date| replace:: 2017 Mar 9 Thurs
+.. |c14-date| replace:: 2017 Mar 14 Tues
+.. |c15-date| replace:: 2017 Mar 16 Thurs
+.. |c16-date| replace:: 2017 Mar 30 Thurs
+.. |c17-date| replace:: 2017 Apr 4 Tues
+.. |c18-date| replace:: 2017 Apr 6 Thurs
+.. |c19-date| replace:: 2017 Apr 11 Tues
+.. |c20-date| replace:: 2017 Apr 13 Thurs
+.. |c21-date| replace:: 2017 Apr 18 Tues
+.. |c22-date| replace:: 2017 Apr 25 Tues
+.. |c23-date| replace:: 2017 Apr 27 Thurs
+.. |c24-date| replace:: 2017 May 2 Tues
+.. |c25-date| replace:: 2017 May 4 Thurs
+.. |c26-date| replace:: 2017 May 9 Tues
 
 .. Problem set due dates
-.. |pset1-due| replace:: 2017 Jan 26 5:00 PM MDT
-.. |pset2-due| replace:: 2017 Feb 2 5:00 PM MDT
-.. |pset3-due| replace:: 2017 Feb 9 5:00 PM MDT
-.. |pset4-due| replace:: 2017 Feb 16 5:00 PM MDT
-.. |pset5-due| replace:: 2017 Mar 2 5:00 PM MDT
-.. |pset6-due| replace:: 2017 Mar 9 5:00 PM MDT
-.. |pset7-due| replace:: 2017 Apr 4 5:00 PM MDT
+.. |pset1-due| replace:: 2017 Jan 31 5:00 PM MDT
+.. |pset2-due| replace:: 2017 Feb 7 5:00 PM MDT
+.. |pset3-due| replace:: 2017 Feb 14 5:00 PM MDT
+.. |pset4-due| replace:: 2017 Feb 21 5:00 PM MDT
+.. |pset5-due| replace:: 2017 Mar 7 5:00 PM MDT
+.. |pset6-due| replace:: 2017 Mar 14 5:00 PM MDT
+.. |pset7-due| replace:: 2017 Apr 6 5:00 PM MDT
 .. |pset8-due| replace:: TBD
 .. |pset9-due| replace:: TBD
 .. |pset10-due| replace:: TBD
