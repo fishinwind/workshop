@@ -40,13 +40,18 @@ Mac laptops
 
 PC laptops
 ----------
+*If* you're running a fully updated 64 bit install of Windows 10, the instructions below show how to activate Developer Mode & install the Bash shell:
+
+.. [#] How to get the Linux Bash in Windows 10, in 3 steps
+        http://www.digitalcitizen.life/how-get-linux-bash-windows-10-3-steps
+If not, you will need to:
+-----------
 1. Install VirtualBox.
 2. Install a Linux distribution as a virtual machine (e.g., Ubuntu).
 
 Software
 ========
 1. RStudio
-2. 
 
 
 Problem Sets
