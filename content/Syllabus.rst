@@ -12,7 +12,7 @@ General Information
 :Title:         Genome Analysis Workshop
 :Course Number: MOLB 7621
 :Cross listings: STBB 7621, MICB 7621
-:Semester:      Spring 2016
+:Semester:      Spring 2017
 :Homepage:      http://molb7621.github.io/workshop 
 :Instructor:    Jay Hesselberth
 :Organization:  University of Colorado School of Medicine
@@ -40,14 +40,14 @@ Instructor Information
 
     * - Instructor
       - Email
-    * - Jay Hesselberth             
+    * - Jay Hesselberth
       - jay.hesselberth@gmail.com
-    * - Ryan Sheridan
-      - ryan.sheridan@ucdenver.edu
-    * - Jianbin Wang
-      - jianbin.wang@ucdenver.edu
-    * - Sandy Martin
-      - sandy.martin@ucdenver.edu
+    * - Kent Riemondy
+      - kent.riemondy@ucdenver.edu
+    * - Mandy Richer
+      - mandylricher@gmail.com 
+    * - Laura White
+      - laura.k.white@ucdenver.edu 
 
 Schedule
 ========
@@ -207,10 +207,6 @@ Specific Dates / Material to be Covered
       - |c14-date| 
       - R Data & Plotting
       - **PS6 due** (|pset6-due|)
-    * - 
-      - ** No Class Mar 21-25 ** 
-      - ** Spring Break **
-      - 
     * - Class 15 
       - |c15-date| 
       - Python
@@ -218,6 +214,10 @@ Specific Dates / Material to be Covered
     * - Class 16
       - |c16-date| 
       - Python
+      - 
+    * - 
+      - ** No Class Mar 20-24 ** 
+      - ** Spring Break **
       - 
     * - Class 17 
       - |c17-date| 
