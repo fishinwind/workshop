@@ -219,3 +219,12 @@ To count the number of sequences in the fasta file you can use either
  
     grep -c ">" example.fa 
 
+On your own
+==========
+
+#. Use ``awk`` to extract out sequences and find out the lengths of each
+   read. Are they all the same length? 
+#. Use ``grep`` and/or ``awk`` to find sequences with more than 4 A's in a row. How many
+   sequences did you find? Can you also extract out their names (hint see
+   man grep)? Do any UMI's have 4 A's in a row?
+#. What is the most common hexamer found at the end of the reads? 
