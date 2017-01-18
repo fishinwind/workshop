@@ -25,6 +25,6 @@ Class list
    Classes/class-22
    Classes/class-23
    Classes/class-24
-
+   Classes/snakemake-tutorial
 
 
