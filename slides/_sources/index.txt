@@ -9,7 +9,7 @@
 :Source: http://github.com/molb7621/workshop
 :Next offered: Spring 2017
 :Course Number: MOLB 7621 
-:Cross-listings: MICB 7621
+:Cross-listings: STBB 7621, MICB 7621
 :Last updated:  |today|
 
 Announcements

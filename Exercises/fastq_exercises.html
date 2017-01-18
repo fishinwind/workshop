@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FASTQ/A Exercises &#8212; Genome Analysis Workshop 0.2 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Exercises" href="../Exercises.html" />
+    <link rel="next" title="Problem Sets" href="../Problem_Sets.html" />
+    <link rel="prev" title="Exercises" href="exercises.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          Genome Analysis Workshop</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">FASTQ/A Exercises</a><ul>
+<li><a class="reference internal" href="#fastq-exercises">FASTQ exercises</a></li>
+<li><a class="reference internal" href="#fasta-exercises">FASTA exercises</a></li>
+<li><a class="reference internal" href="#on-your-own">On your own</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="fastq-a-exercises">
+<span id="exercises"></span><h1>FASTQ/A Exercises<a class="headerlink" href="#fastq-a-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/fastq_exercises.html#fastq-a-exercises" title="Slides">§</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">Jan 18, 2017</td>
+</tr>
+</tbody>
+</table>
+<p>Exercises using unix tools to manipulate FASTQ/A files</p>
+<div class="section" id="fastq-exercises">
+<span id="id1"></span><h2>FASTQ exercises<a class="headerlink" href="#fastq-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/fastq_exercises.html#fastq-exercises" title="Slides">§</a></h2>
+<p>Download a fastq example file <a class="reference download internal" href="../_downloads/SP1.fq" download=""><code class="xref download docutils literal"><span class="pre">[SP1.fq]</span></code></a></p>
+<p>The FASTQ file <a class="reference external" href="https://en.wikipedia.org/wiki/FASTQ_format">format</a> contains 4 lines per read sequence.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ head -n <span class="m">4</span> SP1.fq
+@cluster_2:UMI_ATTCCG
+TTTCCGGGGCACATAATCTTCAGCCGGGCGC
++
+9C<span class="p">;</span><span class="o">=</span><span class="p">;</span><span class="o">=</span>&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;<span class="o">=</span>&gt;591
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Line 1 contains a sequence identifier that begins with an <cite>&#64;</cite></li>
+<li>Line 2 contains the read sequence (A,T,C,G,N)</li>
+<li>Line 3 is a comment line, often unused and only contains a <cite>+</cite></li>
+<li>Line 4 is the Phred quality score for each sequence encoded in ASCII format</li>
+</ol>
+<p>First use <code class="docutils literal"><span class="pre">wc</span></code> and <code class="docutils literal"><span class="pre">awk</span></code> to determine the number of <em>sequences</em> in the fastq</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wc -l SP1.fq  <span class="c1"># total number of lines</span>
+$ wc -l SP1.fq <span class="p">|</span> awk <span class="s1">&#39;{print $1 / 4}&#39;</span> <span class="c1"># total number of fastq records</span>
+</pre></div>
+</div>
+<p>A common mistake is to use <code class="docutils literal"><span class="pre">grep</span></code> to pattern match the <code class="docutils literal"><span class="pre">&#64;</span></code> in the
+sequence identifier. Why doesn&#8217;t this work?</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wc -l SP1.fq <span class="p">|</span> awk <span class="s1">&#39;{print $1 / 4}&#39;</span>
+250
+$ grep -c <span class="s2">&quot;@&quot;</span> SP1.fq
+459
+</pre></div>
+</div>
+<p>Next, extract out the read <em>sequences</em> from the fastq. This is a bit
+complicated as we need to only pull out the second line from each record.</p>
+<p>One approach to this problem is to use the <code class="docutils literal"><span class="pre">%</span></code> <a class="reference external" href="https://en.wikipedia.org/wiki/Modulo_operation">modulo
+operator</a>, which returns
+the remainder after division of two integers. For example using <code class="docutils literal"><span class="pre">awk</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ awk <span class="s1">&#39;BEGIN { {print 4 % 2}}&#39;</span>
+$ awk <span class="s1">&#39;BEGIN { {print 4 % 3}}&#39;</span>
+$ awk <span class="s1">&#39;BEGIN { {print 5 % 3}}&#39;</span>
+$ awk <span class="s1">&#39;BEGIN { {print 1 % 4}}&#39;</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal"><span class="pre">awk</span></code> there is a special variable <code class="docutils literal"><span class="pre">NR</span></code> which is equal to the
+current line number.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ awk <span class="s1">&#39;{print NR}&#39;</span> SP1.fq
+</pre></div>
+</div>
+<p>We can use the modulo operator with <code class="docutils literal"><span class="pre">NR</span></code> to only capture specific
+records from the fastq</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ awk <span class="s1">&#39;{print NR % 4, $0 }&#39;</span> SP1.fq <span class="p">|</span> head <span class="c1"># note output in first column</span>
+<span class="m">1</span> @cluster_2:UMI_ATTCCG
+<span class="m">2</span> TTTCCGGGGCACATAATCTTCAGCCGGGCGC
+<span class="m">3</span> +
+<span class="m">0</span> 9C<span class="p">;</span><span class="o">=</span><span class="p">;</span><span class="o">=</span>&lt;9@4868&gt;9:67AA&lt;9&gt;65&lt;<span class="o">=</span>&gt;591
+<span class="m">1</span> @cluster_8:UMI_CTTTGA
+<span class="m">2</span> TATCCTTGCAATACTCTCCGAACGGGAGAGC
+<span class="m">3</span> +
+<span class="m">0</span> 1/04.72,<span class="o">(</span>003,-2-22+00-12./.-.4-
+<span class="m">1</span> @cluster_12:UMI_GGTCAA
+<span class="m">2</span> GCAGTTTAAGATCATTTTATTGAAGAGCAAG
+
+
+$ awk <span class="s1">&#39;NR % 4 == 1&#39;</span> SP1.fq <span class="p">|</span> head  <span class="c1"># get header line</span>
+$ awk <span class="s1">&#39;NR % 4 == 2&#39;</span> SP1.fq <span class="p">|</span> head  <span class="c1"># get sequence line</span>
+$ awk <span class="s1">&#39;NR % 4 == 3&#39;</span> SP1.fq <span class="p">|</span> head  <span class="c1"># get comment line</span>
+$ awk <span class="s1">&#39;NR % 4 == 0&#39;</span> SP1.fq <span class="p">|</span> head  <span class="c1"># get quality line</span>
+</pre></div>
+</div>
+<p>Now that we can isolate only the sequences let&#8217;s use <cite>sort</cite> and <cite>uniq</cite> to
+find common sequences.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;NR % 4 == 2&#39;</span> SP1.fq <span class="se">\ </span> <span class="c1"># get sequences</span>
+  <span class="p">|</span> sort <span class="se">\ </span> <span class="c1"># sort the sequences</span>
+  <span class="p">|</span> uniq -c <span class="se">\ </span><span class="c1"># report number of occurances of each unique sequence</span>
+  <span class="p">|</span> head
+
+awk <span class="s1">&#39;NR % 4 == 2&#39;</span> SP1.fq <span class="se">\ </span> <span class="c1">#show most frequent sequences</span>
+  <span class="p">|</span> sort <span class="se">\</span>
+  <span class="p">|</span> uniq -c <span class="se">\</span>
+  <span class="p">|</span> sort -k1,1nr <span class="se">\ </span><span class="c1"># reverse sort to rank by most common sequence</span>
+  <span class="p">|</span> head
+</pre></div>
+</div>
+<p>Next, using <code class="docutils literal"><span class="pre">cut</span></code>, <code class="docutils literal"><span class="pre">sort</span></code> and <code class="docutils literal"><span class="pre">uniq</span></code> lets look at the most common
+sequences found in the first 10 base pairs of the read.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;NR % 4 == 2&#39;</span> SP1.fq <span class="se">\ </span> <span class="c1"># get sequences</span>
+<span class="p">|</span> cut -c 1-10 <span class="se">\ </span><span class="c1"># cut by character position 1-10</span>
+<span class="p">|</span> sort <span class="se">\</span>
+<span class="p">|</span> uniq - c <span class="se">\</span>
+<span class="p">|</span> sort -k1,1nr <span class="se">\</span>
+<span class="p">|</span> head
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">awk</span></code> can also be used directly to extract out sub-strings using the <code class="docutils literal"><span class="pre">substr()</span></code>
+function</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># substr($field_index, start, end)</span>
+$ awk <span class="s1">&#39;NR % 4 == 1 {print substr($0, 1, 10)}&#39;</span> SP1.fq <span class="se">\</span>
+  <span class="p">|</span> head -5
+</pre></div>
+</div>
+<p>Let&#8217;s extract out the Unique Molecular Identifyier (UMI)
+tag from the read identifier using <code class="docutils literal"><span class="pre">cut</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ awk <span class="s1">&#39;NR % 4 == 1&#39;</span> SP1.fq <span class="p">|</span> head -5 <span class="c1"># get ids</span>
+@cluster_2:UMI_ATTCCG
+@cluster_8:UMI_CTTTGA
+@cluster_12:UMI_GGTCAA
+@cluster_21:UMI_AGAACA
+@cluster_29:UMI_GCAGGA
+
+$ awk <span class="s1">&#39;NR % 4 == 1&#39;</span> SP1.fq <span class="se">\</span>
+  <span class="p">|</span> cut -d <span class="s2">&quot;:&quot;</span> -f <span class="m">2</span> <span class="se">\</span>
+  <span class="p">|</span> head -5
+</pre></div>
+</div>
+<p>Lastly, let&#8217;s write a short awk program that uses the <code class="docutils literal"><span class="pre">substr()</span></code>
+function to trim the first 10 bases off of the read and return the
+sequences in FASTQ. Note that the length of the quality line needs to
+match the length of the sequence line.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ awk <span class="s1">&#39;NR % 4 == 1 {print $0}; # print id line</span>
+<span class="s1">  NR % 4 == 2 {print substr($0, 10, length($0))}; #extract from 10 to the end</span>
+<span class="s1">  NR % 4 == 3 {print $0} ; # print comment line</span>
+<span class="s1">  NR % 4 == 0 {print substr($0, 10, length($0))}&#39;</span> <span class="se">\ </span><span class="c1"># extract from pos 10 to the end</span>
+  SP1.fq <span class="se">\</span>
+  <span class="p">|</span> head
+
+@cluster_2:UMI_ATTCCG
+CACATAATCTTCAGCCGGGCGC
++
+4868&gt;9:67AA&lt;9&gt;65&lt;<span class="o">=</span>&gt;591
+@cluster_8:UMI_CTTTGA
+AATACTCTCCGAACGGGAGAGC
++
+003,-2-22+00-12./.-.4-
+@cluster_12:UMI_GGTCAA
+GATCATTTTATTGAAGAGCAAG
+</pre></div>
+</div>
+</div>
+<div class="section" id="fasta-exercises">
+<span id="id2"></span><h2>FASTA exercises<a class="headerlink" href="#fasta-exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/fastq_exercises.html#fasta-exercises" title="Slides">§</a></h2>
+<p>FASTA format is a more compact sequence format than FASTQ</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt;sequence_identifier_1
+ATCGTCGATGCTAGTCGA
+&gt;sequence_identifier_2
+AGCTAGCTAGCTAGC
+</pre></div>
+</div>
+<p>Using just <code class="docutils literal"><span class="pre">awk</span></code> we can easily convert from FASTQ to FASTA</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ awk <span class="s1">&#39;NR % 4 == 1 {print &quot;&gt;&quot;$1};</span>
+<span class="s1">  NR % 4 == 2 {print}&#39;</span> SP1.fq <span class="se">\</span>
+  <span class="p">|</span> head
+
+$ awk <span class="s1">&#39;NR % 4 == 1 {print &quot;&gt;&quot;substr($0, 2, length($0))};</span>
+<span class="s1">  NR % 4 == 2 {print}&#39;</span> SP1.fq <span class="se">\</span>
+  <span class="p">|</span> head  <span class="c1"># same as above but remove ugly @ character</span>
+
+$ awk <span class="s1">&#39;NR % 4 == 1 {print &quot;&gt;&quot;substr($0, 2, length($0))};</span>
+<span class="s1">  NR % 4 == 2 {print}&#39;</span> SP1.fq <span class="se">\</span>
+  &gt; example.fa
+</pre></div>
+</div>
+<p>To count the number of sequences in the fasta file you can use either
+<code class="docutils literal"><span class="pre">wc</span></code> with <code class="docutils literal"><span class="pre">awk</span></code> as shown above or <code class="docutils literal"><span class="pre">grep</span></code> as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>grep -c <span class="s2">&quot;&gt;&quot;</span> example.fa
+</pre></div>
+</div>
+</div>
+<div class="section" id="on-your-own">
+<h2>On your own<a class="headerlink" href="#on-your-own" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Exercises/fastq_exercises.html#on-your-own" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Use <code class="docutils literal"><span class="pre">awk</span></code> to extract out sequences and find out the lengths of each
+read. Are they all the same length?</li>
+<li>Use <code class="docutils literal"><span class="pre">grep</span></code> and/or <code class="docutils literal"><span class="pre">awk</span></code> to find sequences with more than 4 A&#8217;s in a row. How many
+sequences did you find? Can you also extract out their names (hint see
+man grep)? Do any UMI&#8217;s have 4 A&#8217;s in a row?</li>
+<li>What is the most common hexamer found at the end of the reads?</li>
+</ol>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+  </body>
+</html>

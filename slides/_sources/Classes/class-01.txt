@@ -44,7 +44,6 @@ PC laptops
 
 .. [#] How to get the Linux Bash in Windows 10, in 3 steps
         http://www.digitalcitizen.life/how-get-linux-bash-windows-10-3-steps
-
 If not, you will need to:
 -----------
 1. Install VirtualBox.
