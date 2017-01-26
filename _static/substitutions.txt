@@ -34,15 +34,15 @@
 .. |c26-date| replace:: 2017 May 9 Tues
 
 .. Problem set due dates
-.. |pset1-due| replace:: 2017 Jan 31 5:00 PM MDT
-.. |pset2-due| replace:: 2017 Feb 7 5:00 PM MDT
-.. |pset3-due| replace:: 2017 Feb 14 5:00 PM MDT
-.. |pset4-due| replace:: 2017 Feb 21 5:00 PM MDT
-.. |pset5-due| replace:: 2017 Mar 7 5:00 PM MDT
-.. |pset6-due| replace:: 2017 Mar 14 5:00 PM MDT
-.. |pset7-due| replace:: 2017 Apr 6 5:00 PM MDT
+.. |pset1-due| replace:: 2017 Feb 7 5:00 PM MDT
+.. |pset2-due| replace:: 2017 Feb 14 5:00 PM MDT
+.. |pset3-due| replace:: 2017 Feb 21 5:00 PM MDT
+.. |pset4-due| replace:: 2017 Mar 7 5:00 PM MDT
+.. |pset5-due| replace:: 2017 Mar 14 5:00 PM MDT
+.. |pset6-due| replace:: 2017 Apr 6 5:00 PM MDT
+.. |pset7-due| replace:: 2017 Apr 13 5:00 PM MDT 
 .. |pset8-due| replace:: TBD
 .. |pset9-due| replace:: TBD
-.. |pset10-due| replace:: TBD
+
 
 .. vim: set syntax=rst:

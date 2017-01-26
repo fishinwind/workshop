@@ -158,7 +158,7 @@ Specific Dates / Material to be Covered
     * - Class 2 
       - |c2-date|
       - Linux / Utilities
-      - **PS1 due** (|pset1-due|)
+      -
     * - Class 3 
       - |c3-date|
       - Linux / Utilities
@@ -166,7 +166,7 @@ Specific Dates / Material to be Covered
     * - Class 4 
       - |c4-date|
       - grep and awk
-      - **PS2 due** (|pset2-due|)
+      - **PS1 due** (|pset1-due|)
     * - Class 5 
       - |c5-date|
       - BEDTools
@@ -174,7 +174,7 @@ Specific Dates / Material to be Covered
     * - Class 6 
       - |c6-date|
       - Analysis vignette: ChIP-seq 
-      - **PS3 due** (|pset3-due|)
+      - **PS2 due** (|pset2-due|)
     * - Class 7 
       - |c7-date|
       - BEDTools
@@ -182,7 +182,7 @@ Specific Dates / Material to be Covered
     * - Class 8 
       - |c8-date|
       - Genome Browser 
-      - **PS4 due** (|pset4-due|)
+      - **PS3 due** (|pset3-due|)
     * - Class 9 
       - |c9-date| 
       - R Data & Plotting
@@ -198,7 +198,7 @@ Specific Dates / Material to be Covered
     * - Class 12
       - |c12-date| 
       - R Data & Plotting
-      - **PS5 due** (|pset5-due|)
+      - **PS4 due** (|pset4-due|)
     * - Class 13 
       - |c13-date| 
       - R Data & Plotting
@@ -206,7 +206,7 @@ Specific Dates / Material to be Covered
     * - Class 14 
       - |c14-date| 
       - R Data & Plotting
-      - **PS6 due** (|pset6-due|)
+      - **PS5 due** (|pset5-due|)
     * - Class 15 
       - |c15-date| 
       - Python
@@ -226,7 +226,7 @@ Specific Dates / Material to be Covered
     * - Class 18
       - |c18-date| 
       - Python 
-      - **PS7 due** (|pset7-due|)
+      - **PS6 due** (|pset6-due|)
     * - Class 19
       - |c19-date| 
       - Python 
@@ -234,7 +234,7 @@ Specific Dates / Material to be Covered
     * - Class 20
       - |c20-date| 
       - Python
-      - **PS8 due** (|pset8-due|)
+      - **PS7 due** (|pset7-due|)
     * - Class 21
       - |c21-date| 
       - mRNA-seq
@@ -242,7 +242,7 @@ Specific Dates / Material to be Covered
     * - Class 22
       - |c22-date| 
       - mRNA-seq
-      - **PS9 due** (|pset9-due|)
+      - **PS8 due** (|pset8-due|)
     * - Class 23
       - |c23-date|
       - Exome analysis 
@@ -250,7 +250,7 @@ Specific Dates / Material to be Covered
     * - Class 24
       - |c24-date|
       - Exome analysis
-      - **PS10 due** (|pset10-due|)
+      - **PS9 due** (|pset9-due|)
     * - Class 25 
       - |c25-date|
       - Final Projects 
