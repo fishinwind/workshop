@@ -58,3 +58,15 @@ Contents
    Problem_Sets
    Miscellaneous
 
+Additional Resources
+====================
+
+DataCamp offers online tutorials and courses to help students learn R and
+Python for data mining and statistical analysis. You can try their
+**free** courses here:
+
+Learn R with `Introduction to R
+<https://www.datacamp.com/courses/free-introduction-to-r>`_
+
+Learn Python with `Intro to Python for Data Science
+<https://www.datacamp.com/courses/intro-to-python-for-data-science>`_
