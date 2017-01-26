@@ -53,7 +53,9 @@ Schedule
 ========
 - Lecture: Tue & Thurs, 1:00 - 3:00 PM.
 
-- TA office hours: until 3:30 PM after lectures and on Fridays at 1 PM.
+- TA office hours: until 3:30 PM after lectures and on Fridays at 2 PM in
+  the RNA Bioscience Initiative informatics office space (RC1S rm.9101
+  behind the glass walls).
 
 :ref:`See specific dates. <syllabus-specific-dates>`
 
