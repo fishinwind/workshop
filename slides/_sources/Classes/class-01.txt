@@ -16,9 +16,9 @@ Goals
 
 Class Overview
 ==============
-Each class is 2 hours. We intend to spend the first 60 min going
+Each class is 1.5 hours. We intend to spend the first ~45 min going
 through exercises that demonstrate how specific tools are useful in
-bioinformatics. During the remaining hour, we expect you to work through
+bioinformatics. During the remaining time, we expect you to work through
 exercises, asking for help when you get stuck. 
 
 We will record the classes using Panopto Screen Capture, and these
@@ -27,8 +27,8 @@ someone work in a terminal (move around, open up text editors, write and
 execute simple programs) can be a very effective way to get started with
 programming. 
 
-Each week, we will have 1 take home quiz, due the following Tuesday at 5
-PM. 
+Each week, we will have 1 take home quiz assigned at the beginning of
+class on Thurs and which is due the following Tuesday at 5 PM. 
 
 Computers
 =========
@@ -37,27 +37,27 @@ You will need to bring a laptop to each class.
 Mac laptops
 -----------
 1. Install Homebrew
+1. Install RStudio
 
 PC laptops
 ----------
-*If* you're running a fully updated 64 bit install of Windows 10, the instructions below show how to activate Developer Mode & install the Bash shell:
+If you're running a fully updated 64 bit install of Windows 10, these
+instructions [#]_ show you how to activate Developer Mode and& install the
+Bash shell:
 
 .. [#] How to get the Linux Bash in Windows 10, in 3 steps
         http://www.digitalcitizen.life/how-get-linux-bash-windows-10-3-steps
-If not, you will need to:
------------
-1. Install VirtualBox.
-2. Install a Linux distribution as a virtual machine (e.g., Ubuntu).
 
-Software
-========
-1. RStudio
+If not, you have two options:
 
+1. Install VirtualBox and then install a Linux distribution as a virtual
+machine (e.g., Ubuntu).
+2. Get a login on our compute cluster tesla and work from there.
 
 Problem Sets
 ============
 We will distribute all problem sets through github. The class has a Github
-organization here: 
+organization here: http://github.com/MOLB7621.
 
 To gain access to the problem sets, You need to:
 
@@ -77,12 +77,9 @@ changes and committing until you have a final product.
 Discussions can be filed as `Issues` on the Github page for each problem
 set.
 
-Guidelines
-----------
-
-Shell and Python Programming
+Shell Programming
 ============================
-It is important that you learn a few new computer languages. Others have
+It is important that you learn a few computer languages. Others have
 developed very good guides to teach you these languages, and we are going
 to use those in the class. We expect you to begin taking these classes
 immediately.
@@ -92,28 +89,24 @@ scheduled class time, and outside of class time. Instead of focusing on
 teaching you these languages, we will focus on helping you get through all
 of the frustating problems that come up when you're learning the languages.
 
-We will spend the first ~2 weeks learning shell [#]_ and all the things
-you have access to within the shell.
+We will spend the first ~2 weeks learning shell programming [#]_ and many
+of the tools you have access to within the terminal.
 
 .. [#] The Command Line Crash Course
         http://cli.learncodethehardway.org/book/
 
 After learning the shell, we will begin learning R and several packages
-within R.
+within R. We recommend swirl for getting started with R [#]_.
 
-Finally, we will begin learning Python [#]_. The Python language allows
-you to do more sophisticated things that would be possible in shell or R, but
-would be considerably more clunky.
+.. [#] Swirl
+        http://swirlstats.com/
 
-.. [#] Learn Python the Hard Way
-        http://learnpythonthehardway.org/book/
-
-First Quiz : Reading
-====================
-Computational biology projects inevitably accrue a lot of files.  This
-paper describes a scheme for organizing files that provides some
-suggestions on how to organize.  We suggest that you use this scheme (or a
-similar one) for all of your projects in and out of the class.
+First Assignment : Reading
+==========================
+Bioinformatics projects inevitably accrue a lot of files.  This paper
+describes a scheme for organizing files that provides some suggestions on
+how to organize.  We suggest that you use this scheme (or a similar one)
+for all of your projects in and out of the class.
 
 .. [#] A Quick Guide to Organizing Computational Biology Projects (2009)
         PLoS Comput. Biol. William S. Noble

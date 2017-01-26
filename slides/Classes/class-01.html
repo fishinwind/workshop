@@ -53,7 +53,6 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -95,7 +94,7 @@ URL: https://code.google.com/p/io-2012-slides
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Jan 26 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Jan 18, 2017</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Jan 26, 2017</td>
 </tr>
 </tbody>
 </table>
@@ -125,17 +124,17 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Class Overview<a class="headerlink" href="../../Classes/class-01.html#class-overview" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Each class is 2 hours. We intend to spend the first 60 min going
+      <p>Each class is 1.5 hours. We intend to spend the first ~45 min going
 through exercises that demonstrate how specific tools are useful in
-bioinformatics. During the remaining hour, we expect you to work through
+bioinformatics. During the remaining time, we expect you to work through
 exercises, asking for help when you get stuck.</p>
 <p>We will record the classes using Panopto Screen Capture, and these
 recordings will be available in Canvas. We have found that simply watching
 someone work in a terminal (move around, open up text editors, write and
 execute simple programs) can be a very effective way to get started with
 programming.</p>
-<p>Each week, we will have 1 take home quiz, due the following Tuesday at 5
-PM.</p>
+<p>Each week, we will have 1 take home quiz assigned at the beginning of
+class on Thurs and which is due the following Tuesday at 5 PM.</p>
 
 
 
@@ -157,9 +156,8 @@ PM.</p>
       <h3>Mac laptops<a class="headerlink" href="../../Classes/class-01.html#mac-laptops" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <ol class="arabic simple">
-<li>Install Homebrew</li>
-</ol>
+      <p>1. Install Homebrew
+1. Install RStudio</p>
 
 
 
@@ -170,41 +168,20 @@ PM.</p>
       <h3>PC laptops<a class="headerlink" href="../../Classes/class-01.html#pc-laptops" title="View HTML">§</a></h3>
     </hgroup>
     <article class="">
-      <p><em>If</em> you're running a fully updated 64 bit install of Windows 10, the instructions below show how to activate Developer Mode &amp; install the Bash shell:</p>
-<table class="docutils footnote" frame="void" id="id1" rules="none">
+      <p>If you're running a fully updated 64 bit install of Windows 10, these
+instructions <a class="footnote-reference" href="#id2" id="id1">[1]</a> show you how to activate Developer Mode and&amp; install the
+Bash shell:</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>How to get the Linux Bash in Windows 10, in 3 steps
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>How to get the Linux Bash in Windows 10, in 3 steps
 <a class="reference external" href="http://www.digitalcitizen.life/how-get-linux-bash-windows-10-3-steps">http://www.digitalcitizen.life/how-get-linux-bash-windows-10-3-steps</a></td></tr>
 </tbody>
 </table>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-3" id="if-not-you-will-need-to">
-    <hgroup>
-      <h3>If not, you will need to:<a class="headerlink" href="../../Classes/class-01.html#if-not-you-will-need-to" title="View HTML">§</a></h3>
-    </hgroup>
-    <article class="">
-      <ol class="arabic simple">
-<li>Install VirtualBox.</li>
-<li>Install a Linux distribution as a virtual machine (e.g., Ubuntu).</li>
-</ol>
-
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="software">
-    <hgroup>
-      <h2>Software<a class="headerlink" href="../../Classes/class-01.html#software" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <ol class="arabic simple">
-<li>RStudio</li>
-</ol>
+<p>If not, you have two options:</p>
+<p>1. Install VirtualBox and then install a Linux distribution as a virtual
+machine (e.g., Ubuntu).
+2. Get a login on our compute cluster tesla and work from there.</p>
 
 
 
@@ -216,14 +193,14 @@ PM.</p>
     </hgroup>
     <article class="">
       <p>We will distribute all problem sets through github. The class has a Github
-organization here:</p>
+organization here: <a class="reference external" href="http://github.com/MOLB7621">http://github.com/MOLB7621</a>.</p>
 <p>To gain access to the problem sets, You need to:</p>
 <ol class="arabic simple">
 <li>Sign up for an account on github.com</li>
 <li>Send me your login name.</li>
 </ol>
 <p>Once you are associated with the class github page, you should be able to
-see your first problem set, due on <a href="#id7"><span class="problematic" id="id8">|ps1-date|</span></a>.</p>
+see your first problem set, due on <a href="#id8"><span class="problematic" id="id9">|ps1-date|</span></a>.</p>
 
 
 
@@ -247,22 +224,12 @@ set.</p>
 
 
     </article>
-  </slide>  <slide class="level-3" id="guidelines">
+  </slide>  <slide class="level-2" id="shell-programming">
     <hgroup>
-      <h3>Guidelines<a class="headerlink" href="../../Classes/class-01.html#guidelines" title="View HTML">§</a></h3>
+      <h2>Shell Programming<a class="headerlink" href="../../Classes/class-01.html#shell-programming" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      
-
-
-
-    </article>
-  </slide>  <slide class="level-2" id="shell-and-python-programming">
-    <hgroup>
-      <h2>Shell and Python Programming<a class="headerlink" href="../../Classes/class-01.html#shell-and-python-programming" title="View HTML">§</a></h2>
-    </hgroup>
-    <article class="">
-      <p>It is important that you learn a few new computer languages. Others have
+      <p>It is important that you learn a few computer languages. Others have
 developed very good guides to teach you these languages, and we are going
 to use those in the class. We expect you to begin taking these classes
 immediately.</p>
@@ -270,25 +237,22 @@ immediately.</p>
 scheduled class time, and outside of class time. Instead of focusing on
 teaching you these languages, we will focus on helping you get through all
 of the frustating problems that come up when you're learning the languages.</p>
-<p>We will spend the first ~2 weeks learning shell <a class="footnote-reference" href="#id1" id="id2">[1]</a> and all the things
-you have access to within the shell.</p>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
+<p>We will spend the first ~2 weeks learning shell programming <a class="footnote-reference" href="#id4" id="id3">[2]</a> and many
+of the tools you have access to within the terminal.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td>The Command Line Crash Course
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>The Command Line Crash Course
 <a class="reference external" href="http://cli.learncodethehardway.org/book/">http://cli.learncodethehardway.org/book/</a></td></tr>
 </tbody>
 </table>
 <p>After learning the shell, we will begin learning R and several packages
-within R.</p>
-<p>Finally, we will begin learning Python <a class="footnote-reference" href="#id3" id="id4">[2]</a>. The Python language allows
-you to do more sophisticated things that would be possible in shell or R, but
-would be considerably more clunky.</p>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+within R. We recommend swirl for getting started with R <a class="footnote-reference" href="#id6" id="id5">[3]</a>.</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td>Learn Python the Hard Way
-<a class="reference external" href="http://learnpythonthehardway.org/book/">http://learnpythonthehardway.org/book/</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>Swirl
+<a class="reference external" href="http://swirlstats.com/">http://swirlstats.com/</a></td></tr>
 </tbody>
 </table>
 
@@ -296,16 +260,16 @@ would be considerably more clunky.</p>
 
 
     </article>
-  </slide>  <slide class="level-2" id="first-quiz-reading">
+  </slide>  <slide class="level-2" id="first-assignment-reading">
     <hgroup>
-      <h2>First Quiz : Reading<a class="headerlink" href="../../Classes/class-01.html#first-quiz-reading" title="View HTML">§</a></h2>
+      <h2>First Assignment : Reading<a class="headerlink" href="../../Classes/class-01.html#first-assignment-reading" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>Computational biology projects inevitably accrue a lot of files.  This
-paper describes a scheme for organizing files that provides some
-suggestions on how to organize.  We suggest that you use this scheme (or a
-similar one) for all of your projects in and out of the class.</p>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+      <p>Bioinformatics projects inevitably accrue a lot of files.  This paper
+describes a scheme for organizing files that provides some suggestions on
+how to organize.  We suggest that you use this scheme (or a similar one)
+for all of your projects in and out of the class.</p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[4]</td><td>A Quick Guide to Organizing Computational Biology Projects (2009)
