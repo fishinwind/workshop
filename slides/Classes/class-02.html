@@ -94,7 +94,7 @@ URL: https://code.google.com/p/io-2012-slides
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Jan 31 Tues</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Jan 26, 2017</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Jan 28, 2017</td>
 </tr>
 </tbody>
 </table>
@@ -108,7 +108,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Updates from last class<a class="headerlink" href="../../Classes/class-02.html#updates-from-last-class" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>#. Clone the <code class="docutils literal"><span class="pre">rc-files</span></code> and <code class="docutils literal"><span class="pre">data-sets</span></code> repositories from the github
+      <p>Clone the <code class="docutils literal"><span class="pre">rc-files</span></code> and <code class="docutils literal"><span class="pre">data-sets</span></code> repositories from the github
 site. Move the dot files into your home directory.</p>
 
 
@@ -137,7 +137,7 @@ site. Move the dot files into your home directory.</p>
       <h2>Unix Philosophy<a class="headerlink" href="../../Classes/class-02.html#unix-philosophy" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>The Unix philosophy <a class="footnote-reference" href="#id2" id="id1">[1]</a> Works well for bioinformatics:</p>
+      <p>The Unix philosophy <a class="footnote-reference" href="#id2" id="id1">[1]</a> works well for bioinformatics:</p>
 <ul class="simple">
 <li>Make each program do one thing well.</li>
 <li>Make every program a filter.</li>
@@ -219,12 +219,13 @@ terminal.</p>
       <h2>Getting Help In The Terminal<a class="headerlink" href="../../Classes/class-02.html#getting-help-in-the-terminal" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>How can you find out the arguments that <code class="docutils literal"><span class="pre">ls</span></code> accepts (or expects):</p>
+      <p>You can find out the arguments that <code class="docutils literal"><span class="pre">ls</span></code> accepts (or expects):</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ man ls
 </pre></div>
 </div>
-<p>and use spacebar to go through the pages. <code class="docutils literal"><span class="pre">man</span></code> is short for &quot;manual&quot; and
-can be used on most of the commands that we will learn.</p>
+<p>and use spacebar to go through the pages (Ctrl-b goes backward). <code class="docutils literal"><span class="pre">man</span></code>
+is short for &quot;manual&quot; and can be used on most of the commands that we will
+learn.</p>
 <p>In other linux software, it is common to get help by using:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ &lt;program&gt; -h
 </pre></div>
@@ -279,7 +280,7 @@ sort the output of <code class="docutils literal"><span class="pre">ls</span></c
       <h2>Getting Help Outside The Terminal<a class="headerlink" href="../../Classes/class-02.html#getting-help-outside-the-terminal" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p><em>Use google</em>. Useful sites include:</p>
+      <p><em>Use google</em>. Other useful sites include:</p>
 <ul class="simple">
 <li>stackexchange.com</li>
 <li>biostars.org</li>
@@ -324,9 +325,9 @@ and find some info.</p>
     </hgroup>
     <article class="">
       <div class="highlight-bash"><div class="highlight"><pre><span></span>$ man head
-$ head /vol1/opt/data/lamina.bed
-$ tail /vol1/opt/data/lamina.bed
-$ head -n <span class="m">13</span> /vol1/opt/data/lamina.bed
+$ head lamina.bed
+$ tail lamina.bed
+$ head -n <span class="m">13</span> lamina.bed
 </pre></div>
 </div>
 
@@ -341,8 +342,8 @@ $ head -n <span class="m">13</span> /vol1/opt/data/lamina.bed
     <article class="">
       <p>Exercise:</p>
 <ul class="simple">
-<li>use <strong>wc</strong> to determine how many <strong>lines</strong> are in /vol1/opt/data/lamina.bed</li>
-<li>use <strong>wc</strong> to determine how many <strong>words</strong> are in /vol1/opt/data/lamina.bed</li>
+<li>use <strong>wc</strong> to determine how many <strong>lines</strong> are in <cite>lamina.bed</cite>.</li>
+<li>use <strong>wc</strong> to determine how many <strong>words</strong> are in <cite>lamina.bed</cite>.</li>
 </ul>
 
 
@@ -355,7 +356,7 @@ $ head -n <span class="m">13</span> /vol1/opt/data/lamina.bed
     </hgroup>
     <article class="">
       <p>To view a large file, use less:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">less</span> <span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">lamina</span><span class="o">.</span><span class="n">bed</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ less lamina.bed
 </pre></div>
 </div>
 <p>You can forward-search in the file using &quot;/&quot;</p>
@@ -390,11 +391,11 @@ through commands that start with that prefix.</p>
     <article class="">
       <p>The <code class="docutils literal"><span class="pre">bash</span></code> shell has several built-in utilities for expediting typing.</p>
 <p>Type the following where [TAB] means the Tab key on the keyboard:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/bio-w<span class="o">[</span>TAB<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /usr/<span class="o">[</span>TAB<span class="o">]</span>
 </pre></div>
 </div>
 <p>Then hit tab. And:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ls /opt/bio-w<span class="o">[</span>TAB<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ls /usr/l<span class="o">[</span>TAB<span class="o">]</span>
 </pre></div>
 </div>
 <p>This will work for any file path and for any programs:</p>
@@ -507,7 +508,7 @@ $ mkdir -p ~/tmp/asdf/asdf <span class="c1"># OK</span>
 $ rm -r ~/tmp/asdf/asdf <span class="c1"># OK</span>
 </pre></div>
 </div>
-<p>What does the -r flag do?</p>
+<p>What does <code class="docutils literal"><span class="pre">-r</span></code> do?</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Be careful with <cite>rm -r</cite> and <cite>rm -rf</cite>. You can accidentially remove
@@ -579,7 +580,7 @@ $ <span class="nb">echo</span> <span class="nv">$HISTFILE</span>
 key component of programming.</p>
 <p>You can do:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span># define a variable called &quot;important&quot;
-$ important=/vol1/opt/data/lamina.bed
+$ important=lamina.bed
 
 # &quot;dereference&quot; (refer to) the variable with a dollah-bill sign
 $ ls -lh $important
@@ -595,12 +596,14 @@ $ ls -lh $important
       <h2>sudo<a class="headerlink" href="../../Classes/class-02.html#sudo" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p><code class="docutils literal"><span class="pre">sudo</span></code> lets you run commands as root (the super-user). You won't be able
-to do this on tesla, but you should be able to run <code class="docutils literal"><span class="pre">sudo</span></code> on the virtual
-machine.</p>
+      <p><code class="docutils literal"><span class="pre">sudo</span></code> lets you run commands as root (the super-user).</p>
 <img alt="http://imgs.xkcd.com/comics/sandwich.png" src="http://imgs.xkcd.com/comics/sandwich.png" />
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ apt-get install cowsay
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># on linux</span>
+$ apt-get install cowsay
 $ sudo apt-get install cowsay
+
+<span class="c1"># don&#39;t need sudo with homebrew</span>
+$ brew install cowsay
 </pre></div>
 </div>
 
@@ -620,7 +623,7 @@ $ sudo apt-get install cowsay
 <li>uniq</li>
 </ul>
 <p>How many records are present for each chromosome in
-/vol1/opt/data/lamina.bed (assume it is sorted by chromosome)?</p>
+<cite>lamina.bed</cite> (assume it is sorted by chromosome)?</p>
 
 
 
@@ -696,7 +699,7 @@ $ ls -lhtr /tmp/
 together. We will cover this in detail next class, but the idea
 is that each program takes data, modifies it, and sends it to the next.</p>
 <p>We can see lines 5-10 of a file with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ head /vol1/opt/data/lamina.bed <span class="p">|</span> tail -n 5
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ head lamina.bed <span class="p">|</span> tail -n 5
 </pre></div>
 </div>
 

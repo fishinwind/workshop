@@ -19,12 +19,8 @@ fetch a file from the web with ``wget``:
 
 .. code-block:: bash
 
-    # N.B.: All common data will be on tesla in /vol1/opt/data
-
     $ cd # go $HOME
-    $ wget http://hesselberthlab.github.io/workshop/_downloads/states.tab
-    $ wget http://hesselberthlab.github.io/workshop/_downloads/lamina.bed
-    $ wget http://hesselberthlab.github.io/workshop/_downloads/t_R1.fastq.gz
+    $ wget http://molb7621.github.io/workshop/_downloads/states.tab
 
 cut
 ===
@@ -36,13 +32,13 @@ The ``cut`` command allows you to extract certain columns of a file:
     $ cut -f 1,2,3,4
 
     # cut columns 1-4 and 7-10
-    $ cut -f 1-4,7-10 /vol1/opt/data/states.tab
+    $ cut -f 1-4,7-10 states.tab
 
     # cut first column 1
-    $ cut -f 1 /vol1/opt/data/lamina.bed
+    $ cut -f 1 lamina.bed
 
     # output all columns after the 1st
-    $ cut -f 2- /vol1/opt/data/lamina.bed
+    $ cut -f 2- lamina.bed
 
 Sort
 ====
@@ -80,7 +76,7 @@ Sort by chrom, then by start (a lot of tools will require this)
 
 .. code-block:: bash
 
-    $ sort -k1,1 -k2,2n /vol1/opt/data/lamina.bed > /tmp/sorted.bed
+    $ sort -k1,1 -k2,2n lamina.bed > /tmp/sorted.bed
 
 This tells it to sort the chromosome [column 1] as a character and the
 start [column 2] as a number.
@@ -96,7 +92,7 @@ What if we want to sort by Income **descending** in the 3rd column?
 
 .. code-block:: bash
 
-    $ sort -t$'\t' -k3,3rg /vol1/opt/data/states.tab > /tmp/sorted.out
+    $ sort -t$'\t' -k3,3rg states.tab > /tmp/sorted.out
     $ head /tmp/sorted.out 
 
 Sort Exercise
@@ -106,7 +102,6 @@ income (3rd column) from states.tab using ``sort`` and piping to ``cut``.
 
 Or, use ``cut`` and pipe to ``sort`` to do the same.
 
-
 uniq
 ====
 The ``uniq`` command  allows you to get and count unique entries
@@ -114,13 +109,13 @@ The ``uniq`` command  allows you to get and count unique entries
 .. code-block:: bash
 
     # remove duplicate lines
-    $ cut -f 1 /vol1/opt/data/lamina.bed | uniq
+    $ cut -f 1 lamina.bed | uniq
 
     # show duplicate lines
-    $ cut -f 1 /vol1/opt/data/lamina.bed | uniq -d
+    $ cut -f 1 lamina.bed | uniq -d
 
     # count unique entries:
-    $ cut -f 1 /vol1/opt/data/lamina.bed | uniq -c
+    $ cut -f 1 lamina.bed | uniq -c
 
 .. important::
 
@@ -135,7 +130,7 @@ operator:
 
 .. code-block:: bash
 
-    $ cut -f 1 /vol1/opt/data/lamina.bed | uniq -c > output.txt
+    $ cut -f 1 lamina.bed | uniq -c > output.txt
     $ head output.txt
 
 To **append** the output of a command (or a file) to another file, use
@@ -152,20 +147,20 @@ The most common way to uncompress single files is ``gunzip``:
 
 .. code-block:: bash
 
-    $ gunzip /vol1/opt/data/t_R1.fastq.gz
+    $ gunzip t_R1.fastq.gz
 
 And re-zip the file with ``gzip``:
 
 .. code-block:: bash 
 
-    $ gzip /vol1/opt/data/t_R1.fastq
+    $ gzip t_R1.fastq
 
 But if we just want to stream the uncompressed data without changing the
 file
 
 .. code-block:: bash
 
-    $ zless /vol1/opt/data/t_R1.fastq.gz
+    $ zless t_R1.fastq.gz
 
 Pipes
 =====
@@ -173,7 +168,8 @@ We probably want to do something with the file as we uncompress it
 
 .. code-block:: bash
 
-    $ zless /vol1/opt/data/t_R1.fastq.gz | head
+    # zcat is cat with compressed data
+    $ zcat t_R1.fastq.gz | head
 
 We already know the head command prints the first ``-n`` lines.
 
@@ -211,8 +207,6 @@ Note that we are using the variable FILE for the long file name
 
 .. FILE=http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeRegTfbsClustered/wgEncodeRegTfbsClusteredV2.bed.gz
 
-Let's go through this line by line ...
-
 .. _class-3-exercises:
 
 In Class Exercises - Class 3
@@ -221,7 +215,7 @@ In Class Exercises - Class 3
 1. To learn about piping (|), use cowsay to:
 
 a. show your current working directory
-b. show the number of lines in /vol1/opt/data/lamina.bed
+b. show the number of lines in lamina.bed
 c. show the most recently modified file/dir in $HOME
 
 2. write a bash script that you can run to list only the 2 most
@@ -238,7 +232,7 @@ the following command (must work from any directory)?
 
 .. code-block:: bash
 
-        $ ls /vol1/opt/data/lamina.bed
+        $ ls lamina.bed
 
 6. How few keystrokes can you do 5. using your history?
 

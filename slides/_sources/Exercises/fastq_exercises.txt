@@ -3,9 +3,9 @@
 
 .. _exercises:
 
-*************
+*********************
   FASTQ/A Exercises
-*************
+*********************
 
 :Last updated: |today|
 
@@ -14,7 +14,7 @@ Exercises using unix tools to manipulate FASTQ/A files
 .. _fastq-exercises:
 
 FASTQ exercises
-==============
+===============
 
 Download a fastq example file :download:`[SP1.fq] <../Miscellaneous/data/SP1.fq>`
 
@@ -185,7 +185,7 @@ match the length of the sequence line.
 .. _fasta-exercises:
 
 FASTA exercises
-==============
+===============
 
 FASTA format is a more compact sequence format than FASTQ
 
@@ -220,7 +220,7 @@ To count the number of sequences in the fasta file you can use either
     grep -c ">" example.fa 
 
 On your own
-==========
+===========
 
 #. Use ``awk`` to extract out sequences and find out the lengths of each
    read. Are they all the same length? 

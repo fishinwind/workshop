@@ -11,7 +11,7 @@ Class 2 : The command-line
 Updates from last class
 =======================
 
-#. Clone the ``rc-files`` and ``data-sets`` repositories from the github
+Clone the ``rc-files`` and ``data-sets`` repositories from the github
 site. Move the dot files into your home directory. 
 
 Goals
@@ -24,7 +24,7 @@ Goals
 
 Unix Philosophy
 ===============
-The Unix philosophy [#]_ Works well for bioinformatics:
+The Unix philosophy [#]_ works well for bioinformatics:
 
 + Make each program do one thing well.
 + Make every program a filter.
@@ -87,14 +87,15 @@ These can also be separated like:
 
 Getting Help In The Terminal
 ============================
-How can you find out the arguments that ``ls`` accepts (or expects):
+You can find out the arguments that ``ls`` accepts (or expects):
 
 .. code-block:: bash
 
     $ man ls
 
-and use spacebar to go through the pages. ``man`` is short for "manual" and
-can be used on most of the commands that we will learn. 
+and use spacebar to go through the pages (Ctrl-b goes backward). ``man``
+is short for "manual" and can be used on most of the commands that we will
+learn. 
 
 In other linux software, it is common to get help by using:
 
@@ -131,7 +132,7 @@ care about the most recently modified files)
 
 Getting Help Outside The Terminal
 =================================
-*Use google*. Useful sites include:
+*Use google*. Other useful sites include:
 
 + stackexchange.com
 + biostars.org
@@ -152,29 +153,28 @@ Questions
 =========
 + By default, head and tail show 10 lines. How can you see 13 lines?
 
-
 Other Commands In The Terminal (Answers)
 ========================================
 
 .. code-block:: bash
 
     $ man head
-    $ head /vol1/opt/data/lamina.bed
-    $ tail /vol1/opt/data/lamina.bed
-    $ head -n 13 /vol1/opt/data/lamina.bed
+    $ head lamina.bed
+    $ tail lamina.bed
+    $ head -n 13 lamina.bed
 
 Word Counts (wc)
 ================
 Exercise:
 
-+ use **wc** to determine how many **lines** are in /vol1/opt/data/lamina.bed
-+ use **wc** to determine how many **words** are in /vol1/opt/data/lamina.bed
++ use **wc** to determine how many **lines** are in `lamina.bed`.
++ use **wc** to determine how many **words** are in `lamina.bed`.
 
 Less (is More)
 ==============
 To view a large file, use less::
 
-    less /vol1/opt/data/lamina.bed
+    $ less lamina.bed
 
 You can forward-search in the file using "/"
 
@@ -204,13 +204,13 @@ Type the following where [TAB] means the Tab key on the keyboard:
 
 .. code-block:: bash
 
-    $ cd /opt/bio-w[TAB]
+    $ cd /usr/[TAB]
 
 Then hit tab. And:
 
 .. code-block:: bash
 
-    $ ls /opt/bio-w[TAB]
+    $ ls /usr/l[TAB]
 
 This will work for any file path and for any programs:
 
@@ -312,7 +312,7 @@ Remove directories:
 
    $ rm -r ~/tmp/asdf/asdf # OK
 
-What does the -r flag do?
+What does ``-r`` do?
 
 .. warning::
 
@@ -362,23 +362,25 @@ key component of programming.
 You can do::
 
     # define a variable called "important"
-    $ important=/vol1/opt/data/lamina.bed
+    $ important=lamina.bed
 
     # "dereference" (refer to) the variable with a dollah-bill sign
     $ ls -lh $important
 
 sudo
 ====
-``sudo`` lets you run commands as root (the super-user). You won't be able
-to do this on tesla, but you should be able to run ``sudo`` on the virtual
-machine.
+``sudo`` lets you run commands as root (the super-user).
 
 .. image:: http://imgs.xkcd.com/comics/sandwich.png
 
 .. code-block:: bash
 
+    # on linux
     $ apt-get install cowsay
     $ sudo apt-get install cowsay
+
+    # don't need sudo with homebrew
+    $ brew install cowsay
 
 other commands
 ==============
@@ -390,7 +392,7 @@ use ``man`` to determine the function of:
 + uniq
 
 How many records are present for each chromosome in
-/vol1/opt/data/lamina.bed (assume it is sorted by chromosome)?
+`lamina.bed` (assume it is sorted by chromosome)?
 
 
 Scripts
@@ -453,7 +455,7 @@ We can see lines 5-10 of a file with:
 
 .. code-block:: bash
 
-    $ head /vol1/opt/data/lamina.bed | tail -n 5
+    $ head lamina.bed | tail -n 5
 
 .. raw:: pdf
 
