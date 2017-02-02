@@ -168,11 +168,11 @@ Specific Dates / Material to be Covered
     * - Class 4 
       - |c4-date|
       - grep and awk
-      - **PS1 due** (|pset1-due|)
+      - 
     * - Class 5 
       - |c5-date|
       - BEDTools
-      - 
+      - **PS1 due** (|pset1-due|)
     * - Class 6 
       - |c6-date|
       - Analysis vignette: ChIP-seq 
