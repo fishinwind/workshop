@@ -25,7 +25,7 @@ To find any instance of *chr5* in the lamina.bed file
 .. code-block:: bash
 
     # grep [pattern] [filename]
-    $ grep chr5 /vol1/opt/data/lamina.bed | head
+    $ grep chr5 lamina.bed | head
 
 To find all lines that start with a number sign:
 
@@ -33,7 +33,7 @@ To find all lines that start with a number sign:
 
     # The caret (^) matches the beginning of the line
     # FYI dollar sign ($) matches the end
-    $ grep '^#' /vol1/opt/data/lamina.bed
+    $ grep '^#' lamina.bed
 
 .. nextslide::
     :increment:
@@ -43,21 +43,21 @@ To find any line that *does not* start with "chr":
 .. code-block:: bash
 
     # the -v flag inverts the match (grep "not" [pattern])
-    $ grep -v '^chr' /vol1/opt/data/lamina.bed
+    $ grep -v '^chr' lamina.bed
 
 Beware of using ``grep`` to find patterns that might be partial matches:
 
 .. code-block:: bash
 
     # this will match chr1, chr10, chr11 etc.
-    $ grep chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
+    $ grep chr1 lamina.bed | cut -f1 | uniq
 
 You can find exact matches that are split on words with the ``-w`` flag:
 
 .. code-block:: bash
 
     # this will only match chr1
-    $ grep -w chr1 /vol1/opt/data/lamina.bed | cut -f1 | uniq
+    $ grep -w chr1 lamina.bed | cut -f1 | uniq
 
 .. nextslide::
     :increment:
@@ -67,17 +67,17 @@ Beware of using ``grep`` to search for numbers:
 .. code-block:: bash
 
     # finds all strings that match `100`
-    $ grep 100 /vol1/opt/data/lamina.bed | head -n 20
+    $ grep 100 lamina.bed | head -n 20
 
     # better, but doesn't look at numeric value
-    $ grep -w 100 /vol1/opt/data/lamina.bed | head -n 20
+    $ grep -w 100 lamina.bed | head -n 20
 
 .. tip::
 
     If you're trying to find numeric values in a file, use ``awk``
     instead::
 
-        $ awk '$2 == 500' /vol1/opt/data/lamina.bed
+        $ awk '$2 == 500' lamina.bed
 
 Exercises
 =========
@@ -92,11 +92,11 @@ Exercises
    records in lamina.bed.
 
 #. use ``grep`` to count how many fastq records are in the
-   /vol1/opt/data/t_R1.fastq.gz file (fastq records begin with an
+   data-sets/fastq/t_R1.fastq.gz file (fastq records begin with an
    '@' symbol)
 
 #. use ``grep`` to count the number of fastq records in
-   /vol1/opt/data/SP1.fq.gz
+   data-sets/fastq/SP1.fq
 
 awk
 ===
@@ -155,13 +155,13 @@ first column is chr12:
 
 .. code-block:: bash
 
-    awk '($1 == "chr12")' /vol1/opt/data/lamina.bed
+    awk '($1 == "chr12")' lamina.bed
 
 We can also filter on start position using '&&' which means 'and':
 
 .. code-block:: bash
 
-    awk '($1 == "chr12" && $2 < 9599990)' /vol1/opt/data/lamina.bed
+    awk '($1 == "chr12" && $2 < 9599990)' lamina.bed
 
 .. important::
 
@@ -176,7 +176,7 @@ program structure
 
 .. code-block:: bash
 
-    awk '($1 == "chr12" && $2 < 9599990)' /vol1/opt/data/lamina.bed
+    awk '($1 == "chr12" && $2 < 9599990)' lamina.bed
 
 .. important::
 
@@ -209,7 +209,7 @@ print total bases covered on chromosome 13:
 .. code-block:: bash
 
     awk '($1 == "chr13") { coverage = coverage + $3 - $2 }
-         END { print coverage }' /vol1/opt/data/lamina.bed
+         END { print coverage }' lamina.bed
 
 .. important::
     
@@ -228,7 +228,7 @@ below is how we find coverage for chr13.
 .. code-block:: bash
 
     awk '($1 == "chr13") { coverage += $3 - $2 }
-         END{ print coverage }' /vol1/opt/data/lamina.bed
+         END{ print coverage }' lamina.bed
 
 how can we find the total coverage for all chromsomes **except** 13?
 
@@ -243,13 +243,13 @@ multiple patterns
 
       awk '$3 >= 5000 { print $0"\tGREATER" }
            $3  < 5000   { print $0"\tLESS" }' \
-            /vol1/opt/data/states.tab
+            states.tab
 
 remember we can simply filter to the lines > 5000 with:
 
 .. code-block:: bash
 
-      awk '$3 >= 5000' /vol1/opt/data/states.tab
+      awk '$3 >= 5000' states.tab
 
 awk special variables
 =====================
@@ -267,9 +267,9 @@ using awk to count lines with NR
 
 .. code-block:: bash
 
-    $ wc -l /vol1/opt/data/lamina.bed
+    $ wc -l lamina.bed
 
-    $ awk 'END { print NR }' /vol1/opt/data/lamina.bed
+    $ awk 'END { print NR }' lamina.bed
 
 
 using FS and OFS
@@ -281,7 +281,7 @@ remember FS is the input separator and OFS is the output delimiter
 .. code-block:: bash
 
     $ awk 'BEGIN{FS="\t"; OFS=","}
-        ($1 == "chr12"){ print $1,$2,$3 }' /vol1/opt/data/lamina.bed
+        ($1 == "chr12"){ print $1,$2,$3 }' lamina.bed
 
 regular expressions
 ===================
@@ -291,7 +291,7 @@ The following finds lines containing chr2 (chr2, chr20, chr21) in the first colu
 
 .. code-block:: bash
 
-   $ awk '$1 ~ /chr2/' /vol1/opt/data/lamina.bed
+   $ awk '$1 ~ /chr2/' lamina.bed
 
 Often we can get by without *regular expressions* but they are extremeley powerful
 and available in nearly all programming languages.
