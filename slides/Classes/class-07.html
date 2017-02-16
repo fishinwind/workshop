@@ -94,7 +94,7 @@ URL: https://code.google.com/p/io-2012-slides
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Feb 16 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Jan 26, 2017</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Feb 16, 2017</td>
 </tr>
 </tbody>
 </table>
@@ -114,7 +114,7 @@ tools</li>
 </ol>
 <p>There are several more vignettes <a class="reference external" href="https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md">here.</a>
 Looking over these may be helpful to understand some of the questions on
-<a class="reference internal" href="../Problem_Sets/problem_set_4/problem_set_4.html#problem-set-4"><span class="std std-ref">Problem Set 4</span></a>.</p>
+the problem sets.</p>
 
 
 
@@ -131,7 +131,7 @@ transcription start sites).</p>
 <p>This simple process can be broken down into several individual steps:</p>
 <ol class="arabic simple">
 <li>Obtain genome annotations (we will use TSS)</li>
-<li>Obtain signals in bedGraph format (we will use Pol II ChIP-seq)</li>
+<li>Obtain signals in bedGraph format (we will use CTCF ChIP-seq)</li>
 <li>Use <a class="reference external" href="http://bedtools.readthedocs.io/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.26.0)"><span class="xref std std-ref">slop</span></a> to create regions to examine [optional]</li>
 <li>Break the regions into windows with <a class="reference external" href="http://bedtools.readthedocs.io/en/latest/content/tools/makewindows.html#makewindows" title="(in bedtools v2.26.0)"><span class="xref std std-ref">makewindows</span></a>.</li>
 <li><a class="reference external" href="http://bedtools.readthedocs.io/en/latest/content/tools/map.html#map" title="(in bedtools v2.26.0)"><span class="xref std std-ref">map</span></a> data onto the windows.</li>
@@ -148,19 +148,23 @@ transcription start sites).</p>
     </hgroup>
     <article class="">
       <p>First we need some annotations. Let's get some transcription start sites
-(TSSs) from a BED file of gene annotations.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">genes</span><span class="o">=</span>/vol1/opt/data/refGene.bed.gz
-$ <span class="nv">tssbed</span><span class="o">=</span>tss.bed
+(TSSs) from a BED file of gene annotations. For this analysis extract TSSs
+from chr22.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">genes</span><span class="o">=</span><span class="s2">&quot;data-sets/bed/genes.hg19.bed.gz&quot;</span>
+$ <span class="nv">tssbed</span><span class="o">=</span><span class="s2">&quot;tss.bed&quot;</span>
 
 <span class="c1"># need to grab the start or end based on the strand field</span>
-$ zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$2,$2+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
-$ zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$3,$3+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+$ gzcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="se">\</span>
+  <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1, $2, $2+1, $4}&#39;</span> &gt; <span class="nv">$tssbed</span>
+$ gzcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="se">\</span>
+  <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1, $3, $3+1, $4}&#39;</span> &gt;&gt; <span class="nv">$tssbed</span>
 
-<span class="c1"># we made a bed file, so now we sort it.</span>
-$ bedSort <span class="nv">$tssbed</span> <span class="nv">$tssbed</span>
-$ gzip <span class="nv">$tssbed</span>
-<span class="c1"># rename it for future use</span>
-$ <span class="nv">tssbed</span><span class="o">=</span>tss.bed.gz
+<span class="c1"># extract chr22 intervals and sort bed output</span>
+$ awk <span class="s1">&#39;($1 == &quot;chr22&quot;)&#39;</span> <span class="nv">$tssbed</span> <span class="se">\</span>
+    <span class="p">|</span> bedtools sort -i - &gt; tmp.bed
+
+<span class="c1">#rename tmp.bed to tss.bed</span>
+$ mv tmp.bed <span class="nv">$tssbed</span>
 </pre></div>
 </div>
 
@@ -173,10 +177,11 @@ $ <span class="nv">tssbed</span><span class="o">=</span>tss.bed.gz
       <h2>Signal<a class="headerlink" href="../../Classes/class-07.html#signal" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <p>The signal we will use is human Pol II ChIP-seq signal. The file is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">signal</span><span class="o">=/</span><span class="n">vol1</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">encode</span><span class="o">/</span><span class="n">wgEncodeBroadHistoneHelas3Pol2bStdSig</span><span class="o">.</span><span class="n">bigWig</span>
+      <p>The signal we will use is human CTCF ChIP-seq signal. The file is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">signal</span><span class="o">=</span><span class="s2">&quot;data-sets/bedtools/ctcf.hela.chr22.bg.gz&quot;</span>
 </pre></div>
 </div>
+<p>Another common file format for ChIP/Clip-Seq signals is the <a class="reference external" href="https://genome.ucsc.edu/goldenPath/help/bigWig.html">bigWig</a> format.</p>
 <p>bigWig is a compressed form of bedGraph. You can either convert to bedGraph
 and compress:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bigWigToBedGraph</span> <span class="o">&lt;</span><span class="n">wig</span> <span class="n">file</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">bedgraph</span><span class="o">&gt;</span>
@@ -187,6 +192,7 @@ and compress:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="p">(</span><span class="n">bigWigToBedGraph</span> <span class="o">&lt;</span><span class="n">wigfile</span><span class="o">&gt;</span> <span class="n">stdout</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Additional Encode data can be downloaded <a class="reference external" href="https://www.encodeproject.org/matrix/?type=Experiment">here</a></p>
 
 
 
@@ -200,8 +206,8 @@ and compress:</p>
       <p>Each of the TSS regions we made is 1 base in size. We need to make these
 bigger so that we can examine coverage within a larger region. Let's make them
 2 kb with the <a class="reference external" href="http://bedtools.readthedocs.io/en/latest/content/tools/slop.html#slop" title="(in bedtools v2.26.0)"><span class="xref std std-ref">slop</span></a> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">chromsize</span><span class="o">=</span>/vol1/opt/data/hg19.chrom.sizes
-$ <span class="nv">slopbed</span><span class="o">=</span>tss.slop.2000.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">chromsize</span><span class="o">=</span><span class="s2">&quot;data-sets/bedtools/hg19.genome&quot;</span>
+$ <span class="nv">slopbed</span><span class="o">=</span><span class="s2">&quot;tss.slop.2000.bed&quot;</span>
 $ bedtools slop -b <span class="m">2000</span> -i <span class="nv">$tssbed</span> -g <span class="nv">$chromsize</span> &gt; <span class="nv">$slopbed</span>
 </pre></div>
 </div>
@@ -222,10 +228,10 @@ from the input BED file. Check the new widths of each region using
 into <cite>windows</cite> and examine signal in each. The idea here is that we would
 like to see a peak of signal at the middle window, and it should descrease
 as we move away from TSS.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">windowbed</span><span class="o">=</span>tss.slop.2000.5bp.windows.bed
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">windowbed</span><span class="o">=</span><span class="s2">&quot;tss.slop.2000.5bp.windows.bed&quot;</span>
 
 $ bedtools makewindows -b <span class="nv">$slopbed</span> -w <span class="m">5</span> -i srcwinnum <span class="se">\</span>
-    <span class="p">|</span> sort -k1,1 -k2,2n <span class="se">\</span>
+    <span class="p">|</span> bedtools sort -i - <span class="se">\</span>
     <span class="p">|</span> tr <span class="s2">&quot;_&quot;</span> <span class="s2">&quot;\t&quot;</span> <span class="se">\</span>
     &gt; <span class="nv">$windowbed</span>
 </pre></div>
@@ -245,9 +251,9 @@ windows labeled &quot;1&quot; are 2000 bases upstream of the original annotated 
     </hgroup>
     <article class="">
       <p>Now we can map the signal to each of the windows that we made.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">signalmap</span><span class="o">=</span>signal.map.bg
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">signalmap</span><span class="o">=</span><span class="s2">&quot;signal.map.bg&quot;</span>
 $ bedtools map -a <span class="nv">$windowbed</span> <span class="se">\</span>
-    -b &lt;<span class="o">(</span>bigWigToBedGraph <span class="nv">$signal</span> stdout<span class="o">)</span> <span class="se">\</span>
+    -b <span class="nv">$signal</span> <span class="se">\</span>
     -c <span class="m">4</span> -o mean -null <span class="m">0</span> <span class="se">\</span>
     &gt; <span class="nv">$signalmap</span>
 </pre></div>
@@ -339,48 +345,42 @@ $ sort -t<span class="s1">$&#39;\t&#39;</span> -k5,5n <span class="nv">$signalma
 44
 45
 46
-47
-48
-49
-50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env bash</span>
+47</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env bash</span>
 
-<span class="c1">#BSUB -J bedtools.vignette</span>
-<span class="c1">#BSUB -o vignette.%J.out</span>
-<span class="c1">#BSUB -e vignette.%J.err</span>
+<span class="nv">genes</span><span class="o">=</span><span class="s2">&quot;data-sets/bed/genes.hg19.bed.gz&quot;</span>
+<span class="nv">tssbed</span><span class="o">=</span><span class="s2">&quot;tss.bed&quot;</span>
 
-<span class="nv">genes</span><span class="o">=</span>/vol1/opt/data/encode/refGene.bed.gz
-<span class="nv">tss</span><span class="o">=</span>tss.bed
+<span class="c1"># make TSS annotations</span>
 
-<span class="c1"># make annotations</span>
-zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="se">\</span>
-    <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$2,$2+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
-zcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="se">\</span>
-    <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$3,$3+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+gzcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;+&quot;&#39;</span> <span class="se">\</span>
+ <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$2,$2+1}&#39;</span> &gt; <span class="nv">$tssbed</span>
+gzcat <span class="nv">$genes</span> <span class="p">|</span> awk <span class="s1">&#39;$6 == &quot;-&quot;&#39;</span> <span class="se">\</span>
+ <span class="p">|</span> awk <span class="s1">&#39;BEGIN {OFS=&quot;\t&quot;} {print $1,$3,$3+1}&#39;</span> &gt;&gt; <span class="nv">$tssbed</span>
 
-bedSort <span class="nv">$tssbed</span> <span class="nv">$tssbed</span>
-gzip <span class="nv">$tssbed</span>
-<span class="c1"># rename after gzipping</span>
-<span class="nv">tss</span><span class="o">=</span>tss.bed.gz
+<span class="c1"># extract chr22 intervals and sort bed output</span>
+awk <span class="s1">&#39;($1 == &quot;chr22&quot;)&#39;</span> <span class="nv">$tssbed</span> <span class="se">\</span>
+  <span class="p">|</span> bedtools sort -i - &gt; tmp.bed
+mv tmp.bed <span class="nv">$tssbed</span>
 
-<span class="nv">signal</span><span class="o">=</span>/vol1/opt/data/endcode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
+<span class="nv">signal</span><span class="o">=</span><span class="s2">&quot;data-sets/bedtools/ctcf.hela.chr22.bg.gz&quot;</span>
 
-<span class="nv">chromsize</span><span class="o">=</span>/vol1/opt/data/hg19/hg19.chrom.sizes
-<span class="nv">slopbed</span><span class="o">=</span>tss.slop.2000.bed
+<span class="nv">chromsize</span><span class="o">=</span><span class="s2">&quot;data-sets/bedtools/hg19.genome&quot;</span>
+<span class="nv">slopbed</span><span class="o">=</span><span class="s2">&quot;tss.slop.2000.bed&quot;</span>
 
 <span class="c1"># make slop</span>
 bedtools slop -b <span class="m">2000</span> -i <span class="nv">$tssbed</span> -g <span class="nv">$chromsize</span> &gt; <span class="nv">$slopbed</span>
 
 <span class="c1"># make windows</span>
-<span class="nv">windowbed</span><span class="o">=</span>tss.slop.2000.5bp.windows.bed
+<span class="nv">windowbed</span><span class="o">=</span><span class="s2">&quot;tss.slop.2000.5bp.windows.bed&quot;</span>
 bedtools makewindows -b <span class="nv">$slopbed</span> -w <span class="m">5</span> -i srcwinnum <span class="se">\</span>
     <span class="p">|</span> sort -k1,1 -k2,2n <span class="se">\</span>
     <span class="p">|</span> tr <span class="s2">&quot;_&quot;</span> <span class="s2">&quot;\t&quot;</span> <span class="se">\</span>
     &gt; <span class="nv">$windowbed</span>
 
 <span class="c1"># map data</span>
-<span class="nv">signalmap</span><span class="o">=</span>signal.map.bg
+<span class="nv">signalmap</span><span class="o">=</span><span class="s2">&quot;signal.map.bg&quot;</span>
 bedtools map -a <span class="nv">$windowbed</span> <span class="se">\</span>
-    -b &lt;<span class="o">(</span>bigWigToBedGraph <span class="nv">$signal</span> stdout<span class="o">)</span> <span class="se">\</span>
+    -b <span class="nv">$signal</span> <span class="se">\</span>
     -c <span class="m">4</span> -o mean -null <span class="m">0</span> <span class="se">\</span>
     &gt; <span class="nv">$signalmap</span> 
 
@@ -413,12 +413,14 @@ Navigate to the directory where you did you work with the <cite>Files</cite> men
 the lower right, and then set the working directory with <cite>More</cite> --&gt; <cite>Set
 as Working Directory</cite>.</p>
 <p>Now make a plot!</p>
-<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> install.packages<span class="p">(</span>ggplot2<span class="p">)</span>
+<span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
 <span class="o">&gt;</span> col.names <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;window&#39;</span><span class="p">,</span><span class="s">&#39;signal&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> df <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;output.tab&#39;</span><span class="p">,</span> col.names<span class="o">=</span>col.names<span class="p">)</span>
 
 <span class="c1"># coerce to numbers</span>
 <span class="o">&gt;</span> df<span class="o">$</span>signal <span class="o">&lt;-</span> <span class="kp">as.double</span><span class="p">(</span>df<span class="o">$</span>signal<span class="p">)</span>
+<span class="o">&gt;</span> df<span class="o">$</span>window <span class="o">&lt;-</span> <span class="kp">seq</span><span class="p">(</span><span class="m">-2000</span><span class="p">,</span> <span class="m">2000</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
 <span class="o">&gt;</span> qplot<span class="p">(</span>window<span class="p">,</span> signal<span class="p">,</span> data <span class="o">=</span> df<span class="p">)</span>
 </pre></div>
 </div>
@@ -434,7 +436,7 @@ as Working Directory</cite>.</p>
     <article class="">
       <p>Try to generalize this approach to other types of data. How would you:</p>
 <ol class="arabic simple">
-<li>Look at Pol II distribution near transcription termination sites
+<li>Look at CTCF distribution near transcription termination sites
 (TTSs)? Write this program and run it. (easy)</li>
 <li>Analyze the distribution of H3K36me3 ChIP-seq signal relative to coding
 exons?  Download some H3K36me3 data and <a class="reference external" href="http://bedtools.readthedocs.io/en/latest/content/tools/bed12tobed6.html#bed12tobed6" title="(in bedtools v2.26.0)"><span class="xref std std-ref">bed12tobed6</span></a>.</li>
