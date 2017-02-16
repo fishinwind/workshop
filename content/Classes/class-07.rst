@@ -16,7 +16,7 @@ Goals
 There are several more vignettes `here.
 <https://github.com/arq5x/bedtools-protocols/blob/master/bedtools.md>`_
 Looking over these may be helpful to understand some of the questions on
-:ref:`problem-set-4`.
+the problem sets. 
 
 Overview
 --------
@@ -28,7 +28,7 @@ This simple process can be broken down into several individual steps:
 
 #. Obtain genome annotations (we will use TSS)
 
-#. Obtain signals in bedGraph format (we will use Pol II ChIP-seq)
+#. Obtain signals in bedGraph format (we will use CTCF ChIP-seq)
 
 #. Use :ref:`slop <bedtools:slop>` to create regions to examine [optional]
 
@@ -43,28 +43,35 @@ This simple process can be broken down into several individual steps:
 Annotations
 -----------
 First we need some annotations. Let's get some transcription start sites
-(TSSs) from a BED file of gene annotations.
+(TSSs) from a BED file of gene annotations. For this analysis extract TSSs
+from chr22. 
 
 .. code-block:: bash
 
-    $ genes=/vol1/opt/data/refGene.bed.gz
-    $ tssbed=tss.bed
+    $ genes="data-sets/bed/genes.hg19.bed.gz"
+    $ tssbed="tss.bed"
 
     # need to grab the start or end based on the strand field
-    $ zcat $genes | awk '$6 == "+"' | awk 'BEGIN {OFS="\t"} {print $1,$2,$2+1}' > $tssbed
-    $ zcat $genes | awk '$6 == "-"' | awk 'BEGIN {OFS="\t"} {print $1,$3,$3+1}' > $tssbed
-
-    # we made a bed file, so now we sort it.
-    $ bedSort $tssbed $tssbed
-    $ gzip $tssbed
-    # rename it for future use
-    $ tssbed=tss.bed.gz
+    $ gzcat $genes | awk '$6 == "+"' \
+      | awk 'BEGIN {OFS="\t"} {print $1, $2, $2+1, $4}' > $tssbed
+    $ gzcat $genes | awk '$6 == "-"' \
+      | awk 'BEGIN {OFS="\t"} {print $1, $3, $3+1, $4}' >> $tssbed
+    
+    # extract chr22 intervals and sort bed output
+    $ awk '($1 == "chr22")' $tssbed \
+        | bedtools sort -i - > tmp.bed
+    
+    #rename tmp.bed to tss.bed
+    $ mv tmp.bed $tssbed
 
 Signal
 ------
-The signal we will use is human Pol II ChIP-seq signal. The file is::
+The signal we will use is human CTCF ChIP-seq signal. The file is::
 
-    signal=/vol1/opt/data/encode/wgEncodeBroadHistoneHelas3Pol2bStdSig.bigWig
+    signal="data-sets/bedtools/ctcf.hela.chr22.bg.gz"
+
+Another common file format for ChIP/Clip-Seq signals is the `bigWig
+<https://genome.ucsc.edu/goldenPath/help/bigWig.html>`_ format.
 
 bigWig is a compressed form of bedGraph. You can either convert to bedGraph
 and compress::
@@ -76,6 +83,9 @@ Or you can use it in a stream with::
 
     <(bigWigToBedGraph <wigfile> stdout)
 
+Additional Encode data can be downloaded `here
+<https://www.encodeproject.org/matrix/?type=Experiment>`_
+
 Slop
 ----
 Each of the TSS regions we made is 1 base in size. We need to make these
@@ -84,8 +94,8 @@ bigger so that we can examine coverage within a larger region. Let's make them
 
 .. code-block:: bash
 
-    $ chromsize=/vol1/opt/data/hg19.chrom.sizes
-    $ slopbed=tss.slop.2000.bed
+    $ chromsize="data-sets/bedtools/hg19.genome"
+    $ slopbed="tss.slop.2000.bed"
     $ bedtools slop -b 2000 -i $tssbed -g $chromsize > $slopbed
 
 Inspect the slop'd file and make sure you understand how it is different
@@ -101,10 +111,10 @@ as we move away from TSS.
 
 .. code-block:: bash
 
-    $ windowbed=tss.slop.2000.5bp.windows.bed
+    $ windowbed="tss.slop.2000.5bp.windows.bed"
 
     $ bedtools makewindows -b $slopbed -w 5 -i srcwinnum \
-        | sort -k1,1 -k2,2n \
+        | bedtools sort -i - \
         | tr "_" "\t" \
         > $windowbed 
     
@@ -120,9 +130,9 @@ Now we can map the signal to each of the windows that we made.
 
 .. code-block:: bash
 
-    $ signalmap=signal.map.bg
+    $ signalmap="signal.map.bg"
     $ bedtools map -a $windowbed \
-        -b <(bigWigToBedGraph $signal stdout) \
+        -b $signal \
         -c 4 -o mean -null 0 \
         > $signalmap
 
@@ -173,20 +183,22 @@ as Working Directory`.
 Now make a plot!
 
 .. code-block:: r
-
+    
+    > install.packages(ggplot2)
     > library(ggplot2)
     > col.names <- c('window','signal')
     > df <- read.table('output.tab', col.names=col.names)
 
     # coerce to numbers
     > df$signal <- as.double(df$signal)
+    > df$window <- seq(-2000, 2000, 5)
     > qplot(window, signal, data = df)
 
 Exercises
 ---------
 Try to generalize this approach to other types of data. How would you:
 
-#. Look at Pol II distribution near transcription termination sites
+#. Look at CTCF distribution near transcription termination sites
    (TTSs)? Write this program and run it. (easy)
 
 #. Analyze the distribution of H3K36me3 ChIP-seq signal relative to coding
