@@ -1,7 +1,7 @@
 ---
 title: "tidying data sets"
 author: "Jay Hesselberth"
-date: "December 27, 2015"
+date: "February 21 2017"
 output: slidy_presentation
 ---
 
@@ -26,7 +26,7 @@ library(tidyr)
 library(dplyr)
 library(ggplot2)
 
-anscombe_tidy_hide <- anscombe %>% tbl_df %>%
+anscombe_tidy_hide <- anscombe %>% as_data_frame %>%
   mutate(obs = seq_len(n())) %>%
   gather(key, value, -obs) %>%
   separate(key, c('var','set'), 1) %>%
@@ -66,7 +66,7 @@ anscombe_tidy_hide %>%
 The provided `anscombe` data set is *messy* because the set number and x/y variables are combined in column names.
 
 ```{r echo=FALSE}
-anscombe %>% tbl_df
+anscombe %>% as_data_frame
 ```
 
 ## Tidying the `anscombe` data set
@@ -74,7 +74,7 @@ anscombe %>% tbl_df
 We need to reformat the table into this form:
 
 ```{r echo=FALSE}
-anscombe_tidy_hide %>% tbl_df
+anscombe_tidy_hide %>% as_data_frame
 ```
 
 ## Adding surrogate observation counts
@@ -82,8 +82,8 @@ anscombe_tidy_hide %>% tbl_df
 We need to make sure that individual observations in the tidied data set are identiable by a unique value. I call this the `observation id` or `obs`.
 
 ```{r anscombe_mutate}
-anscombe_tidy <- anscombe %>% tbl_df %>%
-  mutate(obs = seq_len(n()))
+anscombe_tidy <- anscombe %>% as_data_frame %>%
+  mutate(.obs = row_number())
 
 anscombe_tidy
 ```
@@ -92,7 +92,7 @@ anscombe_tidy
 
 ```{r anscombe_gather}
 anscombe_tidy <- anscombe_tidy %>% 
-  tidyr::gather(key, value, -obs)
+  tidyr::gather(key, value, -.obs)
 
 anscombe_tidy
 ```
@@ -121,35 +121,9 @@ anscombe_tidy <- anscombe_tidy %>%
 anscombe_tidy
 ```
 
-## Other `tidyr` verbs
-
-Sometimes you have incomplete sets of observations in a data set. The `complete()` verb addresses this issue by filling in missing values.
-
-```{r missing}
-df <- dplyr::tibble(
-  ~group, ~item_id, ~item_name, ~value1, ~value2,
-  1,      1,        'a',          1,       4,
-  2,      2,        'b',          2,       5,
-  1,      2,        'b',          3,       6)
-```
-
-## `tidyr::complete()` the full set
-
-```{r missing_cont, eval=FALSE}
-#. 1. expand *all* cominbations
-df %>% tidyr::complete(group, item_id, item_name)
-```
-
-## `tidyr::complete()` sets of variables in the given data
-
-```{r missing_cont_2, eval=FALSE}
-#. 2. only expand sets that are observed in the given data
-df %>% tidyr::complete(group, c(item_id, item_name))
-```
-
 ## Tidying practice
 
-  - What happens if you retidy the `anscombe` set, but you leave out the `obs` column? 
+  - What happens if you retidy the `anscombe` set, but you leave out the `.obs` column? 
   
   - Practice tidying other R builtin data sets. Use `library(help = "datasets")` to see all of the builtin datasets. Try the `ability.cov` dataset, and try combining the `beaver1` and `beaver2` data sets.
 
@@ -157,5 +131,3 @@ df %>% tidyr::complete(group, c(item_id, item_name))
 
 - Paper on [Tidy Data](http://vita.had.co.nz/papers/tidy-data.pdf)
 - Blog on ["non-Tidy Data"](http://simplystatistics.org/2016/02/17/non-tidy-data/)
-
-
