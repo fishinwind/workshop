@@ -1,0 +1,310 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Tidying data sets &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  
+
+  
+    <slide class="title-slide segue nobackground level-1" id="tidying-data-sets">
+    <hgroup>
+      <h1>Tidying data sets<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#tidying-data-sets" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>Raw data must often be restructured to enable downstream analysis. A
+useful format to start with is &quot;tidy&quot; data.</p>
+<p>Tidy data has a few key principles:</p>
+<ul class="simple">
+<li>Each variable forms a column</li>
+<li>Each observation forms a row</li>
+<li>Each type of observational unit forms a table</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="common-problems-with-messy-data">
+    <hgroup>
+      <h1>Common problems with messy data<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#common-problems-with-messy-data" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Column headers are values, not variable names.</li>
+<li>Multiple variables are stored in one column.</li>
+<li>Variables are stored in both rows and columns.</li>
+</ul>
+<p>```{r anscombe, echo = FALSE, message = FALSE, warning = FALSE}
+library(tidyr) library(dplyr) library(ggplot2)</p>
+<p>anscombe_tidy_hide &lt;- anscombe %&gt;% tbl_df %&gt;% mutate(obs =
+seq_len(n())) %&gt;% gather(key, value, -obs) %&gt;% separate(key,
+c('var','set'), 1) %&gt;% spread(var, value) %&gt;% arrange(set)
+``<code class="docutils literal"><span class="pre">##</span> <span class="pre">The</span></code>anscombe` data sets</p>
+<p>The <code class="docutils literal"><span class="pre">anscombe</span></code> data sets illustrate a key point of data analysis:
+<strong>visualize your data</strong>.</p>
+<p>Why? Standard statistics do not differentiate among the data sets:</p>
+<p><code class="docutils literal"><span class="pre">{r</span> <span class="pre">anscombe_stats,</span> <span class="pre">echo</span> <span class="pre">=</span> <span class="pre">FALSE,</span> <span class="pre">message</span> <span class="pre">=</span> <span class="pre">FALSE}</span> <span class="pre">anscombe_tidy_hide</span> <span class="pre">%&gt;%</span>&#160;&#160; <span class="pre">group_by(set)</span> <span class="pre">%&gt;%</span>&#160;&#160; <span class="pre">summarize(len.data</span> <span class="pre">=</span> <span class="pre">n(),</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">mean.x</span> <span class="pre">=</span> <span class="pre">round(mean(x),</span> <span class="pre">digits</span> <span class="pre">=</span> <span class="pre">2),</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">mean.y</span> <span class="pre">=</span> <span class="pre">round(mean(y),</span> <span class="pre">digits</span> <span class="pre">=</span> <span class="pre">2),</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">variance.x</span> <span class="pre">=</span> <span class="pre">round(var(x),</span> <span class="pre">digits</span> <span class="pre">=</span> <span class="pre">2),</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">variance.y</span> <span class="pre">=</span> <span class="pre">round(var(y),</span> <span class="pre">digits</span> <span class="pre">=</span> <span class="pre">2),</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">set.correlation</span> <span class="pre">=</span> <span class="pre">round(cor(x,y),</span> <span class="pre">digits</span> <span class="pre">=</span> <span class="pre">2))</span></code></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="but-plotting-them-tells-another-story">
+    <hgroup>
+      <h1>... but plotting them tells another story ...<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#but-plotting-them-tells-another-story" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p><code class="docutils literal"><span class="pre">{r</span> <span class="pre">anscombe_plots,</span> <span class="pre">echo=FALSE,</span> <span class="pre">warning=FALSE}</span> <span class="pre">anscombe_tidy_hide</span> <span class="pre">%&gt;%</span>&#160;&#160; <span class="pre">ggplot(aes(x,y))</span> <span class="pre">+</span>&#160;&#160;&#160;&#160; <span class="pre">geom_point()</span> <span class="pre">+</span>&#160;&#160;&#160;&#160; <span class="pre">facet_wrap(~set)</span> <span class="pre">+</span>&#160;&#160;&#160;&#160; <span class="pre">geom_smooth(method='lm',</span> <span class="pre">se=FALSE)</span> <span class="pre">+</span>&#160;&#160;&#160;&#160; <span class="pre">theme_bw()</span></code></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="tidying-the-anscombe-data-set">
+    <hgroup>
+      <h1>Tidying the <code class="docutils literal"><span class="pre">anscombe</span></code> data set<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#tidying-the-anscombe-data-set" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>The provided <code class="docutils literal"><span class="pre">anscombe</span></code> data set is <em>messy</em> because the set number and
+x/y variables are combined in column names.</p>
+<p><code class="docutils literal"><span class="pre">{r</span> <span class="pre">echo=FALSE}</span> <span class="pre">anscombe</span> <span class="pre">%&gt;%</span> <span class="pre">tbl_df</span></code></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="id1">
+    <hgroup>
+      <h1>Tidying the <code class="docutils literal"><span class="pre">anscombe</span></code> data set<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#id1" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>We need to reformat the table into this form:</p>
+<p><code class="docutils literal"><span class="pre">{r</span> <span class="pre">echo=FALSE}</span> <span class="pre">anscombe_tidy_hide</span> <span class="pre">%&gt;%</span> <span class="pre">tbl_df</span></code></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="adding-surrogate-observation-counts">
+    <hgroup>
+      <h1>Adding surrogate observation counts<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#adding-surrogate-observation-counts" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>We need to make sure that individual observations in the tidied data set
+are identiable by a unique value. I call this the <code class="docutils literal"><span class="pre">observation</span> <span class="pre">id</span></code> or
+<code class="docutils literal"><span class="pre">obs</span></code>.</p>
+<p>```{r anscombe_mutate} anscombe_tidy &lt;- anscombe %&gt;% tbl_df %&gt;%
+mutate(obs = seq_len(n()))</p>
+<p>anscombe_tidy ```</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="using-tidyr-gather">
+    <hgroup>
+      <h1>Using <code class="docutils literal"><span class="pre">tidyr::gather()</span></code><a class="headerlink" href="../../workshop-rstudio/tidy_data.html#using-tidyr-gather" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>```{r anscombe_gather} anscombe_tidy &lt;- anscombe_tidy %&gt;%
+tidyr::gather(key, value, -obs)</p>
+<p>anscombe_tidy ```</p>
+<p>Think about the transformation that just happened.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="using-tidyr-separate">
+    <hgroup>
+      <h1>Using <code class="docutils literal"><span class="pre">tidyr::separate()</span></code><a class="headerlink" href="../../workshop-rstudio/tidy_data.html#using-tidyr-separate" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>```{r anscombe_separate} anscombe_tidy &lt;- anscombe_tidy %&gt;%
+tidyr::separate(key, into = c('var', 'set'), sep = 1)</p>
+<p>anscombe_tidy ```</p>
+<p>Think about the transformation that just happened.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="using-tidyr-spread">
+    <hgroup>
+      <h1>Using <code class="docutils literal"><span class="pre">tidyr::spread()</span></code><a class="headerlink" href="../../workshop-rstudio/tidy_data.html#using-tidyr-spread" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>We're almost there. Now we need to <code class="docutils literal"><span class="pre">spread()</span></code> the <code class="docutils literal"><span class="pre">var</span></code> and
+<code class="docutils literal"><span class="pre">value</span></code> columns.</p>
+<p>```{r anscombe_spread, warning = FALSE} anscombe_tidy &lt;-
+anscombe_tidy %&gt;% tidyr::spread(var, value)</p>
+<p>anscombe_tidy ```</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="other-tidyr-verbs">
+    <hgroup>
+      <h1>Other <code class="docutils literal"><span class="pre">tidyr</span></code> verbs<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#other-tidyr-verbs" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p>Sometimes you have incomplete sets of observations in a data set. The
+<code class="docutils literal"><span class="pre">complete()</span></code> verb addresses this issue by filling in missing values.</p>
+<p><code class="docutils literal"><span class="pre">{r</span> <span class="pre">missing}</span> <span class="pre">df</span> <span class="pre">&lt;-</span> <span class="pre">dplyr::tibble(</span>&#160;&#160; <span class="pre">~group,</span> <span class="pre">~item_id,</span> <span class="pre">~item_name,</span> <span class="pre">~value1,</span> <span class="pre">~value2,</span>&#160;&#160; <span class="pre">1,</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">1,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'a',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">1,</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">4,</span>&#160;&#160; <span class="pre">2,</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">2,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'b',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">2,</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">5,</span>&#160;&#160; <span class="pre">1,</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">2,</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">'b',</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">3,</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">6)</span></code></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="tidyr-complete-the-full-set">
+    <hgroup>
+      <h1><code class="docutils literal"><span class="pre">tidyr::complete()</span></code> the full set<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#tidyr-complete-the-full-set" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p><code class="docutils literal"><span class="pre">{r</span> <span class="pre">missing_cont,</span> <span class="pre">eval=FALSE}</span> <span class="pre">#.</span> <span class="pre">1.</span> <span class="pre">expand</span> <span class="pre">*all*</span> <span class="pre">cominbations</span> <span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">tidyr::complete(group,</span> <span class="pre">item_id,</span> <span class="pre">item_name)</span></code></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="tidyr-complete-sets-of-variables-in-the-given-data">
+    <hgroup>
+      <h1><code class="docutils literal"><span class="pre">tidyr::complete()</span></code> sets of variables in the given data<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#tidyr-complete-sets-of-variables-in-the-given-data" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <p><code class="docutils literal"><span class="pre">{r</span> <span class="pre">missing_cont_2,</span> <span class="pre">eval=FALSE}</span> <span class="pre">#.</span> <span class="pre">2.</span> <span class="pre">only</span> <span class="pre">expand</span> <span class="pre">sets</span> <span class="pre">that</span> <span class="pre">are</span> <span class="pre">observed</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">given</span> <span class="pre">data</span> <span class="pre">df</span> <span class="pre">%&gt;%</span> <span class="pre">tidyr::complete(group,</span> <span class="pre">c(item_id,</span> <span class="pre">item_name))</span></code></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="tidying-practice">
+    <hgroup>
+      <h1>Tidying practice<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#tidying-practice" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>What happens if you retidy the <code class="docutils literal"><span class="pre">anscombe</span></code> set, but you leave out
+the <code class="docutils literal"><span class="pre">obs</span></code> column?</li>
+<li>Practice tidying other R builtin data sets. Use
+<code class="docutils literal"><span class="pre">library(help</span> <span class="pre">=</span> <span class="pre">&quot;datasets&quot;)</span></code> to see all of the builtin datasets.
+Try the <code class="docutils literal"><span class="pre">ability.cov</span></code> dataset, and try combining the <code class="docutils literal"><span class="pre">beaver1</span></code>
+and <code class="docutils literal"><span class="pre">beaver2</span></code> data sets.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="tidying-resources">
+    <hgroup>
+      <h1>Tidying resources<a class="headerlink" href="../../workshop-rstudio/tidy_data.html#tidying-resources" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Paper on <a class="reference external" href="http://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a></li>
+<li>Blog on <a class="reference external" href="http://simplystatistics.org/2016/02/17/non-tidy-data/">&quot;non-Tidy
+Data&quot;</a></li>
+</ul>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
