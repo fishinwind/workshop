@@ -13,7 +13,7 @@ Class list
    Classes/class-06
    Classes/class-07
    Classes/class-08
-..   Classes/class-09
+   Classes/class-09
 ..   Classes/class-10
 ..   Classes/class-11
 ..   Classes/class-15
