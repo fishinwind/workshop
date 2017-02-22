@@ -31,7 +31,10 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Exercises" href="../Exercises.html" />
+    <link rel="prev" title="Class 8 : R : Getting Started" href="class-08.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -76,9 +79,9 @@
      href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
@@ -113,14 +116,16 @@
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Class 9 : R : Manipulation &amp; Plotting</a><ul>
 <li><a class="reference internal" href="#goals">Goals</a></li>
-<li><a class="reference internal" href="#dplyr">dplyr</a><ul>
-<li><a class="reference internal" href="#dplyr-example">dplyr example</a></li>
+<li><a class="reference internal" href="#ggplot2-syntax">ggplot2 syntax</a></li>
+<li><a class="reference internal" href="#ggplot2-docs">ggplot2 docs</a></li>
+<li><a class="reference internal" href="#histograms">Histograms</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a><ul>
 <li><a class="reference internal" href="#exercises-with-dplyr">Exercises with dplyr</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#combining-with-ggplot">Combining with ggplot</a></li>
 <li><a class="reference internal" href="#ggplot-histograms">ggplot histograms</a><ul>
-<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#id1">Exercises</a></li>
 <li><a class="reference internal" href="#practice">Practice</a></li>
 </ul>
 </li>
@@ -140,94 +145,107 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Class date:</th><td class="field-body">2017 Feb 23 Thurs</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Feb 21, 2017</td>
+<tr class="field-even field"><th class="field-name">Last updated:</th><td class="field-body">Feb 22, 2017</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#goals" title="Slides">§</a></h2>
 <ol class="arabic simple">
-<li>Begin to manipulate data with and <code class="docutils literal"><span class="pre">dplyr</span></code> and <code class="docutils literal"><span class="pre">tidyr</span></code></li>
+<li>Begin to make plots with ggplot2 and combine with dplyr</li>
 </ol>
 </div>
-<div class="section" id="dplyr">
-<h2>dplyr<a class="headerlink" href="#dplyr" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#dplyr" title="Slides">§</a></h2>
-<p><code class="docutils literal"><span class="pre">dplyr</span></code> provides several methods:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">summarise()</span></code></li>
-<li><code class="docutils literal"><span class="pre">filter()</span></code></li>
-<li><code class="docutils literal"><span class="pre">select()</span></code></li>
-<li><code class="docutils literal"><span class="pre">mutate()</span></code></li>
-<li><code class="docutils literal"><span class="pre">arrange()</span></code></li>
-<li><code class="docutils literal"><span class="pre">group_by()</span></code></li>
-</ul>
-<p><code class="docutils literal"><span class="pre">dplyr</span></code> also provides an operator called <code class="docutils literal"><span class="pre">%&gt;%</span></code> that allows you to
-string manipulations together.</p>
-<p>By combining these functions together, you can quickly and easily
-manipulate data.frames and generate useful data summaries.</p>
-<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> summary <span class="o">&lt;-</span> df <span class="o">%&gt;%</span> select<span class="p">()</span> <span class="o">%&gt;%</span> group_by<span class="p">()</span> <span class="o">%&gt;%</span> summarize<span class="p">()</span>
+<div class="section" id="ggplot2-syntax">
+<h2>ggplot2 syntax<a class="headerlink" href="#ggplot2-syntax" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#ggplot2-syntax" title="Slides">§</a></h2>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>tidyverse<span class="p">)</span>
+df <span class="o">&lt;-</span> read_tsv<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">)</span>
+
+ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span>
+
+ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+    geom_point<span class="p">()</span>
+
+ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+    geom_point<span class="p">(</span>color<span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span> size <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="dplyr-example">
-<h3>dplyr example<a class="headerlink" href="#dplyr-example" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#dplyr-example" title="Slides">§</a></h3>
-<div class="highlight-r"><div class="highlight"><pre><span></span>dfx <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">&#39;expr-geno-covs.txt&#39;</span><span class="p">,</span> header<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-
-<span class="c1"># calculate some simple stats with dplyr</span>
-grouped <span class="o">&lt;-</span> group_by<span class="p">(</span>dfx<span class="p">,</span> condition<span class="p">,</span> genotype<span class="p">)</span>
-summarize<span class="p">(</span>grouped<span class="p">,</span> count <span class="o">=</span> n<span class="p">(),</span> mean.age <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>age<span class="p">))</span>
-
-<span class="c1"># even better</span>
-dfx <span class="o">%&gt;%</span>
-    group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> <span class="o">%&gt;%</span>
-    summarize<span class="p">(</span>count <span class="o">=</span> n<span class="p">(),</span> mean.age <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>age<span class="p">))</span>
+<p><code class="docutils literal"><span class="pre">aes()</span></code> stands for <strong>aesthetics</strong>, which specifies the the coordinates,
+colors, size, etc from these columns in the data.frame.</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">,</span> color<span class="o">=</span>gender<span class="p">)</span>
 </pre></div>
 </div>
-<p>Summarize transcription factor binding site peaks in:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># columns 1-4 from merged peak calls</span>
-<span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">encode</span><span class="o">/</span><span class="n">peaks</span><span class="o">.</span><span class="n">bed</span><span class="o">.</span><span class="n">gz</span>
+<p><code class="docutils literal"><span class="pre">geom_point()</span></code> means plot these as points, could be <code class="docutils literal"><span class="pre">geom_line()</span></code> or
+a number of other <cite>geoms</cite>.</p>
+</div>
+<div class="section" id="ggplot2-docs">
+<h2>ggplot2 docs<a class="headerlink" href="#ggplot2-docs" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#ggplot2-docs" title="Slides">§</a></h2>
+<p>The ggplot2 docs are very good: <a class="reference external" href="http://docs.ggplot2.org/current/">http://docs.ggplot2.org/current/</a></p>
+<p>Use them find how to change the y-scale on this plot to log10:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>dfx<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+        geom_point<span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
-<span class="o">&gt;</span> colnames <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&#39;chrom&#39;</span><span class="p">,</span><span class="s">&#39;start&#39;</span><span class="p">,</span><span class="s">&#39;end&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
-<span class="o">&gt;</span> bedfilename <span class="o">=</span> <span class="s">&#39;peaks.bed.gz&#39;</span>
-
-<span class="c1"># use ``gzfile`` to load gzipped data</span>
-<span class="o">&gt;</span> peaks <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="kp">gzfile</span><span class="p">(</span>bedfilename<span class="p">),</span> col.names<span class="o">=</span><span class="kp">colnames</span><span class="p">)</span>
-
-<span class="o">&gt;</span> peaks <span class="o">%&gt;%</span>
-    group_by<span class="p">(</span>name<span class="p">)</span> <span class="o">%&gt;%</span>
-    mutate<span class="p">(</span>peak.width <span class="o">=</span> end <span class="o">-</span> start<span class="p">)</span> <span class="o">%&gt;%</span>
-    filter<span class="p">(</span>peak.width <span class="o">&gt;</span> <span class="m">500</span> <span class="p">)</span> <span class="o">%&gt;%</span>
-    summarize<span class="p">(</span>count <span class="o">=</span> n<span class="p">(),</span> mean.width <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>peak.width<span class="p">))</span> <span class="o">%&gt;%</span>
-    arrange<span class="p">(</span>desc<span class="p">(</span>count<span class="p">))</span>
+<p>Look at the <cite>geom_point()</cite> documentation and change the color
+of the plot above so that males and females are colored differently.</p>
+</div>
+<div class="section" id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#histograms" title="Slides">§</a></h2>
+<p>One of the simplest things to do in R, without ggplot is to look at
+a histogram of your data:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span>hist<span class="p">(</span>df<span class="o">$</span><span class="kp">expression</span><span class="p">)</span>
+<span class="c1"># or</span>
+hist<span class="p">(</span><span class="kp">log</span><span class="p">(</span>df<span class="o">$</span><span class="kp">expression</span><span class="p">))</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">n()</span></code> is a special function for counting observations</li>
-<li>assign the summary to a new data.frame</li>
-</ul>
+<p>You can make these look a lot nicer with ggplot2.</p>
+<p><code class="docutils literal"><span class="pre">hist()</span></code> does not work with ggplot, you&#8217;ll have to use the
+ggplot2 machinery for that:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>df<span class="p">,</span> aex<span class="p">(</span>x<span class="o">=</span><span class="kp">log10</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
+  <span class="o">+</span> geom_histgram<span class="p">()</span>
+</pre></div>
 </div>
+<p>Try to figure out how to overlay a density plot with <code class="docutils literal"><span class="pre">geom_density()</span></code>.</p>
+<p>You can also make effective separate visualizations with <code class="docutils literal"><span class="pre">facet_grid()</span></code>
+and <code class="docutils literal"><span class="pre">facet_wrap()</span></code>. You need to specify a formula to determine how to
+separate:</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span>gp <span class="o">&lt;-</span> ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span> geom_point<span class="p">()</span>
+
+<span class="c1"># separate by gender</span>
+gp <span class="o">+</span> facet_grid<span class="p">(</span><span class="o">~</span> gender<span class="p">)</span>
+
+<span class="c1"># separate by gender and condition</span>
+gp <span class="o">+</span> facet_grid<span class="p">(</span>condition <span class="o">~</span> gender<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#exercises" title="Slides">§</a></h2>
+<ol class="arabic simple">
+<li>Make a histogram using ggplot and separate cases from controls by
+changing fill color and symbol type.</li>
+<li>Make a histogram using ggplot and separate cases from controls
+using <code class="docutils literal"><span class="pre">facet_grid()</span></code>, <code class="docutils literal"><span class="pre">facet_wrap()</span></code>.</li>
+</ol>
 <div class="section" id="exercises-with-dplyr">
 <h3>Exercises with dplyr<a class="headerlink" href="#exercises-with-dplyr" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#exercises-with-dplyr" title="Slides">§</a></h3>
+<p>Use the <code class="docutils literal"><span class="pre">expr-geno-covs.txt</span></code> file for the following exercises.</p>
 <ol class="arabic simple">
 <li>Use <code class="docutils literal"><span class="pre">dplyr</span></code> to calculate the mean age of smokers grouped by gender
 and smoking status. Plot the result.</li>
 <li>Make a plot of age by expression faceted by genotype. Fit a linear
 model through these curves (use geom_smooth) on the plot.</li>
-<li>Load the peaks BED file and find the 10 factors that have the largest range
-in peak width. Inspect a <code class="docutils literal"><span class="pre">geom_boxplot()</span></code> or <code class="docutils literal"><span class="pre">geom_violin()</span></code> to support
-your answer (also add individual points to the plot with <code class="docutils literal"><span class="pre">geom_jitter()</span></code>).</li>
 </ol>
 </div>
 </div>
 <div class="section" id="combining-with-ggplot">
 <h2>Combining with ggplot<a class="headerlink" href="#combining-with-ggplot" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#combining-with-ggplot" title="Slides">§</a></h2>
 <p>We had mean expression by condition and genotype as:</p>
-<div class="highlight-r"><div class="highlight"><pre><span></span>dfx <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
-    <span class="o">%&gt;%</span> summarize<span class="p">(</span>count<span class="o">=</span>n<span class="p">(),</span> mean.expr<span class="o">=</span><span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span> \
+<div class="highlight-r"><div class="highlight"><pre><span></span>df <span class="o">%&gt;%</span> group_by<span class="p">(</span>condition<span class="p">,</span> genotype<span class="p">)</span> \
+    <span class="o">%&gt;%</span> summarize<span class="p">(</span>count <span class="o">=</span> n<span class="p">(),</span>
+                  expr.mean <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>We can add to that expression (after typing &#8216;library(ggplot2)&#8217;)</p>
+<p>We can continue the thought by adding a plot with the pipe:</p>
 <div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">%&gt;%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">)</span> \
     <span class="o">+</span> geom_histogram<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
 </pre></div>
@@ -244,8 +262,8 @@ ggplot:</p>
        scale_x_log10<span class="p">()</span>
 </pre></div>
 </div>
-<div class="section" id="exercises">
-<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#exercises" title="Slides">§</a></h3>
+<div class="section" id="id1">
+<h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#id1" title="Slides">§</a></h3>
 <ol class="arabic simple">
 <li>Adjust this:</li>
 </ol>
@@ -271,12 +289,7 @@ a bar plot with ggplot2.</li>
 </div>
 <div class="section" id="practice">
 <h3>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/class-09.html#practice" title="Slides">§</a></h3>
-<p>Practice <code class="docutils literal"><span class="pre">dplyr</span></code> and <code class="docutils literal"><span class="pre">tidyr</span></code> with <code class="docutils literal"><span class="pre">swirl</span></code>:</p>
-<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="kn">library</span><span class="p">(</span>swirl<span class="p">)</span>
-<span class="o">&gt;</span> install_from_swirl<span class="p">(</span><span class="s">&quot;Getting_and_Cleaning_Data&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> swirl<span class="p">()</span>
-</pre></div>
-</div>
+<p>Start the Datacamp dplyr and ggplot2 courses if you haven&#8217;t already.</p>
 </div>
 </div>
 </div>

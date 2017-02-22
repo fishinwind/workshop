@@ -11,85 +11,114 @@ Class 9 : R : Manipulation & Plotting
 Goals
 =====
 
-#. Begin to manipulate data with and ``dplyr`` and ``tidyr``
+#. Begin to make plots with ggplot2 and combine with dplyr 
 
-dplyr
-=====
-
-``dplyr`` provides several methods:
-
-- ``summarise()``
-- ``filter()``
-- ``select()``
-- ``mutate()``
-- ``arrange()``
-- ``group_by()``
-
-``dplyr`` also provides an operator called ``%>%`` that allows you to
-string manipulations together.
-
-By combining these functions together, you can quickly and easily
-manipulate data.frames and generate useful data summaries.
+ggplot2 syntax
+==============
 
 .. code-block:: r
 
-    > summary <- df %>% select() %>% group_by() %>% summarize()
+    library(tidyverse)
+    df <- read_tsv('expr-geno-covs.txt')
 
-dplyr example 
--------------
+    ggplot(df, aes(x=genotype, y=expression))
 
-.. code-block:: r
+    ggplot(df, aes(x=genotype, y=expression)) +
+        geom_point()
 
-    dfx <- read.table('expr-geno-covs.txt', header=TRUE)
-
-    # calculate some simple stats with dplyr
-    grouped <- group_by(dfx, condition, genotype)
-    summarize(grouped, count = n(), mean.age = mean(age))
-
-    # even better
-    dfx %>% 
-        group_by(condition, genotype) %>%
-        summarize(count = n(), mean.age = mean(age))
+    ggplot(df, aes(x=genotype, y=expression)) +
+        geom_point(color='red', size = 3)
 
 .. nextslide::
     :increment:
 
-Summarize transcription factor binding site peaks in::
-  
-    # columns 1-4 from merged peak calls
-    /vol1/opt/data/encode/peaks.bed.gz
+``aes()`` stands for **aesthetics**, which specifies the the coordinates,
+colors, size, etc from these columns in the data.frame.
 
 .. code-block:: r
 
-    > library(dplyr)
-    > colnames = c('chrom','start','end','name')
-    > bedfilename = 'peaks.bed.gz'
+    aes(x=genotype, y=expression, color=gender)
 
-    # use ``gzfile`` to load gzipped data
-    > peaks <- read.table(gzfile(bedfilename), col.names=colnames)
+``geom_point()`` means plot these as points, could be ``geom_line()`` or 
+a number of other `geoms`.
 
-    > peaks %>% 
-        group_by(name) %>%
-        mutate(peak.width = end - start) %>%
-        filter(peak.width > 500 ) %>%
-        summarize(count = n(), mean.width = mean(peak.width)) %>%
-        arrange(desc(count))
+ggplot2 docs
+=====================
 
-+ ``n()`` is a special function for counting observations
-+ assign the summary to a new data.frame
+The ggplot2 docs are very good: http://docs.ggplot2.org/current/
+
+Use them find how to change the y-scale on this plot to log10:
+
+.. code-block:: r
+
+    ggplot(dfx, aes(x=genotype, y=expression)) +
+            geom_point()
+
+Look at the `geom_point()` documentation and change the color
+of the plot above so that males and females are colored differently.
+
+Histograms
+==========
+One of the simplest things to do in R, without ggplot is to look at 
+a histogram of your data:
+
+.. code-block:: r
+
+    hist(df$expression)
+    # or
+    hist(log(df$expression))
+
+You can make these look a lot nicer with ggplot2.
+
+``hist()`` does not work with ggplot, you'll have to use the
+ggplot2 machinery for that:
+
+.. nextslide::
+    :increment:
+
+.. code-block:: r
+
+    ggplot(df, aex(x=log10(expression))
+      + geom_histgram()
+
+Try to figure out how to overlay a density plot with ``geom_density()``.
+
+.. nextslide::
+    :increment:
+
+You can also make effective separate visualizations with ``facet_grid()``
+and ``facet_wrap()``. You need to specify a formula to determine how to
+separate:
+
+.. code-block:: r
+
+    gp <- ggplot(df, aes(x=genotype, y=expression)) + geom_point()
+
+    # separate by gender
+    gp + facet_grid(~ gender)
+
+    # separate by gender and condition
+    gp + facet_grid(condition ~ gender)
+
+Exercises
+=========
+
+#. Make a histogram using ggplot and separate cases from controls by
+   changing fill color and symbol type.
+
+#. Make a histogram using ggplot and separate cases from controls
+   using ``facet_grid()``, ``facet_wrap()``.
 
 Exercises with dplyr
 --------------------
+
+Use the ``expr-geno-covs.txt`` file for the following exercises.
 
 #. Use ``dplyr`` to calculate the mean age of smokers grouped by gender
    and smoking status. Plot the result.
 
 #. Make a plot of age by expression faceted by genotype. Fit a linear
    model through these curves (use geom_smooth) on the plot.
-
-#. Load the peaks BED file and find the 10 factors that have the largest range
-   in peak width. Inspect a ``geom_boxplot()`` or ``geom_violin()`` to support
-   your answer (also add individual points to the plot with ``geom_jitter()``).
 
 Combining with ggplot
 =====================
@@ -98,10 +127,11 @@ We had mean expression by condition and genotype as:
 
 .. code-block:: r
 
-    dfx %>% group_by(condition, genotype) \
-        %>% summarize(count=n(), mean.expr=mean(expression)) \
+    df %>% group_by(condition, genotype) \
+        %>% summarize(count = n(),
+                      expr.mean = mean(expression))
 
-We can add to that expression (after typing 'library(ggplot2)')
+We can continue the thought by adding a plot with the pipe:
 
 .. code-block:: r
 
@@ -150,13 +180,7 @@ Exercises
 
 Practice
 --------
-Practice ``dplyr`` and ``tidyr`` with ``swirl``:
-
-.. code-block:: r
-
-   > library(swirl)
-   > install_from_swirl("Getting_and_Cleaning_Data")
-   > swirl()
+Start the Datacamp dplyr and ggplot2 courses if you haven't already.
 
 .. raw:: pdf
 
