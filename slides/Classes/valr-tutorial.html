@@ -1,0 +1,455 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 11 : Genome Arthimetic with valr &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  
+
+  
+    <slide class="title-slide segue nobackground level-1" id="class-11-genome-arthimetic-with-valr">
+    <hgroup>
+      <h1>Class 11 : Genome Arthimetic with valr<a class="headerlink" href="../../Classes/valr-tutorial.html#class-11-genome-arthimetic-with-valr" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">Feb 23, 2017</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="goals">
+    <hgroup>
+      <h2>Goals<a class="headerlink" href="../../Classes/valr-tutorial.html#goals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Introduce the valr package for performing genome arithmetic in R</li>
+<li>Review metagene analyses</li>
+<li>Introduce randomizing intervals</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="valr-philosophy-behind-valr">
+    <hgroup>
+      <h2><img alt="valr" src="../_images/valr_logo.png" /> philosophy behind valr<a class="headerlink" href="../../Classes/valr-tutorial.html#valr-philosophy-behind-valr" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Promote fluid interactive analysis by limiting back-and-forth between
+command line and R.</li>
+<li>Empower data parsing/manipulating power of <code class="docutils literal"><span class="pre">dplyr</span></code> and
+the <code class="docutils literal"><span class="pre">tidyverse</span></code> style of programming instead of custom data formats</li>
+<li>Encourage the use of RMarkdown and Shiny apps for reproducible and
+accessible genomics analysis</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="installation">
+    <hgroup>
+      <h2>Installation<a class="headerlink" href="../../Classes/valr-tutorial.html#installation" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span></span>install.packages<span class="p">(</span><span class="s">&#39;valr&#39;</span><span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span><span class="s">&#39;valr&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="documentation">
+    <hgroup>
+      <h2>Documentation<a class="headerlink" href="../../Classes/valr-tutorial.html#documentation" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <code class="docutils literal"><span class="pre">valr</span></code> package has extensive documentation that can be accessed via
+R's help interface</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">?</span>valr
+<span class="o">?</span>read_bed
+<span class="o">?</span>bed_intersect
+<span class="o">?</span>sorting
+</pre></div>
+</div>
+<p>Alternatively, valr's <a class="reference external" href="http://rnabioco.github.io/valr">online documentation</a> contains documentation for each
+function as well as examples and vignettes.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="basic-usage">
+    <hgroup>
+      <h2>Basic Usage<a class="headerlink" href="../../Classes/valr-tutorial.html#basic-usage" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>read bed/bedgraph/vcf data into R as tbls
+(<code class="docutils literal"><span class="pre">read_bed()</span></code>, <code class="docutils literal"><span class="pre">read_genome()</span></code>)</li>
+<li>all bed functions start with <code class="docutils literal"><span class="pre">bed_*()</span></code>
+(<code class="docutils literal"><span class="pre">bed_intersect()</span></code>, <code class="docutils literal"><span class="pre">bed_map()</span></code>)</li>
+<li>Pass data via <code class="docutils literal"><span class="pre">%&gt;%</span></code></li>
+<li>Execute arbitrary aggregating functions in summarizing operations
+(<code class="docutils literal"><span class="pre">bed_map(x,</span> <span class="pre">y,</span> <span class="pre">my_custom_function(score)</span></code>)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="example">
+    <hgroup>
+      <h2>Example<a class="headerlink" href="../../Classes/valr-tutorial.html#example" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>valr<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>dplyr<span class="p">)</span>
+
+snps <span class="o">&lt;-</span> read_bed<span class="p">(</span>valr_example<span class="p">(</span><span class="s">&#39;hg19.snps147.chr22.bed.gz&#39;</span><span class="p">),</span> n_fields <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+genes <span class="o">&lt;-</span> read_bed<span class="p">(</span>valr_example<span class="p">(</span><span class="s">&#39;genes.hg19.chr22.bed.gz&#39;</span><span class="p">),</span> n_fields <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+
+<span class="c1"># find snps in intergenic regions</span>
+intergenic <span class="o">&lt;-</span> bed_subtract<span class="p">(</span>snps<span class="p">,</span> genes<span class="p">)</span>
+<span class="c1"># find distance from intergenic snps to nearest gene</span>
+nearby <span class="o">&lt;-</span> bed_closest<span class="p">(</span>intergenic<span class="p">,</span> genes<span class="p">)</span>
+
+nearby <span class="o">%&gt;%</span>
+  select<span class="p">(</span>starts_with<span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">),</span> <span class="m">.</span>overlap<span class="p">,</span> <span class="m">.</span>dist<span class="p">)</span> <span class="o">%&gt;%</span>
+    filter<span class="p">(</span><span class="kp">abs</span><span class="p">(</span><span class="m">.</span>dist<span class="p">)</span> <span class="o">&lt;</span> <span class="m">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="grouping">
+    <hgroup>
+      <h2>Grouping<a class="headerlink" href="../../Classes/valr-tutorial.html#grouping" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>valr functions respect groupings set by <code class="docutils literal"><span class="pre">dplyr::group_by()</span></code></p>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># to intersect by strand</span>
+snps <span class="o">&lt;-</span> group_by<span class="p">(</span>snps<span class="p">,</span> strand<span class="p">)</span>
+genes <span class="o">&lt;-</span> group_by<span class="p">(</span>genes<span class="p">,</span> strand<span class="p">)</span>
+bed_intersect<span class="p">(</span>snps<span class="p">,</span> genes<span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="summaries-by-column">
+    <hgroup>
+      <h2>Summaries by Column<a class="headerlink" href="../../Classes/valr-tutorial.html#summaries-by-column" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><code class="docutils literal"><span class="pre">valr</span></code> functions accept named columns and permit mutiple name/value
+summaries</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># calculate the mean of column 6 for intervals in `b` that overlap</span>
+<span class="c1"># with `a`</span>
+bedtools map -a a.bed -b b.bed -c <span class="m">6</span> -o mean
+</pre></div>
+</div>
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># calculate the mean and variance for a `value` column</span>
+bed_map<span class="p">(</span>a<span class="p">,</span> b<span class="p">,</span> <span class="m">.</span>mean <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>value<span class="p">),</span> <span class="m">.</span>var <span class="o">=</span> var<span class="p">(</span>value<span class="p">))</span>
+
+<span class="c1"># report concatenated and max values for merged intervals</span>
+bed_merge<span class="p">(</span>a<span class="p">,</span> <span class="m">.</span>concat <span class="o">=</span> concat<span class="p">(</span>value<span class="p">),</span> <span class="m">.</span>max <span class="o">=</span> <span class="kp">max</span><span class="p">(</span>value<span class="p">))</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="random-functions">
+    <hgroup>
+      <h2>Random functions<a class="headerlink" href="../../Classes/valr-tutorial.html#random-functions" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p><code class="docutils literal"><span class="pre">valr</span></code> and <code class="docutils literal"><span class="pre">bedtools</span></code> have a series of functions useful for generating
+background interval datasets for statistical tests</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span>bed_random<span class="p">(</span>genome<span class="p">)</span> <span class="c1"># random intervals of a fixed sized</span>
+bed_shuffle<span class="p">(</span>bed<span class="p">,</span> genome<span class="p">)</span> <span class="c1"># randomly placed intervals of same input size</span>
+bed_flank<span class="p">(</span>bed<span class="p">,</span> both <span class="o">=</span> <span class="m">100</span><span class="p">)</span> <span class="c1"># get flanking regions</span>
+dplyr<span class="o">::</span>sample_n<span class="p">()</span> <span class="c1"># get random rows</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="fast-computation">
+    <hgroup>
+      <h2>Fast Computation<a class="headerlink" href="../../Classes/valr-tutorial.html#fast-computation" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Computationally intensive functions in <code class="docutils literal"><span class="pre">valr</span></code> are written in Rcpp/C++,
+making <code class="docutils literal"><span class="pre">valr</span></code> fast enough for interactive analysis</p>
+<div class="highlight-r"><div class="highlight"><pre><span></span>genomefile <span class="o">&lt;-</span> valr_example<span class="p">(</span><span class="s">&#39;hg19.chrom.sizes.gz&#39;</span><span class="p">)</span>
+x <span class="o">&lt;-</span> bed_random<span class="p">(</span>genome<span class="p">)</span> <span class="c1"># generate 1e6 random 1kp ivls</span>
+y <span class="o">&lt;-</span> bed_random<span class="p">(</span>genome<span class="p">)</span>
+bed_intersect<span class="p">(</span>x<span class="p">,</span> y<span class="p">)</span> <span class="c1">#should take ~1 second</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="tss-metagene">
+    <hgroup>
+      <h2>TSS Metagene<a class="headerlink" href="../../Classes/valr-tutorial.html#tss-metagene" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Previously we used bedtools to examine the coverage of
+CTCF ChIP-Seq data over Transcription Start Sites.</p>
+<p>A similar analysis can easily be performed with <code class="docutils literal"><span class="pre">dplyr</span></code> and <code class="docutils literal"><span class="pre">valr</span></code></p>
+<p>See a detailed example using valr on <a class="reference external" href="http://rnabioco.github.io/valr/articles/valr.html#meta-analysis">H3K4me3 ChIP-Seq</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="load-data">
+    <hgroup>
+      <h2>Load data<a class="headerlink" href="../../Classes/valr-tutorial.html#load-data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># `valr_example()` identifies the path of example files</span>
+bedfile <span class="o">&lt;-</span> valr_example<span class="p">(</span><span class="s">&#39;genes.hg19.chr22.bed.gz&#39;</span><span class="p">)</span>
+genomefile <span class="o">&lt;-</span> valr_example<span class="p">(</span><span class="s">&#39;hg19.chrom.sizes.gz&#39;</span><span class="p">)</span>
+bgfile  <span class="o">&lt;-</span> <span class="s">&#39;~/data-sets/bedtools/ctcf.hela.chr22.bg.gz&#39;</span>
+
+genes <span class="o">&lt;-</span> read_bed<span class="p">(</span>bedfile<span class="p">,</span> n_fields <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+genome <span class="o">&lt;-</span> read_genome<span class="p">(</span>genomefile<span class="p">)</span>
+y <span class="o">&lt;-</span> read_bedgraph<span class="p">(</span>bgfile<span class="p">)</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="make-tss-intervals">
+    <hgroup>
+      <h2>Make TSS intervals<a class="headerlink" href="../../Classes/valr-tutorial.html#make-tss-intervals" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># generate 1 bp TSS intervals, `+` strand only</span>
+tss <span class="o">&lt;-</span> genes <span class="o">%&gt;%</span>
+  filter<span class="p">(</span>strand <span class="o">==</span> <span class="s">&#39;+&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  mutate<span class="p">(</span>end <span class="o">=</span> start <span class="o">+</span> <span class="m">1</span><span class="p">)</span>
+
+region_size <span class="o">&lt;-</span> <span class="m">1000</span> <span class="c1"># 1000 bp up and downstream</span>
+win_size <span class="o">&lt;-</span> <span class="m">5</span>  <span class="c1"># 5 bp windows</span>
+
+<span class="c1"># add slop to the TSS, break into windows and add a group</span>
+x <span class="o">&lt;-</span> tss <span class="o">%&gt;%</span>
+  bed_slop<span class="p">(</span>genome<span class="p">,</span> both <span class="o">=</span> region_size<span class="p">)</span> <span class="o">%&gt;%</span>
+  bed_makewindows<span class="p">(</span>genome<span class="p">,</span> win_size<span class="p">)</span>
+x
+<span class="c1">#&gt; # A tibble: 13,530 × 7</span>
+<span class="c1">#&gt;    chrom    start      end      name score strand .win_id</span>
+<span class="c1">#&gt;    &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;</span>
+<span class="c1">#&gt; 1  chr22 16161065 16161115 LINC00516     3      +       1</span>
+<span class="c1">#&gt; 2  chr22 16161115 16161165 LINC00516     3      +       2</span>
+<span class="c1">#&gt; 3  chr22 16161165 16161215 LINC00516     3      +       3</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="compute-and-summarize-coverage">
+    <hgroup>
+      <h2>Compute and Summarize Coverage<a class="headerlink" href="../../Classes/valr-tutorial.html#compute-and-summarize-coverage" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span></span><span class="c1"># map signals to TSS regions and calculate summary statistics.</span>
+res <span class="o">&lt;-</span> bed_map<span class="p">(</span>x<span class="p">,</span> y<span class="p">,</span> win_mean <span class="o">=</span> <span class="kp">mean</span><span class="p">(</span>value<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  group_by<span class="p">(</span><span class="m">.</span>win_id<span class="p">)</span> <span class="o">%&gt;%</span>
+  summarize<span class="p">(</span>win_sum <span class="o">=</span> <span class="kp">sum</span><span class="p">(</span>win_mean<span class="p">,</span> na.rm <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+
+res
+
+<span class="c1">#&gt; # A tibble: 401 × 2</span>
+<span class="c1">#&gt;   .win_id win_sum</span>
+<span class="c1">#&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="c1">#&gt; 1        1   205.0</span>
+<span class="c1">#&gt; 2        2   203.5</span>
+<span class="c1">#&gt; 3        3   207.0</span>
+<span class="c1">#&gt; 4        4   215.0</span>
+<span class="c1">#&gt; 5        5   222.5</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="plot-metagene">
+    <hgroup>
+      <h2>Plot metagene<a class="headerlink" href="../../Classes/valr-tutorial.html#plot-metagene" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-r"><div class="highlight"><pre><span></span><span class="kn">library</span><span class="p">(</span>ggplot2<span class="p">)</span>
+
+x_labels <span class="o">&lt;-</span> <span class="kp">seq</span><span class="p">(</span><span class="o">-</span>region_size<span class="p">,</span> region_size<span class="p">,</span> by <span class="o">=</span> win_size <span class="o">*</span> <span class="m">50</span><span class="p">)</span>
+x_breaks <span class="o">&lt;-</span> <span class="kp">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">401</span><span class="p">,</span> by <span class="o">=</span> <span class="m">50</span><span class="p">)</span>
+
+ggplot<span class="p">(</span>res<span class="p">,</span> aes<span class="p">(</span>x <span class="o">=</span> <span class="m">.</span>win_id<span class="p">,</span> y <span class="o">=</span> win_sum<span class="p">))</span> <span class="o">+</span>
+  geom_point<span class="p">()</span> <span class="o">+</span>
+  scale_x_continuous<span class="p">(</span>labels <span class="o">=</span> x_labels<span class="p">,</span> breaks <span class="o">=</span> x_breaks<span class="p">)</span> <span class="o">+</span>
+  xlab<span class="p">(</span><span class="s">&#39;Position (bp from TSS)&#39;</span><span class="p">)</span> <span class="o">+</span> ylab<span class="p">(</span><span class="s">&#39;Signal&#39;</span><span class="p">)</span> <span class="o">+</span>
+  ggtitle<span class="p">(</span><span class="s">&#39;Human CTCF signal near transcription start sites&#39;</span><span class="p">)</span> <span class="o">+</span>
+  theme_classic<span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="exercises">
+    <hgroup>
+      <h2>Exercises<a class="headerlink" href="../../Classes/valr-tutorial.html#exercises" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Use <code class="docutils literal"><span class="pre">valr</span></code> to generate a TSS metagene plot</li>
+<li>Add a second metagene plot line from randomized or shuffled regions (hint: randomize TSS positions)</li>
+<li>Plot metagene with TSS's derivied from both positive and negative
+strands (hint: reverse negative strand interval windows)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="contributing">
+    <hgroup>
+      <h2>Contributing<a class="headerlink" href="../../Classes/valr-tutorial.html#contributing" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>If you are interested please contribute feature requests, new code,
+documentation or your ideas for analysis vignettes.</p>
+<p><a class="reference external" href="https://github.com/rnabioco/valr">https://github.com/rnabioco/valr</a></p>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
