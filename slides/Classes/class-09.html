@@ -198,8 +198,8 @@ ggplot2 machinery for that:</p>
       <h2>Histograms (2)<a class="headerlink" href="../../Classes/class-09.html#id3" title="View HTML">§</a></h2>
     </hgroup>
     <article class="">
-      <div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>df<span class="p">,</span> aex<span class="p">(</span>x<span class="o">=</span><span class="kp">log10</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
-  <span class="o">+</span> geom_histgram<span class="p">()</span>
+      <div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">log10</span><span class="p">(</span><span class="kp">expression</span><span class="p">))</span>
+  <span class="o">+</span> geom_histogram<span class="p">()</span>
 </pre></div>
 </div>
 <p>Try to figure out how to overlay a density plot with <code class="docutils literal"><span class="pre">geom_density()</span></code>.</p>
@@ -275,7 +275,7 @@ model through these curves (use geom_smooth) on the plot.</li>
 </pre></div>
 </div>
 <p>We can continue the thought by adding a plot with the pipe:</p>
-<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">%&gt;%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">)</span> \
+<div class="highlight-r"><div class="highlight"><pre><span></span><span class="o">%&gt;%</span> ggplot<span class="p">(</span>aes<span class="p">(</span>x<span class="o">=</span>genotype<span class="p">,</span> y<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> \
     <span class="o">+</span> geom_histogram<span class="p">(</span>stat<span class="o">=</span><span class="s">&#39;identity&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -293,7 +293,7 @@ model through these curves (use geom_smooth) on the plot.</li>
     <article class="">
       <p>Since <cite>expr-geno-covs.txt</cite> is already in long format, we can use it directly in
 ggplot:</p>
-<div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
        geom_histogram<span class="p">()</span> <span class="o">+</span>
        scale_x_log10<span class="p">()</span>
 </pre></div>
@@ -311,7 +311,7 @@ ggplot:</p>
       <ol class="arabic simple">
 <li>Adjust this:</li>
 </ol>
-<div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>covs<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
+<div class="highlight-r"><div class="highlight"><pre><span></span>ggplot<span class="p">(</span>df<span class="p">,</span> aes<span class="p">(</span>x<span class="o">=</span><span class="kp">expression</span><span class="p">))</span> <span class="o">+</span>
        geom_histogram<span class="p">()</span> <span class="o">+</span>
        scale_x_log10<span class="p">()</span>
 </pre></div>

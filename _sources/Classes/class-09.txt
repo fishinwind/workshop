@@ -78,8 +78,8 @@ ggplot2 machinery for that:
 
 .. code-block:: r
 
-    ggplot(df, aex(x=log10(expression))
-      + geom_histgram()
+    ggplot(df, aes(x=log10(expression))
+      + geom_histogram()
 
 Try to figure out how to overlay a density plot with ``geom_density()``.
 
@@ -135,7 +135,7 @@ We can continue the thought by adding a plot with the pipe:
 
 .. code-block:: r
 
-        %>% ggplot(aes(x=genotype, y=expression) \
+        %>% ggplot(aes(x=genotype, y=expression)) \
             + geom_histogram(stat='identity')
 
 how can we change the color of all the bars to 'red'? [Hint, it's not
@@ -149,7 +149,7 @@ ggplot:
 
 .. code-block:: r
 
-    ggplot(covs, aes(x=expression)) + 
+    ggplot(df, aes(x=expression)) + 
            geom_histogram() +
            scale_x_log10()
 
@@ -159,7 +159,7 @@ Exercises
 
 .. code-block:: r
 
-    ggplot(covs, aes(x=expression)) + 
+    ggplot(df, aes(x=expression)) + 
            geom_histogram() +
            scale_x_log10()
 
