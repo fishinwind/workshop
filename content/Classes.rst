@@ -14,6 +14,8 @@ Class list
    Classes/class-07
    Classes/class-08
    Classes/class-09
+   Classes/class-15
+   Classes/class_16
 ..   Classes/class-10
 ..   Classes/class-11
 ..   Classes/class-15
