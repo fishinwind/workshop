@@ -2,7 +2,7 @@
 .. include:: /_static/substitutions.txt
 
 =============================
-Appendix 1 : Reproducible Research using Snakemake 
+Class 18 : Reproducible Research using Snakemake 
 =============================
 
 :Last updated: |today|
@@ -60,49 +60,45 @@ For these reasons, it is a very good practice to use a workflow management
 system to help with managing computational projects.
 
 Installation
-------------
+===========
 
 .. code-block:: bash
     
-    easy_install3 snakemake
-    #or 
     pip3 install snakemake
-    #or
-    conda install -c bioconda snakemake
 
 Snakemake
----------
+=========
 
 `Snakemake <https://snakemake.readthedocs.io/en/latest/index.html>`_ is a
-worflow manangement system that is based upon GNU Make and uses python
-syntax. 
+worflow manangement system that is based upon GNU Make and written in python.
 
 The central idea of a snakemake workflow is that we define a set of rules
-that specify how to generate output files from input files. 
+that specify how to generate output files from input files. Snakemake uses
+these rules to track which files need to be generated, and if the files are missing
+will automagically regenerate files as necessary.
 
-For example:
+Hello World
+-----------
+Let's start with a simple example:
 
 .. code-block:: bash
 
     # generate an example file
     $ echo "world" > world.txt
 
-We define a set of rules to use to generate output files from input files.
+
 Copy the following code into a file named ``Snakefile`` (no extension).
 
 .. code-block:: basemake
 
     rule hello_world:
-      input:
-        "world.txt"
-      output:
-        "hello_world.txt"
+      input: "world.txt"
+      output: "hello_world.txt"
       shell:
-        """
-        echo "Hello" \
-          | cat - {input} > {output}
-        """
+        " echo "Hello" |  cat - {input} > {output} "
 
+Run Snakemake
+=============
 Now let's use Snakemake to execute our rule. 
 
 .. code-block:: bash
@@ -110,14 +106,16 @@ Now let's use Snakemake to execute our rule.
     snakemake -npr hello_world.txt 
     # -npr tells snakemake to do a dry run and print the expected commands
 
+Rerun Snakemake
+===============
 As we can see snakemake has filled in the ``{input}`` and ``{output}`` variables
 for our rule. Next go ahead and exectute this simple rule (remove
 ``-npr``). 
 
 Now here's where snakemake get's useful. Go ahead and change the contents
 of the ``world.txt`` file. Now when we reexecute Snakemake, it knows that
-``world.txt`` has been edited, and that ``hello_world.txt`` also needs to
-be regenerated
+``world.txt`` has been edited, and that ``hello_world.txt``, which depends
+on ``world.txt`` also needs to be regenerated
 
 
 .. code-block:: bash
@@ -129,101 +127,81 @@ modified. If we have many rules, then any intermediate files will also be
 regenerated. For example, add another rule that now edits
 ``hello_world.txt``:
 
-
+Hello Universe
+==============
 .. code-block:: basemake
 
     rule hello_universe:
-      input:
-        "hello_world.txt"
-      output:
-        "hello_universe.txt"
+      input: "hello_world.txt"
+      output: "hello_universe.txt"
       shell:
-        """
-        sed 's/world/universe/' {input} > {output}
-        """
+        "sed 's/world/universe/' {input} > {output} "
 
 .. code-block:: bash
     
     snakemake -npr hello_world.txt 
 
-Instead of defining our target files on the command line we can specify
-them directly in the ``Snakefile``. Rule ``all`` is a psuedo-rule that
-simply tells snakemake what final files to generate. By default snakemake
-determines which rule to execute first in a top-down manner. It will
-therefore first search for ``hello_universe.txt``, then will find the rule
-that generates it (``rule hello_universe``), then execute any additional rule
-dependencies, until all target files have been generated. 
+Rule All
+========
+
+#. Instead of defining our target files on the command line we can specify
+   them directly in the ``Snakefile``. 
+#. Rule ``all`` is a psuedo-rule that simply tells snakemake what final files to generate. 
+#. By default snakemake determines which rule to execute first in a top-down manner. 
+#. Therefore snakemake will first search for ``hello_universe.txt``, then will find the rule
+   that generates it (``rule hello_universe``), then execute any additional rule
+   dependencies, until all target files have been generated. 
+
+Rule All Example
+================
 
 .. code-block:: basemake
 
     rule all:
-      input:
-        "hello_universe.txt"
-
+      input: "hello_universe.txt"
+    
     rule hello_universe:
-      input:
-        "hello_world.txt"
-      output:
-        "hello_universe.txt"
+      input: "hello_world.txt"
+      output: "hello_universe.txt"
       shell:
-        """
-        sed 's/world/universe/' {input} > {output}
-        """
-
+        "sed 's/world/universe/' {input} > {output}
+    
     rule hello_world:
-      input:
-        "world.txt"
-      output:
-        "hello_world.txt"
+      input: "world.txt"
+      output: "hello_world.txt"
       shell:
-        """
-        echo "Hello" \
-          | cat - {input} > {output}
-        """
+        "echo "Hello" | cat - {input} > {output}"
 
 Generalizing rules with wildcards
----------------------------------
+=================================
 
 Snakemake supports using wildcards to define the ``input`` and ``output``
-files. This is extremely powerful as we can now generalize our rules to
-many different inputs/outputs. 
-
+files. 
 
 .. code-block:: basemake
 
     PLACES = ["hello_universe.txt",
               "hello_colorado.txt",
               "hello_123.txt"]
-
     rule all:
         input:
-          PLACES #list of files is substituted 
-    
+          PLACES #list of files is substituted
     rule hello_universe:
-        input:
-          "hello_world.txt"
-        output:
-          "hello_{place}.txt" 
-          #the place variable is autofilled based on matching the output
+        input: "hello_world.txt"
+        output: "hello_{place}.txt" 
         shell:
-          """
-          sed 's/world/{wildcards.place}/' {input} > {output}
-          #to access a wildcard in a shell command use {wildcards.place}
-          """
-    
+          "sed 's/world/{wildcards.place}/' {input} > {output}"
+          
     rule hello_world:
-      input:
-        "world.txt"
-      output:
-        "hello_world.txt"
+      input: "world.txt"
+      output: "hello_world.txt"
       shell:
-        """
-        echo "Hello" \
-          | cat - {input} > {output}
-        """
+        "echo "Hello" | cat - {input} > {output} "
 
+Expand Function
+===============
 Snakemake has a helpful python function called ``expand`` that simplifies
-the above code to:
+the previous code to:
 
 .. code-block:: basemake
 
@@ -234,6 +212,9 @@ the above code to:
     rule all:
         input:
           expand("hello_{place}.txt, place=PLACES) #list of files is substituted 
+
+Debugging Targets
+=================
 
 To check that your variable substitutions are correct you can use the
 python ``print()`` function, which will print the substitued variables to
@@ -249,7 +230,7 @@ standard out, or alternatively look at the snakemake output (``-npr``)
 
 
 Snakemake pipeline for Chip-Seq analysis
----------------------------------------
+----------------------------------------
 
 So far our current pipeline isn't very useful. Next we'll write a short
 pipeline to conduct basic Chip-Seq analysis. In this case we will use
@@ -269,16 +250,19 @@ Important steps for the pipeline:
 
 Some of the steps in the pipeline were covered in the Bedtools vignette class.
 
-First let's download some example data and make sure that we have all of
-the necessary software installed. 
+Get necessary software
+======================
+
+First lets make sure that we have all of the necessary software installed. 
 
 .. code-block:: bash
 
-    wget -m example_data
     brew install bowtie2 samtools bedtools
 
-Make a new file named ``Snakefile`` in the example_data directory. 
+Make a new file named ``Snakefile`` in the ``plot_coverage`` directory. 
 
+Define global variables
+======================
 Let's start our pipeline by defining a few important variables
 for our analysis. Place these at the top of your Snakefile. 
 
@@ -296,30 +280,14 @@ For this analysis we will first align the Chip-Seq data using ``bowtie2``.
 First we'll generate the index necessary for alignment, then perform the
 alignment. 
 
+Indexing 
+========
+
 .. code-block:: basemake
 
-   rule bowtie_mapping:
-     input: 
-       fq = "raw_data/{chip}.fastq.gz", 
-       idx = "dbases/bowtie_idx/chr22.1.bt2"
-     output:
-       "bowtie/{chip}.bam"
-     params:
-       idx = "dbases/bowtie_idx/chr22", 
-     shell:
-       """
-       bowtie2 \
-         -x {params.idx} \
-         -U {input.fq} \
-         -S {output} 
-       """
-   
    rule bowtie_index:
-     # add variable for output_dir
-     input: 
-       FASTA 
-     output:
-       "dbases/bowtie_idx/chr22.1.bt2"
+     input: FASTA 
+     output: "dbases/bowtie_idx/chr22.1.bt2"
      params:
        output_name = "dbases/bowtie_idx/chr22"
      shell:
@@ -327,10 +295,32 @@ alignment.
        bowtie2-build {input} {params.output_name} 
        """
 
-These rules demonstrate a few important concepts:
+Alignment
+=========
+.. code-block:: basemake
+
+   rule bowtie_mapping:
+     input: 
+       fq = "raw_data/{chip}.fastq.gz", 
+       idx = "dbases/bowtie_idx/chr22.1.bt2"
+     output: "bowtie/{chip}.bam"
+     params: idx = "dbases/bowtie_idx/chr22", 
+     shell:
+       """
+       bowtie2 \
+         -x {params.idx} \
+         -U {input.fq} \
+         -S {output} 
+
+       samtools sort {output}.tmp > {output}
+       samtools index {output}
+       """
+
+Key Concepts
+============
 
 #. multiple ``inputs`` or ``outputs`` can be defined and called by name
-   i.e. (``input.fq``). Each input must be separated by a comma.
+   i.e. (``{input.fq}``). Each input must be separated by a comma.
 
 #. Arbitrary additional arguments can be specified using the ``params``
    option. This is useful for customizing the command line arguments
@@ -339,24 +329,30 @@ These rules demonstrate a few important concepts:
 #. We have a wildcard (``chip``) that takes the place of the fastq name.
    This wildcard will allow us to generalize our pipeline. 
 
-#. Global variables, such as ``FASTA`` can be used as an input.
+#. Global variables, such as ``FASTA`` can be used as an input. Global
+   variables can also be used in the ``shell:`` command but need to be
+   bracketed (``{FASTA}``). 
 
 #. Snakemake will automatically generate directories that are listed in
    the output files, if they do not exist. 
+
+Check Alignment Step
+====================
 
 Check that our snakemake pipeline is working:
 
 .. code-block:: bash
     
-    snakemake -npr -s Snakefile bowtie/H1_h3k4me3_chr22.bam
+    snakemake -npr bowtie/H1_h3k4me3_chr22.bam
 
 Snakemake will pattern match our requested file
 (``bowtie/H1_h3k4me3_chr22.bam``) and determine that it can make this file
 by substituting ``H1_h3k4me_chr22`` for the ``chip`` variable. 
 
-Next we will sort and index the bam alignment file, then calculate
-alignment coverage across the genome with bedtools.
+Coverage
+========
 
+Next calculate alignment coverage across the genome with bedtools.
 
 .. code-block:: basemake
 
@@ -370,114 +366,97 @@ alignment coverage across the genome with bedtools.
         bedtools genomecov \
           -ibam {input} \
           -bg \
-          -g {CHROMS} \
-          > {output}
-        """
-    
-    rule sort_index_bam:
-      input:
-        "bowtie/{chip}.bam"
-      output:
-        "bowtie/{chip}_sorted.bam"
-      shell:
-        """
-        samtools sort {input} > {output}
-        samtools index {output}
+          -g {CHROMS} > {output}
         """
 
-Notice that we execute two commands in one rule (``sort_index_bam``).
-Snakemake doesn't pay attention to what you execute, but instead tracks
-the input and output files to ensure that they were generated correctly. 
-Combining multiple commands in one rule is useful for simple steps that
-are commonly executated together. 
 
 Also note that we used the global variable ``CHROMS`` directly in the
 shell command. The braces are needed in the shell command so that
 snakemake can recognize it, but are not needed when calling the variable
 outside of the shell commands. 
 
+Check Coverage
+==============
+
 Let's check that our pipeline is working by trying to generate the
 bedgraph file. 
 
 .. code-block:: bash
     
-        snakemake -npr -s Snakefile bowtie/H1_h3k4me3_chr22.bedgraph
+        snakemake -npr bowtie/H1_h3k4me3_chr22.bedgraph
 
+Make TSS windows
+================
 Now that we have our bedgraph we next need to define a set of intervals to
-surround the TSS to calculate H3k4me3 coverage. To do this we will use
-``awk`` and ``bedtools``. 
+surround the TSS to calculate H3k4me3 coverage. To do this we will call an
+external bash script that uses awk and bedtools to generate a bed file of
+windows around each TSS. 
+
+.. code-block:: basemake
+
+    rule prepare_windows:
+      input:
+        genes = GENES,
+        chroms = CHROMS,
+      output:
+        "bedfiles/tss_windows.bed"
+      shell:
+        "src/get_tss_windows.sh {input.genes} {input.chroms} {output}" 
+    
+These rules take the reference gene annotations and extracts out the TSS,
+then make a set of windows surrounding the TSS.
+
+Other Concepts
+==============
+#. Instead of writing an external script, you can also include each step
+   individually. However, these steps are very verbose, so they have been
+   moved to a seperate script.  
+
+#. Snakemake doesn't care what commands we run, only that the input files are
+   present before running and that the output files are generated after
+   executing the commands. 
+
+Let's check that our pipeline is correct by trying to generate the
+output from the ``prepare_windows`` rule. 
+
+.. code-block:: bash
+    
+        snakemake -npr "bedfiles/tss_windows.bed"
+
+
+Calculate coverage over TSSs
+============================
+
+Next let's use bedtools map to calculate the mean H3K4me3 signal over
+each TSS region
 
 .. code-block:: basemake
 
     rule get_coverage:
       input: 
-        windows = "bedfiles/windows.bed",
-        bedgraph = "bowtie/{chip}.bedgraph"
+        windows = "bedfiles/tss_windows.bed",
+        bedgraph = "bedgraphs/{chip}.bedgraph"
       output: 
         coverage = "bedfiles/{chip}/coverage.bed"
       shell:
         """
-        #map and group data
         bedtools map -a {input.windows} \
           -b {input.bedgraph} \
-          -c 4 -o mean -null 0 \
-          | sort -k5,5n \
-          | bedtools groupby \
-            -i - \
-            -g 5 -c 6 -o sum \
-            > {output.coverage}
-        """
-    
-    rule prepare_bed_data:
-      input:
-        genes = GENES,
-        chroms = CHROMS,
-      output:
-        tss = "bedfiles/tss.bed",
-        tss_slop = "bedfiles/tss_slop.bed",
-        windows = "bedfiles/windows.bed",
-      shell:
-        """
-        #get start sites 
-        awk ' {{OFS="\t"}}
-          $6 == "+" {{print $1,$2,$2+1,$4}} ;
-          $6 == "-" {{print $1,$3-1,$3,$4}}' {input.genes} > {output.tss}
-    
-        #get +/- 2kbp and make windows 
-        bedtools slop \
-          -b 2000 \
-          -i {output.tss} \
-          -g {input.chroms} \
-          > {output.tss_slop}
-        
-        bedtools makewindows -b {output.tss_slop} -w 5 -i srcwinnum \
-          | sort -k1,1 -k2,2n \
-          | tr "_" "\t" \
-          > {output.windows}
+          -c 4 -o mean -null 0 > {output.coverage}
         """
 
-These rules take the reference gene annotations and extract out the TSS,
-then make a set of windows surrounding the TSS, followed by calculating a
-coverage summary over these windows. 
-
-Note:
-
-#. When calling a shell command with braces (``{}``), they need to be
-   double bracketed. This is necessary otherwise snakemake would interpret
-   the braces as a snakemake variable
-
-These rules are very verbose, and it may actually be easier to have these
-steps listed in a seperate shell script which you can call from snakemake. 
-
-
-Let's check that our pipeline is correct by trying to generate the
-output from the ``get_coverage`` rule. 
+Check bedtools map step
+=======================
+Again check the commands:
 
 .. code-block:: bash
     
-        snakemake -npr -s Snakefile "bedfiles/H1_h3k4me3_chr22/coverage.bed"
+    snakemake -npr "bedfiles/H1_h3k4me3/coverage.bed"
 
-Lastly, let's plot the data using the `bin/plot_data.R` script. 
+Plot the Data
+=============
+
+Lastly, let's group and plot the data using the `bin/plot_data.R` script. 
 
 .. code-block:: basemake
 
@@ -487,24 +466,19 @@ Lastly, let's plot the data using the `bin/plot_data.R` script.
       output:
         "plots/{chip}.pdf"
       shell:
-        """
-        ./bin/plot_data.R {input} {output}
-        """
-
-Note that we are calling an external script that performs the plotting.
-Snakemake doesn't care what commands we run, only that the input files are
-present before running and that the output files are generated after
-executing the commands. 
+        " bin/plot_data.R {input} {output} "
 
 Again check the commands:
 
 .. code-block:: bash
     
-    snakemake -npr -s Snakefile "plots/H1_h3k4me3_chr22.pdf"
+    snakemake -npr "plots/H1_h3k4me3_chr22.pdf"
 
+
+Using Rule All
+==============
 To clean up the pipeline let's define our target files in the Snakefile
 itself. 
-
 
 .. code-block:: basemake
     
@@ -513,16 +487,12 @@ itself.
     rule all:
       input: exand("plots/{chip}.pdf", chip = CHIP)
 
-Now we can call our Snakefile directly. In fact we don't need to list the
-Snakefile as snakemake will autodetect any file named ``Snakefile`` in the
-current working directory
-
 .. code-block:: bash
     
     snakemake -npr 
 
 Putting it all together
------------------------
+=======================
 
 .. code-block:: basemake
 
@@ -530,10 +500,10 @@ Putting it all together
     CHROMS = "dbases/chr22_length.txt" # our genome file for bedtools
     GENES = "dbases/knownGene_chr22.bed" # gene annotations for hg19
     
-    CHIP = ['H1_h3k4me3_chr22']
+    CHIP = ['H1_h3k4me3_chr22'] 
     
     rule all:
-      input: expand("plots/{chip}.pdf", chip=CHIP)
+      input: expand("bedfiles/{chip}/coverage.bed", chip=CHIP)
     
     rule plot_coverage:
       input:
@@ -541,80 +511,41 @@ Putting it all together
       output:
         "plots/{chip}.pdf"
       shell:
-        """
-        ./bin/plot_data.R {input} {output}
-        """
+        " src/plot_data.R {input} {output}"
     
     rule get_coverage:
       input: 
-        windows = "bedfiles/windows.bed",
-        bedgraph = "bowtie/{chip}.bedgraph"
+        windows = "bedfiles/tss_windows.bed",
+        bedgraph = "bedgraphs/{chip}.bedgraph"
       output: 
         coverage = "bedfiles/{chip}/coverage.bed"
       shell:
         """
-        #map and group data
         bedtools map -a {input.windows} \
           -b {input.bedgraph} \
-          -c 4 -o mean -null 0 \
-          | sort -k5,5n \
-          | bedtools groupby \
-            -i - \
-            -g 5 -c 6 -o sum \
-            > {output.coverage}
+          -c 4 -o mean -null 0 > {output.coverage}
         """
     
-    rule prepare_bed_data:
+    rule prepare_windows:
       input:
         genes = GENES,
         chroms = CHROMS,
       output:
-        tss = "bedfiles/tss.bed",
-        tss_slop = "bedfiles/tss_slop.bed",
-        windows = "bedfiles/windows.bed",
+        "bedfiles/tss_windows.bed"
       shell:
-        """
-        #get start sites 
-        awk ' {{OFS="\t"}}
-          $6 == "+" {{print $1,$2,$2+1,$4}} ;
-          $6 == "-" {{print $1,$3-1,$3,$4}}' {input.genes} > {output.tss}
-    
-        #get +/- 2kbp and make windows 
-        bedtools slop \
-          -b 2000 \
-          -i {output.tss} \
-          -g {input.chroms} \
-          > {output.tss_slop}
-        
-        bedtools makewindows -b {output.tss_slop} -w 5 -i srcwinnum \
-          | sort -k1,1 -k2,2n \
-          | tr "_" "\t" \
-          > {output.windows}
-        """
+        "src/get_tss_windows.sh {input.genes} {input.chroms} {output}" 
         
     rule make_bedgraphs:
       input:
-        "bowtie/{chip}_sorted.bam"
+        "bowtie/{chip}.bam"
       output:
-        "bowtie/{chip}.bedgraph"
+        "bedgraphs/{chip}.bedgraph"
       shell:
         """
         bedtools genomecov \
           -ibam {input} \
           -bg \
-          -g {CHROMS} \
-          > {output}
-        """
-    
-    rule sort_index_bam:
-      input:
-        "bowtie/{chip}.bam"
-      output:
-        "bowtie/{chip}_sorted.bam"
-      shell:
-        """
-        samtools sort {input} > {output}
-        samtools index {output}
+          -g {CHROMS} > {output}
         """
     
     rule bowtie_mapping:
@@ -630,7 +561,10 @@ Putting it all together
         bowtie2 \
           -x {params.idx} \
           -U {input.fq} \
-          -S {output} 
+          -S {output}.tmp
+    
+        samtools sort {output}.tmp > {output}
+        samtools index {output}
         """
     
     rule bowtie_index:
@@ -646,7 +580,7 @@ Putting it all together
         """
 
 Generalizing the pipeline
--------------------------
+=========================
 
 The real power of a pipeline is the ability to apply it to many datasets.
 By adding additional elements to our ``CHIP`` variable we can now run our
@@ -654,19 +588,26 @@ pipeline on multiple Chip-Seq samples
 
 .. code-block:: basemake
     
-    CHIP = ["H1_h3k4me3_chr22", "H1_h3k4me3_chr21"]
+    CHIP = ["H1_h3k4me3_chr22", "H1_RNApolII_chr22"]
 
 Now our pipeline will run for both Chip-Seq datasets with only 1 filename
 added!
 
-What if you have a directory with 100s of fastq files from Chip-Seq
-experiments? You could type out a long list of filenames, or you can use
-the ``glob_wildcards`` function in Snakemake. This function will build a
-list of sample names based on the files in the listed directory.  
+Glob wildcards
+==============
+
+#. What if you have a directory with 100s of fastq files from Chip-Seq
+   experiments? You could type out a long list of filenames, or ...
+
+#. Use the ``glob_wildcards`` function in Snakemake. This function will build a
+   list of sample names based on the files in the listed directory.  
 
 .. code-block:: basemake
 
     CHIP, = glob_wildcards("raw_data/{chip}.fastq.gz")
+
+Run in Parallel
+==============
 
 Lastly, snakemake can run jobs in parallel. If your computer has more than
 1 core you can execute more than 1 job at the same time. Snakemake handles
@@ -675,38 +616,38 @@ to use.
 
 .. code-block:: bash
     
-    snakemake -pr --cores 2 
+    snakemake --cores 2 
 
 Troubleshooting
----------------
+===============
 https://snakemake.readthedocs.io/en/latest/project_info/faq.html
 
 http://stackoverflow.com/questions/tagged/snakemake
 
 https://groups.google.com/forum/#!forum/snakemake
 
-Some helpful guidelines: 
+Helpful guidelines
+==================
 
 #. Indentation is important, use two or four spaces for each indentation.
 #. Define your target (final output) files in rule all
 #. Use unique extensions or directories for each rule to avoid wildcard
    collisions
 
-
 Alternative tutorials
----------------------
+=====================
 https://snakemake.readthedocs.io/en/latest/index.html
 
 https://github.com/leipzig/SandwichesWithSnakemake
 
 Exercises
----------
+=========
 
 #. Make a three rule snakemake pipeline using basic unix tools. Include at
    least one wildcard variable. 
 
-#. Download the three fastqs in the following directory (To Do). Modify
-   our snakemake pipeline to run the analysis on all three fastqs. What do
+#. Download new Chip-Seq fastqs into the following directory from `Encode <https://www.encodeproject.org/matrix/?type=Experiment>`_. 
+   Modify the snakemake pipeline to run the analysis on all the new fastqs. What do
    you notice about the TSS coverage for each Chip-Seq expt? 
 
 #. Add additional rules to our pipeline to plot Chip-Seq coverage at the
