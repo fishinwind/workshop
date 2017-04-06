@@ -31,7 +31,10 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Exercises" href="../Exercises.html" />
+    <link rel="prev" title="Class 16 : Python : Parsing Fastqs" href="class_16.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -76,9 +79,9 @@
      href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
@@ -113,7 +116,9 @@
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Class 18 : Reproducible Research using Snakemake</a><ul>
 <li><a class="reference internal" href="#goals">Goals</a></li>
-<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#modularizing-code">Modularizing code</a></li>
+<li><a class="reference internal" href="#potential-problems">Potential Problems</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#id1">Snakemake</a></li>
 </ul>
@@ -182,14 +187,16 @@
 </div>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#overview" title="Slides">§</a></h2>
-<p>Genomics analysis projects often generate hundreds or thousands of files.
+<ol class="arabic simple">
+<li>Genomics analysis projects often generate hundreds or thousands of files.
 Keeping track of all of the scripts used to generate a set of finalized
-reports is an error-prone and difficult task.</p>
-<p>The naive approach to organizing a project is to make a <code class="docutils literal"><span class="pre">bash</span></code> script
-that executes each step of the analysis from mapping to plotting.</p>
-<p>Organizing a project in this manner is a good first step to producing
+reports is an error-prone and difficult task.</li>
+<li>The naive approach to organizing a project is to make a <code class="docutils literal"><span class="pre">bash</span></code> script
+that executes each step of the analysis from mapping to plotting.</li>
+<li>Organizing a project in this manner is a good first step to producing
 reproducible analyses, however there are few common problems with this
-approach.</p>
+approach.</li>
+</ol>
 <p>For example:</p>
 <ol class="arabic simple">
 <li>After plotting all of your results you realize that you need to rerun
@@ -198,6 +205,9 @@ entire pipeline.</li>
 <li>The script might grow to be 1,000s of lines of code making debugging
 very tedious as mistakes will be hard to spot.</li>
 </ol>
+</div>
+<div class="section" id="modularizing-code">
+<h2>Modularizing code<a class="headerlink" href="#modularizing-code" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#modularizing-code" title="Slides">§</a></h2>
 <p>The next approach might be to split each important set of steps into
 individual scripts. i.e:</p>
 <ol class="arabic simple">
@@ -208,6 +218,9 @@ individual scripts. i.e:</p>
 <p>By modularizing the code, the workflow is easier to modify and it
 becomes easier to reuse the code. However, with this setup a few
 additional problems can occur.</p>
+</div>
+<div class="section" id="potential-problems">
+<h2>Potential Problems<a class="headerlink" href="#potential-problems" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#potential-problems" title="Slides">§</a></h2>
 <ol class="arabic simple">
 <li>You rerun the <code class="docutils literal"><span class="pre">run_mapping.sh</span></code> script, but forget to rerun
 <code class="docutils literal"><span class="pre">call_peaks.sh</span></code> and <code class="docutils literal"><span class="pre">plot_data.R</span></code>. Two weeks later you discover your
@@ -245,7 +258,7 @@ $ <span class="nb">echo</span> <span class="s2">&quot;world&quot;</span> &gt; wo
   input: <span class="s2">&quot;world.txt&quot;</span>
   output: <span class="s2">&quot;hello_world.txt&quot;</span>
   shell:
-    <span class="s2">&quot; echo &quot;</span>Hello<span class="s2">&quot; |  cat - {input} &gt; {output} &quot;</span>
+    <span class="s2">&quot; echo &#39;Hello&#39; |  cat - {input} &gt; {output} &quot;</span>
 </pre></div>
 </div>
 <div class="section" id="run-snakemake">
@@ -282,7 +295,7 @@ regenerated. For example, add another rule that now edits
     <span class="s2">&quot;sed &#39;s/world/universe/&#39; {input} &gt; {output} &quot;</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr hello_world.txt
+<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr hello_universe.txt
 </pre></div>
 </div>
 </div>
@@ -313,7 +326,7 @@ dependencies, until all target files have been generated.</li>
   input: <span class="s2">&quot;world.txt&quot;</span>
   output: <span class="s2">&quot;hello_world.txt&quot;</span>
   shell:
-    <span class="s2">&quot;echo &quot;</span>Hello<span class="s2">&quot; | cat - {input} &gt; {output}&quot;</span>
+    <span class="s2">&quot;echo &#39;Hello&#39; | cat - {input} &gt; {output}&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -337,7 +350,7 @@ files.</p>
   input: <span class="s2">&quot;world.txt&quot;</span>
   output: <span class="s2">&quot;hello_world.txt&quot;</span>
   shell:
-    <span class="s2">&quot;echo &quot;</span>Hello<span class="s2">&quot; | cat - {input} &gt; {output} &quot;</span>
+    <span class="s2">&quot;echo &#39;Hello&#39; | cat - {input} &gt; {output} &quot;</span>
 </pre></div>
 </div>
 </div>
@@ -351,7 +364,7 @@ the previous code to:</p>
 
 <span class="nf">rule all</span><span class="o">:</span>
     input:
-      expand<span class="o">(</span><span class="s2">&quot;hello_{place}.txt, place=PLACES) #list of files is substituted</span>
+      expand<span class="o">(</span><span class="s2">&quot;hello_{place}.txt&quot;</span>, <span class="nv">place</span><span class="o">=</span>PLACES<span class="o">)</span> <span class="c1">#list of files is substituted</span>
 </pre></div>
 </div>
 </div>
@@ -364,7 +377,7 @@ standard out, or alternatively look at the snakemake output (<code class="docuti
           &quot;colorado&quot;,
           &quot;123&quot;]
 
-print(expand(&quot;hello_{place}.txt, place=PLACES))
+print(expand(&quot;hello_{place}.txt&quot;, place=PLACES))
 </pre></div>
 </div>
 </div>
@@ -396,7 +409,7 @@ Transcriptional Start Sites (TSS).</p>
 <h3>Define global variables<a class="headerlink" href="#define-global-variables" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#define-global-variables" title="Slides">§</a></h3>
 <p>Let&#8217;s start our pipeline by defining a few important variables
 for our analysis. Place these at the top of your Snakefile.</p>
-<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">FASTA</span> <span class="o">=</span> <span class="s2">&quot;dbases/chr22.fa&quot;</span> <span class="c1"># our genome fasta file (hg19)</span>
+<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">FASTA</span> <span class="o">=</span> <span class="s2">&quot;dbases/chr22.fa.gz&quot;</span> <span class="c1"># our genome fasta file (hg19)</span>
 <span class="nv">CHROMS</span> <span class="o">=</span> <span class="s2">&quot;dbases/chr22_length.txt&quot;</span> <span class="c1"># our genome file necessary for bedtools</span>
 <span class="nv">GENES</span> <span class="o">=</span> <span class="s2">&quot;dbases/knownGene_chr22.bed&quot;</span> <span class="c1"># gene annotations for hg19</span>
 </pre></div>
@@ -416,7 +429,8 @@ alignment.</p>
     <span class="nv">output_name</span> <span class="o">=</span> <span class="s2">&quot;dbases/bowtie_idx/chr22&quot;</span>
   shell:
     <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    bowtie2-build {input} {params.output_name}</span>
+<span class="s2">    gunzip -c {input} &gt; {input}.tmp</span>
+<span class="s2">    bowtie2-build {input}.tmp {params.output_name}</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
