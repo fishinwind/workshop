@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Appendix 1 : Reproducible Research using Snakemake &#8212; Genome Analysis Workshop 0.2 documentation</title>
+    <title>Class 18 : Reproducible Research using Snakemake &#8212; Genome Analysis Workshop 0.2 documentation</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -31,10 +31,7 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
-    <link rel="up" title="Class list" href="../Classes.html" />
-    <link rel="next" title="Exercises" href="../Exercises.html" />
-    <link rel="prev" title="Class 24 : Exome-Seq - Variants" href="class-24.html" /> 
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" /> 
 
 <!-- Google Analytics tracking code -->
 
@@ -79,9 +76,9 @@
      href="../index.html">Genome Analysis Workshop <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul class="current">
+      aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../Syllabus.html">Syllabus</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Classes.html">Class list</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Classes.html">Class list</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Exercises.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem_Sets.html">Problem Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Miscellaneous.html">Miscellaneous</a></li>
@@ -114,18 +111,49 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Appendix 1 : Reproducible Research using Snakemake</a><ul>
+<li><a class="reference internal" href="#">Class 18 : Reproducible Research using Snakemake</a><ul>
 <li><a class="reference internal" href="#goals">Goals</a></li>
-<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#id1">Snakemake</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hello-world">Hello World</a><ul>
+<li><a class="reference internal" href="#run-snakemake">Run Snakemake</a></li>
+<li><a class="reference internal" href="#rerun-snakemake">Rerun Snakemake</a></li>
+<li><a class="reference internal" href="#hello-universe">Hello Universe</a></li>
+<li><a class="reference internal" href="#rule-all">Rule All</a></li>
+<li><a class="reference internal" href="#rule-all-example">Rule All Example</a></li>
 <li><a class="reference internal" href="#generalizing-rules-with-wildcards">Generalizing rules with wildcards</a></li>
-<li><a class="reference internal" href="#snakemake-pipeline-for-chip-seq-analysis">Snakemake pipeline for Chip-Seq analysis</a></li>
+<li><a class="reference internal" href="#expand-function">Expand Function</a></li>
+<li><a class="reference internal" href="#debugging-targets">Debugging Targets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#snakemake-pipeline-for-chip-seq-analysis">Snakemake pipeline for Chip-Seq analysis</a><ul>
+<li><a class="reference internal" href="#get-necessary-software">Get necessary software</a></li>
+<li><a class="reference internal" href="#define-global-variables">Define global variables</a></li>
+<li><a class="reference internal" href="#indexing">Indexing</a></li>
+<li><a class="reference internal" href="#alignment">Alignment</a></li>
+<li><a class="reference internal" href="#key-concepts">Key Concepts</a></li>
+<li><a class="reference internal" href="#check-alignment-step">Check Alignment Step</a></li>
+<li><a class="reference internal" href="#coverage">Coverage</a></li>
+<li><a class="reference internal" href="#check-coverage">Check Coverage</a></li>
+<li><a class="reference internal" href="#make-tss-windows">Make TSS windows</a></li>
+<li><a class="reference internal" href="#other-concepts">Other Concepts</a></li>
+<li><a class="reference internal" href="#calculate-coverage-over-tsss">Calculate coverage over TSSs</a></li>
+<li><a class="reference internal" href="#check-bedtools-map-step">Check bedtools map step</a></li>
+<li><a class="reference internal" href="#plot-the-data">Plot the Data</a></li>
+<li><a class="reference internal" href="#using-rule-all">Using Rule All</a></li>
 <li><a class="reference internal" href="#putting-it-all-together">Putting it all together</a></li>
 <li><a class="reference internal" href="#generalizing-the-pipeline">Generalizing the pipeline</a></li>
+<li><a class="reference internal" href="#glob-wildcards">Glob wildcards</a></li>
+<li><a class="reference internal" href="#run-in-parallel">Run in Parallel</a></li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li><a class="reference internal" href="#helpful-guidelines">Helpful guidelines</a></li>
 <li><a class="reference internal" href="#alternative-tutorials">Alternative tutorials</a></li>
 <li><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -134,13 +162,13 @@
       </div>
     <div class="col-md-9 content">
       
-  <div class="section" id="appendix-1-reproducible-research-using-snakemake">
-<h1>Appendix 1 : Reproducible Research using Snakemake<a class="headerlink" href="#appendix-1-reproducible-research-using-snakemake" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#appendix-1-reproducible-research-using-snakemake" title="Slides">§</a></h1>
+  <div class="section" id="class-18-reproducible-research-using-snakemake">
+<h1>Class 18 : Reproducible Research using Snakemake<a class="headerlink" href="#class-18-reproducible-research-using-snakemake" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#class-18-reproducible-research-using-snakemake" title="Slides">§</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">Feb 02, 2017</td>
+<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">Apr 06, 2017</td>
 </tr>
 </tbody>
 </table>
@@ -189,55 +217,54 @@ which of the hundreds of files you generated are new or old.</li>
 </ol>
 <p>For these reasons, it is a very good practice to use a workflow management
 system to help with managing computational projects.</p>
-</div>
 <div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#installation" title="Slides">§</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>easy_install3 snakemake
-<span class="c1">#or</span>
-pip3 install snakemake
-<span class="c1">#or</span>
-conda install -c bioconda snakemake
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#installation" title="Slides">§</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip3 install snakemake
 </pre></div>
 </div>
 </div>
 <div class="section" id="id1">
-<h2>Snakemake<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#id1" title="Slides">§</a></h2>
+<h3>Snakemake<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#id1" title="Slides">§</a></h3>
 <p><a class="reference external" href="https://snakemake.readthedocs.io/en/latest/index.html">Snakemake</a> is a
-worflow manangement system that is based upon GNU Make and uses python
-syntax.</p>
+worflow manangement system that is based upon GNU Make and written in python.</p>
 <p>The central idea of a snakemake workflow is that we define a set of rules
-that specify how to generate output files from input files.</p>
-<p>For example:</p>
+that specify how to generate output files from input files. Snakemake uses
+these rules to track which files need to be generated, and if the files are missing
+will automagically regenerate files as necessary.</p>
+</div>
+</div>
+<div class="section" id="hello-world">
+<h2>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#hello-world" title="Slides">§</a></h2>
+<p>Let&#8217;s start with a simple example:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># generate an example file</span>
 $ <span class="nb">echo</span> <span class="s2">&quot;world&quot;</span> &gt; world.txt
 </pre></div>
 </div>
-<p>We define a set of rules to use to generate output files from input files.
-Copy the following code into a file named <code class="docutils literal"><span class="pre">Snakefile</span></code> (no extension).</p>
+<p>Copy the following code into a file named <code class="docutils literal"><span class="pre">Snakefile</span></code> (no extension).</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule hello_world</span><span class="o">:</span>
-  input:
-    <span class="s2">&quot;world.txt&quot;</span>
-  output:
-    <span class="s2">&quot;hello_world.txt&quot;</span>
+  input: <span class="s2">&quot;world.txt&quot;</span>
+  output: <span class="s2">&quot;hello_world.txt&quot;</span>
   shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    echo &quot;</span>Hello<span class="s2">&quot; \</span>
-<span class="s2">      | cat - {input} &gt; {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot; echo &quot;</span>Hello<span class="s2">&quot; |  cat - {input} &gt; {output} &quot;</span>
 </pre></div>
 </div>
+<div class="section" id="run-snakemake">
+<h3>Run Snakemake<a class="headerlink" href="#run-snakemake" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#run-snakemake" title="Slides">§</a></h3>
 <p>Now let&#8217;s use Snakemake to execute our rule.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr hello_world.txt
 <span class="c1"># -npr tells snakemake to do a dry run and print the expected commands</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="rerun-snakemake">
+<h3>Rerun Snakemake<a class="headerlink" href="#rerun-snakemake" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#rerun-snakemake" title="Slides">§</a></h3>
 <p>As we can see snakemake has filled in the <code class="docutils literal"><span class="pre">{input}</span></code> and <code class="docutils literal"><span class="pre">{output}</span></code> variables
 for our rule. Next go ahead and exectute this simple rule (remove
 <code class="docutils literal"><span class="pre">-npr</span></code>).</p>
 <p>Now here&#8217;s where snakemake get&#8217;s useful. Go ahead and change the contents
 of the <code class="docutils literal"><span class="pre">world.txt</span></code> file. Now when we reexecute Snakemake, it knows that
-<code class="docutils literal"><span class="pre">world.txt</span></code> has been edited, and that <code class="docutils literal"><span class="pre">hello_world.txt</span></code> also needs to
-be regenerated</p>
+<code class="docutils literal"><span class="pre">world.txt</span></code> has been edited, and that <code class="docutils literal"><span class="pre">hello_world.txt</span></code>, which depends
+on <code class="docutils literal"><span class="pre">world.txt</span></code> also needs to be regenerated</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr hello_world.txt
 </pre></div>
 </div>
@@ -245,93 +272,79 @@ be regenerated</p>
 modified. If we have many rules, then any intermediate files will also be
 regenerated. For example, add another rule that now edits
 <code class="docutils literal"><span class="pre">hello_world.txt</span></code>:</p>
+</div>
+<div class="section" id="hello-universe">
+<h3>Hello Universe<a class="headerlink" href="#hello-universe" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#hello-universe" title="Slides">§</a></h3>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule hello_universe</span><span class="o">:</span>
-  input:
-    <span class="s2">&quot;hello_world.txt&quot;</span>
-  output:
-    <span class="s2">&quot;hello_universe.txt&quot;</span>
+  input: <span class="s2">&quot;hello_world.txt&quot;</span>
+  output: <span class="s2">&quot;hello_universe.txt&quot;</span>
   shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    sed &#39;s/world/universe/&#39; {input} &gt; {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot;sed &#39;s/world/universe/&#39; {input} &gt; {output} &quot;</span>
 </pre></div>
 </div>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr hello_world.txt
 </pre></div>
 </div>
-<p>Instead of defining our target files on the command line we can specify
-them directly in the <code class="docutils literal"><span class="pre">Snakefile</span></code>. Rule <code class="docutils literal"><span class="pre">all</span></code> is a psuedo-rule that
-simply tells snakemake what final files to generate. By default snakemake
-determines which rule to execute first in a top-down manner. It will
-therefore first search for <code class="docutils literal"><span class="pre">hello_universe.txt</span></code>, then will find the rule
+</div>
+<div class="section" id="rule-all">
+<h3>Rule All<a class="headerlink" href="#rule-all" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#rule-all" title="Slides">§</a></h3>
+<ol class="arabic simple">
+<li>Instead of defining our target files on the command line we can specify
+them directly in the <code class="docutils literal"><span class="pre">Snakefile</span></code>.</li>
+<li>Rule <code class="docutils literal"><span class="pre">all</span></code> is a psuedo-rule that simply tells snakemake what final files to generate.</li>
+<li>By default snakemake determines which rule to execute first in a top-down manner.</li>
+<li>Therefore snakemake will first search for <code class="docutils literal"><span class="pre">hello_universe.txt</span></code>, then will find the rule
 that generates it (<code class="docutils literal"><span class="pre">rule</span> <span class="pre">hello_universe</span></code>), then execute any additional rule
-dependencies, until all target files have been generated.</p>
+dependencies, until all target files have been generated.</li>
+</ol>
+</div>
+<div class="section" id="rule-all-example">
+<h3>Rule All Example<a class="headerlink" href="#rule-all-example" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#rule-all-example" title="Slides">§</a></h3>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule all</span><span class="o">:</span>
-  input:
-    <span class="s2">&quot;hello_universe.txt&quot;</span>
+  input: <span class="s2">&quot;hello_universe.txt&quot;</span>
 
 <span class="nf">rule hello_universe</span><span class="o">:</span>
-  input:
-    <span class="s2">&quot;hello_world.txt&quot;</span>
-  output:
-    <span class="s2">&quot;hello_universe.txt&quot;</span>
+  input: <span class="s2">&quot;hello_world.txt&quot;</span>
+  output: <span class="s2">&quot;hello_universe.txt&quot;</span>
   shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    sed &#39;s/world/universe/&#39; {input} &gt; {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot;sed &#39;s/world/universe/&#39; {input} &gt; {output}</span>
 
 <span class="nf">rule hello_world</span><span class="o">:</span>
-  input:
-    <span class="s2">&quot;world.txt&quot;</span>
-  output:
-    <span class="s2">&quot;hello_world.txt&quot;</span>
+  input: <span class="s2">&quot;world.txt&quot;</span>
+  output: <span class="s2">&quot;hello_world.txt&quot;</span>
   shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    echo &quot;</span>Hello<span class="s2">&quot; \</span>
-<span class="s2">      | cat - {input} &gt; {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot;echo &quot;</span>Hello<span class="s2">&quot; | cat - {input} &gt; {output}&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="generalizing-rules-with-wildcards">
-<h2>Generalizing rules with wildcards<a class="headerlink" href="#generalizing-rules-with-wildcards" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#generalizing-rules-with-wildcards" title="Slides">§</a></h2>
+<h3>Generalizing rules with wildcards<a class="headerlink" href="#generalizing-rules-with-wildcards" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#generalizing-rules-with-wildcards" title="Slides">§</a></h3>
 <p>Snakemake supports using wildcards to define the <code class="docutils literal"><span class="pre">input</span></code> and <code class="docutils literal"><span class="pre">output</span></code>
-files. This is extremely powerful as we can now generalize our rules to
-many different inputs/outputs.</p>
+files.</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">PLACES</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;hello_universe.txt&quot;</span>,
           <span class="s2">&quot;hello_colorado.txt&quot;</span>,
           <span class="s2">&quot;hello_123.txt&quot;</span><span class="o">]</span>
-
 <span class="nf">rule all</span><span class="o">:</span>
     input:
       PLACES <span class="c1">#list of files is substituted</span>
-
 <span class="nf">rule hello_universe</span><span class="o">:</span>
-    input:
-      <span class="s2">&quot;hello_world.txt&quot;</span>
-    output:
-      <span class="s2">&quot;hello_{place}.txt&quot;</span>
-      <span class="c1">#the place variable is autofilled based on matching the output</span>
+    input: <span class="s2">&quot;hello_world.txt&quot;</span>
+    output: <span class="s2">&quot;hello_{place}.txt&quot;</span>
     shell:
-      <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">      sed &#39;s/world/{wildcards.place}/&#39; {input} &gt; {output}</span>
-<span class="s2">      #to access a wildcard in a shell command use {wildcards.place}</span>
-<span class="s2">      &quot;&quot;&quot;</span>
+      <span class="s2">&quot;sed &#39;s/world/{wildcards.place}/&#39; {input} &gt; {output}&quot;</span>
 
 <span class="nf">rule hello_world</span><span class="o">:</span>
-  input:
-    <span class="s2">&quot;world.txt&quot;</span>
-  output:
-    <span class="s2">&quot;hello_world.txt&quot;</span>
+  input: <span class="s2">&quot;world.txt&quot;</span>
+  output: <span class="s2">&quot;hello_world.txt&quot;</span>
   shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    echo &quot;</span>Hello<span class="s2">&quot; \</span>
-<span class="s2">      | cat - {input} &gt; {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot;echo &quot;</span>Hello<span class="s2">&quot; | cat - {input} &gt; {output} &quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="expand-function">
+<h3>Expand Function<a class="headerlink" href="#expand-function" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#expand-function" title="Slides">§</a></h3>
 <p>Snakemake has a helpful python function called <code class="docutils literal"><span class="pre">expand</span></code> that simplifies
-the above code to:</p>
+the previous code to:</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">PLACES</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;universe&quot;</span>,
           <span class="s2">&quot;colorado&quot;</span>,
           <span class="s2">&quot;123&quot;</span><span class="o">]</span>
@@ -341,6 +354,9 @@ the above code to:</p>
       expand<span class="o">(</span><span class="s2">&quot;hello_{place}.txt, place=PLACES) #list of files is substituted</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="debugging-targets">
+<h3>Debugging Targets<a class="headerlink" href="#debugging-targets" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#debugging-targets" title="Slides">§</a></h3>
 <p>To check that your variable substitutions are correct you can use the
 python <code class="docutils literal"><span class="pre">print()</span></code> function, which will print the substitued variables to
 standard out, or alternatively look at the snakemake output (<code class="docutils literal"><span class="pre">-npr</span></code>)</p>
@@ -350,6 +366,7 @@ standard out, or alternatively look at the snakemake output (<code class="docuti
 
 print(expand(&quot;hello_{place}.txt, place=PLACES))
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="snakemake-pipeline-for-chip-seq-analysis">
@@ -367,13 +384,16 @@ Transcriptional Start Sites (TSS).</p>
 <li>Plot coverage over TSS using bedtools/R` (bedGraph -&gt; pdf)</li>
 </ol>
 <p>Some of the steps in the pipeline were covered in the Bedtools vignette class.</p>
-<p>First let&#8217;s download some example data and make sure that we have all of
-the necessary software installed.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>wget -m example_data
-brew install bowtie2 samtools bedtools
+<div class="section" id="get-necessary-software">
+<h3>Get necessary software<a class="headerlink" href="#get-necessary-software" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#get-necessary-software" title="Slides">§</a></h3>
+<p>First lets make sure that we have all of the necessary software installed.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>brew install bowtie2 samtools bedtools
 </pre></div>
 </div>
-<p>Make a new file named <code class="docutils literal"><span class="pre">Snakefile</span></code> in the example_data directory.</p>
+<p>Make a new file named <code class="docutils literal"><span class="pre">Snakefile</span></code> in the <code class="docutils literal"><span class="pre">plot_coverage</span></code> directory.</p>
+</div>
+<div class="section" id="define-global-variables">
+<h3>Define global variables<a class="headerlink" href="#define-global-variables" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#define-global-variables" title="Slides">§</a></h3>
 <p>Let&#8217;s start our pipeline by defining a few important variables
 for our analysis. Place these at the top of your Snakefile.</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">FASTA</span> <span class="o">=</span> <span class="s2">&quot;dbases/chr22.fa&quot;</span> <span class="c1"># our genome fasta file (hg19)</span>
@@ -386,28 +406,12 @@ whereby the first steps executed are at the bottom.</p>
 <p>For this analysis we will first align the Chip-Seq data using <code class="docutils literal"><span class="pre">bowtie2</span></code>.
 First we&#8217;ll generate the index necessary for alignment, then perform the
 alignment.</p>
-<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule bowtie_mapping</span><span class="o">:</span>
-  input:
-    <span class="nv">fq</span> <span class="o">=</span> <span class="s2">&quot;raw_data/{chip}.fastq.gz&quot;</span>,
-    <span class="nv">idx</span> <span class="o">=</span> <span class="s2">&quot;dbases/bowtie_idx/chr22.1.bt2&quot;</span>
-  output:
-    <span class="s2">&quot;bowtie/{chip}.bam&quot;</span>
-  params:
-    <span class="nv">idx</span> <span class="o">=</span> <span class="s2">&quot;dbases/bowtie_idx/chr22&quot;</span>,
-  shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    bowtie2 \</span>
-<span class="s2">      -x {params.idx} \</span>
-<span class="s2">      -U {input.fq} \</span>
-<span class="s2">      -S {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-<span class="nf">rule bowtie_index</span><span class="o">:</span>
-  <span class="c1"># add variable for output_dir</span>
-  input:
-    FASTA
-  output:
-    <span class="s2">&quot;dbases/bowtie_idx/chr22.1.bt2&quot;</span>
+</div>
+<div class="section" id="indexing">
+<h3>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#indexing" title="Slides">§</a></h3>
+<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule bowtie_index</span><span class="o">:</span>
+  input: FASTA
+  output: <span class="s2">&quot;dbases/bowtie_idx/chr22.1.bt2&quot;</span>
   params:
     <span class="nv">output_name</span> <span class="o">=</span> <span class="s2">&quot;dbases/bowtie_idx/chr22&quot;</span>
   shell:
@@ -416,28 +420,58 @@ alignment.</p>
 <span class="s2">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>These rules demonstrate a few important concepts:</p>
+</div>
+<div class="section" id="alignment">
+<h3>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#alignment" title="Slides">§</a></h3>
+<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule bowtie_mapping</span><span class="o">:</span>
+  input:
+    <span class="nv">fq</span> <span class="o">=</span> <span class="s2">&quot;raw_data/{chip}.fastq.gz&quot;</span>,
+    <span class="nv">idx</span> <span class="o">=</span> <span class="s2">&quot;dbases/bowtie_idx/chr22.1.bt2&quot;</span>
+  output: <span class="s2">&quot;bowtie/{chip}.bam&quot;</span>
+  params: <span class="nv">idx</span> <span class="o">=</span> <span class="s2">&quot;dbases/bowtie_idx/chr22&quot;</span>,
+  shell:
+    <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    bowtie2 \</span>
+<span class="s2">      -x {params.idx} \</span>
+<span class="s2">      -U {input.fq} \</span>
+<span class="s2">      -S {output}</span>
+
+<span class="s2">    samtools sort {output}.tmp &gt; {output}</span>
+<span class="s2">    samtools index {output}</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="key-concepts">
+<h3>Key Concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#key-concepts" title="Slides">§</a></h3>
 <ol class="arabic simple">
 <li>multiple <code class="docutils literal"><span class="pre">inputs</span></code> or <code class="docutils literal"><span class="pre">outputs</span></code> can be defined and called by name
-i.e. (<code class="docutils literal"><span class="pre">input.fq</span></code>). Each input must be separated by a comma.</li>
+i.e. (<code class="docutils literal"><span class="pre">{input.fq}</span></code>). Each input must be separated by a comma.</li>
 <li>Arbitrary additional arguments can be specified using the <code class="docutils literal"><span class="pre">params</span></code>
 option. This is useful for customizing the command line arguments
 with variables, but not requiring input or output dependencies.</li>
 <li>We have a wildcard (<code class="docutils literal"><span class="pre">chip</span></code>) that takes the place of the fastq name.
 This wildcard will allow us to generalize our pipeline.</li>
-<li>Global variables, such as <code class="docutils literal"><span class="pre">FASTA</span></code> can be used as an input.</li>
+<li>Global variables, such as <code class="docutils literal"><span class="pre">FASTA</span></code> can be used as an input. Global
+variables can also be used in the <code class="docutils literal"><span class="pre">shell:</span></code> command but need to be
+bracketed (<code class="docutils literal"><span class="pre">{FASTA}</span></code>).</li>
 <li>Snakemake will automatically generate directories that are listed in
 the output files, if they do not exist.</li>
 </ol>
+</div>
+<div class="section" id="check-alignment-step">
+<h3>Check Alignment Step<a class="headerlink" href="#check-alignment-step" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#check-alignment-step" title="Slides">§</a></h3>
 <p>Check that our snakemake pipeline is working:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr -s Snakefile bowtie/H1_h3k4me3_chr22.bam
+<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr bowtie/H1_h3k4me3_chr22.bam
 </pre></div>
 </div>
 <p>Snakemake will pattern match our requested file
 (<code class="docutils literal"><span class="pre">bowtie/H1_h3k4me3_chr22.bam</span></code>) and determine that it can make this file
 by substituting <code class="docutils literal"><span class="pre">H1_h3k4me_chr22</span></code> for the <code class="docutils literal"><span class="pre">chip</span></code> variable.</p>
-<p>Next we will sort and index the bam alignment file, then calculate
-alignment coverage across the genome with bedtools.</p>
+</div>
+<div class="section" id="coverage">
+<h3>Coverage<a class="headerlink" href="#coverage" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#coverage" title="Slides">§</a></h3>
+<p>Next calculate alignment coverage across the genome with bedtools.</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule make_bedgraphs</span><span class="o">:</span>
   input:
     <span class="s2">&quot;bowtie/{chip}_sorted.bam&quot;</span>
@@ -448,123 +482,103 @@ alignment coverage across the genome with bedtools.</p>
 <span class="s2">    bedtools genomecov \</span>
 <span class="s2">      -ibam {input} \</span>
 <span class="s2">      -bg \</span>
-<span class="s2">      -g {CHROMS} \</span>
-<span class="s2">      &gt; {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-<span class="nf">rule sort_index_bam</span><span class="o">:</span>
-  input:
-    <span class="s2">&quot;bowtie/{chip}.bam&quot;</span>
-  output:
-    <span class="s2">&quot;bowtie/{chip}_sorted.bam&quot;</span>
-  shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    samtools sort {input} &gt; {output}</span>
-<span class="s2">    samtools index {output}</span>
+<span class="s2">      -g {CHROMS} &gt; {output}</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>Notice that we execute two commands in one rule (<code class="docutils literal"><span class="pre">sort_index_bam</span></code>).
-Snakemake doesn&#8217;t pay attention to what you execute, but instead tracks
-the input and output files to ensure that they were generated correctly.
-Combining multiple commands in one rule is useful for simple steps that
-are commonly executated together.</p>
 <p>Also note that we used the global variable <code class="docutils literal"><span class="pre">CHROMS</span></code> directly in the
 shell command. The braces are needed in the shell command so that
 snakemake can recognize it, but are not needed when calling the variable
 outside of the shell commands.</p>
+</div>
+<div class="section" id="check-coverage">
+<h3>Check Coverage<a class="headerlink" href="#check-coverage" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#check-coverage" title="Slides">§</a></h3>
 <p>Let&#8217;s check that our pipeline is working by trying to generate the
 bedgraph file.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr -s Snakefile bowtie/H1_h3k4me3_chr22.bedgraph
+<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr bowtie/H1_h3k4me3_chr22.bedgraph
 </pre></div>
 </div>
+</div>
+<div class="section" id="make-tss-windows">
+<h3>Make TSS windows<a class="headerlink" href="#make-tss-windows" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#make-tss-windows" title="Slides">§</a></h3>
 <p>Now that we have our bedgraph we next need to define a set of intervals to
-surround the TSS to calculate H3k4me3 coverage. To do this we will use
-<code class="docutils literal"><span class="pre">awk</span></code> and <code class="docutils literal"><span class="pre">bedtools</span></code>.</p>
-<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule get_coverage</span><span class="o">:</span>
-  input:
-    <span class="nv">windows</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/windows.bed&quot;</span>,
-    <span class="nv">bedgraph</span> <span class="o">=</span> <span class="s2">&quot;bowtie/{chip}.bedgraph&quot;</span>
-  output:
-    <span class="nv">coverage</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/{chip}/coverage.bed&quot;</span>
-  shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    #map and group data</span>
-<span class="s2">    bedtools map -a {input.windows} \</span>
-<span class="s2">      -b {input.bedgraph} \</span>
-<span class="s2">      -c 4 -o mean -null 0 \</span>
-<span class="s2">      | sort -k5,5n \</span>
-<span class="s2">      | bedtools groupby \</span>
-<span class="s2">        -i - \</span>
-<span class="s2">        -g 5 -c 6 -o sum \</span>
-<span class="s2">        &gt; {output.coverage}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-<span class="nf">rule prepare_bed_data</span><span class="o">:</span>
+surround the TSS to calculate H3k4me3 coverage. To do this we will call an
+external bash script that uses awk and bedtools to generate a bed file of
+windows around each TSS.</p>
+<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule prepare_windows</span><span class="o">:</span>
   input:
     <span class="nv">genes</span> <span class="o">=</span> GENES,
     <span class="nv">chroms</span> <span class="o">=</span> CHROMS,
   output:
-    <span class="nv">tss</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/tss.bed&quot;</span>,
-    <span class="nv">tss_slop</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/tss_slop.bed&quot;</span>,
-    <span class="nv">windows</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/windows.bed&quot;</span>,
+    <span class="s2">&quot;bedfiles/tss_windows.bed&quot;</span>
+  shell:
+    <span class="s2">&quot;src/get_tss_windows.sh {input.genes} {input.chroms} {output}&quot;</span>
+</pre></div>
+</div>
+<p>These rules take the reference gene annotations and extracts out the TSS,
+then make a set of windows surrounding the TSS.</p>
+</div>
+<div class="section" id="other-concepts">
+<h3>Other Concepts<a class="headerlink" href="#other-concepts" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#other-concepts" title="Slides">§</a></h3>
+<ol class="arabic simple">
+<li>Instead of writing an external script, you can also include each step
+individually. However, these steps are very verbose, so they have been
+moved to a seperate script.</li>
+<li>Snakemake doesn&#8217;t care what commands we run, only that the input files are
+present before running and that the output files are generated after
+executing the commands.</li>
+</ol>
+<p>Let&#8217;s check that our pipeline is correct by trying to generate the
+output from the <code class="docutils literal"><span class="pre">prepare_windows</span></code> rule.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr <span class="s2">&quot;bedfiles/tss_windows.bed&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calculate-coverage-over-tsss">
+<h3>Calculate coverage over TSSs<a class="headerlink" href="#calculate-coverage-over-tsss" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#calculate-coverage-over-tsss" title="Slides">§</a></h3>
+<p>Next let&#8217;s use bedtools map to calculate the mean H3K4me3 signal over
+each TSS region</p>
+<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule get_coverage</span><span class="o">:</span>
+  input:
+    <span class="nv">windows</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/tss_windows.bed&quot;</span>,
+    <span class="nv">bedgraph</span> <span class="o">=</span> <span class="s2">&quot;bedgraphs/{chip}.bedgraph&quot;</span>
+  output:
+    <span class="nv">coverage</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/{chip}/coverage.bed&quot;</span>
   shell:
     <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    #get start sites</span>
-<span class="s2">    awk &#39; {{OFS=&quot;</span><span class="se">\t</span><span class="s2">&quot;}}</span>
-<span class="s2">      </span><span class="nv">$6</span><span class="s2"> == &quot;</span>+<span class="s2">&quot; {{print </span><span class="nv">$1</span><span class="s2">,</span><span class="nv">$2</span><span class="s2">,</span><span class="nv">$2</span><span class="s2">+1,</span><span class="nv">$4</span><span class="s2">}} ;</span>
-<span class="s2">      </span><span class="nv">$6</span><span class="s2"> == &quot;</span>-<span class="s2">&quot; {{print </span><span class="nv">$1</span><span class="s2">,</span><span class="nv">$3</span><span class="s2">-1,</span><span class="nv">$3</span><span class="s2">,</span><span class="nv">$4</span><span class="s2">}}&#39; {input.genes} &gt; {output.tss}</span>
-
-<span class="s2">    #get +/- 2kbp and make windows</span>
-<span class="s2">    bedtools slop \</span>
-<span class="s2">      -b 2000 \</span>
-<span class="s2">      -i {output.tss} \</span>
-<span class="s2">      -g {input.chroms} \</span>
-<span class="s2">      &gt; {output.tss_slop}</span>
-
-<span class="s2">    bedtools makewindows -b {output.tss_slop} -w 5 -i srcwinnum \</span>
-<span class="s2">      | sort -k1,1 -k2,2n \</span>
-<span class="s2">      | tr &quot;</span>_<span class="s2">&quot; &quot;</span><span class="se">\t</span><span class="s2">&quot; \</span>
-<span class="s2">      &gt; {output.windows}</span>
+<span class="s2">    bedtools map -a {input.windows} \</span>
+<span class="s2">      -b {input.bedgraph} \</span>
+<span class="s2">      -c 4 -o mean -null 0 &gt; {output.coverage}</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<p>These rules take the reference gene annotations and extract out the TSS,
-then make a set of windows surrounding the TSS, followed by calculating a
-coverage summary over these windows.</p>
-<p>Note:</p>
-<ol class="arabic simple">
-<li>When calling a shell command with braces (<code class="docutils literal"><span class="pre">{}</span></code>), they need to be
-double bracketed. This is necessary otherwise snakemake would interpret
-the braces as a snakemake variable</li>
-</ol>
-<p>These rules are very verbose, and it may actually be easier to have these
-steps listed in a seperate shell script which you can call from snakemake.</p>
-<p>Let&#8217;s check that our pipeline is correct by trying to generate the
-output from the <code class="docutils literal"><span class="pre">get_coverage</span></code> rule.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr -s Snakefile <span class="s2">&quot;bedfiles/H1_h3k4me3_chr22/coverage.bed&quot;</span>
+</div>
+<div class="section" id="check-bedtools-map-step">
+<h3>Check bedtools map step<a class="headerlink" href="#check-bedtools-map-step" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#check-bedtools-map-step" title="Slides">§</a></h3>
+<p>Again check the commands:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr <span class="s2">&quot;bedfiles/H1_h3k4me3/coverage.bed&quot;</span>
 </pre></div>
 </div>
-<p>Lastly, let&#8217;s plot the data using the <cite>bin/plot_data.R</cite> script.</p>
+</div>
+<div class="section" id="plot-the-data">
+<h3>Plot the Data<a class="headerlink" href="#plot-the-data" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#plot-the-data" title="Slides">§</a></h3>
+<p>Lastly, let&#8217;s group and plot the data using the <cite>bin/plot_data.R</cite> script.</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule plot_coverage</span><span class="o">:</span>
   input:
     <span class="nv">coverage</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/{chip}/coverage.bed&quot;</span>
   output:
     <span class="s2">&quot;plots/{chip}.pdf&quot;</span>
   shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    ./bin/plot_data.R {input} {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot; bin/plot_data.R {input} {output} &quot;</span>
 </pre></div>
 </div>
-<p>Note that we are calling an external script that performs the plotting.
-Snakemake doesn&#8217;t care what commands we run, only that the input files are
-present before running and that the output files are generated after
-executing the commands.</p>
 <p>Again check the commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr -s Snakefile <span class="s2">&quot;plots/H1_h3k4me3_chr22.pdf&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr <span class="s2">&quot;plots/H1_h3k4me3_chr22.pdf&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="using-rule-all">
+<h3>Using Rule All<a class="headerlink" href="#using-rule-all" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#using-rule-all" title="Slides">§</a></h3>
 <p>To clean up the pipeline let&#8217;s define our target files in the Snakefile
 itself.</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">CHIP</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;H1_h3k4me3_chr22&quot;</span><span class="o">]</span>
@@ -573,15 +587,12 @@ itself.</p>
   input: exand<span class="o">(</span><span class="s2">&quot;plots/{chip}.pdf&quot;</span>, <span class="nv">chip</span> <span class="o">=</span> CHIP<span class="o">)</span>
 </pre></div>
 </div>
-<p>Now we can call our Snakefile directly. In fact we don&#8217;t need to list the
-Snakefile as snakemake will autodetect any file named <code class="docutils literal"><span class="pre">Snakefile</span></code> in the
-current working directory</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr
 </pre></div>
 </div>
 </div>
 <div class="section" id="putting-it-all-together">
-<h2>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#putting-it-all-together" title="Slides">§</a></h2>
+<h3>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#putting-it-all-together" title="Slides">§</a></h3>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">FASTA</span> <span class="o">=</span> <span class="s2">&quot;dbases/chr22.fa&quot;</span> <span class="c1"># our genome fasta file (hg19)</span>
 <span class="nv">CHROMS</span> <span class="o">=</span> <span class="s2">&quot;dbases/chr22_length.txt&quot;</span> <span class="c1"># our genome file for bedtools</span>
 <span class="nv">GENES</span> <span class="o">=</span> <span class="s2">&quot;dbases/knownGene_chr22.bed&quot;</span> <span class="c1"># gene annotations for hg19</span>
@@ -589,7 +600,7 @@ current working directory</p>
 <span class="nv">CHIP</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;H1_h3k4me3_chr22&#39;</span><span class="o">]</span>
 
 <span class="nf">rule all</span><span class="o">:</span>
-  input: expand<span class="o">(</span><span class="s2">&quot;plots/{chip}.pdf&quot;</span>, <span class="nv">chip</span><span class="o">=</span>CHIP<span class="o">)</span>
+  input: expand<span class="o">(</span><span class="s2">&quot;bedfiles/{chip}/coverage.bed&quot;</span>, <span class="nv">chip</span><span class="o">=</span>CHIP<span class="o">)</span>
 
 <span class="nf">rule plot_coverage</span><span class="o">:</span>
   input:
@@ -597,80 +608,41 @@ current working directory</p>
   output:
     <span class="s2">&quot;plots/{chip}.pdf&quot;</span>
   shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    ./bin/plot_data.R {input} {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot; src/plot_data.R {input} {output}&quot;</span>
 
 <span class="nf">rule get_coverage</span><span class="o">:</span>
   input:
-    <span class="nv">windows</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/windows.bed&quot;</span>,
-    <span class="nv">bedgraph</span> <span class="o">=</span> <span class="s2">&quot;bowtie/{chip}.bedgraph&quot;</span>
+    <span class="nv">windows</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/tss_windows.bed&quot;</span>,
+    <span class="nv">bedgraph</span> <span class="o">=</span> <span class="s2">&quot;bedgraphs/{chip}.bedgraph&quot;</span>
   output:
     <span class="nv">coverage</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/{chip}/coverage.bed&quot;</span>
   shell:
     <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    #map and group data</span>
 <span class="s2">    bedtools map -a {input.windows} \</span>
 <span class="s2">      -b {input.bedgraph} \</span>
-<span class="s2">      -c 4 -o mean -null 0 \</span>
-<span class="s2">      | sort -k5,5n \</span>
-<span class="s2">      | bedtools groupby \</span>
-<span class="s2">        -i - \</span>
-<span class="s2">        -g 5 -c 6 -o sum \</span>
-<span class="s2">        &gt; {output.coverage}</span>
+<span class="s2">      -c 4 -o mean -null 0 &gt; {output.coverage}</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 
-<span class="nf">rule prepare_bed_data</span><span class="o">:</span>
+<span class="nf">rule prepare_windows</span><span class="o">:</span>
   input:
     <span class="nv">genes</span> <span class="o">=</span> GENES,
     <span class="nv">chroms</span> <span class="o">=</span> CHROMS,
   output:
-    <span class="nv">tss</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/tss.bed&quot;</span>,
-    <span class="nv">tss_slop</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/tss_slop.bed&quot;</span>,
-    <span class="nv">windows</span> <span class="o">=</span> <span class="s2">&quot;bedfiles/windows.bed&quot;</span>,
+    <span class="s2">&quot;bedfiles/tss_windows.bed&quot;</span>
   shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    #get start sites</span>
-<span class="s2">    awk &#39; {{OFS=&quot;</span><span class="se">\t</span><span class="s2">&quot;}}</span>
-<span class="s2">      </span><span class="nv">$6</span><span class="s2"> == &quot;</span>+<span class="s2">&quot; {{print </span><span class="nv">$1</span><span class="s2">,</span><span class="nv">$2</span><span class="s2">,</span><span class="nv">$2</span><span class="s2">+1,</span><span class="nv">$4</span><span class="s2">}} ;</span>
-<span class="s2">      </span><span class="nv">$6</span><span class="s2"> == &quot;</span>-<span class="s2">&quot; {{print </span><span class="nv">$1</span><span class="s2">,</span><span class="nv">$3</span><span class="s2">-1,</span><span class="nv">$3</span><span class="s2">,</span><span class="nv">$4</span><span class="s2">}}&#39; {input.genes} &gt; {output.tss}</span>
-
-<span class="s2">    #get +/- 2kbp and make windows</span>
-<span class="s2">    bedtools slop \</span>
-<span class="s2">      -b 2000 \</span>
-<span class="s2">      -i {output.tss} \</span>
-<span class="s2">      -g {input.chroms} \</span>
-<span class="s2">      &gt; {output.tss_slop}</span>
-
-<span class="s2">    bedtools makewindows -b {output.tss_slop} -w 5 -i srcwinnum \</span>
-<span class="s2">      | sort -k1,1 -k2,2n \</span>
-<span class="s2">      | tr &quot;</span>_<span class="s2">&quot; &quot;</span><span class="se">\t</span><span class="s2">&quot; \</span>
-<span class="s2">      &gt; {output.windows}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot;src/get_tss_windows.sh {input.genes} {input.chroms} {output}&quot;</span>
 
 <span class="nf">rule make_bedgraphs</span><span class="o">:</span>
   input:
-    <span class="s2">&quot;bowtie/{chip}_sorted.bam&quot;</span>
+    <span class="s2">&quot;bowtie/{chip}.bam&quot;</span>
   output:
-    <span class="s2">&quot;bowtie/{chip}.bedgraph&quot;</span>
+    <span class="s2">&quot;bedgraphs/{chip}.bedgraph&quot;</span>
   shell:
     <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    bedtools genomecov \</span>
 <span class="s2">      -ibam {input} \</span>
 <span class="s2">      -bg \</span>
-<span class="s2">      -g {CHROMS} \</span>
-<span class="s2">      &gt; {output}</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-<span class="nf">rule sort_index_bam</span><span class="o">:</span>
-  input:
-    <span class="s2">&quot;bowtie/{chip}.bam&quot;</span>
-  output:
-    <span class="s2">&quot;bowtie/{chip}_sorted.bam&quot;</span>
-  shell:
-    <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    samtools sort {input} &gt; {output}</span>
-<span class="s2">    samtools index {output}</span>
+<span class="s2">      -g {CHROMS} &gt; {output}</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 
 <span class="nf">rule bowtie_mapping</span><span class="o">:</span>
@@ -686,7 +658,10 @@ current working directory</p>
 <span class="s2">    bowtie2 \</span>
 <span class="s2">      -x {params.idx} \</span>
 <span class="s2">      -U {input.fq} \</span>
-<span class="s2">      -S {output}</span>
+<span class="s2">      -S {output}.tmp</span>
+
+<span class="s2">    samtools sort {output}.tmp &gt; {output}</span>
+<span class="s2">    samtools index {output}</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 
 <span class="nf">rule bowtie_index</span><span class="o">:</span>
@@ -704,36 +679,46 @@ current working directory</p>
 </div>
 </div>
 <div class="section" id="generalizing-the-pipeline">
-<h2>Generalizing the pipeline<a class="headerlink" href="#generalizing-the-pipeline" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#generalizing-the-pipeline" title="Slides">§</a></h2>
+<h3>Generalizing the pipeline<a class="headerlink" href="#generalizing-the-pipeline" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#generalizing-the-pipeline" title="Slides">§</a></h3>
 <p>The real power of a pipeline is the ability to apply it to many datasets.
 By adding additional elements to our <code class="docutils literal"><span class="pre">CHIP</span></code> variable we can now run our
 pipeline on multiple Chip-Seq samples</p>
-<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">CHIP</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;H1_h3k4me3_chr22&quot;</span>, <span class="s2">&quot;H1_h3k4me3_chr21&quot;</span><span class="o">]</span>
+<div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">CHIP</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;H1_h3k4me3_chr22&quot;</span>, <span class="s2">&quot;H1_RNApolII_chr22&quot;</span><span class="o">]</span>
 </pre></div>
 </div>
 <p>Now our pipeline will run for both Chip-Seq datasets with only 1 filename
 added!</p>
-<p>What if you have a directory with 100s of fastq files from Chip-Seq
-experiments? You could type out a long list of filenames, or you can use
-the <code class="docutils literal"><span class="pre">glob_wildcards</span></code> function in Snakemake. This function will build a
-list of sample names based on the files in the listed directory.</p>
+</div>
+<div class="section" id="glob-wildcards">
+<h3>Glob wildcards<a class="headerlink" href="#glob-wildcards" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#glob-wildcards" title="Slides">§</a></h3>
+<ol class="arabic simple">
+<li>What if you have a directory with 100s of fastq files from Chip-Seq
+experiments? You could type out a long list of filenames, or ...</li>
+<li>Use the <code class="docutils literal"><span class="pre">glob_wildcards</span></code> function in Snakemake. This function will build a
+list of sample names based on the files in the listed directory.</li>
+</ol>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span>CHIP, = glob_wildcards(&quot;raw_data/{chip}.fastq.gz&quot;)
 </pre></div>
 </div>
+</div>
+<div class="section" id="run-in-parallel">
+<h3>Run in Parallel<a class="headerlink" href="#run-in-parallel" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#run-in-parallel" title="Slides">§</a></h3>
 <p>Lastly, snakemake can run jobs in parallel. If your computer has more than
 1 core you can execute more than 1 job at the same time. Snakemake handles
 the scheduling, all you need to do is tell it the number of cores you want
 to use.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -pr --cores 2
+<div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake --cores 2
 </pre></div>
 </div>
 </div>
 <div class="section" id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#troubleshooting" title="Slides">§</a></h2>
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#troubleshooting" title="Slides">§</a></h3>
 <p><a class="reference external" href="https://snakemake.readthedocs.io/en/latest/project_info/faq.html">https://snakemake.readthedocs.io/en/latest/project_info/faq.html</a></p>
 <p><a class="reference external" href="http://stackoverflow.com/questions/tagged/snakemake">http://stackoverflow.com/questions/tagged/snakemake</a></p>
 <p><a class="reference external" href="https://groups.google.com/forum/#!forum/snakemake">https://groups.google.com/forum/#!forum/snakemake</a></p>
-<p>Some helpful guidelines:</p>
+</div>
+<div class="section" id="helpful-guidelines">
+<h3>Helpful guidelines<a class="headerlink" href="#helpful-guidelines" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#helpful-guidelines" title="Slides">§</a></h3>
 <ol class="arabic simple">
 <li>Indentation is important, use two or four spaces for each indentation.</li>
 <li>Define your target (final output) files in rule all</li>
@@ -742,21 +727,22 @@ collisions</li>
 </ol>
 </div>
 <div class="section" id="alternative-tutorials">
-<h2>Alternative tutorials<a class="headerlink" href="#alternative-tutorials" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#alternative-tutorials" title="Slides">§</a></h2>
+<h3>Alternative tutorials<a class="headerlink" href="#alternative-tutorials" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#alternative-tutorials" title="Slides">§</a></h3>
 <p><a class="reference external" href="https://snakemake.readthedocs.io/en/latest/index.html">https://snakemake.readthedocs.io/en/latest/index.html</a></p>
 <p><a class="reference external" href="https://github.com/leipzig/SandwichesWithSnakemake">https://github.com/leipzig/SandwichesWithSnakemake</a></p>
 </div>
 <div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#exercises" title="Slides">§</a></h2>
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a><a class="headerlink" href="../slides/Classes/snakemake-tutorial.html#exercises" title="Slides">§</a></h3>
 <ol class="arabic simple">
 <li>Make a three rule snakemake pipeline using basic unix tools. Include at
 least one wildcard variable.</li>
-<li>Download the three fastqs in the following directory (To Do). Modify
-our snakemake pipeline to run the analysis on all three fastqs. What do
+<li>Download new Chip-Seq fastqs into the following directory from <a class="reference external" href="https://www.encodeproject.org/matrix/?type=Experiment">Encode</a>.
+Modify the snakemake pipeline to run the analysis on all the new fastqs. What do
 you notice about the TSS coverage for each Chip-Seq expt?</li>
 <li>Add additional rules to our pipeline to plot Chip-Seq coverage at the
 3&#8217; transcriptional stop site.</li>
 </ol>
+</div>
 </div>
 </div>
 
