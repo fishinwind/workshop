@@ -16,16 +16,16 @@ Goals
 Overview
 --------
 
-Genomics analysis projects often generate hundreds or thousands of files.
-Keeping track of all of the scripts used to generate a set of finalized
-reports is an error-prone and difficult task.
+#. Genomics analysis projects often generate hundreds or thousands of files.
+   Keeping track of all of the scripts used to generate a set of finalized
+   reports is an error-prone and difficult task.
 
-The naive approach to organizing a project is to make a ``bash`` script
-that executes each step of the analysis from mapping to plotting. 
+#. The naive approach to organizing a project is to make a ``bash`` script
+   that executes each step of the analysis from mapping to plotting. 
 
-Organizing a project in this manner is a good first step to producing
-reproducible analyses, however there are few common problems with this
-approach. 
+#. Organizing a project in this manner is a good first step to producing
+   reproducible analyses, however there are few common problems with this
+   approach. 
 
 For example:
 
@@ -36,6 +36,8 @@ For example:
 #. The script might grow to be 1,000s of lines of code making debugging
    very tedious as mistakes will be hard to spot. 
 
+Modularizing code
+-----------------
 The next approach might be to split each important set of steps into
 individual scripts. i.e:
 
@@ -48,6 +50,9 @@ individual scripts. i.e:
 By modularizing the code, the workflow is easier to modify and it
 becomes easier to reuse the code. However, with this setup a few
 additional problems can occur. 
+
+Potential Problems
+------------------
 
 #. You rerun the ``run_mapping.sh`` script, but forget to rerun
    ``call_peaks.sh`` and ``plot_data.R``. Two weeks later you discover your
@@ -95,7 +100,7 @@ Copy the following code into a file named ``Snakefile`` (no extension).
       input: "world.txt"
       output: "hello_world.txt"
       shell:
-        " echo "Hello" |  cat - {input} > {output} "
+        " echo 'Hello' |  cat - {input} > {output} "
 
 Run Snakemake
 =============
@@ -139,7 +144,7 @@ Hello Universe
 
 .. code-block:: bash
     
-    snakemake -npr hello_world.txt 
+    snakemake -npr hello_universe.txt 
 
 Rule All
 ========
@@ -170,7 +175,7 @@ Rule All Example
       input: "world.txt"
       output: "hello_world.txt"
       shell:
-        "echo "Hello" | cat - {input} > {output}"
+        "echo 'Hello' | cat - {input} > {output}"
 
 Generalizing rules with wildcards
 =================================
@@ -196,7 +201,7 @@ files.
       input: "world.txt"
       output: "hello_world.txt"
       shell:
-        "echo "Hello" | cat - {input} > {output} "
+        "echo 'Hello' | cat - {input} > {output} "
 
 Expand Function
 ===============
@@ -211,7 +216,7 @@ the previous code to:
 
     rule all:
         input:
-          expand("hello_{place}.txt, place=PLACES) #list of files is substituted 
+          expand("hello_{place}.txt", place=PLACES) #list of files is substituted 
 
 Debugging Targets
 =================
@@ -226,7 +231,7 @@ standard out, or alternatively look at the snakemake output (``-npr``)
               "colorado",
               "123"]
 
-    print(expand("hello_{place}.txt, place=PLACES)) 
+    print(expand("hello_{place}.txt", place=PLACES)) 
 
 
 Snakemake pipeline for Chip-Seq analysis
@@ -268,7 +273,7 @@ for our analysis. Place these at the top of your Snakefile.
 
 .. code-block:: basemake
 
-    FASTA = "dbases/chr22.fa" # our genome fasta file (hg19)
+    FASTA = "dbases/chr22.fa.gz" # our genome fasta file (hg19)
     CHROMS = "dbases/chr22_length.txt" # our genome file necessary for bedtools
     GENES = "dbases/knownGene_chr22.bed" # gene annotations for hg19
 
@@ -292,7 +297,8 @@ Indexing
        output_name = "dbases/bowtie_idx/chr22"
      shell:
        """
-       bowtie2-build {input} {params.output_name} 
+       gunzip -c {input} > {input}.tmp
+       bowtie2-build {input}.tmp {params.output_name} 
        """
 
 Alignment
