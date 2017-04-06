@@ -316,7 +316,7 @@ Alignment
        bowtie2 \
          -x {params.idx} \
          -U {input.fq} \
-         -S {output} 
+         -S {output}.tmp 
 
        samtools sort {output}.tmp > {output}
        samtools index {output}
@@ -364,7 +364,7 @@ Next calculate alignment coverage across the genome with bedtools.
 
     rule make_bedgraphs:
       input:
-        "bowtie/{chip}_sorted.bam"
+        "bowtie/{chip}.bam"
       output:
         "bowtie/{chip}.bedgraph"
       shell:
@@ -491,7 +491,7 @@ itself.
     CHIP = ["H1_h3k4me3_chr22"]
     
     rule all:
-      input: exand("plots/{chip}.pdf", chip = CHIP)
+      input: expand("plots/{chip}.pdf", chip = CHIP)
 
 .. code-block:: bash
     

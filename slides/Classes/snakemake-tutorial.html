@@ -509,7 +509,7 @@ alignment.</p>
 <span class="s2">    bowtie2 \</span>
 <span class="s2">      -x {params.idx} \</span>
 <span class="s2">      -U {input.fq} \</span>
-<span class="s2">      -S {output}</span>
+<span class="s2">      -S {output}.tmp</span>
 
 <span class="s2">    samtools sort {output}.tmp &gt; {output}</span>
 <span class="s2">    samtools index {output}</span>
@@ -570,7 +570,7 @@ by substituting <code class="docutils literal"><span class="pre">H1_h3k4me_chr22
       <p>Next calculate alignment coverage across the genome with bedtools.</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nf">rule make_bedgraphs</span><span class="o">:</span>
   input:
-    <span class="s2">&quot;bowtie/{chip}_sorted.bam&quot;</span>
+    <span class="s2">&quot;bowtie/{chip}.bam&quot;</span>
   output:
     <span class="s2">&quot;bowtie/{chip}.bedgraph&quot;</span>
   shell:
@@ -729,7 +729,7 @@ itself.</p>
 <div class="highlight-basemake"><div class="highlight"><pre><span></span><span class="nv">CHIP</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;H1_h3k4me3_chr22&quot;</span><span class="o">]</span>
 
 <span class="nf">rule all</span><span class="o">:</span>
-  input: exand<span class="o">(</span><span class="s2">&quot;plots/{chip}.pdf&quot;</span>, <span class="nv">chip</span> <span class="o">=</span> CHIP<span class="o">)</span>
+  input: expand<span class="o">(</span><span class="s2">&quot;plots/{chip}.pdf&quot;</span>, <span class="nv">chip</span> <span class="o">=</span> CHIP<span class="o">)</span>
 </pre></div>
 </div>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>snakemake -npr
