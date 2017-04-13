@@ -17,6 +17,7 @@ Class list
    Classes/class-15
    Classes/class_16
    Classes/snakemake-tutorial
+   Classes/class-23
 ..   Classes/class-10
 ..   Classes/class-11
 ..   Classes/class-15
