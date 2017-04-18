@@ -1,0 +1,449 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Class 25 : Getting Data and Asking for Help &mdash; Genome Analysis Workshop 0.2 documentation</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Genome Analysis Workshop 0.2 documentation" href="../index.html" />
+    <link rel="up" title="Class list" href="../Classes.html" />
+    <link rel="next" title="Exercises" href="../Exercises.html" />
+    <link rel="prev" title="Class 23 : Exome-Seq - Alignment" href="class-23.html" /> 
+
+<!-- Google Analytics tracking code -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54095998-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  
+
+  
+    <slide class="title-slide segue nobackground level-1" id="class-25-getting-data-and-asking-for-help">
+    <hgroup>
+      <h1>Class 25 : Getting Data and Asking for Help<a class="headerlink" href="../../Classes/class-25.html#class-25-getting-data-and-asking-for-help" title="View HTML">§</a></h1>
+    </hgroup>
+    <article class="">
+      <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Last updated:</th><td class="field-body">Apr 18, 2017</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="final-class">
+    <hgroup>
+      <h2>Final Class<a class="headerlink" href="../../Classes/class-25.html#final-class" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic">
+<li><p class="first">Problem set 5</p>
+</li>
+<li><p class="first">Office Hours for help with final projects and problem set(s)</p>
+</li>
+<li><p class="first">Optional Class going on shell scripts to run RNA-Seq and Chip-Seq Next
+Tuesday 1-3pm here.</p>
+</li>
+<li><p class="first">Final Project presentations</p>
+<p>&lt;5 min</p>
+<p>3 slides (problem, some awesome code, and conclusion/plots)</p>
+<p>Date: May 2 from 1-3pm</p>
+<p>Place: RC1 South 9th floor</p>
+<p>Push code to github repository</p>
+</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="goals-for-today">
+    <hgroup>
+      <h2>Goals for today<a class="headerlink" href="../../Classes/class-25.html#goals-for-today" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Where and how to download public data.</li>
+<li>How to visualize your data.</li>
+<li>How to ask for help and point out bugs in software.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="downloading-sequencing-data">
+    <hgroup>
+      <h2>Downloading Sequencing Data<a class="headerlink" href="../../Classes/class-25.html#downloading-sequencing-data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Most journals require that raw sequencing data be deposited to public
+databases.</p>
+<ol class="arabic">
+<li><p class="first">Researchers in the US usually deposit data in the Short Read
+Achive (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/sra">SRA</a>) hosted by the NCBI.</p>
+</li>
+<li><p class="first">European groups, usually deposit data in <a class="reference external" href="https://www.ebi.ac.uk/arrayexpress/">Array Express</a> hosted by EMBL.</p>
+</li>
+<li><p class="first">Project Specific downloads:</p>
+<p>The Cancer Genome Atlas (<a class="reference external" href="https://portal.gdc.cancer.gov/">TCGA</a>)</p>
+<p><a class="reference external" href="https://www.encodeproject.org/matrix/?type=Experiment">ENCODE</a></p>
+<p><a class="reference external" href="http://www.internationalgenome.org/data/">1000 Genomes Project</a></p>
+</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="getting-data-from-the-sra">
+    <hgroup>
+      <h3>Getting data from the SRA<a class="headerlink" href="../../Classes/class-25.html#getting-data-from-the-sra" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Find specific experiments in the <a class="reference external" href="https://www.ncbi.nlm.nih.gov/gds">Gene Expression Omnibus</a> from GEO Datasets.</li>
+<li>Downloading &quot;processed&quot; experiment data. <code class="docutils literal"><span class="pre">BED</span></code>, <code class="docutils literal"><span class="pre">Bedgraph</span></code>, <code class="docutils literal"><span class="pre">count</span>
+<span class="pre">tables</span></code>, <code class="docutils literal"><span class="pre">bigWig</span></code>, etc.</li>
+<li>Extract the SRA accession numbers and download raw data from the <a class="reference external" href="https://trace.ncbi.nlm.nih.gov/Traces/sra/">SRA GUI</a></li>
+<li>Use <code class="docutils literal"><span class="pre">fastq-dump</span></code> on command line.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="fastq-dump">
+    <hgroup>
+      <h3>fastq-dump<a class="headerlink" href="../../Classes/class-25.html#fastq-dump" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <p>The  <a class="reference external" href="https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&amp;f=std">SRAToolKit</a>
+has command-line utilities to allow for programmatic access to sequencing
+data. The <code class="docutils literal"><span class="pre">fastq-dump</span></code> command is useful for directly downloading fastq
+data, provided a SRA accession number.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>~/path_to_sratoolkit/bin/fastq-dump -h
+<span class="c1"># -X download only a specific number of records</span>
+
+fastq-dump -X <span class="m">10</span> --gzip SRR390728
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="download-in-a-loop">
+    <hgroup>
+      <h3>Download in a loop<a class="headerlink" href="../../Classes/class-25.html#download-in-a-loop" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <p>Use SRA website to get a list of SRA accesion number for a project. Then
+download all of the data as fastq data.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">files</span><span class="o">=</span><span class="k">$(</span>cat sranumbers.txt<span class="k">)</span>
+
+<span class="k">for</span> x in <span class="nv">$files</span>
+  <span class="k">do</span>
+  <span class="nb">echo</span> <span class="s2">&quot;downloading &quot;</span><span class="nv">$x</span>
+  fastq-dump -X <span class="m">10</span> --gzip <span class="nv">$x</span>
+  <span class="k">done</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="download-in-parallel">
+    <hgroup>
+      <h3>Download in parallel<a class="headerlink" href="../../Classes/class-25.html#download-in-parallel" title="View HTML">§</a></h3>
+    </hgroup>
+    <article class="">
+      <p><a class="reference external" href="https://www.gnu.org/software/parallel/">GNU parallel</a>  is a powerful unix tool
+for parallelizing jobs if you don't have access to a compute cluster.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">#same output as previous for loop</span>
+<span class="c1"># -j indicates number of jobs to run at once</span>
+
+cat sranumbers.txt <span class="se">\</span>
+  <span class="p">|</span> parallel -j <span class="m">4</span> <span class="sb">`</span>fastq-dump -X <span class="m">10</span> <span class="o">{}</span><span class="sb">`</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="downloading-annotations">
+    <hgroup>
+      <h2>Downloading Annotations<a class="headerlink" href="../../Classes/class-25.html#downloading-annotations" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>UCSC <a class="reference external" href="http://genome.ucsc.edu/">table browser</a> is an interactive
+GUI useful for downloading a variety of genomics data</li>
+<li>Ensembl <a class="reference external" href="http://www.ensembl.org/index.html">BioMart</a> is similar to
+the table browser, with some unique annotations.</li>
+<li><a class="reference external" href="http://www.gencodegenes.org/">Gencode</a> annotations used by Encode</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="visualizing-your-data">
+    <hgroup>
+      <h2>Visualizing your data<a class="headerlink" href="../../Classes/class-25.html#visualizing-your-data" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Always, always, always look at your data.</p>
+<ol class="arabic simple">
+<li>Integrative Genomics Viewer (<a class="reference external" href="http://software.broadinstitute.org/software/igv/download">IGV</a>)</li>
+<li>UCSC genome browser (<a class="reference external" href="http://genome.ucsc.edu/">http://genome.ucsc.edu/</a>)</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="getting-help">
+    <hgroup>
+      <h2>Getting help<a class="headerlink" href="../../Classes/class-25.html#getting-help" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Sometimes you will get errors that you do not understand.</p>
+<ol class="arabic simple">
+<li>First google it. Quote the error message and include the package name
+or language. If there are variables or files included in the message exclude them from
+the search.</li>
+<li>Go to the source code repository and search for your problem (i.e. github
+issues, google groups/mailing list)</li>
+<li>Before you ask others for help, make sure the question hasn't been
+answered before.</li>
+</ol>
+<p><a class="reference external" href="www.stackoverflow.com">StackOverflow</a></p>
+<p><a class="reference external" href="www.biostars.com">Biostars</a></p>
+<p><a class="reference external" href="www.seqanswers.com">SeqAnswers</a></p>
+<p><a class="reference external" href="www.bioconductor.com">Bioconductor</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="hopefully-not-your-experience">
+    <hgroup>
+      <h2>Hopefully not your experience<a class="headerlink" href="../../Classes/class-25.html#hopefully-not-your-experience" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <img alt="https://imgs.xkcd.com/comics/wisdom_of_the_ancients.png" src="https://imgs.xkcd.com/comics/wisdom_of_the_ancients.png" />
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="there-will-be-bugs">
+    <hgroup>
+      <h2>There will be bugs<a class="headerlink" href="../../Classes/class-25.html#there-will-be-bugs" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic">
+<li><p class="first">Bioinformatics relies on software built by people and people make
+mistakes.  There is a lot of bad code out there.</p>
+</li>
+<li><p class="first">There will be bugs and most tools won't do everything you wish they would.</p>
+</li>
+<li><p class="first">Solutions:</p>
+<p>get developers to fix the bug</p>
+<p>fix the bug yourself and contribute to the project</p>
+<p>use another tool</p>
+<p>write your own tool</p>
+</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="reproducible-example-reprex">
+    <hgroup>
+      <h2>Reproducible Example (reprex)<a class="headerlink" href="../../Classes/class-25.html#reproducible-example-reprex" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>Writing a reproducible example is a key skill to getting any help from
+the internet.</li>
+<li>Keep it simple and distill your problem down to a small set of code the reproduces your
+error.</li>
+<li>The error should be recaptitulated by copying and running the code as
+is. Do not depend on external data if possible</li>
+<li>Often by trying to simplify and reproduce your error you will actually
+solve your problem.</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="what-makes-a-good-reprex">
+    <hgroup>
+      <h2>What makes a good reprex?<a class="headerlink" href="../../Classes/class-25.html#what-makes-a-good-reprex" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <ol class="arabic simple">
+<li>load necessary package at top</li>
+<li>use built-in datasets if possible, otherwise use <code class="docutils literal"><span class="pre">dput()</span></code>, or
+<code class="docutils literal"><span class="pre">tibble::frame_data()</span></code></li>
+<li>Use comments to explain steps</li>
+<li>Include relevant error message</li>
+<li>Potentially include the output of <code class="docutils literal"><span class="pre">sessionInfo()</span></code></li>
+</ol>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="the-reprex-package">
+    <hgroup>
+      <h2>The reprex package<a class="headerlink" href="../../Classes/class-25.html#the-reprex-package" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>The <a class="reference external" href="http://jennybc.github.io/reprex/">reprex package</a> makes it easy to
+produce well-formatted R reprexes for posting to github or stackoverflow.</p>
+<div class="highlight-R"><div class="highlight"><pre><span></span>install.packages<span class="p">(</span><span class="s">&quot;reprex&quot;</span><span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>reprex<span class="p">)</span>
+</pre></div>
+</div>
+<p>copy the following code into your clipboard</p>
+<div class="highlight-R"><div class="highlight"><pre><span></span>a <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;1.2&quot;</span><span class="p">)</span>
+<span class="kp">mean</span><span class="p">(</span>a<span class="p">)</span>
+</pre></div>
+</div>
+<p>Now in the console type:</p>
+<div class="highlight-R"><div class="highlight"><pre><span></span>reprex<span class="p">()</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="gists">
+    <hgroup>
+      <h2>Gists<a class="headerlink" href="../../Classes/class-25.html#gists" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>If the code is long, or if you want to share your code in private use
+<a class="reference external" href="https://gist.github.com/">github gist</a>.</p>
+<p>Avoid putting code directly in email messages, as often the format will get mangled.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="additional-resources">
+    <hgroup>
+      <h2>Additional Resources<a class="headerlink" href="../../Classes/class-25.html#additional-resources" title="View HTML">§</a></h2>
+    </hgroup>
+    <article class="">
+      <p>Books</p>
+<ol class="arabic simple">
+<li>Advanced R and R for Data Science by Hadley Wickham et al.</li>
+<li>Bioinformatics Data Skills by Vince Buffalo</li>
+<li>Python for Biologists</li>
+</ol>
+
+
+
+
+    </article>
+  </slide>
+
+
+    <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
